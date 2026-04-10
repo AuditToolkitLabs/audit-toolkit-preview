@@ -1,0 +1,30 @@
+relative_path,branch,application_tool,documentation_section,storage_root
+01-login.png,core-web,Security Audit Toolkit Web Console,Authentication / Sign-In,E:\Screenshot
+02-overview.png,core-web,Security Audit Toolkit Web Console,Overview,E:\Screenshot
+03-dashboard.png,core-web,Security Audit Toolkit Web Console,Dashboard,E:\Screenshot
+04-console-audits.png,core-web,Security Audit Toolkit Web Console,Console / Audits,E:\Screenshot
+05-console-targets.png,core-web,Security Audit Toolkit Web Console,Console / Targets,E:\Screenshot
+06-reports.png,core-web,Security Audit Toolkit Web Console,Reports,E:\Screenshot
+07-schedules.png,core-web,Security Audit Toolkit Web Console,Scheduling,E:\Screenshot
+08-settings.png,core-web,Security Audit Toolkit Web Console,Settings,E:\Screenshot
+09-admin-users.png,core-web,Security Audit Toolkit Web Console,Administration / Users,E:\Screenshot
+10-script-studio.png,core-web,Security Audit Toolkit Web Console,Script Studio / Overview,E:\Screenshot
+11-script-templates.png,core-web,Security Audit Toolkit Web Console,Script Studio / Templates,E:\Screenshot
+12-script-validation.png,core-web,Security Audit Toolkit Web Console,Script Studio / Validation,E:\Screenshot
+13-asset-discovery-dashboard.png,asset-discovery,Asset Discovery,Dashboard,E:\Screenshot
+14-asset-discovery-assets.png,asset-discovery,Asset Discovery,Assets Inventory,E:\Screenshot
+15-asset-discovery-vulnerabilities.png,asset-discovery,Asset Discovery,Vulnerability View,E:\Screenshot
+16-asset-discovery-scans.png,asset-discovery,Asset Discovery,Scan Management,E:\Screenshot
+17-asset-discovery-scheduled.png,asset-discovery,Asset Discovery,Scheduled Scans,E:\Screenshot
+18-asset-discovery-settings.png,asset-discovery,Asset Discovery,Settings,E:\Screenshot
+agent-html/managed-01-console-overview.png,managed-agent,Managed Agent HTML Console,Console Overview,E:\Screenshot\agent-html
+agent-html/managed-02-agent-security.png,managed-agent,Managed Agent HTML Console,Agent Security,E:\Screenshot\agent-html
+agent-html/managed-03-destination-policy.png,managed-agent,Managed Agent HTML Console,Destination Policy,E:\Screenshot\agent-html
+agent-html/hypervisor-01-management-page.png,hypervisor,Hypervisor Branch UI,Hypervisor Management,E:\Screenshot\agent-html
+agent-html/hypervisor-02-console-tab.png,hypervisor,Hypervisor Branch UI,Console Tab Integration,E:\Screenshot\agent-html
+agent-html/standalone-01-home.png,standalone-agent,Standalone Agent Web UI,Home,E:\Screenshot\agent-html
+agent-html/standalone-02-setup.png,standalone-agent,Standalone Agent Web UI,Setup Wizard,E:\Screenshot\agent-html
+agent-html/standalone-03-audits.png,standalone-agent,Standalone Agent Web UI,Audits,E:\Screenshot\agent-html
+agent-html/standalone-04-results.png,standalone-agent,Standalone Agent Web UI,Results,E:\Screenshot\agent-html
+agent-html/standalone-05-schedules.png,standalone-agent,Standalone Agent Web UI,Scheduling,E:\Screenshot\agent-html
+agent-html/standalone-06-settings.png,standalone-agent,Standalone Agent Web UI,Settings,E:\Screenshot\agent-html

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audit Admin Toolkit — Public Preview</title>
+  <meta name="description" content="Pre-launch public preview for the Audit Admin Toolkit and CMDB tooling. Documentation and screenshots only; no downloads or commercial checkout." />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #111a2e;
+      --panel-2: #16233d;
+      --text: #e8eefc;
+      --muted: #a9b7d6;
+      --accent: #5aa0ff;
+      --accent-2: #6ee7b7;
+      --border: #243554;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Segoe UI, Arial, sans-serif;
+      background: linear-gradient(180deg, #08101d 0%, #0f1930 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    header {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+    }
+    h1, h2, h3 { margin-top: 0; }
+    p, li { color: var(--muted); }
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      margin: 0 8px 8px 0;
+      border-radius: 999px;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+    .pill.alert { color: #ffd79c; }
+    .pill.safe { color: var(--accent-2); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin: 16px 0 24px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    figure {
+      margin: 0;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #09111f;
+    }
+    figcaption {
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .note {
+      background: rgba(110, 231, 183, 0.08);
+      border-left: 4px solid var(--accent-2);
+      padding: 12px 14px;
+      border-radius: 8px;
+      color: var(--text);
+    }
+    a { color: #8cc2ff; }
+    footer {
+      color: var(--muted);
+      text-align: center;
+      padding: 18px 0 30px;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <span class="pill alert">Preview Only</span>
+        <span class="pill">v5.6.1-beta</span>
+        <span class="pill safe">Docs + Images Only</span>
+      </div>
+      <h1>Audit Admin Toolkit — Public Preview</h1>
+      <p>
+        This is a pre-launch product preview for the Audit Admin Toolkit, Linux audit expansion work,
+        and CMDB / asset platform capabilities. It is intentionally <strong>viewable but non-downloadable</strong>.
+      </p>
+      <div class="note">
+        No installers, appliance images, release bundles, or live Gumroad purchase flow are exposed in this preview.
+      </div>
+    </header>
+
+    <section>
+      <h2>Preview scope</h2>
+      <div class="grid">
+        <div class="card">
+          <h3><code>main</code></h3>
+          <p>Core operator experience: dashboard visibility, findings, reports, schedules, administration, and scripting workflows.</p>
+        </div>
+        <div class="card">
+          <h3><code>feature/linux-audit-coverage-expansion</code></h3>
+          <p>Expanded Linux audit breadth across mixed environments with stronger posture review and reporting coverage.</p>
+        </div>
+        <div class="card">
+          <h3><code>tool-spur/cmdb-asset-platform</code></h3>
+          <p>Asset discovery, inventory visibility, vulnerability context, scan tracking, and CMDB-aligned workflows.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What is available in preview</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Available now</h3>
+          <ul>
+            <li>Feature summaries</li>
+            <li>Approved screenshots</li>
+            <li>Branch-level capability overview</li>
+            <li>Early-interest contact path</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Held back until full launch</h3>
+          <ul>
+            <li>Downloadable installers or appliance images</li>
+            <li>Release artifacts and customer bundles</li>
+            <li>Commercial checkout / Gumroad publication</li>
+            <li>Licensing and activation workflow</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Selected preview screenshots</h2>
+      <div class="gallery">
+        <figure>
+          <img src="images/03-dashboard.png" alt="Dashboard preview" />
+          <figcaption>Core toolkit dashboard overview</figcaption>
+        </figure>
+        <figure>
+          <img src="images/04-console-audits.png" alt="Console audits preview" />
+          <figcaption>Audit console and findings workflow</figcaption>
+        </figure>
+        <figure>
+          <img src="images/06-reports.png" alt="Reports preview" />
+          <figcaption>Reporting and evidence-oriented views</figcaption>
+        </figure>
+        <figure>
+          <img src="images/08-settings.png" alt="Settings preview" />
+          <figcaption>Administration and settings experience</figcaption>
+        </figure>
+        <figure>
+          <img src="images/13-asset-discovery-dashboard.png" alt="Asset discovery dashboard preview" />
+          <figcaption>CMDB / asset discovery dashboard</figcaption>
+        </figure>
+        <figure>
+          <img src="images/15-asset-discovery-vulnerabilities.png" alt="Vulnerabilities preview" />
+          <figcaption>Vulnerability and risk view</figcaption>
+        </figure>
+        <figure>
+          <img src="images/agent-html/managed-02-agent-security.png" alt="Managed agent preview" />
+          <figcaption>Managed agent security view</figcaption>
+        </figure>
+        <figure>
+          <img src="images/agent-html/hypervisor-01-management-page.png" alt="Hypervisor preview" />
+          <figcaption>Hypervisor management workflow</figcaption>
+        </figure>
+        <figure>
+          <img src="images/agent-html/standalone-01-home.png" alt="Standalone agent preview" />
+          <figcaption>Standalone agent home experience</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top: 20px;">
+      <h2>Interest and next contact</h2>
+      <p>
+        For early-interest discussions or launch notification, contact
+        <a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a>
+        with the subject <strong>Public Preview Interest — Audit Admin Toolkit</strong>.
+      </p>
+      <p>
+        Supporting references included in this folder:
+        <a href="PUBLISHING-SCREENSHOT-MANIFEST.md">manifest (Markdown)</a> and
+        <a href="PUBLISHING-SCREENSHOT-MANIFEST.csv">manifest (CSV)</a>.
+      </p>
+    </section>
+  </div>
+
+  <footer>
+    Public preview package — safe for static hosting in GitHub Pages or a separate preview repo.
+  </footer>
+</body>
+</html>
