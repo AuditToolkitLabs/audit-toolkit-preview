@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Licensing &amp; Pricing — AuditToolkit Labs</title>
+  <meta name="description" content="Licensing tiers and pricing for AuditToolkit Labs products. Annual subscriptions across Starter, Professional, and Enterprise tiers." />
+  <link rel="stylesheet" href="assets/css/site.css" />
+  <style>
+    .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:32px}
+    .pricing-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:32px 28px;display:flex;flex-direction:column;position:relative}
+    .pricing-card.pricing-featured{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 20%,transparent)}
+    .pricing-featured-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.75rem;font-weight:700;padding:4px 14px;border-radius:20px;white-space:nowrap}
+    .pricing-tier{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+    .pricing-card h3{font-size:1.35rem;margin:0 0 8px}
+    .pricing-desc{font-size:.9rem;color:var(--text-muted);margin:0 0 24px;flex:1}
+    .pricing-cta-area{margin-top:auto}
+    .pricing-quote{font-size:.88rem;color:var(--text-muted);margin:0 0 12px;font-style:italic}
+    .pricing-features{list-style:none;padding:0;margin:0 0 24px}
+    .pricing-features li{font-size:.88rem;padding:6px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:flex-start}
+    .pricing-features li:last-child{border-bottom:none}
+    .pricing-features li::before{content:"✓";color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px}
+    .pricing-features li.feat-x::before{content:"—";color:var(--text-muted)}
+    .pricing-section{padding:56px 0;border-top:1px solid var(--border)}
+    .pricing-section:first-of-type{border-top:none}
+    .pricing-product-header{display:flex;align-items:center;gap:16px;margin-bottom:8px;flex-wrap:wrap}
+    .stripe-note{font-size:.8rem;color:var(--text-muted);margin-top:8px;text-align:center}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="releases.html">Releases</a></li>
+        <li><a href="licensing.html" class="active">Licensing</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+      <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="index.html#products">Products</a>
+  <a href="docs.html">Documentation</a>
+  <a href="releases.html">Releases</a>
+  <a href="licensing.html">Licensing</a>
+  <a href="support.html">Support</a>
+  <a href="support.html#contact" style="color:var(--accent);font-weight:600;">Contact Us</a>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span>
+      <span class="cur">Licensing &amp; Pricing</span>
+    </div>
+    <p class="eyebrow">Licensing</p>
+    <h1>Licensing &amp; Pricing</h1>
+    <p>Annual subscription tiers for all AuditToolkit Labs products. All tiers are licensed per deployment. Contact us to request a quote, discuss volume pricing, or arrange evaluation access.</p>
+    <div class="flex gap-12 flex-wrap mt-24">
+      <a href="support.html#contact" class="btn btn-primary">Request a Quote &rarr;</a>
+      <a href="support.html#contact" class="btn btn-secondary">Arrange Evaluation Access</a>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+
+    <div class="callout callout-info" style="margin-bottom:40px;">
+      <strong>Stripe checkout coming at General Availability.</strong> Licence purchases will be processed via Stripe. Until full checkout is enabled, <a href="support.html#contact">contact us</a> to arrange licensing. Evaluation access is available on request.
+    </div>
+
+    <!-- ─── CMDB API DATA COLLECTION TOOL ─── -->
+    <div class="pricing-section" id="cmdb-api">
+      <div class="pricing-product-header">
+        <h2 style="margin:0;">CMDB API Data Collection Tool</h2>
+        <a href="cmdb-tool.html" class="badge badge-muted" style="text-decoration:none;white-space:nowrap;">Product Details &rarr;</a>
+        <a href="cmdb-api-releases.html" class="badge badge-green" style="text-decoration:none;white-space:nowrap;">Latest GA — v0.2.6</a>
+      </div>
+      <p style="font-size:.95rem;color:var(--text-muted);margin:0 0 4px;">Annual subscription &mdash; per deployment. Includes updates, security patches, and documentation for the licence term.</p>
+      <div class="pricing-grid">
+
+        <div class="pricing-card">
+          <p class="pricing-tier">Starter</p>
+          <h3>Starter</h3>
+          <p class="pricing-desc">Single deployment for small teams. Core CMDB collection, up to 5 connectors, and community support.</p>
+          <ul class="pricing-features">
+            <li>Single deployment instance</li>
+            <li>Up to 5 connectors enabled</li>
+            <li>Multi-tenant RBAC (up to 3 workspaces)</li>
+            <li>CSV &amp; PDF export</li>
+            <li>Managed agent support (up to 10 agents)</li>
+            <li class="feat-x">SIEM &amp; ITSM integration</li>
+            <li class="feat-x">SSO (SAML/OIDC)</li>
+            <li class="feat-x">Priority support SLA</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Pricing on request</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Request a Quote</a>
+            <p class="stripe-note">Stripe checkout coming soon</p>
+          </div>
+        </div>
+
+        <div class="pricing-card pricing-featured">
+          <span class="pricing-featured-badge">Most Popular</span>
+          <p class="pricing-tier">Professional</p>
+          <h3>Professional</h3>
+          <p class="pricing-desc">Growing infrastructure teams. Full connector suite, SIEM/ITSM, SSO, and standard support SLA.</p>
+          <ul class="pricing-features">
+            <li>Single deployment instance</li>
+            <li>Full 29+ connector suite</li>
+            <li>Unlimited workspaces &amp; RBAC</li>
+            <li>CSV, PDF &amp; scheduled reports</li>
+            <li>Managed agent support (up to 100 agents)</li>
+            <li>SIEM (Splunk/Elastic) &amp; ITSM integration</li>
+            <li>SSO (SAML/OIDC) &amp; TOTP MFA</li>
+            <li class="feat-x">Enterprise SLA &amp; dedicated CSM</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Pricing on request</p>
+            <a href="support.html#contact" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Request a Quote</a>
+            <p class="stripe-note">Stripe checkout coming soon</p>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <p class="pricing-tier">Enterprise</p>
+          <h3>Enterprise</h3>
+          <p class="pricing-desc">Large-scale or multi-site deployments. Unlimited connectors and agents, enterprise SLA, dedicated CSM, and custom integrations.</p>
+          <ul class="pricing-features">
+            <li>Multi-instance / multi-site deployment</li>
+            <li>Full 29+ connector suite + custom connectors</li>
+            <li>Unlimited workspaces, agents &amp; RBAC</li>
+            <li>All Professional features included</li>
+            <li>Unlimited managed agents</li>
+            <li>SIEM, ITSM &amp; webhook integrations</li>
+            <li>Enterprise SLA (4hr response)</li>
+            <li>Dedicated customer success manager</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Custom pricing — contact us</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Sales</a>
+            <p class="stripe-note">Volume &amp; custom agreements available</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─── AUDIT ADMIN TOOLKIT ─── -->
+    <div class="pricing-section" id="audit-toolkit">
+      <div class="pricing-product-header">
+        <h2 style="margin:0;">Audit Admin Toolkit</h2>
+        <a href="audit-toolkit.html" class="badge badge-muted" style="text-decoration:none;white-space:nowrap;">Product Details &rarr;</a>
+        <a href="audit-toolkit-releases.html" class="badge badge-muted" style="text-decoration:none;white-space:nowrap;">Releases</a>
+      </div>
+      <p style="font-size:.95rem;color:var(--text-muted);margin:0 0 4px;">Annual subscription &mdash; per deployment. Includes updates, security patches, and documentation for the licence term.</p>
+      <div class="pricing-grid">
+
+        <div class="pricing-card">
+          <p class="pricing-tier">Starter</p>
+          <h3>Starter</h3>
+          <p class="pricing-desc">Audit reporting and administration for small teams. Core audit toolkit capabilities with standard support.</p>
+          <ul class="pricing-features">
+            <li>Single deployment instance</li>
+            <li>Core audit reporting suite</li>
+            <li>Up to 3 admin users</li>
+            <li>Standard export formats</li>
+            <li class="feat-x">Custom report templates</li>
+            <li class="feat-x">API access</li>
+            <li class="feat-x">Priority support SLA</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Pricing on request</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Request a Quote</a>
+            <p class="stripe-note">Stripe checkout coming soon</p>
+          </div>
+        </div>
+
+        <div class="pricing-card pricing-featured">
+          <span class="pricing-featured-badge">Most Popular</span>
+          <p class="pricing-tier">Professional</p>
+          <h3>Professional</h3>
+          <p class="pricing-desc">Full audit administration, custom templates, API access, and standard SLA support.</p>
+          <ul class="pricing-features">
+            <li>Single deployment instance</li>
+            <li>Full audit toolkit suite</li>
+            <li>Unlimited admin users</li>
+            <li>Custom report templates</li>
+            <li>API access</li>
+            <li>SSO integration</li>
+            <li class="feat-x">Enterprise SLA &amp; dedicated CSM</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Pricing on request</p>
+            <a href="support.html#contact" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Request a Quote</a>
+            <p class="stripe-note">Stripe checkout coming soon</p>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <p class="pricing-tier">Enterprise</p>
+          <h3>Enterprise</h3>
+          <p class="pricing-desc">Enterprise-scale audit administration with multi-site support, enterprise SLA, and dedicated CSM.</p>
+          <ul class="pricing-features">
+            <li>Multi-instance / multi-site deployment</li>
+            <li>All Professional features included</li>
+            <li>Custom integrations</li>
+            <li>Enterprise SLA (4hr response)</li>
+            <li>Dedicated customer success manager</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Custom pricing — contact us</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Sales</a>
+            <p class="stripe-note">Volume &amp; custom agreements available</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─── CMDB ASSET PLATFORM ─── -->
+    <div class="pricing-section" id="cmdb-asset-platform">
+      <div class="pricing-product-header">
+        <h2 style="margin:0;">CMDB Asset Platform</h2>
+        <a href="cmdb-asset-platform.html" class="badge badge-muted" style="text-decoration:none;white-space:nowrap;">Product Details &rarr;</a>
+        <a href="cmdb-asset-platform-releases.html" class="badge badge-muted" style="text-decoration:none;white-space:nowrap;">Releases</a>
+      </div>
+      <p style="font-size:.95rem;color:var(--text-muted);margin:0 0 4px;">Annual subscription &mdash; per deployment. Includes updates, security patches, and documentation for the licence term.</p>
+      <div class="pricing-grid">
+
+        <div class="pricing-card">
+          <p class="pricing-tier">Starter</p>
+          <h3>Starter</h3>
+          <p class="pricing-desc">Asset discovery and inventory for small environments. Core asset visibility with standard reporting.</p>
+          <ul class="pricing-features">
+            <li>Single deployment instance</li>
+            <li>Asset discovery (up to 500 nodes)</li>
+            <li>Core inventory dashboard</li>
+            <li>Standard export formats</li>
+            <li class="feat-x">Vulnerability correlation</li>
+            <li class="feat-x">Hypervisor &amp; cloud connectors</li>
+            <li class="feat-x">Priority support SLA</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Pricing on request</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Request a Quote</a>
+            <p class="stripe-note">Stripe checkout coming soon</p>
+          </div>
+        </div>
+
+        <div class="pricing-card pricing-featured">
+          <span class="pricing-featured-badge">Most Popular</span>
+          <p class="pricing-tier">Professional</p>
+          <h3>Professional</h3>
+          <p class="pricing-desc">Full asset platform with vulnerability correlation, hypervisor connectors, and cloud asset discovery.</p>
+          <ul class="pricing-features">
+            <li>Single deployment instance</li>
+            <li>Asset discovery (up to 5,000 nodes)</li>
+            <li>Full inventory &amp; asset lifecycle</li>
+            <li>Vulnerability correlation &amp; CVSS scoring</li>
+            <li>Hypervisor &amp; cloud connectors</li>
+            <li>SIEM &amp; ITSM integration</li>
+            <li class="feat-x">Enterprise SLA &amp; dedicated CSM</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Pricing on request</p>
+            <a href="support.html#contact" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Request a Quote</a>
+            <p class="stripe-note">Stripe checkout coming soon</p>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <p class="pricing-tier">Enterprise</p>
+          <h3>Enterprise</h3>
+          <p class="pricing-desc">Unlimited asset discovery across complex multi-site hybrid environments with enterprise SLA and dedicated support.</p>
+          <ul class="pricing-features">
+            <li>Multi-instance / multi-site deployment</li>
+            <li>Unlimited node discovery</li>
+            <li>All Professional features included</li>
+            <li>Custom connector development</li>
+            <li>Enterprise SLA (4hr response)</li>
+            <li>Dedicated customer success manager</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Custom pricing — contact us</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Sales</a>
+            <p class="stripe-note">Volume &amp; custom agreements available</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─── LINUX AUDIT COVERAGE EXPANSION ─── -->
+    <div class="pricing-section" id="linux-expansion">
+      <div class="pricing-product-header">
+        <h2 style="margin:0;">Linux Audit Coverage Expansion</h2>
+        <a href="linux-expansion.html" class="badge badge-muted" style="text-decoration:none;white-space:nowrap;">Product Details &rarr;</a>
+        <a href="linux-audit-expansion-releases.html" class="badge badge-muted" style="text-decoration:none;white-space:nowrap;">Releases</a>
+      </div>
+      <p style="font-size:.95rem;color:var(--text-muted);margin:0 0 4px;">Annual subscription &mdash; add-on module. Requires a compatible base product licence. Includes updates and documentation for the licence term.</p>
+      <div class="pricing-grid">
+
+        <div class="pricing-card">
+          <p class="pricing-tier">Starter</p>
+          <h3>Starter</h3>
+          <p class="pricing-desc">Extended Linux coverage for small deployments. Core distro support (RHEL/Ubuntu) with standard audit profiles.</p>
+          <ul class="pricing-features">
+            <li>RHEL &amp; Ubuntu coverage</li>
+            <li>Core audit profiles</li>
+            <li>Up to 50 Linux nodes</li>
+            <li>Standard reporting</li>
+            <li class="feat-x">Debian &amp; SLES coverage</li>
+            <li class="feat-x">Custom audit profiles</li>
+            <li class="feat-x">Priority support SLA</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Pricing on request</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Request a Quote</a>
+            <p class="stripe-note">Stripe checkout coming soon</p>
+          </div>
+        </div>
+
+        <div class="pricing-card pricing-featured">
+          <span class="pricing-featured-badge">Most Popular</span>
+          <p class="pricing-tier">Professional</p>
+          <h3>Professional</h3>
+          <p class="pricing-desc">Full distro coverage (RHEL, Ubuntu, Debian, SLES) with custom profiles and compliance mapping.</p>
+          <ul class="pricing-features">
+            <li>All major distros: RHEL, Ubuntu, Debian, SLES</li>
+            <li>Full audit profile library</li>
+            <li>Up to 500 Linux nodes</li>
+            <li>Custom audit profiles</li>
+            <li>Compliance framework mapping</li>
+            <li>Integration with CMDB &amp; SIEM</li>
+            <li class="feat-x">Enterprise SLA &amp; dedicated CSM</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Pricing on request</p>
+            <a href="support.html#contact" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Request a Quote</a>
+            <p class="stripe-note">Stripe checkout coming soon</p>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <p class="pricing-tier">Enterprise</p>
+          <h3>Enterprise</h3>
+          <p class="pricing-desc">Unlimited Linux node coverage with custom distro support, enterprise SLA, and dedicated CSM.</p>
+          <ul class="pricing-features">
+            <li>All distros including custom/LTS variants</li>
+            <li>Unlimited Linux nodes</li>
+            <li>All Professional features included</li>
+            <li>Custom distro &amp; profile development</li>
+            <li>Enterprise SLA (4hr response)</li>
+            <li>Dedicated customer success manager</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Custom pricing — contact us</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Sales</a>
+            <p class="stripe-note">Volume &amp; custom agreements available</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Licence comparison note -->
+    <div style="margin-top:48px;padding:28px 32px;background:var(--surface);border:1px solid var(--border);border-radius:12px;">
+      <h3 style="margin:0 0 12px;">Licence Terms &amp; Notes</h3>
+      <ul style="font-size:.9rem;margin:0;padding-left:20px;display:grid;gap:8px;">
+        <li>All licences are <strong>annual subscriptions</strong> billed per deployment. Multi-year agreements available at a discount.</li>
+        <li>Linux Audit Coverage Expansion is an <strong>add-on module</strong> and requires a compatible base product licence (CMDB API Data Collection Tool or CMDB Asset Platform).</li>
+        <li>Evaluation licences (30-day, full-featured) are available on request. <a href="support.html#contact">Contact us</a> to arrange access.</li>
+        <li>All purchases are subject to the <strong>Business Source Licence (BSL)</strong> and the individual product EULA. See the <a href="support.html#security">legal notices</a> for full terms.</li>
+        <li>Volume discounts are available for Enterprise agreements covering multiple products or deployments.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <div class="cta-band-inner">
+      <div>
+        <h2 class="mb-8">Ready to get started?</h2>
+        <p>Contact us to request a quote, arrange evaluation access, or discuss custom enterprise agreements.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a href="support.html#contact" class="btn btn-primary btn-lg">Request a Quote</a>
+        <a href="index.html#products" class="btn btn-secondary btn-lg">View All Products</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span style="font-weight:700;font-size:1.05rem;">AuditToolkit Labs</span></div>
+        <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
+        <p style="font-size:.82rem;">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+      </div>
+      <div class="footer-col"><h4>Products</h4><ul>
+        <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
+        <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
+        <li><a href="cmdb-asset-platform.html">CMDB Asset Platform</a></li>
+        <li><a href="linux-expansion.html">Linux Audit Expansion</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul>
+        <li><a href="docs.html">Documentation Hub</a></li>
+        <li><a href="releases.html">Releases Hub</a></li>
+        <li><a href="licensing.html">Licensing &amp; Pricing</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="support.html#security">Security Policy</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
+        <li><a href="https://github.com/AuditToolkitLabs" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="support.html#contact">Send an Enquiry</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>Licence: Business Source Licence (BSL). See individual product EULA for full usage rights.</p>
+      <p>This site is for informational and preview purposes only. No production downloads available.</p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>
