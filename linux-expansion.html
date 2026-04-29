@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linux Audit Coverage Expansion — AuditToolkit Labs</title>
+  <meta name="description" content="Expanded Linux audit breadth for the Audit Admin Toolkit — deeper hardening verification, CIS benchmark coverage, policy compliance checking, and evidence-focused reporting across RHEL, Debian, Ubuntu, and SLES." />
+  <link rel="stylesheet" href="assets/css/site.css" />
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="releases.html">Releases</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+      <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="index.html#products">Products</a>
+  <a href="docs.html">Documentation</a>
+  <a href="releases.html">Releases</a>
+  <a href="support.html">Support</a>
+  <a href="support.html#contact" style="color:var(--accent);font-weight:600;">Contact Us</a>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span>
+      <a href="index.html#products">Products</a><span class="sep">/</span>
+      <span class="cur">Linux Audit Coverage Expansion</span>
+    </div>
+    <div class="flex flex-wrap gap-8 mb-16">
+      <span class="badge badge-amber">In Preview</span>
+      <span class="badge badge-muted">Extension for Audit Admin Toolkit</span>
+      <span class="badge badge-blue">RHEL &middot; Debian &middot; Ubuntu &middot; SLES</span>
+    </div>
+    <h1>Linux Audit Coverage Expansion</h1>
+    <p>Expanded Linux control coverage for posture validation, hardening verification, and evidence-focused compliance reporting. An in-preview extension module for the <a href="audit-toolkit.html">Audit Admin Toolkit</a> that deepens Linux audit breadth across mixed enterprise Linux estates.</p>
+    <div class="callout warn mt-24">
+      <strong>Preview release.</strong> The Linux Audit Coverage Expansion is in active development as an extension to the Audit Admin Toolkit. Coverage areas and interfaces may evolve before GA release.
+    </div>
+    <div class="flex gap-12 flex-wrap mt-24">
+      <a href="support.html#contact" class="btn btn-primary">Register Interest</a>
+      <a href="audit-toolkit.html" class="btn btn-secondary">View Audit Admin Toolkit</a>
+      <a href="#screenshots" class="btn btn-secondary">View Screenshots</a>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="outcomes">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">What This Delivers</p>
+      <h2>Deeper Linux audit coverage &mdash; higher signal findings</h2>
+      <p>The Linux Audit Coverage Expansion addresses a common gap in mixed-estate audit programmes: shallow Linux control verification that produces low-signal findings and weak evidence for compliance review. This module expands both the breadth and quality of Linux audit output.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div style="font-size:1.6rem;margin-bottom:12px;">&#128270;</div>
+        <h3>Control Depth</h3>
+        <p>Broader Linux hardening checks across OS configuration, service hardening, network posture, identity controls, and runtime state &mdash; aligned to CIS benchmark and internal policy frameworks.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.6rem;margin-bottom:12px;">&#128203;</div>
+        <h3>Higher Signal Findings</h3>
+        <p>Improved control mapping and output quality. Findings come with precise evidence, control references, and clear remediation context &mdash; designed for triage and remediation planning, not just alerting.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.6rem;margin-bottom:12px;">&#9989;</div>
+        <h3>Compliance Readiness</h3>
+        <p>Evidence outputs designed for governance and audit review workflows. Pass/fail status per control with exportable evidence packages for compliance reporting and external review.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="coverage" style="border-top:1px solid var(--border);">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Coverage Focus Areas</p>
+      <h2>What the expansion checks</h2>
+      <p>The module extends the Audit Admin Toolkit&rsquo;s existing Linux audit capability across six key coverage domains.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:10px;">&#128423;</div>
+        <h3>Baseline &amp; Hardening Verification</h3>
+        <p>Comprehensive checks against Linux baseline hardening standards. Kernel parameters, filesystem mounts, bootloader configuration, and OS-level security controls across RHEL, Debian, Ubuntu, and SLES.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:10px;">&#127760;</div>
+        <h3>Network &amp; Service Controls</h3>
+        <p>Service inventory and state validation. Network-exposed interfaces, firewall rule verification, open port auditing, and daemon security configuration checks.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:10px;">&#128100;</div>
+        <h3>Identity &amp; Access Controls</h3>
+        <p>Local account auditing, privilege escalation paths, PAM configuration, SSH key and access control validation, and sudoers policy review.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:10px;">&#128196;</div>
+        <h3>Policy-Aligned Reporting</h3>
+        <p>Configurable policy baselines with per-control pass/fail status, evidence capture, and structured exports for operational and compliance teams.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:10px;">&#128202;</div>
+        <h3>Mixed Estate Support</h3>
+        <p>Unified view across multiple Linux distributions in a single audit run. Normalised findings across distribution variants for consistent tracking across a mixed estate.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:10px;">&#128260;</div>
+        <h3>Integrated Workflow</h3>
+        <p>Findings feed directly into the Audit Admin Toolkit workflow &mdash; identification, evidence, owner assignment, remediation tracking, and closure &mdash; without any separate tooling.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="distros" style="border-top:1px solid var(--border);">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="eyebrow">Distribution Coverage</p>
+        <h2>Tested across major enterprise Linux distributions</h2>
+        <p>The expansion module targets the Linux distributions most commonly found in enterprise, financial, and public sector environments.</p>
+        <ul class="feature-list mt-24">
+          <li><span class="icon">&#10003;</span><span class="text"><strong>RHEL / CentOS / Rocky / AlmaLinux</strong> &mdash; Red Hat ecosystem including systemd hardening and SELinux controls.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text"><strong>Ubuntu LTS</strong> &mdash; 20.04 and 22.04 LTS with AppArmor profile and snap security controls.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text"><strong>Debian Stable</strong> &mdash; Current stable branch with package audit and dpkg-based verification.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text"><strong>SUSE Linux Enterprise Server (SLES)</strong> &mdash; SLES 15 baseline and hardening coverage.</span></li>
+        </ul>
+        <div class="flex gap-12 flex-wrap mt-32">
+          <a href="support.html#contact" class="btn btn-primary">Register Interest</a>
+          <a href="audit-toolkit.html" class="btn btn-secondary">View Audit Admin Toolkit</a>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <h3 style="margin-bottom:16px;">Preview availability</h3>
+          <p>The Linux Audit Coverage Expansion is in preview as an extension to the Audit Admin Toolkit. Both are available for evaluation. Contact us to request preview access or register interest for GA notification.</p>
+          <div class="flex flex-wrap gap-8 mt-24">
+            <span class="badge badge-amber">Audit Toolkit &mdash; In Preview</span>
+            <span class="badge badge-amber">Linux Expansion &mdash; In Preview</span>
+          </div>
+          <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
+            <p style="font-size:.9rem;margin-bottom:12px;">For preview access, evaluation support, or to register interest for GA notification:</p>
+            <a href="support.html#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Contact the Team</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="screenshots" style="border-top:1px solid var(--border);">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Screenshots</p>
+      <h2>Audit workflow in action</h2>
+      <p>Screenshots from the Audit Admin Toolkit showing the findings workflow, reporting, and administration panels that the Linux Expansion feeds into.</p>
+    </div>
+    <div class="gallery mb-24">
+      <figure>
+        <img src="images/04-console-audits.png" alt="Audit console and findings" loading="lazy" />
+        <figcaption>Audit console &mdash; findings workflow and control evidence</figcaption>
+      </figure>
+      <figure>
+        <img src="images/06-reports.png" alt="Compliance reporting" loading="lazy" />
+        <figcaption>Policy-aligned reporting and evidence export</figcaption>
+      </figure>
+      <figure>
+        <img src="images/08-settings.png" alt="Administration and settings" loading="lazy" />
+        <figcaption>Administration, settings, and audit template configuration</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <div class="cta-band-inner">
+      <div>
+        <h2 class="mb-8">Interested in deeper Linux audit coverage?</h2>
+        <p>Register interest or request evaluation access to the Audit Admin Toolkit and Linux Expansion preview.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a href="support.html#contact" class="btn btn-primary btn-lg">Register Interest</a>
+        <a href="audit-toolkit.html" class="btn btn-secondary btn-lg">View Audit Toolkit</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span style="font-weight:700;font-size:1.05rem;">AuditToolkit Labs</span></div>
+        <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
+        <p style="font-size:.82rem;">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+      </div>
+      <div class="footer-col"><h4>Products</h4><ul>
+        <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
+        <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
+        <li><a href="cmdb-asset-platform.html">CMDB Asset Platform</a></li>
+        <li><a href="linux-expansion.html">Linux Audit Expansion</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="releases.html">Release Notes</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="support.html#security">Security Policy</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
+        <li><a href="https://github.com/AuditToolkitLabs" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="support.html#contact">Send an Enquiry</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>Licence: Business Source Licence (BSL). See individual product EULA for full usage rights.</p>
+      <p>This site is for informational and preview purposes only. No production downloads available.</p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>
