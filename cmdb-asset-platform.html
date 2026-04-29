@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CMDB Asset Platform — AuditToolkit Labs</title>
+  <meta name="description" content="Next-generation asset discovery, inventory visibility, and vulnerability context aligned to CMDB workflows. Multi-cloud and hypervisor coverage from a single platform." />
+  <link rel="stylesheet" href="assets/css/site.css" />
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="releases.html">Releases</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+      <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="index.html#products">Products</a>
+  <a href="docs.html">Documentation</a>
+  <a href="releases.html">Releases</a>
+  <a href="support.html">Support</a>
+  <a href="support.html#contact" style="color:var(--accent);font-weight:600;">Contact Us</a>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span>
+      <a href="index.html#products">Products</a><span class="sep">/</span>
+      <span class="cur">CMDB Asset Platform</span>
+    </div>
+    <div class="flex flex-wrap gap-8 mb-16">
+      <span class="badge badge-pink">In Development</span>
+      <span class="badge badge-muted">Not yet GA</span>
+      <span class="badge badge-blue">Multi-cloud &middot; Hypervisor &middot; CMDB</span>
+    </div>
+    <h1>CMDB Asset Platform</h1>
+    <p>Next-generation asset discovery, inventory visibility, and vulnerability context aligned to CMDB workflows. A unified inventory foundation for cloud and hypervisor environments — with enhanced auto-discovery, risk-linked context, and a normalised operational source of truth for security and operations teams.</p>
+    <div class="callout warn mt-24">
+      <strong>In development.</strong> The CMDB Asset Platform is in active development. The capability areas and outcomes described here reflect the current development direction. Features may change before general availability.
+    </div>
+    <div class="flex gap-12 flex-wrap mt-24">
+      <a href="support.html#contact" class="btn btn-primary">Register Interest</a>
+      <a href="cmdb-tool.html" class="btn btn-secondary">View CMDB Data Collection Tool (GA)</a>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="outcomes">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Platform Outcomes</p>
+      <h2>One inventory baseline for audit and control execution</h2>
+      <p>The CMDB Asset Platform is designed to resolve the fragmentation problem across cloud, hypervisor, and on-premises inventory — producing a consistent, enriched operational baseline teams can act on.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div style="font-size:1.6rem;margin-bottom:12px;">&#127959;</div>
+        <h3>Consolidated Inventory</h3>
+        <p>Bring disparate cloud and virtualisation inventories into one normalised model. Eliminate duplication and gaps across AWS, Azure, GCP, VMware, Proxmox, Nutanix, and KVM.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.6rem;margin-bottom:12px;">&#128737;</div>
+        <h3>Risk-Linked Context</h3>
+        <p>Connect asset inventory directly to vulnerability and CVE data. Surface risk prioritisation and remediation context alongside each asset record — not in a separate tool.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.6rem;margin-bottom:12px;">&#9989;</div>
+        <h3>Operational Confidence</h3>
+        <p>Provide audit and operations teams with a single inventory baseline for control execution, audit evidence, and governance reporting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="capabilities" style="border-top:1px solid var(--border);">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Capability Areas</p>
+      <h2>Discovery, normalisation, and enrichment at every layer</h2>
+      <p>Built to cover the full stack — from cloud management APIs through to on-premises hypervisors — with a unified API layer for downstream integration.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:10px;">&#9729;</div>
+        <h3>Multi-Cloud Discovery</h3>
+        <p>Automated discovery workflows for AWS, Azure, and GCP. Credential-based scope configuration with per-account and per-subscription inventory pull, normalised into a common asset model.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:10px;">&#128421;</div>
+        <h3>Hypervisor Coverage</h3>
+        <p>Inventory pathways for VMware vCenter, KVM/libvirt, Proxmox, and Nutanix. Guest-level visibility including network, storage, and compute attributes per virtual machine.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:10px;">&#128225;</div>
+        <h3>Inventory API Layer</h3>
+        <p>Unified REST APIs for inventory readout, integration with external CMDB platforms (ServiceNow, Jira Assets), and downstream automation workflows.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:10px;">&#128269;</div>
+        <h3>Vulnerability Context</h3>
+        <p>CVE correlation and CVSS v3 scoring per asset record. Risk prioritisation feeds integrated directly into the inventory view — aligned with the CMDB Data Collection Tool's correlation engine.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:10px;">&#128196;</div>
+        <h3>CMDB-Aligned Normalisation</h3>
+        <p>Data normalisation and enrichment designed around standard CMDB field models. Consistent classification, naming, and relationship mapping across all discovery sources.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:10px;">&#128200;</div>
+        <h3>Audit &amp; Governance Reporting</h3>
+        <p>Exportable inventory snapshots, coverage reports, and enrichment audit trails. Designed for compliance evidence and governance review workflows.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="screenshots" style="border-top:1px solid var(--border);">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Screenshots</p>
+      <h2>Platform preview</h2>
+      <p>Screenshots from the current development build of the discovery and inventory views. Interfaces will evolve prior to GA release.</p>
+    </div>
+    <div class="gallery mb-24">
+      <figure>
+        <img src="images/13-asset-discovery-dashboard.png" alt="Asset discovery dashboard" loading="lazy" />
+        <figcaption>Unified asset discovery and inventory dashboard</figcaption>
+      </figure>
+      <figure>
+        <img src="images/15-asset-discovery-vulnerabilities.png" alt="Vulnerability-linked asset view" loading="lazy" />
+        <figcaption>Vulnerability-linked asset perspective and risk context</figcaption>
+      </figure>
+      <figure>
+        <img src="images/agent-html/hypervisor-01-management-page.png" alt="Hypervisor management" loading="lazy" />
+        <figcaption>Hypervisor management and integration workflow</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="relationship" style="border-top:1px solid var(--border);">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="eyebrow">Product Relationship</p>
+        <h2>Built on the CMDB Data Collection Tool foundation</h2>
+        <p>The CMDB Asset Platform is a next-generation evolution of the inventory and discovery capabilities in the <a href="cmdb-tool.html">CMDB API Data Collection Tool</a>. While the Data Collection Tool is available now at GA, the Asset Platform extends those foundations with enhanced auto-discovery, a richer asset model, and deeper CMDB alignment.</p>
+        <ul class="feature-list mt-24">
+          <li><span class="icon">&#10003;</span><span class="text"><strong>CMDB Data Collection Tool</strong> &mdash; available now at GA (v0.2.6). 29+ connectors, CVE correlation, OWASP Top 10 PASS.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text"><strong>CMDB Asset Platform</strong> &mdash; in development. Enhanced auto-discovery, normalised CMDB model, multi-cloud inventory APIs.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text"><strong>Shared vulnerability engine</strong> &mdash; both tools share the same CVE correlation and CVSS scoring approach.</span></li>
+        </ul>
+        <div class="flex gap-12 flex-wrap mt-32">
+          <a href="cmdb-tool.html" class="btn btn-primary">View GA Tool</a>
+          <a href="support.html#contact" class="btn btn-secondary">Register Interest in Asset Platform</a>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <h3 style="margin-bottom:16px;">Development availability</h3>
+          <p>The CMDB Asset Platform is in active development. If you are an infrastructure or security operations team evaluating asset inventory tooling, we welcome early-stage conversations.</p>
+          <div class="flex flex-wrap gap-8 mt-24">
+            <span class="badge badge-green">CMDB Tool — GA v0.2.6</span>
+            <span class="badge badge-pink">Asset Platform — In Development</span>
+          </div>
+          <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
+            <p style="font-size:.9rem;margin-bottom:12px;">To register interest, ask a technical question, or discuss evaluation access:</p>
+            <a href="support.html#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Contact the Team</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <div class="cta-band-inner">
+      <div>
+        <h2 class="mb-8">Interested in the CMDB Asset Platform?</h2>
+        <p>Register interest or start with the GA CMDB Data Collection Tool available now.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a href="support.html#contact" class="btn btn-primary btn-lg">Register Interest</a>
+        <a href="cmdb-tool.html" class="btn btn-secondary btn-lg">View CMDB Tool (GA)</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span style="font-weight:700;font-size:1.05rem;">AuditToolkit Labs</span></div>
+        <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
+        <p style="font-size:.82rem;">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+      </div>
+      <div class="footer-col"><h4>Products</h4><ul>
+        <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
+        <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
+        <li><a href="cmdb-asset-platform.html">CMDB Asset Platform</a></li>
+        <li><a href="linux-expansion.html">Linux Audit Expansion</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="releases.html">Release Notes</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="support.html#security">Security Policy</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
+        <li><a href="https://github.com/AuditToolkitLabs" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="support.html#contact">Send an Enquiry</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>Licence: Business Source Licence (BSL). See individual product EULA for full usage rights.</p>
+      <p>This site is for informational and preview purposes only. No production downloads available.</p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>
