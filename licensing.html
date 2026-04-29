@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Licensing &amp; Pricing — AuditToolkit Labs</title>
-  <meta name="description" content="Licensing tiers and pricing for AuditToolkit Labs products. Annual subscriptions across Starter, Professional, and Enterprise tiers." />
+  <meta name="description" content="Licensing tiers and pricing for AuditToolkit Labs products. Per-deployment commercial licences for CMDB API, Audit Admin Toolkit, CMDB Asset Platform, and Linux Audit Coverage Expansion." />
   <link rel="stylesheet" href="assets/css/site.css" />
   <style>
     .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:32px}
@@ -25,6 +25,13 @@
     .pricing-section:first-of-type{border-top:none}
     .pricing-product-header{display:flex;align-items:center;gap:16px;margin-bottom:8px;flex-wrap:wrap}
     .stripe-note{font-size:.8rem;color:var(--text-muted);margin-top:8px;text-align:center}
+    .dim-label{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--surface-alt,#f3f4f6);color:var(--text-muted);border:1px solid var(--border);border-radius:6px;padding:3px 10px;margin-bottom:16px}
+    .dim-intro{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin-bottom:32px}
+    .dim-intro p{margin:0;font-size:.92rem;color:var(--text-muted)}
+    .combo-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:.85rem}
+    .combo-table th,.combo-table td{border:1px solid var(--border);padding:8px 12px;text-align:left}
+    .combo-table th{background:var(--surface);font-weight:700;color:var(--text-muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+    .combo-table tr:hover td{background:var(--surface)}
   </style>
 </head>
 <body>
@@ -62,7 +69,7 @@
     </div>
     <p class="eyebrow">Licensing</p>
     <h1>Licensing &amp; Pricing</h1>
-    <p>Annual subscription tiers for all AuditToolkit Labs products. All tiers are licensed per deployment. Contact us to request a quote, discuss volume pricing, or arrange evaluation access.</p>
+    <p>Commercial licences for all AuditToolkit Labs products. Licences are per deployment. Preliminary pricing is shown where indicated; contact us for a firm quote, volume pricing, or evaluation access.</p>
     <div class="flex gap-12 flex-wrap mt-24">
       <a href="support.html#contact" class="btn btn-primary">Request a Quote &rarr;</a>
       <a href="support.html#contact" class="btn btn-secondary">Arrange Evaluation Access</a>
@@ -77,361 +84,588 @@
       <strong>Stripe checkout coming at General Availability.</strong> Licence purchases will be processed via Stripe. Until full checkout is enabled, <a href="support.html#contact">contact us</a> to arrange licensing. Evaluation access is available on request.
     </div>
 
-    <!-- ─── CMDB API DATA COLLECTION TOOL ─── -->
+    <!-- Jump links -->
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;">
+      <a href="#cmdb-api" class="badge badge-muted" style="text-decoration:none;">CMDB API Tool</a>
+      <a href="#audit-toolkit" class="badge badge-muted" style="text-decoration:none;">Audit Admin Toolkit</a>
+      <a href="#cmdb-asset" class="badge badge-muted" style="text-decoration:none;">CMDB Asset Platform</a>
+      <a href="#linux-expansion" class="badge badge-muted" style="text-decoration:none;">Linux Audit Expansion</a>
+      <a href="#licence-terms" class="badge badge-muted" style="text-decoration:none;">Licence Terms</a>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         CMDB API DATA COLLECTION TOOL — two-dimensional model
+         ═══════════════════════════════════════════════════════ -->
     <div class="pricing-section" id="cmdb-api">
       <div class="pricing-product-header">
         <h2 style="margin:0;">CMDB API Data Collection Tool</h2>
         <a href="cmdb-tool.html" class="badge badge-muted" style="text-decoration:none;white-space:nowrap;">Product Details &rarr;</a>
         <a href="cmdb-api-releases.html" class="badge badge-green" style="text-decoration:none;white-space:nowrap;">Latest GA — v0.2.6</a>
       </div>
-      <p style="font-size:.95rem;color:var(--text-muted);margin:0 0 4px;">Annual subscription &mdash; per deployment. Includes updates, security patches, and documentation for the licence term.</p>
+
+      <div class="dim-intro" style="margin-top:20px;">
+        <p><strong>Two-dimensional licensing model.</strong> Every commercial licence combines two independent selections: a <strong>Deployment Tier</strong> (Dimension A), which controls how many Workspaces your Installation may host, and a <strong>Plan Tier</strong> (Dimension B), which sets the per-Workspace operational limits (host cap, API rate, and scan scheduling). You must select one from each dimension.</p>
+      </div>
+
+      <!-- Dimension A: Deployment Tier -->
+      <span class="dim-label">Dimension A &mdash; Deployment Tier</span>
+      <p style="font-size:.9rem;color:var(--text-muted);margin:0 0 4px;">Configured via the <code>LICENSE_TIER</code> environment variable at installation. Controls the maximum number of Workspaces per Installation and permitted use cases.</p>
       <div class="pricing-grid">
 
         <div class="pricing-card">
-          <p class="pricing-tier">Starter</p>
-          <h3>Starter</h3>
-          <p class="pricing-desc">Single deployment for small teams. Core CMDB collection, up to 5 connectors, and community support.</p>
+          <p class="pricing-tier">Standard</p>
+          <h3>Standard</h3>
+          <p class="pricing-desc">Single Workspace per Installation. For a single organisation managing its own internal IT assets on infrastructure it controls.</p>
           <ul class="pricing-features">
-            <li>Single deployment instance</li>
-            <li>Up to 5 connectors enabled</li>
-            <li>Multi-tenant RBAC (up to 3 workspaces)</li>
-            <li>CSV &amp; PDF export</li>
-            <li>Managed agent support (up to 10 agents)</li>
-            <li class="feat-x">SIEM &amp; ITSM integration</li>
-            <li class="feat-x">SSO (SAML/OIDC)</li>
-            <li class="feat-x">Priority support SLA</li>
+            <li>1 Workspace per Installation</li>
+            <li>Single legal entity — own IT use only</li>
+            <li>One Installation per licence (additional environments require additional licences)</li>
+            <li class="feat-x">Workspace partitioning by dept/BU/environment</li>
+            <li class="feat-x">Managed Customer Workspaces</li>
           </ul>
           <div class="pricing-cta-area">
-            <p class="pricing-quote">Pricing on request</p>
-            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Request a Quote</a>
-            <p class="stripe-note">Stripe checkout coming soon</p>
+            <p class="pricing-quote">Available on perpetual or subscription basis.</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Request Quote</a>
+            <p class="stripe-note">Stripe checkout coming at GA</p>
           </div>
         </div>
 
         <div class="pricing-card pricing-featured">
           <span class="pricing-featured-badge">Most Popular</span>
-          <p class="pricing-tier">Professional</p>
-          <h3>Professional</h3>
-          <p class="pricing-desc">Growing infrastructure teams. Full connector suite, SIEM/ITSM, SSO, and standard support SLA.</p>
+          <p class="pricing-tier">Workgroup</p>
+          <h3>Workgroup</h3>
+          <p class="pricing-desc">Up to 10 Workspaces per Installation. For a single organisation that needs data partitioned across departments, business units, or environments.</p>
           <ul class="pricing-features">
-            <li>Single deployment instance</li>
-            <li>Full 29+ connector suite</li>
-            <li>Unlimited workspaces &amp; RBAC</li>
-            <li>CSV, PDF &amp; scheduled reports</li>
-            <li>Managed agent support (up to 100 agents)</li>
-            <li>SIEM (Splunk/Elastic) &amp; ITSM integration</li>
-            <li>SSO (SAML/OIDC) &amp; TOTP MFA</li>
-            <li class="feat-x">Enterprise SLA &amp; dedicated CSM</li>
+            <li>Up to 10 Workspaces per Installation</li>
+            <li>Single legal entity — own IT use only</li>
+            <li>Partition by dept, BU, or environment</li>
+            <li class="feat-x">Workspaces must not correspond to Managed Customers</li>
           </ul>
           <div class="pricing-cta-area">
-            <p class="pricing-quote">Pricing on request</p>
-            <a href="support.html#contact" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Request a Quote</a>
-            <p class="stripe-note">Stripe checkout coming soon</p>
+            <p class="pricing-quote">Available on perpetual or subscription basis.</p>
+            <a href="support.html#contact" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Request Quote</a>
+            <p class="stripe-note">Stripe checkout coming at GA</p>
           </div>
         </div>
 
         <div class="pricing-card">
-          <p class="pricing-tier">Enterprise</p>
-          <h3>Enterprise</h3>
-          <p class="pricing-desc">Large-scale or multi-site deployments. Unlimited connectors and agents, enterprise SLA, dedicated CSM, and custom integrations.</p>
+          <p class="pricing-tier">MSP</p>
+          <h3>MSP</h3>
+          <p class="pricing-desc">Unlimited Workspaces per Installation. For Managed Service Providers operating the platform for multiple end customers. Per-endpoint royalty applies.</p>
           <ul class="pricing-features">
-            <li>Multi-instance / multi-site deployment</li>
-            <li>Full 29+ connector suite + custom connectors</li>
-            <li>Unlimited workspaces, agents &amp; RBAC</li>
-            <li>All Professional features included</li>
-            <li>Unlimited managed agents</li>
-            <li>SIEM, ITSM &amp; webhook integrations</li>
-            <li>Enterprise SLA (4hr response)</li>
-            <li>Dedicated customer success manager</li>
+            <li>Unlimited Workspaces per Installation</li>
+            <li>Each Workspace corresponds to one Managed Customer</li>
+            <li>Per-endpoint royalty — quarterly usage report + invoice</li>
+            <li>Accurate records of Managed Customers and endpoint counts required</li>
+            <li class="feat-x">White-labelling / re-branding (requires OEM)</li>
           </ul>
           <div class="pricing-cta-area">
-            <p class="pricing-quote">Custom pricing — contact us</p>
+            <p class="pricing-quote">Subscription + per-endpoint quarterly royalty. Usage reports due within 30 days of each quarter end.</p>
             <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Sales</a>
-            <p class="stripe-note">Volume &amp; custom agreements available</p>
+            <p class="stripe-note">Stripe checkout coming at GA</p>
           </div>
         </div>
 
-      </div>
-    </div>
+        <div class="pricing-card">
+          <p class="pricing-tier">OEM</p>
+          <h3>OEM / Embedded</h3>
+          <p class="pricing-desc">Unlimited Workspaces per Installation. Permits redistribution, embedding in your own product, white-labelling, and all other commercial uses not covered by Standard, Workgroup, or MSP.</p>
+          <ul class="pricing-features">
+            <li>Unlimited Workspaces per Installation</li>
+            <li>Redistribution and embedding permitted</li>
+            <li>White-labelling and re-branding permitted</li>
+            <li>All commercial use cases</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Requires a separately negotiated written agreement signed by both parties. Setting <code>LICENSE_TIER=oem</code> without a signed agreement is a material breach.</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Sales</a>
+            <p class="stripe-note">Custom agreement required — contact sales</p>
+          </div>
+        </div>
 
-    <!-- ─── AUDIT ADMIN TOOLKIT ─── -->
+      </div><!-- /pricing-grid Dim A -->
+
+      <!-- Dimension B: Plan Tier -->
+      <div style="margin-top:48px;">
+        <span class="dim-label">Dimension B &mdash; Plan Tier (per Workspace)</span>
+        <p style="font-size:.9rem;color:var(--text-muted);margin:0 0 4px;">Stored in the <code>tenant.tier</code> database column. Controls the operational limits enforced per Workspace: maximum managed hosts, API request rate, and scan scheduling mode.</p>
+        <div class="pricing-grid">
+
+          <div class="pricing-card">
+            <p class="pricing-tier">Starter</p>
+            <h3>Starter</h3>
+            <p class="pricing-desc">For evaluation, lab, and small proof-of-concept deployments.</p>
+            <ul class="pricing-features">
+              <li>Up to <strong>25 hosts</strong> per Workspace</li>
+              <li>API rate limit: <strong>60 requests / hour</strong></li>
+              <li>Manual scans only</li>
+              <li class="feat-x">Scheduled / automatic scans</li>
+              <li class="feat-x">Celery async scan workers</li>
+            </ul>
+            <div class="pricing-cta-area">
+              <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Request Quote</a>
+              <p class="stripe-note">Stripe checkout coming at GA</p>
+            </div>
+          </div>
+
+          <div class="pricing-card">
+            <p class="pricing-tier">Business</p>
+            <h3>Business</h3>
+            <p class="pricing-desc">For small to medium teams running regular automated discovery.</p>
+            <ul class="pricing-features">
+              <li>Up to <strong>100 hosts</strong> per Workspace</li>
+              <li>API rate limit: <strong>300 requests / hour</strong></li>
+              <li>Daily automatic scans</li>
+              <li class="feat-x">Configurable scan schedules</li>
+              <li class="feat-x">Celery async scan workers</li>
+            </ul>
+            <div class="pricing-cta-area">
+              <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Request Quote</a>
+              <p class="stripe-note">Stripe checkout coming at GA</p>
+            </div>
+          </div>
+
+          <div class="pricing-card pricing-featured">
+            <span class="pricing-featured-badge">Recommended</span>
+            <p class="pricing-tier">Professional</p>
+            <h3>Professional</h3>
+            <p class="pricing-desc">For large deployments and MSP per-customer Workspaces requiring configurable scheduling.</p>
+            <ul class="pricing-features">
+              <li>Up to <strong>500 hosts</strong> per Workspace</li>
+              <li>API rate limit: <strong>1,000 requests / hour</strong></li>
+              <li>Configurable scan schedules</li>
+              <li class="feat-x">Celery async scan workers</li>
+            </ul>
+            <div class="pricing-cta-area">
+              <a href="support.html#contact" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Request Quote</a>
+              <p class="stripe-note">Stripe checkout coming at GA</p>
+            </div>
+          </div>
+
+          <div class="pricing-card">
+            <p class="pricing-tier">Enterprise</p>
+            <h3>Enterprise</h3>
+            <p class="pricing-desc">For global scale deployments requiring unlimited hosts and full async processing.</p>
+            <ul class="pricing-features">
+              <li><strong>Unlimited hosts</strong> per Workspace</li>
+              <li>API rate limit: <strong>10,000 requests / hour</strong></li>
+              <li>Configurable scan schedules</li>
+              <li>Celery async scan workers</li>
+            </ul>
+            <div class="pricing-cta-area">
+              <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Sales</a>
+              <p class="stripe-note">Stripe checkout coming at GA</p>
+            </div>
+          </div>
+
+        </div><!-- /pricing-grid Dim B -->
+      </div>
+
+      <!-- Combination examples -->
+      <div style="margin-top:40px;">
+        <h3 style="font-size:1rem;margin-bottom:12px;">Combination examples</h3>
+        <table class="combo-table">
+          <thead>
+            <tr>
+              <th>Deployment Tier (Dim A)</th>
+              <th>Plan Tier (Dim B)</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Standard</td><td>Starter</td><td>1 Workspace · 25 hosts · 60 rph · manual scans</td></tr>
+            <tr><td>Standard</td><td>Business</td><td>1 Workspace · 100 hosts · 300 rph · daily auto scans</td></tr>
+            <tr><td>Workgroup</td><td>Professional</td><td>Up to 10 Workspaces · 500 hosts each · 1,000 rph · configurable schedules</td></tr>
+            <tr><td>MSP</td><td>Enterprise</td><td>Unlimited Workspaces · unlimited hosts each · 10,000 rph · async Celery workers · quarterly royalty</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div><!-- /pricing-section #cmdb-api -->
+
+
+    <!-- ═══════════════════════════════════════════════════
+         AUDIT ADMIN TOOLKIT — BSL 1.1, server-count tiers
+         ═══════════════════════════════════════════════════ -->
     <div class="pricing-section" id="audit-toolkit">
       <div class="pricing-product-header">
         <h2 style="margin:0;">Audit Admin Toolkit</h2>
         <a href="audit-toolkit.html" class="badge badge-muted" style="text-decoration:none;white-space:nowrap;">Product Details &rarr;</a>
-        <a href="audit-toolkit-releases.html" class="badge badge-muted" style="text-decoration:none;white-space:nowrap;">Releases</a>
+        <a href="audit-toolkit-releases.html" class="badge badge-blue" style="text-decoration:none;white-space:nowrap;">Release Notes</a>
       </div>
-      <p style="font-size:.95rem;color:var(--text-muted);margin:0 0 4px;">Annual subscription &mdash; per deployment. Includes updates, security patches, and documentation for the licence term.</p>
+      <p style="font-size:.95rem;color:var(--text-muted);margin:8px 0 4px;">Licensed under the <strong>Business Source License 1.1 (BSL)</strong>. Free for community use up to 25 servers. A commercial licence is required for production use above 25 servers, MSP/MSSP operation, redistribution, or white-labelling. BSL converts to MIT Licence on 14 February 2030.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);margin:0 0 4px;font-style:italic;">Pricing shown is preliminary and subject to change. Early-adopter discounts will be offered at launch.</p>
       <div class="pricing-grid">
+
+        <div class="pricing-card">
+          <p class="pricing-tier">Community</p>
+          <h3>Community</h3>
+          <p class="pricing-desc">Free for personal use, learning, non-commercial evaluation, and open-source contribution.</p>
+          <ul class="pricing-features">
+            <li>Up to <strong>25 servers / endpoints</strong></li>
+            <li>Personal and non-commercial use</li>
+            <li>GitHub Issues support</li>
+            <li class="feat-x">Commercial or MSP use</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Free — no payment required.</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Get Started</a>
+          </div>
+        </div>
 
         <div class="pricing-card">
           <p class="pricing-tier">Starter</p>
           <h3>Starter</h3>
-          <p class="pricing-desc">Audit reporting and administration for small teams. Core audit toolkit capabilities with standard support.</p>
+          <p class="pricing-desc">Small business deployments just above the Community threshold. Best-effort email support.</p>
           <ul class="pricing-features">
-            <li>Single deployment instance</li>
-            <li>Core audit reporting suite</li>
-            <li>Up to 3 admin users</li>
-            <li>Standard export formats</li>
-            <li class="feat-x">Custom report templates</li>
-            <li class="feat-x">API access</li>
-            <li class="feat-x">Priority support SLA</li>
+            <li><strong>26 – 50 servers / endpoints</strong></li>
+            <li>Commercial production use</li>
+            <li>Best-effort email support</li>
           </ul>
           <div class="pricing-cta-area">
-            <p class="pricing-quote">Pricing on request</p>
-            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Request a Quote</a>
-            <p class="stripe-note">Stripe checkout coming soon</p>
+            <p class="pricing-quote">~£299 / year (preliminary)</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Request Quote</a>
+            <p class="stripe-note">Stripe checkout coming at GA</p>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <p class="pricing-tier">Professional</p>
+          <h3>Professional</h3>
+          <p class="pricing-desc">Small to medium businesses needing a larger server estate with 48-hour support response.</p>
+          <ul class="pricing-features">
+            <li><strong>51 – 150 servers / endpoints</strong></li>
+            <li>Commercial production use</li>
+            <li>48-hour email support response</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">~£499 / year (preliminary)</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Request Quote</a>
+            <p class="stripe-note">Stripe checkout coming at GA</p>
           </div>
         </div>
 
         <div class="pricing-card pricing-featured">
           <span class="pricing-featured-badge">Most Popular</span>
-          <p class="pricing-tier">Professional</p>
-          <h3>Professional</h3>
-          <p class="pricing-desc">Full audit administration, custom templates, API access, and standard SLA support.</p>
+          <p class="pricing-tier">Business</p>
+          <h3>Business</h3>
+          <p class="pricing-desc">Mid-market enterprise deployments with priority support.</p>
           <ul class="pricing-features">
-            <li>Single deployment instance</li>
-            <li>Full audit toolkit suite</li>
-            <li>Unlimited admin users</li>
-            <li>Custom report templates</li>
-            <li>API access</li>
-            <li>SSO integration</li>
-            <li class="feat-x">Enterprise SLA &amp; dedicated CSM</li>
+            <li><strong>151 – 500 servers / endpoints</strong></li>
+            <li>Commercial production use</li>
+            <li>Priority email support</li>
           </ul>
           <div class="pricing-cta-area">
-            <p class="pricing-quote">Pricing on request</p>
-            <a href="support.html#contact" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Request a Quote</a>
-            <p class="stripe-note">Stripe checkout coming soon</p>
+            <p class="pricing-quote">~£1,499 / year (preliminary)</p>
+            <a href="support.html#contact" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Request Quote</a>
+            <p class="stripe-note">Stripe checkout coming at GA</p>
           </div>
         </div>
 
         <div class="pricing-card">
           <p class="pricing-tier">Enterprise</p>
           <h3>Enterprise</h3>
-          <p class="pricing-desc">Enterprise-scale audit administration with multi-site support, enterprise SLA, and dedicated CSM.</p>
+          <p class="pricing-desc">Large enterprise and MSP deployments with unlimited server scope.</p>
           <ul class="pricing-features">
-            <li>Multi-instance / multi-site deployment</li>
-            <li>All Professional features included</li>
-            <li>Custom integrations</li>
-            <li>Enterprise SLA (4hr response)</li>
-            <li>Dedicated customer success manager</li>
+            <li><strong>Unlimited servers / endpoints</strong></li>
+            <li>Commercial production use and MSP/MSSP</li>
+            <li>Priority support</li>
+            <li>Contact sales for custom SLA</li>
           </ul>
           <div class="pricing-cta-area">
-            <p class="pricing-quote">Custom pricing — contact us</p>
+            <p class="pricing-quote">~£3,499 / year (contact sales — preliminary)</p>
             <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Sales</a>
-            <p class="stripe-note">Volume &amp; custom agreements available</p>
+            <p class="stripe-note">Stripe checkout coming at GA</p>
           </div>
         </div>
 
       </div>
-    </div>
+    </div><!-- /pricing-section #audit-toolkit -->
 
-    <!-- ─── CMDB ASSET PLATFORM ─── -->
-    <div class="pricing-section" id="cmdb-asset-platform">
+
+    <!-- ═══════════════════════════════════════════════════════
+         CMDB ASSET PLATFORM — BSL 1.1, asset/user/API-key tiers
+         ═══════════════════════════════════════════════════════ -->
+    <div class="pricing-section" id="cmdb-asset">
       <div class="pricing-product-header">
         <h2 style="margin:0;">CMDB Asset Platform</h2>
-        <a href="cmdb-asset-platform.html" class="badge badge-muted" style="text-decoration:none;white-space:nowrap;">Product Details &rarr;</a>
-        <a href="cmdb-asset-platform-releases.html" class="badge badge-muted" style="text-decoration:none;white-space:nowrap;">Releases</a>
+        <a href="cmdb-asset.html" class="badge badge-muted" style="text-decoration:none;white-space:nowrap;">Product Details &rarr;</a>
+        <a href="cmdb-asset-platform-releases.html" class="badge badge-blue" style="text-decoration:none;white-space:nowrap;">Release Notes</a>
       </div>
-      <p style="font-size:.95rem;color:var(--text-muted);margin:0 0 4px;">Annual subscription &mdash; per deployment. Includes updates, security patches, and documentation for the licence term.</p>
+      <p style="font-size:.95rem;color:var(--text-muted);margin:8px 0 4px;">Licensed under the <strong>Business Source License 1.1 (BSL)</strong>. Licence tiers are measured by maximum assets, users, and API keys. Commercial licences are required for production use beyond the Free tier. Full cloud connector support (AWS, Azure, GCP, OCI) from Business tier upward.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);margin:0 0 4px;font-style:italic;">Pricing shown is preliminary and subject to change.</p>
       <div class="pricing-grid">
+
+        <div class="pricing-card">
+          <p class="pricing-tier">Free</p>
+          <h3>Free</h3>
+          <p class="pricing-desc">Evaluation and small non-production deployments.</p>
+          <ul class="pricing-features">
+            <li>Up to <strong>250 assets</strong></li>
+            <li>Up to <strong>2 users</strong></li>
+            <li>1 system API key</li>
+            <li class="feat-x">Remote discovery access</li>
+            <li class="feat-x">Cloud connectors</li>
+            <li class="feat-x">Advanced reporting</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Free — no payment required.</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Get Started</a>
+          </div>
+        </div>
 
         <div class="pricing-card">
           <p class="pricing-tier">Starter</p>
           <h3>Starter</h3>
-          <p class="pricing-desc">Asset discovery and inventory for small environments. Core asset visibility with standard reporting.</p>
+          <p class="pricing-desc">Small teams moving beyond evaluation with limited cloud connectivity.</p>
           <ul class="pricing-features">
-            <li>Single deployment instance</li>
-            <li>Asset discovery (up to 500 nodes)</li>
-            <li>Core inventory dashboard</li>
-            <li>Standard export formats</li>
-            <li class="feat-x">Vulnerability correlation</li>
-            <li class="feat-x">Hypervisor &amp; cloud connectors</li>
-            <li class="feat-x">Priority support SLA</li>
+            <li>Up to <strong>1,000 assets</strong></li>
+            <li>Up to <strong>5 users</strong></li>
+            <li>2 system API keys</li>
+            <li class="feat-x">Remote discovery access</li>
+            <li class="feat-x">Map resources</li>
+            <li class="feat-x">Advanced reporting</li>
           </ul>
           <div class="pricing-cta-area">
-            <p class="pricing-quote">Pricing on request</p>
-            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Request a Quote</a>
-            <p class="stripe-note">Stripe checkout coming soon</p>
+            <p class="pricing-quote">Contact us for pricing.</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Request Quote</a>
+            <p class="stripe-note">Stripe checkout coming at GA</p>
           </div>
         </div>
 
         <div class="pricing-card pricing-featured">
           <span class="pricing-featured-badge">Most Popular</span>
-          <p class="pricing-tier">Professional</p>
-          <h3>Professional</h3>
-          <p class="pricing-desc">Full asset platform with vulnerability correlation, hypervisor connectors, and cloud asset discovery.</p>
+          <p class="pricing-tier">Business</p>
+          <h3>Business</h3>
+          <p class="pricing-desc">Full-featured commercial deployments with multi-cloud support (AWS, Azure, GCP).</p>
           <ul class="pricing-features">
-            <li>Single deployment instance</li>
-            <li>Asset discovery (up to 5,000 nodes)</li>
-            <li>Full inventory &amp; asset lifecycle</li>
-            <li>Vulnerability correlation &amp; CVSS scoring</li>
-            <li>Hypervisor &amp; cloud connectors</li>
-            <li>SIEM &amp; ITSM integration</li>
-            <li class="feat-x">Enterprise SLA &amp; dedicated CSM</li>
+            <li>Up to <strong>5,000 assets</strong></li>
+            <li>Up to <strong>15 users</strong></li>
+            <li>10 system API keys</li>
+            <li>Remote discovery access</li>
+            <li>Map resources</li>
+            <li>Advanced reporting &amp; backup integrations</li>
+            <li>AWS, Azure, GCP cloud connectors</li>
           </ul>
           <div class="pricing-cta-area">
-            <p class="pricing-quote">Pricing on request</p>
-            <a href="support.html#contact" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Request a Quote</a>
-            <p class="stripe-note">Stripe checkout coming soon</p>
+            <p class="pricing-quote">Contact us for pricing.</p>
+            <a href="support.html#contact" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Request Quote</a>
+            <p class="stripe-note">Stripe checkout coming at GA</p>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <p class="pricing-tier">Professional</p>
+          <h3>Professional</h3>
+          <p class="pricing-desc">Large enterprise deployments with full multi-cloud coverage including OCI.</p>
+          <ul class="pricing-features">
+            <li>Up to <strong>20,000 assets</strong></li>
+            <li>Up to <strong>50 users</strong></li>
+            <li>25 system API keys</li>
+            <li>Remote discovery access</li>
+            <li>Map resources</li>
+            <li>Advanced reporting &amp; backup integrations</li>
+            <li>AWS, Azure, GCP, OCI cloud connectors</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Contact us for pricing.</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Request Quote</a>
+            <p class="stripe-note">Stripe checkout coming at GA</p>
           </div>
         </div>
 
         <div class="pricing-card">
           <p class="pricing-tier">Enterprise</p>
           <h3>Enterprise</h3>
-          <p class="pricing-desc">Unlimited asset discovery across complex multi-site hybrid environments with enterprise SLA and dedicated support.</p>
+          <p class="pricing-desc">Unlimited scale with all features and cloud connectors. Custom SLA available.</p>
           <ul class="pricing-features">
-            <li>Multi-instance / multi-site deployment</li>
-            <li>Unlimited node discovery</li>
-            <li>All Professional features included</li>
-            <li>Custom connector development</li>
-            <li>Enterprise SLA (4hr response)</li>
-            <li>Dedicated customer success manager</li>
+            <li><strong>Unlimited assets</strong></li>
+            <li><strong>Unlimited users</strong></li>
+            <li>Unlimited system API keys</li>
+            <li>All features enabled</li>
+            <li>Full cloud connector suite</li>
+            <li>Custom SLA on request</li>
           </ul>
           <div class="pricing-cta-area">
-            <p class="pricing-quote">Custom pricing — contact us</p>
+            <p class="pricing-quote">Contact sales for pricing.</p>
             <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Sales</a>
-            <p class="stripe-note">Volume &amp; custom agreements available</p>
+            <p class="stripe-note">Stripe checkout coming at GA</p>
           </div>
         </div>
 
       </div>
-    </div>
+    </div><!-- /pricing-section #cmdb-asset -->
 
-    <!-- ─── LINUX AUDIT COVERAGE EXPANSION ─── -->
+
+    <!-- ═══════════════════════════════════════════════════════════
+         LINUX AUDIT COVERAGE EXPANSION — BSL 1.1, server-count tiers
+         ═══════════════════════════════════════════════════════════ -->
     <div class="pricing-section" id="linux-expansion">
       <div class="pricing-product-header">
         <h2 style="margin:0;">Linux Audit Coverage Expansion</h2>
         <a href="linux-expansion.html" class="badge badge-muted" style="text-decoration:none;white-space:nowrap;">Product Details &rarr;</a>
-        <a href="linux-audit-expansion-releases.html" class="badge badge-muted" style="text-decoration:none;white-space:nowrap;">Releases</a>
+        <a href="linux-audit-expansion-releases.html" class="badge badge-blue" style="text-decoration:none;white-space:nowrap;">Release Notes</a>
       </div>
-      <p style="font-size:.95rem;color:var(--text-muted);margin:0 0 4px;">Annual subscription &mdash; add-on module. Requires a compatible base product licence. Includes updates and documentation for the licence term.</p>
+      <p style="font-size:.95rem;color:var(--text-muted);margin:8px 0 4px;">Licensed under the <strong>Business Source License 1.1 (BSL)</strong>. Free for community use up to 25 servers. A commercial licence is required for production use above 25 servers, MSP/MSSP operation, redistribution, or white-labelling. BSL converts to MIT Licence on 14 February 2030.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);margin:0 0 4px;font-style:italic;">Pricing shown is preliminary and subject to change. Early-adopter discounts will be offered at launch.</p>
       <div class="pricing-grid">
+
+        <div class="pricing-card">
+          <p class="pricing-tier">Community</p>
+          <h3>Community</h3>
+          <p class="pricing-desc">Free for personal use, learning, non-commercial evaluation, and open-source contribution.</p>
+          <ul class="pricing-features">
+            <li>Up to <strong>25 servers / endpoints</strong></li>
+            <li>Personal and non-commercial use</li>
+            <li>GitHub Issues support</li>
+            <li class="feat-x">Commercial or MSP use</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Free — no payment required.</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Get Started</a>
+          </div>
+        </div>
 
         <div class="pricing-card">
           <p class="pricing-tier">Starter</p>
           <h3>Starter</h3>
-          <p class="pricing-desc">Extended Linux coverage for small deployments. Core distro support (RHEL/Ubuntu) with standard audit profiles.</p>
+          <p class="pricing-desc">Small business deployments just above the Community threshold. Best-effort email support.</p>
           <ul class="pricing-features">
-            <li>RHEL &amp; Ubuntu coverage</li>
-            <li>Core audit profiles</li>
-            <li>Up to 50 Linux nodes</li>
-            <li>Standard reporting</li>
-            <li class="feat-x">Debian &amp; SLES coverage</li>
-            <li class="feat-x">Custom audit profiles</li>
-            <li class="feat-x">Priority support SLA</li>
+            <li><strong>26 – 50 servers / endpoints</strong></li>
+            <li>Commercial production use</li>
+            <li>Best-effort email support</li>
           </ul>
           <div class="pricing-cta-area">
-            <p class="pricing-quote">Pricing on request</p>
-            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Request a Quote</a>
-            <p class="stripe-note">Stripe checkout coming soon</p>
+            <p class="pricing-quote">~£299 / year (preliminary)</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Request Quote</a>
+            <p class="stripe-note">Stripe checkout coming at GA</p>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <p class="pricing-tier">Professional</p>
+          <h3>Professional</h3>
+          <p class="pricing-desc">Small to medium businesses needing a larger server estate with 48-hour support response.</p>
+          <ul class="pricing-features">
+            <li><strong>51 – 150 servers / endpoints</strong></li>
+            <li>Commercial production use</li>
+            <li>48-hour email support response</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">~£499 / year (preliminary)</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Request Quote</a>
+            <p class="stripe-note">Stripe checkout coming at GA</p>
           </div>
         </div>
 
         <div class="pricing-card pricing-featured">
           <span class="pricing-featured-badge">Most Popular</span>
-          <p class="pricing-tier">Professional</p>
-          <h3>Professional</h3>
-          <p class="pricing-desc">Full distro coverage (RHEL, Ubuntu, Debian, SLES) with custom profiles and compliance mapping.</p>
+          <p class="pricing-tier">Business</p>
+          <h3>Business</h3>
+          <p class="pricing-desc">Mid-market enterprise deployments with priority support.</p>
           <ul class="pricing-features">
-            <li>All major distros: RHEL, Ubuntu, Debian, SLES</li>
-            <li>Full audit profile library</li>
-            <li>Up to 500 Linux nodes</li>
-            <li>Custom audit profiles</li>
-            <li>Compliance framework mapping</li>
-            <li>Integration with CMDB &amp; SIEM</li>
-            <li class="feat-x">Enterprise SLA &amp; dedicated CSM</li>
+            <li><strong>151 – 500 servers / endpoints</strong></li>
+            <li>Commercial production use</li>
+            <li>Priority email support</li>
           </ul>
           <div class="pricing-cta-area">
-            <p class="pricing-quote">Pricing on request</p>
-            <a href="support.html#contact" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Request a Quote</a>
-            <p class="stripe-note">Stripe checkout coming soon</p>
+            <p class="pricing-quote">~£1,499 / year (preliminary)</p>
+            <a href="support.html#contact" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Request Quote</a>
+            <p class="stripe-note">Stripe checkout coming at GA</p>
           </div>
         </div>
 
         <div class="pricing-card">
           <p class="pricing-tier">Enterprise</p>
           <h3>Enterprise</h3>
-          <p class="pricing-desc">Unlimited Linux node coverage with custom distro support, enterprise SLA, and dedicated CSM.</p>
+          <p class="pricing-desc">Large enterprise and MSP deployments with unlimited server scope.</p>
           <ul class="pricing-features">
-            <li>All distros including custom/LTS variants</li>
-            <li>Unlimited Linux nodes</li>
-            <li>All Professional features included</li>
-            <li>Custom distro &amp; profile development</li>
-            <li>Enterprise SLA (4hr response)</li>
-            <li>Dedicated customer success manager</li>
+            <li><strong>Unlimited servers / endpoints</strong></li>
+            <li>Commercial production use and MSP/MSSP</li>
+            <li>Priority support</li>
+            <li>Contact sales for custom SLA</li>
           </ul>
           <div class="pricing-cta-area">
-            <p class="pricing-quote">Custom pricing — contact us</p>
+            <p class="pricing-quote">~£3,499 / year (contact sales — preliminary)</p>
             <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Sales</a>
-            <p class="stripe-note">Volume &amp; custom agreements available</p>
+            <p class="stripe-note">Stripe checkout coming at GA</p>
           </div>
         </div>
 
       </div>
-    </div>
+    </div><!-- /pricing-section #linux-expansion -->
 
-    <!-- Licence comparison note -->
-    <div style="margin-top:48px;padding:28px 32px;background:var(--surface);border:1px solid var(--border);border-radius:12px;">
-      <h3 style="margin:0 0 12px;">Licence Terms &amp; Notes</h3>
-      <ul style="font-size:.9rem;margin:0;padding-left:20px;display:grid;gap:8px;">
-        <li>All licences are <strong>annual subscriptions</strong> billed per deployment. Multi-year agreements available at a discount.</li>
-        <li>Linux Audit Coverage Expansion is an <strong>add-on module</strong> and requires a compatible base product licence (CMDB API Data Collection Tool or CMDB Asset Platform).</li>
-        <li>Evaluation licences (30-day, full-featured) are available on request. <a href="support.html#contact">Contact us</a> to arrange access.</li>
-        <li>All purchases are subject to the <strong>Business Source Licence (BSL)</strong> and the individual product EULA. See the <a href="support.html#security">legal notices</a> for full terms.</li>
-        <li>Volume discounts are available for Enterprise agreements covering multiple products or deployments.</li>
-      </ul>
-    </div>
+
+    <!-- ═══════════════════════
+         LICENCE TERMS PANEL
+         ═══════════════════════ -->
+    <div class="pricing-section" id="licence-terms">
+      <h2>Licence Terms &amp; Notes</h2>
+      <div class="doc-group" style="margin-top:24px;">
+
+        <div class="callout" style="margin-bottom:16px;">
+          <strong>CMDB API Data Collection Tool — Licensor</strong><br />
+          Michael Churchill trading as AuditToolkitLabs, 4th Floor, Silverstream House, 45 Fitzroy Street, Fitzrovia, London W1T 6EB.
+        </div>
+
+        <ul style="font-size:.9rem;color:var(--text-muted);line-height:1.8;margin:0;padding-left:20px;">
+          <li>All fees are exclusive of VAT, sales tax, or equivalent. The licensee shall pay applicable taxes in addition.</li>
+          <li>Late payments on CMDB API Tool licences accrue interest at the rate provided under the Late Payment of Commercial Debts (Interest) Act 1998.</li>
+          <li>MSP Tier (CMDB API Tool): usage reports are due within 30 days of each calendar quarter end; royalty payment is due within 30 days of invoice.</li>
+          <li>OEM / Embedded Tier (CMDB API Tool): a separately negotiated, signed written agreement is required before configuring <code>LICENSE_TIER=oem</code>. Use without such an agreement is a material breach.</li>
+          <li>Audit Admin Toolkit, CMDB Asset Platform, and Linux Audit Coverage Expansion are distributed under the Business Source License 1.1 (BSL). Source code in the public repositories is BSL-licensed. Commercial licences grant additional production rights that supersede BSL restrictions for the licensed scope and term.</li>
+          <li>BSL products convert to the MIT Licence on 14 February 2030 (4 years from initial release).</li>
+          <li>Telemetry (CMDB API Tool) is disabled by default. If enabled via <code>ENABLE_TELEMETRY=true</code>, only non-sensitive operational metrics are transmitted — no inventory data, host data, vulnerability data, or PII is transmitted.</li>
+          <li>Support for paid tiers covers software usage rights and limited product-usage support. It does not include consulting, remediation services, managed operations, or scheduled calls unless separately contracted in writing.</li>
+          <li>No SLA guarantees are provided on standalone support plans. This is not an enterprise support contract unless separately agreed.</li>
+          <li>Prices marked as preliminary are subject to change. Early-adopter pricing will be offered during the initial launch period.</li>
+        </ul>
+
+        <div style="margin-top:24px;display:flex;gap:16px;flex-wrap:wrap;">
+          <a href="support.html#contact" class="btn btn-primary">Request a Quote &rarr;</a>
+          <a href="support.html#contact" class="btn btn-secondary">Arrange Evaluation Access</a>
+        </div>
+
+      </div>
+    </div><!-- /pricing-section #licence-terms -->
 
   </div>
 </section>
 
-<div class="cta-band">
-  <div class="wrap">
-    <div class="cta-band-inner">
-      <div>
-        <h2 class="mb-8">Ready to get started?</h2>
-        <p>Contact us to request a quote, arrange evaluation access, or discuss custom enterprise agreements.</p>
-      </div>
-      <div class="cta-band-actions">
-        <a href="support.html#contact" class="btn btn-primary btn-lg">Request a Quote</a>
-        <a href="index.html#products" class="btn btn-secondary btn-lg">View All Products</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<footer class="site-footer">
+<footer class="footer">
   <div class="wrap">
     <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span style="font-weight:700;font-size:1.05rem;">AuditToolkit Labs</span></div>
-        <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
-        <p style="font-size:.82rem;">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+      <div class="footer-col">
+        <div class="footer-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></div>
+        <p class="footer-tagline">Enterprise-grade CMDB, audit, and compliance tooling.</p>
       </div>
-      <div class="footer-col"><h4>Products</h4><ul>
-        <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
-        <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
-        <li><a href="cmdb-asset-platform.html">CMDB Asset Platform</a></li>
-        <li><a href="linux-expansion.html">Linux Audit Expansion</a></li>
-      </ul></div>
-      <div class="footer-col"><h4>Resources</h4><ul>
-        <li><a href="docs.html">Documentation Hub</a></li>
-        <li><a href="releases.html">Releases Hub</a></li>
-        <li><a href="licensing.html">Licensing &amp; Pricing</a></li>
-        <li><a href="support.html">Support</a></li>
-        <li><a href="support.html#security">Security Policy</a></li>
-      </ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul>
-        <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
-        <li><a href="https://github.com/AuditToolkitLabs" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="support.html#contact">Send an Enquiry</a></li>
-      </ul></div>
+      <div class="footer-col">
+        <p class="footer-col-title">Products</p>
+        <ul>
+          <li><a href="cmdb-tool.html">CMDB API Tool</a></li>
+          <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
+          <li><a href="cmdb-asset.html">CMDB Asset Platform</a></li>
+          <li><a href="linux-expansion.html">Linux Expansion</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Resources</p>
+        <ul>
+          <li><a href="docs.html">Documentation</a></li>
+          <li><a href="releases.html">Releases</a></li>
+          <li><a href="licensing.html">Licensing</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Legal</p>
+        <ul>
+          <li><a href="support.html#contact">Contact</a></li>
+        </ul>
+      </div>
     </div>
     <div class="footer-bottom">
-      <p>Licence: Business Source Licence (BSL). See individual product EULA for full usage rights.</p>
-      <p>This site is for informational and preview purposes only. No production downloads available.</p>
+      <p>&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
     </div>
   </div>
 </footer>
