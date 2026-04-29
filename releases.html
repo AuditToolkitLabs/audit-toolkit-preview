@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Releases — AuditToolkit Labs</title>
+  <meta name="description" content="Release history for AuditToolkit Labs products. Changelogs, security bulletins, and version notes for the CMDB API Data Collection Tool and related products." />
+  <link rel="stylesheet" href="assets/css/site.css" />
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="releases.html" class="active">Releases</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+      <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="index.html#products">Products</a>
+  <a href="docs.html">Documentation</a>
+  <a href="releases.html">Releases</a>
+  <a href="support.html">Support</a>
+  <a href="support.html#contact" style="color:var(--accent);font-weight:600;">Contact Us</a>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span>
+      <span class="cur">Releases</span>
+    </div>
+    <p class="eyebrow">Release History</p>
+    <h1>Releases &amp; Changelogs</h1>
+    <p>Version history, changelogs, and security bulletins for AuditToolkit Labs products. Full documentation and release artefacts are available via the GitHub organisation.</p>
+    <div class="flex gap-12 flex-wrap mt-24">
+      <a href="https://github.com/AuditToolkitLabs" target="_blank" rel="noopener" class="btn btn-primary">GitHub Releases &rarr;</a>
+      <a href="support.html#contact" class="btn btn-secondary">Request Evaluation Access</a>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">CMDB API Data Collection Tool</p>
+      <h2>Release Timeline</h2>
+    </div>
+    <div class="release-stack">
+
+      <!-- v0.2.6 -->
+      <div class="release-entry release-latest" id="v026">
+        <div class="release-timeline"><div class="release-dot"></div><div class="release-line"></div></div>
+        <div class="release-body">
+          <div class="release-meta">
+            <span class="version">v0.2.6</span>
+            <span class="badge badge-green">Latest GA</span>
+            <span class="badge badge-green">&#10003; OWASP PASS</span>
+            <span class="date">29 April 2026</span>
+          </div>
+          <p style="font-size:.95rem;margin:0 0 12px;color:var(--text);font-weight:600;">Security Verified — Enterprise Ready</p>
+          <p style="font-size:.9rem;margin:0 0 12px;">Full OWASP Top 10:2021 audit completed. All findings addressed. Zero CVEs across 25 pinned production dependencies at release date.</p>
+          <ul class="release-changes">
+            <li>OWASP Top 10:2021 full source-code audit &mdash; 8 PASS, 1 PARTIAL, 0 FAIL, zero open findings at GA</li>
+            <li>HTTP security headers on all responses: Content-Security-Policy, X-Frame-Options, Referrer-Policy, Permissions-Policy, X-Content-Type-Options</li>
+            <li>AES-256 Fernet field encryption for all connector credentials and SSO secrets at rest</li>
+            <li>Seed admin account now enforces must_change_password on first login (A07 remediation)</li>
+            <li>HAProxy connector: configurable verify_ssl field replacing hardcoded verify=False (A05 remediation SEC-003)</li>
+            <li>pip-audit clean &mdash; zero CVEs across all production dependencies</li>
+            <li>Bandit SAST scan: 0 High, 0 Medium, 0 Low findings post-remediation</li>
+            <li>Customer documentation: OWASP Scorecard (Doc 34) and Procurement Security FAQ (Doc 33) added</li>
+            <li>542 automated tests passing; SQLAlchemy LegacyAPIWarning resolved</li>
+          </ul>
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>OWASP Category</th><th>Result</th><th>Notes</th></tr></thead>
+                <tbody>
+                  <tr><td>A01 Broken Access Control</td>    <td><span class="badge badge-green">PASS</span></td>   <td>RBAC, session guard, workspace isolation</td></tr>
+                  <tr><td>A02 Cryptographic Failures</td>   <td><span class="badge badge-green">PASS</span></td>   <td>AES-256, bcrypt, TLS enforced</td></tr>
+                  <tr><td>A03 Injection</td>                <td><span class="badge badge-green">PASS</span></td>   <td>ORM throughout, SAST clean</td></tr>
+                  <tr><td>A04 Insecure Design</td>          <td><span class="badge badge-green">PASS</span></td>   <td>App factory, blueprint isolation</td></tr>
+                  <tr><td>A05 Security Misconfiguration</td><td><span class="badge badge-green">FIXED</span></td>  <td>Security headers added</td></tr>
+                  <tr><td>A06 Vulnerable Components</td>    <td><span class="badge badge-green">PASS</span></td>   <td>pip-audit clean, 0 CVEs</td></tr>
+                  <tr><td>A07 Auth Failures</td>            <td><span class="badge badge-green">FIXED</span></td>  <td>Forced password change on seed account</td></tr>
+                  <tr><td>A08 Data Integrity</td>           <td><span class="badge badge-green">PASS</span></td>   <td>Signed tags, pinned deps</td></tr>
+                  <tr><td>A09 Logging &amp; Monitoring</td> <td><span class="badge badge-green">PASS</span></td>   <td>Structured audit log, SIEM forwarding</td></tr>
+                  <tr><td>A10 SSRF</td>                     <td><span class="badge badge-amber">PARTIAL</span></td><td>Egress allowlist via network policy (LOW risk)</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- v0.2.5 -->
+      <div class="release-entry" id="v025">
+        <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div><div class="release-line"></div></div>
+        <div class="release-body">
+          <div class="release-meta">
+            <span class="version">v0.2.5</span>
+            <span class="badge badge-muted">GA</span>
+            <span class="date">29 April 2026</span>
+          </div>
+          <p style="font-size:.9rem;margin:0 0 12px;">Overview and legal UX redesign with EULA update.</p>
+          <ul class="release-changes">
+            <li>Redesigned overview page with card layout and collapsible deep-dive sections</li>
+            <li>Added /legal route with Security, Liability, and Indemnity Notice</li>
+            <li>Bumped EULA to v0.2-draft with explicit indemnity clause</li>
+            <li>Legal and compliance documentation refresh across customer-docs</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- v0.2.4 -->
+      <div class="release-entry" id="v024">
+        <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div><div class="release-line"></div></div>
+        <div class="release-body">
+          <div class="release-meta">
+            <span class="version">v0.2.4</span>
+            <span class="badge badge-muted">GA</span>
+            <span class="date">April 2026</span>
+          </div>
+          <p style="font-size:.9rem;margin:0 0 12px;">Packaging stability and dependency management improvements.</p>
+          <ul class="release-changes">
+            <li>Dependency pinning and requirements audit</li>
+            <li>Build and packaging pipeline improvements</li>
+            <li>Docker image hygiene and layer optimisation</li>
+            <li>Test coverage expansion and stability fixes</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Earlier -->
+      <div class="release-entry" id="earlier">
+        <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div></div>
+        <div class="release-body">
+          <div class="release-meta">
+            <span class="version">v0.2.x — Earlier Releases</span>
+            <span class="badge badge-muted">Archive</span>
+          </div>
+          <p style="font-size:.9rem;margin:0 0 12px;">Earlier v0.2.x releases covering initial connector framework, authentication, multi-tenancy, SIEM integration, and reporting foundations.</p>
+          <ul class="release-changes">
+            <li>Initial 29+ connector framework and modular architecture</li>
+            <li>Multi-tenant RBAC with workspace isolation</li>
+            <li>Celery task queue for scheduled collection jobs</li>
+            <li>SIEM (Splunk/Elastic), ITSM, and webhook integration layers</li>
+            <li>Managed agent registration and heartbeat protocol</li>
+            <li>CVE correlation engine and CVSS scoring per host</li>
+            <li>PDF and CSV export reporting foundations</li>
+            <li>SSO (SAML/OIDC) and TOTP MFA integration</li>
+          </ul>
+          <div style="margin-top:16px;">
+            <a href="https://github.com/AuditToolkitLabs" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">Full History on GitHub &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <div class="cta-band-inner">
+      <div>
+        <h2 class="mb-8">Want to be notified of new releases?</h2>
+        <p>Contact us to register for release notifications or to request evaluation access.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a href="support.html#contact" class="btn btn-primary btn-lg">Contact Us</a>
+        <a href="cmdb-tool.html"        class="btn btn-secondary btn-lg">CMDB Tool Details</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span style="font-weight:700;font-size:1.05rem;">AuditToolkit Labs</span></div>
+        <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
+        <p style="font-size:.82rem;">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+      </div>
+      <div class="footer-col"><h4>Products</h4><ul>
+        <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
+        <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
+        <li><a href="index.html#products">CMDB Asset Platform</a></li>
+        <li><a href="index.html#products">Linux Audit Expansion</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="releases.html">Release Notes</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="support.html#security">Security Policy</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
+        <li><a href="https://github.com/AuditToolkitLabs" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="support.html#contact">Send an Enquiry</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>Licence: Business Source Licence (BSL). See individual product EULA for full usage rights.</p>
+      <p>This site is for informational and preview purposes only. No production downloads available.</p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>

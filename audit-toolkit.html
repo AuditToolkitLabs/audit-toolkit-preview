@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audit Admin Toolkit — AuditToolkit Labs</title>
+  <meta name="description" content="Operator-focused audit workflow platform. Findings management, evidence collection, scheduled audits, and reporting for mixed infrastructure environments. Currently in preview." />
+  <link rel="stylesheet" href="assets/css/site.css" />
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="releases.html">Releases</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+      <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="index.html#products">Products</a>
+  <a href="docs.html">Documentation</a>
+  <a href="releases.html">Releases</a>
+  <a href="support.html">Support</a>
+  <a href="support.html#contact" style="color:var(--accent);font-weight:600;">Contact Us</a>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span>
+      <a href="index.html#products">Products</a><span class="sep">/</span>
+      <span class="cur">Audit Admin Toolkit</span>
+    </div>
+    <div class="flex flex-wrap gap-8 mb-16">
+      <span class="badge badge-amber">In Preview</span>
+      <span class="badge badge-muted">Not yet GA</span>
+    </div>
+    <h1>Audit Admin Toolkit</h1>
+    <p>Operator-focused audit workflow platform covering findings, evidence management, scheduled audits, and reporting across mixed on-premises and hybrid environments.</p>
+    <div class="callout warn mt-24">
+      <strong>Preview release.</strong> The Audit Admin Toolkit is currently in active development. Screenshots and feature descriptions reflect the current preview build. Features and interfaces may change before GA release.
+    </div>
+    <div class="flex gap-12 flex-wrap mt-24">
+      <a href="support.html#contact" class="btn btn-primary">Register Interest</a>
+      <a href="#screenshots" class="btn btn-secondary">View Screenshots</a>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="features">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Features</p>
+      <h2>Audit workflow from detection to closure</h2>
+      <p>A structured workflow platform designed around the needs of infrastructure audit teams — findings, evidence, reports, schedules, and administration in one place.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:10px;">&#128202;</div>
+        <h3>Dashboard &amp; Overview</h3>
+        <p>Central audit health dashboard showing open findings, scheduled audits, recent activity, risk trends, and compliance status at a glance.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:10px;">&#128269;</div>
+        <h3>Audit Console &amp; Findings</h3>
+        <p>Structured findings workflow from identification through evidence capture, risk rating, owner assignment, remediation tracking, and verified closure.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:10px;">&#128196;</div>
+        <h3>Reporting &amp; Evidence Export</h3>
+        <p>Evidence-oriented PDF and CSV reporting with on-demand and scheduled generation. Audit trail exports for compliance review and management reporting.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:10px;">&#128197;</div>
+        <h3>Scheduled Audit Automation</h3>
+        <p>Define, schedule, and automate recurring audit runs across target hosts. Integration with the managed agent for network-isolated segments.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:10px;">&#128100;</div>
+        <h3>User &amp; Role Management</h3>
+        <p>Auditor, operator, and read-only role tiers with per-workspace access control. SSO integration and TOTP MFA supported.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.5rem;margin-bottom:10px;">&#9881;</div>
+        <h3>Settings &amp; Administration</h3>
+        <p>Centralised configuration for integrations, notification channels, audit templates, report branding, and system health monitoring.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="screenshots" style="border-top:1px solid var(--border);">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Screenshots</p>
+      <h2>Preview build screenshots</h2>
+      <p>Current state of the Audit Admin Toolkit preview build. Interfaces may evolve prior to GA.</p>
+    </div>
+    <div class="gallery mb-24">
+      <figure>
+        <img src="images/03-dashboard.png" alt="Audit Admin Toolkit dashboard" loading="lazy" />
+        <figcaption>Core audit dashboard &mdash; overview and status</figcaption>
+      </figure>
+      <figure>
+        <img src="images/04-console-audits.png" alt="Audit console and findings" loading="lazy" />
+        <figcaption>Audit console and findings workflow</figcaption>
+      </figure>
+      <figure>
+        <img src="images/06-reports.png" alt="Reports and evidence" loading="lazy" />
+        <figcaption>Reporting and evidence-oriented export views</figcaption>
+      </figure>
+      <figure>
+        <img src="images/08-settings.png" alt="Administration and settings" loading="lazy" />
+        <figcaption>Administration and settings panel</figcaption>
+      </figure>
+    </div>
+    <div class="section-head mt-32">
+      <p class="eyebrow">Managed Agent</p>
+      <h2>Standalone &amp; managed agent views</h2>
+    </div>
+    <div class="gallery">
+      <figure>
+        <img src="images/agent-html/standalone-01-home.png" alt="Standalone agent home" loading="lazy" />
+        <figcaption>Managed agent &mdash; standalone home view</figcaption>
+      </figure>
+      <figure>
+        <img src="images/agent-html/hypervisor-01-management-page.png" alt="Hypervisor management" loading="lazy" />
+        <figcaption>Managed agent &mdash; hypervisor management page</figcaption>
+      </figure>
+      <figure>
+        <img src="images/agent-html/managed-02-agent-security.png" alt="Agent security controls" loading="lazy" />
+        <figcaption>Managed agent &mdash; security and certificate management</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="linux" style="border-top:1px solid var(--border);">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="eyebrow">Extension</p>
+        <h2>Linux Audit Coverage Expansion</h2>
+        <p>An in-preview extension module for the Audit Admin Toolkit that deepens Linux audit coverage and compliance posture checking across mixed Linux estates.</p>
+        <ul class="feature-list mt-24">
+          <li><span class="icon">&#10003;</span><span class="text"><strong>Expanded Linux checks</strong> — broader coverage across CIS benchmark controls for RHEL, Debian, Ubuntu, and SLES.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text"><strong>Policy compliance reporting</strong> — configurable policy baselines with pass/fail status and evidence export.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text"><strong>Mixed environment support</strong> — unified view across multiple Linux distributions in a single audit run.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text"><strong>Integrated reporting</strong> — findings feed directly into the Audit Admin Toolkit workflow.</span></li>
+        </ul>
+        <div class="flex gap-12 flex-wrap mt-32">
+          <a href="support.html#contact" class="btn btn-primary">Register Interest</a>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <h3 style="margin-bottom:16px;">Preview availability</h3>
+          <p>Both the Audit Admin Toolkit and the Linux Audit Coverage Expansion are available in preview for evaluation. Contact us to request preview access or register interest for GA notification.</p>
+          <div class="flex flex-wrap gap-8 mt-24">
+            <span class="badge badge-amber">Audit Toolkit — In Preview</span>
+            <span class="badge badge-amber">Linux Expansion — In Preview</span>
+          </div>
+          <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
+            <p style="font-size:.9rem;margin-bottom:12px;">For preview access, evaluation support, or to register interest for GA notification:</p>
+            <a href="support.html#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Contact the Team</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <div class="cta-band-inner">
+      <div>
+        <h2 class="mb-8">Interested in the Audit Toolkit preview?</h2>
+        <p>Register interest or request evaluation access. We&rsquo;ll be in touch ahead of the GA release.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a href="support.html#contact" class="btn btn-primary btn-lg">Register Interest</a>
+        <a href="cmdb-tool.html"        class="btn btn-secondary btn-lg">View CMDB Tool (GA)</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span style="font-weight:700;font-size:1.05rem;">AuditToolkit Labs</span></div>
+        <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
+        <p style="font-size:.82rem;">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+      </div>
+      <div class="footer-col"><h4>Products</h4><ul>
+        <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
+        <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
+        <li><a href="index.html#products">CMDB Asset Platform</a></li>
+        <li><a href="index.html#products">Linux Audit Expansion</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="releases.html">Release Notes</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="support.html#security">Security Policy</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
+        <li><a href="https://github.com/AuditToolkitLabs" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="support.html#contact">Send an Enquiry</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>Licence: Business Source Licence (BSL). See individual product EULA for full usage rights.</p>
+      <p>This site is for informational and preview purposes only. No production downloads available.</p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>

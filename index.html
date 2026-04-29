@@ -3,277 +3,352 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Audit Admin Toolkit — Public Preview</title>
-  <meta name="description" content="Pre-launch public preview for the Audit Admin Toolkit and CMDB tooling. Documentation and screenshots only; no downloads or commercial checkout." />
-  <style>
-    :root {
-      --bg: #0b1220;
-      --panel: #111a2e;
-      --panel-2: #16233d;
-      --text: #e8eefc;
-      --muted: #a9b7d6;
-      --accent: #5aa0ff;
-      --accent-2: #6ee7b7;
-      --border: #243554;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Segoe UI, Arial, sans-serif;
-      background: linear-gradient(180deg, #08101d 0%, #0f1930 100%);
-      color: var(--text);
-      line-height: 1.5;
-    }
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 24px;
-    }
-    header {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 24px rgba(0,0,0,.25);
-    }
-    h1, h2, h3 { margin-top: 0; }
-    p, li { color: var(--muted); }
-    .pill {
-      display: inline-block;
-      padding: 6px 10px;
-      margin: 0 8px 8px 0;
-      border-radius: 999px;
-      background: var(--panel-2);
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-size: 0.9rem;
-    }
-    .pill.alert { color: #ffd79c; }
-    .pill.safe { color: var(--accent-2); }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 16px;
-      margin: 16px 0 24px;
-    }
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 16px;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 16px;
-    }
-    figure {
-      margin: 0;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-    img {
-      display: block;
-      width: 100%;
-      height: auto;
-      background: #09111f;
-    }
-    figcaption {
-      padding: 10px 12px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    .note {
-      background: rgba(110, 231, 183, 0.08);
-      border-left: 4px solid var(--accent-2);
-      padding: 12px 14px;
-      border-radius: 8px;
-      color: var(--text);
-    }
-    .split {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-      align-items: start;
-    }
-    .button {
-      display: inline-block;
-      padding: 10px 14px;
-      border-radius: 10px;
-      text-decoration: none;
-      border: 1px solid var(--accent);
-      background: var(--accent);
-      color: #071120;
-      font-weight: 600;
-      margin-right: 10px;
-      margin-bottom: 10px;
-    }
-    .button.secondary {
-      background: transparent;
-      color: var(--text);
-      border-color: var(--border);
-    }
-    .template {
-      background: #0a1325;
-      border: 1px dashed var(--border);
-      border-radius: 10px;
-      padding: 12px;
-      color: var(--muted);
-      white-space: pre-line;
-      font-size: 0.95rem;
-    }
-    a { color: #8cc2ff; }
-    footer {
-      color: var(--muted);
-      text-align: center;
-      padding: 18px 0 30px;
-      font-size: 0.95rem;
-    }
-  </style>
+  <title>AuditToolkit Labs — Infrastructure Audit &amp; CMDB Tooling</title>
+  <meta name="description" content="Professional audit, inventory, and security tooling for hybrid infrastructure teams." />
+  <link rel="stylesheet" href="assets/css/site.css" />
 </head>
 <body>
+<nav class="nav">
   <div class="wrap">
-    <header>
-      <div>
-        <span class="pill alert">Preview Only</span>
-        <span class="pill">v5.6.1-beta</span>
-        <span class="pill safe">Docs + Images Only</span>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <span class="brand-icon">A</span>
+        <span>AuditToolkit Labs</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#products">Products</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="releases.html">Releases</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a>
       </div>
-      <h1>Audit Admin Toolkit — Public Preview</h1>
-      <p>
-        This is a pre-launch product preview for the Audit Admin Toolkit, Linux audit expansion work,
-        and CMDB / asset platform capabilities. It is intentionally <strong>viewable but non-downloadable</strong>.
-      </p>
-      <div class="note">
-        No installers, appliance images, release bundles, or live Gumroad purchase flow are exposed in this preview.
-      </div>
-    </header>
-
-    <section>
-      <h2>Preview scope</h2>
-      <div class="grid">
-        <div class="card">
-          <h3><code>main</code></h3>
-          <p>Core operator experience: dashboard visibility, findings, reports, schedules, administration, and scripting workflows.</p>
-        </div>
-        <div class="card">
-          <h3><code>feature/linux-audit-coverage-expansion</code></h3>
-          <p>Expanded Linux audit breadth across mixed environments with stronger posture review and reporting coverage.</p>
-        </div>
-        <div class="card">
-          <h3><code>tool-spur/cmdb-asset-platform</code></h3>
-          <p>Asset discovery, inventory visibility, vulnerability context, scan tracking, and CMDB-aligned workflows.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>What is available in preview</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Available now</h3>
-          <ul>
-            <li>Feature summaries</li>
-            <li>Approved screenshots</li>
-            <li>Branch-level capability overview</li>
-            <li>Early-interest contact path</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Held back until full launch</h3>
-          <ul>
-            <li>Downloadable installers or appliance images</li>
-            <li>Release artifacts and customer bundles</li>
-            <li>Commercial checkout / Gumroad publication</li>
-            <li>Licensing and activation workflow</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Selected preview screenshots</h2>
-      <div class="gallery">
-        <figure>
-          <img src="images/03-dashboard.png" alt="Dashboard preview" />
-          <figcaption>Core toolkit dashboard overview</figcaption>
-        </figure>
-        <figure>
-          <img src="images/04-console-audits.png" alt="Console audits preview" />
-          <figcaption>Audit console and findings workflow</figcaption>
-        </figure>
-        <figure>
-          <img src="images/06-reports.png" alt="Reports preview" />
-          <figcaption>Reporting and evidence-oriented views</figcaption>
-        </figure>
-        <figure>
-          <img src="images/08-settings.png" alt="Settings preview" />
-          <figcaption>Administration and settings experience</figcaption>
-        </figure>
-        <figure>
-          <img src="images/13-asset-discovery-dashboard.png" alt="Asset discovery dashboard preview" />
-          <figcaption>CMDB / asset discovery dashboard</figcaption>
-        </figure>
-        <figure>
-          <img src="images/15-asset-discovery-vulnerabilities.png" alt="Vulnerabilities preview" />
-          <figcaption>Vulnerability and risk view</figcaption>
-        </figure>
-        <figure>
-          <img src="images/agent-html/managed-02-agent-security.png" alt="Managed agent preview" />
-          <figcaption>Managed agent security view</figcaption>
-        </figure>
-        <figure>
-          <img src="images/agent-html/hypervisor-01-management-page.png" alt="Hypervisor preview" />
-          <figcaption>Hypervisor management workflow</figcaption>
-        </figure>
-        <figure>
-          <img src="images/agent-html/standalone-01-home.png" alt="Standalone agent preview" />
-          <figcaption>Standalone agent home experience</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="card" style="margin-top: 20px;">
-      <h2>Register interest / contact</h2>
-      <div class="split">
-        <div>
-          <p>
-            Want launch updates or early-access discussion? Use the contact path below.
-            This preview remains <strong>non-downloadable</strong>, so interest is captured by email only.
-          </p>
-          <p>
-            <a class="button" href="mailto:support@audittoolkitlabs.com?subject=Public%20Preview%20Interest%20%E2%80%94%20Audit%20Admin%20Toolkit&body=Name%3A%0AOrganization%3A%0AEmail%3A%0AEnvironment%20size%3A%0APlatform%20mix%20%28Linux%2FWindows%2Fhybrid%29%3A%0APrimary%20use%20case%3A%0AInterested%20in%3A%20Preview%20updates%20%2F%20Early%20access%20%2F%20Launch%20notification%0A">Email interest now</a>
-            <a class="button secondary" href="interest-template.txt">View interest template</a>
-          </p>
-          <p>
-            Primary contact: <a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a><br />
-            Suggested subject: <strong>Public Preview Interest — Audit Admin Toolkit</strong>
-          </p>
-          <p>
-            Supporting references included in this folder:
-            <a href="PUBLISHING-SCREENSHOT-MANIFEST.md">manifest (Markdown)</a> and
-            <a href="PUBLISHING-SCREENSHOT-MANIFEST.csv">manifest (CSV)</a>.
-          </p>
-        </div>
-        <div>
-          <h3>What to include</h3>
-          <div class="template">Name:
-Organization:
-Email:
-Environment size:
-Platform mix (Linux / Windows / hybrid):
-Primary use case:
-Interested in: Preview updates / Early access / Launch notification</div>
-        </div>
-      </div>
-    </section>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    </div>
   </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="#products">Products</a>
+  <a href="docs.html">Documentation</a>
+  <a href="releases.html">Releases</a>
+  <a href="support.html">Support</a>
+  <a href="support.html#contact" style="color:var(--accent);font-weight:600;">Contact Us</a>
+</div>
 
-  <footer>
-    Public preview package — safe for static hosting in GitHub Pages or a separate preview repo.
-  </footer>
+<section class="hero" id="home">
+  <div class="wrap hero-inner">
+    <div class="hero-badges">
+      <span class="badge badge-green">&#10003; OWASP Top 10 PASS</span>
+      <span class="badge badge-blue">v0.2.6 Released</span>
+      <span class="badge badge-green">Zero CVEs</span>
+      <span class="badge badge-muted">542 Tests Passing</span>
+    </div>
+    <h1>Infrastructure Visibility.<br /><span>Security Verified.</span></h1>
+    <p class="hero-sub">Professional audit, inventory, and vulnerability tooling for hybrid infrastructure teams. Built for operations, security, and compliance &mdash; deployed on your own terms.</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn btn-primary btn-lg">Explore Products</a>
+      <a href="docs.html" class="btn btn-secondary btn-lg">Documentation</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-value">29+</div><p class="stat-label">Infrastructure connectors</p></div>
+      <div><div class="stat-value">8/10</div><p class="stat-label">OWASP Top 10 PASS</p></div>
+      <div><div class="stat-value">542</div><p class="stat-label">Automated tests passing</p></div>
+      <div><div class="stat-value">0</div><p class="stat-label">Known CVEs at release</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="products">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Products</p>
+      <h2>Tools for every layer of the stack</h2>
+      <p>Four dedicated tools covering CMDB data collection, audit workflows, asset management, and Linux posture assessment across hybrid infrastructure.</p>
+    </div>
+    <div class="grid-2">
+      <a href="cmdb-tool.html" class="product-card">
+        <div class="product-card-head">
+          <div class="product-icon" style="background:rgba(90,160,255,.12);">&#128225;</div>
+          <span class="badge badge-green">Released v0.2.6</span>
+        </div>
+        <div>
+          <h3>CMDB API Data Collection Tool</h3>
+          <p>Multi-tenant infrastructure data collection platform with 29+ connectors, CVE correlation, vulnerability tracking, and enterprise-grade field encryption.</p>
+        </div>
+        <ul class="product-features">
+          <li>29+ connectors: VMware, Azure, AWS, Nutanix, HAProxy, network</li>
+          <li>CVE correlation and CVSS scoring per host</li>
+          <li>AES-256 field encryption &mdash; OWASP Top 10 PASS</li>
+          <li>SIEM (Splunk/Elastic), ITSM, and webhook integrations</li>
+          <li>Managed agent with hybrid deployment support</li>
+        </ul>
+        <div class="product-card-foot">
+          <span class="badge badge-blue">Flask &middot; SQLAlchemy &middot; Celery</span>
+          <span class="text-accent" style="font-size:.9rem;">View details &rarr;</span>
+        </div>
+      </a>
+      <a href="audit-toolkit.html" class="product-card">
+        <div class="product-card-head">
+          <div class="product-icon" style="background:rgba(110,231,183,.12);">&#128269;</div>
+          <span class="badge badge-amber">Preview</span>
+        </div>
+        <div>
+          <h3>Audit Admin Toolkit</h3>
+          <p>Operator-focused audit workflow platform covering findings, evidence management, scheduled audits, and reporting across mixed environments.</p>
+        </div>
+        <ul class="product-features">
+          <li>Audit console and findings workflow</li>
+          <li>Evidence-oriented reporting and exports</li>
+          <li>Scheduled and scripted audit automation</li>
+          <li>Administration, settings, and user management</li>
+        </ul>
+        <div class="product-card-foot">
+          <span class="badge badge-amber">In Preview</span>
+          <span class="text-accent" style="font-size:.9rem;">Preview &rarr;</span>
+        </div>
+      </a>
+      <div class="product-card" style="opacity:.72;">
+        <div class="product-card-head">
+          <div class="product-icon" style="background:rgba(244,114,182,.10);">&#127959;</div>
+          <span class="badge badge-muted">Coming Soon</span>
+        </div>
+        <div>
+          <h3>CMDB Asset Platform</h3>
+          <p>Next-generation asset discovery, inventory visibility, and vulnerability context aligned to CMDB workflows with enhanced auto-discovery.</p>
+        </div>
+        <ul class="product-features">
+          <li>Auto-discovery across hypervisor and cloud</li>
+          <li>Vulnerability context and CVE tracking per asset</li>
+          <li>CMDB-aligned data normalisation and enrichment</li>
+        </ul>
+        <div class="product-card-foot">
+          <span class="badge badge-pink">In Development</span>
+          <span class="text-subtle" style="font-size:.9rem;">Coming Soon</span>
+        </div>
+      </div>
+      <div class="product-card" style="opacity:.72;">
+        <div class="product-card-head">
+          <div class="product-icon" style="background:rgba(251,191,36,.10);">&#128039;</div>
+          <span class="badge badge-muted">Preview</span>
+        </div>
+        <div>
+          <h3>Linux Audit Coverage Expansion</h3>
+          <p>Expanded Linux audit breadth for the Audit Admin Toolkit &mdash; deeper posture review, policy compliance checking, and richer reporting.</p>
+        </div>
+        <ul class="product-features">
+          <li>Expanded Linux audit checks and coverage</li>
+          <li>Policy compliance and posture reporting</li>
+          <li>RHEL, Debian, Ubuntu, SLES support</li>
+        </ul>
+        <div class="product-card-foot">
+          <span class="badge badge-amber">In Preview</span>
+          <span class="text-subtle" style="font-size:.9rem;">Launching Soon</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="security" style="background:linear-gradient(160deg,#0a1524 0%,#0b1220 100%);border-top:1px solid var(--border);">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="eyebrow">Security Posture</p>
+        <h2>OWASP Top 10:2021 &mdash; Verified PASS</h2>
+        <p>The CMDB API Data Collection Tool has undergone a full OWASP Top 10:2021 source-code audit with zero open findings at general availability. Every category was manually reviewed, backed by automated SAST (Bandit), dependency CVE scanning (pip-audit), and 542 automated tests.</p>
+        <div class="flex flex-wrap gap-8 mb-24">
+          <span class="badge badge-green" style="font-size:.82rem;padding:6px 14px;">&#10003; Zero Critical Findings</span>
+          <span class="badge badge-green" style="font-size:.82rem;padding:6px 14px;">&#10003; Zero CVEs</span>
+          <span class="badge badge-blue"  style="font-size:.82rem;padding:6px 14px;">AES-256 Encryption</span>
+          <span class="badge badge-blue"  style="font-size:.82rem;padding:6px 14px;">Bandit SAST Clean</span>
+        </div>
+        <div class="flex gap-12 flex-wrap">
+          <a href="cmdb-tool.html#security" class="btn btn-primary">Full Security Scorecard</a>
+          <a href="support.html#security"   class="btn btn-secondary">Report a Vulnerability</a>
+        </div>
+        <p style="margin-top:20px;font-size:.85rem;">Full scorecard with per-category evidence tables, findings register, and scan evidence available via the <a href="docs.html">documentation portal</a>.</p>
+      </div>
+      <div class="owasp-block">
+        <div class="owasp-headline">
+          <div class="owasp-score-badge">PASS</div>
+          <div>
+            <div style="font-size:1.05rem;font-weight:700;color:var(--text);">8 PASS &middot; 1 PARTIAL &middot; 0 FAIL</div>
+            <div style="font-size:.83rem;color:var(--subtle);">OWASP Top 10:2021 &middot; v0.2.6 &middot; 29 Apr 2026</div>
+          </div>
+        </div>
+        <table class="owasp-table">
+          <thead><tr><th>Category</th><th>Rating</th></tr></thead>
+          <tbody>
+            <tr><td>A01 Broken Access Control</td>       <td><span class="badge badge-green">PASS</span></td></tr>
+            <tr><td>A02 Cryptographic Failures</td>      <td><span class="badge badge-green">PASS</span></td></tr>
+            <tr><td>A03 Injection</td>                   <td><span class="badge badge-green">PASS</span></td></tr>
+            <tr><td>A04 Insecure Design</td>             <td><span class="badge badge-green">PASS</span></td></tr>
+            <tr><td>A05 Security Misconfiguration</td>   <td><span class="badge badge-green">FIXED &#10003;</span></td></tr>
+            <tr><td>A06 Vulnerable Components</td>       <td><span class="badge badge-green">PASS</span></td></tr>
+            <tr><td>A07 Auth &amp; Session Failures</td> <td><span class="badge badge-green">FIXED &#10003;</span></td></tr>
+            <tr><td>A08 Data Integrity Failures</td>     <td><span class="badge badge-green">PASS</span></td></tr>
+            <tr><td>A09 Logging &amp; Monitoring</td>    <td><span class="badge badge-green">PASS</span></td></tr>
+            <tr><td>A10 Server-Side Request Forgery</td> <td><span class="badge badge-amber">PARTIAL</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="releases" style="border-top:1px solid var(--border);">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Releases</p>
+      <h2>What&rsquo;s new</h2>
+      <p>Latest release highlights across AuditToolkit Labs products.</p>
+    </div>
+    <div class="release-stack">
+      <div class="release-entry release-latest">
+        <div class="release-timeline"><div class="release-dot"></div><div class="release-line"></div></div>
+        <div class="release-body">
+          <div class="release-meta">
+            <span class="version">CMDB Tool v0.2.6</span>
+            <span class="badge badge-green">Latest GA</span>
+            <span class="date">29 April 2026</span>
+          </div>
+          <p style="font-size:.93rem;margin:0 0 8px;">Security hardening release: OWASP Top 10 verified, AES-256 field encryption, enterprise security documentation suite.</p>
+          <ul class="release-changes">
+            <li>OWASP Top 10:2021 full audit &mdash; 8 PASS, 1 PARTIAL, 0 FAIL, zero open findings at GA</li>
+            <li>HTTP security headers on all responses (CSP, X-Frame-Options, Referrer-Policy, Permissions-Policy)</li>
+            <li>AES-256 Fernet field encryption for all connector credentials and SSO secrets</li>
+            <li>Seed admin account now requires immediate password change on first login (A07)</li>
+            <li>pip-audit clean &mdash; zero CVEs across all 25 pinned production dependencies</li>
+            <li>Customer security docs: OWASP Scorecard (Doc 34) + Procurement FAQ (Doc 33)</li>
+          </ul>
+          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="releases.html#v026" class="btn btn-secondary btn-sm">Full Release Notes</a>
+            <a href="cmdb-tool.html"     class="btn btn-secondary btn-sm">Product Details</a>
+          </div>
+        </div>
+      </div>
+      <div class="release-entry">
+        <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div><div class="release-line"></div></div>
+        <div class="release-body">
+          <div class="release-meta">
+            <span class="version">CMDB Tool v0.2.5</span>
+            <span class="badge badge-muted">GA</span>
+            <span class="date">29 April 2026</span>
+          </div>
+          <p style="font-size:.93rem;margin:0 0 8px;">Overview/legal UX redesign and EULA update.</p>
+          <ul class="release-changes">
+            <li>Redesigned overview page with card layout and collapsible deep-dive sections</li>
+            <li>Added /legal route with Security, Liability and Indemnity Notice</li>
+            <li>Bumped EULA to v0.2-draft with explicit indemnity clause</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:right;margin-top:8px;">
+      <a href="releases.html" class="btn btn-secondary btn-sm">All Releases &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="screenshots" style="border-top:1px solid var(--border);">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Screenshots</p>
+      <h2>See the platform in action</h2>
+      <p>Preview-only screenshots. No downloads or commercial checkout links are present on this site.</p>
+    </div>
+    <div class="gallery mb-24">
+      <figure>
+        <img src="images/13-asset-discovery-dashboard.png" alt="Asset discovery dashboard" loading="lazy" />
+        <figcaption>CMDB &mdash; asset discovery and inventory dashboard</figcaption>
+      </figure>
+      <figure>
+        <img src="images/15-asset-discovery-vulnerabilities.png" alt="Vulnerability view" loading="lazy" />
+        <figcaption>CMDB &mdash; vulnerability and risk assessment view</figcaption>
+      </figure>
+      <figure>
+        <img src="images/03-dashboard.png" alt="Audit toolkit dashboard" loading="lazy" />
+        <figcaption>Audit Admin Toolkit &mdash; core dashboard</figcaption>
+      </figure>
+      <figure>
+        <img src="images/04-console-audits.png" alt="Audit console" loading="lazy" />
+        <figcaption>Audit console and findings workflow</figcaption>
+      </figure>
+      <figure>
+        <img src="images/06-reports.png" alt="Reports" loading="lazy" />
+        <figcaption>Reporting and evidence views</figcaption>
+      </figure>
+      <figure>
+        <img src="images/08-settings.png" alt="Settings" loading="lazy" />
+        <figcaption>Administration and settings</figcaption>
+      </figure>
+    </div>
+    <div class="callout info">
+      Preview screenshots only &mdash; no installers, release binaries, or commercial checkout available through this site.
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <div class="cta-band-inner">
+      <div>
+        <h2 class="mb-8">Ready to evaluate or deploy?</h2>
+        <p>Contact us for licence enquiries, technical evaluation, or to register interest in upcoming products.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a href="support.html#contact" class="btn btn-primary btn-lg">Contact Support</a>
+        <a href="docs.html"            class="btn btn-secondary btn-lg">Browse Documentation</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="flex items-center gap-12 mb-16">
+          <span class="brand-icon">A</span>
+          <span style="font-weight:700;font-size:1.05rem;">AuditToolkit Labs</span>
+        </div>
+        <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
+        <p style="font-size:.82rem;">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
+          <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
+          <li><a href="#products">CMDB Asset Platform</a></li>
+          <li><a href="#products">Linux Audit Expansion</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="docs.html">Documentation</a></li>
+          <li><a href="releases.html">Release Notes</a></li>
+          <li><a href="support.html">Support</a></li>
+          <li><a href="support.html#security">Security Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
+          <li><a href="https://github.com/AuditToolkitLabs" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="support.html#contact">Send an Enquiry</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Licence: Business Source Licence (BSL). See individual product EULA for full usage rights.</p>
+      <p>This site is for informational and preview purposes only. No production downloads available.</p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/nav.js"></script>
 </body>
 </html>
