@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation — AuditToolkit Labs</title>
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="assets/css/site.css" />
+  <style>
+    .doc-body { max-width: 860px; }
+    .doc-body h1 { font-size: clamp(1.5rem,3vw,2.1rem); color: var(--text); margin: 0 0 .6em; }
+    .doc-body h2 { font-size: 1.35rem; color: var(--text); margin: 2em 0 .5em; padding-bottom: .4em; border-bottom: 1px solid var(--border); }
+    .doc-body h3 { font-size: 1.08rem; color: var(--text); margin: 1.5em 0 .4em; }
+    .doc-body h4 { font-size: .97rem; color: var(--muted); margin: 1.2em 0 .3em; }
+    .doc-body p  { color: var(--muted); margin: 0 0 1em; }
+    .doc-body ul, .doc-body ol { color: var(--muted); padding-left: 1.4em; margin: 0 0 1em; }
+    .doc-body li { margin-bottom: 5px; }
+    .doc-body a  { color: var(--accent); }
+    .doc-body a:hover { color: var(--accent-h); }
+    .doc-body strong { color: var(--text); }
+    .doc-body em { color: var(--muted); }
+    .doc-body blockquote {
+      border-left: 3px solid var(--accent);
+      margin: 1.2em 0; padding: .6em 1em;
+      background: var(--panel); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      color: var(--muted);
+    }
+    .doc-body blockquote p { margin: 0; }
+    .doc-body pre {
+      background: var(--panel-2); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 1em 1.2em;
+      overflow-x: auto; margin: 0 0 1.2em;
+    }
+    .doc-body pre code { background: none; padding: 0; color: var(--accent-2); font-size: .87em; border-radius: 0; }
+    .doc-body code { font-size: .88em; background: var(--panel-2); padding: 2px 6px; border-radius: 4px; color: var(--accent-2); }
+    .doc-body table { width: 100%; border-collapse: collapse; margin: 0 0 1.5em; font-size: .92em; }
+    .doc-body th { background: var(--panel-2); color: var(--text); text-align: left; padding: 9px 13px; border: 1px solid var(--border); font-weight: 600; }
+    .doc-body td { padding: 8px 13px; border: 1px solid var(--border); color: var(--muted); vertical-align: top; }
+    .doc-body tr:nth-child(even) td { background: var(--panel); }
+    .doc-body hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+    .doc-body img { max-width: 100%; border-radius: var(--radius-sm); margin: .5em 0; }
+    .doc-loading { color: var(--muted); text-align: center; padding: 64px 0; font-size: 1rem; }
+    .doc-error   { color: var(--accent-3); }
+    .doc-meta    { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap"><div class="nav-inner"><a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a><ul class="nav-links"><li><a href="index.html#products">Products</a></li><li><a href="docs.html" class="active">Documentation</a></li><li><a href="releases.html">Releases</a></li><li><a href="licensing.html">Licensing</a></li><li><a href="support.html">Support</a></li></ul><div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div><button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button></div></div></nav>
+<div class="nav-mobile" id="nav-mobile"><a href="index.html">Home</a><a href="index.html#products">Products</a><a href="docs.html">Documentation</a><a href="releases.html">Releases</a><a href="licensing.html">Licensing</a><a href="support.html">Support</a></div>
+
+<div class="page-hero" id="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb" id="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span>
+      <a href="docs.html">Documentation Hub</a><span class="sep">/</span>
+      <a href="#" id="bc-product">Docs</a><span class="sep">/</span>
+      <span class="cur" id="bc-title">Loading&#8230;</span>
+    </div>
+    <p class="eyebrow" id="doc-eyebrow">Documentation</p>
+    <h1 id="doc-hero-title">Loading document&#8230;</h1>
+    <div class="flex flex-wrap gap-8 mt-16">
+      <a href="#" id="back-btn" class="btn btn-secondary btn-sm">&#8592; Back to Docs Index</a>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="doc-meta" id="doc-meta" style="display:none;">
+      <span class="badge badge-muted" id="doc-num-badge"></span>
+      <span class="badge badge-blue" id="doc-product-badge"></span>
+    </div>
+    <div class="doc-body" id="doc-body">
+      <p class="doc-loading">Loading document&#8230;</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer"><div class="wrap"><div class="footer-bottom"><p>&copy; 2026 AuditToolkit Labs. All rights reserved.</p></div></div></footer>
+
+<script src="assets/js/nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var src    = params.get('src');
+  var docBody     = document.getElementById('doc-body');
+  var heroTitle   = document.getElementById('doc-hero-title');
+  var bcTitle     = document.getElementById('bc-title');
+  var bcProduct   = document.getElementById('bc-product');
+  var backBtn     = document.getElementById('back-btn');
+  var eyebrow     = document.getElementById('doc-eyebrow');
+  var docMeta     = document.getElementById('doc-meta');
+  var numBadge    = document.getElementById('doc-num-badge');
+  var prodBadge   = document.getElementById('doc-product-badge');
+
+  if (!src) {
+    docBody.innerHTML = '<p class="doc-error">No document specified. <a href="docs.html">Return to Documentation Hub.</a></p>';
+    heroTitle.textContent = 'Document Not Found';
+    return;
+  }
+
+  // Detect product
+  var productName = 'Documentation';
+  var productLink = 'docs.html';
+  var eyebrowText = 'Documentation';
+  var prodBadgeText = '';
+
+  if (src.indexOf('linux-audit-expansion') !== -1) {
+    productName  = 'Linux Audit Expansion Docs';
+    productLink  = 'linux-audit-expansion-documentation.html';
+    eyebrowText  = 'Linux Audit Expansion';
+    prodBadgeText = 'Linux Audit Expansion';
+  } else if (src.indexOf('cmdb-api') !== -1) {
+    productName  = 'CMDB API Docs';
+    productLink  = 'cmdb-api-documentation.html';
+    eyebrowText  = 'CMDB API Data Collection Tool';
+    prodBadgeText = 'CMDB API Data Collection Tool';
+  }
+
+  bcProduct.textContent = productName;
+  bcProduct.href        = productLink;
+  backBtn.href          = productLink;
+  eyebrow.textContent   = eyebrowText;
+  prodBadge.textContent = prodBadgeText;
+
+  // Extract doc number from filename (e.g. "01-purpose-and-audience.md" → "Doc 01")
+  var filename = src.split('/').pop();
+  var numMatch = filename.match(/^(\d+)-/);
+  if (numMatch) { numBadge.textContent = 'Doc ' + numMatch[1]; docMeta.style.display = 'flex'; }
+
+  // Fetch raw content from GitHub
+  var rawUrl = 'https://raw.githubusercontent.com/AuditToolkitLabs/audit-toolkit-preview/main/' + src;
+
+  fetch(rawUrl)
+    .then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.text();
+    })
+    .then(function (md) {
+      var html = marked.parse(md);
+      docBody.innerHTML = html;
+
+      // Extract title from first H1, promote to hero
+      var firstH1 = docBody.querySelector('h1');
+      var title   = firstH1 ? firstH1.textContent.trim() : filename.replace(/\.md$/,'').replace(/-/g,' ');
+      document.title    = title + ' — AuditToolkit Labs';
+      heroTitle.textContent = title;
+      bcTitle.textContent   = title;
+      if (firstH1) firstH1.remove(); // already shown in page hero
+    })
+    .catch(function (err) {
+      docBody.innerHTML = '<p class="doc-error">Could not load document (' + err.message + '). <a href="' + productLink + '">Return to docs index.</a></p>';
+      heroTitle.textContent = 'Document Unavailable';
+      bcTitle.textContent   = 'Error';
+    });
+}());
+</script>
+
+</body>
+</html>
