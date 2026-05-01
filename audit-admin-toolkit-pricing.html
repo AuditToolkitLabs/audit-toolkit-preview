@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audit Admin Toolkit — Licensing &amp; Pricing | AuditToolkit Labs</title>
+  <meta name="description" content="Licensing tiers and pricing for the Audit Admin Toolkit. Five tiers: Community (free), Starter, Professional, Business, and Enterprise. BSL 1.1." />
+  <link rel="stylesheet" href="assets/css/site.css" />
+  <style>
+    .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:32px}
+    .pricing-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:32px 28px;display:flex;flex-direction:column;position:relative}
+    .pricing-card.pricing-featured{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 20%,transparent)}
+    .pricing-featured-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.75rem;font-weight:700;padding:4px 14px;border-radius:20px;white-space:nowrap}
+    .pricing-tier{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+    .pricing-card h3{font-size:1.35rem;margin:0 0 8px}
+    .pricing-desc{font-size:.9rem;color:var(--text-muted);margin:0 0 24px;flex:1}
+    .pricing-cta-area{margin-top:auto}
+    .pricing-quote{font-size:.88rem;color:var(--text-muted);margin:0 0 12px;font-style:italic}
+    .pricing-features{list-style:none;padding:0;margin:0 0 24px}
+    .pricing-features li{font-size:.88rem;padding:6px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:flex-start}
+    .pricing-features li:last-child{border-bottom:none}
+    .pricing-features li::before{content:"✓";color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px}
+    .pricing-features li.feat-x::before{content:"—";color:var(--text-muted)}
+    .stripe-note{font-size:.8rem;color:var(--text-muted);margin-top:8px;text-align:center}
+  </style>
+
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="releases.html">Releases</a></li>
+        <li><a href="licensing.html" class="active">Licensing</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+      <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="index.html#products">Products</a>
+  <a href="docs.html">Documentation</a>
+  <a href="releases.html">Releases</a>
+  <a href="licensing.html">Licensing</a>
+  <a href="support.html">Support</a>
+  <a href="support.html#contact" style="color:var(--accent);font-weight:600;">Contact Us</a>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span>
+      <a href="licensing.html">Licensing &amp; Pricing</a><span class="sep">/</span>
+      <span class="cur">Audit Admin Toolkit</span>
+    </div>
+    <p class="eyebrow">Licensing &amp; Pricing</p>
+    <h1>Audit Admin Toolkit</h1>
+    <p>Five-tier model: Community (free), Starter, Professional, Business, and Enterprise. Tiers are based on the number of managed servers. All paid tier pricing is by agreement — contact us for a quote.</p>
+    <div class="flex gap-12 flex-wrap mt-24">
+      <a href="support.html#contact" class="btn btn-primary">Request a Quote &rarr;</a>
+      <a href="audit-toolkit.html" class="btn btn-secondary">Product Details</a>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+
+    <div class="callout" style="margin-bottom:40px;">
+      <strong>Community tier is free with no expiry.</strong> Paid tiers are currently priced by agreement during our initial launch period — contact us for a firm quote. Early-adopter pricing is available. Licensed under the <strong>Business Source License 1.1 (BSL)</strong> — converts to MIT on 14 February 2030.
+    </div>
+
+    <div class="pricing-grid">
+
+      <div class="pricing-card">
+        <p class="pricing-tier">Community</p>
+        <h3>Community</h3>
+        <p class="pricing-desc">Free forever for individuals and small teams managing up to 25 servers.</p>
+        <ul class="pricing-features">
+          <li>Up to <strong>25 servers</strong></li>
+          <li>Full feature set for community use</li>
+          <li>GitHub Issues support</li>
+          <li class="feat-x">Commercial or MSP use</li>
+          <li class="feat-x">Paid support SLA</li>
+        </ul>
+        <div class="pricing-cta-area">
+          <p class="pricing-quote" style="font-size:1.4rem;font-weight:700;color:var(--text);font-style:normal;margin-bottom:4px;">£0 <span style="font-size:.85rem;font-weight:400;color:var(--text-muted);">free forever</span></p>
+          <a href="audit-toolkit-releases.html" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">View Releases &amp; Download</a>
+          <p class="stripe-note">No purchase or registration required</p>
+        </div>
+      </div>
+
+      <div class="pricing-card">
+        <p class="pricing-tier">Starter</p>
+        <h3>Starter</h3>
+        <p class="pricing-desc">For growing teams that have outgrown the Community tier and need to manage up to 50 servers.</p>
+        <ul class="pricing-features">
+          <li>26–<strong>50 servers</strong></li>
+          <li>Commercial production use</li>
+          <li>Email support</li>
+        </ul>
+        <div class="pricing-cta-area">
+          <p class="pricing-quote">Price on application</p>
+          <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Sales</a>
+          <p class="stripe-note">Early-adopter pricing available</p>
+        </div>
+      </div>
+
+      <div class="pricing-card pricing-featured">
+        <span class="pricing-featured-badge">Most Popular</span>
+        <p class="pricing-tier">Professional</p>
+        <h3>Professional</h3>
+        <p class="pricing-desc">For mid-size operations and MSP teams managing up to 150 servers in production.</p>
+        <ul class="pricing-features">
+          <li>51–<strong>150 servers</strong></li>
+          <li>Commercial production use</li>
+          <li>Priority email support</li>
+          <li>MSP use permitted</li>
+        </ul>
+        <div class="pricing-cta-area">
+          <p class="pricing-quote">Price on application</p>
+          <a href="support.html#contact" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Contact Sales</a>
+          <p class="stripe-note">Early-adopter pricing available</p>
+        </div>
+      </div>
+
+      <div class="pricing-card">
+        <p class="pricing-tier">Business</p>
+        <h3>Business</h3>
+        <p class="pricing-desc">For large enterprises managing up to 500 servers across multiple environments.</p>
+        <ul class="pricing-features">
+          <li>151–<strong>500 servers</strong></li>
+          <li>Commercial production use</li>
+          <li>Priority email support</li>
+          <li>MSP use permitted</li>
+        </ul>
+        <div class="pricing-cta-area">
+          <p class="pricing-quote">Price on application</p>
+          <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Sales</a>
+          <p class="stripe-note">Early-adopter pricing available</p>
+        </div>
+      </div>
+
+      <div class="pricing-card">
+        <p class="pricing-tier">Enterprise</p>
+        <h3>Enterprise</h3>
+        <p class="pricing-desc">Unlimited server count for the largest enterprise and MSSP deployments. Requires a separately signed written agreement.</p>
+        <ul class="pricing-features">
+          <li><strong>Unlimited servers</strong></li>
+          <li>Commercial production use</li>
+          <li>Custom SLA on request</li>
+          <li>MSSP use permitted</li>
+        </ul>
+        <div class="pricing-cta-area">
+          <p class="pricing-quote">Price on application — requires a separately signed written agreement</p>
+          <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Sales</a>
+          <p class="stripe-note">Bespoke agreement required</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:40px;padding-top:32px;border-top:1px solid var(--border);">
+      <a href="licensing.html" style="font-size:.9rem;color:var(--accent);">&larr; Back to all products</a>
+    </div>
+
+  </div>
+</section>
+
+<script src="assets/js/nav.js"></script>
+</body>
+</html>

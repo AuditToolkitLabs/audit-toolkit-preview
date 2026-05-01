@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CMDB API Data Collection Tool — Licensing &amp; Pricing | AuditToolkit Labs</title>
+  <meta name="description" content="Licensing tiers and pricing for the CMDB API Data Collection Tool. Two-dimensional model: Deployment Tier and Plan Tier. Stripe checkout live for paid plans." />
+  <link rel="stylesheet" href="assets/css/site.css" />
+  <style>
+    .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:32px}
+    .pricing-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:32px 28px;display:flex;flex-direction:column;position:relative}
+    .pricing-card.pricing-featured{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 20%,transparent)}
+    .pricing-featured-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.75rem;font-weight:700;padding:4px 14px;border-radius:20px;white-space:nowrap}
+    .pricing-tier{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+    .pricing-card h3{font-size:1.35rem;margin:0 0 8px}
+    .pricing-desc{font-size:.9rem;color:var(--text-muted);margin:0 0 24px;flex:1}
+    .pricing-cta-area{margin-top:auto}
+    .pricing-quote{font-size:.88rem;color:var(--text-muted);margin:0 0 12px;font-style:italic}
+    .pricing-features{list-style:none;padding:0;margin:0 0 24px}
+    .pricing-features li{font-size:.88rem;padding:6px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:flex-start}
+    .pricing-features li:last-child{border-bottom:none}
+    .pricing-features li::before{content:"✓";color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px}
+    .pricing-features li.feat-x::before{content:"—";color:var(--text-muted)}
+    .pricing-section{padding:48px 0;border-top:1px solid var(--border)}
+    .pricing-section:first-of-type{border-top:none}
+    .stripe-note{font-size:.8rem;color:var(--text-muted);margin-top:8px;text-align:center}
+    .dim-label{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--surface-alt,#f3f4f6);color:var(--text-muted);border:1px solid var(--border);border-radius:6px;padding:3px 10px;margin-bottom:16px}
+    .dim-intro{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin-bottom:32px}
+    .dim-intro p{margin:0;font-size:.92rem;color:var(--text-muted)}
+    .combo-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:.85rem}
+    .combo-table th,.combo-table td{border:1px solid var(--border);padding:8px 12px;text-align:left}
+    .combo-table th{background:var(--surface);font-weight:700;color:var(--text-muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+    .combo-table tr:hover td{background:var(--surface)}
+  </style>
+
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="releases.html">Releases</a></li>
+        <li><a href="licensing.html" class="active">Licensing</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+      <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="index.html#products">Products</a>
+  <a href="docs.html">Documentation</a>
+  <a href="releases.html">Releases</a>
+  <a href="licensing.html">Licensing</a>
+  <a href="support.html">Support</a>
+  <a href="support.html#contact" style="color:var(--accent);font-weight:600;">Contact Us</a>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span>
+      <a href="licensing.html">Licensing &amp; Pricing</a><span class="sep">/</span>
+      <span class="cur">CMDB API Data Collection Tool</span>
+    </div>
+    <p class="eyebrow">Licensing &amp; Pricing</p>
+    <h1>CMDB API Data Collection Tool</h1>
+    <p>Two-dimensional licensing: choose a Deployment Tier (how many Workspaces) and a Plan Tier (per-Workspace operational limits). Stripe checkout is live for all Plan Tier subscriptions.</p>
+    <div class="flex gap-12 flex-wrap mt-24">
+      <a href="support.html#contact" class="btn btn-primary">Request a Quote &rarr;</a>
+      <a href="cmdb-tool.html" class="btn btn-secondary">Product Details</a>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+
+    <div class="callout callout-info" style="margin-bottom:40px;">
+      <strong>Stripe checkout is live.</strong> Plan Tier subscriptions can be purchased directly below. Your Keygen licence key is generated and emailed automatically on successful payment. Deployment Tier selection is confirmed at checkout — contact us if you need Workgroup, MSP, or OEM terms applied to your order.
+    </div>
+
+    <!-- Dimension A -->
+    <div class="pricing-section" style="border-top:none;padding-top:0;">
+      <span class="dim-label">Dimension A &mdash; Deployment Tier</span>
+      <p style="font-size:.9rem;color:var(--text-muted);margin:0 0 4px;">Controls the maximum number of Workspaces per Installation and permitted use cases. Configured via the <code>LICENSE_TIER</code> environment variable.</p>
+
+      <div class="pricing-grid">
+
+        <div class="pricing-card">
+          <p class="pricing-tier">Standard</p>
+          <h3>Standard</h3>
+          <p class="pricing-desc">Single Workspace per Installation. For a single organisation managing its own internal IT assets.</p>
+          <ul class="pricing-features">
+            <li>1 Workspace per Installation</li>
+            <li>Single legal entity — own IT use only</li>
+            <li>One licence per Installation</li>
+            <li class="feat-x">Workspace partitioning by dept / BU / environment</li>
+            <li class="feat-x">Managed Customer Workspaces</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Select a Plan Tier below, then contact us to confirm Standard deployment terms.</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Us</a>
+          </div>
+        </div>
+
+        <div class="pricing-card pricing-featured">
+          <span class="pricing-featured-badge">Most Popular</span>
+          <p class="pricing-tier">Workgroup</p>
+          <h3>Workgroup</h3>
+          <p class="pricing-desc">Up to 10 Workspaces per Installation. For a single organisation partitioning across departments, business units, or environments.</p>
+          <ul class="pricing-features">
+            <li>Up to 10 Workspaces per Installation</li>
+            <li>Single legal entity — own IT use only</li>
+            <li>Partition by dept, BU, or environment</li>
+            <li class="feat-x">Workspaces must not correspond to Managed Customers</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Select a Plan Tier below, then contact us to confirm Workgroup deployment terms.</p>
+            <a href="support.html#contact" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Contact Us</a>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <p class="pricing-tier">MSP</p>
+          <h3>MSP</h3>
+          <p class="pricing-desc">Unlimited Workspaces per Installation. For Managed Service Providers operating the platform for multiple end customers. Per-endpoint royalty applies.</p>
+          <ul class="pricing-features">
+            <li>Unlimited Workspaces per Installation</li>
+            <li>Each Workspace = one Managed Customer</li>
+            <li>Per-endpoint royalty — quarterly usage report</li>
+            <li class="feat-x">White-labelling / re-branding (requires OEM)</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Subscription + per-endpoint quarterly royalty.</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Sales</a>
+            <p class="stripe-note">MSP terms applied via order form</p>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <p class="pricing-tier">OEM</p>
+          <h3>OEM / Embedded</h3>
+          <p class="pricing-desc">Permits redistribution, embedding, white-labelling, and all commercial uses not covered by other tiers. Requires a separately negotiated written agreement.</p>
+          <ul class="pricing-features">
+            <li>Unlimited Workspaces per Installation</li>
+            <li>Redistribution and embedding permitted</li>
+            <li>White-labelling and re-branding permitted</li>
+            <li>All commercial use cases</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Requires a separately signed written agreement. Setting <code>LICENSE_TIER=oem</code> without such an agreement is a material breach.</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Sales</a>
+            <p class="stripe-note">Bespoke agreement required — not self-serve</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Dimension B -->
+    <div class="pricing-section">
+      <span class="dim-label">Dimension B &mdash; Plan Tier (per Workspace)</span>
+      <p style="font-size:.9rem;color:var(--text-muted);margin:0 0 4px;">Stored in the <code>tenant.tier</code> database column. Controls maximum managed hosts, API request rate, and scan scheduling mode per Workspace. All prices exclusive of VAT.</p>
+
+      <div class="pricing-grid">
+
+        <div class="pricing-card">
+          <p class="pricing-tier">Beta</p>
+          <h3>Beta Access</h3>
+          <p class="pricing-desc">Free 30-day trial of pre-release builds. Test with up to 25 hosts and provide early feedback.</p>
+          <ul class="pricing-features">
+            <li>Pre-release builds</li>
+            <li>Feature feedback programme</li>
+            <li>Up to <strong>25 hosts</strong> per Workspace</li>
+            <li class="feat-x">Production SLA</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote" style="font-size:1.4rem;font-weight:700;color:var(--text);font-style:normal;margin-bottom:4px;">£0 <span style="font-size:.85rem;font-weight:400;color:var(--text-muted);">/ 30 days</span></p>
+            <p class="pricing-quote">Free trial &mdash; converts to Starter (£790/yr) after 30 days unless cancelled</p>
+            <a href="https://checkout.audittoolkitlabs.com/b/fZu4gz0nk4D873YbLXfQI02" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Start Free Trial &rarr;</a>
+            <p class="stripe-note">Secure checkout via Stripe &middot; No credit card charged until trial ends</p>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <p class="pricing-tier">Starter</p>
+          <h3>Starter</h3>
+          <p class="pricing-desc">For evaluation, lab, and small proof-of-concept deployments.</p>
+          <ul class="pricing-features">
+            <li>Up to <strong>25 hosts</strong> per Workspace</li>
+            <li>API rate limit: <strong>60 requests / hour</strong></li>
+            <li>Manual scans only</li>
+            <li class="feat-x">Scheduled / automatic scans</li>
+            <li class="feat-x">Celery async scan workers</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote" style="font-size:1.4rem;font-weight:700;color:var(--text);font-style:normal;margin-bottom:4px;">£790 <span style="font-size:.85rem;font-weight:400;color:var(--text-muted);">/ year</span></p>
+            <p class="pricing-quote">excl. VAT &mdash; annual subscription</p>
+            <a href="https://checkout.audittoolkitlabs.com/b/dRm5kD1ro3z4gEycQ1fQI03" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Buy Starter &rarr;</a>
+            <p class="stripe-note">Secure checkout via Stripe &middot; Keygen key emailed on payment</p>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <p class="pricing-tier">Business</p>
+          <h3>Business</h3>
+          <p class="pricing-desc">For small to medium teams running regular automated discovery.</p>
+          <ul class="pricing-features">
+            <li>Up to <strong>100 hosts</strong> per Workspace</li>
+            <li>API rate limit: <strong>300 requests / hour</strong></li>
+            <li>Daily automatic scans</li>
+            <li class="feat-x">Configurable scan schedules</li>
+            <li class="feat-x">Celery async scan workers</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote" style="font-size:1.4rem;font-weight:700;color:var(--text);font-style:normal;margin-bottom:4px;">£2,490 <span style="font-size:.85rem;font-weight:400;color:var(--text-muted);">/ year</span></p>
+            <p class="pricing-quote">excl. VAT &mdash; annual subscription</p>
+            <a href="https://checkout.audittoolkitlabs.com/b/dRm28r8TQ8To2NI3frfQI04" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Buy Business &rarr;</a>
+            <p class="stripe-note">Secure checkout via Stripe &middot; Keygen key emailed on payment</p>
+          </div>
+        </div>
+
+        <div class="pricing-card pricing-featured">
+          <span class="pricing-featured-badge">Recommended</span>
+          <p class="pricing-tier">Professional</p>
+          <h3>Professional</h3>
+          <p class="pricing-desc">For large deployments and MSP per-customer Workspaces requiring configurable scheduling.</p>
+          <ul class="pricing-features">
+            <li>Up to <strong>500 hosts</strong> per Workspace</li>
+            <li>API rate limit: <strong>1,000 requests / hour</strong></li>
+            <li>Configurable scan schedules</li>
+            <li class="feat-x">Celery async scan workers</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote" style="font-size:1.4rem;font-weight:700;color:var(--text);font-style:normal;margin-bottom:4px;">£8,988 <span style="font-size:.85rem;font-weight:400;color:var(--text-muted);">/ year</span></p>
+            <p class="pricing-quote">excl. VAT &mdash; annual subscription</p>
+            <a href="https://checkout.audittoolkitlabs.com/b/bJecN59XUfhMaga7vHfQI05" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Buy Professional &rarr;</a>
+            <p class="stripe-note">Secure checkout via Stripe &middot; Keygen key emailed on payment</p>
+          </div>
+        </div>
+
+        <div class="pricing-card">
+          <p class="pricing-tier">Enterprise</p>
+          <h3>Enterprise</h3>
+          <p class="pricing-desc">For global scale deployments requiring unlimited hosts and full async processing.</p>
+          <ul class="pricing-features">
+            <li><strong>Unlimited hosts</strong> per Workspace</li>
+            <li>API rate limit: <strong>10,000 requests / hour</strong></li>
+            <li>Configurable scan schedules</li>
+            <li>Celery async scan workers</li>
+          </ul>
+          <div class="pricing-cta-area">
+            <p class="pricing-quote">Price on application</p>
+            <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Sales &rarr;</a>
+            <p class="stripe-note">By agreement only &middot; Contact us for a tailored quote</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Combination examples -->
+      <div style="margin-top:40px;">
+        <h3 style="font-size:1rem;margin-bottom:12px;">Combination examples</h3>
+        <table class="combo-table">
+          <thead>
+            <tr>
+              <th>Deployment Tier (Dim A)</th>
+              <th>Plan Tier (Dim B)</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Standard</td><td>Starter — £790/yr</td><td>1 Workspace · 25 hosts · 60 rph · manual scans</td></tr>
+            <tr><td>Standard</td><td>Business — £2,490/yr</td><td>1 Workspace · 100 hosts · 300 rph · daily auto scans</td></tr>
+            <tr><td>Workgroup</td><td>Professional — £8,988/yr</td><td>Up to 10 Workspaces · 500 hosts each · 1,000 rph · configurable schedules</td></tr>
+            <tr><td>MSP</td><td>Enterprise — price on application</td><td>Unlimited Workspaces · unlimited hosts · 10,000 rph · async Celery workers · quarterly royalty</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div style="margin-top:40px;padding-top:32px;border-top:1px solid var(--border);">
+      <a href="licensing.html" style="font-size:.9rem;color:var(--accent);">&larr; Back to all products</a>
+    </div>
+
+  </div>
+</section>
+
+<script src="assets/js/nav.js"></script>
+</body>
+</html>
