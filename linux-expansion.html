@@ -43,7 +43,9 @@
     <div class="flex flex-wrap gap-8 mb-16">
       <span class="badge badge-amber">In Preview</span>
       <span class="badge badge-muted">Extension for Audit Admin Toolkit</span>
-      <span class="badge badge-blue">RHEL &middot; Debian &middot; Ubuntu &middot; SLES</span>
+      <span class="badge badge-blue">RHEL &middot; Debian &middot; Ubuntu &middot; SLES &middot; Alpine &middot; Arch</span>
+      <span class="badge badge-green">&#10003; OWASP Score 97/100 &mdash; A+</span>
+      <span class="badge badge-muted">v1.0.4</span>
     </div>
     <h1>Linux Audit Coverage Expansion</h1>
     <p>Expanded Linux control coverage for posture validation, hardening verification, and evidence-focused compliance reporting. An in-preview extension module for the <a href="audit-toolkit.html">Audit Admin Toolkit</a> that deepens Linux audit breadth across mixed enterprise Linux estates.</p>
@@ -52,6 +54,7 @@
     </div>
     <div class="flex gap-12 flex-wrap mt-24">
       <a href="support.html#contact" class="btn btn-primary">Register Interest</a>
+      <a href="linux-audit-expansion-documentation.html" class="btn btn-secondary">Documentation</a>
       <a href="audit-toolkit.html" class="btn btn-secondary">View Audit Admin Toolkit</a>
       <a href="https://github.com/AuditToolkitLabs/releases/releases/tag/audit-toolkit-lite%2Fv1.0.4" target="_blank" rel="noopener" class="btn btn-secondary">View v1.0.4 Tag</a>
       <a href="#screenshots" class="btn btn-secondary">View Screenshots</a>
@@ -136,10 +139,15 @@
         <h2>Tested across major enterprise Linux distributions</h2>
         <p>The expansion module targets the Linux distributions most commonly found in enterprise, financial, and public sector environments.</p>
         <ul class="feature-list mt-24">
-          <li><span class="icon">&#10003;</span><span class="text"><strong>RHEL / CentOS / Rocky / AlmaLinux</strong> &mdash; Red Hat ecosystem including systemd hardening and SELinux controls.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text"><strong>Ubuntu LTS</strong> &mdash; 20.04 and 22.04 LTS with AppArmor profile and snap security controls.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text"><strong>Debian Stable</strong> &mdash; Current stable branch with package audit and dpkg-based verification.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text"><strong>SUSE Linux Enterprise Server (SLES)</strong> &mdash; SLES 15 baseline and hardening coverage.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text"><strong>RHEL / AlmaLinux / Rocky</strong> &mdash; RHEL 8 &amp; 9, systemd hardening and SELinux controls.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text"><strong>Ubuntu LTS</strong> &mdash; 22.04 and 24.04 LTS with AppArmor and snap security controls.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text"><strong>Debian</strong> &mdash; 11 Bullseye and 12 Bookworm with dpkg-based verification.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text"><strong>Fedora</strong> &mdash; 39, 40, and 41 with dnf and systemd hardening.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text"><strong>openSUSE Leap / Tumbleweed</strong> &mdash; 15.x with zypper-based controls.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text"><strong>Alpine Linux</strong> &mdash; 3.19 and 3.20 with apk and OpenRC service checks.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text"><strong>Arch Linux</strong> &mdash; Rolling release with pacman and systemd hardening.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text"><strong>Void Linux</strong> &mdash; Rolling with xbps and runit service manager checks.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text"><strong>Gentoo</strong> &mdash; Stable branch with emerge and OpenRC / systemd support.</span></li>
         </ul>
         <div class="flex gap-12 flex-wrap mt-32">
           <a href="support.html#contact" class="btn btn-primary">Register Interest</a>
@@ -159,6 +167,54 @@
             <a href="support.html#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Contact the Team</a>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="security" style="background:linear-gradient(160deg,#0a1524 0%,#0b1220 100%);border-top:1px solid var(--border);">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="eyebrow">Security Posture &mdash; AuditToolkit Linux Security Lite</p>
+        <h2>OWASP Score 97/100 &mdash; Grade A+</h2>
+        <p>AuditToolkit Linux Security Lite has been independently assessed against OWASP security criteria. As a Bash-based read-only tool (not a web application), the OWASP posture covers supply-chain integrity, code quality, script security, and dependency hygiene. The current score is <strong>97/100, Grade A+</strong>, assessed and revalidated in May 2026.</p>
+        <div class="flex flex-wrap gap-8 mb-24">
+          <span class="badge badge-green" style="font-size:.82rem;padding:6px 14px;">&#10003; 97/100 &mdash; A+</span>
+          <span class="badge badge-green" style="font-size:.82rem;padding:6px 14px;">&#10003; Read-Only by Design</span>
+          <span class="badge badge-green" style="font-size:.82rem;padding:6px 14px;">&#10003; No Network Egress</span>
+          <span class="badge badge-blue"  style="font-size:.82rem;padding:6px 14px;">Pure Bash &mdash; No Binaries</span>
+          <span class="badge badge-blue"  style="font-size:.82rem;padding:6px 14px;">GPG-Signed Releases</span>
+        </div>
+        <div class="flex gap-12 flex-wrap">
+          <a href="linux-audit-expansion-documentation.html" class="btn btn-primary">Security Documentation</a>
+          <a href="support.html#security" class="btn btn-secondary">Report a Vulnerability</a>
+        </div>
+        <p style="margin-top:20px;font-size:.85rem;">Full security detail including procurement FAQ and OWASP scorecard available in the <a href="linux-audit-expansion-documentation.html">documentation portal</a>. For procurement and due-diligence enquiries, see the <a href="doc-viewer.html?src=customer-docs/linux-audit-expansion/22-security-faq.md" target="_blank" rel="noopener">Security FAQ (Doc 22)</a>.</p>
+      </div>
+      <div class="owasp-block">
+        <div class="owasp-headline">
+          <div class="owasp-score-badge">A+</div>
+          <div>
+            <div style="font-size:1.05rem;font-weight:700;color:var(--text);">97/100 &mdash; OWASP Security Assessment</div>
+            <div style="font-size:.83rem;color:var(--subtle);">AuditToolkit Linux Security Lite &middot; v1.0.4 &middot; May 2026</div>
+          </div>
+        </div>
+        <table class="owasp-table">
+          <thead><tr><th>Security Property</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Read-only execution (no system changes)</td>     <td><span class="badge badge-green">PASS</span></td></tr>
+            <tr><td>No outbound network connections at runtime</td>  <td><span class="badge badge-green">PASS</span></td></tr>
+            <tr><td>Supply-chain integrity (SHA-256 + GPG)</td>      <td><span class="badge badge-green">PASS</span></td></tr>
+            <tr><td>No compiled binaries or obfuscated code</td>     <td><span class="badge badge-green">PASS</span></td></tr>
+            <tr><td>Minimal runtime dependencies (stdlib only)</td>  <td><span class="badge badge-green">PASS</span></td></tr>
+            <tr><td>Structured, schema-validated JSON output</td>    <td><span class="badge badge-green">PASS</span></td></tr>
+            <tr><td>Privilege model documented (root/sudo/unpriv)</td><td><span class="badge badge-green">PASS</span></td></tr>
+            <tr><td>No telemetry or phone-home capability</td>       <td><span class="badge badge-green">PASS</span></td></tr>
+            <tr><td>Report artefact handling guidance published</td> <td><span class="badge badge-green">PASS</span></td></tr>
+            <tr><td>Vulnerability disclosure process defined</td>    <td><span class="badge badge-green">PASS</span></td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
