@@ -5,14 +5,17 @@
 | Document version | 1.1 |
 | Last updated | 2026-05-03 |
 | Product | AuditToolkit Linux Security Lite |
-| Release | v1.1.0 |
+| Release | v1.1.1 |
 | Vendor | AuditToolkitLabs |
 | Vendor contact | [admin@audittoolkitlabs.com](mailto:admin@audittoolkitlabs.com) |
 
 This index covers all customer-facing documentation for AuditToolkit
-Linux Security Lite version 1.1.0. Documents are numbered to reflect
+Linux Security Lite version 1.1.1. Documents are numbered to reflect
 the recommended reading order; you do not need to read every document
 before using the toolkit.
+
+This release includes the signed security documentation refresh and
+OWASP scorecard alignment updates published with v1.1.1.
 
 ---
 

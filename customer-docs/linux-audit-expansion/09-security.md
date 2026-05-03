@@ -95,7 +95,7 @@ Steps to harden the toolkit installation:
 The toolkit itself is a Bash-based tool, not a web application. Its OWASP
 posture covers supply-chain integrity, code quality, and script security.
 A full OWASP security scorecard is maintained by AuditToolkitLabs and
-available at `docs/OWASP-SECURITY-SCORECARD.md` (current score: 97/100, A+).
+available at `docs/OWASP-SECURITY-SCORECARD.md` (current score: 100/100, A+).
 
 For procurement and due-diligence enquiries, see
 [22 — Security FAQ](22-security-faq.md).

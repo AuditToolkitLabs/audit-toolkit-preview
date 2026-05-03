@@ -7,7 +7,7 @@
 | Document version | 1.1 |
 | Last updated | 2026-05-01 |
 | Product | AuditToolkit Linux Security Lite |
-| Release | v1.1.0 |
+| Release | v1.1.1 |
 
 ---
 

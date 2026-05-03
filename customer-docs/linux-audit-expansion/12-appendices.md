@@ -121,7 +121,7 @@ deeper engineering-level reference:
 | `docs/REPORT-CONSUMER-GUIDE.md` | How to parse and consume the JSON report in downstream systems. |
 | `docs/HARDENING-CONTROL-BASELINE.md` | Full mapping of checks to control frameworks. |
 | `docs/LINUX-DISTRO-COVERAGE-MATRIX.md` | Per-distro check coverage and known limitations. |
-| `docs/OWASP-SECURITY-SCORECARD.md` | The toolkit's own OWASP Top 10 assessment (score: 97/100). |
+| `docs/OWASP-SECURITY-SCORECARD.md` | The toolkit's own OWASP Top 10 assessment (score: 100/100). |
 | `docs/DEPLOYMENT-GUIDE.md` | Detailed deployment and configuration reference. |
 | `docs/TROUBLESHOOTING-GUIDE.md` | Common error conditions and resolution steps. |
 | `docs/THREAT-MODEL.md` | Threat model for the toolkit and its audit environment. |
