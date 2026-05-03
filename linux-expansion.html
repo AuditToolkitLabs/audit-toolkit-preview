@@ -183,7 +183,7 @@
       <div>
         <p class="eyebrow">Security Posture &mdash; AuditToolkit Linux Security Lite</p>
         <h2>OWASP Score 97/100 &mdash; Grade A+</h2>
-        <p>AuditToolkit Linux Security Lite has been independently assessed against OWASP security criteria. As a Bash-based read-only tool (not a web application), the OWASP posture covers supply-chain integrity, code quality, script security, and dependency hygiene. The current score is <strong>97/100, Grade A+</strong>, assessed and revalidated in May 2026.</p>
+        <p>AuditToolkit Linux Security Lite has been independently assessed against OWASP security criteria. As a Bash-based read-only tool (not a web application), the OWASP posture covers supply-chain integrity, code quality, script security, and dependency hygiene. The current score is <strong>97/100, Grade A+</strong>, assessed and revalidated in May 2026, with one documented improvement item remaining for release artifact signing in CI/CD.</p>
         <div class="flex flex-wrap gap-8 mb-24">
           <span class="badge badge-green" style="font-size:.82rem;padding:6px 14px;">&#10003; 97/100 &mdash; A+</span>
           <span class="badge badge-green" style="font-size:.82rem;padding:6px 14px;">&#10003; Read-Only by Design</span>
@@ -193,9 +193,10 @@
         </div>
         <div class="flex gap-12 flex-wrap">
           <a href="linux-audit-expansion-documentation.html" class="btn btn-primary">Security Documentation</a>
+          <a href="doc-viewer.html?src=customer-docs/linux-audit-expansion/OWASP-SECURITY-SCORECARD.md" class="btn btn-secondary" target="_blank" rel="noopener">OWASP Scorecard</a>
           <a href="support.html#security" class="btn btn-secondary">Report a Vulnerability</a>
         </div>
-        <p style="margin-top:20px;font-size:.85rem;">Full security detail including procurement FAQ and OWASP scorecard available in the <a href="linux-audit-expansion-documentation.html">documentation portal</a>. For procurement and due-diligence enquiries, see the <a href="doc-viewer.html?src=customer-docs/linux-audit-expansion/22-security-faq.md" target="_blank" rel="noopener">Security FAQ (Doc 22)</a>.</p>
+        <p style="margin-top:20px;font-size:.85rem;">Full security detail including procurement FAQ and the current OWASP scorecard is available in the <a href="linux-audit-expansion-documentation.html">documentation portal</a>. For procurement and due-diligence enquiries, see the <a href="doc-viewer.html?src=customer-docs/linux-audit-expansion/22-security-faq.md" target="_blank" rel="noopener">Security FAQ (Doc 22)</a>.</p>
       </div>
       <div class="owasp-block">
         <div class="owasp-headline">
@@ -218,6 +219,7 @@
             <tr><td>No telemetry or phone-home capability</td>       <td><span class="badge badge-green">PASS</span></td></tr>
             <tr><td>Report artefact handling guidance published</td> <td><span class="badge badge-green">PASS</span></td></tr>
             <tr><td>Vulnerability disclosure process defined</td>    <td><span class="badge badge-green">PASS</span></td></tr>
+            <tr><td>Release artifact signing in CI/CD</td>           <td><span class="badge badge-amber">IMPROVEMENT OPEN</span></td></tr>
           </tbody>
         </table>
       </div>
