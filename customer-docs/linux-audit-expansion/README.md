@@ -1,7 +1,7 @@
 # AuditToolkit Linux Security Lite — Customer Documentation
 
 This directory contains the complete customer-facing documentation for
-**AuditToolkit Linux Security Lite v1.0.1**, a multi-distro Bash audit
+**AuditToolkit Linux Security Lite v1.1.0**, a multi-distro Bash audit
 framework for Linux servers.
 
 ## Quick navigation
@@ -15,6 +15,7 @@ framework for Linux servers.
 | Connect to a SIEM | [15 — Quick Start: SIEM Integration](15-quick-start-siem-integration.md) |
 | Add a CI/CD gate | [14 — Quick Start: CI/CD Compliance Gate](14-quick-start-ci-cd-compliance-gate.md) |
 | Security/procurement FAQ | [22 — Security FAQ](22-security-faq.md) |
+| Enterprise feature model | [24 — Enterprise Compliance Platform](24-enterprise-compliance-platform.md) |
 | Contact support | [20 — Support Engagement Guide](20-support-engagement-guide.md) |
 | Full document index | [index.md](index.md) |
 
@@ -26,7 +27,7 @@ operational limits, and a procurement-facing security FAQ.
 
 ## Release
 
-v1.0.1 — published May 2026.
+v1.1.0 — published May 2026. Updated 2026-05-03 to include enterprise UI/API/CLI operator workflows.
 
 ## Vendor
 

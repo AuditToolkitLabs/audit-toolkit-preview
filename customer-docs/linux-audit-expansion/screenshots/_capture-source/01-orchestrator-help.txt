@@ -1,0 +1,100 @@
+Usage: orchestrator.sh [OPTIONS]
+
+Selection:
+  --domain NAME          Limit to a domain under audits/ (repeatable).
+                         Examples: platform | web | data | apps | storage | network | automation | advanced-controls | _lib
+  --match REGEX          Include scripts whose relative path matches REGEX (repeatable).
+  --path RELATIVE        Include a specific relative path (repeatable), e.g. audits/linux/web/servers/nginx-security-audit.sh
+  --exclude REGEX        Exclude scripts whose relative path matches REGEX (repeatable).
+  --plan FILE            Read newline-delimited script paths (relative to repo root) to execute.
+
+Asset Discovery:
+  --asset-inventory      Run asset discovery script before audits and save inventory JSON.
+  --inventory-output DIR Directory for inventory output (default: LOG_DIR).
+
+Execution:
+  --auto                 Auto-detect installed software and run matching audits (no manual selection).
+  --list                 Only list the final selection (no execution).
+  --interactive          Pick scripts interactively (uses 'fzf' if available; falls back to numbered menu).
+  --save-plan FILE       Save selected scripts to a plan file for future use.
+  --preset NAME          Use predefined preset: all | platform | web | security | minimal
+  --dry-run              Print what would run and exit.
+  --require-root         Exit with error if not running as root (compliance mode).
+  --sudo                 Run audits with sudo (prompts for password once).
+  --sudo-stdin           Run audits with sudo, reading password from stdin (for automation).
+  --non-interactive      Scheduled/unattended mode: fail if any prompt would occur.
+  --batch                Alias for --non-interactive.
+  --verbose              Extra output.
+  --json FILE            Write a machine-readable JSON report to FILE after execution.
+  --sarif FILE           Write a SARIF 2.1.0 report to FILE (for GitHub Code Scanning).
+  -h, --help             Show this help.
+
+Interactive Mode:
+  When using --interactive, you can:
+  - Use fzf (if installed) with multi-select (Tab/Shift-Tab)
+  - Fallback menu: enter numbers (e.g., "1 3 5" or "1-5" or "all")
+  - Type 'all' to select all audits
+  - Type 'none' or press Enter to cancel
+
+Presets:
+  --preset all           Run all discovered audits
+  --preset platform      Platform audits (OS, services, baseline)
+  --preset web           Web server audits (nginx, apache, PHP)
+  --preset security      Security-focused audits (firewall, SSH, updates)
+  --preset minimal       Core audits only (updates, services, firewall)
+
+Auto-Discovery:
+  --auto                 Detect installed software (nginx, postgres, docker, etc.) and
+                         automatically select matching audits. Domains with no detected
+                         stack are recorded in completeness.skipped_domains.
+
+Examples:
+  # Interactive selection with fzf
+  ./orchestrator.sh --interactive
+
+  # Run all platform audits
+  ./orchestrator.sh --domain platform
+
+  # Run all advanced controls audits
+  ./orchestrator.sh --domain advanced-controls
+
+  # Run specific audit
+  ./orchestrator.sh --path audits/linux/platform/baseline/updates.sh
+
+  # Run web audits and save selection
+  ./orchestrator.sh --domain web --interactive --save-plan web-plan.txt
+
+  # Reuse saved plan
+  ./orchestrator.sh --plan web-plan.txt
+
+  # Use preset
+  ./orchestrator.sh --preset security
+
+  # Run with sudo for complete coverage (prompts for password once)
+  ./orchestrator.sh --preset security --sudo
+
+  # Run with sudo from automation (password via stdin)
+  echo "password" | ./orchestrator.sh --preset security --sudo-stdin
+
+  # Auto-detect stack and run matching audits
+  ./orchestrator.sh --auto
+
+  # Auto-detect with sudo for complete coverage
+  ./orchestrator.sh --auto --sudo
+
+Scheduled/Unattended Execution:
+  # Cron job with passwordless sudo (requires sudoers.d config)
+  ./orchestrator.sh --preset all --non-interactive
+
+  # Cron with password from secure file
+  cat /root/.audit-credential | ./orchestrator.sh --preset all --sudo-stdin --non-interactive
+
+  # As root (no sudo needed)
+  ./orchestrator.sh --preset security --non-interactive --require-root
+
+Notes:
+- Auto-discovery recurses under audits/ and sorts paths for stable order.
+- These paths are skipped automatically: audits/**/_lib/**, lib/**, audits/**/automation/orchestrators/**, and audits/**/_*.sh helper files
+- Use --sudo to get full audit coverage (firewall status, logs, SELinux, etc.)
+- The --sudo-stdin flag is useful for CI/CD or remote execution via SSH
+- Use --non-interactive for scheduled tasks to ensure no prompts occur

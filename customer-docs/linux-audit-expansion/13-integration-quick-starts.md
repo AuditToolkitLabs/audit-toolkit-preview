@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | Document version | 1.1 |
-| Last updated | 2026-05-01 |
+| Last updated | 2026-05-03 |
 | Product | AuditToolkit Linux Security Lite |
 
 ---
@@ -37,6 +37,9 @@ For a typical deployment, implement integrations in this order:
    pipelines for pre-production assurance.
 5. **Agent mode** (Quick Start 17) — add local operator dashboards where
    needed.
+6. **Enterprise operator interfaces** (Doc 24) — expose enterprise UI/API/CLI
+   workflows for compliance attestations, trend tracking, SIEM export, and
+   webhook automation.
 
 ```text
 [Host audit run]

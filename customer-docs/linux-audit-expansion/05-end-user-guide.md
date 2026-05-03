@@ -5,15 +5,17 @@
 | Field | Value |
 | --- | --- |
 | Document version | 1.1 |
-| Last updated | 2026-05-01 |
+| Last updated | 2026-05-03 |
 | Product | AuditToolkit Linux Security Lite |
 
 ---
 
 ## 5.1 Overview
 
-AuditToolkit Linux Security Lite is a command-line tool. There is no web
-interface. All interaction is via the `audit-toolkit` command (installed to
+AuditToolkit Linux Security Lite supports both command-line and local web
+operator workflows.
+
+Core interaction is via the `audit-toolkit` command (installed to
 `/usr/local/bin/audit-toolkit`) or by invoking the orchestrator directly:
 
 ```bash
@@ -25,6 +27,21 @@ bash /opt/audit-toolkit/orchestrator/orchestrator.sh [OPTIONS]
 Root or sudo access is strongly recommended. The tool runs without root but
 checks that require elevated privilege will be marked `[SKIP]` and excluded
 from the coverage score.
+
+For the lightweight local web console, start the web service and browse to
+`http://127.0.0.1:8088`:
+
+```bash
+cd /opt/audit-toolkit/agents/html-linux
+./start-web.sh --daemon
+```
+
+Enterprise tier pages are available under:
+
+- `/enterprise/compliance`
+- `/enterprise/trending`
+- `/enterprise/webhooks`
+- `/enterprise/siem-export`
 
 ## 5.2 Command reference
 
@@ -126,6 +143,12 @@ cat /tmp/quick-check.json | jq '.hardening'
 ```bash
 sudo audit-toolkit --match updates --json /tmp/updates.json
 jq '.updates' /tmp/updates.json
+
+# Enterprise CLI examples (tier-gated)
+python3 /opt/audit-toolkit/agents/html-linux/cli.py compliance --framework cis --days 30 --format json
+python3 /opt/audit-toolkit/agents/html-linux/cli.py siem-export --format cef --severity-filter fail --days 30
+python3 /opt/audit-toolkit/agents/html-linux/cli.py trends --mode scorecard --days 90
+python3 /opt/audit-toolkit/agents/html-linux/cli.py webhooks --action list
 ```
 
 ### Review SSH hardening posture

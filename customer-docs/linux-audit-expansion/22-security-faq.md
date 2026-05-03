@@ -5,7 +5,7 @@
 | Field | Value |
 | --- | --- |
 | Document version | 1.0 |
-| Last updated | 2026-05-01 |
+| Last updated | 2026-05-03 |
 | Product | AuditToolkit Linux Security Lite |
 
 This document provides concise answers to questions commonly raised during
@@ -33,6 +33,10 @@ No. All checks operate against local OS state only. The toolkit reads from
 `/etc`, `/proc`, `/sys`, and the local package database. No outbound HTTP,
 DNS, or socket connections are made during an audit run.
 
+Enterprise note: if you explicitly configure webhook delivery or SIEM export
+destinations, those interfaces will perform outbound requests to the endpoints
+you configured. Audit checks themselves remain local read-only operations.
+
 ---
 
 **Q: Does the toolkit require root?**
@@ -46,6 +50,13 @@ coverage reduction.
 ---
 
 ## Data handling
+
+**Q: Are enterprise API/UI/CLI interfaces local-only?**
+
+By default, yes. The lightweight web service binds to loopback unless you
+explicitly override deployment settings. Enterprise API routes and UI pages
+run in the same local service and remain protected by the configured web
+authentication and license tier checks.
 
 **Q: What data does the toolkit collect and where is it stored?**
 

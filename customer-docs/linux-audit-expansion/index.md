@@ -3,14 +3,14 @@
 | Field | Value |
 | --- | --- |
 | Document version | 1.1 |
-| Last updated | 2026-05-01 |
+| Last updated | 2026-05-03 |
 | Product | AuditToolkit Linux Security Lite |
-| Release | v1.0.1 |
+| Release | v1.1.0 |
 | Vendor | AuditToolkitLabs |
 | Vendor contact | [admin@audittoolkitlabs.com](mailto:admin@audittoolkitlabs.com) |
 
 This index covers all customer-facing documentation for AuditToolkit
-Linux Security Lite version 1.0.1. Documents are numbered to reflect
+Linux Security Lite version 1.1.0. Documents are numbered to reflect
 the recommended reading order; you do not need to read every document
 before using the toolkit.
 
@@ -57,13 +57,17 @@ before using the toolkit.
 | 20 | [Support Engagement Guide](20-support-engagement-guide.md) | When and how to contact AuditToolkitLabs; diagnostic data; contact directory. |
 | 21 | [Operational Limits and Known Constraints](21-operational-limits-and-known-constraints.md) | Distro support matrix; privilege-level impact; performance; known limitations. |
 | 22 | [Security FAQ — Procurement and Due Diligence](22-security-faq.md) | Read-only design; data collected; OWASP posture; supply chain; vulnerability management. |
+| 23 | [Licensing, Legal Terms, and Acceptable Use](23-licensing-and-legal.md) | Licensing model (free/commercial tiers); EULA summary; disclaimer; pre-use change control requirements; Provider contact. |
+| 24 | [Enterprise Compliance Platform](24-enterprise-compliance-platform.md) | Enterprise feature model, UI/API/CLI controls, reporting and integration workflows. |
 
 ## Legal documents
 
 | # | Document | Purpose |
 | --- | --- | --- |
-| L1 | [Software License](/documentation/legal-license) | Product licensing terms distributed with the release package. |
-| L2 | [End User Licence Agreement (EULA)](/documentation/legal-eula) | End-user legal agreement covering use rights, warranty disclaimer, and limitation of liability. |
+| L1 | [Software License](/documentation/legal-license) | Canonical BSL 1.1 license — legally binding. Free for all internal use; commercial license required for service-provision, SaaS, or embedded-product scenarios. |
+| L2 | [End User Licence Agreement (EULA)](/documentation/legal-eula) | End-user legal agreement covering use rights, indemnification, warranty disclaimer, and limitation of liability. |
+| L3 | [Disclaimer](/documentation/legal-disclaimer) | Warranty disclaimer, user responsibility for remediation scripts, limitation of liability. |
+| 23 | [Licensing, Legal Terms, and Acceptable Use](23-licensing-and-legal.md) | Customer-facing summary: licensing model, acceptable use, pre-use approval requirements, Provider details. |
 
 ---
 

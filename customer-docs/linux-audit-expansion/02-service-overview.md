@@ -7,7 +7,7 @@
 | Document version | 1.1 |
 | Last updated | 2026-05-01 |
 | Product | AuditToolkit Linux Security Lite |
-| Release | v1.0.1 |
+| Release | v1.1.0 |
 
 ---
 
@@ -112,3 +112,30 @@ Additive changes are communicated via the CHANGELOG before release.
 | Provide product documentation | | ✓ |
 | Support confirmed product defects | | ✓ |
 | Diagnose host OS, network, and storage issues | ✓ | |
+
+---
+
+## 2.7 Licensing model
+
+AuditToolkit Linux Security Lite is licensed under the Business Source
+License 1.1 (BSL 1.1). The following table summarises the model; the
+canonical terms are in the `LICENSE` file distributed with the product.
+
+| Use case | License required |
+| --- | --- |
+| Internal security auditing within your organisation, on any number of hosts | Free — no commercial license required |
+| Evaluation, testing, non-commercial research | Free |
+| Offering audit services to third parties for compensation | Commercial license required |
+| Embedding the tool in a commercial product | Commercial license required |
+| Operating as a hosted or SaaS service | Commercial license required |
+
+Five years from the date of first public GA release, the software automatically converts
+to the MIT License. The Change Date will be published when a stable release is announced
+(this software is currently in pre-release beta status).
+
+Contact [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com)
+for commercial licensing enquiries.
+
+For the complete licensing terms, EULA, acceptable use requirements, and
+pre-use change control obligations, see
+[23 — Licensing, Legal Terms, and Acceptable Use](23-licensing-and-legal.md).

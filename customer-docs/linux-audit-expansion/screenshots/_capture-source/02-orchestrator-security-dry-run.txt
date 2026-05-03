@@ -1,0 +1,33 @@
+Security Audit Orchestrator (selective; auto-discovery)
+Root: /mnt/e/repo-splits-2/AuditToolkit-Linux-Security-Lite
+
+Planned scripts (29 total):
+  audits/linux/advanced-controls/apparmor-comprehensive-audit.sh
+  audits/linux/advanced-controls/auditd-audit.sh
+  audits/linux/advanced-controls/cron-permissions-audit.sh
+  audits/linux/advanced-controls/file-integrity-audit.sh
+  audits/linux/advanced-controls/file-permissions-audit.sh
+  audits/linux/advanced-controls/kernel-hardening-audit.sh
+  audits/linux/advanced-controls/logging-audit.sh
+  audits/linux/advanced-controls/pam-account-lockout-audit.sh
+  audits/linux/advanced-controls/pam-password-policy-audit.sh
+  audits/linux/advanced-controls/selinux-comprehensive-audit.sh
+  audits/linux/advanced-controls/services-hardening-audit.sh
+  audits/linux/advanced-controls/shadow-password-audit.sh
+  audits/linux/advanced-controls/sudo-audit.sh
+  audits/linux/advanced-controls/system-file-permissions-audit.sh
+  audits/linux/advanced-controls/umask-audit.sh
+  audits/linux/advanced-controls/user-account-audit.sh
+  audits/linux/network/dns/dns-security-audit.sh
+  audits/linux/network/firewall/firewall-state.sh
+  audits/linux/network/intrusion-prevention/fail2ban-audit.sh
+  audits/linux/platform/access/log-access-audit.sh
+  audits/linux/platform/access/sensitive-permissions-depth-audit.sh
+  audits/linux/platform/access/ssh-hardening-audit.sh
+  audits/linux/platform/access/suid-sgid-audit.sh
+  audits/linux/platform/access/world-writable-audit.sh
+  audits/linux/platform/baseline/os-baseline-audit.sh
+  audits/linux/platform/baseline/svc-basics.sh
+  audits/linux/platform/baseline/updates.sh
+  audits/linux/platform/firewall/egress-allowlist-audit.sh
+  audits/linux/platform/firewall/firewall-ufw-audit.sh

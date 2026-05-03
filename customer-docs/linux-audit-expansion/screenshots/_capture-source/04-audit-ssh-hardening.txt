@@ -1,0 +1,11 @@
+[2026-05-03 14:20:37] [INFO] Starting ssh-hardening-audit.sh v4.0.0 (profile: baseline)
+
+============================================================
+ SSH Service Status
+============================================================
+ [SKIP] SSH daemon installed: Not applicable (sshd not installed)
+
+============================================================
+ SSH Configuration Files
+============================================================
+ [FAIL]  Main config exists: /etc/ssh/sshd_config not found

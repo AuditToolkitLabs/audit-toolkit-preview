@@ -40,7 +40,7 @@ LATEST_REPORT=$(ls -t "${REPORT_DIR}"/report-*.json | head -n1)
 jq '{
   event_type: "audit_posture_summary",
   tool: "audit-toolkit-linux-security-lite",
-  tool_version: "1.0.1",
+  tool_version: "1.1.0",
   generated_at: .generated_at,
   host: .host_identity.hostname,
   distro_id: .host_identity.distro_id,

@@ -1,0 +1,60 @@
+Security Audit Orchestrator (selective; auto-discovery)
+Root: /mnt/e/repo-splits-2/AuditToolkit-Linux-Security-Lite
+
+==> Running /mnt/e/repo-splits-2/AuditToolkit-Linux-Security-Lite/audits/linux/platform/baseline/updates.sh
+
+============================================================
+ Package Metadata
+============================================================
+ [WARN] Root privileges: Run as root for live cache refresh and fullest metadata visibility
+ [PASS] Detected distro: ubuntu
+ [PASS] Package manager: apt
+ [SKIP] package index refresh: not attempted without root
+
+============================================================
+ Pending Updates
+============================================================
+ [WARN] upgradable packages: 63 pending
+ [PASS] security-related updates: none identified
+
+============================================================
+ Automatic Updates
+============================================================
+ [PASS] unattended-upgrades package: installed
+ [PASS] automatic update policy: APT periodic unattended upgrades enabled
+
+============================================================
+ Update Recency
+============================================================
+ [PASS] recent package update evidence: last change within 1 day(s) via /var/log/apt/history.log or APT stamp
+
++==========================================================+
+ AUDIT SUMMARY 
++==========================================================+
+ Hostname: A8Max.localdomain
+ Date:     2026-05-03 14:20:40
++----------------------+----------------------+----------------------+
+ [+] PASSED: 6      [X] FAILED: 0      
+ [!] WARNINGS: 2      [>] SKIPPED: 1      
++----------------------+----------------------+----------------------+
+ TOTAL CHECKS: 9     
++==========================================================+
+ Summary for updates.sh: PASS=6 WARN=2 FAIL=0 SKIP=1 (rc=1)
+[JSON] Report written: customer-docs/screenshots/_capture-source/05-orchestrator-single-audit-report.json
+
++================================================================+
+ AUDIT SUMMARY
++================================================================+
+ Hostname:        A8Max.localdomain
+ Date:            2026-05-03 14:20:40
+ Privilege:       user (churc)
+                  WARNING: Some checks may be skipped without root
+ Scripts Run:     1 audits
+ Compliance Score: 87.5%
++----------------------------------------------------------------+
+ [PASS] 6          [FAIL] 0     
+ [WARN] 2        [SKIP] 1     
++----------------------------------------------------------------+
+ TOTAL CHECKS: 9     
++================================================================+
+

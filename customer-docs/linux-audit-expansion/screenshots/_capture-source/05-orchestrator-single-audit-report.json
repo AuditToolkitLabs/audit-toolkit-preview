@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "report_type": "hardening",
+  "generated_at": "2026-05-03T13:20:40Z",
+  "host_identity": {
+    "hostname": "A8Max",
+    "fqdn": "A8Max.localdomain",
+    "distro_id": "ubuntu",
+    "distro_name": "Ubuntu",
+    "distro_version": "24.04",
+    "kernel": "6.6.87.2-microsoft-standard-WSL2",
+    "architecture": "x86_64"
+  },
+  "inventory": null,
+  "vulnerabilities": null,
+  "updates": null,
+  "hardening": {
+    "scripts_run": 1,
+    "total_checks": 9,
+    "pass": 6,
+    "warn": 2,
+    "fail": 0,
+    "skip": 1,
+    "compliance_score": 87.5,
+    "results": [{"script":"audits/linux/platform/baseline/updates.sh","checks":[{"result":"PASS","name":"Detected distro","message":"ubuntu"},{"result":"PASS","name":"Package manager","message":"apt"},{"result":"PASS","name":"automatic update policy","message":"APT periodic unattended upgrades enabled"},{"result":"PASS","name":"recent package update evidence","message":"last change within 1 day(s) via /var/log/apt/history.log or APT stamp"},{"result":"PASS","name":"security-related updates","message":"none identified"},{"result":"PASS","name":"unattended-upgrades package","message":"installed"},{"result":"SKIP","name":"package index refresh","message":"not attempted without root"},{"result":"WARN","name":"Root privileges","message":"Run as root for live cache refresh and fullest metadata visibility"},{"result":"WARN","name":"upgradable packages","message":"63 pending"}]}]
+  },
+  "completeness": {
+    "privilege_level": "user (churc)",
+    "required_checks_total": 4,
+    "required_checks_executed": 4,
+    "required_checks_skipped": 1,
+    "optional_checks_total": 4,
+    "optional_checks_executed": 4,
+    "skipped_domains": [],
+    "skip_reasons": {
+      "insufficient_privilege": 1,
+      "missing_tool": 0,
+      "not_applicable": 0,
+      "unsupported_distro_path": 0
+    },
+    "confidence_score": 88.9,
+    "coverage_score": 88.9
+  },
+  "remediation": [{"check":"Root privileges","severity":"medium","action":"Review and remediate: audits/linux/platform/baseline/updates.sh"},{"check":"upgradable packages","severity":"medium","action":"Review and remediate: audits/linux/platform/baseline/updates.sh"}]
+}

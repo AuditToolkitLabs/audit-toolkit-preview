@@ -5,7 +5,7 @@
 | Document version | 1.1 |
 | Last updated | 2026-05-01 |
 | Product | AuditToolkit Linux Security Lite |
-| Release | v1.0.1 |
+| Release | v1.1.0 |
 | Deployment model | On-premises / self-hosted |
 
 ---
@@ -60,7 +60,7 @@ the source distribution or release package.
 **Out of scope:**
 
 - Automatic remediation of any finding on the target host.
-- Auditing of non-Linux endpoints (Windows, macOS, network devices).
+- Auditing of non-Linux endpoints (macOS, network devices).
 - Cloud-infrastructure assessment (AWS/Azure/GCP resource posture).
 - Network-based scanning or remote code execution.
 - Database assessment or application-layer penetration testing.

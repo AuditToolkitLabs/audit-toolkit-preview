@@ -58,7 +58,7 @@ assessment. Review and extend sudo rules or run as root.
 | Alpine/OpenRC service listing | `--domain network` and `--domain automation` may produce extra `[SKIP]` results on Alpine. | Use `is_openrc` branch in affected checks. Tracked for improvement in a future release. |
 | Void Linux runit service checks | Some service-state checks are `[SKIP]` on Void due to runit differences. | Manual review of runit service directory. |
 | No remote / SSH-based auditing | The toolkit audits only the local host. | Run on each host individually or via configuration management. Remote execution is on the roadmap. |
-| No Windows or macOS support | The toolkit is Linux-only by design. | No workaround; by design. |
+| No macOS support | The toolkit is Linux-only by design. | No workaround; by design. |
 | No auto-remediation | The toolkit reports findings only; it does not fix them. | By design (read-only). Remediation scripts are a roadmap item. |
 | Package CVE mapping depth | CVE data is derived from package manager metadata; depth varies by distro and metadata quality. | Supplement with a dedicated vulnerability scanner for deep CVE analysis. |
 | Concurrent fleet runs | No built-in fleet coordination. Concurrent runs on many hosts share no state. | Orchestrate via Ansible, Salt, or similar; reports are independent per-host files. |

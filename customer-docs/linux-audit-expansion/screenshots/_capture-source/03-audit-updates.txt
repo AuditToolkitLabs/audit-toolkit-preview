@@ -1,0 +1,37 @@
+
+============================================================
+ Package Metadata
+============================================================
+ [WARN] Root privileges: Run as root for live cache refresh and fullest metadata visibility
+ [PASS] Detected distro: ubuntu
+ [PASS] Package manager: apt
+ [SKIP] package index refresh: not attempted without root
+
+============================================================
+ Pending Updates
+============================================================
+ [WARN] upgradable packages: 63 pending
+ [PASS] security-related updates: none identified
+
+============================================================
+ Automatic Updates
+============================================================
+ [PASS] unattended-upgrades package: installed
+ [PASS] automatic update policy: APT periodic unattended upgrades enabled
+
+============================================================
+ Update Recency
+============================================================
+ [PASS] recent package update evidence: last change within 1 day(s) via /var/log/apt/history.log or APT stamp
+
++==========================================================+
+ AUDIT SUMMARY 
++==========================================================+
+ Hostname: A8Max.localdomain
+ Date:     2026-05-03 14:20:34
++----------------------+----------------------+----------------------+
+ [+] PASSED: 6      [X] FAILED: 0      
+ [!] WARNINGS: 2      [>] SKIPPED: 1      
++----------------------+----------------------+----------------------+
+ TOTAL CHECKS: 9     
++==========================================================+
