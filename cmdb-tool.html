@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CMDB API Data Collection Tool — AuditToolkit Labs</title>
-  <meta name="description" content="Multi-tenant CMDB data collection platform with 29+ connectors, CVE correlation, AES-256 encryption, and OWASP Top 10 PASS rating." />
+  <meta name="description" content="Multi-tenant CMDB data collection platform with 29+ connectors, CVE correlation, AES-256 encryption, and enterprise-grade security controls." />
   <link rel="stylesheet" href="assets/css/site.css" />
 </head>
 <body>
@@ -42,7 +42,6 @@
     </div>
     <div class="flex flex-wrap gap-8 mb-16">
       <span class="badge badge-amber">Beta v0.2.6</span>
-      <span class="badge badge-green">&#10003; OWASP Top 10 PASS</span>
       <span class="badge badge-blue">Flask &middot; SQLAlchemy &middot; Celery</span>
       <span class="badge badge-muted">Python 3.11</span>
     </div>
@@ -50,7 +49,7 @@
     <p>Multi-tenant infrastructure data collection, vulnerability correlation, and CMDB population platform. Built for IT operations teams managing complex hybrid environments.</p>
     <div class="flex gap-12 flex-wrap mt-24">
       <a href="releases.html#v026" class="btn btn-primary">Release Notes v0.2.6</a>
-      <a href="https://github.com/AuditToolkitLabs/releases/releases/tag/cmdb-api%2Fv0.2.6" target="_blank" rel="noopener" class="btn btn-secondary">View v0.2.6 Tag</a>
+      <a href="cmdb-api-releases.html" target="_blank" rel="noopener" class="btn btn-secondary">View v0.2.6 Tag</a>
       <a href="cmdb-api-documentation.html" class="btn btn-secondary">Browse CMDB API Documentation</a>
       <a href="support.html#contact" class="btn btn-secondary">Licence Enquiry</a>
     </div>
@@ -114,79 +113,47 @@
   </div>
 </section>
 
-<section class="section" id="security" style="border-top:1px solid var(--border);background:linear-gradient(160deg,#0a1524 0%,#0b1220 100%);">
+<section class="section" id="whats-new" style="border-top:1px solid var(--border);">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">Security</p>
-      <h2>OWASP Top 10:2021 Security Scorecard</h2>
-      <p>Release v0.2.6 underwent a full OWASP Top 10:2021 source-code and configuration audit. All findings addressed prior to general availability.</p>
+      <p class="eyebrow">What’s New</p>
+      <h2>Latest Release Highlights Across Tools</h2>
+      <p>Recent updates across the AuditToolkit Labs product set so this page reflects the broader release picture, not just CMDB API changes.</p>
     </div>
-    <div class="callout mb-32" style="border-color:var(--accent-2);font-size:1rem;padding:18px 24px;">
-      <strong style="color:var(--accent-2);">&#10003; OVERALL RESULT: PASS &mdash; 8 PASS, 1 PARTIAL, 0 FAIL &mdash; Zero open findings at time of release.</strong>
-      All critical and high severity findings resolved. AES-256 field encryption, HTTP security headers, and enforced password change on seed accounts implemented as part of this release.
-    </div>
-    <div class="table-wrap mb-32">
-      <table class="data-table">
-        <thead>
-          <tr><th>OWASP Category</th><th>Result</th><th>Evidence</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>A01 Broken Access Control</td>
-            <td><span class="badge badge-green">PASS</span></td>
-            <td>Flask-Login session guard, RBAC decorators, workspace-scoped queries, API key tiers</td>
-          </tr>
-          <tr>
-            <td>A02 Cryptographic Failures</td>
-            <td><span class="badge badge-green">PASS</span></td>
-            <td>AES-256 Fernet field encryption, bcrypt passwords, TLS enforced, separate key rotation paths</td>
-          </tr>
-          <tr>
-            <td>A03 Injection</td>
-            <td><span class="badge badge-green">PASS</span></td>
-            <td>SQLAlchemy ORM throughout, Bandit SAST clean, parameterised queries, input length limits</td>
-          </tr>
-          <tr>
-            <td>A04 Insecure Design</td>
-            <td><span class="badge badge-green">PASS</span></td>
-            <td>App factory pattern, blueprint isolation, threat-modelled connector framework</td>
-          </tr>
-          <tr>
-            <td>A05 Security Misconfiguration</td>
-            <td><span class="badge badge-green">FIXED &#10003;</span></td>
-            <td>HTTP security headers added (CSP, X-Frame-Options, Referrer-Policy, Permissions-Policy); SEC-001 closed</td>
-          </tr>
-          <tr>
-            <td>A06 Vulnerable &amp; Outdated Components</td>
-            <td><span class="badge badge-green">PASS</span></td>
-            <td>pip-audit clean; zero CVEs across 25 pinned production dependencies at v0.2.6 release date</td>
-          </tr>
-          <tr>
-            <td>A07 Identification &amp; Authentication Failures</td>
-            <td><span class="badge badge-green">FIXED &#10003;</span></td>
-            <td>Seed admin must_change_password=True enforced; TOTP MFA available; brute-force lockout; SEC-002 closed</td>
-          </tr>
-          <tr>
-            <td>A08 Software &amp; Data Integrity Failures</td>
-            <td><span class="badge badge-green">PASS</span></td>
-            <td>Signed git tags, pinned dependencies, no unsafe deserialization paths identified</td>
-          </tr>
-          <tr>
-            <td>A09 Security Logging &amp; Monitoring Failures</td>
-            <td><span class="badge badge-green">PASS</span></td>
-            <td>Structured audit log, login/logout events, failed auth logging, SIEM forwarding, admin alert triggers</td>
-          </tr>
-          <tr>
-            <td>A10 Server-Side Request Forgery</td>
-            <td><span class="badge badge-amber">PARTIAL</span></td>
-            <td>Connector fetch paths reviewed; no unvalidated redirects. Full egress allowlist is operationally configurable (network-layer control). Residual risk: LOW.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="flex gap-12 flex-wrap">
-      <a href="cmdb-api-documentation.html#security" class="btn btn-primary">Read Full Scorecard (Doc 34)</a>
-      <a href="support.html#security" class="btn btn-secondary">Responsible Disclosure</a>
+    <div class="grid-2">
+      <div class="card">
+        <div class="flex items-center gap-8 mb-8">
+          <span class="badge badge-amber">Audit Admin Toolkit</span>
+          <span class="badge badge-muted">v6.1.0</span>
+        </div>
+        <h3 style="margin-top:0;">Audit Toolkit v6.1.0</h3>
+        <ul class="feature-list" style="margin-top:8px;">
+          <li><span class="icon">&#10003;</span><span class="text">Full customer documentation set now mirrored on this website for direct access.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Release publication flow updated with public release tag references and customer artefact distribution links.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Refreshed product screenshot library added for current build coverage.</span></li>
+        </ul>
+        <div class="flex gap-12 flex-wrap mt-16">
+          <a href="audit-toolkit-releases.html" class="btn btn-primary btn-sm">Audit Toolkit Release Details</a>
+          <a href="audit-toolkit-documentation.html" class="btn btn-secondary btn-sm">Audit Toolkit Documentation</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="flex items-center gap-8 mb-8">
+          <span class="badge badge-amber">Linux Audit Coverage Expansion</span>
+          <span class="badge badge-muted">v1.0.4</span>
+        </div>
+        <h3 style="margin-top:0;">Linux Tool Latest Release</h3>
+        <ul class="feature-list" style="margin-top:8px;">
+          <li><span class="icon">&#10003;</span><span class="text">Latest tagged release is published and linked from the product release page.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Release references are aligned to the public releases channel and customer support path.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Product and release pages now use the same release routing model as other tools.</span></li>
+        </ul>
+        <div class="flex gap-12 flex-wrap mt-16">
+          <a href="linux-audit-expansion-releases.html" class="btn btn-primary btn-sm">Linux Release Details</a>
+          <a href="linux-audit-expansion-documentation.html" class="btn btn-secondary btn-sm">Linux Documentation</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -244,11 +211,11 @@
       <p>Full deployment, operation, integration, and security documentation included with every release. All documents are provided in Markdown format within the release package.</p>
     </div>
     <div class="callout info mb-32">
-      The CMDB API Data Collection Tool repository is private. Documentation is included in each release package. Access the latest release via the GitHub Releases page for your deployment.
+      The CMDB API Data Collection Tool repository is private. Documentation is included in each release package. Access the latest release via the local release pages for your deployment.
     </div>
     <div class="flex gap-12 flex-wrap">
       <a href="docs.html" class="btn btn-primary">Browse Full Documentation Catalogue</a>
-      <a href="https://github.com/AuditToolkitLabs" target="_blank" rel="noopener" class="btn btn-secondary">GitHub Organisation</a>
+      <a href="releases.html" target="_blank" rel="noopener" class="btn btn-secondary">Release Hub</a>
     </div>
   </div>
 </section>
@@ -291,7 +258,7 @@
       </ul></div>
       <div class="footer-col"><h4>Contact</h4><ul>
         <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
-        <li><a href="https://github.com/AuditToolkitLabs" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="releases.html" target="_blank" rel="noopener">Release Hub</a></li>
         <li><a href="support.html#contact">Send an Enquiry</a></li>
       </ul></div>
     </div>

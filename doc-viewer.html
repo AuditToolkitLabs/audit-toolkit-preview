@@ -130,10 +130,10 @@
   var numMatch = filename.match(/^(\d+)-/);
   if (numMatch) { numBadge.textContent = 'Doc ' + numMatch[1]; docMeta.style.display = 'flex'; }
 
-  // Fetch raw content from GitHub
-  var rawUrl = 'https://raw.githubusercontent.com/AuditToolkitLabs/audit-toolkit-preview/main/' + src;
+  // Fetch mirrored markdown content from this website repository
+  var localUrl = src.replace(/^\/+/, '');
 
-  fetch(rawUrl)
+  fetch(localUrl)
     .then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.text();
