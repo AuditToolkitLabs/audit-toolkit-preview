@@ -112,6 +112,11 @@
     productLink  = 'linux-audit-expansion-documentation.html';
     eyebrowText  = 'Linux Audit Expansion';
     prodBadgeText = 'Linux Audit Expansion';
+  } else if (src.indexOf('audit-toolkit') !== -1) {
+    productName  = 'Audit Admin Toolkit Docs';
+    productLink  = 'audit-toolkit-documentation.html';
+    eyebrowText  = 'Audit Admin Toolkit';
+    prodBadgeText = 'Audit Admin Toolkit';
   } else if (src.indexOf('cmdb-api') !== -1) {
     productName  = 'CMDB API Docs';
     productLink  = 'cmdb-api-documentation.html';
@@ -133,6 +138,65 @@
   // Fetch mirrored markdown content from this website repository
   var localUrl = src.replace(/^\/+/, '');
 
+  function normalizePath(path) {
+    var parts = path.split('/');
+    var out = [];
+    for (var i = 0; i < parts.length; i++) {
+      var p = parts[i];
+      if (!p || p === '.') continue;
+      if (p === '..') {
+        if (out.length) out.pop();
+        continue;
+      }
+      out.push(p);
+    }
+    return out.join('/');
+  }
+
+  function resolveMarkdownHref(currentSrc, href) {
+    var baseDir = currentSrc.split('/').slice(0, -1).join('/');
+    var rawHref = href || '';
+    var hash = '';
+    var hashPos = rawHref.indexOf('#');
+    if (hashPos !== -1) {
+      hash = rawHref.slice(hashPos);
+      rawHref = rawHref.slice(0, hashPos);
+    }
+
+    if (!rawHref) return null;
+    if (/^(?:https?:|mailto:|tel:|javascript:)/i.test(rawHref)) return null;
+    if (/\.html?$/i.test(rawHref)) return null;
+
+    var candidate = rawHref;
+    if (!/\.[a-z0-9]+$/i.test(candidate)) {
+      candidate = candidate + '.md';
+    }
+
+    if (candidate.charAt(0) === '/') {
+      candidate = candidate.slice(1);
+    } else {
+      candidate = baseDir ? (baseDir + '/' + candidate) : candidate;
+    }
+
+    candidate = normalizePath(candidate);
+    if (!candidate) return null;
+
+    return 'doc-viewer.html?src=' + encodeURIComponent(candidate) + hash;
+  }
+
+  function rewriteInternalDocLinks(currentSrc) {
+    var anchors = docBody.querySelectorAll('a[href]');
+    anchors.forEach(function (a) {
+      var href = a.getAttribute('href');
+      var rewritten = resolveMarkdownHref(currentSrc, href);
+      if (!rewritten) return;
+      a.setAttribute('href', rewritten);
+      if (!a.getAttribute('target')) {
+        a.setAttribute('target', '_self');
+      }
+    });
+  }
+
   fetch(localUrl)
     .then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -141,6 +205,7 @@
     .then(function (md) {
       var html = marked.parse(md);
       docBody.innerHTML = html;
+      rewriteInternalDocLinks(localUrl);
 
       // Extract title from first H1, promote to hero
       var firstH1 = docBody.querySelector('h1');
