@@ -45,18 +45,18 @@
       <span class="badge badge-muted">Extension for Audit Admin Toolkit</span>
       <span class="badge badge-blue">RHEL &middot; Debian &middot; Ubuntu &middot; SLES &middot; Alpine &middot; Arch</span>
       <span class="badge badge-green">&#10003; OWASP Score 97/100 &mdash; A+</span>
-      <span class="badge badge-muted">v1.0.4</span>
+      <span class="badge badge-muted">Docs v1.1 (24 docs)</span>
     </div>
     <h1>Linux Audit Coverage Expansion</h1>
-    <p>Expanded Linux control coverage for posture validation, hardening verification, and evidence-focused compliance reporting. A beta extension module for the <a href="audit-toolkit.html">Audit Admin Toolkit</a> that deepens Linux audit breadth across mixed enterprise Linux estates.</p>
+    <p>Expanded Linux control coverage for posture validation, hardening verification, and evidence-focused compliance reporting. A beta extension module for the <a href="audit-toolkit.html">Audit Admin Toolkit</a> that deepens Linux audit breadth across mixed enterprise Linux estates and now includes a documented Enterprise Compliance Platform model.</p>
     <div class="callout warn mt-24">
-      <strong>Beta release.</strong> The Linux Audit Coverage Expansion is in active development as an extension to the Audit Admin Toolkit. Coverage areas and interfaces may evolve before GA release. Latest tag: <a href="linux-audit-expansion-releases.html" target="_blank" rel="noopener">audit-toolkit-lite/v1.0.4</a>.
+      <strong>Beta release.</strong> The Linux Audit Coverage Expansion is in active development as an extension to the Audit Admin Toolkit. Coverage areas and interfaces may evolve before GA release. Current customer documentation set is version 1.1 (24 documents), including dedicated licensing/legal and enterprise compliance platform guidance.
     </div>
     <div class="flex gap-12 flex-wrap mt-24">
       <a href="support.html#contact" class="btn btn-primary">Register Interest</a>
       <a href="linux-audit-expansion-documentation.html" class="btn btn-secondary">Documentation</a>
       <a href="audit-toolkit.html" class="btn btn-secondary">View Audit Admin Toolkit</a>
-      <a href="linux-audit-expansion-releases.html" target="_blank" rel="noopener" class="btn btn-secondary">View v1.0.4 Tag</a>
+      <a href="linux-audit-expansion-releases.html" target="_blank" rel="noopener" class="btn btn-secondary">View Releases</a>
       <a href="doc-viewer.html?src=customer-docs/linux-audit-expansion/index.md" target="_blank" rel="noopener" class="btn btn-secondary">Open Linux Docs Index</a>
     </div>
   </div>
@@ -84,6 +84,11 @@
         <div style="font-size:1.6rem;margin-bottom:12px;">&#9989;</div>
         <h3>Compliance Readiness</h3>
         <p>Evidence outputs designed for governance and audit review workflows. Pass/fail status per control with exportable evidence packages for compliance reporting and external review.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:1.6rem;margin-bottom:12px;">&#127760;</div>
+        <h3>Enterprise Integration</h3>
+        <p>Professional and Enterprise workflows add centralised compliance reporting, trend analysis, SIEM export, webhooks, and API-driven integration paths for SOC and platform teams.</p>
       </div>
     </div>
   </div>
@@ -197,7 +202,7 @@
           <div class="owasp-score-badge">A+</div>
           <div>
             <div style="font-size:1.05rem;font-weight:700;color:var(--text);">97/100 &mdash; OWASP Security Assessment</div>
-            <div style="font-size:.83rem;color:var(--subtle);">AuditToolkit Linux Security Lite &middot; v1.0.4 &middot; May 2026</div>
+            <div style="font-size:.83rem;color:var(--subtle);">AuditToolkit Linux Security Lite &middot; v1.1.0 docs &middot; May 2026</div>
           </div>
         </div>
         <table class="owasp-table">
@@ -224,15 +229,51 @@
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Visual Evidence</p>
-      <h2>Linux-specific screenshots are being curated</h2>
-      <p>To avoid cross-tool confusion, this page now excludes Audit Admin Toolkit interface screenshots. Linux-specific captures and evidence samples will be published with the Linux expansion documentation set.</p>
+      <h2>Linux CLI and HTML captures from the latest manifest</h2>
+      <p>The Linux customer documentation now includes a dedicated screenshot set. The preview below mirrors the curated CLI and HTML captures listed in the screenshot manifest.</p>
     </div>
-    <div class="callout info">
-      For current Linux output examples, use the Linux documentation index and runbook set.
-      <div class="flex gap-12 flex-wrap mt-16">
-        <a href="doc-viewer.html?src=customer-docs/linux-audit-expansion/index.md" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Open Linux Documentation Index</a>
-        <a href="linux-audit-expansion-documentation.html" class="btn btn-secondary btn-sm">Linux Documentation Page</a>
+    <div class="grid-2">
+      <div class="card">
+        <h3>CLI workflow captures</h3>
+        <p>Command-line orchestration, dry-run posture, and JSON evidence output from the Linux audit toolchain.</p>
+        <div class="gallery mt-16">
+          <figure>
+            <img src="customer-docs/linux-audit-expansion/screenshots/CLI/01-tool-orchestrator-help.png" alt="Linux CLI orchestrator help output" loading="lazy" />
+            <figcaption>CLI 01 - Orchestrator help</figcaption>
+          </figure>
+          <figure>
+            <img src="customer-docs/linux-audit-expansion/screenshots/CLI/03-tool-updates-audit.png" alt="Linux CLI package updates audit output" loading="lazy" />
+            <figcaption>CLI 03 - Updates audit</figcaption>
+          </figure>
+          <figure>
+            <img src="customer-docs/linux-audit-expansion/screenshots/CLI/06-tool-json-report.png" alt="Linux CLI JSON report output" loading="lazy" />
+            <figcaption>CLI 06 - JSON report</figcaption>
+          </figure>
+        </div>
       </div>
+      <div class="card">
+        <h3>HTML platform captures</h3>
+        <p>Web dashboard and enterprise pages for compliance reporting, trend visibility, and webhook/SIEM export workflows.</p>
+        <div class="gallery mt-16">
+          <figure>
+            <img src="customer-docs/linux-audit-expansion/screenshots/HTML/02-html-dashboard.png" alt="Linux web dashboard" loading="lazy" />
+            <figcaption>HTML 02 - Dashboard</figcaption>
+          </figure>
+          <figure>
+            <img src="customer-docs/linux-audit-expansion/screenshots/HTML/10-html-enterprise-compliance.png" alt="Enterprise compliance page" loading="lazy" />
+            <figcaption>HTML 10 - Enterprise compliance</figcaption>
+          </figure>
+          <figure>
+            <img src="customer-docs/linux-audit-expansion/screenshots/HTML/13-html-enterprise-siem-export.png" alt="Enterprise SIEM export page" loading="lazy" />
+            <figcaption>HTML 13 - Enterprise SIEM export</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+    <div class="flex gap-12 flex-wrap mt-24">
+      <a href="doc-viewer.html?src=customer-docs/linux-audit-expansion/screenshots/SCREENSHOT-MANIFEST.md" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Open Screenshot Manifest</a>
+      <a href="doc-viewer.html?src=customer-docs/linux-audit-expansion/24-enterprise-compliance-platform.md" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">Read Enterprise Compliance Platform (Doc 24)</a>
+      <a href="doc-viewer.html?src=customer-docs/linux-audit-expansion/23-licensing-and-legal.md" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">Read Licensing and Legal (Doc 23)</a>
     </div>
   </div>
 </section>
