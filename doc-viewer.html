@@ -135,8 +135,13 @@
   var numMatch = filename.match(/^(\d+)-/);
   if (numMatch) { numBadge.textContent = 'Doc ' + numMatch[1]; docMeta.style.display = 'flex'; }
 
-  // Fetch mirrored markdown content from this website repository
+  // Fetch mirrored markdown content from this website repository.
+  // If opened from file://, fall back to the published GitHub-hosted site.
   var localUrl = src.replace(/^\/+/, '');
+  var fetchUrl = localUrl;
+  if (window.location.protocol === 'file:') {
+    fetchUrl = 'https://audittoolkitlabs.com/' + localUrl;
+  }
 
   function normalizePath(path) {
     var parts = path.split('/');
@@ -197,7 +202,7 @@
     });
   }
 
-  fetch(localUrl)
+  fetch(fetchUrl)
     .then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.text();
