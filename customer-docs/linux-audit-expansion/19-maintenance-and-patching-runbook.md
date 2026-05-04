@@ -99,7 +99,7 @@ ansible all -m apt -a "deb=/path/to/audit-toolkit-lite_<version>_all.deb" --beco
 If the upgrade produces unexpected results on the pilot host:
 
 ```bash
-# Reinstall the previous version from your artefact store
+# Reinstall the last internally approved version from your artefact store
 # For .deb:
 sudo dpkg -i audit-toolkit-lite_<previous-version>_all.deb
 
@@ -113,6 +113,8 @@ sudo bash audit-toolkit-lite-<previous-version>/install.sh
 # Restore the config backup if needed
 sudo cp /etc/audit-toolkit/config.bak /etc/audit-toolkit/config
 ```
+
+Do not roll back to superseded public releases affected by the licensing defect.
 
 Verify rollback:
 

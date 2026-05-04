@@ -5,7 +5,7 @@
 | Field | Value |
 | --- | --- |
 | Document version | 1.1 |
-| Last updated | 2026-05-01 |
+| Last updated | 2026-05-03 |
 | Product | AuditToolkit Linux Security Lite |
 
 ---
@@ -142,3 +142,40 @@ any production deployment.
 
 Uninstalling the toolkit from a host is described in
 [18 — Installation Guide](18-installation-guide.md) section 18.8.
+
+## 6.7 Core custom script sync (Enterprise)
+
+Lite agents can pull Core-managed custom scripts under Enterprise license
+gate. This supports centrally authored scripts without enabling local
+authoring on the Lite host.
+
+### HTML workflow
+
+1. Open Settings in the local web console.
+2. Configure Core Server URL and API key.
+3. Under **Core Custom Script Sync**, set:
+   - Core script API path (default `/api/agent/custom-scripts`)
+   - Local target subdirectory (default `custom/core-synced`)
+4. Enable sync and select **Pull Scripts**.
+
+### CLI workflow
+
+```bash
+python3 /opt/audit-toolkit/agents/html-linux/cli.py core-sync-scripts --enable
+```
+
+Optional overrides:
+
+```bash
+python3 /opt/audit-toolkit/agents/html-linux/cli.py core-sync-scripts \
+  --enable \
+  --endpoint /api/agent/custom-scripts \
+  --target-subdir custom/core-synced
+```
+
+### License and access model
+
+- Requires Enterprise-level custom-audit feature gate.
+- Requires Core Server integration settings (URL + API key).
+- Pull-only model: Lite executes synced scripts but does not create or
+  upload customer scripts locally.

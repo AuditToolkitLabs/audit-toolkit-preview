@@ -43,6 +43,9 @@ Enterprise tier pages are available under:
 - `/enterprise/webhooks`
 - `/enterprise/siem-export`
 
+Enterprise users can also run **Core Custom Script Sync** from Settings
+to pull Core-managed custom scripts onto the local agent.
+
 ## 5.2 Command reference
 
 ### Core options
@@ -149,7 +152,17 @@ python3 /opt/audit-toolkit/agents/html-linux/cli.py compliance --framework cis -
 python3 /opt/audit-toolkit/agents/html-linux/cli.py siem-export --format cef --severity-filter fail --days 30
 python3 /opt/audit-toolkit/agents/html-linux/cli.py trends --mode scorecard --days 90
 python3 /opt/audit-toolkit/agents/html-linux/cli.py webhooks --action list
+python3 /opt/audit-toolkit/agents/html-linux/cli.py core-sync-scripts --enable
 ```
+
+`core-sync-scripts` requirements:
+
+- Enterprise license (feature-gated)
+- Core Server URL and API key configured
+- Core custom script sync enabled in settings (or `--enable` used)
+
+This command only pulls scripts from Core Server; it does not create
+local customer scripts on the Lite agent.
 
 ### Review SSH hardening posture
 

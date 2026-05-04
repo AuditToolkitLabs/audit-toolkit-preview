@@ -3,19 +3,16 @@
 | Field | Value |
 | --- | --- |
 | Document version | 1.1 |
-| Last updated | 2026-05-03 |
+| Last updated | 2026-05-04 |
 | Product | AuditToolkit Linux Security Lite |
-| Release | v1.1.1 |
+| Release | v1.1.2 |
 | Vendor | AuditToolkitLabs |
 | Vendor contact | [admin@audittoolkitlabs.com](mailto:admin@audittoolkitlabs.com) |
 
 This index covers all customer-facing documentation for AuditToolkit
-Linux Security Lite version 1.1.1. Documents are numbered to reflect
+Linux Security Lite version 1.1.2. Documents are numbered to reflect
 the recommended reading order; you do not need to read every document
 before using the toolkit.
-
-This release includes the signed security documentation refresh and
-OWASP scorecard alignment updates published with v1.1.1.
 
 ---
 
@@ -62,6 +59,12 @@ OWASP scorecard alignment updates published with v1.1.1.
 | 22 | [Security FAQ — Procurement and Due Diligence](22-security-faq.md) | Read-only design; data collected; OWASP posture; supply chain; vulnerability management. |
 | 23 | [Licensing, Legal Terms, and Acceptable Use](23-licensing-and-legal.md) | Licensing model (free/commercial tiers); EULA summary; disclaimer; pre-use change control requirements; Provider contact. |
 | 24 | [Enterprise Compliance Platform](24-enterprise-compliance-platform.md) | Enterprise feature model, UI/API/CLI controls, reporting and integration workflows. |
+
+## Security assessment documents
+
+| # | Document | Purpose |
+| --- | --- | --- |
+| SA1 | [OWASP Security Scorecard](../docs/OWASP-SECURITY-SCORECARD.md) | Full OWASP Top 10 assessment for procurement and due-diligence review. Current score: 97/100, Grade A+. |
 
 ## Legal documents
 

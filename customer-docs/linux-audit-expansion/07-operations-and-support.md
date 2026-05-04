@@ -71,9 +71,10 @@ Include with every escalation to the service provider:
 
 The toolkit is a self-contained binary distribution. Continuity measures:
 
-- Keep at least two prior release packages in your artefact repository.
-- Test that rollback to the prior version produces valid reports before
-  removing it.
+- Treat `v1.1.2` as the current approved public release for deployment.
+- Do not redeploy superseded public releases affected by the licensing defect.
+- If you maintain an internal artefact store, retain only packages that have
+  passed your own validation and approval gate.
 - For fleet deployments, stagger upgrades — pilot on 10% of hosts first.
 - Retain signed release checksums from GitHub Releases for integrity
   verification.
