@@ -44,5 +44,6 @@ It is intentionally limited to **documentation and screenshots only**.
 
 - Confirm **no download buttons** are present.
 - Confirm **Gumroad remains unpublished**.
+- Confirm all Stripe-related checkout links use **[checkout.audittoolkitlabs.com](https://checkout.audittoolkitlabs.com/)** only.
 - Confirm **main** and feature branches remain private.
 - Confirm screenshots contain no secrets, internal hostnames, or customer data.

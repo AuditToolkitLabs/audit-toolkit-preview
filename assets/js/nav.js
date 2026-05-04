@@ -66,4 +66,49 @@
     });
   });
 
+  /* ── Stripe checkout hardening ────────────────────── */
+  var LIVE_CHECKOUT_HOST = 'checkout.audittoolkitlabs.com';
+  var TEST_HINT_RE = /(mode=test|livemode=false|pk_test|sk_test|test[_-]?mode|test_clock)/i;
+
+  function parseUrl(href) {
+    try {
+      return new URL(href, window.location.href);
+    } catch (_err) {
+      return null;
+    }
+  }
+
+  function isStripeRelated(url) {
+    if (!url) return false;
+    if (url.hostname === LIVE_CHECKOUT_HOST) return true;
+    return /(^|\.)stripe\.com$/i.test(url.hostname);
+  }
+
+  function isAllowedLiveCheckout(url) {
+    if (!url) return false;
+    if (url.protocol !== 'https:') return false;
+    if (url.hostname !== LIVE_CHECKOUT_HOST) return false;
+
+    var combined = (url.pathname || '') + (url.search || '') + (url.hash || '');
+    if (TEST_HINT_RE.test(combined)) return false;
+
+    return true;
+  }
+
+  document.addEventListener('click', function (e) {
+    var link = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!link) return;
+
+    var href = link.getAttribute('href') || '';
+    if (!href || href.charAt(0) === '#') return;
+
+    var url = parseUrl(href);
+    if (!isStripeRelated(url)) return;
+
+    if (!isAllowedLiveCheckout(url)) {
+      e.preventDefault();
+      alert('Checkout is temporarily unavailable. Please use the official live checkout on checkout.audittoolkitlabs.com.');
+    }
+  }, true);
+
 }());
