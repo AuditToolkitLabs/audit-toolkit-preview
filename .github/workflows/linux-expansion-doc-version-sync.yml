@@ -1,0 +1,26 @@
+name: Linux Expansion Doc Version Sync
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  linux-expansion-doc-version-sync:
+    name: Linux Expansion Doc Version Sync
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate linux-expansion doc version consistency
+        run: python3 ci/validate-linux-expansion-doc-version.py
