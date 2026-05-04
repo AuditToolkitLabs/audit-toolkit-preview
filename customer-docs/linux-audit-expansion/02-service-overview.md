@@ -5,9 +5,9 @@
 | Field | Value |
 | --- | --- |
 | Document version | 1.1 |
-| Last updated | 2026-05-01 |
+| Last updated | 2026-05-04 |
 | Product | AuditToolkit Linux Security Lite |
-| Release | v1.1.1 |
+| Release | v1.1.2 |
 
 ---
 

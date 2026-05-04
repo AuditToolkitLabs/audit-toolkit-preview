@@ -46,8 +46,10 @@ Summary:
 
 - For configuration changes (`/etc/audit-toolkit/config`), the previous
   value should be recorded in your change log before modification.
-- For package upgrades, rollback is achieved by reinstalling the previous
-  release package from your artefact store.
+- For package upgrades, rollback is achieved by reinstalling the last
+  internally approved release package from your artefact store.
+- Do not roll back to superseded public releases affected by the licensing
+  defect.
 - Report artefacts from before the upgrade are not affected by rollback
   (they remain valid against the schema version they were produced under).
 - Do not mix toolkit versions within a single host's scheduled audit cycle;

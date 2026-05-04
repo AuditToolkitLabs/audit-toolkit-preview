@@ -133,7 +133,7 @@ code are included.
 **Q: What is the toolkit's own OWASP Top 10 security posture?**
 
 A full OWASP Top 10 security scorecard for the toolkit is maintained at
-`docs/OWASP-SECURITY-SCORECARD.md`. The current score is 100/100 (grade A+),
+`docs/OWASP-SECURITY-SCORECARD.md`. The current score is 97/100 (grade A+),
 assessed and revalidated in May 2026.
 
 ---

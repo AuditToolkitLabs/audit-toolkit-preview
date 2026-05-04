@@ -53,14 +53,14 @@ Full installation instructions with all package-format options are in
 
 ```bash
 # Debian/Ubuntu — .deb package
-sudo dpkg -i audit-toolkit-lite_1.1.1_all.deb
+sudo dpkg -i audit-toolkit-lite_1.1.2_all.deb
 
 # RHEL/Fedora/openSUSE — .rpm package
-sudo rpm -ivh audit-toolkit-lite-1.1.1.noarch.rpm
+sudo rpm -ivh audit-toolkit-lite-1.1.2-1.noarch.rpm
 
 # Any Linux — universal tarball
-tar -xzf audit-toolkit-lite-v1.1.1.tar.gz
-sudo bash audit-toolkit-lite-v1.1.1/install.sh
+tar -xzf audit-toolkit-lite-1.1.2.tar.gz
+sudo bash audit-toolkit-lite-1.1.2/install.sh
 ```
 
 After installation the launcher is available at
