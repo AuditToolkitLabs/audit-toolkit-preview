@@ -41,15 +41,15 @@
       <span class="cur">CMDB API Data Collection Tool</span>
     </div>
     <div class="flex flex-wrap gap-8 mb-16">
-      <span class="badge badge-amber">Beta v0.2.6</span>
+      <span class="badge badge-amber">Beta v0.2.11</span>
       <span class="badge badge-blue">Flask &middot; SQLAlchemy &middot; Celery</span>
       <span class="badge badge-muted">Python 3.11</span>
     </div>
     <h1>CMDB API Data Collection Tool</h1>
     <p>Multi-tenant infrastructure data collection, vulnerability correlation, and CMDB population platform. Built for IT operations teams managing complex hybrid environments.</p>
     <div class="flex gap-12 flex-wrap mt-24">
-      <a href="releases.html#v026" class="btn btn-primary">Release Notes v0.2.6</a>
-      <a href="cmdb-api-releases.html" target="_blank" rel="noopener" class="btn btn-secondary">View v0.2.6 Tag</a>
+      <a href="cmdb-api-releases.html#v0211" class="btn btn-primary">Release Notes v0.2.11</a>
+      <a href="cmdb-api-releases.html" target="_blank" rel="noopener" class="btn btn-secondary">View All CMDB Releases</a>
       <a href="cmdb-api-documentation.html" class="btn btn-secondary">Browse CMDB API Documentation</a>
       <a href="support.html#contact" class="btn btn-secondary">Licence Enquiry</a>
     </div>
@@ -120,7 +120,25 @@
       <h2>Latest Release Highlights Across Tools</h2>
       <p>Recent updates across the AuditToolkit Labs product set so this page reflects the broader release picture, not just CMDB API changes.</p>
     </div>
-    <div class="grid-2">
+    <div class="grid-3">
+      <div class="card">
+        <div class="flex items-center gap-8 mb-8">
+          <span class="badge badge-amber">CMDB API Tool</span>
+          <span class="badge badge-muted">v0.2.11</span>
+        </div>
+        <h3 style="margin-top:0;">CMDB API v0.2.11</h3>
+        <ul class="feature-list" style="margin-top:8px;">
+          <li><span class="icon">&#10003;</span><span class="text">Version guard in <code>apply_targeted_update.py</code> &mdash; auto-aborts if bundle is same or older than installed version.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Non-SQLite deployment safety warning ensures DBA snapshot exists before automated patching proceeds.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Targeted updater creates pre-change backup of SQLite database and config file on every run.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Updated maintenance runbook (Doc 21) with full patching and rollback procedures.</span></li>
+        </ul>
+        <div class="flex gap-12 flex-wrap mt-16">
+          <a href="cmdb-api-releases.html#v0211" class="btn btn-primary btn-sm">CMDB v0.2.11 Release Notes</a>
+          <a href="cmdb-api-documentation.html" class="btn btn-secondary btn-sm">CMDB Documentation</a>
+        </div>
+      </div>
+
       <div class="card">
         <div class="flex items-center gap-8 mb-8">
           <span class="badge badge-amber">Audit Admin Toolkit</span>
@@ -141,13 +159,14 @@
       <div class="card">
         <div class="flex items-center gap-8 mb-8">
           <span class="badge badge-amber">Linux Security Lite</span>
-          <span class="badge badge-muted">v1.1.1</span>
+          <span class="badge badge-muted">v1.1.4</span>
         </div>
-        <h3 style="margin-top:0;">Linux Tool Latest Release</h3>
+        <h3 style="margin-top:0;">Linux Tool v1.1.4</h3>
         <ul class="feature-list" style="margin-top:8px;">
-          <li><span class="icon">&#10003;</span><span class="text">Latest tagged release is published and linked from the product release page.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Release references are aligned to the public releases channel and customer support path.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Product and release pages now use the same release routing model as other tools.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Bundled <code>toolkit-updater.sh</code> now included in all release package formats.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Configuration and log directories preserved automatically during package upgrades and rollback.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Rollback now uses rsync rather than destructive removal — existing config and log files protected.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Customer documentation updated to v1.1.4 including updated installation, maintenance, and licensing docs.</span></li>
         </ul>
         <div class="flex gap-12 flex-wrap mt-16">
           <a href="linux-audit-expansion-releases.html" class="btn btn-primary btn-sm">Linux Release Details</a>

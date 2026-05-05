@@ -52,15 +52,62 @@
 <section class="section">
   <div class="wrap">
     <div class="callout callout-info" style="max-width:680px;margin:0 auto;">
-      <strong>Latest release now available.</strong> Linux Security Lite release <strong>audit-toolkit-lite/v1.1.2</strong> is now published.
+      <strong>Latest release now available.</strong> Linux Security Lite release <strong>audit-toolkit-lite/v1.1.4</strong> is now published.
     </div>
-    <div class="card mt-24" style="max-width:760px;margin:24px auto 0;">
+
+    <!-- v1.1.4 — Latest -->
+    <div class="card mt-24" style="max-width:760px;margin:24px auto 0;" id="v114">
       <div class="flex flex-wrap gap-8 mb-12">
-        <span class="badge badge-green">Latest Tag &mdash; v1.1.2</span>
+        <span class="badge badge-green">Latest Tag &mdash; v1.1.4</span>
+        <span class="badge badge-muted">audit-toolkit-lite/v1.1.4</span>
+        <span class="date" style="font-size:.82rem;color:var(--subtle);margin-left:4px;">May 2026</span>
+      </div>
+      <h3 style="margin-top:0;">Linux Security Lite v1.1.4</h3>
+      <p>Maintenance and hardening release. Bundled updater, safe upgrade preservation, and release-validation CI gate.</p>
+      <ul class="feature-list" style="margin-top:10px;">
+        <li><span class="icon">&#10003;</span><span class="text"><strong>Bundled updater script:</strong> <code>scripts/toolkit-updater.sh</code> is now included in all release package formats (.deb, .rpm, tarball) from this version onwards.</span></li>
+        <li><span class="icon">&#10003;</span><span class="text"><strong>Upgrade preservation:</strong> <code>/etc/audit-toolkit/</code> (config) and <code>/var/log/audit-toolkit/</code> (reports) are preserved automatically during package upgrades &mdash; no manual backup required for minor upgrades.</span></li>
+        <li><span class="icon">&#10003;</span><span class="text"><strong>Safe rollback:</strong> rollback now uses <code>rsync --delete</code> rather than a destructive <code>rm -rf</code>; existing configuration and log files are not removed during a rollback operation.</span></li>
+        <li><span class="icon">&#10003;</span><span class="text"><strong>Release gate:</strong> customer-facing documentation must pass <code>validate-customer-docs-release-version.py</code> before a release tag is created; the pipeline blocks on version mismatch.</span></li>
+        <li><span class="icon">&#10003;</span><span class="text">Documentation set updated to version 1.1 (24 documents) covering installation, maintenance, licensing, and enterprise compliance platform guidance.</span></li>
+        <li><span class="icon">&#10003;</span><span class="text">OWASP security scorecard maintained at 100/100, Grade A+.</span></li>
+      </ul>
+      <div class="flex gap-12 flex-wrap mt-16">
+        <a href="https://github.com/AuditToolkitLabs/releases/releases/tag/audit-toolkit-lite%2Fv1.1.4" target="_blank" rel="noopener" class="btn btn-primary">Open v1.1.4 Tag &rarr;</a>
+        <a href="https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-lite%2Fv1.1.4/audit-toolkit-lite-v1.1.4.tar.gz" target="_blank" rel="noopener" class="btn btn-secondary">Download .tar.gz</a>
+        <a href="https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-lite%2Fv1.1.4/audit-toolkit-lite_1.1.4_all.deb" target="_blank" rel="noopener" class="btn btn-secondary">Download .deb</a>
+        <a href="https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-lite%2Fv1.1.4/audit-toolkit-lite-1.1.4.noarch.rpm" target="_blank" rel="noopener" class="btn btn-secondary">Download .rpm</a>
+        <a href="support.html#contact" class="btn btn-secondary">Ask a Release Question</a>
+      </div>
+    </div>
+
+    <!-- v1.1.3 -->
+    <div class="card mt-24" style="max-width:760px;margin:24px auto 0;" id="v113">
+      <div class="flex flex-wrap gap-8 mb-12">
+        <span class="badge badge-muted">v1.1.3</span>
+        <span class="badge badge-muted">audit-toolkit-lite/v1.1.3</span>
+        <span class="date" style="font-size:.82rem;color:var(--subtle);margin-left:4px;">May 2026</span>
+      </div>
+      <h3 style="margin-top:0;">Linux Security Lite v1.1.3</h3>
+      <p>Maintenance patch: distro compatibility and documentation corrections.</p>
+      <ul class="feature-list" style="margin-top:10px;">
+        <li><span class="icon">&#10003;</span><span class="text">Compatibility shim fixes for Alpine 3.20 OpenRC service detection edge cases.</span></li>
+        <li><span class="icon">&#10003;</span><span class="text">Minor corrections to installation guide and maintenance runbook.</span></li>
+        <li><span class="icon">&#10003;</span><span class="text">OWASP scorecard maintained at 100/100, Grade A+.</span></li>
+      </ul>
+      <div class="flex gap-12 flex-wrap mt-16">
+        <a href="https://github.com/AuditToolkitLabs/releases/releases/tag/audit-toolkit-lite%2Fv1.1.3" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">Open v1.1.3 Tag &rarr;</a>
+      </div>
+    </div>
+
+    <!-- v1.1.2 — Previous -->
+    <div class="card mt-24" style="max-width:760px;margin:24px auto 0;" id="v112">
+      <div class="flex flex-wrap gap-8 mb-12">
+        <span class="badge badge-muted">v1.1.2</span>
         <span class="badge badge-muted">audit-toolkit-lite/v1.1.2</span>
       </div>
-      <h3 style="margin-top:0;">Linux Security Lite</h3>
-      <p>Tagged release is now published and available in the public releases repository.</p>
+      <h3 style="margin-top:0;">Linux Security Lite v1.1.2</h3>
+      <p>Signed security documentation release with OWASP scorecard and licensing corrections.</p>
       <ul class="feature-list" style="margin-top:10px;">
         <li><span class="icon">&#10003;</span><span class="text">Signed security documentation release aligned to upstream changelog.</span></li>
         <li><span class="icon">&#10003;</span><span class="text">OWASP security scorecard maintained at 100/100 (A+), including A08 integrity closure.</span></li>
@@ -68,11 +115,10 @@
         <li><span class="icon">&#10003;</span><span class="text"><strong>Licensing and pricing correction:</strong> an incorrect licence configuration and an associated cost mismatch identified in this release line have been resolved. If you have any questions regarding your licence or pricing, please <a href="licensing.html">contact the licensing team</a>.</span></li>
       </ul>
       <div class="flex gap-12 flex-wrap mt-16">
-        <a href="https://github.com/AuditToolkitLabs/releases/releases/tag/audit-toolkit-lite%2Fv1.1.2" target="_blank" rel="noopener" class="btn btn-primary">Open v1.1.2 Tag &rarr;</a>
-        <a href="https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-lite%2Fv1.1.2/audit-toolkit-lite-v1.1.2.tar.gz" target="_blank" rel="noopener" class="btn btn-secondary">Download .tar.gz</a>
-        <a href="https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-lite%2Fv1.1.2/audit-toolkit-lite_1.1.2_all.deb" target="_blank" rel="noopener" class="btn btn-secondary">Download .deb</a>
-        <a href="https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-lite%2Fv1.1.2/audit-toolkit-lite-1.1.2.noarch.rpm" target="_blank" rel="noopener" class="btn btn-secondary">Download .rpm</a>
-        <a href="support.html#contact" class="btn btn-secondary">Ask a Release Question</a>
+        <a href="https://github.com/AuditToolkitLabs/releases/releases/tag/audit-toolkit-lite%2Fv1.1.2" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">Open v1.1.2 Tag &rarr;</a>
+        <a href="https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-lite%2Fv1.1.2/audit-toolkit-lite-v1.1.2.tar.gz" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">Download .tar.gz</a>
+        <a href="https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-lite%2Fv1.1.2/audit-toolkit-lite_1.1.2_all.deb" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">Download .deb</a>
+        <a href="https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-lite%2Fv1.1.2/audit-toolkit-lite-1.1.2.noarch.rpm" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">Download .rpm</a>
       </div>
     </div>
   </div>

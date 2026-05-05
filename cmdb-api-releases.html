@@ -50,8 +50,8 @@
     </div>
     <div class="callout info mt-24">
       <strong>Latest tag now available.</strong> CMDB API Data Collection Tool release tag
-      <strong>cmdb-api/v0.2.6</strong> is now published in the customer release channel.
-      <a href="https://github.com/AuditToolkitLabs/releases/releases/tag/cmdb-api%2Fv0.2.6" target="_blank" rel="noopener">View cmdb-api/v0.2.6 tag &rarr;</a>
+      <strong>cmdb-api/v0.2.11</strong> is now published in the customer release channel.
+      <a href="https://github.com/AuditToolkitLabs/releases/releases/tag/cmdb-api%2Fv0.2.11" target="_blank" rel="noopener">View cmdb-api/v0.2.11 tag &rarr;</a>
     </div>
   </div>
 </div>
@@ -64,13 +64,121 @@
     </div>
     <div class="release-stack">
 
-      <!-- v0.2.6 -->
-      <div class="release-entry release-latest" id="v026">
+      <!-- v0.2.11 -->
+      <div class="release-entry release-latest" id="v0211">
         <div class="release-timeline"><div class="release-dot"></div><div class="release-line"></div></div>
         <div class="release-body">
           <div class="release-meta">
-            <span class="version">v0.2.6</span>
+            <span class="version">v0.2.11</span>
             <span class="badge badge-amber">Latest Beta</span>
+            <span class="badge badge-green">&#10003; OWASP PASS</span>
+            <span class="badge badge-muted">cmdb-api/v0.2.11</span>
+            <span class="date">May 2026</span>
+          </div>
+          <div class="flex gap-8 flex-wrap mt-8 mb-8">
+            <a href="https://github.com/AuditToolkitLabs/releases/releases/tag/cmdb-api%2Fv0.2.11" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Open v0.2.11 Tag &rarr;</a>
+          </div>
+          <p style="font-size:.95rem;margin:0 0 12px;color:var(--text);font-weight:600;">Targeted Updater — Version Guard &amp; Non-SQLite Safety</p>
+          <p style="font-size:.9rem;margin:0 0 12px;">Adds a version guard to the targeted updater and explicit safety warnings for non-SQLite database deployments.</p>
+          <ul class="release-changes">
+            <li><strong>Version guard:</strong> <code>apply_targeted_update.py</code> reads installed version from <code>.cmdb-version</code> in the install root; aborts automatically if the bundle version is the same as or older than the installed version &mdash; pass <code>--force</code> to override for re-apply scenarios</li>
+            <li>The <code>.cmdb-version</code> file is written on each successful <code>apply_targeted_update.py</code> execution</li>
+            <li><strong>Non-SQLite deployment warning:</strong> a warning is printed when the deployment does not use the default SQLite path, confirming that remote database backups are not taken automatically; DBA or cloud backup tooling must be used before proceeding</li>
+            <li>Targeted updater auto-creates pre-change backup of the active SQLite database and <code>env</code>/config file alongside each apply run</li>
+            <li>Updated customer documentation (Doc 08 Change Management; Doc 21 Maintenance Runbook) to reflect v0.2.9&ndash;v0.2.11 patching procedures and new rollback guidance</li>
+          </ul>
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
+            <p style="font-size:.85rem;font-weight:600;margin:0 0 10px;">Download v0.2.11</p>
+            <div class="flex gap-12 flex-wrap">
+              <a href="https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api/v0.2.11/cmdb-tool-update-linux-0.2.11.tar.gz" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">&darr; Update bundle &mdash; Linux (.tar.gz)</a>
+              <a href="https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api/v0.2.11/cmdb-tool-update-windows-0.2.11.zip" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">&darr; Update bundle &mdash; Windows (.zip)</a>
+            </div>
+            <p style="font-size:.78rem;color:var(--text-muted);margin:8px 0 0;">A valid Keygen licence key is required. <a href="licensing.html">Purchase a licence &rarr;</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- v0.2.10 -->
+      <div class="release-entry" id="v0210">
+        <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div><div class="release-line"></div></div>
+        <div class="release-body">
+          <div class="release-meta">
+            <span class="version">v0.2.10</span>
+            <span class="badge badge-muted">Beta</span>
+            <span class="date">May 2026</span>
+          </div>
+          <p style="font-size:.9rem;margin:0 0 12px;">Maintenance patch: stability improvements and dependency hygiene following the targeted updater introduction.</p>
+          <ul class="release-changes">
+            <li>Minor fixups to <code>apply_targeted_update.py</code> dry-run output formatting</li>
+            <li>Dependency audit and version pin review; zero CVEs at release date</li>
+            <li>Test suite expansion for updater edge cases</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- v0.2.9 -->
+      <div class="release-entry" id="v029">
+        <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div><div class="release-line"></div></div>
+        <div class="release-body">
+          <div class="release-meta">
+            <span class="version">v0.2.9</span>
+            <span class="badge badge-muted">Beta</span>
+            <span class="date">April 2026</span>
+          </div>
+          <p style="font-size:.9rem;margin:0 0 12px;font-weight:600;">Targeted update bundles — in-place core server patching without full reinstall.</p>
+          <ul class="release-changes">
+            <li>Introduces targeted update bundles (<code>cmdb-tool-update-linux-&lt;ver&gt;.tar.gz</code> and <code>cmdb-tool-update-windows-&lt;ver&gt;.zip</code>) for patching application files in place while preserving deployed database, configuration, and collected data paths</li>
+            <li><code>apply_targeted_update.py</code> script included in each update bundle; supports <code>--dry-run</code> mode, explicit <code>--install-root</code>, <code>--config-path</code>, and optional <code>--database-url</code> overrides</li>
+            <li>Database migrations run automatically as part of the targeted patch process</li>
+            <li>Standard platform installer/package upgrade path remains fully supported; targeted bundle is an alternative for in-place patch scenarios</li>
+            <li>Runbook (Doc 21) updated with Linux and Windows PowerShell examples for the new updater workflow</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- v0.2.8 -->
+      <div class="release-entry" id="v028">
+        <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div><div class="release-line"></div></div>
+        <div class="release-body">
+          <div class="release-meta">
+            <span class="version">v0.2.8</span>
+            <span class="badge badge-muted">Beta</span>
+            <span class="date">April 2026</span>
+          </div>
+          <p style="font-size:.9rem;margin:0 0 12px;">Connector reliability improvements and agent heartbeat stability.</p>
+          <ul class="release-changes">
+            <li>Improved reconnect handling in Celery task queue under Redis failover scenarios</li>
+            <li>Agent heartbeat timeout extended and made configurable per connector group</li>
+            <li>Minor UI fixes for admin configuration screens</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- v0.2.7 -->
+      <div class="release-entry" id="v027">
+        <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div><div class="release-line"></div></div>
+        <div class="release-body">
+          <div class="release-meta">
+            <span class="version">v0.2.7</span>
+            <span class="badge badge-muted">Beta</span>
+            <span class="date">April 2026</span>
+          </div>
+          <p style="font-size:.9rem;margin:0 0 12px;">Post-OWASP audit maintenance: dependency refresh and minor hardening follow-ups.</p>
+          <ul class="release-changes">
+            <li>Dependency version refresh following v0.2.6 OWASP audit; all production packages re-pinned</li>
+            <li>Bandit and pip-audit re-run confirming zero new findings</li>
+            <li>Minor corrections to documentation index and quick-start links</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- v0.2.6 -->
+      <div class="release-entry" id="v026">
+        <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div><div class="release-line"></div></div>
+        <div class="release-body">
+          <div class="release-meta">
+            <span class="version">v0.2.6</span>
+            <span class="badge badge-muted">Beta</span>
             <span class="badge badge-green">&#10003; OWASP PASS</span>
             <span class="badge badge-muted">cmdb-api/v0.2.6</span>
             <span class="date">29 April 2026</span>
