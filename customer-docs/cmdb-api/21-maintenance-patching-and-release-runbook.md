@@ -55,11 +55,64 @@ Covers:
 1. Announce maintenance start.
 2. Take pre-change backup snapshot.
 3. Stop application service.
-4. Deploy new application version.
-5. Run database migrations in order when required.
-6. Start application service and validate health endpoint.
-7. Perform production smoke test set.
-8. Announce service restoration.
+4. Choose deployment method:
+   - use the standard installer or OS package for first install,
+     platform-aligned upgrade, or when change control requires native
+     package records;
+   - use the targeted update bundle from `v0.2.9` onward when patching
+     an existing core server in place while preserving deployed
+     database, configuration, and collected data paths.
+5. Deploy new application version.
+6. If using the targeted update bundle, run `apply_targeted_update.py`
+   from the release asset against the existing install root; confirm the
+   generated backup location is captured in the change record.
+7. Run database migrations in order when required.
+   The targeted updater performs this automatically as part of the patch
+   process.
+8. Start application service and validate health endpoint.
+9. Perform production smoke test set.
+10. Announce service restoration.
+
+### Targeted updater command examples
+
+Run the updater from the extracted release asset location.
+
+Linux example:
+
+```bash
+python3 apply_targeted_update.py \
+   --bundle cmdb-tool-update-linux-0.2.11.tar.gz \
+   --install-root /opt/cmdb-tool \
+   --config-path /etc/cmdb-tool/cmdb-tool.conf \
+   --dry-run
+```
+
+After reviewing the dry-run output, rerun the same command without
+`--dry-run` during the approved maintenance window.
+
+Windows PowerShell example:
+
+```powershell
+python .\apply_targeted_update.py `
+   --bundle .\cmdb-tool-update-windows-0.2.11.zip `
+   --install-root "C:\Program Files\CmdbTool" `
+   --config-path "C:\ProgramData\CmdbTool\cmdb-tool.env" `
+   --dry-run
+```
+
+If the deployment uses PostgreSQL rather than the default SQLite path,
+provide `--database-url` explicitly or confirm it is present in the
+environment/config file before execution.
+
+**Version guard (from v0.2.11):** The updater automatically detects the
+currently installed version from `.cmdb-version` in the install root
+(written on each successful apply). If the bundle version is the same as,
+or older than, the installed version, the updater aborts with a warning.
+Pass `--force` to override for re-apply scenarios.
+
+**Non-SQLite deployments:** A warning is printed confirming that remote
+database backups are not taken automatically. Ensure a database snapshot
+exists via your DBA or cloud backup tooling before proceeding.
 
 ## 21.5 Core server rollback procedure
 
@@ -68,8 +121,11 @@ Covers:
 3. Restore previous application version.
 4. Restore database from pre-change backup if migration/data mismatch
    exists.
-5. Start service and re-run smoke tests.
-6. Document incident and root cause.
+5. If the targeted updater was used, restore the generated updater
+   backup for the SQLite database and configuration file alongside the
+   normal platform or VM snapshot as appropriate.
+6. Start service and re-run smoke tests.
+7. Document incident and root cause.
 
 ## 21.6 Managed agent patching and release procedure
 

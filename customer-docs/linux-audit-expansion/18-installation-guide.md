@@ -5,7 +5,7 @@
 | Document version | 1.0 |
 | Last updated | 2026-05-04 |
 | Product | AuditToolkit Linux Security Lite |
-| Release | v1.1.2 |
+| Release | v1.1.4 |
 
 ---
 
@@ -50,18 +50,18 @@ release artefacts:
 
 ```bash
 # Download the release and checksum file
-wget https://github.com/AuditToolkitLabs/AuditToolkit-Linux-Security-Lite/releases/download/v1.1.2/audit-toolkit-lite-1.1.2.tar.gz
-wget https://github.com/AuditToolkitLabs/AuditToolkit-Linux-Security-Lite/releases/download/v1.1.2/SHA256SUMS
+wget https://github.com/AuditToolkitLabs/AuditToolkit-Linux-Security-Lite/releases/download/v1.1.4/audit-toolkit-lite-1.1.4.tar.gz
+wget https://github.com/AuditToolkitLabs/AuditToolkit-Linux-Security-Lite/releases/download/v1.1.4/SHA256SUMS
 
 # Verify the checksum
 sha256sum -c SHA256SUMS --ignore-missing
-# Expected output: audit-toolkit-lite-1.1.2.tar.gz: OK
+# Expected output: audit-toolkit-lite-1.1.4.tar.gz: OK
 ```
 
 For RPM packages, verify the GPG signature:
 
 ```bash
-rpm --checksig audit-toolkit-lite-1.1.2-1.noarch.rpm
+rpm --checksig audit-toolkit-lite-1.1.4-1.noarch.rpm
 ```
 
 ## 18.4 Install via Debian package (.deb)
@@ -70,10 +70,10 @@ Applicable to: Debian 11/12, Ubuntu 22.04/24.04, and derivatives.
 
 ```bash
 # Download the package
-wget https://github.com/AuditToolkitLabs/AuditToolkit-Linux-Security-Lite/releases/download/v1.1.2/audit-toolkit-lite_1.1.2_all.deb
+wget https://github.com/AuditToolkitLabs/AuditToolkit-Linux-Security-Lite/releases/download/v1.1.4/audit-toolkit-lite_1.1.4_all.deb
 
 # Install
-sudo dpkg -i audit-toolkit-lite_1.1.2_all.deb
+sudo dpkg -i audit-toolkit-lite_1.1.4_all.deb
 
 # If dependency errors occur, resolve them with:
 sudo apt-get install -f
@@ -95,14 +95,14 @@ openSUSE Leap/Tumbleweed.
 
 ```bash
 # Download the package
-wget https://github.com/AuditToolkitLabs/AuditToolkit-Linux-Security-Lite/releases/download/v1.1.2/audit-toolkit-lite-1.1.2-1.noarch.rpm
+wget https://github.com/AuditToolkitLabs/AuditToolkit-Linux-Security-Lite/releases/download/v1.1.4/audit-toolkit-lite-1.1.4-1.noarch.rpm
 
 # Install
-sudo rpm -ivh audit-toolkit-lite-1.1.2-1.noarch.rpm
+sudo rpm -ivh audit-toolkit-lite-1.1.4-1.noarch.rpm
 # Or with dnf (RHEL/Fedora):
-sudo dnf localinstall audit-toolkit-lite-1.1.2-1.noarch.rpm
+sudo dnf localinstall audit-toolkit-lite-1.1.4-1.noarch.rpm
 # Or with zypper (openSUSE):
-sudo zypper install audit-toolkit-lite-1.1.2-1.noarch.rpm
+sudo zypper install audit-toolkit-lite-1.1.4-1.noarch.rpm
 ```
 
 ## 18.6 Install via universal tarball
@@ -112,9 +112,9 @@ Gentoo, and distributions without dpkg or rpm.
 
 ```bash
 # Download and extract
-wget https://github.com/AuditToolkitLabs/AuditToolkit-Linux-Security-Lite/releases/download/v1.1.2/audit-toolkit-lite-1.1.2.tar.gz
-tar -xzf audit-toolkit-lite-1.1.2.tar.gz
-cd audit-toolkit-lite-1.1.2/
+wget https://github.com/AuditToolkitLabs/AuditToolkit-Linux-Security-Lite/releases/download/v1.1.4/audit-toolkit-lite-1.1.4.tar.gz
+tar -xzf audit-toolkit-lite-1.1.4.tar.gz
+cd audit-toolkit-lite-1.1.4/
 
 # Run the installer
 sudo bash install.sh
@@ -139,7 +139,7 @@ which audit-toolkit
 
 # Confirm the version
 audit-toolkit --version
-# Expected: AuditToolkit Linux Security Lite v1.1.2
+# Expected: AuditToolkit Linux Security Lite v1.1.4
 
 # Run a dry-run to confirm scripts are discovered
 audit-toolkit --auto --dry-run

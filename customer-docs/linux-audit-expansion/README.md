@@ -1,7 +1,7 @@
 # AuditToolkit Linux Security Lite — Customer Documentation
 
 This directory contains the complete customer-facing documentation for
-**AuditToolkit Linux Security Lite v1.1.2**, a multi-distro Bash audit
+**AuditToolkit Linux Security Lite v1.1.4**, a multi-distro Bash audit
 framework for Linux servers.
 
 ## Quick navigation
@@ -27,7 +27,7 @@ operational limits, and a procurement-facing security FAQ.
 
 ## Release
 
-v1.1.2 — published May 2026. Updated 2026-05-04 to include licensing security hardening and release-channel corrections.
+v1.1.4 — published May 2026. Updated 2026-05-04 to include licensing security hardening and release-channel corrections.
 
 ## Vendor
 

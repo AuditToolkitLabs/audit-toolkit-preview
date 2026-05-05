@@ -19,6 +19,11 @@
   with the subject `Subscribe to releases`.
 - The customer is responsible for applying patches in line with their
   internal change process.
+- From `v0.2.9` onward, core-server maintenance releases can be applied
+  either by standard platform installer/package upgrade or by the
+  targeted update bundles (`cmdb-tool-update-linux-<ver>.tar.gz` and
+  `cmdb-tool-update-windows-<ver>.zip`) when the objective is to patch
+  application files in place without replacing deployed data paths.
 - Major-version upgrades may require a database migration; always run
   the migration scripts from `db/migrations/` in order.
 - The application records the running version in the footer of the
@@ -32,6 +37,10 @@
 - For application-version upgrades, rollback is achieved by restoring
   the application files to the previous version **and** restoring the
   database from a backup taken immediately before the upgrade.
+- The targeted updater creates its own pre-change backup of the active
+  SQLite database and environment/config file, but this does not replace
+  the customer's normal backup and snapshot controls before production
+  maintenance.
 - Migrations are forward-only; do not attempt to run a newer
   migration's `down` step against production data without an explicit
   procedure from the service provider.

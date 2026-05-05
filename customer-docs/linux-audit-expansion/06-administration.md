@@ -130,8 +130,9 @@ make lint
 make test
 ```
 
-Maintain the running version in `VERSION` and update `CHANGELOG.md` before
-any production deployment.
+Maintain the running version in `VERSION`, update `CHANGELOG.md`, and sync the
+customer-facing release references before any production deployment or release
+cut. Validate that sync with `python3 ci/validate-customer-docs-release-version.py`.
 
 ## 6.6 How-to: remove a host from the audit scope
 

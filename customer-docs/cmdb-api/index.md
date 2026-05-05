@@ -5,7 +5,7 @@
 | Field | Value |
 | --- | --- |
 | Document version | 1.0 |
-| Last updated | 2026-04-29 |
+| Last updated | 2026-05-05 |
 | Service name | CMDB API Data Collection Tool |
 | Deployment model | On-Site / On-Premises |
 | Standard alignment | ISO/IEC 20000-1:2018 |
