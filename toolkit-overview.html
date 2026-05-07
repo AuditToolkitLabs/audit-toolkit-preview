@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toolkit Overview — AuditToolkit Labs</title>
+  <meta name="description" content="How the four AuditToolkit Labs tools fit together: use cases, workflow, and role-based starting paths." />
+  <link rel="stylesheet" href="assets/css/site.css" />
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="toolkit-overview.html" class="active">Overview</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="releases.html">Releases</a></li><li><a href="licensing.html">Licensing</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+      <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="index.html#products">Products</a>
+  <a href="toolkit-overview.html">Overview</a>
+  <a href="docs.html">Documentation</a>
+  <a href="releases.html">Releases</a>
+  <a href="licensing.html">Licensing</a>
+  <a href="support.html">Support</a>
+  <a href="support.html#contact" style="color:var(--accent);font-weight:600;">Contact Us</a>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span>
+      <span class="cur">Toolkit Overview</span>
+    </div>
+    <p class="eyebrow">How It Fits Together</p>
+    <h1>Four Tools. One Operational Workflow.</h1>
+    <p>This page shows where each product fits, which use cases it covers, and how security, compliance, and CMDB workflows connect end-to-end across the toolkit.</p>
+    <div class="flex flex-wrap gap-8 mt-24">
+      <span class="badge badge-blue">Audit Admin Toolkit v6.3.0</span>
+      <span class="badge badge-amber">Linux Security Lite v1.1.4</span>
+      <span class="badge badge-muted">CMDB API v0.2.11</span>
+      <span class="badge badge-amber">CMDB Asset Platform (Beta)</span>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Tool Map</p>
+      <h2>What each tool does</h2>
+      <p>Each product is purpose-built, but designed to interoperate in one governance and operations model.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="flex items-center gap-12 mb-12">
+          <div class="product-icon" style="background:rgba(90,160,255,.12);">&#128225;</div>
+          <div>
+            <h3 style="margin:0;">CMDB API Data Collection Tool</h3>
+            <p style="font-size:.86rem;">Ingestion and normalization layer</p>
+          </div>
+        </div>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Collects infrastructure and vulnerability data from connectors, agents, and APIs.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Normalizes records for CMDB workflows and downstream reporting.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Best for: inventory intake, connector integrations, CVE correlation.</span></li>
+        </ul>
+        <div class="mt-24"><a href="cmdb-tool.html" class="btn btn-secondary btn-sm">View CMDB API Tool</a></div>
+      </div>
+
+      <div class="card">
+        <div class="flex items-center gap-12 mb-12">
+          <div class="product-icon" style="background:rgba(110,231,183,.12);">&#128269;</div>
+          <div>
+            <h3 style="margin:0;">Audit Admin Toolkit</h3>
+            <p style="font-size:.86rem;">Audit operations and evidence layer</p>
+          </div>
+        </div>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Runs audit workflows from findings through remediation and closure.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Produces evidence-ready reporting for operational and compliance review.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Best for: audit governance, evidence, recurring control checks.</span></li>
+        </ul>
+        <div class="mt-24"><a href="audit-toolkit.html" class="btn btn-secondary btn-sm">View Audit Admin Toolkit</a></div>
+      </div>
+
+      <div class="card">
+        <div class="flex items-center gap-12 mb-12">
+          <div class="product-icon" style="background:rgba(251,191,36,.10);">&#128039;</div>
+          <div>
+            <h3 style="margin:0;">Linux Security Lite</h3>
+            <p style="font-size:.86rem;">Linux control depth extension</p>
+          </div>
+        </div>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Extends Linux-specific hardening and posture checks.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Maps findings to compliance controls and enterprise reporting paths.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Best for: Linux estates with deeper compliance requirements.</span></li>
+        </ul>
+        <div class="mt-24"><a href="linux-expansion.html" class="btn btn-secondary btn-sm">View Linux Security Lite</a></div>
+      </div>
+
+      <div class="card">
+        <div class="flex items-center gap-12 mb-12">
+          <div class="product-icon" style="background:rgba(244,114,182,.10);">&#127959;</div>
+          <div>
+            <h3 style="margin:0;">CMDB Asset Platform</h3>
+            <p style="font-size:.86rem;">Asset intelligence and enrichment layer</p>
+          </div>
+        </div>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Provides enriched asset context and broader lifecycle visibility.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Complements collection and audit products with asset command workflows.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Best for: enterprise asset governance and command-center operations.</span></li>
+        </ul>
+        <div class="mt-24"><a href="cmdb-asset-platform.html" class="btn btn-secondary btn-sm">View CMDB Asset Platform</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="border-top:1px solid var(--border);">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Use-Case Matrix</p>
+      <h2>Which tool to use for what</h2>
+      <p>Primary indicates the main owning tool. Supporting indicates where companion tooling adds value.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Use Case</th>
+            <th>Primary Tool</th>
+            <th>Supporting Tool(s)</th>
+            <th>Typical Output</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Infrastructure data intake and connector polling</td>
+            <td>CMDB API Data Collection Tool</td>
+            <td>CMDB Asset Platform</td>
+            <td>Normalized inventory + vulnerability-linked records</td>
+          </tr>
+          <tr>
+            <td>Audit finding lifecycle and remediation tracking</td>
+            <td>Audit Admin Toolkit</td>
+            <td>Linux Security Lite</td>
+            <td>Findings queue, evidence reports, closure records</td>
+          </tr>
+          <tr>
+            <td>Linux hardening and compliance control verification</td>
+            <td>Linux Security Lite</td>
+            <td>Audit Admin Toolkit</td>
+            <td>Control-level pass/fail evidence and reports</td>
+          </tr>
+          <tr>
+            <td>Asset governance and command-center views</td>
+            <td>CMDB Asset Platform</td>
+            <td>CMDB API Data Collection Tool</td>
+            <td>Asset context dashboards and enrichment state</td>
+          </tr>
+          <tr>
+            <td>Compliance evidence packaging for review</td>
+            <td>Audit Admin Toolkit</td>
+            <td>Linux Security Lite, CMDB API Data Collection Tool</td>
+            <td>Evidence exports for internal/external assurance</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="border-top:1px solid var(--border);background:linear-gradient(160deg,#0a1524 0%,#0b1220 100%);">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Operational Flow</p>
+      <h2>How they fit in one lifecycle</h2>
+      <p>The tools are designed as an operational chain, not isolated silos.</p>
+    </div>
+    <div class="grid-4">
+      <div class="card">
+        <h3 style="margin-bottom:8px;">1. Discover and Collect</h3>
+        <p>CMDB API pulls data from connectors and agents, then normalizes it for CMDB consumption.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:8px;">2. Enrich and Contextualize</h3>
+        <p>CMDB Asset Platform layers governance context, ownership, and asset intelligence.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:8px;">3. Audit and Validate</h3>
+        <p>Audit Admin Toolkit runs audit workflows; Linux Security Lite adds deeper Linux controls.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:8px;">4. Report and Improve</h3>
+        <p>Evidence and trend outputs support remediation planning, compliance review, and continual improvement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="border-top:1px solid var(--border);">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Start Paths</p>
+      <h2>Start by role</h2>
+      <p>Quick entry points for teams that need an immediate operating path.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Security Operations</h3>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Start with <strong>Audit Admin Toolkit</strong> for findings and evidence workflows.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Add <strong>Linux Security Lite</strong> for deeper Linux control verification.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>IT Operations / CMDB Teams</h3>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Start with <strong>CMDB API Data Collection Tool</strong> for connector-based intake.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Add <strong>CMDB Asset Platform</strong> for enriched command-center operations.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Governance / Compliance</h3>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Use <strong>Audit Admin Toolkit</strong> as the evidence and reporting control point.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Pull supporting control outputs from <strong>Linux Security Lite</strong> and CMDB data sources.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <div class="cta-band-inner">
+      <div>
+        <h2 class="mb-8">Need help designing your rollout path?</h2>
+        <p>Tell us your environment goals and we will map the right starting sequence across the four tools.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a href="support.html#contact" class="btn btn-primary btn-lg">Contact Us</a>
+        <a href="docs.html" class="btn btn-secondary btn-lg">Browse Documentation</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span style="font-weight:700;font-size:1.05rem;">AuditToolkit Labs</span></div>
+        <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
+        <p style="font-size:.82rem;">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+      </div>
+      <div class="footer-col"><h4>Products</h4><ul>
+        <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
+        <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
+        <li><a href="cmdb-asset-platform.html">CMDB Asset Platform</a></li>
+        <li><a href="linux-expansion.html">Linux Security Lite</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul>
+        <li><a href="toolkit-overview.html">Toolkit Overview</a></li>
+        <li><a href="docs.html">Documentation Hub</a></li>
+        <li><a href="releases.html">Release Notes</a></li>
+        <li><a href="licensing.html">Licensing &amp; Pricing</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
+        <li><a href="support.html#contact">Send an Enquiry</a></li>
+      </ul></div>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>
