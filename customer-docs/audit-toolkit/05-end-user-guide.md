@@ -100,3 +100,47 @@ to configure:
 - **Your internal helpdesk:** Contact `<your support email>` for
   account and access issues.
 - **Vendor support:** See section 7 for AuditAdmin Labs contact details.
+
+## 5.10 Scanner workbench (asset discovery)
+
+The **Scanner** page is a dedicated operational workspace for asset
+discovery scan execution and evidence review. It is designed for
+security and operations teams who need scan-specific visibility without
+mixing execution telemetry into business-level asset views.
+
+### What the Scanner page shows
+
+| Area | Purpose |
+| --- | --- |
+| **Recent Runs** | Select a scan run and inspect status, profile and method. |
+| **KPI cards** | Targets, completed targets, coverage %, and top priorities. |
+| **Findings tab** | Prioritised assets by risk rating, score, route, and open CVEs. |
+| **Coverage tab** | Per-target reachability/success, discovered asset link, and errors. |
+| **Execution tab** | Correlation/posture/risk pipeline status and runtime context. |
+| **Reports tab** | Business, technical, or combined report preview and export path. |
+
+### How it works with other pages
+
+- **Scanner** is run-centric and evidence-centric.
+- **Assets** and **Dashboard** remain asset-centric and business-centric.
+- Scanner results are correlated back into asset risk summaries and
+  compliance routing views.
+
+### Report modes
+
+- **Business**: asset impact and prioritisation summary.
+- **Technical**: scan evidence, coverage outcomes, and detailed findings.
+- **Combined**: business summary plus technical appendix.
+
+### Demo mode
+
+The Scanner page includes a **Demo Data** toggle for deterministic
+interface review. Demo mode is for UX review and training only; it is
+not evidence from your environment and must not be used as audit proof.
+
+## 5.11 Authorised use warning for scanning features
+
+Use scanning features only against systems and networks you own or are
+explicitly authorised to assess in writing. Unauthorised scanning may
+breach law, contract, or policy. The product is intended for defensive
+security assurance and compliance operations.

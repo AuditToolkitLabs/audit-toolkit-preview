@@ -35,6 +35,7 @@ The service, as delivered, includes:
 | External push ingest API | Machine-to-machine ingest endpoints for findings and assets (`/api/ingest/v1/*`) with producer registration, contract headers, and dead-letter replay. |
 | Fleet Agent coordinator service (formerly Managed Agent Server) | Coordinator for multi-host agent deployments, scheduling, and result aggregation. |
 | Developer Script Studio | In-browser editor for writing, testing and deploying custom audit scripts. |
+| Scanner workbench | Active-discovery sub-tool for network and host scanning; supports configurable scan profiles, live progress, multi-format report export (Business / Technical / Combined), and a built-in demo mode for training and testing. Requires explicit authorisation before use against any target. |
 | Scheduler | Celery-based task engine for scheduled audit runs and alert delivery. |
 
 Supported platforms at the time of writing:

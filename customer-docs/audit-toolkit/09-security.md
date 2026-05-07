@@ -48,7 +48,30 @@ API enforces:
 - **IP allow-listing** — API keys can be scoped to one or more IP
   ranges.
 
-## 9.4 Data protection
+## 9.4 Authorised use and misuse prevention
+
+Scanning and discovery capabilities are intended for defensive,
+organisation-authorised assurance activities only. The product must not
+be used for unauthorised reconnaissance, offensive security activity,
+or any activity that breaches law, contract, or internal policy.
+
+Customers must ensure:
+
+- Written authorisation exists for each network/asset scope scanned.
+- Change-management approval is in place for intrusive scan profiles.
+- Operators are trained on permitted and prohibited use.
+- Scan evidence is reviewed by qualified personnel before remediation.
+
+> **Legal counsel review recommended.** The acceptable-use restrictions
+> in section C.3 of the EULA represent minimum obligations under the
+> licence. Customers operating in regulated industries or multi-tenant
+> environments should have their legal counsel review applicable laws
+> (including the Computer Fraud and Abuse Act, UK Computer Misuse Act,
+> EU Directive 2013/40/EU, and equivalent national laws) before
+> deploying scanning features in any scope that includes third-party
+> or cloud-provider infrastructure.
+
+## 9.5 Data protection
 
 ### Data that stays on-premises
 
@@ -81,7 +104,7 @@ unencrypted HTTP in production mode
 Database-level encryption (PostgreSQL `pgcrypto` or full-disk
 encryption) is the responsibility of the Infrastructure Owner.
 
-## 9.5 Audit logging
+## 9.6 Audit logging
 
 The application maintains an append-only audit log of
 security-relevant events. Key events logged include:
@@ -97,7 +120,7 @@ security-relevant events. Key events logged include:
 The audit log is accessible to `admin` role users at
 **Admin → Audit Log** and via `GET /api/audit-log`.
 
-## 9.6 Vulnerability management
+## 9.7 Vulnerability management
 
 The Service Provider maintains a vulnerability management programme
 covering the application code and its direct dependencies:
@@ -111,7 +134,7 @@ Customers are responsible for the vulnerability management of the
 host operating system, the database, the network infrastructure, and
 the endpoints being audited.
 
-## 9.7 Responsible disclosure
+## 9.8 Responsible disclosure
 
 To report a security vulnerability in the Security Audit Toolkit,
 email [Security@audittoolkitlabs.com](mailto:Security@audittoolkitlabs.com).
@@ -126,7 +149,7 @@ Do not disclose security issues publicly until the Service Provider has
 confirmed the issue and made a fix available. The Service Provider
 commits to acknowledging reports within 5 business days.
 
-## 9.8 Privacy
+## 9.9 Privacy
 
 The Security Audit Toolkit does **not** collect telemetry or transmit
 audit data outside your infrastructure. The only external communication
@@ -135,7 +158,7 @@ air-gapped deployments.
 
 Full privacy statement: `PRIVACY.md` at the repository root.
 
-## 9.9 EULA and GDPR considerations
+## 9.10 EULA and GDPR considerations
 
 The EULA acceptance mechanism records the user identity, timestamp,
 client IP address, and SHA-256 hash of the agreement text. This record

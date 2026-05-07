@@ -104,6 +104,29 @@ Do not use SQLite in production.
   queue overlapping jobs; enable **Skip if running** on schedules
   with short intervals.
 
+### Scanner workbench and discovery constraints
+
+- Deep profile scanning may generate materially more network traffic
+  than fast/standard profiles. Validate impact in non-production
+  segments before broad rollout.
+- Some targets may be partially evaluated due to DNS, ACL, firewall,
+  credential, or reachability constraints. Use the **Coverage** tab for
+  per-target gap reasons.
+- If optional scanner dependencies are unavailable on the runtime host,
+  the platform may use a reduced-capability fallback path.
+- Scanner demo mode is non-production sample data for interface review;
+  it is not evidentiary output.
+- Discovery outputs identify potential issues and exposure indicators;
+  they do not perform exploitation or guarantee complete vulnerability
+  detection.
+
+### Authorisation boundary
+
+Scanning must be limited to assets and networks where your organisation
+has explicit legal authority to perform security assessment activities.
+Customers are responsible for maintaining written authorisation and
+change-control records.
+
 ### TLS and certificates
 
 - Self-signed certificates will cause agent connection warnings; use

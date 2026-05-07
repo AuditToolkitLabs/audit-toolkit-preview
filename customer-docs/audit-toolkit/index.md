@@ -81,5 +81,6 @@ GitHub Issues: <https://github.com/AuditToolkitLabs/Audit-Tool-/issues>
 - **End-User Licence Agreement**: `LICENSE-EULA.md` (presented in-product at first sign-in and located in this folder).
 - **Third-party software notices**: `NOTICE.md` (this folder).
 - **Privacy Policy**: see section 9 and `../PRIVACY.md`.
+- **Disclaimer and acceptable-use warning**: `../DISCLAIMER.md`.
 - **Licensing tiers and pricing**: see Appendix C in section 12 (Community, Trial, Starter, Professional, Business).
 - **Commercial feature add-ons**: Enterprise Integrations Pack and Advanced Operations Pack are available for qualifying paid subscriptions.

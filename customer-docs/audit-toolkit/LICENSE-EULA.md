@@ -178,6 +178,13 @@ You must not:
    legal entities under one licence instance unless explicitly permitted
    by contract.
 7. Use the software in violation of applicable laws or regulations.
+8. Run discovery/scanning activity against systems, networks, or
+   tenants you do not own or do not have explicit written authorisation
+   to assess.
+9. Use the software for offensive security operations, unauthorised
+   penetration attempts, disruption, or evasion.
+10. Represent demo data or simulated scanner outputs as production
+    evidence or compliance proof.
 
 ### C.4 Intellectual Property
 
