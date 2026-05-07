@@ -43,7 +43,7 @@
     </div>
     <p class="eyebrow">How It Fits Together</p>
     <h1>Four Tools. One Operational Workflow.</h1>
-    <p>This page shows where each product fits, which use cases it covers, and how security, compliance, and CMDB workflows connect end-to-end across the toolkit.</p>
+    <p>This page shows where each product fits, which use cases it covers, and how the main toolkit is composed of sub-tools and agent layers for end-to-end security, compliance, and CMDB operations.</p>
     <div class="flex flex-wrap gap-8 mt-24">
       <span class="badge badge-blue">Audit Admin Toolkit v6.3.0</span>
       <span class="badge badge-amber">Linux Security Lite v1.1.4</span>
@@ -52,6 +52,52 @@
     </div>
   </div>
 </div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Toolkit Structure</p>
+      <h2>Main toolkit, sub-tools, and agent layers</h2>
+      <p>The Audit Admin Toolkit is the core platform, with distinct sub-tools and agent models that support different deployment patterns.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Layer</th>
+            <th>What it includes</th>
+            <th>Why it matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Core platform</td>
+            <td>Web application, central workflow engine, and REST API (390+ endpoints)</td>
+            <td>Single control plane for findings, evidence, scheduling, and reporting</td>
+          </tr>
+          <tr>
+            <td>Audit script libraries</td>
+            <td>Linux scripts, Windows PowerShell scripts, and hypervisor audit scripts</td>
+            <td>Covers server, endpoint, and virtualisation audit scenarios in one platform</td>
+          </tr>
+          <tr>
+            <td>Agent execution layer</td>
+            <td>Standalone Agent, Fleet Agent, Hypervisor agent, plus Fleet Agent coordinator service</td>
+            <td>Supports single-host, fleet-scale, and hypervisor-native collection modes</td>
+          </tr>
+          <tr>
+            <td>Extension and companion tools</td>
+            <td>Linux Security Lite, CMDB API Data Collection Tool, CMDB Asset Platform</td>
+            <td>Adds deeper Linux controls, ingestion/normalization, and asset governance context</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout info mt-24">
+      <strong>Naming note:</strong> older references to Managed Agent and Lightweight Agent map to Fleet Agent and Standalone Agent in current docs.
+    </div>
+  </div>
+</section>
 
 <section class="section">
   <div class="wrap">
@@ -71,6 +117,7 @@
         </div>
         <ul class="feature-list">
           <li><span class="icon">&#10003;</span><span class="text">Collects infrastructure and vulnerability data from connectors, agents, and APIs.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Includes Windows agent (.NET 8), Linux agent (Go), and managed agent server workflows.</span></li>
           <li><span class="icon">&#10003;</span><span class="text">Normalizes records for CMDB workflows and downstream reporting.</span></li>
           <li><span class="icon">&#10003;</span><span class="text">Best for: inventory intake, connector integrations, CVE correlation.</span></li>
         </ul>
@@ -87,6 +134,8 @@
         </div>
         <ul class="feature-list">
           <li><span class="icon">&#10003;</span><span class="text">Runs audit workflows from findings through remediation and closure.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Core toolkit with sub-tools: web console, automation API, script libraries, and agent control patterns.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Agent model includes Standalone Agent, Fleet Agent, Hypervisor agent, and coordinator service.</span></li>
           <li><span class="icon">&#10003;</span><span class="text">Produces evidence-ready reporting for operational and compliance review.</span></li>
           <li><span class="icon">&#10003;</span><span class="text">Best for: audit governance, evidence, recurring control checks.</span></li>
         </ul>
@@ -103,6 +152,8 @@
         </div>
         <ul class="feature-list">
           <li><span class="icon">&#10003;</span><span class="text">Extends Linux-specific hardening and posture checks.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Enterprise interfaces are available through web pages, API routes, and CLI commands.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Includes agent mode for local operator dashboard use cases.</span></li>
           <li><span class="icon">&#10003;</span><span class="text">Maps findings to compliance controls and enterprise reporting paths.</span></li>
           <li><span class="icon">&#10003;</span><span class="text">Best for: Linux estates with deeper compliance requirements.</span></li>
         </ul>
