@@ -103,8 +103,10 @@ Reload Nginx: `sudo systemctl reload nginx`
 
 Open `https://<your-hostname>/` in your browser. Sign in with the
 initial administrator credentials printed at the end of the installer
-or displayed in `journalctl -u audit-toolkit -n 50`. **Change the
-password immediately.**
+or displayed in `journalctl -u audit-toolkit -n 50`. On first login,
+you will be required to change the temporary password, then accept the
+disclaimer/EULA prompt. After completing those steps, you are
+redirected to the dashboard. **Change the password immediately.**
 
 ## Troubleshooting
 

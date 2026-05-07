@@ -52,6 +52,21 @@ secrets, managing database size, and verifying service health.
    sudo systemctl restart audit-toolkit audit-toolkit-worker
    ```
 
+   If Hypervisor Agent is deployed in your environment, also update the
+   matching agent package on hypervisor hosts:
+
+   ```bash
+   # Linux hypervisors
+   tar xzf audit-hypervisor-agent-<new>-linux.tar.gz
+   cd audit-hypervisor-agent
+   sudo ./install-linux.sh
+
+   # VMware ESXi
+   tar xzf audit-hypervisor-agent-<new>-esxi.tar.gz
+   cd audit-hypervisor-agent
+   sh ./install-esxi.sh
+   ```
+
 4. **Run database migrations (if any).**
 
    ```bash
@@ -149,5 +164,6 @@ After any maintenance activity:
 - [ ] Web UI loads and admin login succeeds
 - [ ] Scheduled scans are still active (**Schedules** page)
 - [ ] Agent connections show **Online**
+- [ ] Hypervisor agents show **Online** and expected platform type
 - [ ] At least one on-demand audit completes successfully
 - [ ] Alert integrations deliver a test notification

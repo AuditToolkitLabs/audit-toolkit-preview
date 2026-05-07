@@ -155,22 +155,24 @@ for the full terms.
 
 A: The toolkit offers a permanent free **Community** tier (≤ 25 managed
 targets), a 14-day **Trial** (≤ 150 targets; Professional features;
-registration required), and four paid modes:
+registration required), and three paid modes:
 
 | Mode | Server limit | Annual price |
 | --- | ---: | --- |
 | Starter | 50 | £549 |
 | Professional | 150 | £1,099 |
 | Business | 500 | £2,499 |
-| Enterprise | Unlimited | By separate agreement only |
 
-Business and Enterprise customers may additionally purchase the
-**Advanced Operations Pack** add-on, which unlocks advanced hypervisor
-audit modules, CIS hypervisor packs, bulk operations, and scheduling
-workflows. Contact [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com)
-for pricing. Published prices are in GBP and subject to change.
-Enterprise is not publicly listed and is offered by separate agreement
-only, based on support capacity and onboarding scope.
+Commercial add-on packs are available for qualifying paid
+subscriptions:
+
+- **Enterprise Integrations Pack**
+- **Advanced Operations Pack** (advanced hypervisor modules, CIS
+  hypervisor packs, bulk operations, and scheduling workflows)
+
+Contact [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com)
+for current pricing and eligibility. Published prices are in GBP and
+subject to change.
 
 **Q: Is the source code available for review?**
 

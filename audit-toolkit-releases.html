@@ -43,9 +43,9 @@
     </div>
     <p class="eyebrow">Release History</p>
     <h1>Audit Admin Toolkit Releases</h1>
-    <p>Version history, changelogs, and release artefacts for the Audit Admin Toolkit. Release access is provided through the public GitHub release details and tags pages.</p>
+    <p>Version history, changelogs, and release artefacts for the Audit Admin Toolkit. Release access is provided through the GitHub release details and tags pages.</p>
     <div class="flex gap-12 flex-wrap mt-24">
-      <a href="https://github.com/AuditToolkitLabs/releases/releases/tag/audit-toolkit%2Fv6.1.0" target="_blank" rel="noopener" class="btn btn-primary">Open Latest Release Details (v6.1.0) &rarr;</a>
+      <a href="https://github.com/AuditToolkitLabs/Audit-Tool-/releases/tag/v6.3" target="_blank" rel="noopener" class="btn btn-primary">Open Latest Release Details (v6.3) &rarr;</a>
       <a href="https://github.com/AuditToolkitLabs/releases/releases" target="_blank" rel="noopener" class="btn btn-secondary">Public Releases Hub</a>
       <a href="support.html#contact" class="btn btn-secondary">Request Evaluation Access</a>
     </div>
@@ -57,7 +57,7 @@
 
     <div class="callout callout-info" style="margin-bottom:40px;">
       <strong>Release publication model updated.</strong>
-      Audit Toolkit release artefacts are now referenced from GitHub release details and tags pages. Each release entry includes:
+      Audit Toolkit release artefacts are referenced from GitHub release details and tags pages. Each release entry includes:
       <ul style="margin:10px 0 4px;padding-left:20px;font-size:.9rem;">
         <li>Version and changelog information</li>
         <li>Release notes and changelog details</li>
@@ -73,29 +73,32 @@
 
     <div class="release-stack">
 
-      <div class="release-entry release-latest" id="v610">
+      <div class="release-entry release-latest" id="v630">
         <div class="release-timeline"><div class="release-dot"></div><div class="release-line"></div></div>
         <div class="release-body">
           <div class="release-meta">
-            <span class="version">v6.1.0</span>
+            <span class="version">v6.3.0</span>
             <span class="badge badge-amber">Latest Beta</span>
-            <span class="date">May 2026</span>
+            <span class="date">07 May 2026</span>
           </div>
           <div class="release-changes">
-            <p>Current release published with full customer documentation and release artefacts referenced through GitHub release details.</p>
+            <p>Release <strong>v6.3.0</strong> introduces hypervisor-agent packaging and installer workflows, plus managed-mode licensing enforcement fixes.</p>
             <ul style="margin:10px 0 0;padding-left:20px;font-size:.9rem;">
-              <li>OWASP Top 10 customer scorecard published as Doc 26 (8.8/10, Grade A+).</li>
-              <li>Published score mapping includes 97/100 product quality score and 0 critical / 0 high known vulnerabilities at assessment time.</li>
-              <li>Detailed control-by-control evidence available in the Audit Toolkit documentation portal.</li>
+              <li><strong>Hypervisor Agent packaging:</strong> new purpose-built package path with unified entry point and automatic platform detection (Proxmox, KVM/libvirt, XCP-ng/Xen, Nutanix AHV, ESXi).</li>
+              <li><strong>Hypervisor installers:</strong> Linux installer with service-manager support and ESXi installer for BusyBox environments with persistence setup.</li>
+              <li><strong>Build and CI:</strong> dedicated build script and GitHub workflow to produce/publish Linux and ESXi hypervisor-agent archives.</li>
+              <li><strong>Daemon command loop:</strong> `run_daemon()` flow covers registration, heartbeat, and command dispatch for audit/discovery/platform-script/config/key-rotation actions.</li>
+              <li><strong>Managed-mode licensing fixes:</strong> local activation/deactivation UX removed in managed mode and endpoints now return managed-mode blocked responses, with regression tests added.</li>
             </ul>
           </div>
           <div style="padding-top:16px;border-top:1px solid var(--border);margin-top:16px;">
             <p style="font-size:.85rem;font-weight:600;margin:0 0 10px;">Open release downloads</p>
             <div class="flex gap-12 flex-wrap">
-              <a href="https://github.com/AuditToolkitLabs/releases/releases/tag/audit-toolkit%2Fv6.1.0" class="btn btn-primary btn-sm" target="_blank" rel="noopener">
+              <a href="https://github.com/AuditToolkitLabs/Audit-Tool-/releases/tag/v6.3" class="btn btn-primary btn-sm" target="_blank" rel="noopener">
                 &darr;&nbsp; Open GitHub Release Details &rarr;
               </a>
               <a href="audit-toolkit-documentation.html" class="btn btn-secondary btn-sm">View Product Documentation</a>
+              <a href="doc-viewer.html?src=customer-docs/audit-toolkit/27-login-recovery-and-first-login-reset-runbook.md" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">Open Login Recovery Runbook (Doc 27)</a>
               <a href="doc-viewer.html?src=customer-docs/audit-toolkit/26-owasp-security-scorecard.md" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">Open OWASP Scorecard (Doc 26)</a>
             </div>
             <p style="font-size:.78rem;color:var(--text-muted);margin:8px 0 0;">

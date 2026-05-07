@@ -76,10 +76,11 @@ logo of Licensor as expressly required by this Licence).
 
 ---
 
-## Part B — Licence Tiers
+## Part B — Licence Modes and Add-ons
 
-The four paid modes plus add-on are listed below. A free Community tier
-and a 14-day Trial are also available.
+Three paid modes are listed below. A free Community mode and a 14-day
+Trial are also available. Enterprise capabilities are provided via
+commercial add-on packs rather than a separate Enterprise tier.
 
 | Mode | Max managed targets | Annual price (£) | Support channel |
 | --- | ---: | --- | --- |
@@ -88,7 +89,7 @@ and a 14-day Trial are also available.
 | **Starter** | 50 | £549 | Best-effort email |
 | **Professional** | 150 | £1,099 | Email, 48-hr response target |
 | **Business** | 500 | £2,499 | Email, priority response |
-| **Enterprise** | Unlimited | By separate agreement only | Support by separate agreement only |
+| **Enterprise Integrations Pack** *(add-on)* | — | Contact licensing team | Support stays on base plan |
 | **Advanced Operations Pack** *(add-on)* | — | Contact licensing team | Support stays on base plan |
 
 ### Trial
@@ -104,7 +105,7 @@ Professional-tier features. The trial:
 
 ### Advanced Operations Pack (add-on)
 
-Available as an add-on to **Business** and **Enterprise** plans, the
+Available as an add-on to qualifying paid plans, the
 **Advanced Operations Pack** unlocks:
 
 - Advanced hypervisor audit modules (ESXi, Proxmox, Nutanix, KVM).
@@ -115,11 +116,31 @@ Available as an add-on to **Business** and **Enterprise** plans, the
 
 Support entitlement remains that of the underlying base plan.
 Contact [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com)
-to add this pack to an existing Business or Enterprise subscription.
+to add this pack to an existing paid subscription.
+
+### Enterprise Integrations Pack (add-on)
+
+Available to qualifying paid subscriptions, the
+**Enterprise Integrations Pack** enables governed external producer
+ingestion and API-driven integration flows, including:
+
+- External producer registration for CMDB, scanner, CI, and ticketing systems.
+- Bulk host/asset ingestion via authenticated API endpoints.
+- Ingest contract versioning and validation controls.
+- Dead-letter and replay workflows for failed payload handling.
+- Ingest attestation and auditable producer activity history.
+
+Each producer must use a unique, scoped API key, issued by an
+administrator and stored according to the platform key-management policy.
+
+**Single-organisation scope.** This add-on is licensed for use inside a
+single legal entity and its directly owned infrastructure. Use for
+multi-client MSP/MSSP aggregation is not permitted without a separate
+commercial agreement that explicitly grants MSP/MSSP rights.
 
 > **Pricing notice.** Published prices are in GBP and are subject to
-> change. Enterprise is not publicly listed and is offered by separate
-> agreement only, based on support capacity and onboarding scope.
+> change. Add-on eligibility and onboarding scope may vary by
+> subscription profile and support capacity.
 
 Licence enquiries: [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com)
 
@@ -139,7 +160,7 @@ Subject to payment of any applicable licence fees and compliance with
 this EULA, the Licensor grants you a non-exclusive, non-transferable,
 revocable licence to install and use the Security Audit Toolkit for
 the purpose of internal security auditing and compliance monitoring,
-up to the server count limit of your purchased tier.
+up to the server count limit of your purchased mode.
 
 ### C.3 Restrictions
 
@@ -152,8 +173,11 @@ You must not:
    licence.
 4. Remove or alter copyright notices, licence files, or attribution.
 5. Use the software to provide paid-for security audit services to
-   third parties without an appropriate commercial licence.
-6. Use the software in violation of applicable laws or regulations.
+   third parties without an appropriate commercial agreement.
+6. Register external producers or ingest data for multiple distinct
+   legal entities under one licence instance unless explicitly permitted
+   by contract.
+7. Use the software in violation of applicable laws or regulations.
 
 ### C.4 Intellectual Property
 

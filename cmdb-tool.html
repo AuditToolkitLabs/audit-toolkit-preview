@@ -43,7 +43,7 @@
     <div class="flex flex-wrap gap-8 mb-16">
       <span class="badge badge-amber">Beta v0.2.11</span>
       <span class="badge badge-blue">Flask &middot; SQLAlchemy &middot; Celery</span>
-      <span class="badge badge-muted">Python 3.11</span>
+      <span class="badge badge-muted">Python 3.12+</span>
     </div>
     <h1>CMDB API Data Collection Tool</h1>
     <p>Multi-tenant infrastructure data collection, vulnerability correlation, and CMDB population platform. Built for IT operations teams managing complex hybrid environments.</p>
@@ -142,13 +142,14 @@
       <div class="card">
         <div class="flex items-center gap-8 mb-8">
           <span class="badge badge-amber">Audit Admin Toolkit</span>
-          <span class="badge badge-muted">v6.1.0</span>
+          <span class="badge badge-muted">v6.3.0</span>
         </div>
-        <h3 style="margin-top:0;">Audit Toolkit v6.1.0</h3>
+        <h3 style="margin-top:0;">Audit Toolkit v6.3.0</h3>
         <ul class="feature-list" style="margin-top:8px;">
-          <li><span class="icon">&#10003;</span><span class="text">Full customer documentation set now mirrored on this website for direct access.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Release publication flow updated with public release tag references and customer artefact distribution links.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Refreshed product screenshot library added for current build coverage.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Hypervisor agent packaging: purpose-built package path with automatic platform detection (Proxmox, KVM/libvirt, XCP-ng, Nutanix AHV, ESXi).</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Hypervisor installers: Linux installer with service-manager support and ESXi installer for BusyBox environments.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Managed-mode licensing fixes: local activation/deactivation removed in managed mode with regression tests added.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Daemon command loop covers registration, heartbeat, and command dispatch for audit/discovery/config/key-rotation actions.</span></li>
         </ul>
         <div class="flex gap-12 flex-wrap mt-16">
           <a href="audit-toolkit-releases.html" class="btn btn-primary btn-sm">Audit Toolkit Release Details</a>
@@ -257,7 +258,7 @@
         <div class="table-wrap">
           <table class="data-table">
             <tbody>
-              <tr><td>Runtime</td><td>Python 3.11+</td></tr>
+              <tr><td>Runtime</td><td>Python 3.12+</td></tr>
               <tr><td>Framework</td><td>Flask 3.1.3 (app factory)</td></tr>
               <tr><td>ORM</td><td>SQLAlchemy 3.1.1</td></tr>
               <tr><td>Database</td><td>SQLite (dev) / PostgreSQL (prod)</td></tr>

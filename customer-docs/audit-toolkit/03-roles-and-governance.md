@@ -9,7 +9,7 @@ permissions can be layered on top by an administrator.
 
 | Role | Typical permissions |
 | --- | --- |
-| **admin** | Full control: user management, SSO/LDAP configuration, API key issuance, target and agent management, audit scheduling, audit-log review, backup management, licence tier visibility. |
+| **admin** | Full control: user management, SSO/LDAP configuration, API key issuance, target and agent management, audit scheduling, audit-log review, backup management, licence mode visibility. |
 | **operator** | Read/write of audit targets and findings; can deploy agents, run on-demand audits, acknowledge findings, and manage schedules. Cannot create users or change global security configuration. |
 | **reader** | Read-only access to dashboards, audit results, host detail pages, and reports. Suitable for auditors and assurance reviewers. |
 | **api** | Used implicitly by API key consumers; never assigned to interactive users. |
@@ -44,8 +44,9 @@ The application supports separation of:
   `admin` role to a small population; give the broader security team
   the `operator` role.
 - **Read vs write** — give auditors and assessors the `reader` role.
-- **Workspace boundaries** — under the Workgroup, MSP and OEM licence
-  tiers, data is partitioned per workspace. Operators can be scoped to
+- **Workspace boundaries** — where multi-workspace capability is
+  enabled by your licensing mode and add-ons, data is partitioned per
+  workspace. Operators can be scoped to
   one or more workspaces.
 
 Customers are responsible for designing role assignments to meet their
@@ -60,7 +61,8 @@ The Application Administrator is responsible for:
   managed servers.
 - Keeping the licence key current and renewing it before expiry.
 - Notifying the Service Provider if the deployment model changes in a
-  way that affects the licence tier (e.g. moving from internal use to
+  way that affects the licence mode (e.g. moving from internal use to
   MSP service delivery).
 
-See Appendix C in section 12 for a full description of licence tiers.
+See Appendix C in section 12 for a full description of licence modes
+and add-on packs.

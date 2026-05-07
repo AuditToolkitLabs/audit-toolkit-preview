@@ -15,15 +15,15 @@ characteristics, and known constraints of the Security Audit Toolkit.
 | Trial | 150 | Free; 14-day evaluation; Professional features; machine-bound; watermarked exports |
 | Starter | 50 | £549/yr; best-effort email support |
 | Professional | 150 | £1,099/yr; 48-hr email response target |
-| Business | 500 | £2,499/yr; priority email support; Advanced Operations Pack add-on available |
-| Enterprise | Unlimited | By separate agreement only; not publicly listed; support scope agreed case-by-case |
+| Business | 500 | £2,499/yr; priority email support; commercial add-on packs available |
 
 Targets that exceed the tier limit can still be viewed but cannot be
 scheduled or have on-demand audits triggered until the licence is
 upgraded.
 
-> **Advanced Operations Pack add-on:** Business and Enterprise customers
-> may purchase this add-on to unlock advanced hypervisor audit modules,
+> **Commercial add-on packs:** Qualifying paid subscriptions may enable
+> Enterprise Integrations Pack and/or Advanced Operations Pack. The
+> Advanced Operations Pack unlocks advanced hypervisor audit modules,
 > CIS/compliance hypervisor packs, bulk operations, and scheduling
 > workflows. Contact [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com).
 
@@ -37,7 +37,7 @@ upgraded.
 | Maximum SSH / WinRM connections per worker | 5 | Yes — `MAX_CONNECTIONS` in `.env` |
 | API rate limit (Community) | 60 req / min | No |
 | API rate limit (Starter / Professional) | 300 req / min | No |
-| API rate limit (Business / Enterprise) | 1 000 req / min | No |
+| API rate limit (Business and qualified add-on subscriptions) | 1 000 req / min | No |
 | Maximum result retention | 90 days (default) | Yes — Admin → Settings |
 | Maximum audit script timeout | 300 seconds | Yes — per-target setting |
 | Maximum file upload size (evidence) | 20 MB | Yes — web server config |
@@ -88,9 +88,9 @@ Do not use SQLite in production.
 
 ### Agent deployment
 
-- The JRE managed agent requires Java 11 or later on the target host.
+- The JRE fleet agent requires Java 11 or later on the target host.
 - Agents behind strict firewalls may require manual port-forwarding
-  configuration; the managed agent server uses TCP 9000 for the
+  configuration; the fleet agent server uses TCP 9000 for the
   control channel by default.
 - Alpine Linux targets require the `bash` package to be installed;
   the agent installer will install it if not present.
@@ -124,6 +124,6 @@ sudo systemctl start audit-toolkit-worker@2
 sudo systemctl enable audit-toolkit-worker@2
 ```
 
-For environments exceeding 500 targets (Enterprise tier), contact
+For environments approaching or exceeding 500 targets, contact
 [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com)
 for architecture guidance on distributed deployments.

@@ -40,9 +40,9 @@
 <section class="hero" id="home">
   <div class="wrap hero-inner">
     <div class="hero-badges">
-      <span class="badge badge-blue">Audit Admin Toolkit v6.1.0</span>
-      <span class="badge badge-amber">Linux Expansion v1.1.2</span>
-      <span class="badge badge-muted">CMDB API v0.2.6</span>
+      <span class="badge badge-blue">Audit Admin Toolkit v6.3.0</span>
+      <span class="badge badge-amber">Linux Expansion v1.1.4</span>
+      <span class="badge badge-muted">CMDB API v0.2.11</span>
       <span class="badge badge-green">Customer docs mirrored on this site</span>
     </div>
     <h1>Infrastructure Audit Suite.<br /><span>Four Tools. One Platform.</span></h1>
@@ -54,8 +54,8 @@
     <div class="hero-stats">
       <div><div class="stat-value">4</div><p class="stat-label">Dedicated products in active release</p></div>
       <div><div class="stat-value">60+</div><p class="stat-label">Customer documentation pages mirrored locally</p></div>
-      <div><div class="stat-value">6.1.0</div><p class="stat-label">Latest Audit Admin Toolkit release</p></div>
-      <div><div class="stat-value">1.1.1</div><p class="stat-label">Latest Linux expansion release</p></div>
+      <div><div class="stat-value">6.3.0</div><p class="stat-label">Latest Audit Admin Toolkit release</p></div>
+      <div><div class="stat-value">1.1.4</div><p class="stat-label">Latest Linux expansion release</p></div>
     </div>
   </div>
 </section>
@@ -161,13 +161,15 @@
     <div class="grid-2">
       <div class="card">
         <div class="flex flex-wrap gap-8 mb-12">
-          <span class="badge badge-blue">Audit Admin Toolkit v6.1.0</span>
+          <span class="badge badge-blue">Audit Admin Toolkit v6.3.0</span>
           <span class="badge badge-muted">Current</span>
         </div>
         <h3 style="margin-top:0;">Audit Toolkit release updates</h3>
         <ul class="feature-list" style="margin-top:8px;">
-          <li><span class="icon">&#10003;</span><span class="text">Expanded screenshot set and refreshed product walkthrough content.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Customer documentation now served from mirrored local files on this website.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">v6.3.0 introduces purpose-built hypervisor-agent packaging with automatic platform detection and dedicated Linux/ESXi installers.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Daemon command loop expanded for registration, heartbeat, and server-directed audit/discovery/platform-script/config/key-rotation actions.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Managed-mode licensing behavior tightened: local activate/deactivate flows are now blocked by design with regression test coverage.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Customer documentation served directly from mirrored local files on this website.</span></li>
           <li><span class="icon">&#10003;</span><span class="text">Release routing aligned to customer release pages plus public tags channel.</span></li>
         </ul>
         <div class="flex gap-12 flex-wrap mt-16">
@@ -177,15 +179,15 @@
       </div>
       <div class="card">
         <div class="flex flex-wrap gap-8 mb-12">
-          <span class="badge badge-amber">Linux Expansion v1.1.2</span>
+          <span class="badge badge-amber">Linux Expansion v1.1.4</span>
           <span class="badge badge-muted">Current</span>
         </div>
-        <h3 style="margin-top:0;">Linux and CMDB release continuity</h3>
+        <h3 style="margin-top:0;">Linux Security Lite v1.1.4</h3>
         <ul class="feature-list" style="margin-top:8px;">
-          <li><span class="icon">&#10003;</span><span class="text">Linux release page now mirrors the same release-link model as other products.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">CMDB API releases remain available with customer pages and approved public release links.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Cross-product update messaging unified across product and release pages.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Licensing correction applied: an incorrect licence configuration and associated pricing mismatch have been resolved. Customers wishing to discuss their licence should <a href="licensing.html">contact the licensing team</a>.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text"><code>toolkit-updater.sh</code> bundled in all release package formats (.deb, .rpm, tarball).</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Config and log directories preserved automatically during package upgrades &mdash; no manual backup required.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Rollback now uses <code>rsync</code> rather than destructive removal &mdash; existing config and log files protected.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Documentation updated to v1.1.4 (24 documents) covering installation, maintenance, licensing, and enterprise compliance guidance.</span></li>
         </ul>
         <div class="flex gap-12 flex-wrap mt-16">
           <a href="linux-audit-expansion-releases.html" class="btn btn-primary btn-sm">Linux Releases</a>
@@ -208,13 +210,15 @@
         <div class="release-timeline"><div class="release-dot"></div><div class="release-line"></div></div>
         <div class="release-body">
           <div class="release-meta">
-            <span class="version">Audit Admin Toolkit v6.1.0</span>
+            <span class="version">Audit Admin Toolkit v6.3.0</span>
             <span class="badge badge-green">Latest</span>
             <span class="date">03 May 2026</span>
           </div>
-          <p style="font-size:.93rem;margin:0 0 8px;">Customer-facing content refresh release with mirrored docs, updated screenshots, and aligned release routing.</p>
+          <p style="font-size:.93rem;margin:0 0 8px;">Hypervisor-agent packaging and managed-mode licensing consistency release, plus mirrored docs and aligned release routing.</p>
           <ul class="release-changes">
-            <li>Audit Toolkit pages refreshed with the newest screenshot set and corrected managed-agent image.</li>
+            <li>Purpose-built hypervisor-agent release archives added for Linux and ESXi deployment paths.</li>
+            <li>Hypervisor agent daemon flow now supports broader command-dispatch actions from server control plane.</li>
+            <li>Managed-mode local license endpoint behavior corrected and regression tests added.</li>
             <li>Documentation now loads mirrored local markdown files through the website viewer.</li>
             <li>Public links restricted to approved release-tag channels while private repositories stay unlinked.</li>
           </ul>
@@ -228,16 +232,16 @@
         <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div><div class="release-line"></div></div>
         <div class="release-body">
           <div class="release-meta">
-            <span class="version">Linux Expansion v1.1.2</span>
+            <span class="version">Linux Expansion v1.1.4</span>
             <span class="badge badge-muted">GA</span>
-            <span class="date">03 May 2026</span>
+            <span class="date">May 2026</span>
           </div>
-          <p style="font-size:.93rem;margin:0 0 8px;">Release channel and documentation route alignment with the rest of the platform, including a licensing and pricing correction.</p>
+          <p style="font-size:.93rem;margin:0 0 8px;">Maintenance and hardening release. Bundled updater script, safe upgrade preservation, and release-validation CI gate.</p>
           <ul class="release-changes">
-            <li>Linux release links now use the same approved public tag and customer release structure.</li>
-            <li>Release and product pages updated to match the shared documentation and support flow.</li>
-            <li>Cross-product release messaging is now consistent across the website.</li>
-            <li><strong>Licensing fix:</strong> an incorrect licence configuration and associated cost mismatch have been corrected. Customers with any questions regarding their licence should contact the <a href="licensing.html">licensing team</a> directly.</li>
+            <li>Bundled <code>toolkit-updater.sh</code> now included in all release package formats (.deb, .rpm, tarball).</li>
+            <li>Config and log directories preserved automatically during package upgrades.</li>
+            <li>Safe rollback using <code>rsync</code> &mdash; existing configuration and log files not removed during rollback.</li>
+            <li>Release gate added: documentation version must pass validation before a release tag is created.</li>
           </ul>
           <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
             <a href="linux-audit-expansion-releases.html" class="btn btn-secondary btn-sm">Linux Release Notes</a>
@@ -249,15 +253,15 @@
         <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div><div class="release-line"></div></div>
         <div class="release-body">
           <div class="release-meta">
-            <span class="version">CMDB API Tool v0.2.6</span>
+            <span class="version">CMDB API Tool v0.2.11</span>
             <span class="badge badge-muted">GA</span>
-            <span class="date">29 April 2026</span>
+            <span class="date">May 2026</span>
           </div>
-          <p style="font-size:.93rem;margin:0 0 8px;">CMDB data collection and security-hardened release remains available with full release details.</p>
+          <p style="font-size:.93rem;margin:0 0 8px;">Targeted updater hardening: version guard, non-SQLite deployment safety, and pre-change backup on every run.</p>
           <ul class="release-changes">
-            <li>Connector and vulnerability correlation workflow maintained for hybrid CMDB collection.</li>
-            <li>Security controls and compliance material available through product and documentation pages.</li>
-            <li>Release references use approved public release channels and local customer guidance.</li>
+            <li>Version guard in <code>apply_targeted_update.py</code> &mdash; auto-aborts if bundle is same or older than installed version.</li>
+            <li>Non-SQLite deployment safety warning ensures DBA snapshot exists before automated patching proceeds.</li>
+            <li>Targeted updater creates pre-change backup of SQLite database and config file on every run.</li>
           </ul>
           <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
             <a href="cmdb-api-releases.html" class="btn btn-secondary btn-sm">CMDB API Release Notes</a>

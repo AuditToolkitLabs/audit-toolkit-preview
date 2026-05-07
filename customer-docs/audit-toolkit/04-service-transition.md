@@ -17,7 +17,7 @@ are in place:
 | Network | Outbound HTTPS (443) from server to licence validation endpoint; inbound HTTPS from browsers and agents |
 | TLS certificate | Valid certificate for the FQDN you will use; self-signed acceptable for evaluation |
 | DNS / hostname | Stable FQDN resolvable from all client browsers and agent hosts |
-| Licence key | Community and Trial tiers require no payment key; Trial requires email registration. Starter and above require a licence key from [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com) |
+| Licence key | Community and Trial modes require no payment key; Trial requires email registration. Starter and above require a licence key from [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com) |
 
 For a detailed server sizing guide see section 24.
 
@@ -96,7 +96,7 @@ the credentials file (appliance only). You **must** change this
 password before making the application accessible to other users.
 
 1. Sign in with the initial credentials.
-2. Navigate to **Profile → Change Password**.
+2. On first login, complete the forced **Change Password** step.
 3. Set a strong password that meets your organisation's password policy.
 4. Record the new password in your organisation's credential vault.
 
@@ -108,7 +108,7 @@ production use:
 | Check | Pass criterion |
 | --- | --- |
 | Web UI loads over HTTPS | Browser shows no certificate warning; page loads |
-| Admin login succeeds | Dashboard is displayed |
+| Admin login succeeds | First-login password/disclaimer gates complete, then dashboard is displayed |
 | First audit run | At least one audit script runs and returns a result |
 | Agent registration | A test agent registers and appears in the **Agents** list |
 | Scheduled scan | A test schedule fires at the configured time |
@@ -118,13 +118,13 @@ production use:
 ## 4.7 Licence activation
 
 Community-tier installations (≤ 25 servers) require no key. For paid
-tiers:
+licensing modes:
 
 1. Obtain your licence key from
    [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com).
 2. Navigate to **Admin → Licence** in the web console.
 3. Enter the key and click **Activate**.
-4. The console will display the active tier, server limit, and
+4. The console will display the active mode, server limit, and
    expiry date.
 
 For air-gapped deployments that cannot reach the licence validation

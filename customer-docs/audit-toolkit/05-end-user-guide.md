@@ -10,9 +10,11 @@ by your Application Administrator, or your organisation's SSO
 credentials if single sign-on has been configured.
 
 > **First login:** If this is the very first sign-in to a fresh
-> installation, you will be asked to accept the End-User Licence
-> Agreement. The acceptance is recorded with your username, timestamp,
-> client IP address, and a SHA-256 hash of the agreement text.
+> installation, you will first be required to change the temporary
+> administrator password. After that, you will be prompted to accept the
+> End-User Licence Agreement. The acceptance is recorded with your
+> username, timestamp, client IP address, and a SHA-256 hash of the
+> agreement text.
 
 ## 5.2 Dashboard overview
 

@@ -56,6 +56,7 @@ italics next to the section title.
 24. [Operational Limits and Known Constraints](24-operational-limits-and-known-constraints)
 25. [Security FAQ — Procurement and Due Diligence](25-security-faq)
 26. [OWASP Top 10 Security Scorecard](26-owasp-security-scorecard)
+27. [Login Recovery and First-Login Reset Runbook](27-login-recovery-and-first-login-reset-runbook)
 
 ---
 
@@ -80,5 +81,5 @@ GitHub Issues: <https://github.com/AuditToolkitLabs/Audit-Tool-/issues>
 - **End-User Licence Agreement**: `LICENSE-EULA.md` (presented in-product at first sign-in and located in this folder).
 - **Third-party software notices**: `NOTICE.md` (this folder).
 - **Privacy Policy**: see section 9 and `../PRIVACY.md`.
-- **Licensing tiers and pricing**: see Appendix C in section 12 (Community, Trial, Starter, Professional, Business, Enterprise).
-- **Four paid modes plus add-on**: Starter, Professional, Business, Enterprise, plus the Advanced Operations Pack add-on for Business/Enterprise.
+- **Licensing tiers and pricing**: see Appendix C in section 12 (Community, Trial, Starter, Professional, Business).
+- **Commercial feature add-ons**: Enterprise Integrations Pack and Advanced Operations Pack are available for qualifying paid subscriptions.

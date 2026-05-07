@@ -29,9 +29,11 @@ The service, as delivered, includes:
 | Linux audit scripts | 138 Bash scripts covering CIS Benchmarks, network, storage, platform and application hardening. |
 | Windows audit scripts | 147 PowerShell scripts covering Windows Server, Active Directory, IIS and workstation hardening. |
 | Hypervisor audit scripts | 12 scripts covering ESXi/vCenter, Proxmox and KVM/libvirt. |
-| JRE managed agent | Java-based agent suitable for fleet deployment via the managed agent server; supports push and pull modes. |
-| JRE standalone agent | Same agent binary configured for direct HTTP push without a managed agent server. |
-| Managed agent server | Coordinator for multi-host agent deployments, scheduling, and result aggregation. |
+| Hypervisor agent package | Platform-aware package for on-host hypervisor auditing (Proxmox, KVM/libvirt, XCP-ng/Xen, Nutanix AHV, ESXi) with outbound HTTPS heartbeat and command polling. |
+| Fleet Agent (formerly Managed Agent) | Java-based agent suitable for centrally coordinated deployment; supports poll/push workflows via the Fleet Agent coordinator service. |
+| Standalone Agent (formerly Lightweight Agent) | Same agent binary configured for direct HTTPS push without the Fleet Agent coordinator service. |
+| External push ingest API | Machine-to-machine ingest endpoints for findings and assets (`/api/ingest/v1/*`) with producer registration, contract headers, and dead-letter replay. |
+| Fleet Agent coordinator service (formerly Managed Agent Server) | Coordinator for multi-host agent deployments, scheduling, and result aggregation. |
 | Developer Script Studio | In-browser editor for writing, testing and deploying custom audit scripts. |
 | Scheduler | Celery-based task engine for scheduled audit runs and alert delivery. |
 
@@ -48,6 +50,18 @@ Supported platforms at the time of writing:
 - **Hypervisors:** VMware ESXi / vCenter, Proxmox VE, KVM / libvirt,
   Nutanix Prism.
 
+Agent architecture summary:
+
+- **Standalone Agent (formerly Lightweight Agent):** local execution with direct result push to core APIs.
+- **Fleet Agent (formerly Managed Agent):** central policy/control with host-side poll and push.
+- **Hypervisor agent:** platform-aware deployment package for ESXi, Proxmox,
+  KVM/libvirt, XCP-ng/Xen, and Nutanix AHV.
+
+Terminology transition note:
+
+- Older references to **Lightweight Agent** map to **Standalone Agent**.
+- Older references to **Managed Agent** map to **Fleet Agent**.
+
 ## 2.3 Out-of-scope components
 
 The following are **not** part of the supplied service unless covered
@@ -61,7 +75,7 @@ by a separate written agreement:
 - The security posture of the endpoints being audited — the toolkit
   identifies findings; remediation is the customer's responsibility.
 - Production deployment beyond the Community tier — that requires
-  the appropriate paid licence tier (see Appendix C in section 12).
+  the appropriate paid licence mode (see Appendix C in section 12).
 
 ## 2.4 Service boundaries
 

@@ -61,7 +61,7 @@ and `requirements-dev.txt` at the repository root.
 | PostgreSQL | PostgreSQL Licence (BSD-like) | Recommended production database |
 | Redis | BSD 3-Clause | Celery broker |
 | Nginx | BSD 2-Clause | Recommended reverse proxy |
-| OpenJDK (for agent) | GPL 2.0 with Classpath Exception | JRE standalone / managed agent runtime |
+| OpenJDK (for agent) | GPL 2.0 with Classpath Exception | JRE standalone / fleet agent runtime |
 
 ---
 

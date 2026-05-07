@@ -4,7 +4,7 @@
 
 ## 11.1 Feedback channels
 
-We welcome feedback from customers at all licence tiers:
+We welcome feedback from customers at all licence modes:
 
 | Channel | Purpose |
 | --- | --- |
@@ -17,7 +17,7 @@ When submitting a feature request via GitHub Issues, use the
 
 - A clear description of the problem you are trying to solve.
 - Your current workaround (if any).
-- The licence tier you are on (affects prioritisation).
+- The licence mode and enabled add-ons you are on (affects prioritisation).
 
 ## 11.2 Roadmap
 
@@ -27,7 +27,7 @@ repository root. Key planned improvements include:
 - Extended hypervisor support (additional platforms).
 - Enhanced CVE correlation against audit findings.
 - Native SIEM connector packages for Splunk and Microsoft Sentinel.
-- Multi-workspace support for lower licence tiers.
+- Expanded multi-workspace support and policy controls.
 - Dashboard customisation and widget library expansion.
 
 Roadmap items are not commitments; they reflect current intention and
@@ -61,12 +61,12 @@ All contributed scripts are reviewed by the maintainer before merging.
 
 ## 11.5 Service review
 
-For customers on Business or Enterprise licence tiers, an annual
+For customers on paid licence modes, an annual
 service review can be requested by emailing
 [admin@audittoolkitlabs.com](mailto:admin@audittoolkitlabs.com). The
 review covers:
 
 - Product usage and adoption statistics (shared on request).
 - Upcoming roadmap items relevant to your environment.
-- Licensing tier appropriateness.
+- Licensing mode and add-on appropriateness.
 - Any outstanding support issues.

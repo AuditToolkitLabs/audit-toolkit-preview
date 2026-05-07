@@ -26,6 +26,10 @@ sign in but their audit history is preserved.
 Select the user and click **Reset Password**. A temporary password is
 generated. Deliver it to the user via a secure channel.
 
+If login is non-responsive after install, default credentials fail, the
+first-login password-change flow does not trigger, or you need direct
+database recovery steps, use the [Login Recovery and First-Login Reset Runbook](27-login-recovery-and-first-login-reset-runbook).
+
 ## 6.2 API key management
 
 API keys authenticate agents and automation pipelines to the REST API.
@@ -60,6 +64,15 @@ want to audit.
 5. Click **Test Connection** to validate access.
 6. Click **Save**.
 
+### Adding a hypervisor target
+
+1. Click **New Target**.
+2. Enter the hypervisor hostname or IP address.
+3. Choose the target type (ESXi, Proxmox, KVM/libvirt, XCP-ng/Xen, Nutanix AHV).
+4. Choose connection mode: **Hypervisor Agent** for persistent on-host auditing via outbound HTTPS polling, or **API credential mode** for direct platform API access.
+5. Click **Test Connection** (API mode) or verify registration status (agent mode).
+6. Click **Save**.
+
 ### Removing a target
 
 Select the target and click **Delete**. All historical results are
@@ -69,8 +82,8 @@ immediately.
 ## 6.4 Agent deployment
 
 See the [Quick Start — Agent Deployment](15-quick-start-agents) guide for
-step-by-step instructions. After deployment, agents appear in
-**Admin → Agents**.
+step-by-step instructions, including Hypervisor Agent deployment. After
+deployment, agents appear in **Admin → Agents**.
 
 Agents report their status (online/offline), last check-in time, and
 version. Outdated agents can be upgraded from the console under
@@ -119,7 +132,7 @@ Integration](17-quick-start-authentication-integration).
 
 Navigate to **Admin → Licence** to:
 
-- View the active licence tier, server limit, and expiry date.
+- View the active licence mode, server limit, expiry date, and enabled add-on packs.
 - Enter a new or renewal licence key.
 - Download the licence status report for your records.
 

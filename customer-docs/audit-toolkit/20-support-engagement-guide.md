@@ -30,6 +30,7 @@ ticket:
 
 5. **Check the application logs** — errors are usually explained clearly
    in the logs.
+6. **For login failures after install**, run the [Login Recovery and First-Login Reset Runbook](27-login-recovery-and-first-login-reset-runbook) before opening a case.
 
 ---
 
@@ -48,7 +49,7 @@ Include the following in your issue:
 - Toolkit version: (from /api/health or the VERSION file)
 - Installation method: (DEB, RPM, MSI, appliance, git)
 - Database: (PostgreSQL 15, SQLite)
-- Licence tier:
+- Licence mode (+ enabled add-on packs, if applicable):
 
 **Symptom**
 A clear description of what is happening.
@@ -78,12 +79,20 @@ Do **not** report security vulnerabilities via public GitHub Issues.
 Email [Security@audittoolkitlabs.com](mailto:Security@audittoolkitlabs.com)
 with the details. See section 7.8 for the responsible disclosure policy.
 
+### Login recovery ticket checklist
+
+If your case is about failed login or first-login reset, include:
+
+- Output from section "Escalation Data to Capture" in [Login Recovery and First-Login Reset Runbook](27-login-recovery-and-first-login-reset-runbook)
+- Whether `ChangeMe123!` redirects to `/auth/change-password?next=`
+- Whether login hint is shown on `/auth/login`
+
 ---
 
 ## Emailing support (Starter tier and above)
 
 Email [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com)
-for Starter, Professional, Business, and Enterprise tiers.
+for Starter, Professional, and Business paid modes.
 
 Include everything listed in the GitHub Issue template above, plus:
 
@@ -99,7 +108,7 @@ Response targets by tier:
 | Starter | 2–5 business days |
 | Professional | 1–3 business days |
 | Business | 1–2 business days |
-| Enterprise | 1 business day |
+| Business + add-on onboarding engagements | 1 business day target during agreed onboarding window |
 
 ---
 

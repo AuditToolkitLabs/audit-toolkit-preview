@@ -81,6 +81,42 @@ GET /api/audit/results/<result_id>/export?format=json
 GET /api/agents
 ```
 
+### External source registration (admin)
+
+```bash
+POST /api/external-sources/register
+```
+
+Required write header:
+
+```text
+X-Ingest-Contract-Version: 1
+```
+
+Related admin operations:
+
+- GET /api/external-sources/list
+- DELETE /api/external-sources/{producer_id}
+- GET /api/external-sources/dead-letters
+- POST /api/external-sources/dead-letters/{dlq_id}/replay
+
+### External push ingest (producer)
+
+Producer-authenticated ingest endpoints:
+
+- GET /api/ingest/v1/health
+- GET /api/ingest/v1/schema
+- POST /api/ingest/v1/findings
+- POST /api/ingest/v1/findings/batch
+- POST /api/ingest/v1/assets
+- POST /api/ingest/v1/assets/batch
+
+Producer authentication uses:
+
+```text
+Authorization: Bearer es_<producer-key>
+```
+
 ### Get system metrics (Prometheus)
 
 ```bash
@@ -136,7 +172,7 @@ The API enforces rate limits to prevent abuse:
 | --- | --- |
 | Community | 60 |
 | Starter / Professional | 300 |
-| Business / Enterprise | 1 000 |
+| Business and qualified add-on subscriptions | 1 000 |
 
 Requests that exceed the limit receive `429 Too Many Requests`.
 

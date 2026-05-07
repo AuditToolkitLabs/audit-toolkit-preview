@@ -81,8 +81,8 @@ Referrer-Policy: strict-origin-when-cross-origin
 
 ## Full report
 
-The full internal security audit report is available to Enterprise
-customers on request:
+The full internal security audit report is available to paid
+subscriptions on request:
 [Security@audittoolkitlabs.com](mailto:Security@audittoolkitlabs.com)
 
 Internal reference: `docs/OWASP-SECURITY-SCORECARD.md`

@@ -40,8 +40,8 @@ the source distribution.
 ## 1.4 Document scope
 
 This document covers the Security Audit Toolkit **core server**, the
-**web administration console**, the **REST API**, and the **managed and
-standalone agents**. It does not cover the host operating system,
+**web administration console**, the **REST API**, and the **managed,
+standalone, and hypervisor agents**. It does not cover the host operating system,
 network infrastructure, or third-party systems to which the toolkit
 connects.
 
@@ -54,6 +54,6 @@ connects.
 | Frequently Asked Questions | `FAQ.md` (repository root) | All |
 | Support Policy | `SUPPORT-POLICY.md` (repository root) | All |
 | Security Overview | `SECURITY.md` (repository root) | Security, compliance |
-| Managed Agent User Guide | `MANAGED-AGENT-USER-GUIDE.md` (root) | Administrators |
-| Standalone Agent User Guide | `STANDALONE-AGENT-USER-GUIDE.md` (root) | Administrators |
+| Agent Deployment Guide | `docs/17-agent-deployment-guide.md` | Administrators |
+| Hypervisors Guide | `docs/20-hypervisors-guide.md` | Administrators |
 | Changelog | `CHANGELOG.md` (repository root) | Administrators, operations |

@@ -40,7 +40,7 @@ The following categories of request are in scope:
 | Purpose | Contact |
 | --- | --- |
 | General / commercial enquiries | [admin@audittoolkitlabs.com](mailto:admin@audittoolkitlabs.com) |
-| Product support (all paid tiers) | [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com) |
+| Product support (all paid modes) | [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com) |
 | Security vulnerability disclosure | [Security@audittoolkitlabs.com](mailto:Security@audittoolkitlabs.com) |
 | Licensing and key delivery | [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com) |
 | GitHub Issues (all tiers) | <https://github.com/AuditToolkitLabs/Audit-Tool-/issues> |
@@ -54,7 +54,7 @@ The following categories of request are in scope:
 | **Starter (≤ 50 servers)** | Email + GitHub Issues | 2–5 business days |
 | **Professional (≤ 150 servers)** | Email + GitHub Issues | 48 hours |
 | **Business (≤ 500 servers)** | Priority email + GitHub Issues | 1–2 business days |
-| **Enterprise (unlimited)** | Priority email + call scheduling | 1 business day |
+| **Business + add-on onboarding engagements** | Priority email + GitHub Issues | 1 business day target during agreed onboarding window |
 
 Response times are targets only. Holiday and weekend coverage is
 limited.
@@ -69,7 +69,8 @@ If the application is unavailable or producing incorrect results:
    - Linux: `journalctl -u audit-toolkit -n 100`
    - Windows: Event Viewer → **Application** log
 2. Review the [Troubleshooting Guide](../docs/TROUBLESHOOTING-GUIDE.md).
-3. If the issue persists, open a GitHub Issue with the information
+3. For post-install authentication failures, run the [Login Recovery and First-Login Reset Runbook](27-login-recovery-and-first-login-reset-runbook).
+4. If the issue persists, open a GitHub Issue with the information
    listed in Appendix D of section 12.
 
 ### Severity definitions (internal)
@@ -96,7 +97,7 @@ When a security vulnerability is identified in the product:
 
 1. The Service Provider will publish a security advisory on the GitHub
    repository.
-2. Customers on paid tiers will receive an advisory email to the
+2. Customers on paid modes will receive an advisory email to the
    contact address on file.
 3. A patched release will be made available as soon as possible.
 4. The advisory will include the affected versions, CVE reference (if

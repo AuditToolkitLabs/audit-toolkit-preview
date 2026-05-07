@@ -65,7 +65,9 @@ Open `https://<your-hostname>/` in your browser. The initial
 administrator password is displayed in the MSI installer log and
 written to
 `C:\ProgramData\AuditToolkit\initial-admin-credentials.txt`. **Delete
-this file and change the password immediately after first login.**
+this file and change the password immediately after first login.** On
+first login, the application forces a password change and then presents
+the disclaimer/EULA acceptance prompt before loading the dashboard.
 
 ## Step 5 — Windows firewall
 

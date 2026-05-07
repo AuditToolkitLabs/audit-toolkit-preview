@@ -28,6 +28,26 @@ integration or pipeline — do not share keys between systems.
 
 ## Common automation tasks
 
+### Register an external producer (admin workflow)
+
+Use this when onboarding an external source (CMDB, scanner, CI, ticketing)
+for machine-to-machine ingest.
+
+```bash
+curl -s -X POST "${API_BASE}/api/external-sources/register" \
+  -H "X-API-Key: ${ADMIN_API_KEY}" \
+  -H "X-Ingest-Contract-Version: 1" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "cmdb-prod",
+    "source_type": "cmdb",
+    "contact_email": "security@example.com",
+    "metadata": {"owner": "secops"}
+  }'
+```
+
+Response includes one-time API key material for the producer.
+
 ### Trigger and poll an audit
 
 ```bash
@@ -85,6 +105,32 @@ curl -s -X POST "${API_BASE}/api/targets" \
     "ssh_username": "auditor"
   }'
 ```
+
+### Push findings from external tools
+
+Producers authenticate with bearer keys issued during registration.
+
+```bash
+curl -s -X POST "${API_BASE}/api/ingest/v1/findings" \
+  -H "Authorization: Bearer ${PRODUCER_KEY}" \
+  -H "X-Ingest-Contract-Version: 1" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "TLS weak cipher detected",
+    "severity": "high",
+    "status": "open",
+    "asset": {"hostname": "web-01"}
+  }'
+```
+
+Batch variants are available at:
+
+- POST /api/ingest/v1/findings/batch
+- POST /api/ingest/v1/assets/batch
+
+Single-item asset ingest:
+
+- POST /api/ingest/v1/assets
 
 ---
 
@@ -153,6 +199,27 @@ jobs:
   2, 4, 8, 16 seconds before retrying.
 - **Log the full response body** on unexpected errors to aid diagnosis.
 - **Set a timeout** on all HTTP requests (recommended: 30 seconds).
+
+### Dead-letter queue recovery (admin)
+
+Failed external ingest payloads can be replayed from the dead-letter queue.
+
+```bash
+# List dead letters
+curl -s "${API_BASE}/api/external-sources/dead-letters" \
+  -H "X-API-Key: ${ADMIN_API_KEY}"
+
+# Replay one failed payload
+curl -s -X POST "${API_BASE}/api/external-sources/dead-letters/${DLQ_ID}/replay" \
+  -H "X-API-Key: ${ADMIN_API_KEY}" \
+  -H "X-Ingest-Contract-Version: 1"
+```
+
+### Contract and header requirements
+
+- External ingest write operations require header X-Ingest-Contract-Version: 1.
+- Producer push endpoints require Authorization: Bearer with producer key.
+- Admin registration and DLQ operations require an admin-scoped API key.
 
 ---
 
