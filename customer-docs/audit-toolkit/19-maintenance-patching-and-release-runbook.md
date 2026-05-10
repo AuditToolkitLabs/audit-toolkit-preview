@@ -30,7 +30,7 @@ secrets, managing database size, and verifying service health.
 
    ```bash
    # Check what is new
-   curl -s https://api.github.com/repos/AuditToolkitLabs/Audit-Tool-/releases/latest | jq .body
+   cat /opt/audit-toolkit/CHANGELOG.md
    ```
 
 2. **Back up the database.**

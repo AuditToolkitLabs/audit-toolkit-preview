@@ -36,8 +36,8 @@ are subject to change.
 ## 11.3 Beta programme
 
 The Security Audit Toolkit operates a public beta programme.
-Beta releases are published on the GitHub releases page with a
-`-beta` suffix. Participation is voluntary and free.
+Beta releases are published through the release hub with a `-beta`
+suffix. Participation is voluntary and free.
 
 Beta participants are encouraged to:
 

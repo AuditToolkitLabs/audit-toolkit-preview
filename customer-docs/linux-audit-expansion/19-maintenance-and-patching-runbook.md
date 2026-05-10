@@ -10,14 +10,13 @@
 
 ## 19.1 Release channel
 
-New versions are published to GitHub Releases at:
-
-`https://github.com/AuditToolkitLabs/AuditToolkit-Linux-Security-Lite/releases`
+New versions are published through the site release pages and support
+channel.
 
 Subscribe to release notifications:
 
-- **GitHub**: watch the repository and select "Releases" in notification
-  settings.
+- **Release hub**: check the site release pages for version history and
+  package availability.
 - **Email**: send `Subscribe to releases` to
   [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com).
 

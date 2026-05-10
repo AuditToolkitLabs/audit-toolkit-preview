@@ -96,7 +96,7 @@ useful to an attacker.
 **Q: How are release packages verified?**
 
 Every release package is accompanied by a SHA-256 checksum file published
-alongside the package on GitHub Releases. RPM packages carry a GPG
+alongside the package in the approved release archive. RPM packages carry a GPG
 signature. Git release tags are GPG-signed by the AuditToolkitLabs
 release key.
 

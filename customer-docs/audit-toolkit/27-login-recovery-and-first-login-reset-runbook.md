@@ -203,6 +203,47 @@ sudo rm -f /var/lib/audit-toolkit/initial-admin-credentials.txt
 
 After this, the next boot/setup process will re-run first-boot initialization.
 
+### SSH recovery after re-arming first-boot markers
+
+On older appliance images, resetting first-boot state could leave SSH unavailable after reboot.
+
+Most common symptom:
+
+- SSH connection is refused immediately after the appliance reboots into first-boot state.
+
+Most likely cause:
+
+- the appliance image had its SSH host keys removed during image preparation, but the running `sshd` service was not restarted after those keys were regenerated on next boot.
+
+Read-only validation:
+
+```bash
+sudo ls -l /etc/ssh/ssh_host_*_key /etc/ssh/ssh_host_*_key.pub
+systemctl status ssh --no-pager
+sudo journalctl -u ssh -b --no-pager | tail -n 50
+```
+
+Recovery:
+
+```bash
+sudo ssh-keygen -A
+sudo systemctl restart ssh
+systemctl is-active ssh
+```
+
+If `ssh` is not the unit name on the target image, use:
+
+```bash
+sudo systemctl restart openssh-server
+```
+
+Expected result:
+
+- `systemctl is-active ssh` returns `active`
+- key-based or password SSH access works again on port `22`
+
+This issue is fixed in updated appliance build scripts so future images regenerate host keys and restart `sshd` automatically during first boot.
+
 ---
 
 ## Troubleshooting Notes

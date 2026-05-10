@@ -32,7 +32,7 @@ Optional (for CI validation):
 
 ## 18.2 Choosing your installation method
 
-Three installation formats are available in each GitHub Release:
+Three installation formats are available in each published release package:
 
 | Format | File | Best for |
 | --- | --- | --- |
@@ -40,8 +40,7 @@ Three installation formats are available in each GitHub Release:
 | Debian package (.deb) | `audit-toolkit-lite_<version>_all.deb` | Debian, Ubuntu, and derivatives; apt/dpkg managed installs. |
 | RPM package (.rpm) | `audit-toolkit-lite-<version>-1.noarch.rpm` | RHEL, Fedora, openSUSE, and derivatives; rpm/dnf managed installs. |
 
-Download from:
-`https://github.com/AuditToolkitLabs/AuditToolkit-Linux-Security-Lite/releases`
+Download from the site release hub or request the package from support.
 
 ## 18.3 Verify release integrity
 
@@ -49,9 +48,9 @@ Before installing, verify the SHA-256 checksum published alongside the
 release artefacts:
 
 ```bash
-# Download the release and checksum file
-wget https://github.com/AuditToolkitLabs/AuditToolkit-Linux-Security-Lite/releases/download/v1.1.4/audit-toolkit-lite-1.1.4.tar.gz
-wget https://github.com/AuditToolkitLabs/AuditToolkit-Linux-Security-Lite/releases/download/v1.1.4/SHA256SUMS
+# Download the release and checksum file from the approved archive
+wget audit-toolkit-lite-1.1.4.tar.gz
+wget SHA256SUMS
 
 # Verify the checksum
 sha256sum -c SHA256SUMS --ignore-missing
@@ -69,8 +68,8 @@ rpm --checksig audit-toolkit-lite-1.1.4-1.noarch.rpm
 Applicable to: Debian 11/12, Ubuntu 22.04/24.04, and derivatives.
 
 ```bash
-# Download the package
-wget https://github.com/AuditToolkitLabs/AuditToolkit-Linux-Security-Lite/releases/download/v1.1.4/audit-toolkit-lite_1.1.4_all.deb
+# Download the package from the approved archive
+wget audit-toolkit-lite_1.1.4_all.deb
 
 # Install
 sudo dpkg -i audit-toolkit-lite_1.1.4_all.deb
@@ -94,8 +93,8 @@ Applicable to: RHEL 8/9, AlmaLinux, Rocky Linux, Fedora 39/40/41,
 openSUSE Leap/Tumbleweed.
 
 ```bash
-# Download the package
-wget https://github.com/AuditToolkitLabs/AuditToolkit-Linux-Security-Lite/releases/download/v1.1.4/audit-toolkit-lite-1.1.4-1.noarch.rpm
+# Download the package from the approved archive
+wget audit-toolkit-lite-1.1.4-1.noarch.rpm
 
 # Install
 sudo rpm -ivh audit-toolkit-lite-1.1.4-1.noarch.rpm
@@ -111,8 +110,8 @@ Applicable to: any Linux distribution including Alpine, Arch, Void,
 Gentoo, and distributions without dpkg or rpm.
 
 ```bash
-# Download and extract
-wget https://github.com/AuditToolkitLabs/AuditToolkit-Linux-Security-Lite/releases/download/v1.1.4/audit-toolkit-lite-1.1.4.tar.gz
+# Download and extract from the approved archive
+wget audit-toolkit-lite-1.1.4.tar.gz
 tar -xzf audit-toolkit-lite-1.1.4.tar.gz
 cd audit-toolkit-lite-1.1.4/
 

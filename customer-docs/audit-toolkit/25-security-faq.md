@@ -22,7 +22,7 @@ penetration test report may contact
 [Security@audittoolkitlabs.com](mailto:Security@audittoolkitlabs.com)
 to discuss available documentation.
 
-**Q: What vulnerabilities are present in the current release?**
+**Q: What vulnerabilities are present in the 6.4.1?**
 
 A: Zero known critical or high vulnerabilities are present in the
 current production release. All dependency CVEs are scanned on every
@@ -185,3 +185,4 @@ for audit and review purposes. The BSL 1.1 licence permits this.
 A: The BSL 1.1 Change Date provision guarantees the software becomes
 fully open-source (MIT) on February 9, 2031. The source code is
 publicly available on GitHub, so customers can self-fork at any time.
+

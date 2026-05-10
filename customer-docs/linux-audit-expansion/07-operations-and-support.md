@@ -76,8 +76,8 @@ The toolkit is a self-contained binary distribution. Continuity measures:
 - If you maintain an internal artefact store, retain only packages that have
   passed your own validation and approval gate.
 - For fleet deployments, stagger upgrades — pilot on 10% of hosts first.
-- Retain signed release checksums from GitHub Releases for integrity
-  verification.
+- Retain signed release checksums from the approved release archive for
+  integrity verification.
 
 ## 7.4 AuditToolkitLabs contact directory
 

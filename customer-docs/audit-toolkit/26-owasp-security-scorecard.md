@@ -24,7 +24,7 @@
 | A03 | Injection | PASS | SQLAlchemy ORM with parameterised queries throughout; no raw SQL string construction; shell commands use `subprocess` with argument arrays |
 | A04 | Insecure Design | PASS | Threat-model reviewed; least-privilege service account; secrets separated from application code via `.env` |
 | A05 | Security Misconfiguration | PASS | Debug mode disabled in production; default credentials randomised on install; security headers enforced (CSP, HSTS, X-Frame-Options, X-Content-Type-Options) |
-| A06 | Vulnerable and Outdated Components | PASS | Automated dependency scanning via Bandit and GitHub Dependency Graph on every build; no known CVEs in current release |
+| A06 | Vulnerable and Outdated Components | PASS | Automated dependency scanning via Bandit and GitHub Dependency Graph on every build; no known CVEs in 6.4.1 |
 | A07 | Identification and Authentication Failures | PASS | Secure session tokens; bcrypt passwords; TOTP MFA available; account lockout after 5 failed attempts; session expiry enforced |
 | A08 | Software and Data Integrity Failures | PASS | Release artefacts are checksummed; no untrusted de-serialisation; integrity validation on agent-push payloads |
 | A09 | Security Logging and Monitoring Failures | PASS | All user actions, API calls, and configuration changes written to tamper-evident audit log; log output structured for SIEM ingestion |
@@ -86,3 +86,4 @@ subscriptions on request:
 [Security@audittoolkitlabs.com](mailto:Security@audittoolkitlabs.com)
 
 Internal reference: `docs/OWASP-SECURITY-SCORECARD.md`
+

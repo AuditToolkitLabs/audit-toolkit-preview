@@ -25,12 +25,11 @@ full release history.
 
 ## 8.3 Receiving update notifications
 
-- **GitHub Releases**: Watch the repository at
-  <https://github.com/AuditToolkitLabs/Audit-Tool-> — enable
-  **Releases only** notifications.
+- **Release hub**: Check the site release pages and request release access
+   from support when a new package is published.
 - **Security advisories**: Follow the repository for security advisories,
-  or subscribe to the mailing list via
-  [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com).
+   or subscribe to the mailing list via
+   [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com).
 
 ## 8.4 Applying a patch or upgrade
 
@@ -109,7 +108,7 @@ sudo dpkg -i audit-toolkit_<previous-version>_amd64.deb
 ## 8.7 Emergency security patches
 
 Security patches are released out-of-band when a critical
-vulnerability is confirmed. The patch will be flagged in the GitHub
-release notes with a **[SECURITY]** prefix. Apply security patches
-within your organisation's vulnerability management SLA — recommended
-within 72 hours for CVSS ≥ 7.0.
+vulnerability is confirmed. The patch will be flagged in the release
+notes with a **[SECURITY]** prefix. Apply security patches within your
+organisation's vulnerability management SLA — recommended within 72
+hours for CVSS ≥ 7.0.
