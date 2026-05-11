@@ -74,7 +74,7 @@
       <a href="cmdb-tool.html" class="product-card">
         <div class="product-card-head">
           <div class="product-icon" style="background:rgba(90,160,255,.12);">&#128225;</div>
-          <span class="badge badge-amber">Beta v0.2.6</span>
+          <span class="badge badge-amber">Beta v0.2.11</span>
         </div>
         <div>
           <h3>CMDB API Data Collection Tool</h3>
@@ -211,7 +211,24 @@
         </ul>
         <div class="flex gap-12 flex-wrap mt-16">
           <a href="linux-audit-expansion-releases.html" class="btn btn-primary btn-sm">Linux Releases</a>
-          <a href="cmdb-api-releases.html" class="btn btn-secondary btn-sm">CMDB API Releases</a>
+          <a href="linux-expansion.html" class="btn btn-secondary btn-sm">Product Details</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="flex flex-wrap gap-8 mb-12">
+          <span class="badge badge-amber">CMDB API Tool v0.2.11</span>
+          <span class="badge badge-muted">Beta</span>
+        </div>
+        <h3 style="margin-top:0;">CMDB API Data Collection Tool &mdash; What&rsquo;s New</h3>
+        <ul class="feature-list" style="margin-top:8px;">
+          <li><span class="icon">&#10003;</span><span class="text">Version guard in <code>apply_targeted_update.py</code> &mdash; auto-aborts if bundle is same or older than installed version.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Non-SQLite deployment safety warning ensures a DBA snapshot exists before automated patching proceeds.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Targeted updater creates a pre-change backup of SQLite database and config file on every run.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">29+ connectors: VMware, Azure, AWS, Nutanix, HAProxy, and network &mdash; CVE correlation with CVSS scoring per host.</span></li>
+        </ul>
+        <div class="flex gap-12 flex-wrap mt-16">
+          <a href="cmdb-api-releases.html" class="btn btn-primary btn-sm">CMDB API Releases</a>
+          <a href="cmdb-tool.html" class="btn btn-secondary btn-sm">Product Details</a>
         </div>
       </div>
     </div>
