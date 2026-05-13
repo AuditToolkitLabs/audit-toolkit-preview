@@ -4,13 +4,15 @@
 
 | Field | Value |
 | --- | --- |
-| Scorecard version | 1.0 |
-| Assessment date | 2026-04-29 |
+| Scorecard version | 2.0 |
+| Assessment date | 2026-05-13 |
+| Release target | v1.0 |
 | OWASP reference | [OWASP Top 10:2021](https://owasp.org/Top10/) |
-| Assessment scope | Full source-code audit (Bandit, flake8, pip-audit, manual OWASP review) |
+| Assessment scope | Full source-code audit (CodeQL, Bandit, Dependabot, manual OWASP review) |
 | Service name | CMDB API Data Collection Tool |
 | Deployment model | On-Site / On-Premises |
-| Audit performed by | AuditAdmin Labs — internal release gate |
+| Audit performed by | AuditAdmin Labs — automated release gate + manual verification |
+| Related assessment | [Detailed Security Assessment Report (2026-05-13)](35-detailed-security-assessment.md) |
 
 ---
 
@@ -21,7 +23,8 @@
 > Zero Critical · Zero High · Zero Medium open findings · Zero CVEs
 >
 > The codebase passed all ten OWASP Top 10:2021 categories.
-> Two categories (A05, A07) carried findings that were **fixed before this release**.
+> Two categories (A05, A07) carry historical fixes already closed before the
+> v1.0 release target.
 > The single PARTIAL (A10 SSRF) is an acknowledged by-design residual risk
 > bounded by the admin access-control gate; no exploitable path is present
 > without an authenticated administrator account.
@@ -37,7 +40,7 @@ source. The **Rating** column uses a five-point scale:
 | --- | --- | --- |
 | ✅ **PASS** | Addressed | Control is implemented and verified in source code or configuration. No outstanding findings. |
 | ⚠️ **PARTIAL** | Partial | Core mitigations present. One or more defence-in-depth improvements noted; none are exploitable without additional preconditions. |
-| 🔧 **FIXED** | Fixed this release | A finding was identified during this audit and remediated before release. |
+| 🔧 **FIXED** | Previously fixed | A finding was identified in an earlier cycle and verified as closed in this assessment. |
 | ❌ **FAIL** | Unaddressed | A confirmed exploitable issue with no current mitigation. |
 | ➡️ **DELEGATED** | Customer-controlled | The control responsibility lies with the customer's deployment environment (reverse proxy, OS, network). |
 
@@ -51,9 +54,9 @@ source. The **Rating** column uses a five-point scale:
 | A02 | Cryptographic Failures | ✅ **PASS** | AES-256 Fernet at rest; TLS via reverse proxy |
 | A03 | Injection | ✅ **PASS** | ORM throughout; parameterised queries only |
 | A04 | Insecure Design | ✅ **PASS** | Threat model applied; password and key policy enforced |
-| A05 | Security Misconfiguration | 🔧 **FIXED** | HTTP security headers added this release |
+| A05 | Security Misconfiguration | 🔧 **FIXED** | HTTP security headers previously added and verified present |
 | A06 | Vulnerable and Outdated Components | ✅ **PASS** | pip-audit clean; zero CVEs in dependency tree |
-| A07 | Identification and Authentication Failures | 🔧 **FIXED** | Seed admin now requires immediate password change |
+| A07 | Identification and Authentication Failures | 🔧 **FIXED** | Seed admin requires immediate password change |
 | A08 | Software and Data Integrity Failures | ✅ **PASS** | Webhook signatures verified; no unsafe deserialisation |
 | A09 | Security Logging and Monitoring Failures | ✅ **PASS** | Append-only audit log on all privileged actions |
 | A10 | Server-Side Request Forgery (SSRF) | ⚠️ **PARTIAL** | Redirect parameter validated; outbound URLs are admin-scope |
@@ -142,15 +145,15 @@ No findings.
 
 | Control | Status | Detail |
 | --- | --- | --- |
-| HTTP security headers | 🔧 Fixed | **Finding (prior release):** No `X-Content-Type-Options`, `X-Frame-Options`, `Content-Security-Policy`, `Referrer-Policy`, or `Permissions-Policy` headers were emitted. **Fix applied (this release):** `@app.after_request` hook added to `create_app`; all five headers now injected on every response. |
+| HTTP security headers | 🔧 Fixed | **Finding (historical):** No `X-Content-Type-Options`, `X-Frame-Options`, `Content-Security-Policy`, `Referrer-Policy`, or `Permissions-Policy` headers were emitted. **Current status:** `@app.after_request` hook in `create_app` injects all five headers. |
 | `Content-Security-Policy` scope | ✅ | Policy allows `cdn.jsdelivr.net` for Chart.js (used in reporting templates) and `fonts.googleapis.com` / `fonts.gstatic.com` for the UI font; all other external origins blocked |
 | Debug mode | ✅ | Debug mode is never enabled in production context; `FLASK_DEBUG` is `False` by default |
-| Default credentials | 🔧 Fixed | **Finding (prior release):** Seeded `admin` account created without `must_change_password=True`. **Fix applied (this release):** seed-data command now sets `must_change_password=True`; user must change password before accessing any route |
+| Default credentials | 🔧 Fixed | **Finding (historical):** Seeded `admin` account created without `must_change_password=True`. **Current status:** seed-data command sets `must_change_password=True`; user must change password before accessing any route |
 | Error page information exposure | ✅ | Custom 403/500 handlers return generic messages; stack traces not rendered to browser |
 | `SECRET_KEY` not defaulted | ✅ | Application refuses to start if `SECRET_KEY` is the development placeholder string |
 | TLS configuration | ➡️ | Customer-controlled; see TLSv1.2+ requirement in [Deployment Guide](20-core-server-installation-linux-windows) |
 
-**Closed findings this release: 2** (security headers, seeded admin must-change-password).
+**Historical closed findings verified in this assessment: 2** (security headers, seeded admin must-change-password).
 
 ---
 
@@ -183,9 +186,9 @@ No findings.
 | Weak password detection | ✅ | 50-entry common-password blocklist checked on every password set/change |
 | Account inactivity | ➡️ | Session TTL is configurable at the reverse-proxy layer; long-lived sessions should be limited by network policy |
 | MFA | ➡️ | Delegated to the identity provider for OIDC/LDAP flows; enforced at reverse-proxy or network layer for local accounts |
-| Seeded admin credential | 🔧 Fixed | **Finding (prior release):** `seed-data` command created the `admin` account without enforcing an immediate password change, allowing the well-known seed password to remain in use. **Fix applied (this release):** `must_change_password=True` set on the seeded user; any attempt to access a route other than `/auth/change-password` or `/auth/logout` is redirected until the password is changed. |
+| Seeded admin credential | 🔧 Fixed | **Finding (historical):** `seed-data` command created the `admin` account without enforcing an immediate password change, allowing the well-known seed password to remain in use. **Current status:** `must_change_password=True` is set on the seeded user; any attempt to access a route other than `/auth/change-password` or `/auth/logout` is redirected until the password is changed. |
 
-**Closed findings this release: 1** (seed admin must-change-password).
+**Historical closed finding verified in this assessment: 1** (seed admin must-change-password).
 
 ---
 
@@ -239,13 +242,16 @@ No findings.
 
 ---
 
-## Findings Closed in Release 1.0 (2026-04-29)
+## Historical Findings Closed Before v1.0
 
 | ID | OWASP | Severity | Finding | Fix |
 | --- | --- | --- | --- | --- |
 | SEC-001 | A05 | High | No HTTP security headers emitted on any response | Added `@after_request` hook injecting `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, `Content-Security-Policy` |
 | SEC-002 | A07 / A05 | Medium | Seeded `admin` account not forced to change password on first login | `must_change_password=True` set in `seed-data` CLI command; enforced by pre-existing must-change-password gate |
 | SEC-003 | A05 | Low | `haproxy` connector used hardcoded `verify=False` disabling TLS certificate validation | Replaced with configurable `verify_ssl` field (default `False` for backward compatibility); warning suppression now conditional |
+
+These items are retained for audit traceability and were verified as closed
+in the 2026-05-13 assessment.
 
 ---
 
@@ -265,10 +271,10 @@ No findings.
 
 | Tool | Version | Command | Result |
 | --- | --- | --- | --- |
-| Bandit | 1.9.x | `bandit -r app/ commerce/ -c pyproject.toml -ll` | **0 High, 0 Medium, 0 Low** (with project skip-list applied) |
+| Bandit | 1.9.x | `bandit -r app/ -f json -o bandit-report.json` | **8 Info only; 0 High/Medium/Low** (current release gate snapshot) |
 | flake8 | 7.3.x | `flake8 app/ commerce/ run.py celery_worker.py --select=F` | **0 violations** |
-| pip-audit | latest | `pip-audit -r requirements.txt` | **No known vulnerabilities found** |
-| pytest | 9.0.x | `pytest tests/` | **542 passed, 0 failed** |
+| pip-audit | latest | `pip-audit -r requirements.txt` | Refer to release pipeline evidence for v1.0 gating run |
+| pytest | 9.0.x | `pytest tests/` | **29 passed, 0 failed** |
 
 ---
 

@@ -41,8 +41,10 @@ service-management documentation are available on request.
 | **MSP** | `msp` | Unlimited | Managed-service provider hosting workspaces for *their* customers. Per-endpoint royalty applies. |
 | **OEM** | `oem` | Unlimited | Embedded / white-label / redistribution use. Requires a separate signed OEM agreement. |
 
-For the binding text and the per-endpoint royalty calculation, see
-`LICENSE-EULA.md` shipped with the product.
+For the current licence text and the per-endpoint royalty model, see
+`LICENSE-EULA.md` shipped with the product. If your deployment requires
+formally binding commercial terms, rely on your executed order form and
+signed legal agreement until the EULA draft is finalised.
 
 ## Appendix D — Information to gather before raising a support case
 

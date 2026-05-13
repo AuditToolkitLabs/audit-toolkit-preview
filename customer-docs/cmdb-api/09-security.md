@@ -67,5 +67,8 @@ customer's responsibility:
 For procurement and due-diligence enquiries, a one-page reference FAQ
 is available at [Security FAQ — Procurement and Due Diligence](33-security-faq).
 
+For the latest comprehensive security assessment and scanning results, see
+[Detailed Security Assessment Report (2026-05-13)](35-detailed-security-assessment.md).
+
 For the full OWASP Top 10 code-audit results and findings register, see
 [OWASP Top 10 Security Scorecard](34-owasp-security-scorecard).

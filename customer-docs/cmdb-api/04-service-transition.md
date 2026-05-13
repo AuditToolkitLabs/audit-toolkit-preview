@@ -54,10 +54,11 @@ deployment guide shipped to your engineering team.
    - Database connection string.
 6. Start the application behind your reverse proxy.
 7. Sign in for the first time — you will be presented with the EULA.
-   Reading and accepting it records the evidence required by section 7
-   of the EULA. The acceptance is stored with your user account, the
-   originating IP, the User-Agent string and a SHA-256 hash of the
-   licence text.
+  Reading and accepting it records application-level acceptance
+  evidence. The acceptance is stored with your user account, the
+  originating IP, the User-Agent string and a SHA-256 hash of the
+  licence text. Legal enforceability is governed by the current signed
+  commercial agreement and the published EULA status.
 8. Create your administrator users, configure SSO/LDAP if used, and
    issue API keys for any automation.
 

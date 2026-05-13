@@ -5,7 +5,8 @@
 | Field | Value |
 | --- | --- |
 | Document version | 1.0 |
-| Last updated | 2026-05-05 |
+| Last updated | 2026-05-13 |
+| Release target | v1.0 |
 | Service name | CMDB API Data Collection Tool |
 | Deployment model | On-Site / On-Premises |
 | Standard alignment | ISO/IEC 20000-1:2018 |
@@ -63,6 +64,7 @@ italics next to the section title.
 32. [Data Security and Database Maintenance Runbook](32-data-security-and-database-maintenance-runbook)
 33. [Security FAQ — Procurement and Due Diligence](33-security-faq)
 34. [OWASP Top 10 Security Scorecard](34-owasp-security-scorecard)
+35. [Detailed Security Assessment Report (2026-05-13)](35-detailed-security-assessment)
 
 ## Vendor support contacts
 
@@ -76,6 +78,6 @@ contact directory is in section&nbsp;7.4. Quick reference:
 
 ## Related legal and licensing documents
 
-- End-User Licence Agreement: `LICENSE-EULA.md` (presented in-product at first sign-in).
+- End-User Licence Agreement text: `LICENSE-EULA.md` (presented in-product at first sign-in; currently marked Draft and pending formal legal finalisation).
 - Third-party software notices: `NOTICE.md`.
 - Tenancy and licensing tiers: see Appendix C in section 12.
