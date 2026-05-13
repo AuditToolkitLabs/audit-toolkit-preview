@@ -13,8 +13,9 @@
 ## 8.2 Patch and upgrade responsibilities
 
 - The service provider publishes patches and version notes to the
-  AuditAdmin Labs customer portal; subscribe to release notifications
-  by emailing
+  AuditToolkit Customer Release Portal:
+  [Customer Release Portal](https://audittoolkitlabs.sharepoint.com/:f:/s/AuditToolkitCustomerReleasePortal/IgDTNceu7o8PQKEmXIOeMG9AAWsufVJAVvy8D-OLzcsQRCw?e=7aIhaT)
+  Subscribe to release notifications by emailing
   [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com)
   with the subject `Subscribe to releases`.
 - The customer is responsible for applying patches in line with their

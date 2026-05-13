@@ -16,7 +16,9 @@ Covers:
 
 ## 21.2 Release intake and planning
 
-1. Review release notes and security advisories from AuditAdmin Labs.
+1. Review release notes and security advisories from AuditAdmin Labs in
+   the customer release portal:
+   [Customer Release Portal](https://audittoolkitlabs.sharepoint.com/:f:/s/AuditToolkitCustomerReleasePortal/IgDTNceu7o8PQKEmXIOeMG9AAWsufVJAVvy8D-OLzcsQRCw?e=7aIhaT).
 2. Classify release type:
    - security hot-fix,
    - maintenance patch,

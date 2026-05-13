@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CMDB API Releases � AuditToolkit Labs</title>
+  <title>CMDB API Releases &ndash; AuditToolkit Labs</title>
   <meta name="description" content="Release history, changelogs, and security bulletins for the CMDB API Data Collection Tool." />
   <link rel="stylesheet" href="assets/css/site.css" />
 </head>
@@ -44,16 +44,16 @@
     </div>
     <p class="eyebrow">Release History</p>
     <h1>CMDB API Releases &amp; Changelogs</h1>
-    <p>Version history, changelogs, and security bulletins for the CMDB API Data Collection Tool. Release packages are now accessed through the public CMDB API release card.</p>
+    <p>Version history, changelogs, and security bulletins for the CMDB API Data Collection Tool. Release assets are accessed through the AuditToolkit Customer Release Portal.</p>
     <div class="flex gap-12 flex-wrap mt-24">
-      <a href="https://audittoolkitlabs.github.io/releases/CMDB%20API%20Data%20Collection%20Tool/" class="btn btn-primary" target="_blank" rel="noopener">Open Public Download Card</a>
+      <a href="https://audittoolkitlabs.sharepoint.com/:f:/s/AuditToolkitCustomerReleasePortal/IgDTNceu7o8PQKEmXIOeMG9AAWsufVJAVvy8D-OLzcsQRCw?e=7aIhaT" class="btn btn-primary" target="_blank" rel="noopener">Open Release Assets Portal</a>
       <a href="doc-viewer.html?src=customer-docs/cmdb-api/21-maintenance-patching-and-release-runbook.md" class="btn btn-secondary">Open Release Runbook</a>
       <a href="support.html#contact" class="btn btn-secondary">Request Evaluation Access</a>
     </div>
     <div class="callout info mt-24">
-      <strong>Latest tag now available.</strong> CMDB API Data Collection Tool release tag
-      <strong>cmdb-api/v0.2.11</strong> is now published in the customer release channel.
-      <a href="#v0211">View cmdb-api/v0.2.11 notes &rarr;</a>
+      <strong>General Availability now available.</strong> CMDB API Data Collection Tool
+      <strong>v1.0</strong> is now published in the customer release channel.
+      <a href="#v100">View v1.0 GA notes &rarr;</a>
     </div>
   </div>
 </div>
@@ -66,33 +66,33 @@
     </div>
     <div class="release-stack">
 
-      <!-- v0.2.11 -->
-      <div class="release-entry release-latest" id="v0211">
+      <!-- v1.0 -->
+      <div class="release-entry release-latest" id="v100">
         <div class="release-timeline"><div class="release-dot"></div><div class="release-line"></div></div>
         <div class="release-body">
           <div class="release-meta">
-            <span class="version">v0.2.11</span>
-            <span class="badge badge-amber">Latest Beta</span>
+            <span class="version">v1.0</span>
+            <span class="badge badge-green">General Availability</span>
             <span class="badge badge-green">&#10003; OWASP PASS</span>
-            <span class="badge badge-muted">cmdb-api/v0.2.11</span>
+            <span class="badge badge-muted">cmdb-api/v1.0</span>
             <span class="date">May 2026</span>
           </div>
           <div class="flex gap-8 flex-wrap mt-8 mb-8">
             <a href="doc-viewer.html?src=customer-docs/cmdb-api/21-maintenance-patching-and-release-runbook.md" class="btn btn-primary btn-sm">Open Release Runbook</a>
           </div>
-          <p style="font-size:.95rem;margin:0 0 12px;color:var(--text);font-weight:600;">Targeted Updater — Version Guard &amp; Non-SQLite Safety</p>
-          <p style="font-size:.9rem;margin:0 0 12px;">Adds a version guard to the targeted updater and explicit safety warnings for non-SQLite database deployments.</p>
+          <p style="font-size:.95rem;margin:0 0 12px;color:var(--text);font-weight:600;">General Availability Baseline &mdash; Security and Documentation Alignment</p>
+          <p style="font-size:.9rem;margin:0 0 12px;">v1.0 marks the GA release baseline with aligned release distribution, security evidence, and customer-facing operational documentation.</p>
           <ul class="release-changes">
-            <li><strong>Version guard:</strong> <code>apply_targeted_update.py</code> reads installed version from <code>.cmdb-version</code> in the install root; aborts automatically if the bundle version is the same as or older than the installed version &mdash; pass <code>--force</code> to override for re-apply scenarios</li>
-            <li>The <code>.cmdb-version</code> file is written on each successful <code>apply_targeted_update.py</code> execution</li>
-            <li><strong>Non-SQLite deployment warning:</strong> a warning is printed when the deployment does not use the default SQLite path, confirming that remote database backups are not taken automatically; DBA or cloud backup tooling must be used before proceeding</li>
-            <li>Targeted updater auto-creates pre-change backup of the active SQLite database and <code>env</code>/config file alongside each apply run</li>
-            <li>Updated customer documentation (Doc 08 Change Management; Doc 21 Maintenance Runbook) to reflect v0.2.9&ndash;v0.2.11 patching procedures and new rollback guidance</li>
+            <li><strong>GA release target:</strong> customer documentation and release metadata aligned to <strong>v1.0</strong></li>
+            <li><strong>Release assets moved:</strong> packages now published through the SharePoint customer release portal</li>
+            <li><strong>Security evidence update:</strong> OWASP scorecard confirms <strong>8 PASS, 1 PARTIAL, 0 FAIL</strong> with zero Critical/High/Medium open findings</li>
+            <li><strong>Detailed security report added:</strong> new Doc 35 provides expanded assessment evidence and tooling output context</li>
+            <li>Targeted updater workflow from v0.2.9-v0.2.11 remains fully supported for in-place maintenance releases</li>
           </ul>
           <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
-            <p style="font-size:.85rem;font-weight:600;margin:0 0 10px;">Access v0.2.11 package files</p>
+            <p style="font-size:.85rem;font-weight:600;margin:0 0 10px;">Access v1.0 package files</p>
             <div class="flex gap-12 flex-wrap">
-              <a href="https://audittoolkitlabs.github.io/releases/CMDB%20API%20Data%20Collection%20Tool/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Open Public Download Card</a>
+              <a href="https://audittoolkitlabs.sharepoint.com/:f:/s/AuditToolkitCustomerReleasePortal/IgDTNceu7o8PQKEmXIOeMG9AAWsufVJAVvy8D-OLzcsQRCw?e=7aIhaT" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Open Release Assets Portal</a>
               <a href="support.html#contact" class="btn btn-secondary btn-sm">Request Archive Assistance</a>
             </div>
             <p style="font-size:.78rem;color:var(--text-muted);margin:8px 0 0;">A valid Keygen licence key is required. <a href="licensing.html">Purchase a licence &rarr;</a></p>
@@ -223,7 +223,7 @@
           <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
             <p style="font-size:.85rem;font-weight:600;margin:0 0 10px;">Access v0.2.6 package files</p>
             <div class="flex gap-12 flex-wrap">
-              <a href="https://audittoolkitlabs.github.io/releases/CMDB%20API%20Data%20Collection%20Tool/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Open Public Download Card</a>
+              <a href="https://audittoolkitlabs.sharepoint.com/:f:/s/AuditToolkitCustomerReleasePortal/IgDTNceu7o8PQKEmXIOeMG9AAWsufVJAVvy8D-OLzcsQRCw?e=7aIhaT" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Open Release Assets Portal</a>
               <a href="doc-viewer.html?src=customer-docs/cmdb-api/21-maintenance-patching-and-release-runbook.md" class="btn btn-secondary btn-sm">View Patch Runbook</a>
             </div>
             <p style="font-size:.78rem;color:var(--text-muted);margin:8px 0 0;">A valid Keygen licence key is required. <a href="licensing.html">Purchase a licence &rarr;</a></p>

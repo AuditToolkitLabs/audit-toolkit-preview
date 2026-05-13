@@ -76,6 +76,11 @@ contact directory is in section&nbsp;7.4. Quick reference:
 - Security: [Security@audittoolkitlabs.com](mailto:Security@audittoolkitlabs.com)
 - Licensing: [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com)
 
+## Release assets
+
+Current customer release packages for GA v1.0 are published through the
+[AuditToolkit Customer Release Portal](https://audittoolkitlabs.sharepoint.com/:f:/s/AuditToolkitCustomerReleasePortal/IgDTNceu7o8PQKEmXIOeMG9AAWsufVJAVvy8D-OLzcsQRCw?e=7aIhaT).
+
 ## Related legal and licensing documents
 
 - End-User Licence Agreement text: `LICENSE-EULA.md` (presented in-product at first sign-in; currently marked Draft and pending formal legal finalisation).
