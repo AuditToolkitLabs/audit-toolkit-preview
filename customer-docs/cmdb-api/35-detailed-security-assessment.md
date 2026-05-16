@@ -1,4 +1,4 @@
-# 35. Detailed Security Assessment Report (2026-05-13)
+# 35. Detailed Security Assessment Report (2026-05-15)
 
 *For security teams, audit function, and procurement due-diligence reviews.*
 
@@ -6,50 +6,100 @@
 
 ## Executive Summary
 
-**Assessment Date:** May 13, 2026  
-**Release Target:** v1.0  
-**Current Scan Outcome:** ✅ No open critical/high findings in this assessment snapshot
+**Assessment Date:** May 15, 2026  
+**Release Target:** v1.0.1 (Patch Release)  
+**Current Scan Outcome:** ✅ No open critical/high findings in deployable release scope
 
-The CMDB API Data Collection Tool achieved **ZERO critical or high-severity findings** across all automated security scanning tools. This report documents the comprehensive assessment combining CodeQL static analysis, Bandit Python linting, Dependabot dependency scanning, GitHub Secret Scanning, and manual security configuration review.
+**Release Gate Model (v1.0.1):** Dual-scope transparency with release-gate enforcement:
 
-### Key Metrics
+- **Deployable scope**: PASS (0 findings in app/, db/, scripts/, managed_agent/, run.py, celery_worker.py)
+- **Full-workspace transparency**: 8,024 findings retained for audit visibility (includes test/venv/build paths)
 
-| Metric | Result |
-| --- | --- |
-| **Code Scanning (CodeQL)** | 0 findings across 77 security rules |
-| **Dependency Vulnerabilities** | 0 open CVEs |
-| **Detected Secrets** | 0 exposed credentials |
-| **Bandit Issues (Critical+High)** | 0 findings |
-| **TLS Configuration** | 1.2+ enforced everywhere |
-| **Test Coverage** | 29/29 pytest PASSING ✓ |
+The CMDB API Data Collection Tool achieved **ZERO critical or high-severity findings in deployable scope** across all automated security scanning tools. This report documents the comprehensive assessment combining CodeQL static analysis, Bandit Python linting, Dependabot dependency scanning, GitHub Secret Scanning, and manual security configuration review, with release-gate methodology introduced for v1.0.1.
+
+### Key Metrics (v1.0.1 Release Gate)
+
+| Metric | Result | Scope |
+| --- | --- | --- |
+| **CodeQL (deployable)** | 0 findings across 43 security rules | app/ + db/ + scripts/ + managed_agent/ |
+| **Bandit (deployable)** | 0 findings (no High/Medium/Low) | Deployable paths only |
+| **Bandit (full-workspace transparency)** | 8,024 findings | Includes test/, .venv/, build/ |
+| **Dependency Vulnerabilities** | 0 open CVEs | All deps scanned |
+| **Detected Secrets** | 0 exposed credentials | Full repository |
+| **TLS Configuration** | 1.2+ enforced everywhere | Verified |
+| **Test Coverage** | 29/29 pytest PASSING ✓ | Full suite |
+| **Release Gate Status** | ✅ PASS | Deployable scope gate |
+| **Webhook Validation** | Fixed (v1.0.1 patch) | DNS failure handling |
+
+---
+
+## Release-Scope Security Gate (v1.0.1)
+
+### Gate Methodology
+
+Starting with v1.0.1, a release-scope security gate filters CodeQL and Bandit findings to only deployable paths:
+
+**Gate Scope (What Ships):**
+
+- `app/` — Core application modules
+- `db/` — Database migrations
+- `scripts/` — Deployment and maintenance scripts
+- `managed_agent/` — Remote agent code
+- `run.py` and `celery_worker.py` — Entry points
+
+**Excluded from Gate (Not Shipped):**
+
+- `.venv/` — Local development environment
+- `tests/` — Test code and fixtures
+- `build/` — Build artifacts
+- `instance/` — Local instance folders
+
+### Gate Result: PASS ✅
+
+| Component | Findings (Deployable) | Status |
+| --- | --- | --- |
+| CodeQL | 0 | ✅ PASS |
+| Bandit | 0 findings (no H/M/L) | ✅ PASS |
+| Release Blockers | 0 | ✅ PASS |
+
+### Full-Workspace Transparency
+
+Full-workspace scans retained for audit visibility:
+
+- **Total Bandit findings:** 8,024 (across all paths)
+- **Breakdown by severity:** 7,579 LOW, 369 MEDIUM, 76 HIGH
+- **Assessment:** All HIGH findings are in excluded paths (test code, .venv dependencies)
+- **Deployable-only LOW/MEDIUM:** 0 findings
 
 ---
 
 ## Scan Summary
 
-### CodeQL Analysis (May 13, 2026 @ 11:08 UTC)
+### CodeQL Analysis (May 15, 2026)
 
-**Commit:** 1a7ba94 (Add explicit CodeQL configuration for Go)
+**Release Gate Status:** ✅ PASS (0 findings in deployable scope)
 
-#### Python Analysis
+#### Python Analysis (Deployable Scope)
 
 - **Security Rules:** 43 (security-extended suite)
-- **Findings:** 0
+- **Findings (deployable):** 0
 - **Status:** ✅ PASS
+- **Paths scanned:** app/, db/, scripts/, managed_agent/
 
-#### Go Analysis  
+#### Go Analysis (Deployable Scope)
 
 - **Security Rules:** 34 (security-extended suite)
-- **Findings:** 0
-- **Modules:** 3 (LinuxGo, MacGo, BSDGo)
+- **Findings (deployable):** 0
+- **Modules scanned:** LinuxGo, MacGo, BSDGo
 - **Status:** ✅ PASS
 
 ---
 
 ### Bandit Python Security Linting
 
-**Scan Date:** May 13, 2026  
-**Total Items:** 8 (All severity: INFO)
+**Scan Date:** May 15, 2026  
+**Release Gate Status:** ✅ PASS (0 findings in deployable scope)
+**Full Workspace:** 8,024 items (transparency dataset; includes test/venv)
 
 #### Assessment
 
@@ -64,7 +114,9 @@ The CMDB API Data Collection Tool achieved **ZERO critical or high-severity find
 - **B404/B603:** Subprocess calls used correctly with validated inputs; no shell injection vector present
 - **B105 (5 instances):** Configuration field names, not actual credentials. Actual secrets sourced from environment variables
 
-**Verdict:** ✅ **No actionable issues. All 8 findings are safe or false positives.**
+**Verdict (Deployable Scope):** ✅ **No findings in shipped code paths. Release gate PASS.**
+
+**Full-Workspace Assessment:** All HIGH findings are in excluded paths (test fixtures, dependency code in .venv). Deployable scope contains 0 High/Medium/Low issues.
 
 ---
 

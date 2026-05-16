@@ -4,6 +4,11 @@ Asset Command Center is intended to run inside a customer-controlled
 network with a hardened operating system, reverse proxy or HTTPS
 termination path, and customer-managed secrets.
 
+For production release evidence and scan results, see:
+
+- `14-customer-security-assurance-report.md`
+- `changelog.md`
+
 ## Security basics
 
 - use HTTPS for the customer-facing UI

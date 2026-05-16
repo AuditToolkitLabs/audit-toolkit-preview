@@ -1,4 +1,7 @@
-# Customer Documentation
+# Customer Documentation — CMDB API Data Collection Tool v1.0.1
+
+**Current Release:** v1.0.1 (May 15, 2026)  
+**Documentation Status:** Current and aligned
 
 This folder contains **customer-facing** documentation for the CMDB API
 Data Collection Tool. It is intentionally separate from the `docs/`
@@ -32,5 +35,6 @@ section directly to a clause in their service-management system.
   internal change history — those belong in `docs/`.
 - Tables should use the spaced pipe style (`| --- |`) and be surrounded
   by blank lines so markdownlint stays happy.
-- Update the `Last updated` date in `index.md` when you publish a
-  material change.
+- Update the `Last updated` date in each document section when publishing material changes.
+- All documentation cross-references should point to current v1.0.1 or later release versions.
+- Deprecated version references (v0.x, early v1.0 beta) should be removed except in CHANGELOG.

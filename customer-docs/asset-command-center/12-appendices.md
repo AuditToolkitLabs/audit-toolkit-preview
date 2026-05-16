@@ -2,7 +2,7 @@
 
 ## Planned release version
 
-- Planned release version: 1.0.2
+- Planned release version: 1.0.3
 
 ## Key terms
 
@@ -37,7 +37,7 @@ Primary active connector set for this release:
 - `nmap-sweep`
 - `ansible-unified`
 
-## Planned 1.0.2 feature-function summary
+## Planned 1.0.3 feature-function summary
 
 - Preserve standalone, agentless collection and inventory as the
   baseline operating model.

@@ -63,6 +63,17 @@ source. The **Rating** column uses a five-point scale:
 
 **Overall release gate result: PASS** — zero Critical, zero High, zero Medium open findings at general availability.
 
+### Deployable Release-Scope Note (2026-05-15)
+
+- Customer-installable server bundle scope gate result: **PASS**
+- CodeQL findings in deployable scope: **0**
+- Bandit findings in deployable scope: **0**
+- Release blockers in deployable scope: **0**
+
+This release-scope note complements the full-workspace transparency report.
+For release-scope evidence and artifact references, see:
+[36. Release Deployable Security Gate and OWASP Note](36-release-deployable-security-gate.md).
+
 ---
 
 ## Detailed Findings

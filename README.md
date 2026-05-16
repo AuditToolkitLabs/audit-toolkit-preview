@@ -47,3 +47,13 @@ It is intentionally limited to **documentation and screenshots only**.
 - Confirm all Stripe-related checkout links use **[checkout.audittoolkitlabs.com](https://checkout.audittoolkitlabs.com/)** only.
 - Confirm **main** and feature branches remain private.
 - Confirm screenshots contain no secrets, internal hostnames, or customer data.
+
+## Optional automation module
+
+This repo now includes an optional Cloudflare Worker implementation under `cloudflare-worker/` that acts as billing/licensing glue between Stripe, Keygen, and Microsoft 365 flows.
+
+- Worker source: `cloudflare-worker/src/index.js`
+- Deployment config: `cloudflare-worker/wrangler.toml`
+- Setup guide: `cloudflare-worker/README.md`
+
+Use this module when you want automated license issuance and webhook handling while keeping the public site static.

@@ -13,12 +13,12 @@ workflows from other products or prior repository phases.
 
 ## Planned release baseline
 
-- Planned release version: 1.0.2
+- Planned release version: 1.0.3
 - Release intent: patch release that preserves the standalone,
   agentless operating model and hardens release packaging and
   operational readiness.
 
-Planned feature functions for version 1.0.2:
+Planned feature functions for version 1.0.3:
 
 - Agentless inventory and discovery via SSH, WinRM, SNMP, IPMI, Nmap,
   and ansible-unified orchestration.
@@ -75,10 +75,14 @@ Planned feature functions for version 1.0.2:
 30. [Data security and database maintenance](32-data-security-and-database-maintenance-runbook.md)
 31. [Security FAQ](33-security-faq.md)
 32. [Security control summary](34-owasp-security-scorecard.md)
+33. [Production security posture report](35-production-security-posture.md)
 
 ## Related product documents
 
 - [Asset Command Center overview](README.md)
+- [Customer security assurance report](14-customer-security-assurance-report.md)
+- [Production security posture report](35-production-security-posture.md)
+- [Customer release changelog](changelog.md)
 - [Commercial EULA](../legal/EULA.md)
 
 ## Contact points

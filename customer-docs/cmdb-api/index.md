@@ -4,9 +4,9 @@
 
 | Field | Value |
 | --- | --- |
-| Document version | 1.0 |
-| Last updated | 2026-05-13 |
-| Release target | v1.0 |
+| Document version | 1.0.1 |
+| Last updated | 2026-05-15 |
+| Release target | v1.0.1 |
 | Service name | CMDB API Data Collection Tool |
 | Deployment model | On-Site / On-Premises |
 | Standard alignment | ISO/IEC 20000-1:2018 |
@@ -65,6 +65,9 @@ italics next to the section title.
 33. [Security FAQ — Procurement and Due Diligence](33-security-faq)
 34. [OWASP Top 10 Security Scorecard](34-owasp-security-scorecard)
 35. [Detailed Security Assessment Report (2026-05-13)](35-detailed-security-assessment)
+36. [Release Deployable Security Gate](36-release-deployable-security-gate)
+37. [Production Security Status Report (v1.0.1)](37-production-security-status-report)
+38. [Website Security Trust Brief (Production Scope)](38-website-security-trust-brief)
 
 ## Vendor support contacts
 
@@ -76,13 +79,8 @@ contact directory is in section&nbsp;7.4. Quick reference:
 - Security: [Security@audittoolkitlabs.com](mailto:Security@audittoolkitlabs.com)
 - Licensing: [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com)
 
-## Release assets
-
-Current customer release packages for GA v1.0 are published through the
-[AuditToolkit Customer Release Portal](https://audittoolkitlabs.sharepoint.com/:f:/s/AuditToolkitCustomerReleasePortal/IgDTNceu7o8PQKEmXIOeMG9AAWsufVJAVvy8D-OLzcsQRCw?e=7aIhaT).
-
 ## Related legal and licensing documents
 
-- End-User Licence Agreement text: `LICENSE-EULA.md` (presented in-product at first sign-in; currently marked Draft and pending formal legal finalisation).
+- End-User Licence Agreement text: `LICENSE-EULA.md` (v1.0.1 — final, presented in-product at first sign-in).
 - Third-party software notices: `NOTICE.md`.
 - Tenancy and licensing tiers: see Appendix C in section 12.

@@ -1,0 +1,18 @@
+{
+  "byPriceId": {
+    "price_1AAA111BBB222": {
+      "planCode": "audit-starter",
+      "keygenPolicyId": "4f3b6f50-c744-43ce-87fb-a70f8f450001"
+    },
+    "price_1CCC333DDD444": {
+      "planCode": "audit-professional",
+      "keygenPolicyId": "4f3b6f50-c744-43ce-87fb-a70f8f450002"
+    }
+  },
+  "byLookupKey": {
+    "linux-business": {
+      "planCode": "linux-business",
+      "keygenPolicyId": "4f3b6f50-c744-43ce-87fb-a70f8f450003"
+    }
+  }
+}

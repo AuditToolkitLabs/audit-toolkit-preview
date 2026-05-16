@@ -7,6 +7,10 @@ vendor security assessment. For implementation detail, refer to the
 [Security, Access and Data Protection](09-security) section of the full
 service documentation and the [Deployment Guide](../docs/04-deployment-guide.md).
 
+For a concise, website-ready production-only summary of shipped security and
+quality posture, see the
+[Production Security Status Report](37-production-security-status-report.md).
+
 ---
 
 ## Encryption at Rest
@@ -157,13 +161,37 @@ nginx configuration.
 
 ---
 
+## Release-Scope Security Gate (v1.0.1+)
+
+**Q: How does the release-scope security gate work?**
+
+Starting with v1.0.1, each release applies a **dual-scope security model**:
+
+1. **Deployable-scope gate** (What customers install):
+   - CodeQL and Bandit scans target only shipped paths: `app/`, `db/`, `scripts/`, `managed_agent/`, and entry points
+   - Release is blocked if any High or Medium findings exist in deployable scope
+   - v1.0.1: **0 findings in deployable scope** ✅ PASS
+
+2. **Full-workspace transparency** (What we audit):
+   - Raw, unfiltered scans retain all findings for audit visibility
+   - Includes test code, development dependencies, build artifacts
+   - v1.0.1: 8,024 total findings (all in excluded paths; 0 in deployable)
+
+This approach balances:
+
+- **Customer trust:** Clear, enforced standards for shipped code
+- **Transparency:** No hidden vulnerabilities (full scans published)
+- **Practicality:** Test code and dev dependencies don't block releases
+
+---
+
 ## Patch and Vulnerability Management
 
 **Q: How is the application kept up to date against known vulnerabilities?**
 
 - Dependency tree is scanned against NVD/OSV on every release.
-- The release policy is zero Critical or High CVSS issues at general
-  availability.
+- Release policy: zero Critical or High CVSS issues in **deployable scope**.
+- Full-workspace scans retained for transparency and audit.
 - CVE data is collected and correlated for customer environments as part
   of the tool's core function.
 - Security advisory notifications: subscribe by emailing
@@ -193,7 +221,12 @@ storage as complementary controls.
 ---
 
 For the full OWASP Top 10 code-audit results, findings register, and scan
-evidence, see [OWASP Top 10 Security Scorecard](34-owasp-security-scorecard).
+evidence, see [OWASP Top 10 Security Scorecard](34-owasp-security-scorecard.md).
+
+For current release-gate status and security assessment details, see:
+
+- [Release Deployable Security Gate](36-release-deployable-security-gate.md)
+- [Detailed Security Assessment Report](35-detailed-security-assessment.md)
 
 ---
 

@@ -62,7 +62,7 @@ links to:
 | **Request a feature** (Issues → Feature request) | Roadmap suggestions, enhancement proposals. Pre-filled with the `enhancement` label. |
 | **Discussions** | Questions, deployment patterns, community Q&A. Not for incident handling. |
 | **Security advisory** (private) | GitHub's private vulnerability reporting workflow. Visible only to maintainers. |
-| **Release assets portal** | Notes and package artefacts for each published version, including changelogs and signed checksums. |
+| **Releases** | Notes for each published version, including changelogs and signed checksums. |
 
 Guidance:
 
@@ -80,8 +80,6 @@ Guidance:
   tracked against your SLA.
 - Licensing and contractual matters are not handled on GitHub. Use
   [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com).
-- Release package files are distributed via the customer release portal:
-  [Customer Release Portal](https://audittoolkitlabs.sharepoint.com/:f:/s/AuditToolkitCustomerReleasePortal/IgDTNceu7o8PQKEmXIOeMG9AAWsufVJAVvy8D-OLzcsQRCw?e=7aIhaT).
 
 ## 7.2 Incident management
 

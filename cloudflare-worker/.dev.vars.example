@@ -1,0 +1,15 @@
+# Stripe webhook signing secret (required)
+STRIPE_WEBHOOK_SECRET=whsec_replace_me
+
+# Keygen API credentials (required for license creation)
+KEYGEN_ACCOUNT_ID=replace_me
+KEYGEN_API_TOKEN=replace_me
+
+# Optional override. Defaults to https://api.keygen.sh
+KEYGEN_API_BASE_URL=https://api.keygen.sh
+
+# Optional Microsoft 365 Power Automate HTTP trigger for notifications
+M365_FLOW_WEBHOOK_URL=
+
+# Optional token for /admin/reissue-license endpoint
+ADMIN_API_TOKEN=replace_with_long_random_value
