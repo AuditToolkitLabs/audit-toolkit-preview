@@ -8,6 +8,13 @@ KEYGEN_API_TOKEN=replace_me
 # Optional override. Defaults to https://api.keygen.sh
 KEYGEN_API_BASE_URL=https://api.keygen.sh
 
+# Optional but recommended: allows fallback plan resolution from Stripe line items
+# when checkout session metadata is missing or incomplete.
+STRIPE_API_SECRET=sk_live_replace_me
+
+# Required for Keygen webhook signature verification. Use your Keygen account public key PEM.
+KEYGEN_WEBHOOK_PUBLIC_KEY=-----BEGIN PUBLIC KEY-----\nreplace_me\n-----END PUBLIC KEY-----
+
 # Optional Microsoft 365 Power Automate HTTP trigger for notifications
 M365_FLOW_WEBHOOK_URL=
 

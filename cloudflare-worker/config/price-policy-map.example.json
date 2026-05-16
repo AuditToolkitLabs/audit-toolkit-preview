@@ -14,5 +14,11 @@
       "planCode": "linux-business",
       "keygenPolicyId": "4f3b6f50-c744-43ce-87fb-a70f8f450003"
     }
+  },
+  "byProductId": {
+    "prod_ABC123XYZ": {
+      "planCode": "cmdb-api-standard",
+      "keygenPolicyId": "4f3b6f50-c744-43ce-87fb-a70f8f450004"
+    }
   }
 }

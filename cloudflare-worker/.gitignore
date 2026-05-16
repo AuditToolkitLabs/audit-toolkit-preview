@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Environment secrets (never commit)
+.env.secrets
+.env.local
+.env.*.local
+
+# Build outputs
+dist/
+build/
+*.wrangler
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Wrangler
+wrangler.toml.bak
