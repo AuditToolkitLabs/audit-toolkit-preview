@@ -520,7 +520,11 @@ function getNvdQuotaConfig(env) {
     windowSeconds: toPositiveInteger(env.NVD_QUOTA_WINDOW_SECONDS, 24 * 60 * 60),
     customerLimit: toPositiveInteger(env.NVD_QUOTA_PER_WINDOW, 5000),
     anonymousLimit: toPositiveInteger(env.NVD_ANON_QUOTA_PER_WINDOW, 250),
-    enforceCustomerId: toBoolean(env.NVD_ENFORCE_CUSTOMER_ID, false)
+    enforceCustomerId: toBoolean(env.NVD_ENFORCE_CUSTOMER_ID, false),
+    rpmLimit: toPositiveInteger(env.NVD_RPM_LIMIT, 30),
+    anonRpmLimit: toPositiveInteger(env.NVD_ANON_RPM_LIMIT, 5),
+    monthlyLimit: toPositiveInteger(env.NVD_MONTHLY_QUOTA_PER_TENANT, 50000),
+    anonMonthlyLimit: toPositiveInteger(env.NVD_ANON_MONTHLY_QUOTA, 2000)
   };
 }
 
@@ -605,6 +609,58 @@ async function enforceNvdCustomerQuota(request, env) {
 
   const config = getNvdQuotaConfig(env);
   const nowUnix = Math.floor(Date.now() / 1000);
+
+  // --- RPM check (1-minute sliding window) ---
+  const rpmLimit = identity.anonymous ? config.anonRpmLimit : config.rpmLimit;
+  const minuteEpoch = Math.floor(nowUnix / 60);
+  const rpmKey = `nvd:rpm:${identity.customerId}:${minuteEpoch}`;
+  const rawRpm = await env.BILLING_EVENTS_KV.get(rpmKey);
+  const rpmUsed = Math.max(Number.parseInt(rawRpm || "0", 10) || 0, 0);
+  if (rpmUsed >= rpmLimit) {
+    const rpmResetAt = (minuteEpoch + 1) * 60;
+    const retryAfterSeconds = Math.max(rpmResetAt - nowUnix, 1);
+    return {
+      ok: false,
+      response: json(
+        {
+          ok: false,
+          error: "nvd_rpm_limit_exceeded",
+          message: "Too many requests. RPM cap reached for this customer.",
+          retryAfterSeconds,
+          quota: { rpmLimit, rpmUsed, rpmResetAtUnix: rpmResetAt, customerId: identity.customerId, customerSource: identity.source }
+        },
+        429
+      )
+    };
+  }
+
+  // --- Monthly quota check ---
+  const monthlyLimit = identity.anonymous ? config.anonMonthlyLimit : config.monthlyLimit;
+  const now = new Date(nowUnix * 1000);
+  const monthKey = `nvd:monthly:${identity.customerId}:${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, "0")}`;
+  const rawMonthly = await env.BILLING_EVENTS_KV.get(monthKey);
+  const monthlyUsed = Math.max(Number.parseInt(rawMonthly || "0", 10) || 0, 0);
+  if (monthlyUsed >= monthlyLimit) {
+    // Reset is the 1st of next month at midnight UTC
+    const nextMonth = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 1));
+    const monthResetAt = Math.floor(nextMonth.getTime() / 1000);
+    const retryAfterSeconds = Math.max(monthResetAt - nowUnix, 1);
+    return {
+      ok: false,
+      response: json(
+        {
+          ok: false,
+          error: "nvd_monthly_quota_exceeded",
+          message: "Monthly broker quota exhausted for this customer.",
+          retryAfterSeconds,
+          quota: { monthlyLimit, monthlyUsed, monthlyResetAtUnix: monthResetAt, customerId: identity.customerId, customerSource: identity.source }
+        },
+        429
+      )
+    };
+  }
+
+  // --- Per-window quota check (existing) ---
   const windowStart = Math.floor(nowUnix / config.windowSeconds) * config.windowSeconds;
   const resetAtUnix = windowStart + config.windowSeconds;
   const ttlSeconds = Math.max(resetAtUnix - nowUnix + 60, 60);
@@ -647,8 +703,13 @@ async function enforceNvdCustomerQuota(request, env) {
     };
   }
 
+  // Increment all counters: window, RPM, monthly
   const nextUsed = currentUsed + 1;
-  await env.BILLING_EVENTS_KV.put(quotaKey, String(nextUsed), { expirationTtl: ttlSeconds });
+  await Promise.all([
+    env.BILLING_EVENTS_KV.put(quotaKey, String(nextUsed), { expirationTtl: ttlSeconds }),
+    env.BILLING_EVENTS_KV.put(rpmKey, String(rpmUsed + 1), { expirationTtl: 120 }),
+    env.BILLING_EVENTS_KV.put(monthKey, String(monthlyUsed + 1), { expirationTtl: 35 * 24 * 60 * 60 })
+  ]);
 
   return {
     ok: true,
