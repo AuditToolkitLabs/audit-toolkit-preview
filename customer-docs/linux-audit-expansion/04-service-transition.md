@@ -53,14 +53,14 @@ Full installation instructions with all package-format options are in
 
 ```bash
 # Debian/Ubuntu — .deb package
-sudo dpkg -i audit-toolkit-lite_1.1.4_all.deb
+sudo dpkg -i audit-toolkit-lite_1.2.2_all.deb
 
 # RHEL/Fedora/openSUSE — .rpm package
-sudo rpm -ivh audit-toolkit-lite-1.1.4-1.noarch.rpm
+sudo rpm -ivh audit-toolkit-lite-1.2.2-1.noarch.rpm
 
 # Any Linux — universal tarball
-tar -xzf audit-toolkit-lite-1.1.4.tar.gz
-sudo bash audit-toolkit-lite-1.1.4/install.sh
+tar -xzf audit-toolkit-lite-1.2.2.tar.gz
+sudo bash audit-toolkit-lite-1.2.2/install.sh
 ```
 
 After installation the launcher is available at
@@ -123,3 +123,4 @@ the launcher symlink (`/usr/local/bin/audit-toolkit`), the config
 directory (`/etc/audit-toolkit/`), and the log directory
 (`/var/log/audit-toolkit/`). See [18 — Installation Guide](18-installation-guide.md)
 for uninstall instructions.
+

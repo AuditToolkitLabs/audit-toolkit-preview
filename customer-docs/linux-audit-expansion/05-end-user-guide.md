@@ -4,8 +4,8 @@
 
 | Field | Value |
 | --- | --- |
-| Document version | 1.1 |
-| Last updated | 2026-05-03 |
+| Document version | 1.2 |
+| Last updated | 2026-05-10 |
 | Product | AuditToolkit Linux Security Lite |
 
 ---

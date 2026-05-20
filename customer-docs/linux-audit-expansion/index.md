@@ -3,14 +3,14 @@
 | Field | Value |
 | --- | --- |
 | Document version | 1.1 |
-| Last updated | 2026-05-04 |
+| Last updated | 2026-05-19 |
 | Product | AuditToolkit Linux Security Lite |
-| Release | v1.1.4 |
+| Release | v1.2.2 |
 | Vendor | AuditToolkitLabs |
 | Vendor contact | [admin@audittoolkitlabs.com](mailto:admin@audittoolkitlabs.com) |
 
 This index covers all customer-facing documentation for AuditToolkit
-Linux Security Lite version 1.1.4. Documents are numbered to reflect
+Linux Security Lite version 1.2.2. Documents are numbered to reflect
 the recommended reading order; you do not need to read every document
 before using the toolkit.
 
@@ -59,12 +59,13 @@ before using the toolkit.
 | 22 | [Security FAQ — Procurement and Due Diligence](22-security-faq.md) | Read-only design; data collected; OWASP posture; supply chain; vulnerability management. |
 | 23 | [Licensing, Legal Terms, and Acceptable Use](23-licensing-and-legal.md) | Licensing model (free/commercial tiers); EULA summary; disclaimer; pre-use change control requirements; Provider contact. |
 | 24 | [Enterprise Compliance Platform](24-enterprise-compliance-platform.md) | Enterprise feature model, UI/API/CLI controls, reporting and integration workflows. |
+| 25 | [Security and Quality Assurance Report](25-security-and-quality-assurance-report.md) | Release-specific customer assurance report for on-site deployment, security controls, quality gates, functional verification results, and deployment checklist. |
 
 ## Security assessment documents
 
 | # | Document | Purpose |
 | --- | --- | --- |
-| SA1 | [OWASP Security Scorecard](../docs/OWASP-SECURITY-SCORECARD.md) | Full OWASP Top 10 assessment for procurement and due-diligence review. Current score: 97/100, Grade A+. |
+| SA1 | [OWASP Security Scorecard](../docs/OWASP-SECURITY-SCORECARD.md) | Full OWASP Top 10 assessment for procurement and due-diligence review. Current score: 100/100, Grade A+. |
 
 ## Legal documents
 
@@ -91,3 +92,4 @@ Telephone: +44 (0) 20 8090 9610
 | Licensing and contracts | [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com) |
 
 Full engagement guide: [20 — Support Engagement Guide](20-support-engagement-guide.md)
+

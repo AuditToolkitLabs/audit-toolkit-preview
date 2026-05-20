@@ -226,16 +226,27 @@ async function verifyKeygenWebhook(request, rawBody, env) {
     spkiBytes.byteOffset + spkiBytes.byteLength
   );
 
-  const key = await crypto.subtle.importKey("spki", spki, { name: "Ed25519" }, false, [
-    "verify"
-  ]);
+  let verified = false;
+  try {
+    const key = await crypto.subtle.importKey("spki", spki, { name: "Ed25519" }, false, [
+      "verify"
+    ]);
 
-  const verified = await crypto.subtle.verify(
-    "Ed25519",
-    key,
-    signatureBytes,
-    TEXT_ENCODER.encode(signingData)
-  );
+    verified = await crypto.subtle.verify(
+      "Ed25519",
+      key,
+      signatureBytes,
+      TEXT_ENCODER.encode(signingData)
+    );
+  } catch (error) {
+    return {
+      ok: false,
+      verified: false,
+      reason: `keygen-verification-runtime-error:${
+        error instanceof Error ? error.message : String(error)
+      }`
+    };
+  }
 
   if (!verified) {
     return { ok: false, verified: false, reason: "keygen-signature-mismatch" };
@@ -356,6 +367,377 @@ async function fetchStripeSessionLineItemInfo(sessionId, env) {
   };
 }
 
+async function fetchStripeCheckoutSession(sessionId, env) {
+  const normalizedSessionId = sanitizeText(sessionId);
+  if (!normalizedSessionId || !env.STRIPE_API_SECRET) return null;
+
+  const response = await fetch(
+    `https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(normalizedSessionId)}`,
+    {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${env.STRIPE_API_SECRET}`
+      }
+    }
+  );
+
+  if (!response.ok) return null;
+  return parseJsonSafe(await response.text(), null);
+}
+
+async function fetchStripePaymentLink(paymentLinkId, env) {
+  const normalizedPaymentLinkId = sanitizeText(paymentLinkId);
+  if (!normalizedPaymentLinkId || !env.STRIPE_API_SECRET) return null;
+
+  const response = await fetch(
+    `https://api.stripe.com/v1/payment_links/${encodeURIComponent(normalizedPaymentLinkId)}`,
+    {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${env.STRIPE_API_SECRET}`
+      }
+    }
+  );
+
+  if (!response.ok) return null;
+  return parseJsonSafe(await response.text(), null);
+}
+
+async function fetchStripePaymentIntent(paymentIntentId, env) {
+  const normalizedPaymentIntentId = sanitizeText(paymentIntentId);
+  if (!normalizedPaymentIntentId || !env.STRIPE_API_SECRET) return null;
+
+  const response = await fetch(
+    `https://api.stripe.com/v1/payment_intents/${encodeURIComponent(normalizedPaymentIntentId)}`,
+    {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${env.STRIPE_API_SECRET}`
+      }
+    }
+  );
+
+  if (!response.ok) return null;
+  return parseJsonSafe(await response.text(), null);
+}
+
+async function fetchStripeCustomer(customerId, env) {
+  const normalizedCustomerId = sanitizeText(customerId);
+  if (!normalizedCustomerId || !env.STRIPE_API_SECRET) return null;
+
+  const response = await fetch(
+    `https://api.stripe.com/v1/customers/${encodeURIComponent(normalizedCustomerId)}`,
+    {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${env.STRIPE_API_SECRET}`
+      }
+    }
+  );
+
+  if (!response.ok) return null;
+  return parseJsonSafe(await response.text(), null);
+}
+
+async function fetchStripeInvoice(invoiceId, env) {
+  const normalizedInvoiceId = sanitizeText(invoiceId);
+  if (!normalizedInvoiceId || !env.STRIPE_API_SECRET) return null;
+
+  const query = new URLSearchParams();
+  query.append("expand[]", "customer");
+  query.append("expand[]", "payment_intent.latest_charge");
+
+  const response = await fetch(
+    `https://api.stripe.com/v1/invoices/${encodeURIComponent(normalizedInvoiceId)}?${query.toString()}`,
+    {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${env.STRIPE_API_SECRET}`
+      }
+    }
+  );
+
+  if (!response.ok) return null;
+  return parseJsonSafe(await response.text(), null);
+}
+
+async function fetchLatestCheckoutSessionForCustomer(customerId, env) {
+  const normalizedCustomerId = sanitizeText(customerId);
+  if (!normalizedCustomerId || !env.STRIPE_API_SECRET) return null;
+
+  const query = new URLSearchParams();
+  query.append("customer", normalizedCustomerId);
+  query.append("limit", "1");
+
+  const response = await fetch(
+    `https://api.stripe.com/v1/checkout/sessions?${query.toString()}`,
+    {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${env.STRIPE_API_SECRET}`
+      }
+    }
+  );
+
+  if (!response.ok) return null;
+
+  const payload = parseJsonSafe(await response.text(), {});
+  return payload?.data?.[0] || null;
+}
+
+async function fetchRecentPaidCheckoutSessions(env, limit = 10) {
+  if (!env.STRIPE_API_SECRET) return [];
+
+  const query = new URLSearchParams();
+  query.append("limit", String(limit));
+
+  const response = await fetch(
+    `https://api.stripe.com/v1/checkout/sessions?${query.toString()}`,
+    {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${env.STRIPE_API_SECRET}`
+      }
+    }
+  );
+
+  if (!response.ok) return [];
+
+  const payload = parseJsonSafe(await response.text(), {});
+  return Array.isArray(payload?.data)
+    ? payload.data.filter(
+        (session) =>
+          sanitizeText(session?.status) === "complete" &&
+          sanitizeText(session?.payment_status) === "paid"
+      )
+    : [];
+}
+
+function getInvoiceLineItemIdentity(stripeObject) {
+  const firstLine = stripeObject?.lines?.data?.[0];
+  return {
+    priceId: sanitizeText(firstLine?.pricing?.price_details?.price),
+    productId: sanitizeText(firstLine?.pricing?.price_details?.product)
+  };
+}
+
+async function findMatchingCheckoutSessionForInvoice(stripeObject, env) {
+  const invoiceItemIdentity = getInvoiceLineItemIdentity(stripeObject);
+  if (!invoiceItemIdentity.priceId && !invoiceItemIdentity.productId) return null;
+
+  const sessions = await fetchRecentPaidCheckoutSessions(env, 10);
+
+  for (const session of sessions) {
+    const lineItemInfo = await fetchStripeSessionLineItemInfo(session.id, env);
+    const priceMatches =
+      invoiceItemIdentity.priceId && lineItemInfo?.priceId === invoiceItemIdentity.priceId;
+    const productMatches =
+      invoiceItemIdentity.productId && lineItemInfo?.productId === invoiceItemIdentity.productId;
+
+    if (priceMatches || productMatches) {
+      return session;
+    }
+  }
+
+  return null;
+}
+
+function mergeCustomerIntoPayload(payload, mergeData) {
+  const stripeObject = payload?.stripeObject || {};
+  const customerDetails = stripeObject.customer_details || {};
+
+  const mergedCustomerEmail =
+    sanitizeCustomerEmail(mergeData.customerEmail) ||
+    sanitizeCustomerEmail(payload?.customerEmail) ||
+    sanitizeCustomerEmail(stripeObject.customer_email) ||
+    sanitizeCustomerEmail(customerDetails.email);
+
+  const mergedCustomerNameRaw =
+    sanitizeText(mergeData.customerName) ||
+    sanitizeText(payload?.customerName) ||
+    sanitizeText(stripeObject.customer_name) ||
+    sanitizeText(customerDetails.name);
+
+  const mergedCustomerCompany =
+    sanitizeText(mergeData.customerCompany) ||
+    sanitizeText(payload?.customerCompany) ||
+    sanitizeText(customerDetails.business_name);
+
+  const mergedBillingAddressRaw =
+    sanitizeText(mergeData.customerBillingAddress) ||
+    sanitizeText(payload?.customerBillingAddress) ||
+    formatAddress(stripeObject.customer_address) ||
+    formatAddress(customerDetails.address);
+
+  const mergedCustomerName = sanitizeCustomerName(mergedCustomerNameRaw, {
+    email: mergedCustomerEmail,
+    billingAddress: mergedBillingAddressRaw
+  });
+
+  const mergedBillingAddress = sanitizeCustomerBillingAddress(mergedBillingAddressRaw, {
+    email: mergedCustomerEmail,
+    name: mergedCustomerNameRaw
+  });
+
+  return {
+    ...payload,
+    customerEmail: mergedCustomerEmail,
+    customerName: mergedCustomerName,
+    customerCompany: mergedCustomerCompany,
+    customerBillingAddress: mergedBillingAddress,
+    stripeObject: {
+      ...stripeObject,
+      customer_email: mergedCustomerEmail,
+      customer_name: mergedCustomerName,
+      customer_address: stripeObject.customer_address || customerDetails.address || null,
+      customer_details: {
+        ...customerDetails,
+        email: mergedCustomerEmail,
+        name: mergedCustomerName,
+        address: customerDetails.address || stripeObject.customer_address || null,
+        business_name: mergedCustomerCompany
+      }
+    }
+  };
+}
+
+function hasCustomerIdentity(payload) {
+  const customer = extractCustomerContext(payload);
+  return Boolean(customer.email || customer.name || customer.company || customer.billingAddress);
+}
+
+async function enrichBillingPayloadWithStripeCustomer(payload, env) {
+  const stripeObject = payload?.stripeObject || {};
+  const stripeCustomerId =
+    typeof stripeObject.customer === "string"
+      ? stripeObject.customer
+      : stripeObject.customer?.id;
+  const paymentIntentId =
+    typeof stripeObject.payment_intent === "string"
+      ? stripeObject.payment_intent
+      : stripeObject.payment_intent?.id;
+
+  const hasFullDetails =
+    Boolean(stripeObject.customer_details?.name) ||
+    Boolean(stripeObject.customer_details?.address?.line1) ||
+    Boolean(stripeObject.customer_name) ||
+    Boolean(stripeObject.customer_email);
+
+  const enrichmentSources = [];
+
+  if (hasFullDetails) {
+    return {
+      ...payload,
+      enrichmentDebug: {
+        sources: ["stripe-event"],
+        resolved: true
+      }
+    };
+  }
+
+  let enriched = payload;
+
+  if (paymentIntentId) {
+    const paymentProfile = await getPaymentProfile(env, paymentIntentId);
+    if (paymentProfile) {
+      enriched = mergeCustomerIntoPayload(enriched, {
+        customerEmail: sanitizeText(paymentProfile.email),
+        customerName: sanitizeText(paymentProfile.name),
+        customerCompany: sanitizeText(paymentProfile.company),
+        customerBillingAddress: sanitizeText(paymentProfile.billingAddress)
+      });
+      enrichmentSources.push("payment-profile-cache");
+    }
+  }
+
+  if (stripeCustomerId) {
+    const cachedProfile = await getCustomerProfile(env, stripeCustomerId);
+    if (cachedProfile) {
+      enriched = mergeCustomerIntoPayload(enriched, {
+        customerEmail: sanitizeText(cachedProfile.email),
+        customerName: sanitizeText(cachedProfile.name),
+        customerCompany: sanitizeText(cachedProfile.company),
+        customerBillingAddress: sanitizeText(cachedProfile.billingAddress)
+      });
+      enrichmentSources.push("customer-profile-cache");
+    }
+
+    const customer = await fetchStripeCustomer(stripeCustomerId, env);
+
+    if (customer) {
+      const companyFromMetadata =
+        sanitizeText(customer.metadata?.company) ||
+        sanitizeText(customer.metadata?.company_name) ||
+        sanitizeText(customer.metadata?.organization);
+
+      enriched = mergeCustomerIntoPayload(enriched, {
+        customerEmail: sanitizeText(customer.email),
+        customerName: sanitizeText(customer.name),
+        customerCompany: companyFromMetadata,
+        customerBillingAddress: formatAddress(customer.address)
+      });
+      enrichmentSources.push("stripe-customer-api");
+    }
+
+    const checkoutSession = await fetchLatestCheckoutSessionForCustomer(stripeCustomerId, env);
+    if (checkoutSession) {
+      enriched = mergeCustomerIntoPayload(enriched, {
+        customerEmail: sanitizeText(checkoutSession.customer_details?.email),
+        customerName: sanitizeText(checkoutSession.customer_details?.name),
+        customerCompany: sanitizeText(checkoutSession.customer_details?.business_name),
+        customerBillingAddress: formatAddress(checkoutSession.customer_details?.address)
+      });
+      enrichmentSources.push("checkout-session-lookup");
+    }
+  }
+
+  const invoiceId = sanitizeText(stripeObject.id);
+  const isInvoiceObject = sanitizeText(stripeObject.object) === "invoice";
+
+  if (isInvoiceObject && invoiceId) {
+    const invoice = await fetchStripeInvoice(invoiceId, env);
+    const expandedCustomer = invoice?.customer;
+    const latestCharge = invoice?.payment_intent?.latest_charge;
+    const billingDetails = latestCharge?.billing_details;
+
+    const invoiceCompany =
+      sanitizeText(expandedCustomer?.metadata?.company) ||
+      sanitizeText(expandedCustomer?.metadata?.company_name) ||
+      sanitizeText(expandedCustomer?.metadata?.organization);
+
+    enriched = mergeCustomerIntoPayload(enriched, {
+      customerEmail:
+        sanitizeText(expandedCustomer?.email) || sanitizeText(billingDetails?.email),
+      customerName: sanitizeText(expandedCustomer?.name) || sanitizeText(billingDetails?.name),
+      customerCompany: invoiceCompany,
+      customerBillingAddress:
+        formatAddress(expandedCustomer?.address) || formatAddress(billingDetails?.address)
+    });
+    enrichmentSources.push("invoice-expanded-charge");
+
+    if (!hasCustomerIdentity(enriched)) {
+      const matchedSession = await findMatchingCheckoutSessionForInvoice(invoice || stripeObject, env);
+      if (matchedSession) {
+        enriched = mergeCustomerIntoPayload(enriched, {
+          customerEmail: sanitizeText(matchedSession.customer_details?.email),
+          customerName: sanitizeText(matchedSession.customer_details?.name),
+          customerCompany: sanitizeText(matchedSession.customer_details?.business_name),
+          customerBillingAddress: formatAddress(matchedSession.customer_details?.address)
+        });
+        enrichmentSources.push("checkout-session-item-match");
+      }
+    }
+  }
+
+  return {
+    ...enriched,
+    enrichmentDebug: {
+      sources: enrichmentSources,
+      resolved: hasCustomerIdentity(enriched)
+    }
+  };
+}
+
 async function resolvePlanFromCheckoutSession(session, env) {
   const mapping = getPlanMapping(env);
   const metadata = session.metadata || {};
@@ -381,6 +763,72 @@ async function resolvePlanFromCheckoutSession(session, env) {
   const fromProduct = resolveFromProductId(metadataProduct, mapping);
   if (fromProduct) return fromProduct;
 
+  const paymentLinkId = sanitizeText(session?.payment_link);
+  if (paymentLinkId) {
+    const paymentLink = await fetchStripePaymentLink(paymentLinkId, env);
+    const paymentLinkMetadata = paymentLink?.metadata || {};
+
+    const paymentLinkPolicyId = parseMetadataField(paymentLinkMetadata, "keygen_policy_id");
+    if (paymentLinkPolicyId) {
+      return {
+        policyId: paymentLinkPolicyId,
+        planCode: parseMetadataField(paymentLinkMetadata, "plan_code") || "custom",
+        source: "payment-link-metadata"
+      };
+    }
+
+    const paymentLinkLookup = parseMetadataField(paymentLinkMetadata, "plan_lookup_key");
+    const fromPaymentLinkLookup = resolveFromLookupKey(paymentLinkLookup, mapping);
+    if (fromPaymentLinkLookup) {
+      return { ...fromPaymentLinkLookup, source: "payment-link-lookup-key" };
+    }
+
+    const paymentLinkPrice = parseMetadataField(paymentLinkMetadata, "price_id");
+    const fromPaymentLinkPrice = resolveFromPriceId(paymentLinkPrice, mapping);
+    if (fromPaymentLinkPrice) {
+      return { ...fromPaymentLinkPrice, source: "payment-link-price-id" };
+    }
+
+    const paymentLinkProduct = parseMetadataField(paymentLinkMetadata, "product_id");
+    const fromPaymentLinkProduct = resolveFromProductId(paymentLinkProduct, mapping);
+    if (fromPaymentLinkProduct) {
+      return { ...fromPaymentLinkProduct, source: "payment-link-product-id" };
+    }
+  }
+
+  const paymentIntentId = sanitizeText(session?.payment_intent);
+  if (paymentIntentId) {
+    const paymentIntent = await fetchStripePaymentIntent(paymentIntentId, env);
+    const paymentIntentMetadata = paymentIntent?.metadata || {};
+
+    const paymentIntentPolicyId = parseMetadataField(paymentIntentMetadata, "keygen_policy_id");
+    if (paymentIntentPolicyId) {
+      return {
+        policyId: paymentIntentPolicyId,
+        planCode: parseMetadataField(paymentIntentMetadata, "plan_code") || "custom",
+        source: "payment-intent-metadata"
+      };
+    }
+
+    const paymentIntentLookup = parseMetadataField(paymentIntentMetadata, "plan_lookup_key");
+    const fromPaymentIntentLookup = resolveFromLookupKey(paymentIntentLookup, mapping);
+    if (fromPaymentIntentLookup) {
+      return { ...fromPaymentIntentLookup, source: "payment-intent-lookup-key" };
+    }
+
+    const paymentIntentPrice = parseMetadataField(paymentIntentMetadata, "price_id");
+    const fromPaymentIntentPrice = resolveFromPriceId(paymentIntentPrice, mapping);
+    if (fromPaymentIntentPrice) {
+      return { ...fromPaymentIntentPrice, source: "payment-intent-price-id" };
+    }
+
+    const paymentIntentProduct = parseMetadataField(paymentIntentMetadata, "product_id");
+    const fromPaymentIntentProduct = resolveFromProductId(paymentIntentProduct, mapping);
+    if (fromPaymentIntentProduct) {
+      return { ...fromPaymentIntentProduct, source: "payment-intent-product-id" };
+    }
+  }
+
   const lineItemInfo = await fetchStripeSessionLineItemInfo(session.id, env);
 
   const fromLineLookup = resolveFromLookupKey(lineItemInfo?.lookupKey, mapping);
@@ -391,6 +839,15 @@ async function resolvePlanFromCheckoutSession(session, env) {
 
   const fromLineProduct = resolveFromProductId(lineItemInfo?.productId, mapping);
   if (fromLineProduct) return { ...fromLineProduct, source: "stripe-line-item-product" };
+
+  const defaultPolicyId = sanitizeText(env.DEFAULT_KEYGEN_POLICY_ID);
+  if (defaultPolicyId) {
+    return {
+      policyId: defaultPolicyId,
+      planCode: sanitizeText(env.DEFAULT_PLAN_CODE) || "default",
+      source: "default-policy-fallback"
+    };
+  }
 
   return null;
 }
@@ -423,6 +880,87 @@ async function setSessionLicense(env, sessionId, licenseRecord) {
   await env.BILLING_EVENTS_KV.put(key, JSON.stringify(licenseRecord), {
     expirationTtl: 60 * 60 * 24 * 120
   });
+}
+
+async function getCustomerProfile(env, customerId) {
+  if (!env.BILLING_EVENTS_KV || !customerId) return null;
+
+  const key = `customer:${customerId}`;
+  const value = await env.BILLING_EVENTS_KV.get(key);
+  if (!value) return null;
+
+  return parseJsonSafe(value, null);
+}
+
+async function setCustomerProfile(env, customerId, profile) {
+  if (!env.BILLING_EVENTS_KV || !customerId || !profile) return;
+
+  const key = `customer:${customerId}`;
+  await env.BILLING_EVENTS_KV.put(key, JSON.stringify(profile), {
+    expirationTtl: 60 * 60 * 24 * 365
+  });
+}
+
+async function getPaymentProfile(env, paymentIntentId) {
+  if (!env.BILLING_EVENTS_KV || !paymentIntentId) return null;
+
+  const key = `payment:${paymentIntentId}`;
+  const value = await env.BILLING_EVENTS_KV.get(key);
+  if (!value) return null;
+
+  return parseJsonSafe(value, null);
+}
+
+async function setPaymentProfile(env, paymentIntentId, profile) {
+  if (!env.BILLING_EVENTS_KV || !paymentIntentId || !profile) return;
+
+  const key = `payment:${paymentIntentId}`;
+  await env.BILLING_EVENTS_KV.put(key, JSON.stringify(profile), {
+    expirationTtl: 60 * 60 * 24 * 365
+  });
+}
+
+function getAutoRetryConfig(env) {
+  const enabledRaw = sanitizeText(env.AUTO_RETRY_PLAN_UNRESOLVED).toLowerCase();
+  const enabled = enabledRaw === "" || enabledRaw === "1" || enabledRaw === "true";
+
+  const maxAttempts = Math.max(1, Math.min(20, Number(env.AUTO_RETRY_MAX_ATTEMPTS) || 6));
+  const baseDelaySeconds = Math.max(
+    30,
+    Math.min(24 * 60 * 60, Number(env.AUTO_RETRY_BASE_DELAY_SECONDS) || 300)
+  );
+
+  return {
+    enabled,
+    maxAttempts,
+    baseDelaySeconds
+  };
+}
+
+async function getPlanUnresolvedRecord(env, sessionId) {
+  if (!env.BILLING_EVENTS_KV || !sessionId) return null;
+
+  const key = `unresolved:${sessionId}`;
+  const value = await env.BILLING_EVENTS_KV.get(key);
+  if (!value) return null;
+
+  return parseJsonSafe(value, null);
+}
+
+async function setPlanUnresolvedRecord(env, sessionId, record) {
+  if (!env.BILLING_EVENTS_KV || !sessionId || !record) return;
+
+  const key = `unresolved:${sessionId}`;
+  await env.BILLING_EVENTS_KV.put(key, JSON.stringify(record), {
+    expirationTtl: 60 * 60 * 24 * 30
+  });
+}
+
+async function deletePlanUnresolvedRecord(env, sessionId) {
+  if (!env.BILLING_EVENTS_KV || !sessionId) return;
+
+  const key = `unresolved:${sessionId}`;
+  await env.BILLING_EVENTS_KV.delete(key);
 }
 
 async function callKeygenCreateLicense(env, payload) {
@@ -474,39 +1012,1588 @@ async function callKeygenCreateLicense(env, payload) {
   return body;
 }
 
-async function postM365Flow(env, eventType, payload) {
-  if (!env.M365_FLOW_WEBHOOK_URL) {
-    return { sent: false, reason: "m365-flow-not-configured" };
+function findEmailInKeygenPayload(keygenPayload) {
+  const payload = keygenPayload || {};
+  const innerPayload = getInnerKeygenPayload(payload);
+  const meta = payload?.meta || {};
+  const data = payload?.data || {};
+  const attributes = data?.attributes || {};
+  const innerMeta = innerPayload?.meta || {};
+  const innerData = innerPayload?.data || {};
+  const innerAttributes = innerData?.attributes || {};
+
+  const directCandidates = [
+    attributes?.email,
+    attributes?.customer_email,
+    innerAttributes?.email,
+    innerAttributes?.customer_email,
+    meta?.email,
+    meta?.customerEmail,
+    meta?.customer_email,
+    innerMeta?.email,
+    innerMeta?.customerEmail,
+    innerMeta?.customer_email,
+    payload?.customerEmail,
+    payload?.customer_email,
+    meta?.customer?.email,
+    meta?.user?.email,
+    innerMeta?.customer?.email,
+    innerMeta?.user?.email
+  ];
+
+  for (const candidate of directCandidates) {
+    const normalized = sanitizeCustomerEmail(candidate);
+    if (looksLikeEmail(normalized)) {
+      return normalized;
+    }
   }
 
-  const response = await fetch(env.M365_FLOW_WEBHOOK_URL, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json"
-    },
-    body: JSON.stringify({
-      source: "audittoolkit-cloudflare-worker",
-      eventType,
-      payload,
-      timestamp: new Date().toISOString()
-    })
-  });
-
-  if (!response.ok) {
-    throw new Error(`m365-flow-post-failed:${response.status}`);
+  const included = Array.isArray(payload?.included) ? payload.included : [];
+  const innerIncluded = Array.isArray(innerPayload?.included) ? innerPayload.included : [];
+  for (const item of [...included, ...innerIncluded]) {
+    const includedEmail = sanitizeCustomerEmail(item?.attributes?.email);
+    if (looksLikeEmail(includedEmail)) {
+      return includedEmail;
+    }
   }
 
-  return { sent: true };
+  return "";
 }
 
-async function handleCheckoutCompleted(event, env) {
-  const session = event.data?.object || {};
-  const existingLicense = await getExistingSessionLicense(env, session.id);
+function parseMaybeJsonObject(value) {
+  if (value && typeof value === "object") {
+    return value;
+  }
+
+  if (typeof value === "string") {
+    return parseJsonSafe(value, {});
+  }
+
+  return {};
+}
+
+function getInnerKeygenPayload(keygenPayload) {
+  const payload = keygenPayload || {};
+  const wrapperPayload = parseMaybeJsonObject(payload?.data?.attributes?.payload);
+
+  if (wrapperPayload && typeof wrapperPayload === "object" && Object.keys(wrapperPayload).length > 0) {
+    return wrapperPayload;
+  }
+
+  return payload;
+}
+
+function extractKeygenLicenseId(candidate) {
+  const payload = candidate || {};
+  const data = payload?.data || {};
+  const dataType = sanitizeText(data?.type).toLowerCase();
+
+  if (dataType === "licenses" && sanitizeText(data?.id)) {
+    return sanitizeText(data.id);
+  }
+
+  const relationId = sanitizeText(data?.relationships?.license?.data?.id);
+  if (relationId) {
+    return relationId;
+  }
+
+  const attrId = sanitizeText(data?.attributes?.licenseId) || sanitizeText(data?.attributes?.license_id);
+  if (attrId) {
+    return attrId;
+  }
+
+  return "";
+}
+
+async function fetchKeygenWebhookEventPayload(env, webhookEventId) {
+  if (!env.KEYGEN_ACCOUNT_ID || !env.KEYGEN_API_TOKEN || !webhookEventId) {
+    return {};
+  }
+
+  try {
+    const keygenBase = env.KEYGEN_API_BASE_URL || "https://api.keygen.sh";
+    const url = `${keygenBase}/v1/accounts/${env.KEYGEN_ACCOUNT_ID}/webhook-events/${webhookEventId}`;
+
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        accept: "application/vnd.api+json",
+        authorization: `Bearer ${env.KEYGEN_API_TOKEN}`
+      }
+    });
+
+    if (!response.ok) {
+      return {};
+    }
+
+    const body = parseJsonSafe(await response.text(), {});
+    const payload = parseMaybeJsonObject(body?.data?.attributes?.payload);
+    return payload && typeof payload === "object" ? payload : {};
+  } catch (error) {
+    console.error("keygen-webhook-event-lookup-failed", error);
+    return {};
+  }
+}
+
+function resolveKeygenLicenseId(keygenPayload) {
+  const innerPayload = getInnerKeygenPayload(keygenPayload);
+  return sanitizeText(innerPayload?.data?.id);
+}
+
+async function resolveKeygenLicenseContext(env, keygenPayload) {
+  const payload = keygenPayload || {};
+  const innerPayload = getInnerKeygenPayload(payload);
+  const innerData = innerPayload?.data || {};
+  const innerAttributes = innerData?.attributes || {};
+  const innerRelationships = innerData?.relationships || {};
+
+  const context = {
+    licenseId: extractKeygenLicenseId(innerPayload),
+    licenseKey: sanitizeText(innerAttributes?.key),
+    expiry:
+      formatTimestampIso(innerAttributes?.expiry) ||
+      formatTimestampIso(innerAttributes?.expiresAt) ||
+      formatTimestampIso(innerAttributes?.exp),
+    customerEmail: findEmailInKeygenPayload(payload),
+    customerCompany:
+      sanitizeText(innerAttributes?.metadata?.customer_company) ||
+      sanitizeText(innerAttributes?.metadata?.company),
+    productId: sanitizeText(innerRelationships?.product?.data?.id),
+    licenseType:
+      sanitizeText(innerAttributes?.metadata?.plan_code) ||
+      sanitizeText(innerRelationships?.policy?.data?.id)
+  };
+
+  if (!context.licenseId) {
+    const webhookEventId = sanitizeText(payload?.data?.id);
+    const eventPayload = await fetchKeygenWebhookEventPayload(env, webhookEventId);
+    const nested = getInnerKeygenPayload(eventPayload);
+    const nestedData = nested?.data || {};
+    const nestedAttrs = nestedData?.attributes || {};
+    const nestedRels = nestedData?.relationships || {};
+
+    context.licenseId = extractKeygenLicenseId(nested);
+    context.licenseKey = context.licenseKey || sanitizeText(nestedAttrs?.key);
+    context.expiry =
+      context.expiry ||
+      formatTimestampIso(nestedAttrs?.expiry) ||
+      formatTimestampIso(nestedAttrs?.expiresAt) ||
+      formatTimestampIso(nestedAttrs?.exp);
+    context.customerEmail = context.customerEmail || findEmailInKeygenPayload(eventPayload);
+    context.customerCompany =
+      context.customerCompany ||
+      sanitizeText(nestedAttrs?.metadata?.customer_company) ||
+      sanitizeText(nestedAttrs?.metadata?.company);
+    context.productId = context.productId || sanitizeText(nestedRels?.product?.data?.id);
+    context.licenseType =
+      context.licenseType ||
+      sanitizeText(nestedAttrs?.metadata?.plan_code) ||
+      sanitizeText(nestedRels?.policy?.data?.id);
+  }
+
+  if (!env.KEYGEN_ACCOUNT_ID || !env.KEYGEN_API_TOKEN || !context.licenseId) {
+    return context;
+  }
+
+  try {
+    const keygenBase = env.KEYGEN_API_BASE_URL || "https://api.keygen.sh";
+    const query = new URLSearchParams({ include: "user,owner,policy,product" });
+    const url = `${keygenBase}/v1/accounts/${env.KEYGEN_ACCOUNT_ID}/licenses/${context.licenseId}?${query.toString()}`;
+
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        accept: "application/vnd.api+json",
+        authorization: `Bearer ${env.KEYGEN_API_TOKEN}`
+      }
+    });
+
+    if (!response.ok) {
+      return context;
+    }
+
+    const body = parseJsonSafe(await response.text(), {});
+    const licenseData = body?.data || {};
+    const licenseAttrs = licenseData?.attributes || {};
+    const included = Array.isArray(body?.included) ? body.included : [];
+
+    context.licenseKey = context.licenseKey || sanitizeText(licenseAttrs?.key);
+    context.expiry =
+      context.expiry ||
+      formatTimestampIso(licenseAttrs?.expiry) ||
+      formatTimestampIso(licenseAttrs?.expiresAt) ||
+      formatTimestampIso(licenseAttrs?.exp);
+    context.licenseType =
+      context.licenseType ||
+      sanitizeText(licenseAttrs?.metadata?.plan_code) ||
+      sanitizeText(licenseData?.relationships?.policy?.data?.id);
+    context.productId =
+      context.productId || sanitizeText(licenseData?.relationships?.product?.data?.id);
+
+    for (const item of included) {
+      const itemType = sanitizeText(item?.type);
+      const itemAttrs = item?.attributes || {};
+
+      if (!context.customerEmail && ["users", "user", "owners", "owner"].includes(itemType)) {
+        const email = sanitizeCustomerEmail(itemAttrs?.email);
+        if (looksLikeEmail(email)) {
+          context.customerEmail = email;
+        }
+      }
+
+      if (!context.customerCompany && ["users", "user", "owners", "owner"].includes(itemType)) {
+        context.customerCompany =
+          sanitizeText(itemAttrs?.metadata?.company) ||
+          sanitizeText(itemAttrs?.metadata?.customer_company) ||
+          sanitizeText(itemAttrs?.company);
+      }
+
+      if (!context.licenseType && ["policies", "policy"].includes(itemType)) {
+        context.licenseType = sanitizeText(itemAttrs?.name) || sanitizeText(item?.id);
+      }
+    }
+  } catch (error) {
+    console.error("keygen-license-context-lookup-failed", error);
+  }
+
+  return context;
+}
+
+async function resolveKeygenCustomerEmail(env, keygenPayload) {
+  const payloadEmail = findEmailInKeygenPayload(keygenPayload);
+  if (looksLikeEmail(payloadEmail)) {
+    return payloadEmail;
+  }
+
+  if (!env.KEYGEN_ACCOUNT_ID || !env.KEYGEN_API_TOKEN) {
+    return "";
+  }
+
+  const licenseId = resolveKeygenLicenseId(keygenPayload);
+  if (!licenseId) {
+    return "";
+  }
+
+  try {
+    const keygenBase = env.KEYGEN_API_BASE_URL || "https://api.keygen.sh";
+    const query = new URLSearchParams({ include: "user,owner" });
+    const url = `${keygenBase}/v1/accounts/${env.KEYGEN_ACCOUNT_ID}/licenses/${licenseId}?${query.toString()}`;
+
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        accept: "application/vnd.api+json",
+        authorization: `Bearer ${env.KEYGEN_API_TOKEN}`
+      }
+    });
+
+    if (!response.ok) {
+      return "";
+    }
+
+    const body = parseJsonSafe(await response.text(), {});
+    const included = Array.isArray(body?.included) ? body.included : [];
+
+    for (const item of included) {
+      const includedEmail = sanitizeCustomerEmail(item?.attributes?.email);
+      if (looksLikeEmail(includedEmail)) {
+        return includedEmail;
+      }
+    }
+  } catch (error) {
+    console.error("keygen-email-lookup-failed", error);
+  }
+
+  return "";
+}
+
+function resolveKeygenEventType(payload) {
+  const keygenPayload = payload?.keygenPayload || payload || {};
+  const innerPayload = getInnerKeygenPayload(keygenPayload);
+  const keygenMeta = keygenPayload?.meta || {};
+  const keygenData = keygenPayload?.data || {};
+  const keygenAttributes = keygenData?.attributes || {};
+  const innerMeta = innerPayload?.meta || {};
+  const innerData = innerPayload?.data || {};
+  const innerAttributes = innerData?.attributes || {};
+
+  return (
+    sanitizeText(payload?.keygenEventType) ||
+    sanitizeText(innerMeta?.event) ||
+    sanitizeText(innerAttributes?.event) ||
+    sanitizeText(innerAttributes?.name) ||
+    sanitizeText(innerPayload?.event) ||
+    sanitizeText(keygenMeta?.event) ||
+    sanitizeText(keygenAttributes?.event) ||
+    sanitizeText(keygenAttributes?.name) ||
+    sanitizeText(keygenPayload?.event) ||
+    "unknown"
+  );
+}
+
+function sanitizeText(value) {
+  if (value === undefined || value === null) return "";
+  return String(value).trim();
+}
+
+function normalizeIdentityValue(value) {
+  return sanitizeText(value)
+    .toLowerCase()
+    .replace(/,/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function isFixtureEmail(value) {
+  const normalized = sanitizeText(value).toLowerCase();
+  return normalized === "stripe@example.com";
+}
+
+function isFixtureCustomerName(value) {
+  return normalizeIdentityValue(value) === "jenny rosen";
+}
+
+function isFixtureCustomerBillingAddress(value) {
+  return normalizeIdentityValue(value) === "354 oyster point blvd south san francisco ca 94080 us";
+}
+
+function sanitizeCustomerEmail(value) {
+  const normalized = sanitizeText(value);
+  if (!normalized) return "";
+  return isFixtureEmail(normalized) ? "" : normalized;
+}
+
+function sanitizeCustomerName(value, context = {}) {
+  const normalized = sanitizeText(value);
+  if (!normalized) return "";
+
+  if (isFixtureEmail(context.email)) return "";
+
+  if (
+    isFixtureCustomerName(normalized) &&
+    isFixtureCustomerBillingAddress(context.billingAddress)
+  ) {
+    return "";
+  }
+
+  return normalized;
+}
+
+function sanitizeCustomerBillingAddress(value, context = {}) {
+  const normalized = sanitizeText(value);
+  if (!normalized) return "";
+
+  if (isFixtureEmail(context.email)) return "";
+
+  if (
+    isFixtureCustomerBillingAddress(normalized) &&
+    isFixtureCustomerName(context.name)
+  ) {
+    return "";
+  }
+
+  return normalized;
+}
+
+function escapeHtml(value) {
+  return sanitizeText(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function sanitizeHttpUrl(value) {
+  const candidate = sanitizeText(value);
+  if (!candidate) return "";
+  return /^https?:\/\//i.test(candidate) ? candidate : "";
+}
+
+function formatAddress(address) {
+  if (!address || typeof address !== "object") return "";
+
+  const parts = [
+    sanitizeText(address.line1),
+    sanitizeText(address.line2),
+    sanitizeText(address.city),
+    sanitizeText(address.state),
+    sanitizeText(address.postal_code),
+    sanitizeText(address.country)
+  ].filter(Boolean);
+
+  return parts.join(", ");
+}
+
+function extractCustomerContext(payload) {
+  const stripeObject = payload?.stripeObject || {};
+
+  const email =
+    sanitizeCustomerEmail(payload?.customerEmail) ||
+    sanitizeCustomerEmail(stripeObject.customer_email) ||
+    sanitizeCustomerEmail(stripeObject.customer_details?.email);
+
+  const rawName =
+    sanitizeText(payload?.customerName) ||
+    sanitizeText(stripeObject.customer_name) ||
+    sanitizeText(stripeObject.customer_details?.name);
+
+  const company =
+    sanitizeText(payload?.customerCompany) ||
+    sanitizeText(stripeObject.customer_details?.business_name);
+
+  const rawBillingAddress =
+    sanitizeText(payload?.customerBillingAddress) ||
+    formatAddress(stripeObject.customer_address) ||
+    formatAddress(stripeObject.customer_details?.address);
+
+  const name = sanitizeCustomerName(rawName, {
+    email,
+    billingAddress: rawBillingAddress
+  });
+
+  const billingAddress = sanitizeCustomerBillingAddress(rawBillingAddress, {
+    email,
+    name: rawName
+  });
+
+  return { email, name, company, billingAddress };
+}
+
+function renderEmailHtml({ title, subtitle, accentColor, rows, footer }) {
+  const safeTitle = escapeHtml(title);
+  const safeSubtitle = escapeHtml(subtitle);
+  const safeFooter = escapeHtml(footer);
+  const color = sanitizeText(accentColor) || "#0f6cbd";
+
+  const rowsHtml = (rows || [])
+    .map((row) => {
+      const label = escapeHtml(row.label);
+      const value = escapeHtml(row.value);
+      const href = sanitizeHttpUrl(row.href);
+      const linkLabel = escapeHtml(row.linkLabel || "Open link");
+      const valueHtml = href
+        ? `<a href="${escapeHtml(href)}" style="color:#0f6cbd;text-decoration:underline;font-weight:600;">${linkLabel}</a>`
+        : value;
+
+      return `<tr><td style="padding:8px 0;color:#5f6b7a;font-size:13px;vertical-align:top;width:160px;">${label}</td><td style="padding:8px 0;color:#111827;font-size:14px;font-weight:600;word-break:break-word;">${valueHtml}</td></tr>`;
+    })
+    .join("");
+
+  return [
+    "<html><body style=\"margin:0;padding:0;background:#f3f6fb;font-family:Segoe UI,Arial,sans-serif;\">",
+    "<table role=\"presentation\" style=\"width:100%;border-collapse:collapse;\"><tr><td align=\"center\" style=\"padding:28px 16px;\">",
+    "<table role=\"presentation\" style=\"max-width:640px;width:100%;background:#ffffff;border:1px solid #dbe4f0;border-radius:12px;overflow:hidden;border-collapse:separate;\">",
+    `<tr><td style=\"background:${color};padding:16px 20px;color:#ffffff;font-size:20px;font-weight:700;\">Audit Toolkit Labs</td></tr>`,
+    `<tr><td style=\"padding:20px 20px 8px 20px;color:#111827;font-size:22px;font-weight:700;\">${safeTitle}</td></tr>`,
+    `<tr><td style=\"padding:0 20px 16px 20px;color:#4b5563;font-size:14px;\">${safeSubtitle}</td></tr>`,
+    `<tr><td style=\"padding:0 20px 12px 20px;\"><table role=\"presentation\" style=\"width:100%;border-collapse:collapse;\">${rowsHtml}</table></td></tr>`,
+    `<tr><td style=\"padding:12px 20px 20px 20px;color:#6b7280;font-size:12px;border-top:1px solid #e5e7eb;\">${safeFooter}</td></tr>`,
+    "</table></td></tr></table>",
+    "</body></html>"
+  ].join("");
+}
+
+function looksLikeEmail(value) {
+  const normalized = sanitizeText(value);
+  return normalized.includes("@") && normalized.includes(".");
+}
+
+function getOpsEmail(env) {
+  return sanitizeText(env.BILLING_OPS_EMAIL) || "support@audittoolkitlabs.com";
+}
+
+function getSalesEmail(env) {
+  return sanitizeText(env.BILLING_SALES_EMAIL) || "license@audittoolkitlabs.com";
+}
+
+function isOpsEventType(eventType) {
+  return [
+    "billing.plan_unresolved",
+    "billing.plan_unresolved_retry_exhausted",
+    "billing.invoice_payment_failed",
+    "billing.customer_subscription_deleted",
+    "billing.customer_subscription_updated",
+    "billing.keygen_event"
+  ].includes(sanitizeText(eventType));
+}
+
+function getInternalNotificationEmail(env, eventType) {
+  return isOpsEventType(eventType) ? getOpsEmail(env) : getSalesEmail(env);
+}
+
+function getInternalSubjectPrefix(eventType) {
+  return isOpsEventType(eventType) ? "[Ops]" : "[Sales]";
+}
+
+function getEscalationEmail(env) {
+  return sanitizeText(env.BILLING_ESCALATION_EMAIL) || getOpsEmail(env);
+}
+
+function formatMinorAmount(amount, currency) {
+  const numeric = Number(amount);
+  if (!Number.isFinite(numeric)) return "N/A";
+
+  const normalizedCurrency = sanitizeText(currency).toUpperCase() || "USD";
+  return `${(numeric / 100).toFixed(2)} ${normalizedCurrency}`;
+}
+
+function trimTrailingSlash(value) {
+  return sanitizeText(value).replace(/\/+$/, "");
+}
+
+function toAbsoluteUrl(base, path) {
+  const normalizedBase = trimTrailingSlash(base);
+  const normalizedPath = sanitizeText(path).replace(/^\/+/, "");
+  if (!normalizedBase || !normalizedPath) return "";
+  return `${normalizedBase}/${normalizedPath}`;
+}
+
+function getLegalLinks(env) {
+  const siteBase = trimTrailingSlash(env.PUBLIC_SITE_BASE_URL || "https://audittoolkitlabs.com");
+
+  const licensingUrl =
+    sanitizeText(env.LICENSE_TERMS_URL) || toAbsoluteUrl(siteBase, "licensing.html");
+  const supportUrl = sanitizeText(env.SUPPORT_URL) || toAbsoluteUrl(siteBase, "support.html");
+  const privacyUrl = sanitizeText(env.PRIVACY_URL) || toAbsoluteUrl(siteBase, "privacy.html");
+
+  return {
+    licensingUrl,
+    supportUrl,
+    privacyUrl
+  };
+}
+
+async function fetchStripePaidCheckoutSessionsSince(env, sinceUnix) {
+  if (!env.STRIPE_API_SECRET) return [];
+
+  const sessions = [];
+  let startingAfter = "";
+
+  for (let page = 0; page < 5; page += 1) {
+    const query = new URLSearchParams();
+    query.append("limit", "100");
+    if (startingAfter) {
+      query.append("starting_after", startingAfter);
+    }
+
+    const response = await fetch(
+      `https://api.stripe.com/v1/checkout/sessions?${query.toString()}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${env.STRIPE_API_SECRET}`
+        }
+      }
+    );
+
+    if (!response.ok) break;
+
+    const payload = parseJsonSafe(await response.text(), {});
+    const data = Array.isArray(payload?.data) ? payload.data : [];
+
+    if (data.length === 0) break;
+
+    for (const session of data) {
+      const created = Number(session?.created);
+      if (Number.isFinite(created) && created >= sinceUnix) {
+        if (
+          sanitizeText(session?.status) === "complete" &&
+          sanitizeText(session?.payment_status) === "paid"
+        ) {
+          sessions.push(session);
+        }
+      }
+    }
+
+    const oldestCreated = Number(data[data.length - 1]?.created);
+    if (Number.isFinite(oldestCreated) && oldestCreated < sinceUnix) {
+      break;
+    }
+
+    if (!payload?.has_more) break;
+    startingAfter = sanitizeText(data[data.length - 1]?.id);
+    if (!startingAfter) break;
+  }
+
+  return sessions;
+}
+
+async function listIssuedLicensesSince(env, sinceIso) {
+  if (!env.BILLING_EVENTS_KV) return [];
+
+  const records = [];
+  let cursor;
+
+  for (let page = 0; page < 30; page += 1) {
+    const pageResult = await env.BILLING_EVENTS_KV.list({
+      prefix: "session:",
+      cursor,
+      limit: 100
+    });
+
+    const keys = Array.isArray(pageResult?.keys) ? pageResult.keys : [];
+    if (keys.length === 0) {
+      if (!pageResult?.list_complete) {
+        cursor = pageResult?.cursor;
+        continue;
+      }
+      break;
+    }
+
+    for (const key of keys) {
+      const value = await env.BILLING_EVENTS_KV.get(key.name);
+      const parsed = parseJsonSafe(value, null);
+      if (!parsed?.issuedAt) continue;
+
+      if (parsed.issuedAt >= sinceIso) {
+        records.push(parsed);
+      }
+    }
+
+    if (pageResult?.list_complete) break;
+    cursor = pageResult?.cursor;
+    if (!cursor) break;
+  }
+
+  return records;
+}
+
+function formatTimestampIso(value) {
+  const normalized = sanitizeText(value);
+  if (!normalized) return "N/A";
+  return normalized;
+}
+
+async function sendWeeklyReconciliationReport(env, options = {}) {
+  const days = Math.max(1, Math.min(30, Number(options.days) || 7));
+  const now = Date.now();
+  const sinceUnix = Math.floor(now / 1000) - days * 24 * 60 * 60;
+  const sinceIso = new Date(sinceUnix * 1000).toISOString();
+
+  const [stripeSessions, issuedLicenses] = await Promise.all([
+    fetchStripePaidCheckoutSessionsSince(env, sinceUnix),
+    listIssuedLicensesSince(env, sinceIso)
+  ]);
+
+  const stripeBySessionId = new Map();
+  for (const session of stripeSessions) {
+    if (session?.id) stripeBySessionId.set(session.id, session);
+  }
+
+  const keygenBySessionId = new Map();
+  for (const license of issuedLicenses) {
+    const sessionId = sanitizeText(license?.stripeSessionId);
+    if (sessionId) keygenBySessionId.set(sessionId, license);
+  }
+
+  const missingLicenses = [];
+  for (const session of stripeSessions) {
+    if (!keygenBySessionId.has(session.id)) {
+      missingLicenses.push({
+        stripeSessionId: session.id,
+        created: session.created,
+        amountTotal: session.amount_total,
+        currency: session.currency,
+        customerEmail: sanitizeCustomerEmail(session?.customer_details?.email)
+      });
+    }
+  }
+
+  const orphanLicenses = [];
+  for (const license of issuedLicenses) {
+    const sessionId = sanitizeText(license?.stripeSessionId);
+    if (sessionId && !stripeBySessionId.has(sessionId)) {
+      orphanLicenses.push({
+        stripeSessionId: sessionId,
+        keygenLicenseId: sanitizeText(license?.keygenLicenseId),
+        planCode: sanitizeText(license?.planCode),
+        issuedAt: sanitizeText(license?.issuedAt)
+      });
+    }
+  }
+
+  const status = missingLicenses.length === 0 ? "Aligned" : "Action required";
+  const opsEmail = getOpsEmail(env);
+  const subject = `[Ops] Weekly Billing Reconciliation - ${status}`;
+
+  const topMissing = missingLicenses.slice(0, 20);
+  const topOrphans = orphanLicenses.slice(0, 20);
+
+  const textBody = [
+    "Billing reconciliation summary",
+    "",
+    `Window: last ${days} days`,
+    `From: ${sinceIso}`,
+    `Paid Stripe sessions: ${stripeSessions.length}`,
+    `Issued Keygen licenses: ${issuedLicenses.length}`,
+    `Missing licenses: ${missingLicenses.length}`,
+    `Orphan licenses: ${orphanLicenses.length}`,
+    "",
+    "Missing licenses (Stripe paid without Keygen):",
+    ...topMissing.map(
+      (item) =>
+        `- ${item.stripeSessionId} | ${item.customerEmail || "(no-email)"} | ${formatMinorAmount(item.amountTotal, item.currency)} | ${new Date(Number(item.created) * 1000).toISOString()}`
+    ),
+    "",
+    "Orphan licenses (Keygen issued without Stripe paid in window):",
+    ...topOrphans.map(
+      (item) =>
+        `- ${item.keygenLicenseId || "(no-license-id)"} | ${item.stripeSessionId} | ${item.planCode || "(no-plan)"} | ${formatTimestampIso(item.issuedAt)}`
+    ),
+    "",
+    "If missing licenses are non-zero, treat as operational incident and reconcile immediately."
+  ].join("\n");
+
+  const htmlRows = [
+    { label: "Window", value: `Last ${days} days` },
+    { label: "From", value: sinceIso },
+    { label: "Paid Stripe Sessions", value: String(stripeSessions.length) },
+    { label: "Issued Keygen Licenses", value: String(issuedLicenses.length) },
+    { label: "Missing Licenses", value: String(missingLicenses.length) },
+    { label: "Orphan Licenses", value: String(orphanLicenses.length) },
+    { label: "Status", value: status }
+  ];
+
+  const html = renderEmailHtml({
+    title: "Weekly billing reconciliation",
+    subtitle: "Stripe paid sessions vs Keygen issued licenses.",
+    accentColor: missingLicenses.length === 0 ? "#107c10" : "#b91c1c",
+    rows: htmlRows,
+    footer: "Review missing/orphan counts in the text section of this email and investigate non-zero discrepancies immediately."
+  });
+
+  const sendResult = await sendResendEmail(env, {
+    to: opsEmail,
+    subject,
+    text: textBody,
+    html
+  });
+
+  return {
+    sent: sendResult.sent,
+    recipient: opsEmail,
+    days,
+    sinceIso,
+    status,
+    paidStripeSessions: stripeSessions.length,
+    issuedKeygenLicenses: issuedLicenses.length,
+    missingLicenses: missingLicenses.length,
+    orphanLicenses: orphanLicenses.length,
+    previewMissing: topMissing,
+    previewOrphans: topOrphans,
+    email: sendResult
+  };
+}
+
+async function sendResendEmail(env, message) {
+  if (!env.RESEND_API_KEY || !env.RESEND_FROM_EMAIL) {
+    return { sent: false, reason: "resend-not-configured" };
+  }
+
+  const toList = Array.isArray(message.to) ? message.to : [message.to];
+  const to = toList.map((entry) => sanitizeText(entry)).filter(Boolean);
+  if (to.length === 0) {
+    return { sent: false, reason: "missing-recipient" };
+  }
+
+  const payload = {
+    from: sanitizeText(env.RESEND_FROM_EMAIL),
+    to,
+    subject: sanitizeText(message.subject),
+    text: sanitizeText(message.text)
+  };
+
+  if (message.html) {
+    payload.html = String(message.html);
+  }
+
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${env.RESEND_API_KEY}`,
+      "content-type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  });
+
+  const bodyText = await response.text();
+  const body = parseJsonSafe(bodyText, { raw: bodyText });
+
+  if (!response.ok) {
+    console.error("resend-send-failed", {
+      status: response.status,
+      to,
+      subject: payload.subject,
+      from: payload.from,
+      response: body
+    });
+
+    return {
+      sent: false,
+      reason: `resend-send-failed:${response.status}`,
+      response: body
+    };
+  }
+
+  console.log("resend-send-succeeded", {
+    to,
+    subject: payload.subject,
+    from: payload.from,
+    id: body?.id || null
+  });
+
+  return {
+    sent: true,
+    provider: "resend",
+    id: body?.id || null
+  };
+}
+
+async function sendResendForBillingEvent(env, eventType, payload) {
+  if (!env.RESEND_API_KEY || !env.RESEND_FROM_EMAIL) {
+    return { sent: false, reason: "resend-not-configured" };
+  }
+
+  const internalEmail = getInternalNotificationEmail(env, eventType);
+  const subjectPrefix = getInternalSubjectPrefix(eventType);
+  const timestamp = new Date().toISOString();
+
+  if (eventType === "billing.license_issued") {
+    const customer = extractCustomerContext(payload);
+    const customerEmail = customer.email;
+    const legalLinks = getLegalLinks(env);
+    const amountPaid = formatMinorAmount(payload?.amountTotal, payload?.currency);
+    const customerRows = [
+      { label: "Plan", value: sanitizeText(payload?.planCode) || "N/A" },
+      { label: "License Classification", value: "Software license only" },
+      { label: "License Key", value: sanitizeText(payload?.keygenLicenseKey) || "N/A" },
+      { label: "License ID", value: sanitizeText(payload?.keygenLicenseId) || "N/A" },
+      { label: "Stripe Session", value: sanitizeText(payload?.stripeSessionId) || "N/A" }
+    ];
+
+    if (legalLinks.licensingUrl) {
+      customerRows.push({
+        label: "License Terms",
+        value: "View terms",
+        href: legalLinks.licensingUrl,
+        linkLabel: "View license terms"
+      });
+    }
+
+    if (legalLinks.supportUrl) {
+      customerRows.push({
+        label: "Support",
+        value: "Get support",
+        href: legalLinks.supportUrl,
+        linkLabel: "Contact support"
+      });
+    }
+
+    const customerHtml = renderEmailHtml({
+      title: "Your license is ready",
+      subtitle: "Payment has been confirmed and your Audit Toolkit license has been issued.",
+      accentColor: "#0f6cbd",
+      rows: customerRows,
+      footer:
+        "This transaction grants software license rights only and does not transfer intellectual property ownership. Indemnity, liability limitations, and warranty terms are governed by your applicable license terms."
+    });
+
+    const customerMessage = looksLikeEmail(customerEmail)
+      ? await sendResendEmail(env, {
+          to: customerEmail,
+          subject: `Your Audit Toolkit license key (${sanitizeText(payload?.planCode) || "plan"})`,
+          text: [
+            "Your Audit Toolkit license has been issued.",
+            "",
+            `Plan: ${sanitizeText(payload?.planCode)}`,
+            "License Classification: Software license only",
+            `License Key: ${sanitizeText(payload?.keygenLicenseKey)}`,
+            `License ID: ${sanitizeText(payload?.keygenLicenseId)}`,
+            legalLinks.licensingUrl ? `License Terms: ${legalLinks.licensingUrl}` : "",
+            legalLinks.supportUrl ? `Support: ${legalLinks.supportUrl}` : "",
+            "",
+            "This transaction grants software license rights only and does not transfer intellectual property ownership.",
+            "Indemnity, liability limitations, and warranty terms are governed by your applicable license terms.",
+            "If you need help, reply to this email and our team will assist."
+          ]
+            .filter(Boolean)
+            .join("\n"),
+          html: customerHtml
+        })
+      : { sent: false, reason: "invalid-customer-email" };
+
+    const receiptRows = [
+      { label: "Plan", value: sanitizeText(payload?.planCode) || "N/A" },
+      { label: "Amount", value: amountPaid },
+      { label: "Payment Status", value: sanitizeText(payload?.paymentStatus) || "paid" },
+      { label: "Stripe Session", value: sanitizeText(payload?.stripeSessionId) || "N/A" },
+      { label: "Stripe Event", value: sanitizeText(payload?.stripeEventId) || "N/A" }
+    ];
+
+    if (legalLinks.supportUrl) {
+      receiptRows.push({
+        label: "Support",
+        value: "Get support",
+        href: legalLinks.supportUrl,
+        linkLabel: "Contact support"
+      });
+    }
+
+    const receiptHtml = renderEmailHtml({
+      title: "Payment confirmation",
+      subtitle: "We received your payment and processed your order.",
+      accentColor: "#107c10",
+      rows: receiptRows,
+      footer: "This confirmation is provided for your records."
+    });
+
+    const receiptMessage = looksLikeEmail(customerEmail)
+      ? await sendResendEmail(env, {
+          to: customerEmail,
+          subject: `Your Audit Toolkit payment confirmation (${sanitizeText(payload?.planCode) || "plan"})`,
+          text: [
+            "Your payment has been confirmed.",
+            "",
+            `Plan: ${sanitizeText(payload?.planCode) || "N/A"}`,
+            `Amount: ${amountPaid}`,
+            `Payment Status: ${sanitizeText(payload?.paymentStatus) || "paid"}`,
+            `Stripe Session: ${sanitizeText(payload?.stripeSessionId) || "N/A"}`,
+            `Stripe Event: ${sanitizeText(payload?.stripeEventId) || "N/A"}`,
+            legalLinks.supportUrl ? `Support: ${legalLinks.supportUrl}` : ""
+          ]
+            .filter(Boolean)
+            .join("\n"),
+          html: receiptHtml
+        })
+      : { sent: false, reason: "invalid-customer-email" };
+
+    const opsSubject = customerMessage.sent
+      ? `${subjectPrefix} License issued - ${sanitizeText(payload?.planCode)} - ${customerEmail}`
+      : `${subjectPrefix} License issued but customer email not sent - ${sanitizeText(payload?.planCode)}`;
+
+    const opsBody = [
+      "License issuance event processed.",
+      "",
+      `Customer Email: ${customerEmail || "(missing)"}`,
+      `Customer Name: ${customer.name || "N/A"}`,
+      `Customer Company: ${customer.company || "N/A"}`,
+      `Billing Address: ${customer.billingAddress || "N/A"}`,
+      `Plan: ${sanitizeText(payload?.planCode)}`,
+      `License ID: ${sanitizeText(payload?.keygenLicenseId)}`,
+      `License Key: ${sanitizeText(payload?.keygenLicenseKey)}`,
+      `Stripe Session: ${sanitizeText(payload?.stripeSessionId)}`,
+      `Stripe Event: ${sanitizeText(payload?.stripeEventId)}`,
+      `Amount: ${amountPaid}`,
+      "",
+      `Customer Email Send Result: ${customerMessage.sent ? "sent" : customerMessage.reason}`,
+      `Customer Receipt Send Result: ${receiptMessage.sent ? "sent" : receiptMessage.reason}`,
+      `Timestamp: ${timestamp}`
+    ].join("\n");
+
+    const opsHtml = renderEmailHtml({
+      title: "License issued",
+      subtitle: "A paid checkout completed and license delivery has been processed.",
+      accentColor: "#107c10",
+      rows: [
+        { label: "Customer Email", value: customerEmail || "(missing)" },
+        { label: "Customer Name", value: customer.name || "N/A" },
+        { label: "Customer Company", value: customer.company || "N/A" },
+        { label: "Billing Address", value: customer.billingAddress || "N/A" },
+        { label: "Plan", value: sanitizeText(payload?.planCode) || "N/A" },
+        { label: "License ID", value: sanitizeText(payload?.keygenLicenseId) || "N/A" },
+        { label: "License Key", value: sanitizeText(payload?.keygenLicenseKey) || "N/A" },
+        { label: "Stripe Session", value: sanitizeText(payload?.stripeSessionId) || "N/A" },
+        { label: "Stripe Event", value: sanitizeText(payload?.stripeEventId) || "N/A" },
+        { label: "Amount", value: amountPaid },
+        {
+          label: "Customer Email Send",
+          value: customerMessage.sent ? "Sent" : sanitizeText(customerMessage.reason)
+        },
+        {
+          label: "Customer Receipt Send",
+          value: receiptMessage.sent ? "Sent" : sanitizeText(receiptMessage.reason)
+        },
+        { label: "Timestamp", value: timestamp }
+      ],
+      footer: "Generated by audittoolkit-billing-worker"
+    });
+
+    const opsMessage = await sendResendEmail(env, {
+      to: internalEmail,
+      subject: opsSubject,
+      text: opsBody,
+      html: opsHtml
+    });
+
+    let licenseEmailFailureEscalation = { sent: false, reason: "not-applicable" };
+    if (!customerMessage.sent) {
+      const escalationEmail = getEscalationEmail(env);
+      licenseEmailFailureEscalation = await sendResendEmail(env, {
+        to: escalationEmail,
+        subject: `[Ops][ACTION REQUIRED] CUSTOMER LICENSE EMAIL FAILED - ${sanitizeText(payload?.stripeSessionId) || "(no-session)"}`,
+        text: [
+          "License was issued, but customer delivery email was not sent.",
+          "",
+          `Customer Email: ${customerEmail || "(missing)"}`,
+          `Failure Reason: ${sanitizeText(customerMessage.reason) || "unknown"}`,
+          `Plan: ${sanitizeText(payload?.planCode) || "N/A"}`,
+          `License ID: ${sanitizeText(payload?.keygenLicenseId) || "N/A"}`,
+          `Stripe Session: ${sanitizeText(payload?.stripeSessionId) || "N/A"}`,
+          `Stripe Event: ${sanitizeText(payload?.stripeEventId) || "N/A"}`,
+          "",
+          "Required Action: Contact customer manually and verify recipient email." 
+        ].join("\n")
+      });
+    }
+
+    return {
+      sent:
+        customerMessage.sent ||
+        receiptMessage.sent ||
+        opsMessage.sent ||
+        licenseEmailFailureEscalation.sent,
+      provider: "resend",
+      customer: customerMessage,
+      receipt: receiptMessage,
+      escalation: licenseEmailFailureEscalation,
+      ops: opsMessage
+    };
+  }
+
+  const stripeObject = payload?.stripeObject || {};
+  const customer = extractCustomerContext(payload);
+  const enrichmentDebug = payload?.enrichmentDebug || null;
+  const legalLinks = getLegalLinks(env);
+  const readableEvent = eventType
+    .replace("billing.", "")
+    .replace(/_/g, " ")
+    .toUpperCase();
+
+  console.log("billing-customer-enrichment", {
+    eventType,
+    stripeEventId: sanitizeText(payload?.stripeEventId) || null,
+    stripeObjectId: sanitizeText(stripeObject?.id) || null,
+    sources: Array.isArray(enrichmentDebug?.sources) ? enrichmentDebug.sources : [],
+    resolved: Boolean(enrichmentDebug?.resolved),
+    customerEmail: customer.email || null,
+    customerName: customer.name || null,
+    customerCompany: customer.company || null,
+    customerBillingAddress: customer.billingAddress || null
+  });
+
+  const summaryRows = [
+    { label: "Event", value: eventType },
+    { label: "Timestamp", value: timestamp }
+  ];
+  let recipientOverride = "";
+  let subjectOverride = "";
+
+  let customerInvoiceMessage = { sent: false, reason: "not-applicable" };
+
+  if (eventType === "billing.keygen_event") {
+    const keygenPayload = payload?.keygenPayload || {};
+    const keygenInnerPayload = getInnerKeygenPayload(keygenPayload);
+    const keygenMeta = keygenPayload?.meta || {};
+    const keygenData = keygenInnerPayload?.data || keygenPayload?.data || {};
+    const keygenAttributes = keygenData?.attributes || {};
+    const keygenRelationships = keygenData?.relationships || {};
+    const keygenEventType = resolveKeygenEventType(payload);
+    const keygenContext = await resolveKeygenLicenseContext(env, keygenPayload);
+    const keygenCompany = sanitizeText(keygenContext.customerCompany) || "N/A";
+    const keygenCustomerEmail = sanitizeCustomerEmail(keygenContext.customerEmail);
+
+    summaryRows.push({ label: "Keygen Event", value: keygenEventType });
+    summaryRows.push({ label: "Signature Verified", value: payload?.verified ? "Yes" : "No" });
+
+    if (payload?.verificationReason) {
+      summaryRows.push({
+        label: "Verification Detail",
+        value: sanitizeText(payload.verificationReason)
+      });
+    }
+
+    if (sanitizeText(keygenData?.id)) {
+      summaryRows.push({ label: "License ID", value: sanitizeText(keygenData.id) });
+    }
+
+    if (sanitizeText(keygenData?.type)) {
+      summaryRows.push({ label: "Resource Type", value: sanitizeText(keygenData.type) });
+    }
+
+    if (sanitizeText(keygenContext.licenseKey)) {
+      summaryRows.push({ label: "License Key", value: sanitizeText(keygenContext.licenseKey) });
+    }
+
+    const expiryIso = sanitizeText(keygenContext.expiry);
+    if (expiryIso) {
+      summaryRows.push({ label: "License Expiry", value: expiryIso });
+    }
+
+    if (sanitizeText(keygenContext.licenseType)) {
+      summaryRows.push({ label: "License Type", value: sanitizeText(keygenContext.licenseType) });
+    }
+
+    const environmentId = sanitizeText(keygenRelationships?.environment?.data?.id);
+    if (environmentId) {
+      summaryRows.push({ label: "Environment ID", value: environmentId });
+    }
+
+    const productId = sanitizeText(keygenRelationships?.product?.data?.id);
+    if (productId) {
+      summaryRows.push({ label: "Product ID", value: productId });
+    }
+
+    if (looksLikeEmail(keygenCustomerEmail)) {
+      summaryRows.push({ label: "Customer Email", value: keygenCustomerEmail });
+    }
+
+    summaryRows.push({ label: "Customer Company", value: keygenCompany });
+
+    const topLevelKeys = Object.keys(keygenPayload || {});
+    if (topLevelKeys.length > 0) {
+      summaryRows.push({ label: "Payload Keys", value: topLevelKeys.join(", ") });
+    }
+
+    const attributeKeys = Object.keys(keygenAttributes || {});
+    if (attributeKeys.length > 0) {
+      summaryRows.push({ label: "Attribute Keys", value: attributeKeys.join(", ") });
+    }
+
+    const relationshipKeys = Object.keys(keygenRelationships || {});
+    if (relationshipKeys.length > 0) {
+      summaryRows.push({ label: "Relationship Keys", value: relationshipKeys.join(", ") });
+    }
+
+    if (keygenEventType === "license.created") {
+      recipientOverride = getSalesEmail(env);
+      subjectOverride = `[Sales] KEYGEN LICENSE CREATED - ${looksLikeEmail(keygenCustomerEmail) ? keygenCustomerEmail : sanitizeText(keygenData?.id) || "license"}`;
+      summaryRows.push({ label: "Action", value: "Informational success event. No action required." });
+    }
+
+    if (keygenEventType === "license.expiring-soon") {
+      const expiryReminderEmail = keygenCustomerEmail;
+      const expiryReminderAt = sanitizeText(keygenContext.expiry) || "N/A";
+
+      if (looksLikeEmail(expiryReminderEmail)) {
+        const reminderRows = [
+          { label: "Customer", value: keygenCompany },
+          { label: "Customer Email", value: expiryReminderEmail },
+          { label: "License ID", value: sanitizeText(keygenData?.id) || "N/A" },
+          { label: "License Key", value: sanitizeText(keygenContext.licenseKey) || "N/A" },
+          { label: "License Type", value: sanitizeText(keygenContext.licenseType) || "N/A" },
+          { label: "Expiry", value: expiryReminderAt },
+          { label: "Product ID", value: sanitizeText(keygenContext.productId) || productId || "N/A" }
+        ];
+
+        if (legalLinks.supportUrl) {
+          reminderRows.push({
+            label: "Support",
+            value: "Contact support",
+            href: legalLinks.supportUrl,
+            linkLabel: "Contact support"
+          });
+        }
+
+        if (legalLinks.licensingUrl) {
+          reminderRows.push({
+            label: "License Terms",
+            value: "View terms",
+            href: legalLinks.licensingUrl,
+            linkLabel: "View terms"
+          });
+        }
+
+        const reminderHtml = renderEmailHtml({
+          title: "License expiry reminder",
+          subtitle: "Your Audit Toolkit license is approaching expiry.",
+          accentColor: "#c19c00",
+          rows: reminderRows,
+          footer: "Please renew before expiry to avoid service interruption."
+        });
+
+        customerInvoiceMessage = await sendResendEmail(env, {
+          to: expiryReminderEmail,
+          subject: "Your Audit Toolkit license expires soon",
+          text: [
+            "Your Audit Toolkit license is nearing expiry.",
+            "",
+            `Customer: ${keygenCompany}`,
+            `Customer Email: ${expiryReminderEmail}`,
+            `License ID: ${sanitizeText(keygenData?.id) || "N/A"}`,
+            `License Key: ${sanitizeText(keygenContext.licenseKey) || "N/A"}`,
+            `License Type: ${sanitizeText(keygenContext.licenseType) || "N/A"}`,
+            `Expiry: ${expiryReminderAt}`,
+            `Product ID: ${sanitizeText(keygenContext.productId) || productId || "N/A"}`,
+            legalLinks.supportUrl ? `Support: ${legalLinks.supportUrl}` : "",
+            legalLinks.licensingUrl ? `License Terms: ${legalLinks.licensingUrl}` : "",
+            "",
+            "Please renew before expiry to avoid service interruption.",
+            "Action: Renew your license or contact support before the expiry date."
+          ]
+            .filter(Boolean)
+            .join("\n"),
+          html: reminderHtml
+        });
+      } else {
+        customerInvoiceMessage = { sent: false, reason: "missing-keygen-customer-email" };
+      }
+
+      summaryRows.push({
+        label: "Customer Expiry Reminder",
+        value: customerInvoiceMessage.sent ? "Sent" : sanitizeText(customerInvoiceMessage.reason)
+      });
+      summaryRows.push({
+        label: "Action",
+        value:
+          customerInvoiceMessage.sent
+            ? "Reminder delivered to customer."
+            : "Customer email missing - update Keygen license metadata/user email."
+      });
+
+      if (looksLikeEmail(expiryReminderEmail)) {
+        summaryRows.push({ label: "Reminder Recipient", value: expiryReminderEmail });
+      }
+    }
+  }
+
+  if (Array.isArray(enrichmentDebug?.sources) && enrichmentDebug.sources.length > 0) {
+    summaryRows.push({ label: "Identity Source", value: enrichmentDebug.sources.join(" -> ") });
+  }
+
+  if (enrichmentDebug && !enrichmentDebug.resolved) {
+    summaryRows.push({ label: "Identity Status", value: "Missing in Stripe source data" });
+  }
+
+  if (payload?.stripeEventId) {
+    summaryRows.push({ label: "Stripe Event", value: sanitizeText(payload.stripeEventId) });
+  }
+
+  if (stripeObject?.id) {
+    summaryRows.push({ label: "Stripe Object ID", value: sanitizeText(stripeObject.id) });
+  }
+
+  if (stripeObject?.customer || stripeObject?.customer_email) {
+    summaryRows.push({
+      label: "Customer",
+      value: customer.email || sanitizeText(stripeObject.customer)
+    });
+  }
+
+  if (customer.name) {
+    summaryRows.push({ label: "Customer Name", value: customer.name });
+  }
+
+  if (customer.company) {
+    summaryRows.push({ label: "Customer Company", value: customer.company });
+  }
+
+  if (customer.billingAddress) {
+    summaryRows.push({ label: "Billing Address", value: customer.billingAddress });
+  }
+
+  if (stripeObject?.status) {
+    summaryRows.push({ label: "Status", value: sanitizeText(stripeObject.status) });
+  }
+
+  if (stripeObject?.amount_paid !== undefined || stripeObject?.amount_due !== undefined) {
+    const amountPaid = formatMinorAmount(stripeObject.amount_paid, stripeObject.currency);
+    const amountDue = formatMinorAmount(stripeObject.amount_due, stripeObject.currency);
+    summaryRows.push({ label: "Amount Paid", value: amountPaid });
+    summaryRows.push({ label: "Amount Due", value: amountDue });
+  }
+
+  if (stripeObject?.hosted_invoice_url) {
+    summaryRows.push({
+      label: "Invoice",
+      value: "Open invoice",
+      href: sanitizeText(stripeObject.hosted_invoice_url),
+      linkLabel: "Open invoice"
+    });
+  }
+
+  if (eventType === "billing.invoice_paid") {
+    summaryRows.push({ label: "Transaction Classification", value: "Software license payment" });
+
+    if (legalLinks.licensingUrl) {
+      summaryRows.push({
+        label: "License Terms",
+        value: "View license terms",
+        href: legalLinks.licensingUrl,
+        linkLabel: "View license terms"
+      });
+    }
+
+    if (legalLinks.supportUrl) {
+      summaryRows.push({
+        label: "Support",
+        value: "Open support",
+        href: legalLinks.supportUrl,
+        linkLabel: "Open support"
+      });
+    }
+  }
+
+  if (eventType === "billing.invoice_paid" && looksLikeEmail(customer.email)) {
+    const invoiceNumber = sanitizeText(stripeObject?.number) || sanitizeText(stripeObject?.id) || "N/A";
+    const amountPaid = formatMinorAmount(stripeObject?.amount_paid, stripeObject?.currency);
+    const paidAtUnix = Number(stripeObject?.status_transitions?.paid_at);
+    const paidAt = Number.isFinite(paidAtUnix) && paidAtUnix > 0
+      ? new Date(paidAtUnix * 1000).toISOString()
+      : timestamp;
+
+    const customerInvoiceRows = [
+      { label: "Invoice", value: invoiceNumber },
+      { label: "Transaction Classification", value: "Software license payment" },
+      { label: "Amount Paid", value: amountPaid },
+      { label: "Payment Date", value: paidAt }
+    ];
+
+    if (stripeObject?.hosted_invoice_url) {
+      customerInvoiceRows.push({
+        label: "Invoice Link",
+        value: "View invoice",
+        href: sanitizeText(stripeObject.hosted_invoice_url),
+        linkLabel: "View invoice"
+      });
+    }
+
+    if (legalLinks.licensingUrl) {
+      customerInvoiceRows.push({
+        label: "License Terms",
+        value: "View terms",
+        href: legalLinks.licensingUrl,
+        linkLabel: "View license terms"
+      });
+    }
+
+    if (legalLinks.supportUrl) {
+      customerInvoiceRows.push({
+        label: "Support",
+        value: "Contact support",
+        href: legalLinks.supportUrl,
+        linkLabel: "Open support"
+      });
+    }
+
+    if (legalLinks.privacyUrl) {
+      customerInvoiceRows.push({
+        label: "Privacy",
+        value: "Privacy policy",
+        href: legalLinks.privacyUrl,
+        linkLabel: "View privacy policy"
+      });
+    }
+
+    const customerInvoiceHtml = renderEmailHtml({
+      title: "Payment confirmation",
+      subtitle: "We have received your payment successfully.",
+      accentColor: "#107c10",
+      rows: customerInvoiceRows,
+      footer:
+        "This confirmation is for software license payment only. Indemnity, liability limitations, and other legal terms are governed by your applicable license terms and agreement."
+    });
+
+    customerInvoiceMessage = await sendResendEmail(env, {
+      to: customer.email,
+      subject: `Payment confirmation - Invoice ${invoiceNumber}`,
+      text: [
+        "This is a payment confirmation from Audit Toolkit Labs.",
+        "",
+        `Invoice: ${invoiceNumber}`,
+        "Transaction Classification: Software license payment",
+        `Amount Paid: ${amountPaid}`,
+        `Payment Date: ${paidAt}`,
+        stripeObject?.hosted_invoice_url
+          ? `Invoice Link: ${sanitizeText(stripeObject.hosted_invoice_url)}`
+          : "Invoice Link: Not available",
+        legalLinks.licensingUrl ? `License Terms: ${legalLinks.licensingUrl}` : "",
+        legalLinks.supportUrl ? `Support: ${legalLinks.supportUrl}` : "",
+        legalLinks.privacyUrl ? `Privacy: ${legalLinks.privacyUrl}` : "",
+        "",
+        "Please retain this confirmation for your records.",
+        "This confirmation is for software license payment only.",
+        "Indemnity, liability limitations, and other legal terms are governed by your applicable license terms and agreement.",
+        "If you did not authorize this payment, contact support immediately by replying to this email."
+      ]
+        .filter(Boolean)
+        .join("\n"),
+      html: customerInvoiceHtml
+    });
+  } else if (eventType === "billing.invoice_paid") {
+    customerInvoiceMessage = { sent: false, reason: "missing-customer-email" };
+  }
+
+  if (eventType === "billing.invoice_paid") {
+    summaryRows.push({
+      label: "Customer Confirmation Email",
+      value: customerInvoiceMessage.sent ? "Sent" : sanitizeText(customerInvoiceMessage.reason)
+    });
+  }
+
+  let escalationMessage = { sent: false, reason: "not-applicable" };
+  let suppressInternalOpsEmail = false;
+
+  if (eventType === "billing.plan_unresolved") {
+    summaryRows.push({ label: "Priority", value: "P1 - license issuance blocked" });
+    summaryRows.push({ label: "Required Action", value: "Update plan mapping/metadata and reissue" });
+
+    const escalationEmail = getEscalationEmail(env);
+    if (sanitizeText(escalationEmail).toLowerCase() === sanitizeText(internalEmail).toLowerCase()) {
+      suppressInternalOpsEmail = true;
+    }
+
+    escalationMessage = await sendResendEmail(env, {
+      to: escalationEmail,
+      subject: `[ACTION REQUIRED] PLAN UNRESOLVED - ${sanitizeText(payload?.stripeSessionId) || "(no-session)"}`,
+      text: [
+        "A paid checkout could not be mapped to a Keygen policy.",
+        "",
+        `Stripe Event: ${sanitizeText(payload?.stripeEventId) || "N/A"}`,
+        `Stripe Session: ${sanitizeText(payload?.stripeSessionId) || "N/A"}`,
+        "Priority: P1 - license issuance blocked",
+        "Required Action: Update plan mapping/metadata and reissue immediately."
+      ].join("\n")
+    });
+  }
+
+  const defaultSubject =
+    eventType === "billing.plan_unresolved"
+      ? `[Ops][ACTION REQUIRED] ${readableEvent}`
+      : `${subjectPrefix} ${readableEvent}`;
+  const rawPayloadNote =
+    eventType === "billing.keygen_event"
+      ? "Keygen event details are summarized above."
+      : "Raw payload omitted in email for readability. Check Stripe dashboard for full object details.";
+  const defaultBody = [
+    "Billing worker event.",
+    "",
+    ...summaryRows.map((row) => `${row.label}: ${row.value}`),
+    "",
+    rawPayloadNote
+  ].join("\n");
+
+  const defaultOpsHtml = renderEmailHtml({
+    title: eventType === "billing.keygen_event" ? "Keygen webhook event" : "Billing event",
+    subtitle:
+      eventType === "billing.keygen_event"
+        ? "Operational event received from Keygen."
+        : "Operational event from the billing worker.",
+    accentColor: "#5c2d91",
+    rows: summaryRows,
+    footer: rawPayloadNote
+  });
+
+  const opsMessage = suppressInternalOpsEmail
+    ? { sent: false, reason: "suppressed-duplicate-recipient" }
+    : await sendResendEmail(env, {
+        to: recipientOverride || internalEmail,
+        subject: subjectOverride || defaultSubject,
+        text: defaultBody,
+        html: defaultOpsHtml
+      });
+
+  return {
+    sent: opsMessage.sent || customerInvoiceMessage.sent || escalationMessage.sent,
+    provider: "resend",
+    customer: customerInvoiceMessage,
+    escalation: escalationMessage,
+    ops: opsMessage
+  };
+}
+
+async function postM365Flow(env, eventType, payload) {
+  const results = {
+    eventType,
+    resend: { sent: false, reason: "resend-not-attempted" },
+    m365: { sent: false, reason: "m365-not-attempted" }
+  };
+
+  try {
+    results.resend = await sendResendForBillingEvent(env, eventType, payload);
+  } catch (error) {
+    results.resend = {
+      sent: false,
+      reason: "resend-dispatch-error",
+      error: error instanceof Error ? error.message : String(error)
+    };
+  }
+
+  if (env.M365_FLOW_WEBHOOK_URL) {
+    try {
+      const response = await fetch(env.M365_FLOW_WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify({
+          source: "audittoolkit-cloudflare-worker",
+          eventType,
+          payload,
+          timestamp: new Date().toISOString()
+        })
+      });
+
+      if (response.ok) {
+        results.m365 = { sent: true };
+      } else {
+        results.m365 = { sent: false, reason: `m365-flow-post-failed:${response.status}` };
+      }
+    } catch (error) {
+      results.m365 = {
+        sent: false,
+        reason: "m365-flow-post-error",
+        error: error instanceof Error ? error.message : String(error)
+      };
+    }
+  } else {
+    results.m365 = { sent: false, reason: "m365-flow-not-configured" };
+  }
+
+  console.log("billing-notification-dispatch", {
+    eventType,
+    resend: results.resend,
+    m365: results.m365
+  });
+
+  return results;
+}
+
+async function processCheckoutSessionForLicense(session, env, context = {}) {
+  const retryConfig = getAutoRetryConfig(env);
+  const stripeEventId = sanitizeText(context?.stripeEventId) || `internal-${Date.now()}`;
+  const origin = sanitizeText(context?.origin) || "stripe-webhook";
+  const retryCount = Number(context?.retryCount);
+  const paymentStatus = sanitizeText(session?.payment_status).toLowerCase();
+
+  // Only issue/send licenses after Stripe marks the checkout session as paid.
+  // For async methods, checkout.session.async_payment_succeeded will re-enter this path.
+  if (paymentStatus !== "paid") {
+    await postM365Flow(env, "billing.checkout_not_paid", {
+      stripeEventId,
+      stripeSessionId: session?.id,
+      paymentStatus,
+      customerEmail: sanitizeCustomerEmail(session?.customer_details?.email),
+      planMetadata: session?.metadata || {},
+      origin
+    });
+
+    return {
+      ok: true,
+      action: "awaiting-payment-clearance",
+      paymentStatus
+    };
+  }
+
+  const existingLicense = await getExistingSessionLicense(env, session?.id);
   if (existingLicense?.keygenLicenseId) {
+    await deletePlanUnresolvedRecord(env, session?.id);
+
     await postM365Flow(env, "billing.license_already_exists", {
-      stripeEventId: event.id,
-      stripeSessionId: session.id,
-      existingLicense
+      stripeEventId,
+      stripeSessionId: session?.id,
+      existingLicense,
+      origin
     });
 
     return {
@@ -519,59 +2606,248 @@ async function handleCheckoutCompleted(event, env) {
   const resolvedPlan = await resolvePlanFromCheckoutSession(session, env);
 
   if (!resolvedPlan) {
+    const existingRecord = await getPlanUnresolvedRecord(env, session?.id);
+    const effectiveRetryCount = Number.isFinite(retryCount)
+      ? retryCount
+      : Number(existingRecord?.retryCount) || 0;
+
+    const retryDelaySeconds = Math.min(
+      retryConfig.baseDelaySeconds * Math.pow(2, Math.min(effectiveRetryCount, 6)),
+      24 * 60 * 60
+    );
+    const nextRetryAt = new Date(Date.now() + retryDelaySeconds * 1000).toISOString();
+
+    await setPlanUnresolvedRecord(env, session?.id, {
+      stripeSessionId: session?.id,
+      lastStripeEventId: stripeEventId,
+      metadata: session?.metadata || {},
+      paymentStatus,
+      customerEmail: sanitizeCustomerEmail(session?.customer_details?.email),
+      retryCount: effectiveRetryCount,
+      nextRetryAt,
+      exhaustedNotified: Boolean(existingRecord?.exhaustedNotified),
+      firstSeenAt: sanitizeText(existingRecord?.firstSeenAt) || new Date().toISOString(),
+      lastSeenAt: new Date().toISOString(),
+      origin
+    });
+
     await postM365Flow(env, "billing.plan_unresolved", {
-      stripeEventId: event.id,
-      stripeSessionId: session.id,
-      metadata: session.metadata || {}
+      stripeEventId,
+      stripeSessionId: session?.id,
+      metadata: session?.metadata || {},
+      retryCount: effectiveRetryCount,
+      nextRetryAt,
+      autoRetryEnabled: retryConfig.enabled,
+      origin
     });
 
     return {
       ok: true,
       action: "no-license-created",
-      reason: "plan-mapping-not-found"
+      reason: "plan-mapping-not-found",
+      retryCount: effectiveRetryCount,
+      nextRetryAt
     };
   }
 
   const keygenResult = await callKeygenCreateLicense(env, {
     policyId: resolvedPlan.policyId,
     metadata: {
-      stripe_event_id: event.id,
-      stripe_session_id: session.id,
-      stripe_customer_id: session.customer,
-      stripe_subscription_id: session.subscription,
-      stripe_payment_intent: session.payment_intent,
-      customer_email: session.customer_details?.email,
+      stripe_event_id: stripeEventId,
+      stripe_session_id: session?.id,
+      stripe_customer_id: session?.customer,
+      stripe_subscription_id: session?.subscription,
+      stripe_payment_intent: session?.payment_intent,
+      customer_email: sanitizeCustomerEmail(session?.customer_details?.email),
       plan_code: resolvedPlan.planCode,
-      mapping_source: resolvedPlan.source
+      mapping_source: resolvedPlan.source,
+      issuance_origin: origin
     }
   });
 
   const issuedLicense = {
     keygenLicenseId: keygenResult?.data?.id,
     keygenLicenseKey: keygenResult?.data?.attributes?.key,
-    stripeSessionId: session.id,
-    stripeEventId: event.id,
+    stripeSessionId: session?.id,
+    stripeEventId,
     planCode: resolvedPlan.planCode,
-    issuedAt: new Date().toISOString()
+    issuedAt: new Date().toISOString(),
+    origin
   };
 
-  await setSessionLicense(env, session.id, issuedLicense);
+  await setSessionLicense(env, session?.id, issuedLicense);
+  await deletePlanUnresolvedRecord(env, session?.id);
+
+  const normalizedCustomerEmail = sanitizeCustomerEmail(session?.customer_details?.email);
+  const normalizedCustomerName = sanitizeCustomerName(
+    sanitizeText(session?.customer_details?.name),
+    {
+      email: normalizedCustomerEmail,
+      billingAddress: formatAddress(session?.customer_details?.address)
+    }
+  );
+  const normalizedCustomerBillingAddress = sanitizeCustomerBillingAddress(
+    formatAddress(session?.customer_details?.address),
+    {
+      email: normalizedCustomerEmail,
+      name: sanitizeText(session?.customer_details?.name)
+    }
+  );
+
+  if (session?.customer) {
+    await setCustomerProfile(env, session.customer, {
+      email: normalizedCustomerEmail,
+      name: normalizedCustomerName,
+      company: sanitizeText(session?.customer_details?.business_name),
+      billingAddress: normalizedCustomerBillingAddress,
+      updatedAt: new Date().toISOString(),
+      source: "checkout-session"
+    });
+  }
+
+  if (session?.payment_intent) {
+    await setPaymentProfile(env, session.payment_intent, {
+      email: normalizedCustomerEmail,
+      name: normalizedCustomerName,
+      company: sanitizeText(session?.customer_details?.business_name),
+      billingAddress: normalizedCustomerBillingAddress,
+      updatedAt: new Date().toISOString(),
+      source: "checkout-session"
+    });
+  }
+
+  if (origin === "auto-retry") {
+    await postM365Flow(env, "billing.plan_unresolved_recovered", {
+      stripeEventId,
+      stripeSessionId: session?.id,
+      retryCount: Number.isFinite(retryCount) ? retryCount : null,
+      planCode: resolvedPlan.planCode,
+      keygenLicenseId: keygenResult?.data?.id
+    });
+  }
 
   await postM365Flow(env, "billing.license_issued", {
-    stripeEventId: event.id,
-    stripeSessionId: session.id,
-    customerEmail: session.customer_details?.email,
+    stripeEventId,
+    stripeSessionId: session?.id,
+    customerEmail: normalizedCustomerEmail,
+    customerName: normalizedCustomerName,
+    customerCompany: session?.customer_details?.business_name,
+    customerBillingAddress: normalizedCustomerBillingAddress,
     planCode: resolvedPlan.planCode,
     keygenLicenseId: keygenResult?.data?.id,
-    keygenLicenseKey: keygenResult?.data?.attributes?.key
+    keygenLicenseKey: keygenResult?.data?.attributes?.key,
+    amountTotal: session?.amount_total,
+    currency: session?.currency,
+    paymentStatus: session?.payment_status,
+    origin
   });
 
   return {
     ok: true,
     action: "license-created",
     planCode: resolvedPlan.planCode,
-    keygenLicenseId: keygenResult?.data?.id
+    keygenLicenseId: keygenResult?.data?.id,
+    origin
   };
+}
+
+async function retryPendingPlanUnresolvedSessions(env) {
+  const retryConfig = getAutoRetryConfig(env);
+  if (!retryConfig.enabled || !env.BILLING_EVENTS_KV) {
+    return { enabled: retryConfig.enabled, attempted: 0, resolved: 0, failed: 0, exhausted: 0 };
+  }
+
+  const nowIso = new Date().toISOString();
+  const listResult = await env.BILLING_EVENTS_KV.list({ prefix: "unresolved:", limit: 20 });
+  const keys = Array.isArray(listResult?.keys) ? listResult.keys : [];
+
+  let attempted = 0;
+  let resolved = 0;
+  let failed = 0;
+  let exhausted = 0;
+
+  for (const key of keys) {
+    const sessionId = sanitizeText(key?.name).replace(/^unresolved:/, "");
+    if (!sessionId) continue;
+
+    const record = await getPlanUnresolvedRecord(env, sessionId);
+    if (!record) continue;
+
+    const nextRetryAt = sanitizeText(record.nextRetryAt);
+    if (nextRetryAt && nextRetryAt > nowIso) {
+      continue;
+    }
+
+    const currentRetryCount = Number(record.retryCount) || 0;
+    if (currentRetryCount >= retryConfig.maxAttempts) {
+      exhausted += 1;
+      if (!record.exhaustedNotified) {
+        await postM365Flow(env, "billing.plan_unresolved_retry_exhausted", {
+          stripeSessionId: sessionId,
+          stripeEventId: sanitizeText(record.lastStripeEventId),
+          retryCount: currentRetryCount,
+          maxAttempts: retryConfig.maxAttempts,
+          metadata: record.metadata || {}
+        });
+
+        await setPlanUnresolvedRecord(env, sessionId, {
+          ...record,
+          exhaustedNotified: true,
+          lastSeenAt: new Date().toISOString()
+        });
+      }
+      continue;
+    }
+
+    attempted += 1;
+    const attemptNumber = currentRetryCount + 1;
+
+    const session = await fetchStripeCheckoutSession(sessionId, env);
+    if (!session) {
+      failed += 1;
+      const retryDelaySeconds = Math.min(
+        retryConfig.baseDelaySeconds * Math.pow(2, Math.min(attemptNumber, 6)),
+        24 * 60 * 60
+      );
+      await setPlanUnresolvedRecord(env, sessionId, {
+        ...record,
+        retryCount: attemptNumber,
+        nextRetryAt: new Date(Date.now() + retryDelaySeconds * 1000).toISOString(),
+        lastSeenAt: new Date().toISOString(),
+        lastError: "stripe-session-not-found"
+      });
+      continue;
+    }
+
+    const result = await processCheckoutSessionForLicense(session, env, {
+      stripeEventId: sanitizeText(record.lastStripeEventId) || `retry-${Date.now()}`,
+      origin: "auto-retry",
+      retryCount: attemptNumber
+    });
+
+    if (result?.action === "license-created" || result?.action === "license-already-exists") {
+      resolved += 1;
+      await deletePlanUnresolvedRecord(env, sessionId);
+    } else {
+      failed += 1;
+    }
+  }
+
+  return {
+    enabled: true,
+    attempted,
+    resolved,
+    failed,
+    exhausted
+  };
+}
+
+async function handleCheckoutCompleted(event, env) {
+  const session = event.data?.object || {};
+  return processCheckoutSessionForLicense(session, env, {
+    stripeEventId: event.id,
+    origin: "stripe-webhook"
+  });
 }
 
 async function handleStripeEvent(event, env) {
@@ -584,10 +2860,17 @@ async function handleStripeEvent(event, env) {
     case "customer.subscription.deleted":
     case "customer.subscription.updated":
     case "invoice.paid":
-      await postM365Flow(env, `billing.${event.type.replace(/\./g, "_")}`, {
-        stripeEventId: event.id,
-        stripeObject: event.data?.object || {}
-      });
+      await postM365Flow(
+        env,
+        `billing.${event.type.replace(/\./g, "_")}`,
+        await enrichBillingPayloadWithStripeCustomer(
+          {
+            stripeEventId: event.id,
+            stripeObject: event.data?.object || {}
+          },
+          env
+        )
+      );
       return { ok: true, action: "notified-flow", eventType: event.type };
 
     default:
@@ -600,6 +2883,7 @@ function unauthorized() {
 }
 
 function serverError(err) {
+  console.error("worker-internal-error", err);
   return json(
     {
       ok: false,
@@ -620,6 +2904,8 @@ export default {
         service: "audittoolkit-billing-worker",
         features: {
           stripeApiFallback: Boolean(env.STRIPE_API_SECRET),
+          resendEmailDispatch: Boolean(env.RESEND_API_KEY && env.RESEND_FROM_EMAIL),
+          m365FlowForwarding: Boolean(env.M365_FLOW_WEBHOOK_URL),
           keygenWebhookValidation: Boolean(
             env.KEYGEN_WEBHOOK_PUBLIC_KEY || env.KEYGEN_WEBHOOK_SECRET
           ),
@@ -646,7 +2932,8 @@ export default {
         }
 
         const result = await handleStripeEvent(event, env);
-        return json({ ok: true, eventId: event.id, result });
+        const autoRetry = await retryPendingPlanUnresolvedSessions(env);
+        return json({ ok: true, eventId: event.id, result, autoRetry });
       } catch (err) {
         return serverError(err);
       }
@@ -656,18 +2943,37 @@ export default {
       try {
         const rawBody = await request.text();
         const verification = await verifyKeygenWebhook(request, rawBody, env);
-        if (!verification.ok) {
+        if (!verification.ok && !String(verification.reason || "").startsWith("keygen-verification-runtime-error:")) {
           return json({ ok: false, error: verification.reason }, 401);
         }
 
         const event = parseJsonSafe(rawBody, {});
-        await postM365Flow(env, "billing.keygen_event", {
-          verified: verification.verified,
-          keygenEventType: event?.meta?.event,
-          keygenPayload: event
-        });
+        let notification = { sent: false, reason: "not-attempted" };
+        try {
+          const keygenEventType = resolveKeygenEventType({ keygenPayload: event });
+          notification = await postM365Flow(env, "billing.keygen_event", {
+            verified: verification.verified,
+            verificationOk: verification.ok,
+            verificationReason: verification.reason || null,
+            keygenEventType,
+            keygenPayload: event
+          });
+        } catch (notifyErr) {
+          console.error("keygen-event-forwarding-failed", notifyErr);
+          notification = {
+            sent: false,
+            reason: notifyErr instanceof Error ? notifyErr.message : String(notifyErr)
+          };
+        }
 
-        return json({ ok: true, received: true, verified: verification.verified });
+        return json({
+          ok: true,
+          received: true,
+          verified: verification.verified,
+          verificationOk: verification.ok,
+          verificationReason: verification.reason || null,
+          notification
+        });
       } catch (err) {
         return serverError(err);
       }
@@ -680,13 +2986,52 @@ export default {
       }
 
       try {
-        const payload = await request.json();
+        const payload = await request.json().catch(() => ({}));
+        const stripeSessionId = sanitizeText(payload?.stripeSessionId);
 
-        await postM365Flow(env, "billing.manual_reissue_requested", {
-          request: payload
+        if (!stripeSessionId) {
+          await postM365Flow(env, "billing.manual_reissue_requested", {
+            request: payload,
+            status: "missing-stripe-session-id"
+          });
+          return json({ ok: false, error: "missing_stripe_session_id" }, 400);
+        }
+
+        const session = await fetchStripeCheckoutSession(stripeSessionId, env);
+        if (!session) {
+          return json({ ok: false, error: "stripe_session_not_found", stripeSessionId }, 404);
+        }
+
+        const result = await processCheckoutSessionForLicense(session, env, {
+          stripeEventId: sanitizeText(payload?.stripeEventId) || `manual-reissue-${Date.now()}`,
+          origin: "manual-reissue"
         });
 
-        return json({ ok: true, action: "queued-manual-reissue" });
+        await postM365Flow(env, "billing.manual_reissue_requested", {
+          request: payload,
+          stripeSessionId,
+          result
+        });
+
+        return json({ ok: true, action: "manual-reissue-processed", stripeSessionId, result });
+      } catch (err) {
+        return serverError(err);
+      }
+    }
+
+    if (request.method === "POST" && url.pathname === "/admin/reconciliation-report") {
+      const adminToken = request.headers.get("x-admin-token");
+      if (!env.ADMIN_API_TOKEN || adminToken !== env.ADMIN_API_TOKEN) {
+        return unauthorized();
+      }
+
+      try {
+        const payload = await request.json().catch(() => ({}));
+        const report = await sendWeeklyReconciliationReport(env, {
+          days: payload?.days
+        });
+
+        return json({ ok: true, action: "weekly-reconciliation-sent", report });
       } catch (err) {
         return serverError(err);
       }

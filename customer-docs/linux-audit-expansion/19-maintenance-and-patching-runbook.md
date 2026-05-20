@@ -2,21 +2,22 @@
 
 | Field | Value |
 | --- | --- |
-| Document version | 1.1 |
-| Last updated | 2026-05-05 |
+| Document version | 1.2 |
+| Last updated | 2026-05-10 |
 | Product | AuditToolkit Linux Security Lite |
 
 ---
 
 ## 19.1 Release channel
 
-New versions are published through the site release pages and support
-channel.
+New versions are published to GitHub Releases at:
+
+`https://github.com/AuditToolkitLabs/AuditToolkit-Linux-Security-Lite/releases`
 
 Subscribe to release notifications:
 
-- **Release hub**: check the site release pages for version history and
-  package availability.
+- **GitHub**: watch the repository and select "Releases" in notification
+  settings.
 - **Email**: send `Subscribe to releases` to
   [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com).
 
@@ -26,7 +27,7 @@ Each release includes:
 - Signed release packages (tarball, .deb, .rpm).
 - SHA-256 checksums for all packages.
 - GPG-signed annotated Git tag.
-- `scripts/toolkit-updater.sh` — bundled in all package formats from v1.1.4 onwards.
+- `scripts/toolkit-updater.sh` — bundled in all package formats from v1.2.1 onwards.
 
 Before a release tag is created, the customer-facing documentation must already
 be updated to the target version and pass `python3 ci/validate-customer-docs-release-version.py`.
@@ -41,7 +42,7 @@ The release workflow blocks if those references are still behind.
   FAIL/WARN thresholds.
 - [ ] Back up `/etc/audit-toolkit/` (configuration) and note the path of your
   current report archive under `/var/log/audit-toolkit/`. Both directories are
-  preserved automatically during package upgrades (v1.1.4+), but a manual
+  preserved automatically during package upgrades (v1.1.8+), but a manual
   backup is still recommended before major version changes:
   `cp -a /etc/audit-toolkit /etc/audit-toolkit.bak`
 - [ ] Download the new package and verify the SHA-256 checksum (see
@@ -67,7 +68,7 @@ sudo rpm -Uvh audit-toolkit-lite-<new-version>-1.noarch.rpm
 tar -xzf audit-toolkit-lite-<new-version>.tar.gz
 sudo bash audit-toolkit-lite-<new-version>/install.sh
 
-# Alternatively, use the bundled updater (v1.1.4+ packages only)
+# Alternatively, use the bundled updater (v1.1.8+ packages only)
 sudo bash /opt/audit-toolkit/scripts/toolkit-updater.sh patch
 ```
 
@@ -121,14 +122,14 @@ sudo rpm -Uvh --oldpackage audit-toolkit-lite-<previous-version>-1.noarch.rpm
 tar -xzf audit-toolkit-lite-<previous-version>.tar.gz
 sudo bash audit-toolkit-lite-<previous-version>/install.sh
 
-# Using the bundled updater rollback (v1.1.4+ source installs):
+# Using the bundled updater rollback (v1.1.8+ source installs):
 sudo bash /opt/audit-toolkit/scripts/toolkit-updater.sh rollback
 
 # Restore the config backup if needed
 sudo cp -a /etc/audit-toolkit.bak /etc/audit-toolkit
 ```
 
-From v1.1.4 the updater's rollback path uses `rsync --delete` (or an additive
+From v1.2.1 the updater's rollback path uses `rsync --delete` (or an additive
 copy fallback) rather than a destructive `rm -rf` — existing configuration and
 log files under `/etc/audit-toolkit/` and `/var/log/audit-toolkit/` are not
 removed by a rollback operation.
@@ -171,3 +172,5 @@ logrotate -f /etc/logrotate.d/audit-toolkit
 
 If using the installed `.deb` or `.rpm` package, a logrotate configuration
 is included at `/etc/logrotate.d/audit-toolkit`.
+
+

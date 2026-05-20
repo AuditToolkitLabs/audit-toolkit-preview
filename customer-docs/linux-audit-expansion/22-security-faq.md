@@ -4,8 +4,8 @@
 
 | Field | Value |
 | --- | --- |
-| Document version | 1.0 |
-| Last updated | 2026-05-03 |
+| Document version | 1.2 |
+| Last updated | 2026-05-10 |
 | Product | AuditToolkit Linux Security Lite |
 
 This document provides concise answers to questions commonly raised during
@@ -96,7 +96,7 @@ useful to an attacker.
 **Q: How are release packages verified?**
 
 Every release package is accompanied by a SHA-256 checksum file published
-alongside the package in the approved release archive. RPM packages carry a GPG
+alongside the package on GitHub Releases. RPM packages carry a GPG
 signature. Git release tags are GPG-signed by the AuditToolkitLabs
 release key.
 

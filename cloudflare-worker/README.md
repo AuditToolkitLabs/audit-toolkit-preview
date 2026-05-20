@@ -12,6 +12,7 @@ This worker provides the missing public webhook/API layer for:
 - `POST /webhooks/stripe`
 - `POST /webhooks/keygen`
 - `POST /admin/reissue-license` (protected with `x-admin-token`)
+- `POST /admin/reconciliation-report` (protected with `x-admin-token`)
 
 ## Flow Summary
 
@@ -139,3 +140,26 @@ Use one HTTP-triggered flow:
 - If plan mapping fails, the worker emits `billing.plan_unresolved` to M365 flow so your team can intervene.
 - Duplicate Stripe deliveries are ignored via KV event-id dedupe and session-level issuance record checks.
 - For enterprise MSP/OEM paths, continue manual contract checks before policy assignment.
+
+## Auto Retry Controls
+
+The worker now supports automatic retry for unresolved paid sessions.
+
+- Unresolved sessions are queued in KV under `unresolved:<stripe_session_id>`.
+- Retry sweep runs after Stripe webhook processing.
+- Retries use exponential backoff and capped attempts.
+- On recovery, the worker emits `billing.plan_unresolved_recovered` and normal `billing.license_issued`.
+- On max-attempt exhaustion, the worker emits `billing.plan_unresolved_retry_exhausted`.
+
+Optional environment variables:
+
+- `AUTO_RETRY_PLAN_UNRESOLVED` = `true|false` (default `true`)
+- `AUTO_RETRY_MAX_ATTEMPTS` = integer (default `6`)
+- `AUTO_RETRY_BASE_DELAY_SECONDS` = integer seconds (default `300`)
+- `BILLING_OPS_EMAIL` = support destination (default `support@audittoolkitlabs.com`)
+- `BILLING_SALES_EMAIL` = sales/commercial destination (default `license@audittoolkitlabs.com`)
+- `BILLING_ESCALATION_EMAIL` = escalation recipient (fallback to `BILLING_OPS_EMAIL`)
+
+## Ops Runbook
+
+- See `BILLING-OPERATIONS-RUNBOOK.md` for incident handling, reconciliation, and response procedures.

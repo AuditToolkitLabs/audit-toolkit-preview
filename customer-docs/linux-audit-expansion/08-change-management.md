@@ -4,8 +4,8 @@
 
 | Field | Value |
 | --- | --- |
-| Document version | 1.1 |
-| Last updated | 2026-05-01 |
+| Document version | 1.2 |
+| Last updated | 2026-05-10 |
 | Product | AuditToolkit Linux Security Lite |
 
 ---
@@ -20,9 +20,9 @@
 
 ## 8.2 Patch and upgrade responsibilities
 
-- AuditToolkitLabs publishes release notes and packages through the site
-  release hub. Subscribe to release notifications by checking the release
-  pages or emailing [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com)
+- AuditToolkitLabs publishes release notes and packages to GitHub Releases.
+  Subscribe to release notifications by watching the repository or emailing
+  [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com)
   with the subject `Subscribe to releases`.
 - The customer is responsible for applying upgrades in line with their
   internal change process.
@@ -36,8 +36,7 @@
 Full procedure is in [19 — Maintenance and Patching Runbook](19-maintenance-and-patching-runbook.md).
 Summary:
 
-1. Download the new release package from the release hub or request it
-  from support.
+1. Download the new release package from GitHub Releases.
 2. Verify the SHA-256 checksum against the published value.
 3. Run the upgrade on a pilot host first.
 4. Confirm the schema validation passes on a fresh report.

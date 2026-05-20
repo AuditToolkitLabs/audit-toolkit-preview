@@ -3,9 +3,9 @@
 | Field | Value |
 | --- | --- |
 | Document version | 1.0 |
-| Last updated | 2026-05-04 |
+| Last updated | 2026-05-19 |
 | Product | AuditToolkit Linux Security Lite |
-| Release | v1.1.4 |
+| Release | v1.2.2 |
 | Provider | AuditToolkitLabs |
 | Provider contact | [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com) |
 
@@ -96,6 +96,10 @@ status and no GA date has been set.
 The canonical, legally binding license terms are in the `LICENSE` file
 distributed with the product. In the event of any conflict between this
 document and the `LICENSE` file, the `LICENSE` file controls.
+
+This document has been reviewed for release v1.2.2 and remains aligned with
+the current Business Source License 1.1 terms, EULA, privacy policy, and
+disclaimer shipped with this release.
 
 ---
 
@@ -325,3 +329,4 @@ In the event of any conflict between this document and the `LICENSE` or
 
 Response times and support commitments are described in
 [20 — Support Engagement Guide](20-support-engagement-guide.md).
+

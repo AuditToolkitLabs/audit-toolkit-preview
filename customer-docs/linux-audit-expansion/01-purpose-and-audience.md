@@ -3,9 +3,9 @@
 | Field | Value |
 | --- | --- |
 | Document version | 1.1 |
-| Last updated | 2026-05-04 |
+| Last updated | 2026-05-19 |
 | Product | AuditToolkit Linux Security Lite |
-| Release | v1.1.4 |
+| Release | v1.2.2 |
 | Deployment model | On-premises / self-hosted |
 
 ---
@@ -78,3 +78,6 @@ the source distribution or release package.
 | Troubleshooting Guide | `docs/TROUBLESHOOTING-GUIDE.md` |
 | Installation Guide (customer) | `customer-docs/18-installation-guide.md` |
 | Security FAQ (customer) | `customer-docs/22-security-faq.md` |
+
+
+

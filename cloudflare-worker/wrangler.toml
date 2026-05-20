@@ -9,7 +9,7 @@ KEYGEN_API_BASE_URL = "https://api.keygen.sh"
 # Optional Stripe API key enables fallback resolution via session line items when metadata is missing.
 # STRIPE_API_SECRET is a secret and must be set using: wrangler secret put STRIPE_API_SECRET
 # KEYGEN_WEBHOOK_PUBLIC_KEY should be set as a secret and used to verify /webhooks/keygen signatures.
-PRICE_POLICY_MAP_JSON = "{\"byPriceId\":{},\"byLookupKey\":{}}"
+PRICE_POLICY_MAP_JSON = "{\"byPriceId\":{\"price_1TYhmXF107vmGJKCRvJubmx4\":{\"keygenPolicyId\":\"b3655163-203f-4e08-94b7-a51b7e5c7e9b\",\"planCode\":\"Test\"}},\"byLookupKey\":{},\"byProductId\":{\"prod_UXnNLhEL9MSgOY\":{\"keygenPolicyId\":\"b3655163-203f-4e08-94b7-a51b7e5c7e9b\",\"planCode\":\"Test\"}}}"
 
 [[kv_namespaces]]
 binding = "BILLING_EVENTS_KV"

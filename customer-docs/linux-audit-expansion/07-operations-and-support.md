@@ -5,7 +5,7 @@
 | Field | Value |
 | --- | --- |
 | Document version | 1.1 |
-| Last updated | 2026-05-01 |
+| Last updated | 2026-05-19 |
 | Product | AuditToolkit Linux Security Lite |
 
 ---
@@ -71,13 +71,13 @@ Include with every escalation to the service provider:
 
 The toolkit is a self-contained binary distribution. Continuity measures:
 
-- Treat `v1.1.4` as the current approved public release for deployment.
+- Treat `v1.2.2` as the current approved public release for deployment.
 - Do not redeploy superseded public releases affected by the licensing defect.
 - If you maintain an internal artefact store, retain only packages that have
   passed your own validation and approval gate.
 - For fleet deployments, stagger upgrades — pilot on 10% of hosts first.
-- Retain signed release checksums from the approved release archive for
-  integrity verification.
+- Retain signed release checksums from GitHub Releases for integrity
+  verification.
 
 ## 7.4 AuditToolkitLabs contact directory
 
@@ -119,3 +119,4 @@ The product repository is at
 **Do not** post customer-identifying data, production hostnames,
 IP addresses, or audit report extracts to public GitHub issues.
 **Do not** report suspected vulnerabilities in public Issues or Discussions.
+

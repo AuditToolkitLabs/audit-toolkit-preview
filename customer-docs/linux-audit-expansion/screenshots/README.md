@@ -4,6 +4,8 @@ Store customer-facing UI and workflow screenshots used in this documentation set
 
 This folder contains a clean, known-good screenshot set with separate CLI and HTML captures.
 
+Release sync: validated for customer documentation release `v1.1.7` on `2026-05-10`.
+
 See SCREENSHOT-MANIFEST.md for the ordered list used by web and docs teams.
 
 Current screenshot set:
@@ -31,3 +33,5 @@ Current screenshot set:
   - 13-html-enterprise-siem-export.png
 
 Capture source files are stored under customer-docs/screenshots/_capture-source.
+
+

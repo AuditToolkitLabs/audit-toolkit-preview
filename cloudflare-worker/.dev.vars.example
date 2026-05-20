@@ -20,3 +20,11 @@ M365_FLOW_WEBHOOK_URL=
 
 # Optional token for /admin/reissue-license endpoint
 ADMIN_API_TOKEN=replace_with_long_random_value
+
+# Optional internal routing overrides
+# Ops/incident notifications default to support@audittoolkitlabs.com
+BILLING_OPS_EMAIL=
+# Sales/commercial notifications default to license@audittoolkitlabs.com
+BILLING_SALES_EMAIL=
+# Optional escalation override (falls back to BILLING_OPS_EMAIL)
+BILLING_ESCALATION_EMAIL=

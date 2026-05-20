@@ -1,0 +1,176 @@
+POWER AUTOMATE FLOW SETUP (COPY-READY)
+
+==================================================
+1) TRIGGER - WHEN AN HTTP REQUEST IS RECEIVED
+==================================================
+Who can trigger the flow:
+Anyone with the URL
+
+Request Body JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "source": {
+      "type": "string"
+    },
+    "eventType": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "stripeEventId": {
+          "type": "string"
+        },
+        "stripeSessionId": {
+          "type": "string"
+        },
+        "customerEmail": {
+          "type": "string"
+        },
+        "planCode": {
+          "type": "string"
+        },
+        "keygenLicenseId": {
+          "type": "string"
+        },
+        "keygenLicenseKey": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "object"
+        },
+        "stripeObject": {
+          "type": "object"
+        },
+        "keygenEventType": {
+          "type": "string"
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "existingLicense": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "required": [
+    "eventType",
+    "timestamp",
+    "payload"
+  ]
+}
+
+Optional trigger condition (Settings -> Trigger conditions):
+@and(not(empty(triggerBody()?['eventType'])), not(empty(triggerBody()?['timestamp'])))
+
+==================================================
+2) CONDITION - CHECK EVENT TYPE
+==================================================
+Use advanced mode expression:
+@equals(triggerBody()?['eventType'], 'billing.license_issued')
+
+==================================================
+3) TRUE BRANCH EMAIL (LICENSE ISSUED)
+==================================================
+Action:
+Send an email notification (V3)
+
+To:
+License@audittoolkitlabs.com
+
+Subject:
+[Ops] Licence issued - @{triggerBody()?['payload']?['planCode']} - @{triggerBody()?['payload']?['customerEmail']}
+
+Body:
+Licence issuance event received.
+Customer: @{triggerBody()?['payload']?['customerEmail']}
+Plan: @{triggerBody()?['payload']?['planCode']}
+Licence Key: @{triggerBody()?['payload']?['keygenLicenseKey']}
+Licence ID: @{triggerBody()?['payload']?['keygenLicenseId']}
+Stripe Session: @{triggerBody()?['payload']?['stripeSessionId']}
+Stripe Event: @{triggerBody()?['payload']?['stripeEventId']}
+Event Type: @{triggerBody()?['eventType']}
+Timestamp: @{triggerBody()?['timestamp']}
+
+==================================================
+4) FALSE BRANCH SWITCH
+==================================================
+Switch On:
+@{triggerBody()?['eventType']}
+
+If expression tab is required, enter this instead (without @{ }):
+triggerBody()?['eventType']
+
+Case values (plain text):
+billing.plan_unresolved
+billing.invoice_payment_failed
+billing.customer_subscription_deleted
+billing.customer_subscription_updated
+billing.invoice_paid
+billing.keygen_event
+billing.license_already_exists
+
+Default:
+(keep for unknown events)
+
+==================================================
+5) CASE EMAIL TEMPLATE (USE FOR EACH CASE)
+==================================================
+Action:
+Send an email notification (V3)
+
+To:
+License@audittoolkitlabs.com
+
+Subject:
+[Ops] @{triggerBody()?['eventType']}
+
+Body:
+Event Type: @{triggerBody()?['eventType']}
+Timestamp: @{triggerBody()?['timestamp']}
+Payload: @{string(triggerBody()?['payload'])}
+
+==================================================
+6) DEFAULT CASE EMAIL TEMPLATE
+==================================================
+Action:
+Send an email notification (V3)
+
+To:
+License@audittoolkitlabs.com
+
+Subject:
+[Ops] Unhandled billing event - @{triggerBody()?['eventType']}
+
+Body:
+Unhandled event received by flow.
+Event Type: @{triggerBody()?['eventType']}
+Timestamp: @{triggerBody()?['timestamp']}
+Full Body: @{string(triggerBody())}
+
+==================================================
+7) TEST PAYLOAD (FOR TRIGGER TEST)
+==================================================
+{
+  "source": "audittoolkit-cloudflare-worker",
+  "eventType": "billing.license_issued",
+  "timestamp": "2026-05-18T12:00:00Z",
+  "payload": {
+    "stripeEventId": "evt_test_123",
+    "stripeSessionId": "cs_test_123",
+    "customerEmail": "customer@example.com",
+    "planCode": "business-500",
+    "keygenLicenseId": "lic_123",
+    "keygenLicenseKey": "ABCD-EFGH-IJKL-MNOP",
+    "metadata": {},
+    "stripeObject": {},
+    "keygenEventType": "license.created",
+    "verified": true,
+    "existingLicense": {}
+  }
+}

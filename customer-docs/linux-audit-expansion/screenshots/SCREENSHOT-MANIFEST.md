@@ -2,6 +2,8 @@
 
 Purpose: Clean, tool-specific screenshot set for website and customer documentation.
 
+Release sync: validated for customer documentation release `v1.1.7` on `2026-05-10`.
+
 ## Ordered sequence - CLI captures
 
 1. CLI/01-tool-orchestrator-help.png
@@ -42,3 +44,5 @@ HTML captures are generated from the running toolkit GUI at <http://127.0.0.1:80
 ## Mirror location
 
 E:/repo-splits-2/audit-toolkit-preview/customer-docs/linux-audit-expansion/screenshots
+
+

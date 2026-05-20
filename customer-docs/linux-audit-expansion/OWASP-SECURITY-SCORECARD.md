@@ -1,8 +1,9 @@
 # OWASP Security Scorecard
 
-Assessment date: 2026-05-03  
-Product: AuditToolkit-Linux-Security-Lite  
-Scope: Repository security posture (tooling, web agent, CLI agent, supporting Python modules)
+Assessment date: 2026-05-19  
+Product: AuditToolkit Linux Security Lite  
+Release assessed: v1.2.2  
+Scope: Repository security posture for the currently published v1.2.2 release (tooling, web agent, CLI agent, supporting Python modules)
 
 ## Overall Result
 
@@ -11,6 +12,8 @@ Scope: Repository security posture (tooling, web agent, CLI agent, supporting Py
 - Status: Pass (enterprise release gate)
 
 ## Evidence Summary
+
+This scorecard reflects the release posture for v1.2.2.
 
 - Bandit full severity scan (repository-wide): pass
   - Command: `python -m bandit -r . -x .venv,venv,__pycache__,.git,.github,build,dist,node_modules`
@@ -23,7 +26,7 @@ Scope: Repository security posture (tooling, web agent, CLI agent, supporting Py
 ## OWASP Top 10 (2021) Mapping
 
 | OWASP Category | Score | Status | Notes |
-|---|---:|---|---|
+| --- | ---: | --- | --- |
 | A01 Broken Access Control | 10/10 | Pass | License and route gating enforced; input allow-list checks added for scheduled scripts. |
 | A02 Cryptographic Failures | 9/10 | Pass | TLS validation enforced for Core sync requests; secure key handling patterns retained. |
 | A03 Injection | 10/10 | Pass | Command and path validation controls in place; no new injection paths introduced in this cycle. |
@@ -40,9 +43,12 @@ Scope: Repository security posture (tooling, web agent, CLI agent, supporting Py
 - Fixed remaining Bandit medium findings in `agents/html-linux/cli.py`:
   - URL request path now validates absolute HTTP(S) URL before network call.
   - Custom synced scripts now use stricter file mode (`0o700`) after write.
+- Fixed Windows repository-run web path handling in `agents/html-linux/web/app.py` so audit categories are discovered from `audits/linux` during local Windows development runs.
 - Confirmed no low/medium/high Bandit findings remain in repository-wide scan.
 - Confirmed customer-facing scorecard file exists and is aligned with references from customer docs.
+- Confirmed release-facing legal and assurance documentation now reference v1.2.2 consistently.
 
 ## Conclusion
 
-Security posture is enterprise-ready with a perfect score of 100/100 (A+). All OWASP Top 10 categories are fully addressed. GPG signing is enforced for all commits and release artifacts (A08 fully closed), and the latest code changes remove all current medium/high Bandit findings from repository-wide scans.
+Security posture for v1.2.2 is enterprise-ready with a perfect score of 100/100 (A+). All OWASP Top 10 categories are fully addressed. GPG signing is enforced for all commits and release artifacts (A08 fully closed), and the latest code changes remove all current medium/high Bandit findings from repository-wide scans.
+

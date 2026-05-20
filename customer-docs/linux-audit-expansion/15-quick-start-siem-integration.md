@@ -40,7 +40,7 @@ LATEST_REPORT=$(ls -t "${REPORT_DIR}"/report-*.json | head -n1)
 jq '{
   event_type: "audit_posture_summary",
   tool: "audit-toolkit-linux-security-lite",
-  tool_version: "1.1.4",
+  tool_version: "1.2.2",
   generated_at: .generated_at,
   host: .host_identity.hostname,
   distro_id: .host_identity.distro_id,
@@ -141,3 +141,6 @@ Suggested panels for a SIEM posture dashboard:
   90 days even after shipping to the SIEM.
 - Redact `host_identity.hostname` and IP fields before shipping reports
   across security boundaries if required by your data-classification policy.
+
+
+

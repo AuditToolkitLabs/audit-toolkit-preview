@@ -118,7 +118,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install AuditToolkit
-        run: sudo dpkg -i dist/audit-toolkit-lite_1.1.4_all.deb
+        run: sudo dpkg -i dist/audit-toolkit-lite_1.2.2_all.deb
 
       - name: Run security audit
         run: sudo audit-toolkit --auto --json /tmp/audit-report.json
@@ -147,3 +147,4 @@ jobs:
 
 Use stricter thresholds for production; this ensures the compliance gate
 provides meaningful assurance rather than only catching gross failures.
+

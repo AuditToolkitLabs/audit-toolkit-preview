@@ -5,9 +5,9 @@
 | Field | Value |
 | --- | --- |
 | Document version | 1.1 |
-| Last updated | 2026-05-04 |
+| Last updated | 2026-05-19 |
 | Product | AuditToolkit Linux Security Lite |
-| Release | v1.1.4 |
+| Release | v1.2.2 |
 
 ---
 
@@ -139,3 +139,6 @@ for commercial licensing enquiries.
 For the complete licensing terms, EULA, acceptable use requirements, and
 pre-use change control obligations, see
 [23 — Licensing, Legal Terms, and Acceptable Use](23-licensing-and-legal.md).
+
+
+
