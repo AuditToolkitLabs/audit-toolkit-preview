@@ -13,12 +13,15 @@ This worker provides the public commercial/licensing layer for:
 - `GET /health`
 - `GET /nvd/cve/:cveId`
 - `GET /nvd/search`
+- `GET /nvd/download/cve/:cveId`
+- `GET /nvd/download/search`
 - `POST /webhooks/stripe`
 - `POST /webhooks/keygen`
 - `POST /webhooks/resend`
 - `POST /admin/reissue-license` (protected with `x-admin-token`)
 - `POST /admin/reconciliation-report` (protected with `x-admin-token`)
 - `POST /admin/nvd/refresh` (protected with `x-admin-token`)
+- `POST /admin/nvd/prewarm` (protected with `x-admin-token`)
 
 ## NVD Broker Model
 
@@ -38,6 +41,13 @@ Use this worker as the single NVD source for all repos.
 - `POST /admin/nvd/refresh`
   - Body: `{ "cveId": "CVE-2024-12345" }`
   - Clears cache for that CVE and refreshes from upstream.
+- `GET /nvd/download/cve/CVE-2024-12345`
+  - Returns downloadable JSON attachment for customer/tool consumption.
+- `GET /nvd/download/search?cpeName=...`
+  - Returns downloadable JSON attachment for filtered search data.
+- `POST /admin/nvd/prewarm`
+  - Body: `{ "cveIds": ["CVE-2024-12345", "CVE-2024-99999"] }`
+  - Preloads broker cache for known CVEs before customer bulk access.
 
 ### NVD Caching and Throttling
 
@@ -46,6 +56,16 @@ Use this worker as the single NVD source for all repos.
 - Default keyed interval: `NVD_MIN_INTERVAL_MS` (default `1200`)
 - Default no-key fallback interval: `NVD_NO_KEY_MIN_INTERVAL_MS` (default `8000`)
 - Cache TTL: `NVD_CACHE_TTL_SECONDS` (default `3600`)
+
+### Customer Distribution Compliance Pattern
+
+Use this pattern across all toolkits to keep customer access broad while preserving NVD API compliance:
+
+- All customer/tool downloads must call broker endpoints (`/nvd/*`) instead of NVD directly.
+- Keep `NVD_API_KEY` only in worker secret storage; do not place it in customer apps or repos.
+- Use `/nvd/download/*` routes when customers need full JSON files.
+- Use `/admin/nvd/prewarm` during release cycles to populate cache for high-demand CVEs.
+- Keep broker token optional for internal-only channels (`NVD_BROKER_TOKEN`) and disable for public customer channels if required.
 
 ## Flow Summary
 
@@ -118,7 +138,20 @@ NVD notes:
   - `NVD_MIN_INTERVAL_MS = "1200"`
   - `NVD_NO_KEY_MIN_INTERVAL_MS = "8000"`
   - `NVD_CACHE_TTL_SECONDS = "3600"`
+  - `NVD_PREWARM_MAX_CVE_IDS = "100"`
   - `NVD_API_BASE_URL = "https://services.nvd.nist.gov/rest/json/cves/2.0"`
+
+### Reusable Toolkit Client
+
+Use `scripts/nvd-broker-client.mjs` in this repo as the reference client for other toolkits.
+
+Examples:
+
+```bash
+NVD_BROKER_BASE_URL="https://<worker-domain>" node ./scripts/nvd-broker-client.mjs cve CVE-2024-3094
+NVD_BROKER_BASE_URL="https://<worker-domain>" node ./scripts/nvd-broker-client.mjs download-cve CVE-2024-3094
+NVD_BROKER_BASE_URL="https://<worker-domain>" node ./scripts/nvd-broker-client.mjs download-search "keywordSearch=openssl"
+```
 
 1. Run locally:
 

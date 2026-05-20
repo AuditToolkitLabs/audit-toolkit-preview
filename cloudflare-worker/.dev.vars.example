@@ -32,6 +32,17 @@ M365_FLOW_WEBHOOK_URL=
 # Optional token for /admin/reissue-license endpoint
 ADMIN_API_TOKEN=replace_with_long_random_value
 
+# Optional NVD broker settings
+# Keep NVD_API_KEY server-side only in the worker environment.
+NVD_API_KEY=
+NVD_BROKER_TOKEN=
+NVD_ALLOW_NO_KEY=false
+NVD_MIN_INTERVAL_MS=1200
+NVD_NO_KEY_MIN_INTERVAL_MS=8000
+NVD_CACHE_TTL_SECONDS=3600
+NVD_PREWARM_MAX_CVE_IDS=100
+NVD_API_BASE_URL=https://services.nvd.nist.gov/rest/json/cves/2.0
+
 # Optional internal routing overrides
 # Ops/incident notifications default to support@audittoolkitlabs.com
 BILLING_OPS_EMAIL=

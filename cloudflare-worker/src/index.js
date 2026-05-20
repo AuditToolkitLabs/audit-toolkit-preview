@@ -390,6 +390,16 @@ function parseJsonSafe(value, fallback = null) {
   }
 }
 
+function jsonDownload(data, filename, status = 200) {
+  return new Response(JSON.stringify(data, null, 2), {
+    status,
+    headers: {
+      "content-type": "application/json; charset=utf-8",
+      "content-disposition": `attachment; filename="${filename}"`
+    }
+  });
+}
+
 function toPositiveInteger(value, fallback) {
   const parsed = Number.parseInt(sanitizeText(value), 10);
   if (!Number.isFinite(parsed) || parsed <= 0) return fallback;
@@ -679,6 +689,100 @@ async function handleNvdSearch(request, env, url) {
   });
 }
 
+async function handleNvdCveDownload(request, env, url) {
+  const cveId = sanitizeText(decodeURIComponent(url.pathname.split("/").pop() || "")).toUpperCase();
+  if (!/^CVE-\d{4}-\d{4,}$/.test(cveId)) {
+    return json({ ok: false, error: "invalid_cve_id", cveId }, 400);
+  }
+
+  const result = await fetchNvdData(`?cveId=${encodeURIComponent(cveId)}`, env, {
+    defaultCacheTtlSeconds: 4 * 60 * 60
+  });
+
+  if (!result.ok) {
+    return json(
+      {
+        ok: false,
+        error: result.error,
+        message: result.message || null,
+        retryAfterSeconds: result.retryAfterSeconds || null
+      },
+      result.status || 500
+    );
+  }
+
+  const filename = `${cveId.toLowerCase()}.json`;
+  return jsonDownload(
+    {
+      ok: true,
+      cveId,
+      cached: result.cached,
+      cacheSource: result.cacheSource,
+      payload: result.payload
+    },
+    filename
+  );
+}
+
+async function handleNvdSearchDownload(request, env, url) {
+  const params = new URLSearchParams();
+  const allowedParams = [
+    "cpeName",
+    "keywordSearch",
+    "cvssV3Severity",
+    "pubStartDate",
+    "pubEndDate",
+    "lastModStartDate",
+    "lastModEndDate",
+    "resultsPerPage",
+    "startIndex"
+  ];
+
+  for (const key of allowedParams) {
+    const value = sanitizeText(url.searchParams.get(key));
+    if (value) params.set(key, value);
+  }
+
+  if ([...params.keys()].length === 0) {
+    return json(
+      {
+        ok: false,
+        error: "missing_query",
+        message: "Provide at least one supported filter (for example: cpeName or keywordSearch)."
+      },
+      400
+    );
+  }
+
+  const result = await fetchNvdData(`?${params.toString()}`, env, {
+    defaultCacheTtlSeconds: 60 * 60
+  });
+
+  if (!result.ok) {
+    return json(
+      {
+        ok: false,
+        error: result.error,
+        message: result.message || null,
+        retryAfterSeconds: result.retryAfterSeconds || null
+      },
+      result.status || 500
+    );
+  }
+
+  const filename = `nvd-search-${Date.now()}.json`;
+  return jsonDownload(
+    {
+      ok: true,
+      cached: result.cached,
+      cacheSource: result.cacheSource,
+      filters: Object.fromEntries(params.entries()),
+      payload: result.payload
+    },
+    filename
+  );
+}
+
 async function handleNvdCacheRefresh(request, env) {
   const payload = await request.json().catch(() => ({}));
   const cveId = sanitizeText(payload?.cveId).toUpperCase();
@@ -719,6 +823,53 @@ async function handleNvdCacheRefresh(request, env) {
     cached: result.cached,
     cacheSource: result.cacheSource,
     payload: result.payload
+  });
+}
+
+async function handleNvdPrewarm(request, env) {
+  const body = await request.json().catch(() => ({}));
+  const rawCveIds = Array.isArray(body?.cveIds) ? body.cveIds : [];
+  const maxCveIds = toPositiveInteger(env.NVD_PREWARM_MAX_CVE_IDS, 100);
+
+  const cveIds = [...new Set(rawCveIds.map((value) => sanitizeText(value).toUpperCase()))]
+    .filter((value) => /^CVE-\d{4}-\d{4,}$/.test(value))
+    .slice(0, maxCveIds);
+
+  if (cveIds.length === 0) {
+    return json(
+      {
+        ok: false,
+        error: "missing_or_invalid_cve_ids",
+        message: "Provide body { cveIds: [\"CVE-YYYY-NNNN\", ...] }"
+      },
+      400
+    );
+  }
+
+  const results = [];
+  for (const cveId of cveIds) {
+    const result = await fetchNvdData(`?cveId=${encodeURIComponent(cveId)}`, env, {
+      defaultCacheTtlSeconds: 4 * 60 * 60
+    });
+
+    results.push({
+      cveId,
+      ok: result.ok,
+      cached: result.cached || false,
+      cacheSource: result.cacheSource || null,
+      error: result.error || null,
+      status: result.status || 200,
+      retryAfterSeconds: result.retryAfterSeconds || null
+    });
+  }
+
+  const successful = results.filter((item) => item.ok).length;
+  return json({
+    ok: true,
+    requested: cveIds.length,
+    successful,
+    failed: cveIds.length - successful,
+    results
   });
 }
 
@@ -3427,6 +3578,56 @@ export default {
       }
     }
 
+    if (request.method === "GET" && url.pathname.startsWith("/nvd/download/cve/")) {
+      if (!isAuthorizedForBroker(request, env)) {
+        return unauthorized();
+      }
+
+      const hasNvdKey = Boolean(env.NVD_API_KEY);
+      if (!hasNvdKey && !canUseNoKeyFallback(url, env)) {
+        return json(
+          {
+            ok: false,
+            error: "nvd_key_required",
+            message:
+              "NVD_API_KEY is missing and no-key mode is disabled. Set NVD_API_KEY or NVD_ALLOW_NO_KEY=true for low-volume local fallback."
+          },
+          503
+        );
+      }
+
+      try {
+        return await handleNvdCveDownload(request, env, url);
+      } catch (err) {
+        return serverError(err);
+      }
+    }
+
+    if (request.method === "GET" && url.pathname === "/nvd/download/search") {
+      if (!isAuthorizedForBroker(request, env)) {
+        return unauthorized();
+      }
+
+      const hasNvdKey = Boolean(env.NVD_API_KEY);
+      if (!hasNvdKey && !canUseNoKeyFallback(url, env)) {
+        return json(
+          {
+            ok: false,
+            error: "nvd_key_required",
+            message:
+              "NVD_API_KEY is missing and no-key mode is disabled. Set NVD_API_KEY or NVD_ALLOW_NO_KEY=true for low-volume local fallback."
+          },
+          503
+        );
+      }
+
+      try {
+        return await handleNvdSearchDownload(request, env, url);
+      } catch (err) {
+        return serverError(err);
+      }
+    }
+
     if (request.method === "POST" && url.pathname === "/webhooks/stripe") {
       try {
         const rawBody = await request.text();
@@ -3619,6 +3820,32 @@ export default {
 
       try {
         return await handleNvdCacheRefresh(request, env);
+      } catch (err) {
+        return serverError(err);
+      }
+    }
+
+    if (request.method === "POST" && url.pathname === "/admin/nvd/prewarm") {
+      const adminToken = request.headers.get("x-admin-token");
+      if (!env.ADMIN_API_TOKEN || adminToken !== env.ADMIN_API_TOKEN) {
+        return unauthorized();
+      }
+
+      const hasNvdKey = Boolean(env.NVD_API_KEY);
+      if (!hasNvdKey && !canUseNoKeyFallback(url, env)) {
+        return json(
+          {
+            ok: false,
+            error: "nvd_key_required",
+            message:
+              "NVD_API_KEY is missing and no-key mode is disabled. Set NVD_API_KEY or NVD_ALLOW_NO_KEY=true for low-volume local fallback."
+          },
+          503
+        );
+      }
+
+      try {
+        return await handleNvdPrewarm(request, env);
       } catch (err) {
         return serverError(err);
       }
