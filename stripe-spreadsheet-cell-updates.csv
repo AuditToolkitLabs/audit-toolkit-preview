@@ -1,0 +1,4 @@
+line,family,product_id,payment_link_url,spreadsheet_column,current_value,new_value,issues
+22,cmdb-api,prod_UPZ0CQjeZ6vsDu,https://checkout.audittoolkitlabs.com/b/fZu4gz0nk4D873YbLXfQI02,Duration,30 days,One-time,duration mismatch: sheet='30 days ' stripe has no recurring/trial duration
+22,cmdb-api,prod_UPZ0CQjeZ6vsDu,https://checkout.audittoolkitlabs.com/b/fZu4gz0nk4D873YbLXfQI02,Price,,0,duration mismatch: sheet='30 days ' stripe has no recurring/trial duration
+24,cmdb-api,prod_UPZ00VtLr33Xt4,https://checkout.audittoolkitlabs.com/b/aFafZhda61qW4VQaHTfQI07,Duration,Yearly,Monthly,duration mismatch: sheet='Yearly' stripe=1 month

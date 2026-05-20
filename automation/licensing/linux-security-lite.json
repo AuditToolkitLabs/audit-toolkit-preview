@@ -1,0 +1,132 @@
+{
+  "product_key": "linux-security-lite",
+  "product_name": "Linux Security Lite",
+  "license_model": "BSL 1.1",
+  "mit_conversion_date": "9 February 2031",
+  "manual_contact": {
+    "email": "License@audittoolkitlabs.com",
+    "support_path": "support.html#contact"
+  },
+  "frontdoor": {
+    "auto_checkout_enabled": true,
+    "auto_issue_enabled": true,
+    "manual_fallback_enabled": true,
+    "manual_fallback_conditions": [
+      "missing_or_disabled_checkout_link",
+      "invoice_or_purchase_order_requested",
+      "enterprise_msp_or_volume_terms_required",
+      "failed_or_disputed_payment"
+    ]
+  },
+  "tiers": [
+    {
+      "name": "Community",
+      "keygen_policy_id": "f2ea09ff",
+      "price_gbp": 0,
+      "description": "Free tier for local/internal security auditing with HTML reporting and standalone operation.",
+      "features": [
+        { "text": "All required baseline controls and optional extensions", "included": true },
+        { "text": "Standalone deployment with local reporting", "included": true },
+        { "text": "Up to 3 scheduled audits", "included": true },
+        { "text": "No licence key required", "included": true },
+        { "text": "Community email support", "included": true },
+        { "text": "Centralised Core Server management", "included": false },
+        { "text": "Compliance attestation reports", "included": false }
+      ],
+      "cta": {
+        "checkout_url": null,
+        "checkout_label": "Buy via Stripe &rarr;",
+        "fallback_url": "linux-security-lite-releases.html",
+        "fallback_label": "View Release Notes",
+        "checkout_note": "Secure checkout via Stripe &middot; Keygen key emailed on payment",
+        "fallback_note": "No purchase or registration required",
+        "button_class": "btn-secondary"
+      }
+    },
+    {
+      "name": "Starter",
+      "keygen_policy_id": "1a520e74",
+      "price_gbp": 79,
+      "description": "Entry commercial tier for small production deployments requiring licensed commercial use.",
+      "features": [
+        { "text": "Commercial production use", "included": true },
+        { "text": "Core reporting and scheduling workflows", "included": true },
+        { "text": "Email support", "included": true },
+        { "text": "Upgrade path to Professional and Business", "included": true }
+      ],
+      "featured": false,
+      "cta": {
+        "checkout_url": null,
+        "checkout_label": "Buy via Stripe &rarr;",
+        "fallback_url": "support.html#contact",
+        "fallback_label": "Get Starter Checkout &rarr;",
+        "checkout_note": "Secure checkout via Stripe &middot; Keygen key emailed on payment",
+        "fallback_note": "Stripe payment link available &middot; Keygen key emailed on payment",
+        "button_class": "btn-secondary"
+      }
+    },
+    {
+      "name": "Professional",
+      "keygen_policy_id": "f1e63ab2",
+      "price_gbp": 299,
+      "description": "Commercial tier for centralised compliance operations across small and mid-sized Linux estates.",
+      "featured": true,
+      "featured_badge": "Most Popular",
+      "features": [
+        { "text": "Centralised Core Server management", "included": true },
+        { "text": "Compliance attestation reporting (CIS/NIST/PCI workflows)", "included": true },
+        { "text": "Unlimited schedules and retention on Core Server", "included": true },
+        { "text": "Commercial production use", "included": true },
+        { "text": "48-hour email support response", "included": true }
+      ],
+      "cta": {
+        "checkout_url": "https://checkout.audittoolkitlabs.com/b/dRmeVd1ro5HcgEydU5fQI00",
+        "checkout_label": "Buy via Stripe &rarr;",
+        "fallback_url": "support.html#contact",
+        "fallback_label": "Contact Licensing Team &rarr;",
+        "checkout_note": "Secure checkout via Stripe &middot; Keygen key emailed on payment",
+        "fallback_note": "Manual license deployment available via contact",
+        "button_class": "btn-primary"
+      }
+    },
+    {
+      "name": "Business",
+      "keygen_policy_id": "e9fafcf3",
+      "price_gbp": 399,
+      "description": "Business platform tier for larger regulated environments and SOC-integrated operations.",
+      "features": [
+        { "text": "Unlimited agents / endpoints", "included": true },
+        { "text": "REST API, webhooks, and SIEM export workflows", "included": true },
+        { "text": "Custom audit creation for internal controls", "included": true },
+        { "text": "Commercial production use, MSP/MSSP", "included": true },
+        { "text": "Priority support", "included": true },
+        { "text": "Contact sales for custom SLA", "included": true }
+      ],
+      "cta": {
+        "checkout_url": "https://checkout.audittoolkitlabs.com/b/6oU8wPeea6LggEydU5fQI01",
+        "checkout_label": "Buy via Stripe &rarr;",
+        "fallback_url": "support.html#contact",
+        "fallback_label": "Contact Licensing Team &rarr;",
+        "checkout_note": "Secure checkout via Stripe &middot; Keygen key emailed on payment",
+        "fallback_note": "Manual license deployment available via contact",
+        "button_class": "btn-secondary"
+      }
+    }
+  ],
+  "add_ons": [
+    {
+      "name": "Advanced Operations Pack Add-on",
+      "keygen_policy_id": "e8e9593c",
+      "price_gbp": 149,
+      "description": "Extended operational workflows and advanced reporting enhancements for paid deployments.",
+      "checkout_url": null
+    },
+    {
+      "name": "Enterprise Integrations Pack Add-on",
+      "keygen_policy_id": "6a3f4c17",
+      "price_gbp": 199,
+      "description": "Enterprise integration capabilities including advanced automation and external system connectivity.",
+      "checkout_url": null
+    }
+  ]
+}

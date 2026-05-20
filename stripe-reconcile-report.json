@@ -1,0 +1,256 @@
+{
+  "mode": "live",
+  "xlsx": "C:\\Users\\churc\\OneDrive\\Personal Vault-S16\\github details\\Stripe Product and Payment Link details .xlsx",
+  "sheet": "Sheet1",
+  "rows_scanned": 22,
+  "rows_with_issues": 2,
+  "rows_ok": 20,
+  "results": [
+    {
+      "line": 2,
+      "family": "Linux-Security-Lite",
+      "product_name": "AuditToolkit Lite \u2014 Enterprise Integrations Pack",
+      "product_id": "prod_UXBplQ427I5coR",
+      "payment_link_name": "AuditToolkit Lite \u2014 Enterprise Integrations Pack",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/28E9AT4DAfhM4VQaHTfQI0t",
+      "price": 199,
+      "duration": "Yearly",
+      "issues": []
+    },
+    {
+      "line": 3,
+      "family": "Linux-Security-Lite",
+      "product_name": "AuditToolkit Lite \u2014 Advanced Operations Pack",
+      "product_id": "prod_UXBepajtxAXNaq",
+      "payment_link_name": "AuditToolkit Lite \u2014 Advanced Operations Pack",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/7sY9AT0nk3z4dsm17jfQI0s",
+      "price": 149,
+      "duration": "Yearly",
+      "issues": []
+    },
+    {
+      "line": 4,
+      "family": "Linux-Security-Lite",
+      "product_name": "AuditToolkit Lite \u2014 Professional",
+      "product_id": "prod_UXBTQbsBOZeKBu",
+      "payment_link_name": "AuditToolkit Lite \u2014 Professional",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/dRm4gzeea7PkgEy7vHfQI0r",
+      "price": 299,
+      "duration": "Yearly",
+      "issues": []
+    },
+    {
+      "line": 5,
+      "family": "Linux-Security-Lite",
+      "product_name": "AuditToolkit Lite \u2014 Business",
+      "product_id": "prod_UXBO41neuYqSkv",
+      "payment_link_name": "AuditToolkit Lite \u2014 Business",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/eVqaEX5HEb1w4VQ4jvfQI0q",
+      "price": 399,
+      "duration": "Yearly",
+      "issues": []
+    },
+    {
+      "line": 6,
+      "family": "Linux-Security-Lite",
+      "product_name": "AuditToolkit Lite \u2014 Starter",
+      "product_id": "prod_UXBGUUux7W4vw4",
+      "payment_link_name": "AuditToolkit Lite \u2014 Starter",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/8x214nc628To9c6eY9fQI0p",
+      "price": 79,
+      "duration": "Yearly",
+      "issues": []
+    },
+    {
+      "line": 8,
+      "family": "Switch Exposure Centre ",
+      "product_name": "Switch Exposure Centre - Identity Add-On",
+      "product_id": "prod_UW4BwPEON4qcUQ",
+      "payment_link_name": "Switch Exposure Centre - Identity Add-On",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/cNi28r2vs8TofAuaHTfQI0j",
+      "price": 1185,
+      "duration": "Yearly",
+      "issues": []
+    },
+    {
+      "line": 9,
+      "family": "Switch Exposure Centre ",
+      "product_name": "Switch Exposure Centre - Reporting Add-On",
+      "product_id": "prod_UW47gkYx9Hticx",
+      "payment_link_name": "Switch Exposure Centre - Reporting Add-On",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/aFa28rgmi8ToagadU5fQI0h",
+      "price": 948,
+      "duration": "Yearly",
+      "issues": []
+    },
+    {
+      "line": 10,
+      "family": "Switch Exposure Centre ",
+      "product_name": "Switch Exposure Centre - Integration Add-On",
+      "product_id": "prod_UW43EEWkj1dJYq",
+      "payment_link_name": "Switch Exposure Centre - Integration Add-On",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/cNi3cv8TQb1w3RM9DPfQI0i",
+      "price": 1185,
+      "duration": "Yearly",
+      "issues": []
+    },
+    {
+      "line": 11,
+      "family": "Switch Exposure Centre ",
+      "product_name": "Switch Exposure Centre - Pentest Add-On",
+      "product_id": "prod_UW3rhuIBYaLukE",
+      "payment_link_name": "Switch Exposure Centre - Pentest Add-On",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/00w14n9XU4D82NIg2dfQI06",
+      "price": 1580,
+      "duration": "Yearly",
+      "issues": []
+    },
+    {
+      "line": 12,
+      "family": "Switch Exposure Centre ",
+      "product_name": "Switch Exposure Centre - Beta",
+      "product_id": "prod_UW3k0bREZJ9RlA",
+      "payment_link_name": "Switch Exposure Centre - Beta",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/3cIeVdb1Yc5A8825nzfQI0n",
+      "price": 79,
+      "duration": "Every 90 Days ",
+      "issues": []
+    },
+    {
+      "line": 13,
+      "family": "Switch Exposure Centre ",
+      "product_name": "Switch Exposure Centre - Business",
+      "product_id": "prod_UW3dRbFJ5sHnqP",
+      "payment_link_name": "Switch Exposure Centre - Business",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/aFa6oHeeafhM9c603ffQI0m",
+      "price": 3792,
+      "duration": "Yearly",
+      "issues": []
+    },
+    {
+      "line": 14,
+      "family": "Switch Exposure Centre ",
+      "product_name": "Switch Exposure Centre - Professional",
+      "product_id": "prod_UW3ZRjwNsGPYEy",
+      "payment_link_name": "Switch Exposure Centre - Professional",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/6oUbJ19XUedIdsm9DPfQI0l",
+      "price": 5688,
+      "duration": "Yearly",
+      "issues": []
+    },
+    {
+      "line": 15,
+      "family": "Switch Exposure Centre ",
+      "product_name": "Switch Exposure Centre - Starter",
+      "product_id": "prod_UW3SAm20GwioE4",
+      "payment_link_name": "Switch Exposure Centre - Starter",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/eVqcN5c62glQ9c68zLfQI0k",
+      "price": 1896,
+      "duration": "Yearly",
+      "issues": []
+    },
+    {
+      "line": 17,
+      "family": "Asset Command Center",
+      "product_name": "Asset Command Centre \u2014 Enterprise Features Add-on",
+      "product_id": "prod_USvl9h7UdcwY21",
+      "payment_link_name": "Asset Command Centre \u2014 Enterprise Features Add-on",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/3cI8wP1ro9Xs2NIg2dfQI0d",
+      "price": 799,
+      "duration": "Yearly",
+      "issues": []
+    },
+    {
+      "line": 18,
+      "family": "Asset Command Center",
+      "product_name": "Asset Command Centre \u2014 Professional",
+      "product_id": "prod_USvh0jXt3JXEG9",
+      "payment_link_name": "Asset Command Centre \u2014 Professional",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/7sY9AT5HE0mS882g2dfQI0e",
+      "price": 2499,
+      "duration": "Yearly",
+      "issues": []
+    },
+    {
+      "line": 19,
+      "family": "Asset Command Center",
+      "product_name": "Asset Command Centre \u2014 Business",
+      "product_id": "prod_USverkH41jdE1P",
+      "payment_link_name": "Asset Command Centre \u2014 Business",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/4gMeVd9XU0mSgEy17jfQI0f",
+      "price": 999,
+      "duration": "Yearly",
+      "issues": []
+    },
+    {
+      "line": 20,
+      "family": "Asset Command Center",
+      "product_name": "Asset Command Centre \u2014 Starter",
+      "product_id": "prod_USvbChBZUH6xuz",
+      "payment_link_name": "Asset Command Centre \u2014 Starter",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/5kQ6oH6LI4D82NI4jvfQI0g",
+      "price": 299,
+      "duration": "Yearly",
+      "issues": []
+    },
+    {
+      "line": 22,
+      "family": "cmdb-api",
+      "product_name": "Audit CMDB API Toolkit \u2013 Beta Access",
+      "product_id": "prod_UPZ0CQjeZ6vsDu",
+      "payment_link_name": "Audit CMDB API Toolkit \u2013 Beta Access",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/fZu4gz0nk4D873YbLXfQI02",
+      "price": 0,
+      "duration": "30 days ",
+      "issues": [
+        "duration mismatch: sheet='30 days ' stripe has no recurring/trial duration"
+      ]
+    },
+    {
+      "line": 23,
+      "family": "cmdb-api",
+      "product_name": "Audit CMDB API Toolkit \u2013 Business",
+      "product_id": "prod_UPZ0yOpHSQM8oo",
+      "payment_link_name": "Audit CMDB API Toolkit \u2013 Business",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/dRm28r8TQ8To2NI3frfQI04",
+      "price": 2490,
+      "duration": "Yearly",
+      "issues": []
+    },
+    {
+      "line": 24,
+      "family": "cmdb-api",
+      "product_name": "Audit CMDB API Toolkit \u2013 Enterprise",
+      "product_id": "prod_UPZ00VtLr33Xt4",
+      "payment_link_name": "Audit CMDB API Toolkit \u2013 Enterprise",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/aFafZhda61qW4VQaHTfQI07",
+      "price": 1500,
+      "duration": "Yearly",
+      "issues": [
+        "duration mismatch: sheet='Yearly' stripe=1 month"
+      ]
+    },
+    {
+      "line": 25,
+      "family": "cmdb-api",
+      "product_name": "Audit CMDB API Toolkit \u2013 Professional",
+      "product_id": "prod_UPZ09Iw3iIODnl",
+      "payment_link_name": "Audit CMDB API Toolkit \u2013 Professional",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/bJecN59XUfhMaga7vHfQI05",
+      "price": 8988,
+      "duration": "Yearly",
+      "issues": []
+    },
+    {
+      "line": 26,
+      "family": "cmdb-api",
+      "product_name": "Audit CMDB API Toolkit \u2013 Starter",
+      "product_id": "prod_UPZ0F9zoH69c4p",
+      "payment_link_name": "Audit CMDB API Toolkit \u2013 Starter",
+      "payment_link_url": "https://checkout.audittoolkitlabs.com/b/dRm5kD1ro3z4gEycQ1fQI03",
+      "price": 790,
+      "duration": "Yearly",
+      "issues": []
+    }
+  ]
+}

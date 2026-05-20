@@ -1,4 +1,4 @@
-# Linux Audit Expansion Screenshot Manifest
+# Linux Security Lite Screenshot Manifest
 
 Purpose: Clean, tool-specific screenshot set for website and customer documentation.
 
@@ -43,6 +43,6 @@ HTML captures are generated from the running toolkit GUI at <http://127.0.0.1:80
 
 ## Mirror location
 
-E:/repo-splits-2/audit-toolkit-preview/customer-docs/linux-audit-expansion/screenshots
+E:/repo-splits-2/audit-toolkit-preview/customer-docs/linux-security-lite/screenshots
 
 

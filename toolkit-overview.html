@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Toolkit Overview — AuditToolkit Labs</title>
-  <meta name="description" content="How the four AuditToolkit Labs tools fit together: use cases, workflow, and role-based starting paths." />
+  <meta name="description" content="How the five AuditToolkit Labs tools fit together: use cases, workflow, and role-based starting paths." />
   <link rel="stylesheet" href="assets/css/site.css" />
 </head>
 <body>
@@ -42,13 +42,14 @@
       <span class="cur">Toolkit Overview</span>
     </div>
     <p class="eyebrow">How It Fits Together</p>
-    <h1>Four Tools. One Operational Workflow.</h1>
+    <h1>Five Tools. One Operational Workflow.</h1>
     <p>This page shows where each product fits, which use cases it covers, and how the main toolkit is composed of sub-tools and agent layers for end-to-end security, compliance, and CMDB operations.</p>
     <div class="flex flex-wrap gap-8 mt-24">
       <span class="badge badge-blue">Audit Admin Toolkit v6.4.4</span>
       <span class="badge badge-amber">Linux Security Lite v1.1.4</span>
       <span class="badge badge-muted">CMDB API v0.2.11</span>
       <span class="badge badge-amber">Asset Command Center (Beta)</span>
+      <span class="badge badge-amber">Secure Exposure Centre v0.1.1</span>
     </div>
   </div>
 </div>
@@ -58,7 +59,7 @@
     <div class="section-head">
       <p class="eyebrow">Toolkit Structure</p>
       <h2>Main toolkit, sub-tools, and agent layers</h2>
-      <p>The Audit Admin Toolkit is the core platform, with distinct sub-tools and agent models that support different deployment patterns.</p>
+      <p>The Audit Admin Toolkit is the core platform, with distinct sub-tools and agent models that support different deployment patterns across five products.</p>
     </div>
     <div class="table-wrap">
       <table class="data-table">
@@ -87,7 +88,7 @@
           </tr>
           <tr>
             <td>Extension and companion tools</td>
-            <td>Linux Security Lite, CMDB API Data Collection Tool, Asset Command Center</td>
+            <td>Linux Security Lite, CMDB API Data Collection Tool, Asset Command Center, Secure Exposure Centre</td>
             <td>Adds deeper Linux controls, ingestion/normalization, and asset governance context</td>
           </tr>
         </tbody>
@@ -175,6 +176,22 @@
         </ul>
         <div class="mt-24"><a href="cmdb-asset-platform.html" class="btn btn-secondary btn-sm">View Asset Command Center</a></div>
       </div>
+
+      <div class="card">
+        <div class="flex items-center gap-12 mb-12">
+          <div class="product-icon" style="background:rgba(45,212,191,.12);">&#128260;</div>
+          <div>
+            <h3 style="margin:0;">Secure Exposure Centre</h3>
+            <p style="font-size:.86rem;">Network switch exposure operations layer</p>
+          </div>
+        </div>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Switch-focused inventory, advisory normalization, and CVE correlation.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Multi-vendor network estate posture visibility with remediation context.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Best for: network security operations and switch vulnerability governance.</span></li>
+        </ul>
+        <div class="mt-24"><a href="secure-exposure-centre.html" class="btn btn-secondary btn-sm">View Secure Exposure Centre</a></div>
+      </div>
     </div>
   </div>
 </section>
@@ -226,6 +243,12 @@
             <td>Audit Admin Toolkit</td>
             <td>Linux Security Lite, CMDB API Data Collection Tool</td>
             <td>Evidence exports for internal/external assurance</td>
+          </tr>
+          <tr>
+            <td>Switch firmware advisory and network exposure tracking</td>
+            <td>Secure Exposure Centre</td>
+            <td>CMDB API Data Collection Tool, Asset Command Center</td>
+            <td>Switch-centered exposure reports with CVE and advisory context</td>
           </tr>
         </tbody>
       </table>
@@ -290,6 +313,13 @@
           <li><span class="icon">&#10003;</span><span class="text">Pull supporting control outputs from <strong>Linux Security Lite</strong> and CMDB data sources.</span></li>
         </ul>
       </div>
+      <div class="card">
+        <h3>Network Security Operations</h3>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Start with <strong>Secure Exposure Centre</strong> for switch-focused advisory and CVE workflows.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Integrate with <strong>CMDB API Data Collection Tool</strong> and <strong>Asset Command Center</strong> for broader estate context.</span></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -322,6 +352,7 @@
         <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
         <li><a href="cmdb-asset-platform.html">Asset Command Center</a></li>
         <li><a href="linux-expansion.html">Linux Security Lite</a></li>
+        <li><a href="secure-exposure-centre.html">Secure Exposure Centre</a></li>
       </ul></div>
       <div class="footer-col"><h4>Resources</h4><ul>
         <li><a href="toolkit-overview.html">Toolkit Overview</a></li>

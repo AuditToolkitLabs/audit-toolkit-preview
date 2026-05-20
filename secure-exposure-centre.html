@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secure Exposure Centre - AuditToolkit Labs</title>
+  <meta name="description" content="Secure Exposure Centre is a switch-focused exposure and advisory platform for network estates, with multi-vendor collection, CVE correlation, and remediation reporting." />
+  <link rel="stylesheet" href="assets/css/site.css" />
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="toolkit-overview.html">Overview</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="releases.html">Releases</a></li>
+        <li><a href="licensing.html">Licensing</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+      <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="index.html#products">Products</a>
+  <a href="toolkit-overview.html">Overview</a>
+  <a href="docs.html">Documentation</a>
+  <a href="releases.html">Releases</a>
+  <a href="licensing.html">Licensing</a>
+  <a href="support.html">Support</a>
+  <a href="support.html#contact">Contact Us</a>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span>
+      <a href="index.html#products">Products</a><span class="sep">/</span>
+      <span class="cur">Secure Exposure Centre</span>
+    </div>
+    <div class="flex flex-wrap gap-8 mb-16">
+      <span class="badge badge-amber">Beta</span>
+      <span class="badge badge-blue">v0.1.1</span>
+      <span class="badge badge-muted">Switch-focused exposure platform</span>
+      <span class="badge badge-muted">Flask API + SQLAlchemy + static console</span>
+    </div>
+    <h1>Secure Exposure Centre</h1>
+    <p>Secure Exposure Centre provides switch-centered exposure visibility for multi-vendor network estates. It collects inventory and firmware posture, correlates advisories and CVEs, and delivers remediation-oriented reporting for network operations and security teams.</p>
+    <div class="callout warn mt-24">
+      <strong>Naming note.</strong> Release artefacts and customer docs are currently published under the product path <strong>Switch Exposure Centre</strong> while this website surface uses the commercial name <strong>Secure Exposure Centre</strong>.
+    </div>
+    <div class="flex gap-12 flex-wrap mt-24">
+      <a href="secure-exposure-centre-documentation.html" class="btn btn-primary">Documentation</a>
+      <a href="secure-exposure-centre-releases.html" class="btn btn-secondary">Release Notes</a>
+      <a href="secure-exposure-centre-pricing.html" class="btn btn-secondary">Licensing &amp; Pricing</a>
+      <a href="support.html#contact" class="btn btn-secondary">Request Evaluation Access</a>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">What It Delivers</p>
+      <h2>Exposure intelligence for network switch estates</h2>
+      <p>This tool is built for teams that need vulnerability and advisory visibility aligned to actual switch firmware and platform inventory, not generic endpoint scanning outputs.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Multi-vendor collection</h3>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Live API-backed collection for Cisco, Juniper, Arista, Aruba, and Dell.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Initial SAN scaffolding for Brocade and Cisco MDS.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">API-first model with transport fallback planning for SSH, NETCONF, and SNMP.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Exposure and remediation context</h3>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Vendor advisory normalization and CVE/CVSS correlation.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">CISA KEV awareness where feeds are reachable.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Remediation-oriented reporting tied to firmware and platform identity.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Operationally safe deployment shape</h3>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Health and readiness endpoints for service checks.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Single-host Ubuntu Server LTS production baseline.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Package workflows and manifest verification for release integrity.</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Governance-ready workflows</h3>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Documented operations, security, maintenance, and support runbooks.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Advisory refresh automation with external scheduler model.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Customer-facing legal, assurance, and EULA documentation.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Supported Vendors</p>
+      <h2>Current MVP coverage</h2>
+    </div>
+    <div class="flex gap-8 flex-wrap">
+      <span class="badge badge-blue">Cisco IOS-XE / NX-OS</span>
+      <span class="badge badge-blue">Juniper JunOS</span>
+      <span class="badge badge-blue">Arista EOS</span>
+      <span class="badge badge-blue">Aruba AOS-CX</span>
+      <span class="badge badge-blue">Dell OS10</span>
+      <span class="badge badge-muted">Brocade (scaffolded)</span>
+      <span class="badge badge-muted">Cisco MDS (scaffolded)</span>
+    </div>
+    <div class="flex gap-12 flex-wrap mt-24">
+      <a href="secure-exposure-centre-documentation.html" class="btn btn-primary">Open Documentation</a>
+      <a href="secure-exposure-centre-releases.html" class="btn btn-secondary">Open Release History</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></div>
+        <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
+        <p>&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+      </div>
+      <div class="footer-col"><h4>Products</h4><ul>
+        <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
+        <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
+        <li><a href="cmdb-asset-platform.html">Asset Command Center</a></li>
+        <li><a href="linux-expansion.html">Linux Security Lite</a></li>
+        <li><a href="secure-exposure-centre.html">Secure Exposure Centre</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul>
+        <li><a href="docs.html">Documentation Hub</a></li>
+        <li><a href="releases.html">Releases Hub</a></li>
+        <li><a href="licensing.html">Licensing &amp; Pricing</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
+        <li><a href="support.html#contact">Send an Enquiry</a></li>
+      </ul></div>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>

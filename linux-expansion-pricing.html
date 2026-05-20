@@ -7,7 +7,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Linux Security Lite — Licensing &amp; Pricing | AuditToolkit Labs</title>
-  <meta name="description" content="Licensing tiers and pricing for Linux Security Lite. Community (free), Professional (£799/yr, up to 150 agents), and Business (£4,999/yr, unlimited agents). BSL 1.1." />
+  <!-- AUTO-LICENSING:LINUX_META_DESCRIPTION_START -->
+  <meta name="description" content="Licensing tiers and pricing for Linux Security Lite. Community (free), Starter (£79/yr), Professional (£299/yr), and Business (£399/yr), plus optional add-ons. BSL 1.1." />
+  <!-- AUTO-LICENSING:LINUX_META_DESCRIPTION_END -->
   <link rel="stylesheet" href="assets/css/site.css" />
   <style>
     .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:32px}
@@ -25,6 +27,10 @@
     .pricing-features li::before{content:"✓";color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px}
     .pricing-features li.feat-x::before{content:"—";color:var(--text-muted)}
     .stripe-note{font-size:.8rem;color:var(--text-muted);margin-top:8px;text-align:center}
+    .addon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:20px}
+    .addon-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px}
+    .addon-card h3{font-size:1.05rem;margin:0 0 8px}
+    .addon-card p{font-size:.9rem;color:var(--text-muted);margin:0}
   </style>
 
 </head>
@@ -67,9 +73,11 @@
     </div>
     <p class="eyebrow">Licensing &amp; Pricing</p>
     <h1>Linux Security Lite</h1>
-    <p>Three-tier model: Community (free), Professional (up to 150 agents, £799/year), and Business (unlimited agents, £4,999/year). Licensing is currently handled manually.</p>
+    <!-- AUTO-LICENSING:LINUX_HERO_SUMMARY_START -->
+    <p>Core tier model: Community (free), Starter (£79/year), Professional (£299/year), and Business (£399/year). Optional add-ons include Advanced Operations Pack (£149/year) and Enterprise Integrations Pack (£199/year). Paid tiers are available via live Stripe checkout, with Keygen licence keys issued automatically after payment confirmation.</p>
+    <!-- AUTO-LICENSING:LINUX_HERO_SUMMARY_END -->
     <div class="flex gap-12 flex-wrap mt-24">
-      <a href="mailto:License@audittoolkitlabs.com" class="btn btn-primary">Contact Licence Team &rarr;</a>
+      <a href="mailto:License@audittoolkitlabs.com" class="btn btn-primary">Invoice / PO Support &rarr;</a>
       <a href="linux-expansion.html" class="btn btn-secondary">Product Details</a>
     </div>
   </div>
@@ -79,9 +87,12 @@
   <div class="wrap">
 
     <div class="callout callout-info" style="margin-bottom:40px;">
-      <strong>Licensing is currently handled manually.</strong> Email <a href="mailto:License@audittoolkitlabs.com">License@audittoolkitlabs.com</a> to request a paid licence — we will issue your Keygen key directly. The Community tier requires no purchase or registration. Licensed under the <strong>Business Source License 1.1 (BSL)</strong> — converts to MIT on <strong>9 February 2031</strong>.
+      <!-- AUTO-LICENSING:LINUX_CALLOUT_START -->
+      <strong>Paid tiers use live Stripe checkout.</strong> Community remains free and requires no registration. Starter, Professional, and Business are annual subscriptions, and optional add-ons can be purchased alongside paid tiers. For invoice or purchase-order handling, email <a href="mailto:License@audittoolkitlabs.com">License@audittoolkitlabs.com</a> with your company/legal entity name, billing contact, required tier, add-ons, VAT number, and PO reference if needed. We will issue your Keygen key directly after payment confirmation. Licensed under the <strong>BSL 1.1</strong> — converts to MIT on <strong>9 February 2031</strong>.
+      <!-- AUTO-LICENSING:LINUX_CALLOUT_END -->
     </div>
 
+    <!-- AUTO-LICENSING:LINUX_PRICING_GRID_START -->
     <div class="pricing-grid">
 
       <div class="pricing-card">
@@ -99,8 +110,26 @@
         </ul>
         <div class="pricing-cta-area">
           <p class="pricing-quote" style="font-size:1.4rem;font-weight:700;color:var(--text);font-style:normal;margin-bottom:4px;">£0 <span style="font-size:.85rem;font-weight:400;color:var(--text-muted);">community tier</span></p>
-          <a href="linux-audit-expansion-releases.html" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">View Release Notes</a>
+          <a href="linux-security-lite-releases.html" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">View Release Notes</a>
           <p class="stripe-note">No purchase or registration required</p>
+        </div>
+      </div>
+
+      <div class="pricing-card">
+        <p class="pricing-tier">Starter</p>
+        <h3>Starter</h3>
+        <p class="pricing-desc">Entry commercial tier for small production deployments requiring licensed commercial use.</p>
+        <ul class="pricing-features">
+          <li>Commercial production use</li>
+          <li>Core reporting and scheduling workflows</li>
+          <li>Email support</li>
+          <li>Upgrade path to Professional and Business</li>
+        </ul>
+        <div class="pricing-cta-area">
+          <p class="pricing-quote" style="font-size:1.4rem;font-weight:700;color:var(--text);font-style:normal;margin-bottom:4px;">£79 <span style="font-size:.85rem;font-weight:400;color:var(--text-muted);">/ year</span></p>
+          <p class="pricing-quote">excl. VAT &mdash; annual subscription</p>
+          <a href="support.html#contact" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Get Starter Checkout &rarr;</a>
+          <p class="stripe-note">Stripe payment link available &middot; Keygen key emailed on payment</p>
         </div>
       </div>
 
@@ -110,26 +139,26 @@
         <h3>Professional</h3>
         <p class="pricing-desc">Commercial tier for centralised compliance operations across small and mid-sized Linux estates.</p>
         <ul class="pricing-features">
-          <li>Core Server management for up to 150 agents</li>
+          <li>Centralised Core Server management</li>
           <li>Compliance attestation reporting (CIS/NIST/PCI workflows)</li>
           <li>Unlimited schedules and retention on Core Server</li>
           <li>Commercial production use</li>
           <li>48-hour email support response</li>
         </ul>
         <div class="pricing-cta-area">
-          <p class="pricing-quote" style="font-size:1.4rem;font-weight:700;color:var(--text);font-style:normal;margin-bottom:4px;">£799 <span style="font-size:.85rem;font-weight:400;color:var(--text-muted);">/ year</span></p>
+          <p class="pricing-quote" style="font-size:1.4rem;font-weight:700;color:var(--text);font-style:normal;margin-bottom:4px;">£299 <span style="font-size:.85rem;font-weight:400;color:var(--text-muted);">/ year</span></p>
           <p class="pricing-quote">excl. VAT &mdash; annual subscription</p>
-          <a href="mailto:License@audittoolkitlabs.com" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Contact Licence Team &rarr;</a>
-          <p class="stripe-note">Licence available on demand &middot; Contact us to arrange issuance</p>
+          <a href="https://checkout.audittoolkitlabs.com/b/dRmeVd1ro5HcgEydU5fQI00" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Buy via Stripe &rarr;</a>
+          <p class="stripe-note">Secure checkout via Stripe &middot; Keygen key emailed on payment</p>
         </div>
       </div>
 
       <div class="pricing-card">
-          <p class="pricing-tier">Business</p>
-          <h3>Business</h3>
-          <p class="pricing-desc">Business platform tier for large regulated environments and SOC-integrated operations.</p>
+        <p class="pricing-tier">Business</p>
+        <h3>Business</h3>
+        <p class="pricing-desc">Business platform tier for larger regulated environments and SOC-integrated operations.</p>
         <ul class="pricing-features">
-          <li><strong>Unlimited agents / endpoints</strong></li>
+          <li>Unlimited agents / endpoints</li>
           <li>REST API, webhooks, and SIEM export workflows</li>
           <li>Custom audit creation for internal controls</li>
           <li>Commercial production use, MSP/MSSP</li>
@@ -137,20 +166,38 @@
           <li>Contact sales for custom SLA</li>
         </ul>
         <div class="pricing-cta-area">
-          <p class="pricing-quote" style="font-size:1.4rem;font-weight:700;color:var(--text);font-style:normal;margin-bottom:4px;">£4,999 <span style="font-size:.85rem;font-weight:400;color:var(--text-muted);">/ year</span></p>
+          <p class="pricing-quote" style="font-size:1.4rem;font-weight:700;color:var(--text);font-style:normal;margin-bottom:4px;">£399 <span style="font-size:.85rem;font-weight:400;color:var(--text-muted);">/ year</span></p>
           <p class="pricing-quote">excl. VAT &mdash; annual subscription</p>
-          <a href="mailto:License@audittoolkitlabs.com" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Licence Team &rarr;</a>
-          <p class="stripe-note">Licence available on demand &middot; Contact us to arrange issuance</p>
+          <a href="https://checkout.audittoolkitlabs.com/b/6oU8wPeea6LggEydU5fQI01" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Buy via Stripe &rarr;</a>
+          <p class="stripe-note">Secure checkout via Stripe &middot; Keygen key emailed on payment</p>
         </div>
       </div>
 
     </div>
 
+    <div style="margin-top:32px;">
+      <h2 style="font-size:1.3rem;margin:0 0 10px;">Optional Add-ons</h2>
+      <p style="font-size:.9rem;color:var(--text-muted);margin:0;">Add-ons are available for paid tiers and can be enabled via Stripe checkout or invoice/PO workflow.</p>
+      <div class="addon-grid">
+        <div class="addon-card">
+          <h3>Advanced Operations Pack Add-on</h3>
+          <p style="margin-bottom:10px;">£149 / year (excl. VAT)</p>
+          <p>Extended operational workflows and advanced reporting enhancements for paid deployments.</p>
+        </div>
+        <div class="addon-card">
+          <h3>Enterprise Integrations Pack Add-on</h3>
+          <p style="margin-bottom:10px;">£199 / year (excl. VAT)</p>
+          <p>Enterprise integration capabilities including advanced automation and external system connectivity.</p>
+        </div>
+      </div>
+    </div>
+    <!-- AUTO-LICENSING:LINUX_PRICING_GRID_END -->
+
     <div style="margin-top:40px;padding-top:32px;border-top:1px solid var(--border);">
       <div class="flex gap-12 flex-wrap">
         <a href="licensing.html" style="font-size:.9rem;color:var(--accent);">&larr; Back to all products</a>
-        <a href="doc-viewer.html?src=customer-docs/linux-audit-expansion/23-licensing-and-legal.md" style="font-size:.9rem;color:var(--accent);" target="_blank" rel="noopener">View Licensing and Legal (Doc 23)</a>
-        <a href="doc-viewer.html?src=customer-docs/linux-audit-expansion/24-enterprise-compliance-platform.md" style="font-size:.9rem;color:var(--accent);" target="_blank" rel="noopener">View Enterprise Platform (Doc 24)</a>
+        <a href="doc-viewer.html?src=customer-docs/linux-security-lite/23-licensing-and-legal.md" style="font-size:.9rem;color:var(--accent);" target="_blank" rel="noopener">View Licensing and Legal (Doc 23)</a>
+        <a href="doc-viewer.html?src=customer-docs/linux-security-lite/24-enterprise-compliance-platform.md" style="font-size:.9rem;color:var(--accent);" target="_blank" rel="noopener">View Enterprise Platform (Doc 24)</a>
 
       </div>
     </div>

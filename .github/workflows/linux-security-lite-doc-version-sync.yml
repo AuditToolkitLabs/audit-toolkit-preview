@@ -1,4 +1,4 @@
-name: Linux Expansion Doc Version Sync
+name: Linux Security Lite Doc Version Sync
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   linux-expansion-doc-version-sync:
-    name: Linux Expansion Doc Version Sync
+    name: Linux Security Lite Doc Version Sync
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -23,4 +23,4 @@ jobs:
           python-version: "3.11"
 
       - name: Validate linux-expansion doc version consistency
-        run: python3 ci/validate-linux-expansion-doc-version.py
+        run: python3 ci/validate-linux-security-lite-doc-version.py

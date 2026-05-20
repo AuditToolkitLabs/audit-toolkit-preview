@@ -50,10 +50,56 @@ It is intentionally limited to **documentation and screenshots only**.
 
 ## Optional automation module
 
-This repo now includes an optional Cloudflare Worker implementation under `cloudflare-worker/` that acts as billing/licensing glue between Stripe, Keygen, and Microsoft 365 flows.
+This repo now includes an optional Cloudflare Worker implementation under `cloudflare-worker/` that acts as the commercial/licensing glue between Stripe, Keygen, and Resend, with Microsoft 365 forwarding remaining optional.
 
 - Worker source: `cloudflare-worker/src/index.js`
 - Deployment config: `cloudflare-worker/wrangler.toml`
 - Setup guide: `cloudflare-worker/README.md`
 
 Use this module when you want automated license issuance and webhook handling while keeping the public site static.
+
+## Stripe Catalog Reconciliation (Legacy Alignment Only)
+
+Normal commercial operation should source product, pricing, payment link, and
+license-issuance routing data directly from Stripe plus Keygen mappings. The
+spreadsheet comparison tools below are retained only for historical cleanup or
+one-off alignment work.
+
+Use the validator script below to compare a spreadsheet of product IDs, payment
+link URLs, prices, and durations against Stripe directly:
+
+- `python ci/reconcile-stripe-catalog.py --xlsx "C:\\path\\to\\catalog.xlsx" --mode live`
+
+Optional filters and outputs:
+
+- `--family "Linux-Security-Lite"` (repeatable)
+- `--json-out stripe-reconcile-report.json`
+
+The script returns non-zero when mismatches are found.
+
+## Stripe Direct Catalog Truth Export
+
+Stripe is the single source of truth for catalog, payment, and commercial
+details. Export the authoritative catalog directly from Stripe payment links
+(no spreadsheet input):
+
+- `python ci/export-stripe-catalog-truth.py --mode live --json-out stripe-catalog-truth.json`
+
+Optional filters:
+
+- `--url-host checkout.audittoolkitlabs.com`
+- `--name-filter "AuditToolkit"` (repeatable)
+
+## Stripe Spreadsheet Patch Artifacts (Legacy Backfill Only)
+
+If you already have both the spreadsheet reconcile report and the Stripe truth
+export, generate direct spreadsheet patch files from those two inputs:
+
+- `python ci/generate-stripe-correction-patch.py --reconcile-json stripe-reconcile-report.json --truth-json stripe-catalog-truth.json --csv-out stripe-spreadsheet-corrections.csv --md-out stripe-spreadsheet-corrections.md --cell-csv-out stripe-spreadsheet-cell-updates.csv --cell-md-out stripe-spreadsheet-cell-updates.md`
+
+Outputs:
+
+- `stripe-spreadsheet-corrections.csv` and `.md` for row-level mismatch summaries
+- `stripe-spreadsheet-cell-updates.csv` and `.md` for xlsx-safe cell updates with line, column, current value, and new value
+
+These artifacts are not part of the normal live pricing/licensing flow.

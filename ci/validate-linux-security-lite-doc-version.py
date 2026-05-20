@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate linux-audit-expansion customer-doc version references for self-consistency."""
+"""Validate Linux Security Lite customer-doc version references."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ import sys
 
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
-DOCS_DIR = REPO_ROOT / "customer-docs" / "linux-audit-expansion"
+DOCS_DIR = REPO_ROOT / "customer-docs" / "linux-security-lite"
 VERSION_RE = r"\d+\.\d+\.\d+"
 
 # Patterns that must reference the expected version wherever they appear.
@@ -67,7 +67,7 @@ REFERENCE_PATTERN = re.compile(rf"\| Release \| v(?P<version>{VERSION_RE}) \|")
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Validate linux-audit-expansion customer-doc version references. "
+            "Validate linux-security-lite customer-doc version references. "
             "Expected version is auto-detected from 01-purpose-and-audience.md "
             "unless --version is supplied."
         ),
@@ -142,7 +142,7 @@ def validate_required_snippets(expected_version: str) -> list[str]:
         file_path = DOCS_DIR / relative_path
         if not file_path.exists():
             failures.append(
-                f"customer-docs/linux-audit-expansion/{relative_path}: "
+                f"customer-docs/linux-security-lite/{relative_path}: "
                 "file not found (required for snippet check)"
             )
             continue

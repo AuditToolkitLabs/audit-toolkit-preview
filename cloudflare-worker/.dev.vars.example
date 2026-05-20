@@ -15,7 +15,18 @@ STRIPE_API_SECRET=sk_live_replace_me
 # Required for Keygen webhook signature verification. Use your Keygen account public key PEM.
 KEYGEN_WEBHOOK_PUBLIC_KEY=-----BEGIN PUBLIC KEY-----\nreplace_me\n-----END PUBLIC KEY-----
 
-# Optional Microsoft 365 Power Automate HTTP trigger for notifications
+# Required for direct customer/internal email delivery
+RESEND_API_KEY=re_replace_me
+RESEND_FROM_EMAIL=licensing@audittoolkitlabs.com
+RESEND_WEBHOOK_SECRET=whsec_replace_me
+
+# Optional links included in outbound licensing and billing emails
+PUBLIC_SITE_BASE_URL=https://audittoolkitlabs.com
+LICENSE_TERMS_URL=https://audittoolkitlabs.com/licensing.html
+SUPPORT_URL=https://audittoolkitlabs.com/support.html
+PRIVACY_URL=https://audittoolkitlabs.com/privacy.html
+
+# Optional Microsoft 365 Power Automate HTTP trigger for secondary internal automation
 M365_FLOW_WEBHOOK_URL=
 
 # Optional token for /admin/reissue-license endpoint

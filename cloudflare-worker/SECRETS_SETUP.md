@@ -15,7 +15,14 @@
    - `KEYGEN_ACCOUNT_ID` - Your Keygen account ID
    - `KEYGEN_API_TOKEN` - From Keygen Dashboard > API Tokens
    - `KEYGEN_WEBHOOK_PUBLIC_KEY` - From Keygen Dashboard > Settings > Account public key (PEM)
-   - `M365_FLOW_WEBHOOK_URL` - Already pre-filled (from Power Automate)
+   - `RESEND_API_KEY` - From Resend > API Keys
+   - `RESEND_FROM_EMAIL` - A verified sender/domain in Resend
+   - `RESEND_WEBHOOK_SECRET` - From Resend webhook signing configuration
+   - `PUBLIC_SITE_BASE_URL` - Public website base URL used in email links
+   - `LICENSE_TERMS_URL` - Licensing terms page URL
+   - `SUPPORT_URL` - Support page URL
+   - `PRIVACY_URL` - Privacy page URL
+   - `M365_FLOW_WEBHOOK_URL` - Optional secondary forwarding target from Power Automate
    - `ADMIN_API_TOKEN` - Your admin authentication token
 
 3. **Deploy secrets to Wrangler:**
@@ -53,5 +60,6 @@ echo "your-secret-value" | wrangler secret put SECRET_NAME
 ## Next Steps
 
 1. Register Stripe webhook at Worker URL
-2. Test `/health` endpoint
-3. Monitor Worker logs via Wrangler: `wrangler tail`
+2. Verify your sender domain/address in Resend and configure Resend webhook/API access as needed for outbound mail
+3. Test `/health` endpoint
+4. Monitor Worker logs via Wrangler: `wrangler tail`

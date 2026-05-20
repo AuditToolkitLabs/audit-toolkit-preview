@@ -56,6 +56,102 @@ async function hmacSha256Hex(secret, payload) {
   return [...bytes].map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
+function parseResendSignatures(signatureHeader) {
+  if (!signatureHeader) return [];
+
+  return signatureHeader
+    .split(/\s+/)
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .map((part) => {
+      const [version, signature] = part.split(",");
+      return {
+        version: sanitizeText(version),
+        signature: sanitizeText(signature)
+      };
+    })
+    .filter((entry) => entry.version && entry.signature);
+}
+
+function normalizeBase64(value) {
+  const normalized = sanitizeText(value).replace(/-/g, "+").replace(/_/g, "/");
+  if (!normalized) return "";
+
+  const paddingNeeded = (4 - (normalized.length % 4)) % 4;
+  return normalized + "=".repeat(paddingNeeded);
+}
+
+function decodeSvixSecret(secret) {
+  const normalized = sanitizeText(secret);
+  if (!normalized) return null;
+
+  if (normalized.startsWith("whsec_")) {
+    const encoded = normalizeBase64(normalized.slice("whsec_".length));
+    const decoded = base64ToBytes(encoded);
+    if (decoded) return decoded;
+  }
+
+  return TEXT_ENCODER.encode(normalized);
+}
+
+async function hmacSha256Base64(secret, payload) {
+  const keyBytes = decodeSvixSecret(secret);
+  if (!keyBytes) return "";
+
+  const key = await crypto.subtle.importKey(
+    "raw",
+    keyBytes,
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"]
+  );
+
+  const signature = await crypto.subtle.sign("HMAC", key, TEXT_ENCODER.encode(payload));
+  return bytesToBase64(new Uint8Array(signature));
+}
+
+async function verifyResendWebhook(request, rawBody, env) {
+  if (!env.RESEND_WEBHOOK_SECRET) {
+    return { ok: false, reason: "missing-resend-webhook-secret" };
+  }
+
+  const resendId = sanitizeText(request.headers.get("svix-id"));
+  const resendTimestamp = sanitizeText(request.headers.get("svix-timestamp"));
+  const resendSignatureHeader = request.headers.get("svix-signature");
+  const signatures = parseResendSignatures(resendSignatureHeader).filter(
+    (entry) => entry.version === "v1"
+  );
+
+  if (!resendId || !resendTimestamp || signatures.length === 0) {
+    return { ok: false, reason: "missing-or-invalid-resend-signature-headers" };
+  }
+
+  const timestampSeconds = Number(resendTimestamp);
+  const nowSeconds = Math.floor(Date.now() / 1000);
+  if (!Number.isFinite(timestampSeconds) || Math.abs(nowSeconds - timestampSeconds) > 300) {
+    return { ok: false, reason: "resend-timestamp-skew" };
+  }
+
+  const signedContent = `${resendId}.${resendTimestamp}.${rawBody}`;
+  const expected = normalizeBase64(await hmacSha256Base64(env.RESEND_WEBHOOK_SECRET, signedContent));
+  if (!expected) {
+    return { ok: false, reason: "resend-signature-generation-failed" };
+  }
+
+  const signatureMatch = signatures.some((entry) =>
+    timingSafeEqual(normalizeBase64(entry.signature), expected)
+  );
+
+  if (!signatureMatch) {
+    return { ok: false, reason: "resend-signature-mismatch" };
+  }
+
+  return {
+    ok: true,
+    resendWebhookId: resendId
+  };
+}
+
 function parseHttpSignatureHeader(signatureHeader) {
   if (!signatureHeader) return null;
 
@@ -1514,7 +1610,8 @@ function isOpsEventType(eventType) {
     "billing.invoice_payment_failed",
     "billing.customer_subscription_deleted",
     "billing.customer_subscription_updated",
-    "billing.keygen_event"
+    "billing.keygen_event",
+    "billing.resend_inbound_event"
   ].includes(sanitizeText(eventType));
 }
 
@@ -2257,6 +2354,35 @@ async function sendResendForBillingEvent(env, eventType, payload) {
     }
   }
 
+  if (eventType === "billing.resend_inbound_event") {
+    const resendEventType = sanitizeText(payload?.resendEventType) || "unknown";
+    const resendWebhookId = sanitizeText(payload?.resendWebhookId) || "N/A";
+    const resendPayload = payload?.resendEvent || {};
+    const resendData = resendPayload?.data || {};
+
+    summaryRows.push({ label: "Resend Event", value: resendEventType });
+    summaryRows.push({ label: "Resend Webhook ID", value: resendWebhookId });
+
+    if (sanitizeText(resendData?.from)) {
+      summaryRows.push({ label: "From", value: sanitizeText(resendData.from) });
+    }
+
+    if (sanitizeText(resendData?.subject)) {
+      summaryRows.push({ label: "Subject", value: sanitizeText(resendData.subject) });
+    }
+
+    const toList = Array.isArray(resendData?.to) ? resendData.to : [];
+    const toLine = toList.map((entry) => sanitizeText(entry)).filter(Boolean).join(", ");
+    if (toLine) {
+      summaryRows.push({ label: "To", value: toLine });
+    }
+
+    summaryRows.push({
+      label: "Action",
+      value: "Inbound Resend webhook received and logged."
+    });
+  }
+
   if (Array.isArray(enrichmentDebug?.sources) && enrichmentDebug.sources.length > 0) {
     summaryRows.push({ label: "Identity Source", value: enrichmentDebug.sources.join(" -> ") });
   }
@@ -2502,7 +2628,7 @@ async function sendResendForBillingEvent(env, eventType, payload) {
   };
 }
 
-async function postM365Flow(env, eventType, payload) {
+async function dispatchBillingNotifications(env, eventType, payload) {
   const results = {
     eventType,
     resend: { sent: false, reason: "resend-not-attempted" },
@@ -2569,7 +2695,7 @@ async function processCheckoutSessionForLicense(session, env, context = {}) {
   // Only issue/send licenses after Stripe marks the checkout session as paid.
   // For async methods, checkout.session.async_payment_succeeded will re-enter this path.
   if (paymentStatus !== "paid") {
-    await postM365Flow(env, "billing.checkout_not_paid", {
+    await dispatchBillingNotifications(env, "billing.checkout_not_paid", {
       stripeEventId,
       stripeSessionId: session?.id,
       paymentStatus,
@@ -2589,7 +2715,7 @@ async function processCheckoutSessionForLicense(session, env, context = {}) {
   if (existingLicense?.keygenLicenseId) {
     await deletePlanUnresolvedRecord(env, session?.id);
 
-    await postM365Flow(env, "billing.license_already_exists", {
+    await dispatchBillingNotifications(env, "billing.license_already_exists", {
       stripeEventId,
       stripeSessionId: session?.id,
       existingLicense,
@@ -2631,7 +2757,7 @@ async function processCheckoutSessionForLicense(session, env, context = {}) {
       origin
     });
 
-    await postM365Flow(env, "billing.plan_unresolved", {
+    await dispatchBillingNotifications(env, "billing.plan_unresolved", {
       stripeEventId,
       stripeSessionId: session?.id,
       metadata: session?.metadata || {},
@@ -2717,7 +2843,7 @@ async function processCheckoutSessionForLicense(session, env, context = {}) {
   }
 
   if (origin === "auto-retry") {
-    await postM365Flow(env, "billing.plan_unresolved_recovered", {
+    await dispatchBillingNotifications(env, "billing.plan_unresolved_recovered", {
       stripeEventId,
       stripeSessionId: session?.id,
       retryCount: Number.isFinite(retryCount) ? retryCount : null,
@@ -2726,7 +2852,7 @@ async function processCheckoutSessionForLicense(session, env, context = {}) {
     });
   }
 
-  await postM365Flow(env, "billing.license_issued", {
+  await dispatchBillingNotifications(env, "billing.license_issued", {
     stripeEventId,
     stripeSessionId: session?.id,
     customerEmail: normalizedCustomerEmail,
@@ -2782,7 +2908,7 @@ async function retryPendingPlanUnresolvedSessions(env) {
     if (currentRetryCount >= retryConfig.maxAttempts) {
       exhausted += 1;
       if (!record.exhaustedNotified) {
-        await postM365Flow(env, "billing.plan_unresolved_retry_exhausted", {
+        await dispatchBillingNotifications(env, "billing.plan_unresolved_retry_exhausted", {
           stripeSessionId: sessionId,
           stripeEventId: sanitizeText(record.lastStripeEventId),
           retryCount: currentRetryCount,
@@ -2860,7 +2986,7 @@ async function handleStripeEvent(event, env) {
     case "customer.subscription.deleted":
     case "customer.subscription.updated":
     case "invoice.paid":
-      await postM365Flow(
+      await dispatchBillingNotifications(
         env,
         `billing.${event.type.replace(/\./g, "_")}`,
         await enrichBillingPayloadWithStripeCustomer(
@@ -2871,7 +2997,7 @@ async function handleStripeEvent(event, env) {
           env
         )
       );
-      return { ok: true, action: "notified-flow", eventType: event.type };
+      return { ok: true, action: "notifications-dispatched", eventType: event.type };
 
     default:
       return { ok: true, action: "ignored", eventType: event.type };
@@ -2905,6 +3031,7 @@ export default {
         features: {
           stripeApiFallback: Boolean(env.STRIPE_API_SECRET),
           resendEmailDispatch: Boolean(env.RESEND_API_KEY && env.RESEND_FROM_EMAIL),
+          resendWebhookValidation: Boolean(env.RESEND_WEBHOOK_SECRET),
           m365FlowForwarding: Boolean(env.M365_FLOW_WEBHOOK_URL),
           keygenWebhookValidation: Boolean(
             env.KEYGEN_WEBHOOK_PUBLIC_KEY || env.KEYGEN_WEBHOOK_SECRET
@@ -2951,7 +3078,7 @@ export default {
         let notification = { sent: false, reason: "not-attempted" };
         try {
           const keygenEventType = resolveKeygenEventType({ keygenPayload: event });
-          notification = await postM365Flow(env, "billing.keygen_event", {
+          notification = await dispatchBillingNotifications(env, "billing.keygen_event", {
             verified: verification.verified,
             verificationOk: verification.ok,
             verificationReason: verification.reason || null,
@@ -2979,6 +3106,55 @@ export default {
       }
     }
 
+    if (request.method === "POST" && url.pathname === "/webhooks/resend") {
+      try {
+        const rawBody = await request.text();
+        const verification = await verifyResendWebhook(request, rawBody, env);
+
+        if (!verification.ok) {
+          return json({ ok: false, error: verification.reason }, 401);
+        }
+
+        const event = parseJsonSafe(rawBody, {});
+        const resendEventType = sanitizeText(event?.type) || "unknown";
+        const resendWebhookId =
+          sanitizeText(verification?.resendWebhookId) ||
+          sanitizeText(request.headers.get("svix-id")) ||
+          `resend-${Date.now()}`;
+
+        const dedupe = await ensureNotDuplicateEvent(env, `resend:${resendWebhookId}`);
+        if (dedupe.duplicate) {
+          return json({
+            ok: true,
+            duplicate: true,
+            resendWebhookId,
+            resendEventType
+          });
+        }
+
+        const notification = await dispatchBillingNotifications(
+          env,
+          "billing.resend_inbound_event",
+          {
+            resendWebhookId,
+            resendEventType,
+            resendEvent: event
+          }
+        );
+
+        return json({
+          ok: true,
+          received: true,
+          verified: true,
+          resendWebhookId,
+          resendEventType,
+          notification
+        });
+      } catch (err) {
+        return serverError(err);
+      }
+    }
+
     if (request.method === "POST" && url.pathname === "/admin/reissue-license") {
       const adminToken = request.headers.get("x-admin-token");
       if (!env.ADMIN_API_TOKEN || adminToken !== env.ADMIN_API_TOKEN) {
@@ -2990,7 +3166,7 @@ export default {
         const stripeSessionId = sanitizeText(payload?.stripeSessionId);
 
         if (!stripeSessionId) {
-          await postM365Flow(env, "billing.manual_reissue_requested", {
+          await dispatchBillingNotifications(env, "billing.manual_reissue_requested", {
             request: payload,
             status: "missing-stripe-session-id"
           });
@@ -3007,7 +3183,7 @@ export default {
           origin: "manual-reissue"
         });
 
-        await postM365Flow(env, "billing.manual_reissue_requested", {
+        await dispatchBillingNotifications(env, "billing.manual_reissue_requested", {
           request: payload,
           stripeSessionId,
           result

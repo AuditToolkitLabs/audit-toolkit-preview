@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linux Security Lite Releases — AuditToolkit Labs</title>
+  <meta name="description" content="Release notes and changelogs for Linux Security Lite." />
+  <link rel="stylesheet" href="assets/css/site.css" />
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#products">Products</a></li><li><a href="toolkit-overview.html">Overview</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="releases.html" class="active">Releases</a></li>
+        <li><a href="licensing.html">Licensing</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+      <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="index.html#products">Products</a>
+  <a href="toolkit-overview.html">Overview</a>
+  <a href="docs.html">Documentation</a>
+  <a href="releases.html">Releases</a>
+  <a href="licensing.html">Licensing</a>
+  <a href="support.html">Support</a>
+  <a href="support.html#contact" style="color:var(--accent);font-weight:600;">Contact Us</a>
+</div>
+<div class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span>
+      <a href="releases.html">Releases Hub</a><span class="sep">/</span>
+      <span class="cur">Linux Security Lite Releases</span>
+    </div>
+    <p class="eyebrow">Release History</p>
+    <h1>Linux Security Lite Releases</h1>
+    <p>Version history, changelogs, and security bulletins for Linux Security Lite. Release packages are now available via the public Linux Security Lite release card.</p>
+    <div class="flex gap-12 flex-wrap mt-24">
+      <a href="https://audittoolkitlabs.github.io/releases/Linux%20Security%20Lite/v1.2.2/" class="btn btn-primary" target="_blank" rel="noopener">Open Public Download Card</a>
+      <a href="doc-viewer.html?src=customer-docs/linux-security-lite/18-installation-guide.md" class="btn btn-secondary">Open Installation Guide</a>
+      <a href="support.html#contact" class="btn btn-secondary">Request Evaluation Access</a>
+    </div>
+  </div>
+</div>
+<section class="section">
+  <div class="wrap">
+    <div class="callout callout-info" style="max-width:760px;margin:0 auto;">
+      <strong>Latest release now available.</strong> Linux Security Lite release <strong>audit-toolkit-lite/v1.2.2</strong> is now published on the public releases card. Customer documentation records publication in May 2026 with update date <strong>2026-05-19</strong>.
+    </div>
+
+    <!-- v1.2.2 — Latest -->
+    <div class="card mt-24" style="max-width:760px;margin:24px auto 0;" id="v122">
+      <div class="flex flex-wrap gap-8 mb-12">
+        <span class="badge badge-green">Latest Tag &mdash; v1.2.2</span>
+        <span class="badge badge-muted">audit-toolkit-lite/v1.2.2</span>
+        <span class="date" style="font-size:.82rem;color:var(--subtle);margin-left:4px;">May 2026</span>
+      </div>
+      <h3 style="margin-top:0;">Linux Security Lite v1.2.2</h3>
+      <p>Maintenance and hardening release. Bundled updater, safe upgrade preservation, and release-validation CI gate.</p>
+      <p style="font-size:.88rem;margin:0 0 10px;color:var(--text-muted);">Published May 2026. Customer documentation baseline updated 2026-05-19.</p>
+      <ul class="feature-list" style="margin-top:10px;">
+        <li><span class="icon">&#10003;</span><span class="text"><strong>Bundled updater script:</strong> <code>scripts/toolkit-updater.sh</code> is now included in all release package formats (.deb, .rpm, .apk, tarball) from this version onwards.</span></li>
+        <li><span class="icon">&#10003;</span><span class="text"><strong>Upgrade preservation:</strong> <code>/etc/audit-toolkit/</code> (config) and <code>/var/log/audit-toolkit/</code> (reports) are preserved automatically during package upgrades &mdash; no manual backup required for minor upgrades.</span></li>
+        <li><span class="icon">&#10003;</span><span class="text"><strong>Safe rollback:</strong> rollback now uses <code>rsync --delete</code> rather than a destructive <code>rm -rf</code>; existing configuration and log files are not removed during a rollback operation.</span></li>
+        <li><span class="icon">&#10003;</span><span class="text"><strong>Release gate:</strong> customer-facing documentation must pass <code>validate-customer-docs-release-version.py</code> before a release tag is created; the pipeline blocks on version mismatch.</span></li>
+        <li><span class="icon">&#10003;</span><span class="text">Documentation set updated to version 1.2.2 (24 documents) covering installation, maintenance, licensing, and enterprise compliance platform guidance.</span></li>
+        <li><span class="icon">&#10003;</span><span class="text">OWASP security scorecard maintained at 100/100, Grade A+.</span></li>
+      </ul>
+      <div class="flex gap-12 flex-wrap mt-16">
+        <a href="https://audittoolkitlabs.github.io/releases/Linux%20Security%20Lite/v1.2.2/" class="btn btn-primary" target="_blank" rel="noopener">Open Public Download Card</a>
+        <a href="doc-viewer.html?src=customer-docs/linux-security-lite/19-maintenance-and-patching-runbook.md" class="btn btn-secondary">Open Maintenance Runbook</a>
+        <a href="doc-viewer.html?src=customer-docs/linux-security-lite/18-installation-guide.md" class="btn btn-secondary">View Installation Guide</a>
+        <a href="support.html#contact" class="btn btn-secondary">Ask a Release Question</a>
+      </div>
+    </div>
+
+    <!-- v1.1.3 -->
+    <div class="card mt-24" style="max-width:760px;margin:24px auto 0;" id="v113">
+      <div class="flex flex-wrap gap-8 mb-12">
+        <span class="badge badge-muted">v1.1.3</span>
+        <span class="badge badge-muted">audit-toolkit-lite/v1.1.3</span>
+        <span class="date" style="font-size:.82rem;color:var(--subtle);margin-left:4px;">May 2026</span>
+      </div>
+      <h3 style="margin-top:0;">Linux Security Lite v1.1.3</h3>
+      <p>Maintenance patch: distro compatibility and documentation corrections.</p>
+      <ul class="feature-list" style="margin-top:10px;">
+        <li><span class="icon">&#10003;</span><span class="text">Compatibility shim fixes for Alpine 3.20 OpenRC service detection edge cases.</span></li>
+        <li><span class="icon">&#10003;</span><span class="text">Minor corrections to installation guide and maintenance runbook.</span></li>
+        <li><span class="icon">&#10003;</span><span class="text">OWASP scorecard maintained at 100/100, Grade A+.</span></li>
+      </ul>
+      <div class="flex gap-12 flex-wrap mt-16">
+        <a href="#v112" class="btn btn-secondary btn-sm">Jump to v1.1.2 Notes</a>
+      </div>
+    </div>
+
+    <!-- v1.1.2 — Previous -->
+    <div class="card mt-24" style="max-width:760px;margin:24px auto 0;" id="v112">
+      <div class="flex flex-wrap gap-8 mb-12">
+        <span class="badge badge-muted">v1.1.2</span>
+        <span class="badge badge-muted">audit-toolkit-lite/v1.1.2</span>
+      </div>
+      <h3 style="margin-top:0;">Linux Security Lite v1.1.2</h3>
+      <p>Signed security documentation release with OWASP scorecard and licensing corrections.</p>
+      <ul class="feature-list" style="margin-top:10px;">
+        <li><span class="icon">&#10003;</span><span class="text">Signed security documentation release aligned to upstream changelog.</span></li>
+        <li><span class="icon">&#10003;</span><span class="text">OWASP security scorecard maintained at 100/100 (A+), including A08 integrity closure.</span></li>
+        <li><span class="icon">&#10003;</span><span class="text">Customer and docs index navigation now includes direct OWASP scorecard linkage.</span></li>
+        <li><span class="icon">&#10003;</span><span class="text"><strong>Licensing and pricing correction:</strong> an incorrect licence configuration and an associated cost mismatch identified in this release line have been resolved. If you have any questions regarding your licence or pricing, please <a href="licensing.html">contact the licensing team</a>.</span></li>
+      </ul>
+      <div class="flex gap-12 flex-wrap mt-16">
+        <a href="https://audittoolkitlabs.github.io/releases/Linux%20Security%20Lite/v1.2.2/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Open Public Download Card</a>
+        <a href="support.html#contact" class="btn btn-secondary btn-sm">Request Archived Package</a>
+        <a href="doc-viewer.html?src=customer-docs/linux-security-lite/18-installation-guide.md" class="btn btn-secondary btn-sm">View Installation Guide</a>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="cta-band">
+  <div class="wrap">
+    <div class="cta-band-inner">
+      <div>
+        <h2 class="mb-8">Want to be notified of new releases?</h2>
+        <p>Contact us to register for release notifications or to request evaluation access.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a href="support.html#contact" class="btn btn-primary btn-lg">Contact Us</a>
+        <a href="linux-expansion.html" class="btn btn-secondary btn-lg">Linux Security Lite Details</a>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span style="font-weight:700;font-size:1.05rem;">AuditToolkit Labs</span></div>
+        <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
+        <p style="font-size:.82rem;">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+      </div>
+      <div class="footer-col"><h4>Products</h4><ul>
+        <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
+        <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
+        <li><a href="cmdb-asset-platform.html">Asset Command Center</a></li>
+        <li><a href="linux-expansion.html">Linux Security Lite</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul>
+        <li><a href="docs.html">Documentation Hub</a></li>
+        <li><a href="releases.html">Releases Hub</a></li>
+        <li><a href="licensing.html">Licensing &amp; Pricing</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="support.html#security">Security Policy</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
+        <li><a href="releases.html" target="_blank" rel="noopener">Release Hub</a></li>
+        <li><a href="support.html#contact">Send an Enquiry</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>Licence: Business Source Licence (BSL). See individual product EULA for full usage rights.</p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>
+

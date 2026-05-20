@@ -1,16 +1,18 @@
-# Cloudflare Billing Glue (Stripe + Keygen + Microsoft 365)
+# Cloudflare Billing Glue (Stripe + Keygen + Resend)
 
-This worker provides the missing public webhook/API layer for:
+This worker provides the public commercial/licensing layer for:
 
 - Stripe checkout and subscription events
 - Keygen automatic license issuance
-- Microsoft 365 Power Automate notifications
+- Resend customer and internal email delivery
+- Optional Microsoft 365 Power Automate forwarding
 
 ## Endpoints
 
 - `GET /health`
 - `POST /webhooks/stripe`
 - `POST /webhooks/keygen`
+- `POST /webhooks/resend`
 - `POST /admin/reissue-license` (protected with `x-admin-token`)
 - `POST /admin/reconciliation-report` (protected with `x-admin-token`)
 
@@ -21,15 +23,17 @@ This worker provides the missing public webhook/API layer for:
 3. Worker resolves plan mapping from session metadata or `PRICE_POLICY_MAP_JSON`.
 4. If metadata is missing and `STRIPE_API_SECRET` is configured, worker fetches Stripe line items and resolves by lookup key/price/product.
 5. Worker creates a Keygen license under the mapped policy.
-6. Worker posts an event payload to a Power Automate HTTP flow for email and internal ops handling.
-7. Worker records event IDs and session-level issuance records in KV to prevent duplicate processing.
+6. Worker sends customer receipts, license emails, reminders, and internal ops notifications through Resend.
+7. Worker can optionally forward the same event payload to a Power Automate HTTP flow.
+8. Worker records event IDs and session-level issuance records in KV to prevent duplicate processing.
 
 ## Prerequisites
 
 - Cloudflare account
 - Stripe account with webhook support
 - Keygen account and API token
-- Microsoft 365 tenant with Power Automate
+- Resend account and API key
+- Optional Microsoft 365 tenant with Power Automate
 - Node.js 20+ and Wrangler CLI
 
 ## Setup
@@ -65,6 +69,9 @@ This worker provides the missing public webhook/API layer for:
    wrangler secret put KEYGEN_API_TOKEN
    wrangler secret put STRIPE_API_SECRET
    wrangler secret put KEYGEN_WEBHOOK_PUBLIC_KEY
+   wrangler secret put RESEND_API_KEY
+   wrangler secret put RESEND_FROM_EMAIL
+   wrangler secret put RESEND_WEBHOOK_SECRET
    wrangler secret put ADMIN_API_TOKEN
    wrangler secret put M365_FLOW_WEBHOOK_URL
    ```
@@ -117,7 +124,90 @@ Configure Keygen webhook endpoint to:
 
 If you configure `KEYGEN_WEBHOOK_PUBLIC_KEY` with your Keygen account public key PEM, the worker validates webhook signatures and reports events to Microsoft 365 flow under `billing.keygen_event`.
 
+## Resend Configuration
+
+Set these secrets to enable customer-facing and internal email delivery:
+
+- `RESEND_API_KEY`
+- `RESEND_FROM_EMAIL`
+- `RESEND_WEBHOOK_SECRET` (required for validating inbound Resend webhook signatures)
+
+Configure your Resend webhook endpoint to:
+
+- `https://<your-worker-domain>/webhooks/resend`
+
+Run a signed inbound webhook smoke test from this repository:
+
+- PowerShell:
+
+   ```powershell
+   $env:WORKER_BASE_URL="http://127.0.0.1:8787"
+   $env:RESEND_WEBHOOK_SECRET="<your_resend_webhook_secret>"
+   node .\scripts\send-resend-webhook-sample.mjs
+   ```
+
+- Bash:
+
+   ```bash
+   WORKER_BASE_URL="http://127.0.0.1:8787" \
+   RESEND_WEBHOOK_SECRET="<your_resend_webhook_secret>" \
+   node ./scripts/send-resend-webhook-sample.mjs
+   ```
+
+Optional overrides:
+
+- `RESEND_EVENT_TYPE` (default `email.delivered`)
+- `RESEND_WEBHOOK_ID`
+- `RESEND_SAMPLE_FROM`
+- `RESEND_SAMPLE_TO`
+- `RESEND_SAMPLE_SUBJECT`
+- `RESEND_SAMPLE_EMAIL_ID`
+
+Replay a real raw webhook payload from file (for forensic validation):
+
+- PowerShell:
+
+   ```powershell
+   $env:WORKER_BASE_URL="http://127.0.0.1:8787"
+   $env:RESEND_WEBHOOK_SECRET="<your_resend_webhook_secret>"
+   node .\scripts\replay-resend-webhook-from-file.mjs .\samples\resend-event.raw.json
+   ```
+
+- Bash:
+
+   ```bash
+   WORKER_BASE_URL="http://127.0.0.1:8787" \
+   RESEND_WEBHOOK_SECRET="<your_resend_webhook_secret>" \
+   node ./scripts/replay-resend-webhook-from-file.mjs ./samples/resend-event.raw.json
+   ```
+
+Replay script optional overrides:
+
+- `RESEND_RAW_BODY_FILE` (fallback when no CLI file path is provided)
+- `RESEND_WEBHOOK_ID`
+- `RESEND_WEBHOOK_TIMESTAMP`
+- `RESEND_SIGNATURE_VERSION` (default `v1`)
+- `RESEND_CONTENT_TYPE` (default `application/json`)
+
+Optional site/legal link variables used in outbound email content:
+
+- `PUBLIC_SITE_BASE_URL`
+- `LICENSE_TERMS_URL`
+- `SUPPORT_URL`
+- `PRIVACY_URL`
+
+Current email flows handled directly by the worker include:
+
+- license issued notifications to customers
+- payment confirmations and invoice emails to customers
+- license expiry reminders from Keygen webhook events
+- internal sales, ops, and escalation notifications
+- weekly reconciliation reports via `/admin/reconciliation-report`
+- inbound Resend webhook capture and internal notification via `/webhooks/resend`
+
 ## Power Automate Pattern
+
+Power Automate is optional. Use it only when you want a secondary internal automation sink alongside Resend.
 
 Use one HTTP-triggered flow:
 
@@ -132,12 +222,13 @@ Use one HTTP-triggered flow:
 - Restrict admin endpoint by long random token and optionally Cloudflare Access.
 - Keep Stripe timestamp tolerance strict (worker uses 5 minutes).
 - Keep idempotency on (KV event tracking is enabled).
-- Log failures to flow/SharePoint and monitor retries.
+- Log failures from Resend and any optional flow/SharePoint forwarding, and monitor retries.
 - Configure `STRIPE_API_SECRET` so license issuance does not depend solely on checkout metadata.
+- Configure `RESEND_API_KEY` and `RESEND_FROM_EMAIL` so license/customer notifications are delivered directly from this worker.
 
 ## Operational Notes
 
-- If plan mapping fails, the worker emits `billing.plan_unresolved` to M365 flow so your team can intervene.
+- If plan mapping fails, the worker emits `billing.plan_unresolved` through Resend and optionally forwards it to M365 so your team can intervene.
 - Duplicate Stripe deliveries are ignored via KV event-id dedupe and session-level issuance record checks.
 - For enterprise MSP/OEM paths, continue manual contract checks before policy assignment.
 
