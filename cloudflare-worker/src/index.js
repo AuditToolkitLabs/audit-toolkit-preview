@@ -515,6 +515,153 @@ function isAuthorizedForBroker(request, env) {
   return Boolean(received && timingSafeEqual(received, expected));
 }
 
+function getNvdQuotaConfig(env) {
+  return {
+    windowSeconds: toPositiveInteger(env.NVD_QUOTA_WINDOW_SECONDS, 24 * 60 * 60),
+    customerLimit: toPositiveInteger(env.NVD_QUOTA_PER_WINDOW, 5000),
+    anonymousLimit: toPositiveInteger(env.NVD_ANON_QUOTA_PER_WINDOW, 250),
+    enforceCustomerId: toBoolean(env.NVD_ENFORCE_CUSTOMER_ID, false)
+  };
+}
+
+function sanitizeQuotaCustomerId(value) {
+  const normalized = sanitizeText(value).toLowerCase();
+  if (!normalized) return "";
+
+  const safe = normalized.replace(/[^a-z0-9._:-]/g, "").slice(0, 80);
+  return safe;
+}
+
+function resolveNvdCustomerIdentity(request, env) {
+  const explicitCustomerId = sanitizeQuotaCustomerId(
+    request.headers.get("x-customer-id") || request.headers.get("x-toolkit-customer-id")
+  );
+
+  if (explicitCustomerId) {
+    return {
+      customerId: explicitCustomerId,
+      source: "header",
+      anonymous: false
+    };
+  }
+
+  const config = getNvdQuotaConfig(env);
+  if (config.enforceCustomerId) {
+    return {
+      error: "missing_customer_id",
+      message:
+        "Missing customer identity header. Send x-customer-id (or x-toolkit-customer-id), or disable NVD_ENFORCE_CUSTOMER_ID."
+    };
+  }
+
+  const ipDerived = sanitizeQuotaCustomerId(request.headers.get("cf-connecting-ip"));
+  if (ipDerived) {
+    return {
+      customerId: `ip:${ipDerived}`,
+      source: "cf-connecting-ip",
+      anonymous: true
+    };
+  }
+
+  return {
+    customerId: "anonymous",
+    source: "anonymous",
+    anonymous: true
+  };
+}
+
+function withNvdQuotaHeaders(response, quota) {
+  if (!quota) return response;
+
+  const headers = new Headers(response.headers);
+  headers.set("x-quota-limit", String(quota.limit));
+  headers.set("x-quota-remaining", String(quota.remaining));
+  headers.set("x-quota-reset", String(quota.resetAtUnix));
+  headers.set("x-quota-customer", quota.customerId);
+  headers.set("x-quota-customer-source", quota.customerSource);
+
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers
+  });
+}
+
+async function enforceNvdCustomerQuota(request, env) {
+  if (!env.BILLING_EVENTS_KV) {
+    return {
+      ok: true,
+      quota: null
+    };
+  }
+
+  const identity = resolveNvdCustomerIdentity(request, env);
+  if (identity.error) {
+    return {
+      ok: false,
+      response: json({ ok: false, error: identity.error, message: identity.message }, 400)
+    };
+  }
+
+  const config = getNvdQuotaConfig(env);
+  const nowUnix = Math.floor(Date.now() / 1000);
+  const windowStart = Math.floor(nowUnix / config.windowSeconds) * config.windowSeconds;
+  const resetAtUnix = windowStart + config.windowSeconds;
+  const ttlSeconds = Math.max(resetAtUnix - nowUnix + 60, 60);
+  const limit = identity.anonymous ? config.anonymousLimit : config.customerLimit;
+  const quotaKey = `nvd:quota:${identity.customerId}:${windowStart}`;
+
+  const rawCount = await env.BILLING_EVENTS_KV.get(quotaKey);
+  const used = Number.parseInt(rawCount || "0", 10);
+  const currentUsed = Number.isFinite(used) && used > 0 ? used : 0;
+
+  if (currentUsed >= limit) {
+    const retryAfterSeconds = Math.max(resetAtUnix - nowUnix, 1);
+    const response = json(
+      {
+        ok: false,
+        error: "nvd_customer_quota_exceeded",
+        message: "Customer quota exceeded for current window.",
+        retryAfterSeconds,
+        quota: {
+          limit,
+          used: currentUsed,
+          remaining: 0,
+          resetAtUnix,
+          customerId: identity.customerId,
+          customerSource: identity.source
+        }
+      },
+      429
+    );
+
+    return {
+      ok: false,
+      response: withNvdQuotaHeaders(response, {
+        limit,
+        remaining: 0,
+        resetAtUnix,
+        customerId: identity.customerId,
+        customerSource: identity.source
+      })
+    };
+  }
+
+  const nextUsed = currentUsed + 1;
+  await env.BILLING_EVENTS_KV.put(quotaKey, String(nextUsed), { expirationTtl: ttlSeconds });
+
+  return {
+    ok: true,
+    quota: {
+      limit,
+      remaining: Math.max(limit - nextUsed, 0),
+      resetAtUnix,
+      customerId: identity.customerId,
+      customerSource: identity.source
+    }
+  };
+}
+
 async function fetchNvdData(urlPathAndQuery, env, options = {}) {
   const cacheTtlSeconds = toPositiveInteger(
     env.NVD_CACHE_TTL_SECONDS,
@@ -3522,7 +3669,12 @@ export default {
           idempotencyKv: Boolean(env.BILLING_EVENTS_KV),
           nvdBroker: true,
           nvdApiKeyConfigured: Boolean(env.NVD_API_KEY),
-          nvdNoKeyFallback: toBoolean(env.NVD_ALLOW_NO_KEY, false)
+          nvdNoKeyFallback: toBoolean(env.NVD_ALLOW_NO_KEY, false),
+          nvdQuotaEnabled: Boolean(env.BILLING_EVENTS_KV),
+          nvdQuotaWindowSeconds: getNvdQuotaConfig(env).windowSeconds,
+          nvdQuotaPerWindow: getNvdQuotaConfig(env).customerLimit,
+          nvdAnonQuotaPerWindow: getNvdQuotaConfig(env).anonymousLimit,
+          nvdQuotaRequiresCustomerId: getNvdQuotaConfig(env).enforceCustomerId
         },
         timestamp: new Date().toISOString()
       });
@@ -3546,8 +3698,14 @@ export default {
         );
       }
 
+      const quotaCheck = await enforceNvdCustomerQuota(request, env);
+      if (!quotaCheck.ok) {
+        return quotaCheck.response;
+      }
+
       try {
-        return await handleNvdCveLookup(request, env, url);
+        const response = await handleNvdCveLookup(request, env, url);
+        return withNvdQuotaHeaders(response, quotaCheck.quota);
       } catch (err) {
         return serverError(err);
       }
@@ -3571,8 +3729,14 @@ export default {
         );
       }
 
+      const quotaCheck = await enforceNvdCustomerQuota(request, env);
+      if (!quotaCheck.ok) {
+        return quotaCheck.response;
+      }
+
       try {
-        return await handleNvdSearch(request, env, url);
+        const response = await handleNvdSearch(request, env, url);
+        return withNvdQuotaHeaders(response, quotaCheck.quota);
       } catch (err) {
         return serverError(err);
       }
@@ -3596,8 +3760,14 @@ export default {
         );
       }
 
+      const quotaCheck = await enforceNvdCustomerQuota(request, env);
+      if (!quotaCheck.ok) {
+        return quotaCheck.response;
+      }
+
       try {
-        return await handleNvdCveDownload(request, env, url);
+        const response = await handleNvdCveDownload(request, env, url);
+        return withNvdQuotaHeaders(response, quotaCheck.quota);
       } catch (err) {
         return serverError(err);
       }
@@ -3621,8 +3791,14 @@ export default {
         );
       }
 
+      const quotaCheck = await enforceNvdCustomerQuota(request, env);
+      if (!quotaCheck.ok) {
+        return quotaCheck.response;
+      }
+
       try {
-        return await handleNvdSearchDownload(request, env, url);
+        const response = await handleNvdSearchDownload(request, env, url);
+        return withNvdQuotaHeaders(response, quotaCheck.quota);
       } catch (err) {
         return serverError(err);
       }

@@ -11,6 +11,7 @@
  * Environment variables:
  *   NVD_BROKER_BASE_URL (required) e.g. https://<worker-domain>
  *   NVD_BROKER_TOKEN (optional, required only if broker enforces x-broker-token)
+ *   NVD_BROKER_CUSTOMER_ID (optional, recommended for per-customer quota tracking)
  */
 
 import fs from "node:fs/promises";
@@ -37,6 +38,11 @@ function buildHeaders() {
   const token = optionalEnv("NVD_BROKER_TOKEN");
   if (token) {
     headers["x-broker-token"] = token;
+  }
+
+  const customerId = optionalEnv("NVD_BROKER_CUSTOMER_ID");
+  if (customerId) {
+    headers["x-customer-id"] = customerId;
   }
 
   return headers;

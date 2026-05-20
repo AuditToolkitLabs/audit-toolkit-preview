@@ -57,6 +57,15 @@ Use this worker as the single NVD source for all repos.
 - Default no-key fallback interval: `NVD_NO_KEY_MIN_INTERVAL_MS` (default `8000`)
 - Cache TTL: `NVD_CACHE_TTL_SECONDS` (default `3600`)
 
+### NVD Customer Quotas
+
+- All customer-facing NVD routes now enforce per-customer quota windows when KV is configured.
+- Preferred caller identity header: `x-customer-id` (fallback: `x-toolkit-customer-id`).
+- If no customer header is sent and `NVD_ENFORCE_CUSTOMER_ID=false`, quota falls back to `cf-connecting-ip` (or `anonymous`).
+- If `NVD_ENFORCE_CUSTOMER_ID=true`, requests without customer header return `400`.
+- Quota limit errors return `429` with error `nvd_customer_quota_exceeded`.
+- Response headers are included on successful and limited requests: `x-quota-limit`, `x-quota-remaining`, `x-quota-reset`, `x-quota-customer`, `x-quota-customer-source`.
+
 ### Customer Distribution Compliance Pattern
 
 Use this pattern across all toolkits to keep customer access broad while preserving NVD API compliance:
@@ -134,12 +143,16 @@ NVD notes:
 - `NVD_API_KEY` is optional only for low-volume fallback testing.
 - `NVD_BROKER_TOKEN` is optional but recommended for internal-only access control.
 - Add optional vars in `wrangler.toml` when needed:
-  - `NVD_ALLOW_NO_KEY = "false"`
-  - `NVD_MIN_INTERVAL_MS = "1200"`
-  - `NVD_NO_KEY_MIN_INTERVAL_MS = "8000"`
-  - `NVD_CACHE_TTL_SECONDS = "3600"`
-  - `NVD_PREWARM_MAX_CVE_IDS = "100"`
-  - `NVD_API_BASE_URL = "https://services.nvd.nist.gov/rest/json/cves/2.0"`
+- `NVD_ALLOW_NO_KEY = "false"`
+- `NVD_MIN_INTERVAL_MS = "1200"`
+- `NVD_NO_KEY_MIN_INTERVAL_MS = "8000"`
+- `NVD_CACHE_TTL_SECONDS = "3600"`
+- `NVD_QUOTA_WINDOW_SECONDS = "86400"`
+- `NVD_QUOTA_PER_WINDOW = "5000"`
+- `NVD_ANON_QUOTA_PER_WINDOW = "250"`
+- `NVD_ENFORCE_CUSTOMER_ID = "false"`
+- `NVD_PREWARM_MAX_CVE_IDS = "100"`
+- `NVD_API_BASE_URL = "https://services.nvd.nist.gov/rest/json/cves/2.0"`
 
 ### Reusable Toolkit Client
 
@@ -148,9 +161,9 @@ Use `scripts/nvd-broker-client.mjs` in this repo as the reference client for oth
 Examples:
 
 ```bash
-NVD_BROKER_BASE_URL="https://<worker-domain>" node ./scripts/nvd-broker-client.mjs cve CVE-2024-3094
-NVD_BROKER_BASE_URL="https://<worker-domain>" node ./scripts/nvd-broker-client.mjs download-cve CVE-2024-3094
-NVD_BROKER_BASE_URL="https://<worker-domain>" node ./scripts/nvd-broker-client.mjs download-search "keywordSearch=openssl"
+NVD_BROKER_BASE_URL="https://<worker-domain>" NVD_BROKER_CUSTOMER_ID="customer-123" node ./scripts/nvd-broker-client.mjs cve CVE-2024-3094
+NVD_BROKER_BASE_URL="https://<worker-domain>" NVD_BROKER_CUSTOMER_ID="customer-123" node ./scripts/nvd-broker-client.mjs download-cve CVE-2024-3094
+NVD_BROKER_BASE_URL="https://<worker-domain>" NVD_BROKER_CUSTOMER_ID="customer-123" node ./scripts/nvd-broker-client.mjs download-search "keywordSearch=openssl"
 ```
 
 1. Run locally:
