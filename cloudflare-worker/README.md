@@ -6,15 +6,46 @@ This worker provides the public commercial/licensing layer for:
 - Keygen automatic license issuance
 - Resend customer and internal email delivery
 - Optional Microsoft 365 Power Automate forwarding
+- Central NVD CVE broker access for all internal toolkits
 
 ## Endpoints
 
 - `GET /health`
+- `GET /nvd/cve/:cveId`
+- `GET /nvd/search`
 - `POST /webhooks/stripe`
 - `POST /webhooks/keygen`
 - `POST /webhooks/resend`
 - `POST /admin/reissue-license` (protected with `x-admin-token`)
 - `POST /admin/reconciliation-report` (protected with `x-admin-token`)
+- `POST /admin/nvd/refresh` (protected with `x-admin-token`)
+
+## NVD Broker Model
+
+Use this worker as the single NVD source for all repos.
+
+- Keep `NVD_API_KEY` only in worker secrets.
+- Client repos call this worker endpoint, not NVD directly.
+- Optional broker token enforcement: set `NVD_BROKER_TOKEN`, then callers must send `x-broker-token`.
+- Local low-volume fallback: if no key is present, set `NVD_ALLOW_NO_KEY=true` to allow throttled usage.
+
+### NVD Routes
+
+- `GET /nvd/cve/CVE-2024-12345`
+  - Returns wrapped NVD payload with cache metadata.
+- `GET /nvd/search?cpeName=...&keywordSearch=...`
+  - Supported filters: `cpeName`, `keywordSearch`, `cvssV3Severity`, `pubStartDate`, `pubEndDate`, `lastModStartDate`, `lastModEndDate`, `resultsPerPage`, `startIndex`.
+- `POST /admin/nvd/refresh`
+  - Body: `{ "cveId": "CVE-2024-12345" }`
+  - Clears cache for that CVE and refreshes from upstream.
+
+### NVD Caching and Throttling
+
+- Uses Cloudflare Cache API plus KV (`BILLING_EVENTS_KV`) cache keys under `nvd-cache:*`.
+- Upstream fetches are globally throttled through KV coordination.
+- Default keyed interval: `NVD_MIN_INTERVAL_MS` (default `1200`)
+- Default no-key fallback interval: `NVD_NO_KEY_MIN_INTERVAL_MS` (default `8000`)
+- Cache TTL: `NVD_CACHE_TTL_SECONDS` (default `3600`)
 
 ## Flow Summary
 
@@ -74,15 +105,28 @@ This worker provides the public commercial/licensing layer for:
    wrangler secret put RESEND_WEBHOOK_SECRET
    wrangler secret put ADMIN_API_TOKEN
    wrangler secret put M365_FLOW_WEBHOOK_URL
+   wrangler secret put NVD_API_KEY
+   wrangler secret put NVD_BROKER_TOKEN
    ```
 
-7. Run locally:
+NVD notes:
+
+- `NVD_API_KEY` is optional only for low-volume fallback testing.
+- `NVD_BROKER_TOKEN` is optional but recommended for internal-only access control.
+- Add optional vars in `wrangler.toml` when needed:
+  - `NVD_ALLOW_NO_KEY = "false"`
+  - `NVD_MIN_INTERVAL_MS = "1200"`
+  - `NVD_NO_KEY_MIN_INTERVAL_MS = "8000"`
+  - `NVD_CACHE_TTL_SECONDS = "3600"`
+  - `NVD_API_BASE_URL = "https://services.nvd.nist.gov/rest/json/cves/2.0"`
+
+1. Run locally:
 
    ```bash
    wrangler dev
    ```
 
-8. Deploy:
+2. Deploy:
 
    ```bash
    wrangler deploy

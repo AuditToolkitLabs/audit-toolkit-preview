@@ -390,6 +390,338 @@ function parseJsonSafe(value, fallback = null) {
   }
 }
 
+function toPositiveInteger(value, fallback) {
+  const parsed = Number.parseInt(sanitizeText(value), 10);
+  if (!Number.isFinite(parsed) || parsed <= 0) return fallback;
+  return parsed;
+}
+
+function toBoolean(value, fallback = false) {
+  const normalized = sanitizeText(value).toLowerCase();
+  if (!normalized) return fallback;
+  if (["1", "true", "yes", "on"].includes(normalized)) return true;
+  if (["0", "false", "no", "off"].includes(normalized)) return false;
+  return fallback;
+}
+
+function canUseNoKeyFallback(url, env) {
+  const host = sanitizeText(url?.hostname || "").toLowerCase();
+  const localHost = host === "localhost" || host === "127.0.0.1";
+  return localHost || toBoolean(env.NVD_ALLOW_NO_KEY, false);
+}
+
+function nvdHeaders(env) {
+  const headers = {
+    "content-type": "application/json",
+    "user-agent": "audittoolkit-nvd-broker/1.0"
+  };
+
+  if (env.NVD_API_KEY) {
+    headers.apiKey = env.NVD_API_KEY;
+  }
+
+  return headers;
+}
+
+function nvdBaseUrl(env) {
+  return sanitizeText(env.NVD_API_BASE_URL) || "https://services.nvd.nist.gov/rest/json/cves/2.0";
+}
+
+function buildNvdProxyCacheKey(pathAndQuery) {
+  return `nvd-cache:${pathAndQuery}`;
+}
+
+async function readNvdCache(env, key) {
+  const cache = caches.default;
+  const cacheRequest = new Request(`https://nvd-cache.internal/${encodeURIComponent(key)}`);
+
+  const cachedResponse = await cache.match(cacheRequest);
+  if (cachedResponse) {
+    const payload = parseJsonSafe(await cachedResponse.text(), null);
+    if (payload) {
+      return { source: "cache-api", payload };
+    }
+  }
+
+  if (!env.BILLING_EVENTS_KV) return null;
+  const value = await env.BILLING_EVENTS_KV.get(key);
+  if (!value) return null;
+
+  const payload = parseJsonSafe(value, null);
+  if (!payload) return null;
+  return { source: "kv", payload };
+}
+
+async function writeNvdCache(env, key, payload, ttlSeconds) {
+  if (!payload) return;
+
+  const cache = caches.default;
+  const cacheRequest = new Request(`https://nvd-cache.internal/${encodeURIComponent(key)}`);
+  await cache.put(
+    cacheRequest,
+    new Response(JSON.stringify(payload), {
+      headers: {
+        "content-type": "application/json; charset=utf-8",
+        "cache-control": `public, max-age=${ttlSeconds}`
+      }
+    })
+  );
+
+  if (!env.BILLING_EVENTS_KV) return;
+  await env.BILLING_EVENTS_KV.put(key, JSON.stringify(payload), { expirationTtl: ttlSeconds });
+}
+
+async function enforceNvdRateLimit(env, minIntervalMs) {
+  if (!env.BILLING_EVENTS_KV) {
+    return { ok: true, limitedByKv: false };
+  }
+
+  const key = "nvd:rate:last-upstream-call-ms";
+  const now = Date.now();
+  const lastRaw = await env.BILLING_EVENTS_KV.get(key);
+  const last = Number(lastRaw || "0");
+
+  if (Number.isFinite(last) && last > 0) {
+    const elapsed = now - last;
+    if (elapsed < minIntervalMs) {
+      const retryAfterSeconds = Math.ceil((minIntervalMs - elapsed) / 1000);
+      return {
+        ok: false,
+        limitedByKv: true,
+        retryAfterSeconds
+      };
+    }
+  }
+
+  await env.BILLING_EVENTS_KV.put(key, String(now), { expirationTtl: 3600 });
+  return { ok: true, limitedByKv: true };
+}
+
+function isAuthorizedForBroker(request, env) {
+  const expected = sanitizeText(env.NVD_BROKER_TOKEN);
+  if (!expected) return true;
+
+  const received = sanitizeText(request.headers.get("x-broker-token"));
+  return Boolean(received && timingSafeEqual(received, expected));
+}
+
+async function fetchNvdData(urlPathAndQuery, env, options = {}) {
+  const cacheTtlSeconds = toPositiveInteger(
+    env.NVD_CACHE_TTL_SECONDS,
+    options.defaultCacheTtlSeconds || 3600
+  );
+  const cacheKey = buildNvdProxyCacheKey(urlPathAndQuery);
+
+  const cached = await readNvdCache(env, cacheKey);
+  if (cached?.payload) {
+    return {
+      ok: true,
+      cached: true,
+      cacheSource: cached.source,
+      payload: cached.payload
+    };
+  }
+
+  const hasNvdKey = Boolean(env.NVD_API_KEY);
+  const fallbackMode = !hasNvdKey;
+  const minIntervalMs = hasNvdKey
+    ? toPositiveInteger(env.NVD_MIN_INTERVAL_MS, 1200)
+    : toPositiveInteger(env.NVD_NO_KEY_MIN_INTERVAL_MS, 8000);
+
+  const limiter = await enforceNvdRateLimit(env, minIntervalMs);
+  if (!limiter.ok) {
+    return {
+      ok: false,
+      status: 429,
+      error: "nvd_rate_limited",
+      retryAfterSeconds: limiter.retryAfterSeconds
+    };
+  }
+
+  const upstream = `${nvdBaseUrl(env)}${urlPathAndQuery}`;
+  const response = await fetch(upstream, {
+    method: "GET",
+    headers: nvdHeaders(env)
+  });
+
+  if (!response.ok) {
+    return {
+      ok: false,
+      status: response.status,
+      error: "nvd_upstream_error",
+      message: await response.text()
+    };
+  }
+
+  const payload = parseJsonSafe(await response.text(), null);
+  if (!payload) {
+    return {
+      ok: false,
+      status: 502,
+      error: "nvd_invalid_response"
+    };
+  }
+
+  const wrapped = {
+    fetchedAt: new Date().toISOString(),
+    fallbackNoKeyMode: fallbackMode,
+    data: payload
+  };
+
+  await writeNvdCache(env, cacheKey, wrapped, cacheTtlSeconds);
+  return {
+    ok: true,
+    cached: false,
+    cacheSource: "upstream",
+    payload: wrapped
+  };
+}
+
+async function handleNvdCveLookup(request, env, url) {
+  const cveId = sanitizeText(decodeURIComponent(url.pathname.split("/").pop() || "")).toUpperCase();
+  if (!/^CVE-\d{4}-\d{4,}$/.test(cveId)) {
+    return json({ ok: false, error: "invalid_cve_id", cveId }, 400);
+  }
+
+  const result = await fetchNvdData(`?cveId=${encodeURIComponent(cveId)}`, env, {
+    defaultCacheTtlSeconds: 4 * 60 * 60
+  });
+
+  if (!result.ok) {
+    const status = result.status || 500;
+    const headers = {};
+    if (result.retryAfterSeconds) {
+      headers["retry-after"] = String(result.retryAfterSeconds);
+    }
+
+    return new Response(
+      JSON.stringify(
+        {
+          ok: false,
+          error: result.error,
+          message: result.message || null,
+          retryAfterSeconds: result.retryAfterSeconds || null
+        },
+        null,
+        2
+      ),
+      {
+        status,
+        headers: {
+          "content-type": "application/json; charset=utf-8",
+          ...headers
+        }
+      }
+    );
+  }
+
+  return json({
+    ok: true,
+    cveId,
+    cached: result.cached,
+    cacheSource: result.cacheSource,
+    payload: result.payload
+  });
+}
+
+async function handleNvdSearch(request, env, url) {
+  const params = new URLSearchParams();
+  const allowedParams = [
+    "cpeName",
+    "keywordSearch",
+    "cvssV3Severity",
+    "pubStartDate",
+    "pubEndDate",
+    "lastModStartDate",
+    "lastModEndDate",
+    "resultsPerPage",
+    "startIndex"
+  ];
+
+  for (const key of allowedParams) {
+    const value = sanitizeText(url.searchParams.get(key));
+    if (value) params.set(key, value);
+  }
+
+  if ([...params.keys()].length === 0) {
+    return json(
+      {
+        ok: false,
+        error: "missing_query",
+        message: "Provide at least one supported filter (for example: cpeName or keywordSearch)."
+      },
+      400
+    );
+  }
+
+  const result = await fetchNvdData(`?${params.toString()}`, env, {
+    defaultCacheTtlSeconds: 60 * 60
+  });
+
+  if (!result.ok) {
+    const status = result.status || 500;
+    return json(
+      {
+        ok: false,
+        error: result.error,
+        message: result.message || null,
+        retryAfterSeconds: result.retryAfterSeconds || null
+      },
+      status
+    );
+  }
+
+  return json({
+    ok: true,
+    cached: result.cached,
+    cacheSource: result.cacheSource,
+    payload: result.payload
+  });
+}
+
+async function handleNvdCacheRefresh(request, env) {
+  const payload = await request.json().catch(() => ({}));
+  const cveId = sanitizeText(payload?.cveId).toUpperCase();
+
+  if (!/^CVE-\d{4}-\d{4,}$/.test(cveId)) {
+    return json({ ok: false, error: "invalid_cve_id", cveId }, 400);
+  }
+
+  const cacheKey = buildNvdProxyCacheKey(`?cveId=${encodeURIComponent(cveId)}`);
+  if (env.BILLING_EVENTS_KV) {
+    await env.BILLING_EVENTS_KV.delete(cacheKey);
+  }
+
+  const cache = caches.default;
+  const cacheRequest = new Request(`https://nvd-cache.internal/${encodeURIComponent(cacheKey)}`);
+  await cache.delete(cacheRequest);
+
+  const result = await fetchNvdData(`?cveId=${encodeURIComponent(cveId)}`, env, {
+    defaultCacheTtlSeconds: 4 * 60 * 60
+  });
+
+  if (!result.ok) {
+    return json(
+      {
+        ok: false,
+        error: result.error,
+        message: result.message || null,
+        retryAfterSeconds: result.retryAfterSeconds || null
+      },
+      result.status || 500
+    );
+  }
+
+  return json({
+    ok: true,
+    refreshed: true,
+    cveId,
+    cached: result.cached,
+    cacheSource: result.cacheSource,
+    payload: result.payload
+  });
+}
+
 function parseMetadataField(metadata, key) {
   const value = metadata?.[key];
   if (!value || typeof value !== "string") return null;
@@ -3036,10 +3368,63 @@ export default {
           keygenWebhookValidation: Boolean(
             env.KEYGEN_WEBHOOK_PUBLIC_KEY || env.KEYGEN_WEBHOOK_SECRET
           ),
-          idempotencyKv: Boolean(env.BILLING_EVENTS_KV)
+          idempotencyKv: Boolean(env.BILLING_EVENTS_KV),
+          nvdBroker: true,
+          nvdApiKeyConfigured: Boolean(env.NVD_API_KEY),
+          nvdNoKeyFallback: toBoolean(env.NVD_ALLOW_NO_KEY, false)
         },
         timestamp: new Date().toISOString()
       });
+    }
+
+    if (request.method === "GET" && url.pathname.startsWith("/nvd/cve/")) {
+      if (!isAuthorizedForBroker(request, env)) {
+        return unauthorized();
+      }
+
+      const hasNvdKey = Boolean(env.NVD_API_KEY);
+      if (!hasNvdKey && !canUseNoKeyFallback(url, env)) {
+        return json(
+          {
+            ok: false,
+            error: "nvd_key_required",
+            message:
+              "NVD_API_KEY is missing and no-key mode is disabled. Set NVD_API_KEY or NVD_ALLOW_NO_KEY=true for low-volume local fallback."
+          },
+          503
+        );
+      }
+
+      try {
+        return await handleNvdCveLookup(request, env, url);
+      } catch (err) {
+        return serverError(err);
+      }
+    }
+
+    if (request.method === "GET" && url.pathname === "/nvd/search") {
+      if (!isAuthorizedForBroker(request, env)) {
+        return unauthorized();
+      }
+
+      const hasNvdKey = Boolean(env.NVD_API_KEY);
+      if (!hasNvdKey && !canUseNoKeyFallback(url, env)) {
+        return json(
+          {
+            ok: false,
+            error: "nvd_key_required",
+            message:
+              "NVD_API_KEY is missing and no-key mode is disabled. Set NVD_API_KEY or NVD_ALLOW_NO_KEY=true for low-volume local fallback."
+          },
+          503
+        );
+      }
+
+      try {
+        return await handleNvdSearch(request, env, url);
+      } catch (err) {
+        return serverError(err);
+      }
     }
 
     if (request.method === "POST" && url.pathname === "/webhooks/stripe") {
@@ -3208,6 +3593,32 @@ export default {
         });
 
         return json({ ok: true, action: "weekly-reconciliation-sent", report });
+      } catch (err) {
+        return serverError(err);
+      }
+    }
+
+    if (request.method === "POST" && url.pathname === "/admin/nvd/refresh") {
+      const adminToken = request.headers.get("x-admin-token");
+      if (!env.ADMIN_API_TOKEN || adminToken !== env.ADMIN_API_TOKEN) {
+        return unauthorized();
+      }
+
+      const hasNvdKey = Boolean(env.NVD_API_KEY);
+      if (!hasNvdKey && !canUseNoKeyFallback(url, env)) {
+        return json(
+          {
+            ok: false,
+            error: "nvd_key_required",
+            message:
+              "NVD_API_KEY is missing and no-key mode is disabled. Set NVD_API_KEY or NVD_ALLOW_NO_KEY=true for low-volume local fallback."
+          },
+          503
+        );
+      }
+
+      try {
+        return await handleNvdCacheRefresh(request, env);
       } catch (err) {
         return serverError(err);
       }
