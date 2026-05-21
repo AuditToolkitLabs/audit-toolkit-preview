@@ -6,6 +6,28 @@
   <title>Support &amp; Contact — AuditToolkit Labs</title>
   <meta name="description" content="Support, contact, and security disclosure for AuditToolkit Labs. Licence enquiries, deployment support, and responsible vulnerability disclosure." />
   <link rel="stylesheet" href="assets/css/site.css" />
+  <style>
+    .nav-mobile-contact{color:var(--accent);font-weight:600}
+    .contact-address-title{margin-bottom:12px}
+    .contact-address-text{margin-bottom:10px}
+    .contact-address-phone{margin:0}
+    .contact-btn{width:100%;justify-content:center;margin-top:12px}
+    .contact-subtle{font-size:.82rem;margin-top:10px;color:var(--subtle)}
+    .enquiry-title{margin-bottom:20px}
+    .enquiry-desc{margin-bottom:20px;font-size:.93rem}
+    .enquiry-links{display:flex;flex-direction:column;gap:10px}
+    .section-divider{border-top:1px solid var(--border)}
+    .callout-accent{border-color:var(--accent-2)}
+    .security-subject{font-size:.85rem}
+    .security-cta-wrap{margin-top:28px}
+    .security-posture-title{margin-bottom:16px}
+    .security-icon-green{color:var(--accent-2)}
+    .security-posture-footer{margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
+    .security-posture-btn{width:100%;justify-content:center}
+    .faq-cta{margin-top:24px}
+    .footer-brand-title{font-weight:700;font-size:1.05rem}
+    .footer-copy-small{font-size:.82rem}
+  </style>
 </head>
 <body>
 <nav class="nav">
@@ -31,7 +53,7 @@
   <a href="releases.html">Releases</a>
   <a href="licensing.html">Licensing</a>
   <a href="support.html">Support</a>
-  <a href="#contact" style="color:var(--accent);font-weight:600;">Contact Us</a>
+  <a href="#contact" class="nav-mobile-contact">Contact Us</a>
 </div>
 
 <div class="page-hero">
@@ -54,44 +76,44 @@
       <p>All enquiries are handled via email. We aim to respond to all messages within two business days.</p>
     </div>
     <div class="card mb-24">
-      <h3 style="margin-bottom:12px;">Business Address</h3>
-      <p style="margin-bottom:10px;">
+      <h3 class="contact-address-title">Business Address</h3>
+      <p class="contact-address-text">
         Audit Toolkit Labs Ltd<br />
         4th Floor, Silverstream House<br />
         45 Fitzroy Street, Fitzrovia<br />
         London<br />
         W1T 6EB
       </p>
-      <p style="margin:0;"><strong>Telephone:</strong> <a href="tel:+442080909610">+44 (0) 20 8090 9610</a></p>
+      <p class="contact-address-phone"><strong>Telephone:</strong> <a href="tel:+442080909610">+44 (0) 20 8090 9610</a></p>
     </div>
     <div class="grid-3 mb-40">
       <div class="card text-center">
         <span class="contact-icon">&#128231;</span>
         <h3>General Support</h3>
         <p>Deployment help, technical questions, licence enquiries, evaluation access requests, and general product questions.</p>
-        <a href="mailto:support@audittoolkitlabs.com?subject=Support%20Enquiry" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:12px;">Email Support</a>
-        <p style="font-size:.82rem;margin-top:10px;color:var(--subtle);">support@audittoolkitlabs.com</p>
+        <a href="mailto:support@audittoolkitlabs.com?subject=Support%20Enquiry" class="btn btn-primary contact-btn">Email Support</a>
+        <p class="contact-subtle">support@audittoolkitlabs.com</p>
       </div>
       <div class="card text-center">
         <span class="contact-icon">&#128240;</span>
         <h3>Licence &amp; Evaluation</h3>
         <p>Request an evaluation deployment, discuss licence terms, or enquire about commercial deployment options for your organisation.</p>
-        <a href="mailto:support@audittoolkitlabs.com?subject=Licence%20and%20Evaluation%20Enquiry" class="btn btn-secondary" style="width:100%;justify-content:center;margin-top:12px;">Licence Enquiry</a>
-        <p style="font-size:.82rem;margin-top:10px;color:var(--subtle);">Business Source Licence (BSL)</p>
+        <a href="mailto:support@audittoolkitlabs.com?subject=Licence%20and%20Evaluation%20Enquiry" class="btn btn-secondary contact-btn">Licence Enquiry</a>
+        <p class="contact-subtle">Business Source Licence (BSL)</p>
       </div>
       <div class="card text-center">
         <span class="contact-icon">&#128200;</span>
         <h3>Preview &amp; Early Access</h3>
         <p>Request a Linux Security Lite quote or licence enquiry from the support team.</p>
-        <a href="mailto:support@audittoolkitlabs.com?subject=Linux%20Security%20Lite%20-%20Licence%20Enquiry" class="btn btn-outline-green" style="width:100%;justify-content:center;margin-top:12px;">Licence Enquiry</a>
-        <p style="font-size:.82rem;margin-top:10px;color:var(--subtle);">Licensing and commercial enquiries</p>
+        <a href="mailto:support@audittoolkitlabs.com?subject=Linux%20Security%20Lite%20-%20Licence%20Enquiry" class="btn btn-outline-green contact-btn">Licence Enquiry</a>
+        <p class="contact-subtle">Licensing and commercial enquiries</p>
       </div>
     </div>
 
     <div class="card">
-      <h3 style="margin-bottom:20px;">Send an Enquiry</h3>
-      <p style="margin-bottom:20px;font-size:.93rem;">Use the quick-links below to open a pre-addressed email for common enquiry types. Each link opens your email client with a subject line and recipient pre-filled.</p>
-      <div style="display:flex;flex-direction:column;gap:10px;">
+      <h3 class="enquiry-title">Send an Enquiry</h3>
+      <p class="enquiry-desc">Use the quick-links below to open a pre-addressed email for common enquiry types. Each link opens your email client with a subject line and recipient pre-filled.</p>
+      <div class="enquiry-links">
         <a href="mailto:support@audittoolkitlabs.com?subject=CMDB%20Tool%20-%20Deployment%20Support%20Enquiry" class="doc-link">
           <span class="doc-num">&#128225;</span>
           <span class="doc-title">CMDB API Data Collection Tool — Deployment Support</span>
@@ -127,7 +149,7 @@
   </div>
 </section>
 
-<section class="section" id="security" style="border-top:1px solid var(--border);">
+<section class="section section-divider" id="security">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Security</p>
@@ -136,32 +158,32 @@
     </div>
     <div class="split">
       <div>
-        <div class="callout mb-24" style="border-color:var(--accent-2);">
+        <div class="callout mb-24 callout-accent">
           <strong>Please do not report security vulnerabilities via public issue trackers.</strong>
           Use the dedicated email address below for all security disclosures.
         </div>
         <ul class="feature-list">
-          <li><span class="icon">&#128231;</span><span class="text"><strong>Email:</strong> <a href="mailto:support@audittoolkitlabs.com?subject=Security%20Vulnerability%20Report">support@audittoolkitlabs.com</a><br /><span style="font-size:.85rem;">Subject: Security Vulnerability Report</span></span></li>
+          <li><span class="icon">&#128231;</span><span class="text"><strong>Email:</strong> <a href="mailto:support@audittoolkitlabs.com?subject=Security%20Vulnerability%20Report">support@audittoolkitlabs.com</a><br /><span class="security-subject">Subject: Security Vulnerability Report</span></span></li>
           <li><span class="icon">&#128336;</span><span class="text"><strong>Response time:</strong> We aim to acknowledge all security reports within 48 hours and provide an initial assessment within 5 business days.</span></li>
           <li><span class="icon">&#128274;</span><span class="text"><strong>Coordinated disclosure:</strong> We request a minimum 90-day coordinated disclosure window to develop and release a fix before public disclosure.</span></li>
           <li><span class="icon">&#9989;</span><span class="text"><strong>Safe harbour:</strong> Good-faith security researchers who follow responsible disclosure will not face legal action from AuditToolkit Labs for their research activities.</span></li>
         </ul>
-        <div style="margin-top:28px;">
+        <div class="security-cta-wrap">
           <a href="mailto:support@audittoolkitlabs.com?subject=Security%20Vulnerability%20Report" class="btn btn-primary">Report a Vulnerability</a>
         </div>
       </div>
       <div>
         <div class="card">
-          <h3 style="margin-bottom:16px;">Security Posture Summary</h3>
+          <h3 class="security-posture-title">Security Posture Summary</h3>
           <ul class="feature-list">
-            <li><span class="icon" style="color:var(--accent-2);">&#10003;</span><span class="text"><strong>OWASP Top 10:2021 PASS</strong> — v0.2.6. Full scorecard in <a href="docs.html#security-compliance">Doc 34</a>.</span></li>
-            <li><span class="icon" style="color:var(--accent-2);">&#10003;</span><span class="text"><strong>Zero CVEs</strong> — pip-audit clean at release across all 25 pinned dependencies.</span></li>
-            <li><span class="icon" style="color:var(--accent-2);">&#10003;</span><span class="text"><strong>Bandit SAST</strong> — 0 High, 0 Medium, 0 Low post-remediation.</span></li>
-            <li><span class="icon" style="color:var(--accent-2);">&#10003;</span><span class="text"><strong>AES-256 encryption</strong> — all credentials and secrets encrypted at rest.</span></li>
-            <li><span class="icon" style="color:var(--accent-2);">&#10003;</span><span class="text"><strong>HTTP security headers</strong> — CSP, X-Frame-Options, Referrer-Policy, Permissions-Policy on all responses.</span></li>
+            <li><span class="icon security-icon-green">&#10003;</span><span class="text"><strong>OWASP Top 10:2021 PASS</strong> — v0.2.6. Full scorecard in <a href="docs.html#security-compliance">Doc 34</a>.</span></li>
+            <li><span class="icon security-icon-green">&#10003;</span><span class="text"><strong>Zero CVEs</strong> — pip-audit clean at release across all 25 pinned dependencies.</span></li>
+            <li><span class="icon security-icon-green">&#10003;</span><span class="text"><strong>Bandit SAST</strong> — 0 High, 0 Medium, 0 Low post-remediation.</span></li>
+            <li><span class="icon security-icon-green">&#10003;</span><span class="text"><strong>AES-256 encryption</strong> — all credentials and secrets encrypted at rest.</span></li>
+            <li><span class="icon security-icon-green">&#10003;</span><span class="text"><strong>HTTP security headers</strong> — CSP, X-Frame-Options, Referrer-Policy, Permissions-Policy on all responses.</span></li>
           </ul>
-          <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
-            <a href="cmdb-tool.html#security" class="btn btn-secondary btn-sm" style="width:100%;justify-content:center;">View Full OWASP Scorecard &rarr;</a>
+          <div class="security-posture-footer">
+            <a href="cmdb-tool.html#security" class="btn btn-secondary btn-sm security-posture-btn">View Full OWASP Scorecard &rarr;</a>
           </div>
         </div>
       </div>
@@ -169,7 +191,7 @@
   </div>
 </section>
 
-<section class="section-sm" id="faq" style="border-top:1px solid var(--border);">
+<section class="section-sm section-divider" id="faq">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">FAQ</p>
@@ -201,7 +223,7 @@
         <p>AuditToolkit Labs products use the Business Source Licence (BSL). This allows internal use and evaluation but restricts commercial resale or redistribution. Contact us for full licence terms.</p>
       </div>
     </div>
-    <div style="margin-top:24px;">
+    <div class="faq-cta">
       <a href="docs.html#security-compliance" class="btn btn-secondary">Full Procurement FAQ (Doc 33)</a>
     </div>
   </div>
@@ -226,9 +248,9 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span style="font-weight:700;font-size:1.05rem;">AuditToolkit Labs</span></div>
+        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span class="footer-brand-title">AuditToolkit Labs</span></div>
         <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
-        <p style="font-size:.82rem;">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+        <p class="footer-copy-small">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
       </div>
       <div class="footer-col"><h4>Products</h4><ul>
         <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>

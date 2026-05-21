@@ -6,6 +6,23 @@
   <title>Linux Security Lite — AuditToolkit Labs</title>
   <meta name="description" content="Linux Security Lite — expanded Linux audit breadth for the Audit Admin Toolkit. Deeper hardening verification, CIS benchmark coverage, policy compliance checking, and evidence-focused reporting across RHEL, Debian, Ubuntu, and SLES." />
   <link rel="stylesheet" href="assets/css/site.css" />
+  <style>
+    .nav-mobile-contact{color:var(--accent);font-weight:600}
+    .outcome-icon{font-size:1.6rem;margin-bottom:12px}
+    .coverage-icon{font-size:1.5rem;margin-bottom:10px}
+    .section-divider{border-top:1px solid var(--border)}
+    .availability-title{margin-bottom:16px}
+    .availability-contact-wrap{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+    .availability-contact-text{font-size:.9rem;margin-bottom:12px}
+    .btn-full-center{width:100%;justify-content:center}
+    .security-section{background:linear-gradient(160deg,#0a1524 0%,#0b1220 100%);border-top:1px solid var(--border)}
+    .security-badge{font-size:.82rem;padding:6px 14px}
+    .security-note{margin-top:20px;font-size:.85rem}
+    .owasp-heading{font-size:1.05rem;font-weight:700;color:var(--text)}
+    .owasp-subheading{font-size:.83rem;color:var(--subtle)}
+    .footer-brand-title{font-weight:700;font-size:1.05rem}
+    .footer-copy-small{font-size:.82rem}
+  </style>
 </head>
 <body>
 <nav class="nav">
@@ -31,7 +48,7 @@
   <a href="releases.html">Releases</a>
   <a href="licensing.html">Licensing</a>
   <a href="support.html">Support</a>
-  <a href="support.html#contact" style="color:var(--accent);font-weight:600;">Contact Us</a>
+  <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
 </div>
 
 <div class="page-hero">
@@ -42,16 +59,16 @@
       <span class="cur">Linux Security Lite</span>
     </div>
     <div class="flex flex-wrap gap-8 mb-16">
-      <span class="badge badge-amber">Beta</span>
+      <span class="badge badge-green">Current Release</span>
       <span class="badge badge-muted">Extension for Audit Admin Toolkit</span>
       <span class="badge badge-blue">RHEL &middot; Debian &middot; Ubuntu &middot; SLES &middot; Alpine &middot; Arch</span>
       <span class="badge badge-green">&#10003; OWASP Score 100/100 &mdash; A+</span>
       <span class="badge badge-muted">Docs v1.2.2 (24 docs)</span>
     </div>
     <h1>Linux Security Lite</h1>
-    <p>Expanded Linux control coverage for posture validation, hardening verification, and evidence-focused compliance reporting. A beta extension module for the <a href="audit-toolkit.html">Audit Admin Toolkit</a> that deepens Linux audit breadth across mixed enterprise Linux estates.</p>
-    <div class="callout warn mt-24">
-      <strong>Beta release.</strong> Linux Security Lite is in active development as an extension to the Audit Admin Toolkit. Coverage areas and interfaces may evolve before GA release. Current customer documentation set is version 1.2.2 (24 documents), including dedicated licensing/legal and enterprise compliance platform guidance.
+    <p>Expanded Linux control coverage for posture validation, hardening verification, and evidence-focused compliance reporting. A current-release extension module for the <a href="audit-toolkit.html">Audit Admin Toolkit</a> that deepens Linux audit breadth across mixed enterprise Linux estates.</p>
+    <div class="callout info mt-24">
+      <strong>Current release.</strong> Linux Security Lite is available as a current-release extension to the Audit Admin Toolkit. Current customer documentation set is version 1.2.2 (24 documents), including dedicated licensing/legal and enterprise compliance platform guidance.
     </div>
     <div class="flex gap-12 flex-wrap mt-24">
       <a href="support.html#contact" class="btn btn-primary">Request Evaluation Access</a>
@@ -72,22 +89,22 @@
     </div>
     <div class="grid-3">
       <div class="card">
-        <div style="font-size:1.6rem;margin-bottom:12px;">&#128270;</div>
+        <div class="outcome-icon">&#128270;</div>
         <h3>Control Depth</h3>
         <p>Broader Linux hardening checks across OS configuration, service hardening, network posture, identity controls, and runtime state &mdash; aligned to CIS benchmark and internal policy frameworks.</p>
       </div>
       <div class="card">
-        <div style="font-size:1.6rem;margin-bottom:12px;">&#128203;</div>
+        <div class="outcome-icon">&#128203;</div>
         <h3>Higher Signal Findings</h3>
         <p>Improved control mapping and output quality. Findings come with precise evidence, control references, and clear remediation context &mdash; designed for triage and remediation planning, not just alerting.</p>
       </div>
       <div class="card">
-        <div style="font-size:1.6rem;margin-bottom:12px;">&#9989;</div>
+        <div class="outcome-icon">&#9989;</div>
         <h3>Compliance Readiness</h3>
         <p>Evidence outputs designed for governance and audit review workflows. Pass/fail status per control with exportable evidence packages for compliance reporting and external review.</p>
       </div>
       <div class="card">
-        <div style="font-size:1.6rem;margin-bottom:12px;">&#127760;</div>
+        <div class="outcome-icon">&#127760;</div>
         <h3>Enterprise Integration</h3>
         <p>Professional and Business workflows add centralised compliance reporting, trend analysis, SIEM export, webhooks, and API-driven integration paths for SOC and platform teams.</p>
       </div>
@@ -95,7 +112,7 @@
   </div>
 </section>
 
-<section class="section" id="coverage" style="border-top:1px solid var(--border);">
+<section class="section section-divider" id="coverage">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Coverage Focus Areas</p>
@@ -104,32 +121,32 @@
     </div>
     <div class="grid-2">
       <div class="card">
-        <div style="font-size:1.5rem;margin-bottom:10px;">&#128423;</div>
+        <div class="coverage-icon">&#128423;</div>
         <h3>Baseline &amp; Hardening Verification</h3>
         <p>Comprehensive checks against Linux baseline hardening standards. Kernel parameters, filesystem mounts, bootloader configuration, and OS-level security controls across RHEL, Debian, Ubuntu, and SLES.</p>
       </div>
       <div class="card">
-        <div style="font-size:1.5rem;margin-bottom:10px;">&#127760;</div>
+        <div class="coverage-icon">&#127760;</div>
         <h3>Network &amp; Service Controls</h3>
         <p>Service inventory and state validation. Network-exposed interfaces, firewall rule verification, open port auditing, and daemon security configuration checks.</p>
       </div>
       <div class="card">
-        <div style="font-size:1.5rem;margin-bottom:10px;">&#128100;</div>
+        <div class="coverage-icon">&#128100;</div>
         <h3>Identity &amp; Access Controls</h3>
         <p>Local account auditing, privilege escalation paths, PAM configuration, SSH key and access control validation, and sudoers policy review.</p>
       </div>
       <div class="card">
-        <div style="font-size:1.5rem;margin-bottom:10px;">&#128196;</div>
+        <div class="coverage-icon">&#128196;</div>
         <h3>Policy-Aligned Reporting</h3>
         <p>Configurable policy baselines with per-control pass/fail status, evidence capture, and structured exports for operational and compliance teams.</p>
       </div>
       <div class="card">
-        <div style="font-size:1.5rem;margin-bottom:10px;">&#128202;</div>
+        <div class="coverage-icon">&#128202;</div>
         <h3>Mixed Estate Support</h3>
         <p>Unified view across multiple Linux distributions in a single audit run. Normalised findings across distribution variants for consistent tracking across a mixed estate.</p>
       </div>
       <div class="card">
-        <div style="font-size:1.5rem;margin-bottom:10px;">&#128260;</div>
+        <div class="coverage-icon">&#128260;</div>
         <h3>Integrated Workflow</h3>
         <p>Findings feed directly into the Audit Admin Toolkit workflow &mdash; identification, evidence, owner assignment, remediation tracking, and closure &mdash; without any separate tooling.</p>
       </div>
@@ -137,7 +154,7 @@
   </div>
 </section>
 
-<section class="section" id="distros" style="border-top:1px solid var(--border);">
+<section class="section section-divider" id="distros">
   <div class="wrap">
     <div class="split">
       <div>
@@ -162,15 +179,15 @@
       </div>
       <div>
         <div class="card">
-          <h3 style="margin-bottom:16px;">Preview availability</h3>
-          <p>The Linux Security Lite is in preview as an extension to the Audit Admin Toolkit. Both are available for evaluation. Contact us to request preview access or evaluation access for GA notification.</p>
+          <h3 class="availability-title">Release availability</h3>
+          <p>Linux Security Lite is available as a current release extension to the Audit Admin Toolkit. Contact us for licensing guidance, rollout planning, or evaluation support.</p>
           <div class="flex flex-wrap gap-8 mt-24">
-            <span class="badge badge-amber">Audit Toolkit &mdash; In Preview</span>
-            <span class="badge badge-amber">Linux Security Lite &mdash; In Preview</span>
+            <span class="badge badge-green">Audit Toolkit &mdash; Current Release</span>
+            <span class="badge badge-green">Linux Security Lite &mdash; Current Release</span>
           </div>
-          <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
-            <p style="font-size:.9rem;margin-bottom:12px;">For preview access, evaluation support, or to request GA notification updates:</p>
-            <a href="support.html#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Request Evaluation Access</a>
+          <div class="availability-contact-wrap">
+            <p class="availability-contact-text">For licensing guidance, evaluation support, or rollout questions:</p>
+            <a href="support.html#contact" class="btn btn-primary btn-full-center">Request Evaluation Access</a>
           </div>
         </div>
       </div>
@@ -178,7 +195,7 @@
   </div>
 </section>
 
-<section class="section" id="security" style="background:linear-gradient(160deg,#0a1524 0%,#0b1220 100%);border-top:1px solid var(--border);">
+<section class="section security-section" id="security">
   <div class="wrap">
     <div class="split">
       <div>
@@ -186,25 +203,25 @@
         <h2>OWASP Score 100/100 &mdash; Grade A+</h2>
         <p>AuditToolkit Linux Security Lite has been independently assessed against OWASP security criteria. As a Bash-based read-only tool (not a web application), the OWASP posture covers supply-chain integrity, code quality, script security, and dependency hygiene. The current score is <strong>100/100, Grade A+</strong>, assessed and revalidated in May 2026.</p>
         <div class="flex flex-wrap gap-8 mb-24">
-          <span class="badge badge-green" style="font-size:.82rem;padding:6px 14px;">&#10003; 100/100 &mdash; A+</span>
-          <span class="badge badge-green" style="font-size:.82rem;padding:6px 14px;">&#10003; Read-Only by Design</span>
-          <span class="badge badge-green" style="font-size:.82rem;padding:6px 14px;">&#10003; No Network Egress</span>
-          <span class="badge badge-blue"  style="font-size:.82rem;padding:6px 14px;">Pure Bash &mdash; No Binaries</span>
-          <span class="badge badge-blue"  style="font-size:.82rem;padding:6px 14px;">GPG-Signed Releases</span>
+          <span class="badge badge-green security-badge">&#10003; 100/100 &mdash; A+</span>
+          <span class="badge badge-green security-badge">&#10003; Read-Only by Design</span>
+          <span class="badge badge-green security-badge">&#10003; No Network Egress</span>
+          <span class="badge badge-blue security-badge">Pure Bash &mdash; No Binaries</span>
+          <span class="badge badge-blue security-badge">GPG-Signed Releases</span>
         </div>
         <div class="flex gap-12 flex-wrap">
           <a href="linux-security-lite-documentation.html" class="btn btn-primary">Security Documentation</a>
           <a href="doc-viewer.html?src=customer-docs/linux-security-lite/OWASP-SECURITY-SCORECARD.md" class="btn btn-secondary" target="_blank" rel="noopener">OWASP Scorecard</a>
           <a href="support.html#security" class="btn btn-secondary">Report a Vulnerability</a>
         </div>
-        <p style="margin-top:20px;font-size:.85rem;">Full security detail including procurement FAQ and the current OWASP scorecard is available in the <a href="linux-security-lite-documentation.html">documentation portal</a>. For procurement and due-diligence enquiries, see the <a href="doc-viewer.html?src=customer-docs/linux-security-lite/22-security-faq.md" target="_blank" rel="noopener">Security FAQ (Doc 22)</a>.</p>
+        <p class="security-note">Full security detail including procurement FAQ and the current OWASP scorecard is available in the <a href="linux-security-lite-documentation.html">documentation portal</a>. For procurement and due-diligence enquiries, see the <a href="doc-viewer.html?src=customer-docs/linux-security-lite/22-security-faq.md" target="_blank" rel="noopener">Security FAQ (Doc 22)</a>.</p>
       </div>
       <div class="owasp-block">
         <div class="owasp-headline">
           <div class="owasp-score-badge">A+</div>
           <div>
-            <div style="font-size:1.05rem;font-weight:700;color:var(--text);">100/100 &mdash; OWASP Security Assessment</div>
-            <div style="font-size:.83rem;color:var(--subtle);">AuditToolkit Linux Security Lite &middot; v1.2.2 docs &middot; May 2026</div>
+            <div class="owasp-heading">100/100 &mdash; OWASP Security Assessment</div>
+            <div class="owasp-subheading">AuditToolkit Linux Security Lite &middot; v1.2.2 docs &middot; May 2026</div>
           </div>
         </div>
         <table class="owasp-table">
@@ -228,12 +245,12 @@
   </div>
 </section>
 
-<section class="section" id="evidence-preview" style="border-top:1px solid var(--border);">
+<section class="section section-divider" id="evidence-preview">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Visual Evidence</p>
       <h2>Linux CLI and HTML captures from the latest manifest</h2>
-      <p>The Linux customer documentation now includes a dedicated screenshot set. The preview below mirrors the curated CLI and HTML captures listed in the screenshot manifest.</p>
+      <p>The Linux customer documentation now includes a dedicated screenshot set. The examples below mirror the curated CLI and HTML captures listed in the screenshot manifest.</p>
     </div>
     <div class="grid-2">
       <div class="card">
@@ -286,7 +303,7 @@
     <div class="cta-band-inner">
       <div>
         <h2 class="mb-8">Interested in deeper Linux audit coverage?</h2>
-        <p>Request evaluation access to the Audit Admin Toolkit and Linux Security Lite preview, or ask for GA notification updates.</p>
+        <p>Request evaluation access to the Audit Admin Toolkit and Linux Security Lite current release, or contact us for rollout guidance.</p>
       </div>
       <div class="cta-band-actions">
         <a href="support.html#contact" class="btn btn-primary btn-lg">Request Evaluation Access</a>
@@ -300,9 +317,9 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span style="font-weight:700;font-size:1.05rem;">AuditToolkit Labs</span></div>
+        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span class="footer-brand-title">AuditToolkit Labs</span></div>
         <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
-        <p style="font-size:.82rem;">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+        <p class="footer-copy-small">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
       </div>
       <div class="footer-col"><h4>Products</h4><ul>
         <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>

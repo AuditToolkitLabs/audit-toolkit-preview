@@ -25,6 +25,19 @@
     .pricing-features li::before{content:"✓";color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px}
     .pricing-features li.feat-x::before{content:"—";color:var(--text-muted)}
     .stripe-note{font-size:.8rem;color:var(--text-muted);margin-top:8px;text-align:center}
+    .nav-mobile-contact{color:var(--accent);font-weight:600}
+    .callout-spaced{margin-bottom:40px}
+    .price-value{font-size:1.4rem;font-weight:700;color:var(--text);font-style:normal;margin-bottom:4px}
+    .price-value-unit{font-size:.85rem;font-weight:400;color:var(--text-muted)}
+    .btn-block{width:100%;text-align:center;display:block}
+    .addon-box{margin-top:36px;padding:24px;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+    .addon-tier{margin-bottom:8px}
+    .addon-title{margin:0 0 8px}
+    .addon-desc{margin-bottom:16px}
+    .btn-addon{max-width:320px;text-align:center;display:block}
+    .stripe-note-left{text-align:left;margin-top:10px}
+    .back-link-wrap{margin-top:40px;padding-top:32px;border-top:1px solid var(--border)}
+    .back-link{font-size:.9rem;color:var(--accent)}
   </style>
 
 </head>
@@ -55,7 +68,7 @@
   <a href="releases.html">Releases</a>
   <a href="licensing.html">Licensing</a>
   <a href="support.html">Support</a>
-  <a href="support.html#contact" style="color:var(--accent);font-weight:600;">Contact Us</a>
+  <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
 </div>
 
 <div class="page-hero">
@@ -78,7 +91,7 @@
 <section class="section">
   <div class="wrap">
 
-    <div class="callout" style="margin-bottom:40px;">
+    <div class="callout callout-spaced">
       <strong>Community tier is free with no expiry.</strong> Commercial licensing is required above 25 servers and for MSP/MSSP operation. Pricing shown below follows the main EULA model and is marked as preliminary pending final launch pricing. Licensed under the <strong>Business Source License 1.1 (BSL)</strong> — converts to MIT on 14 February 2030.
     </div>
 
@@ -96,8 +109,8 @@
           <li class="feat-x">Paid support SLA</li>
         </ul>
         <div class="pricing-cta-area">
-          <p class="pricing-quote" style="font-size:1.4rem;font-weight:700;color:var(--text);font-style:normal;margin-bottom:4px;">£0 <span style="font-size:.85rem;font-weight:400;color:var(--text-muted);">free forever</span></p>
-          <a href="audit-toolkit-releases.html" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Open Latest Release &amp; Download</a>
+          <p class="pricing-quote price-value">£0 <span class="price-value-unit">free forever</span></p>
+          <a href="audit-toolkit-releases.html" class="btn btn-secondary btn-block">Open Latest Release &amp; Download</a>
           <p class="stripe-note">No purchase or registration required</p>
         </div>
       </div>
@@ -112,9 +125,9 @@
           <li>Email support</li>
         </ul>
         <div class="pricing-cta-area">
-          <p class="pricing-quote" style="font-size:1.4rem;font-weight:700;color:var(--text);font-style:normal;margin-bottom:4px;">£549 <span style="font-size:.85rem;font-weight:400;color:var(--text-muted);">/ year</span></p>
+          <p class="pricing-quote price-value">£549 <span class="price-value-unit">/ year</span></p>
           <p class="pricing-quote">Excl. VAT — annual subscription</p>
-          <a href="mailto:License@audittoolkitlabs.com" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Licence Team &rarr;</a>
+          <a href="mailto:License@audittoolkitlabs.com" class="btn btn-secondary btn-block">Contact Licence Team &rarr;</a>
           <p class="stripe-note">Contact us to arrange manual licence issuance</p>
         </div>
       </div>
@@ -131,9 +144,9 @@
           <li>MSP use permitted</li>
         </ul>
         <div class="pricing-cta-area">
-          <p class="pricing-quote" style="font-size:1.4rem;font-weight:700;color:var(--text);font-style:normal;margin-bottom:4px;">£1,099 <span style="font-size:.85rem;font-weight:400;color:var(--text-muted);">/ year</span></p>
+          <p class="pricing-quote price-value">£1,099 <span class="price-value-unit">/ year</span></p>
           <p class="pricing-quote">Excl. VAT — annual subscription</p>
-          <a href="mailto:License@audittoolkitlabs.com" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Contact Licence Team &rarr;</a>
+          <a href="mailto:License@audittoolkitlabs.com" class="btn btn-primary btn-block">Contact Licence Team &rarr;</a>
           <p class="stripe-note">Contact us to arrange manual licence issuance</p>
         </div>
       </div>
@@ -149,29 +162,29 @@
           <li>MSP use permitted</li>
         </ul>
         <div class="pricing-cta-area">
-          <p class="pricing-quote" style="font-size:1.4rem;font-weight:700;color:var(--text);font-style:normal;margin-bottom:4px;">£2,499 <span style="font-size:.85rem;font-weight:400;color:var(--text-muted);">/ year</span></p>
+          <p class="pricing-quote price-value">£2,499 <span class="price-value-unit">/ year</span></p>
           <p class="pricing-quote">Excl. VAT — annual subscription</p>
-          <a href="mailto:License@audittoolkitlabs.com" class="btn btn-secondary" style="width:100%;text-align:center;display:block;">Contact Licence Team &rarr;</a>
+          <a href="mailto:License@audittoolkitlabs.com" class="btn btn-secondary btn-block">Contact Licence Team &rarr;</a>
           <p class="stripe-note">Contact us to arrange manual licence issuance</p>
         </div>
       </div>
 
     </div>
 
-    <div style="margin-top:36px;padding:24px;border:1px solid var(--border);border-radius:12px;background:var(--surface);">
-      <p class="pricing-tier" style="margin-bottom:8px;">Add-on</p>
-      <h3 style="margin:0 0 8px;">Advanced Operations Pack Add-on</h3>
-      <p class="pricing-desc" style="margin-bottom:16px;">Optional add-on pack for teams that need expanded operational workflows and advanced operations capabilities.</p>
+    <div class="addon-box">
+      <p class="pricing-tier addon-tier">Add-on</p>
+      <h3 class="addon-title">Advanced Operations Pack Add-on</h3>
+      <p class="pricing-desc addon-desc">Optional add-on pack for teams that need expanded operational workflows and advanced operations capabilities.</p>
       <div class="pricing-cta-area">
-        <p class="pricing-quote" style="font-size:1.4rem;font-weight:700;color:var(--text);font-style:normal;margin-bottom:4px;">£1,499 <span style="font-size:.85rem;font-weight:400;color:var(--text-muted);">/ year</span></p>
+        <p class="pricing-quote price-value">£1,499 <span class="price-value-unit">/ year</span></p>
         <p class="pricing-quote">Excl. VAT — annual add-on subscription</p>
-        <a href="mailto:License@audittoolkitlabs.com" class="btn btn-secondary" style="max-width:320px;text-align:center;display:block;">Contact Licence Team &rarr;</a>
-        <p class="stripe-note" style="text-align:left;margin-top:10px;">Contact us to arrange manual licence issuance</p>
+        <a href="mailto:License@audittoolkitlabs.com" class="btn btn-secondary btn-addon">Contact Licence Team &rarr;</a>
+        <p class="stripe-note stripe-note-left">Contact us to arrange manual licence issuance</p>
       </div>
     </div>
 
-    <div style="margin-top:40px;padding-top:32px;border-top:1px solid var(--border);">
-      <a href="licensing.html" style="font-size:.9rem;color:var(--accent);">&larr; Back to all products</a>
+    <div class="back-link-wrap">
+      <a href="licensing.html" class="back-link">&larr; Back to all products</a>
     </div>
 
   </div>

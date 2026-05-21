@@ -2,23 +2,23 @@
   "byPriceId": {
     "price_1AAA111BBB222": {
       "planCode": "audit-starter",
-      "keygenPolicyId": "4f3b6f50-c744-43ce-87fb-a70f8f450001"
+      "keygenPolicyId": "KEYGEN_POLICY_ID_AUDIT_STARTER"
     },
     "price_1CCC333DDD444": {
       "planCode": "audit-professional",
-      "keygenPolicyId": "4f3b6f50-c744-43ce-87fb-a70f8f450002"
+      "keygenPolicyId": "KEYGEN_POLICY_ID_AUDIT_PROFESSIONAL"
     }
   },
   "byLookupKey": {
     "linux-business": {
       "planCode": "linux-business",
-      "keygenPolicyId": "4f3b6f50-c744-43ce-87fb-a70f8f450003"
+      "keygenPolicyId": "KEYGEN_POLICY_ID_LINUX_BUSINESS"
     }
   },
   "byProductId": {
     "prod_ABC123XYZ": {
       "planCode": "cmdb-api-standard",
-      "keygenPolicyId": "4f3b6f50-c744-43ce-87fb-a70f8f450004"
+      "keygenPolicyId": "KEYGEN_POLICY_ID_CMDB_API_STANDARD"
     }
   }
 }

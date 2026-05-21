@@ -17,6 +17,15 @@
     .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:32px}
     .product-price-hint{font-size:.82rem;font-weight:600;color:var(--text);margin:0}
     .product-card .badge{font-size:.75rem}
+    .nav-mobile-contact{color:var(--accent);font-weight:600}
+    .callout-spaced{margin-bottom:40px}
+    .card-eyebrow{margin:0 0 6px;font-size:.75rem}
+    .card-actions{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}
+    .license-terms{padding:56px 0 0;border-top:1px solid var(--border);margin-top:56px}
+    .license-doc-group{margin-top:24px}
+    .license-callout{margin-bottom:16px}
+    .license-list{font-size:.9rem;color:var(--text-muted);line-height:1.8;margin:0;padding-left:20px}
+    .license-actions{margin-top:24px;display:flex;gap:16px;flex-wrap:wrap}
   </style>
 
 </head>
@@ -47,7 +56,7 @@
   <a href="releases.html">Releases</a>
   <a href="licensing.html">Licensing</a>
   <a href="support.html">Support</a>
-  <a href="support.html#contact" style="color:var(--accent);font-weight:600;">Contact Us</a>
+  <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
 </div>
 
 <div class="page-hero">
@@ -69,7 +78,7 @@
 <section class="section">
   <div class="wrap">
 
-    <div class="callout callout-info" style="margin-bottom:40px;">
+    <div class="callout callout-info callout-spaced">
       <strong>Licensing is product-specific.</strong> Asset Command Center and Linux Security Lite paid tiers use live Stripe checkout with automated Keygen delivery after payment confirmation. Other products remain manual or by agreement where noted. Enterprise, MSP / OEM / volume enquiries are handled via <a href="support.html#contact">contact us</a>. Evaluation access is available on request for all products.
     </div>
 
@@ -78,7 +87,7 @@
 
       <!-- CMDB API -->
       <div class="product-card">
-        <p class="eyebrow" style="margin:0 0 6px;font-size:.75rem;">CMDB</p>
+        <p class="eyebrow card-eyebrow">CMDB</p>
         <h3>CMDB API Data Collection Tool</h3>
         <p class="product-card-desc">Two-dimensional licensing: a Deployment Tier controlling Workspace count, combined with a Plan Tier governing per-Workspace host limits and scan scheduling. Contact the Licence Team to arrange a plan.</p>
         <div class="product-card-meta">
@@ -87,7 +96,7 @@
           <span class="badge badge-muted">4 Deployment Tiers</span>
         </div>
         <p class="product-price-hint">From £790/year &middot; Free 30-day beta trial available</p>
-        <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;">
+        <div class="card-actions">
           <a href="cmdb-api-pricing.html" class="btn btn-primary btn-sm">View Pricing &rarr;</a>
           <a href="cmdb-tool.html" class="btn btn-secondary btn-sm">Product Details</a>
         </div>
@@ -95,7 +104,7 @@
 
       <!-- Audit Admin Toolkit -->
       <div class="product-card">
-        <p class="eyebrow" style="margin:0 0 6px;font-size:.75rem;">Audit</p>
+        <p class="eyebrow card-eyebrow">Audit</p>
         <h3>Audit Admin Toolkit</h3>
         <p class="product-card-desc">Four core server-count tiers from Community (free, up to 25 servers) to Business (up to 500 servers), plus an Advanced Operations Pack add-on. Licensed under BSL 1.1. Contact the Licence Team for paid tier access.</p>
         <div class="product-card-meta">
@@ -106,7 +115,7 @@
           <span class="badge badge-muted">Converts to MIT Feb 2030</span>
         </div>
         <p class="product-price-hint">Community free &middot; From £549/year + VAT</p>
-        <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;">
+        <div class="card-actions">
           <a href="audit-admin-toolkit-pricing.html" class="btn btn-primary btn-sm">View Pricing &rarr;</a>
           <a href="audit-toolkit.html" class="btn btn-secondary btn-sm">Product Details</a>
         </div>
@@ -114,7 +123,7 @@
 
       <!-- Asset Command Center -->
       <div class="product-card">
-        <p class="eyebrow" style="margin:0 0 6px;font-size:.75rem;">CMDB</p>
+        <p class="eyebrow card-eyebrow">CMDB</p>
         <h3>Asset Command Center</h3>
         <p class="product-card-desc">Commercial model: one free evaluation route plus four paid annual tiers (Starter, Business, Professional, and Enterprise Features Add-on). Includes cloud connector support (AWS, Azure, GCP, OCI) on paid tiers. BSL 1.1.</p>
         <div class="product-card-meta">
@@ -123,7 +132,7 @@
           <span class="badge badge-muted">Converts to MIT Feb 2030</span>
         </div>
         <p class="product-price-hint">Free evaluation tier &middot; Paid tiers available via Stripe checkout</p>
-        <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;">
+        <div class="card-actions">
           <a href="cmdb-asset-platform-pricing.html" class="btn btn-primary btn-sm">View Pricing &rarr;</a>
           <a href="cmdb-asset-platform.html" class="btn btn-secondary btn-sm">Product Details</a>
         </div>
@@ -131,7 +140,7 @@
 
       <!-- Linux Security Lite -->
       <div class="product-card">
-        <p class="eyebrow" style="margin:0 0 6px;font-size:.75rem;">Linux</p>
+        <p class="eyebrow card-eyebrow">Linux</p>
         <h3>Linux Security Lite</h3>
         <!-- AUTO-LICENSING:LICENSING_LINUX_CARD_START -->
         <p class="product-card-desc">Core tiers: Community (free), Starter, Professional, and Business, plus optional Advanced Operations Pack and Enterprise Integrations Pack add-ons. Paid licences are available via live Stripe checkout with Keygen delivery after payment confirmation. BSL 1.1.</p>
@@ -144,7 +153,7 @@
         </div>
         <p class="product-price-hint">Community free &middot; From £79/year &middot; Stripe checkout live</p>
         <!-- AUTO-LICENSING:LICENSING_LINUX_CARD_END -->
-        <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;">
+        <div class="card-actions">
           <a href="linux-expansion-pricing.html" class="btn btn-primary btn-sm">View Pricing &rarr;</a>
           <a href="linux-expansion.html" class="btn btn-secondary btn-sm">Product Details</a>
         </div>
@@ -152,7 +161,7 @@
 
       <!-- Secure Exposure Centre -->
       <div class="product-card">
-        <p class="eyebrow" style="margin:0 0 6px;font-size:.75rem;">Network Security</p>
+        <p class="eyebrow card-eyebrow">Network Security</p>
         <h3>Secure Exposure Centre</h3>
         <p class="product-card-desc">Switch-focused exposure platform with commercial licensing currently handled by direct engagement. Includes evaluation onboarding and enterprise procurement workflow support.</p>
         <div class="product-card-meta">
@@ -161,7 +170,7 @@
           <span class="badge badge-muted">Enterprise Procurement</span>
         </div>
         <p class="product-price-hint">Commercial pricing on request</p>
-        <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;">
+        <div class="card-actions">
           <a href="secure-exposure-centre-pricing.html" class="btn btn-primary btn-sm">View Pricing &rarr;</a>
           <a href="secure-exposure-centre.html" class="btn btn-secondary btn-sm">Product Details</a>
         </div>
@@ -170,16 +179,16 @@
     </div>
 
     <!-- Licence Terms -->
-    <div style="padding:56px 0 0;border-top:1px solid var(--border);margin-top:56px;" id="licence-terms">
+    <div class="license-terms" id="licence-terms">
       <h2>Licence Terms &amp; Notes</h2>
-      <div class="doc-group" style="margin-top:24px;">
+      <div class="doc-group license-doc-group">
 
-        <div class="callout" style="margin-bottom:16px;">
+        <div class="callout license-callout">
           <strong>CMDB API Data Collection Tool — Licensor</strong><br />
           Michael Churchill trading as AuditToolkitLabs, 4th Floor, Silverstream House, 45 Fitzroy Street, Fitzrovia, London W1T 6EB.
         </div>
 
-        <ul style="font-size:.9rem;color:var(--text-muted);line-height:1.8;margin:0;padding-left:20px;">
+        <ul class="license-list">
           <li>All fees are exclusive of VAT, sales tax, or equivalent. The licensee shall pay applicable taxes in addition.</li>
           <li>Late payments on CMDB API Tool licences accrue interest at the rate provided under the Late Payment of Commercial Debts (Interest) Act 1998.</li>
           <li>MSP Tier (CMDB API Tool): usage reports are due within 30 days of each calendar quarter end; royalty payment is due within 30 days of invoice.</li>
@@ -192,7 +201,7 @@
           <li>Prices marked as preliminary are subject to change. Early-adopter pricing will be offered during the initial launch period.</li>
         </ul>
 
-        <div style="margin-top:24px;display:flex;gap:16px;flex-wrap:wrap;">
+        <div class="license-actions">
           <a href="support.html#contact" class="btn btn-primary">Request a Quote &rarr;</a>
           <a href="support.html#contact" class="btn btn-secondary">Arrange Evaluation Access</a>
         </div>

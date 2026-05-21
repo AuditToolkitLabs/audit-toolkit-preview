@@ -6,6 +6,15 @@
   <title>Asset Command Center Releases - AuditToolkit Labs</title>
   <meta name="description" content="Release notes and changelogs for the Asset Command Center." />
   <link rel="stylesheet" href="assets/css/site.css" />
+  <style>
+    .nav-mobile-contact{color:var(--accent);font-weight:600}
+    .release-callout{max-width:760px;margin:0 auto 24px}
+    .release-card{max-width:760px;margin:0 auto}
+    .release-title{margin-top:0}
+    .release-feature-list{margin-top:10px}
+    .footer-brand-title{font-weight:700;font-size:1.05rem}
+    .footer-copy-small{font-size:.82rem}
+  </style>
 </head>
 <body>
 <nav class="nav">
@@ -32,7 +41,7 @@
   <a href="releases.html">Releases</a>
   <a href="licensing.html">Licensing</a>
   <a href="support.html">Support</a>
-  <a href="support.html#contact" style="color:var(--accent);font-weight:600;">Contact Us</a>
+  <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
 </div>
 <div class="page-hero">
   <div class="wrap">
@@ -52,18 +61,18 @@
 </div>
 <section class="section">
   <div class="wrap">
-    <div class="callout callout-info" style="max-width:760px;margin:0 auto 24px;">
+    <div class="callout callout-info release-callout">
       <strong>Current release published.</strong> Asset Command Center <strong>v1.1.0</strong> is now the active baseline. Use the <a href="https://audittoolkitlabs.github.io/releases/Asset%20Command%20Center/" target="_blank" rel="noopener">public download card</a> for package availability, and review <a href="cmdb-asset-platform-pricing.html">pricing</a> for live checkout routes.
     </div>
 
-    <div class="card" style="max-width:760px;margin:0 auto;" id="v110">
+    <div class="card release-card" id="v110">
       <div class="flex flex-wrap gap-8 mb-12">
         <span class="badge badge-green">Release &mdash; v1.1.0</span>
         <span class="badge badge-muted">Asset Command Center</span>
       </div>
-      <h3 style="margin-top:0;">Asset Command Center v1.1.0</h3>
+      <h3 class="release-title">Asset Command Center v1.1.0</h3>
       <p>Current customer documentation and security posture baseline for standalone collector deployment.</p>
-      <ul class="feature-list" style="margin-top:10px;">
+      <ul class="feature-list release-feature-list">
         <li><span class="icon">&#10003;</span><span class="text">Release documentation baseline updated to 1.1.0 across legal, operational, and security guidance.</span></li>
         <li><span class="icon">&#10003;</span><span class="text">Security assurance and production posture reports aligned to the 1.1.0 evidence narrative.</span></li>
         <li><span class="icon">&#10003;</span><span class="text">Release-gating posture remains aligned with zero-finding expectations for CodeQL, Bandit, pip-audit, and scoped secret scanning.</span></li>
@@ -94,9 +103,9 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span style="font-weight:700;font-size:1.05rem;">AuditToolkit Labs</span></div>
+        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span class="footer-brand-title">AuditToolkit Labs</span></div>
         <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
-        <p style="font-size:.82rem;">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+        <p class="footer-copy-small">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
       </div>
       <div class="footer-col"><h4>Products</h4><ul>
         <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
