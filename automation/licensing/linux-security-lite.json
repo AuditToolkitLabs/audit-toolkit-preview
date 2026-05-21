@@ -46,7 +46,7 @@
     {
       "name": "Starter",
       "keygen_policy_id": "1a520e74",
-      "price_gbp": 79,
+      "price_gbp": 349,
       "description": "Entry commercial tier for small production deployments requiring licensed commercial use.",
       "features": [
         { "text": "Commercial production use", "included": true },
@@ -68,7 +68,7 @@
     {
       "name": "Professional",
       "keygen_policy_id": "f1e63ab2",
-      "price_gbp": 299,
+      "price_gbp": 999,
       "description": "Commercial tier for centralised compliance operations across small and mid-sized Linux estates.",
       "featured": true,
       "featured_badge": "Most Popular",
@@ -80,7 +80,7 @@
         { "text": "48-hour email support response", "included": true }
       ],
       "cta": {
-        "checkout_url": "https://checkout.audittoolkitlabs.com/b/dRmeVd1ro5HcgEydU5fQI00",
+        "checkout_url": null,
         "checkout_label": "Buy via Stripe &rarr;",
         "fallback_url": "support.html#contact",
         "fallback_label": "Contact Licensing Team &rarr;",
@@ -92,7 +92,7 @@
     {
       "name": "Business",
       "keygen_policy_id": "e9fafcf3",
-      "price_gbp": 399,
+      "price_gbp": 2490,
       "description": "Business platform tier for larger regulated environments and SOC-integrated operations.",
       "features": [
         { "text": "Unlimited agents / endpoints", "included": true },
@@ -103,7 +103,7 @@
         { "text": "Contact sales for custom SLA", "included": true }
       ],
       "cta": {
-        "checkout_url": "https://checkout.audittoolkitlabs.com/b/6oU8wPeea6LggEydU5fQI01",
+        "checkout_url": null,
         "checkout_label": "Buy via Stripe &rarr;",
         "fallback_url": "support.html#contact",
         "fallback_label": "Contact Licensing Team &rarr;",
@@ -117,14 +117,14 @@
     {
       "name": "Advanced Operations Pack Add-on",
       "keygen_policy_id": "e8e9593c",
-      "price_gbp": 149,
+      "price_gbp": 490,
       "description": "Extended operational workflows and advanced reporting enhancements for paid deployments.",
       "checkout_url": null
     },
     {
       "name": "Enterprise Integrations Pack Add-on",
       "keygen_policy_id": "6a3f4c17",
-      "price_gbp": 199,
+      "price_gbp": 790,
       "description": "Enterprise integration capabilities including advanced automation and external system connectivity.",
       "checkout_url": null
     }

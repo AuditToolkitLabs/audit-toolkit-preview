@@ -1,0 +1,25 @@
+family,product_name,product_id,current_price_gbp,target_price_gbp,billing_interval,target_state,notes
+audit-core,Security Audit Toolkit Starter,prod_URRzuZZvtc6SAq,549,1290,year,create_new_recurring_price,Legacy product currently inactive and one-time; use recurring annual price
+audit-core,Security Audit Toolkit Professional,prod_URS0flhyzLABlf,1099,2990,year,create_new_recurring_price,Legacy product currently inactive and one-time; use recurring annual price
+audit-core,Security Audit Toolkit Business,prod_URS0LaWTWCCCYH,2499,6490,year,create_new_recurring_price,Legacy product currently inactive and one-time; use recurring annual price
+audit-core,Security Audit Toolkit Advanced Operations Pack Add-on,prod_URS1JXJYKbGiif,1499,1990,year,create_new_recurring_price,Legacy product currently inactive and one-time; use recurring annual price
+asset-command-center,Asset Command Centre — Starter,prod_USvbChBZUH6xuz,299,990,year,update_payment_link_to_new_price,Keep product and swap payment link line item to new recurring price
+asset-command-center,Asset Command Centre — Professional,prod_USvh0jXt3JXEG9,2499,2990,year,update_payment_link_to_new_price,Keep product and swap payment link line item to new recurring price
+asset-command-center,Asset Command Centre — Business,prod_USverkH41jdE1P,999,6990,year,update_payment_link_to_new_price,Keep product and swap payment link line item to new recurring price
+asset-command-center,Asset Command Centre — Enterprise Features Add-on,prod_USvl9h7UdcwY21,799,1990,year,update_payment_link_to_new_price,Keep product and swap payment link line item to new recurring price
+linux-security-lite,AuditToolkit Lite — Starter,prod_UXBGUUux7W4vw4,79,349,year,update_payment_link_to_new_price,Keep product and swap payment link line item to new recurring price
+linux-security-lite,AuditToolkit Lite — Professional,prod_UXBTQbsBOZeKBu,299,999,year,update_payment_link_to_new_price,Keep product and swap payment link line item to new recurring price
+linux-security-lite,AuditToolkit Lite — Business,prod_UXBO41neuYqSkv,399,2490,year,update_payment_link_to_new_price,Keep product and swap payment link line item to new recurring price
+linux-security-lite,AuditToolkit Lite — Advanced Operations Pack,prod_UXBepajtxAXNaq,149,490,year,update_payment_link_to_new_price,Keep product and swap payment link line item to new recurring price
+linux-security-lite,AuditToolkit Lite — Enterprise Integrations Pack,prod_UXBplQ427I5coR,199,790,year,update_payment_link_to_new_price,Keep product and swap payment link line item to new recurring price
+secure-exposure-centre,Switch Exposure Centre - Starter,prod_UW3SAm20GwioE4,1896,2490,year,update_payment_link_to_new_price,Keep product and swap payment link line item to new recurring price
+secure-exposure-centre,Switch Exposure Centre - Professional,prod_UW3ZRjwNsGPYEy,5688,4990,year,update_payment_link_to_new_price,Keep product and swap payment link line item to new recurring price
+secure-exposure-centre,Switch Exposure Centre - Business,prod_UW3dRbFJ5sHnqP,3792,8990,year,update_payment_link_to_new_price,Keep product and swap payment link line item to new recurring price
+secure-exposure-centre,Switch Exposure Centre - Identity Add-On,prod_UW4BwPEON4qcUQ,1185,1990,year,update_payment_link_to_new_price,Keep product and swap payment link line item to new recurring price
+secure-exposure-centre,Switch Exposure Centre - Integration Add-On,prod_UW43EEWkj1dJYq,1185,1990,year,update_payment_link_to_new_price,Keep product and swap payment link line item to new recurring price
+secure-exposure-centre,Switch Exposure Centre - Reporting Add-On,prod_UW47gkYx9Hticx,948,1490,year,update_payment_link_to_new_price,Keep product and swap payment link line item to new recurring price
+secure-exposure-centre,Switch Exposure Centre - Pentest Add-On,prod_UW3rhuIBYaLukE,1580,2990,year,update_payment_link_to_new_price,Keep product and swap payment link line item to new recurring price
+cmdb-api,Audit CMDB API Toolkit – Starter,prod_UPZ0F9zoH69c4p,790,1490,year,create_new_recurring_price,Keep manual sales path and update future checkout catalog
+cmdb-api,Audit CMDB API Toolkit – Professional,prod_UPZ09Iw3iIODnl,8988,2990,year,create_new_recurring_price,Keep manual sales path and update future checkout catalog
+cmdb-api,Audit CMDB API Toolkit – Business,prod_UPZ0yOpHSQM8oo,2490,6990,year,create_new_recurring_price,Keep manual sales path and update future checkout catalog
+cmdb-api,Audit CMDB API Toolkit – Enterprise,prod_UPZ00VtLr33Xt4,1500,custom,year,no_public_checkout,Price on application
