@@ -1,6 +1,6 @@
 # 19. API and Automation Guide
 
-Asset Command Center includes a local API surface used by the UI,
+Asset Command Centre includes a local API surface used by the UI,
 collection workflows, license views, and administrative functions.
 
 ## Documentation guidance

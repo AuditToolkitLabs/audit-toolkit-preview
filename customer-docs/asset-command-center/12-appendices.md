@@ -2,13 +2,13 @@
 
 ## Planned release version
 
-- Planned release version: 1.0.3
+- Planned release version: 1.1.0
 
 ## Key terms
 
 | Term | Meaning in this release |
 | --- | --- |
-| Asset Command Center | The standalone collector and local reporting service documented here. |
+| Asset Command Centre | The standalone collector and local reporting service documented here. |
 | Connector mode | The policy controlling which connector families are active. |
 | `legacy-only` | The default operating mode for this release. |
 | Collection profile | The policy controlling collection behavior. |
@@ -37,7 +37,7 @@ Primary active connector set for this release:
 - `nmap-sweep`
 - `ansible-unified`
 
-## Planned 1.0.3 feature-function summary
+## Planned 1.1.0 feature-function summary
 
 - Preserve standalone, agentless collection and inventory as the
   baseline operating model.
@@ -51,10 +51,11 @@ Primary active connector set for this release:
 ## Licensing notes
 
 The product exposes a license view and administrative license form for
-Asset Command Center. Commercial questions should be directed to
+Asset Command Centre. Commercial questions should be directed to
 [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com).
 
 All purchase, pricing, and upgrade transactions are handled externally at
 [https://audittoolkitlabs.com/](https://audittoolkitlabs.com/). The product UI
 does not host direct Stripe checkout links. In-product licensing is limited to
 entering and validating issued license keys.
+

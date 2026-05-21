@@ -1,6 +1,6 @@
 # 9. Security and Access Model
 
-Asset Command Center is intended to run inside a customer-controlled
+Asset Command Centre is intended to run inside a customer-controlled
 network with a hardened operating system, reverse proxy or HTTPS
 termination path, and customer-managed secrets.
 

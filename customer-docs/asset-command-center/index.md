@@ -1,6 +1,6 @@
-# Asset Command Center Customer Documentation
+# Asset Command Centre Customer Documentation
 
-This documentation set is scoped to the Asset Command Center release in
+This documentation set is scoped to the Asset Command Centre release in
 this repository only.
 
 It describes the standalone legacy-focused collector and local
@@ -13,12 +13,12 @@ workflows from other products or prior repository phases.
 
 ## Planned release baseline
 
-- Planned release version: 1.0.3
+- Planned release version: 1.1.0
 - Release intent: patch release that preserves the standalone,
   agentless operating model and hardens release packaging and
   operational readiness.
 
-Planned feature functions for version 1.0.3:
+Planned feature functions for version 1.1.0:
 
 - Agentless inventory and discovery via SSH, WinRM, SNMP, IPMI, Nmap,
   and ansible-unified orchestration.
@@ -79,7 +79,7 @@ Planned feature functions for version 1.0.3:
 
 ## Related product documents
 
-- [Asset Command Center overview](README.md)
+- [Asset Command Centre overview](README.md)
 - [Customer security assurance report](14-customer-security-assurance-report.md)
 - [Production security posture report](35-production-security-posture.md)
 - [Customer release changelog](changelog.md)
@@ -91,3 +91,4 @@ Planned feature functions for version 1.0.3:
 - Product support: [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com)
 - Security reporting: [Security@audittoolkitlabs.com](mailto:Security@audittoolkitlabs.com)
 - Licensing: [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com)
+

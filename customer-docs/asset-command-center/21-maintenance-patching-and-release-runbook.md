@@ -1,6 +1,6 @@
 # 21. Maintenance and Patching Runbook
 
-Planned release version baseline for this runbook cycle: 1.0.2.
+Planned release version baseline for this runbook cycle: 1.1.0.
 
 ## Before maintenance
 
@@ -26,3 +26,4 @@ Planned release version baseline for this runbook cycle: 1.0.2.
 - review logs and task-run state
 - confirm no stale onboarding keys remain exposed
 - record the change outcome in customer change control
+

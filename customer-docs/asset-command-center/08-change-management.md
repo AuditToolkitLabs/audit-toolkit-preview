@@ -1,9 +1,9 @@
 # 8. Change and Release Management
 
-Customers should manage Asset Command Center changes as controlled
+Customers should manage Asset Command Centre changes as controlled
 application releases.
 
-Planned release version baseline for this cycle: 1.0.2.
+Planned release version baseline for this cycle: 1.1.0.
 
 ## Minimum release procedure
 
@@ -22,7 +22,7 @@ Planned release version baseline for this cycle: 1.0.2.
 - avoid reintroducing deprecated commerce or issuance workflows in
   customer documentation or release operations
 
-## Planned 1.0.2 feature-function validation
+## Planned 1.1.0 feature-function validation
 
 Before approving release creation, confirm that documentation and test
 evidence align to these feature functions:
@@ -33,3 +33,4 @@ evidence align to these feature functions:
   status, credential-managed operations)
 - optional central forwarding flow through documented API controls
 - Linux package and Windows MSI release packaging workflows
+

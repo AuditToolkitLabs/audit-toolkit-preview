@@ -1,7 +1,7 @@
 # 13. Integration Overview
 
 This section covers only the integration surfaces that are consistent
-with the current Asset Command Center release.
+with the current Asset Command Centre release.
 
 ## Primary integration categories
 

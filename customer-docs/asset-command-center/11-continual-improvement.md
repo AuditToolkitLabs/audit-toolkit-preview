@@ -1,6 +1,6 @@
 # 11. Continual Improvement
 
-Customers should review Asset Command Center usage and operating policy
+Customers should review Asset Command Centre usage and operating policy
 regularly.
 
 ## Recommended review cadence

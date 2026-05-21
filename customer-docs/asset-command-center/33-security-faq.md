@@ -2,7 +2,7 @@
 
 ## Is this product documented as a standalone service?
 
-Yes. This documentation set treats Asset Command Center as a standalone
+Yes. This documentation set treats Asset Command Centre as a standalone
 collector and local reporting node.
 
 ## Does data have to leave the local node?

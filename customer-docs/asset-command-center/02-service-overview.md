@@ -1,6 +1,6 @@
 # 2. Service Overview
 
-Asset Command Center is a legacy-focused asset inventory and discovery
+Asset Command Centre is a legacy-focused asset inventory and discovery
 service.
 
 Its active release direction in this repository is a standalone

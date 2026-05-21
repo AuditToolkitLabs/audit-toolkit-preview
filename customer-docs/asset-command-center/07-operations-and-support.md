@@ -1,6 +1,6 @@
 # 7. Operations and Support Model
 
-Asset Command Center is customer-operated software. AuditToolkit Labs
+Asset Command Centre is customer-operated software. AuditToolkit Labs
 provides the product, documentation, and commercial support associated
 with the licensed release.
 

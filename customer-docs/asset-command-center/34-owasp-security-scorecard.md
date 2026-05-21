@@ -1,7 +1,7 @@
 # 34. Security Control Summary
 
 This section is an indicative customer summary of the main security
-control areas in the current Asset Command Center release. It is not a
+control areas in the current Asset Command Centre release. It is not a
 formal certification, penetration test, or guaranteed security score.
 
 ## Control areas

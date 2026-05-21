@@ -1,4 +1,4 @@
-# Asset Command Center
+# Asset Command Centre
 
 Legacy-focused asset inventory and discovery service.
 
@@ -10,9 +10,9 @@ is not the primary target.
 
 ## Planned release version and feature functions
 
-Planned release version for this documentation set: 1.0.3.
+Planned release version for this documentation set: 1.1.0.
 
-Planned feature functions for version 1.0.3:
+Planned feature functions for version 1.1.0:
 
 - Agentless collection and inventory through SSH, WinRM, SNMP, IPMI,
   Nmap sweep, and ansible-unified connector paths.
@@ -23,11 +23,11 @@ Planned feature functions for version 1.0.3:
 - Release-ready distribution through Linux package workflows and Windows
   MSI workflows aligned to this repository's release pipeline.
 
-Primary production release security report for version 1.0.3:
+Primary production release security report for version 1.1.0:
 
 - `14-customer-security-assurance-report.md`
 
-Customer-facing release notes for version 1.0.3 are published in:
+Customer-facing release notes for version 1.1.0 are published in:
 
 - `changelog.md`
 
@@ -41,7 +41,7 @@ Customer-facing release notes for version 1.0.3 are published in:
 
 ## Agentless Positioning
 
-This repository's standalone Asset Command Center release is intentionally
+This repository's standalone Asset Command Centre release is intentionally
 agentless. Data collection and reporting are performed using direct network
 connectivity methods from the server to target systems.
 
@@ -133,7 +133,7 @@ it has the best network reach to the managed estate.
 
 Customer-facing recommendation:
 
-> Deploy Asset Command Center as a single Ubuntu LTS server on the
+> Deploy Asset Command Centre as a single Ubuntu LTS server on the
 > management network. The server operates as a standalone collector and
 > local reporting node, stores data locally, and optionally forwards data
 > upstream to Audit Toolkit when central aggregation is enabled.
@@ -407,3 +407,4 @@ Out of scope:
 
 Internal architecture and implementation material now lives under
 `docs/asset-command-center/`.
+

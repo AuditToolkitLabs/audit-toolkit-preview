@@ -68,7 +68,7 @@ License status is represented in the product by:
 - feature entitlement flags
 
 The product license view and Admin license form are the customer-facing
-surfaces for applying and reviewing Asset Command Center license data.
+surfaces for applying and reviewing Asset Command Centre license data.
 
 ## Central connectivity scheduling gate
 

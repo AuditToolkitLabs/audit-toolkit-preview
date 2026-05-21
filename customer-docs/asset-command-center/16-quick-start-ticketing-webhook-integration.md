@@ -1,6 +1,6 @@
 # 16. External Workflow Handoff Notes
 
-Asset Command Center can produce local reports, exports, audit events,
+Asset Command Centre can produce local reports, exports, audit events,
 and security-webhook output that customers may route into their own
 workflow systems.
 

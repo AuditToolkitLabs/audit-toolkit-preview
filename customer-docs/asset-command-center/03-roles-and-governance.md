@@ -1,6 +1,6 @@
 # 3. Roles and Governance
 
-Asset Command Center uses role-based access control in the main
+Asset Command Centre uses role-based access control in the main
 application and a separate privileged portal for super-admin actions.
 
 ## Built-in roles

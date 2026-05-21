@@ -1,6 +1,6 @@
 # 26. Security Event and Export Reference
 
-Asset Command Center produces operational and security-relevant data
+Asset Command Centre produces operational and security-relevant data
 through local views, exports, logs, and optional webhooks.
 
 ## Typical event categories

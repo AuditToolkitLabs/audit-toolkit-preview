@@ -1,6 +1,6 @@
 # 29. Team Labels and Reporting-Scope Governance
 
-Asset Command Center exposes team labels and report-scope filters in
+Asset Command Centre exposes team labels and report-scope filters in
 user administration.
 
 ## What these fields are for

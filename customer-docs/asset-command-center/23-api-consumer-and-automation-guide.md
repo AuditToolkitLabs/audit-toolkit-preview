@@ -109,7 +109,7 @@ A minimal `/etc/sudoers.d/asset-scan` granting only what the connector
 needs:
 
 ```sudoers
-# Asset Command Center inventory service account — read-only commands only
+# Asset Command Centre inventory service account — read-only commands only
 Defaults:svc_asset_scan !requiretty
 svc_asset_scan ALL=(root) NOPASSWD: \
     /usr/bin/cat /sys/class/dmi/id/product_name, \
@@ -210,5 +210,5 @@ Capability file on the target must allow `Get-CimInstance`,
 
 - undocumented tenancy or workspace assumptions
 - direct references to deprecated commerce or fulfillment logic
-- broad platform claims not present in the active Asset Command Center
+- broad platform claims not present in the active Asset Command Centre
   release
