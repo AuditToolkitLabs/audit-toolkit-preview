@@ -32,7 +32,7 @@
   <a href="releases.html">Releases</a>
   <a href="licensing.html">Licensing</a>
   <a href="support.html">Support</a>
-  <a href="support.html#contact" style="color:var(--accent);font-weight:600;">Contact Us</a>
+  <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
 </div>
 
 <div class="page-hero">
@@ -56,15 +56,15 @@
 <section class="section">
   <div class="wrap">
 
-    <div class="callout callout-info" style="margin-bottom:40px;">
+    <div class="callout callout-info callout-mb40">
       <strong>Release publication model updated.</strong>
       Audit Toolkit release artefacts are published through the public Releases portal card, while source code remains on the internal engineering workflow. Each release entry includes:
-      <ul style="margin:10px 0 4px;padding-left:20px;font-size:.9rem;">
+      <ul class="release-list-compact">
         <li>Version and changelog information</li>
         <li>Release notes and access instructions</li>
         <li>Support contact for archived packages</li>
       </ul>
-      <p style="margin:8px 0 0;font-size:.85rem;">Use the release notes below, then open the public card for package files. Contact support for archive access.</p>
+      <p class="release-caption">Use the release notes below, then open the public card for package files. Contact support for archive access.</p>
     </div>
 
     <div class="section-head">
@@ -84,21 +84,21 @@
           </div>
           <div class="release-changes">
             <p>Release <strong>v6.4.4</strong> supersedes v6.4.3 for deployments that require fully aligned release metadata and customer-facing release documentation.</p>
-            <ul style="margin:10px 0 0;padding-left:20px;font-size:.9rem;">
+            <ul class="release-list-compact release-list-tight-bottom">
               <li><strong>Release-note alignment:</strong> documentation reissued so helper scripts, validation orchestration updates, packaging helper changes, and asset-discovery execution hardening are accurately reflected in 6.4.x notes.</li>
               <li><strong>Narrative completeness:</strong> 6.4.x release detail expanded to align with the actual code delta coverage captured in the source changelog.</li>
               <li><strong>Patch supersedence:</strong> use v6.4.4 as the preferred production reference when strict release metadata consistency is required.</li>
             </ul>
           </div>
-          <div style="padding-top:16px;border-top:1px solid var(--border);margin-top:16px;">
-            <p style="font-size:.85rem;font-weight:600;margin:0 0 10px;">Open release downloads</p>
+          <div class="release-access-block">
+            <p class="release-access-heading">Open release downloads</p>
             <div class="flex gap-12 flex-wrap">
               <a href="https://audittoolkitlabs.github.io/releases/Audit%20Toolkit/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Open Public Download Card</a>
               <a href="audit-toolkit-documentation.html" class="btn btn-secondary btn-sm">View Product Documentation</a>
               <a href="doc-viewer.html?src=customer-docs/audit-toolkit/27-login-recovery-and-first-login-reset-runbook.md" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">Open Login Recovery Runbook (Doc 27)</a>
               <a href="doc-viewer.html?src=customer-docs/audit-toolkit/26-owasp-security-scorecard.md" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">Open OWASP Scorecard (Doc 26)</a>
             </div>
-            <p style="font-size:.78rem;color:var(--text-muted);margin:8px 0 0;">
+            <p class="release-access-footnote">
               A valid licence key is required to activate the software after installation. Purchase Starter, Professional, and Business via Stripe on the pricing page. <a href="audit-admin-toolkit-pricing.html">View licensing &amp; pricing &rarr;</a>
             </p>
           </div>
@@ -106,13 +106,13 @@
       </div>
 
       <div class="release-entry" id="earlier">
-        <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div></div>
+        <div class="release-timeline"><div class="release-dot release-dot-muted"></div></div>
         <div class="release-body">
           <div class="release-meta">
             <span class="version">Earlier Releases</span>
             <span class="badge badge-muted">Archive</span>
           </div>
-          <p style="font-size:.9rem;margin:0 0 4px;">For current package files, use the <a href="https://audittoolkitlabs.github.io/releases/Audit%20Toolkit/" target="_blank" rel="noopener">public download card</a>. For older artefacts, contact <a href="support.html#contact">support</a> or the licence team for archive access.</p>
+          <p class="dim-intro-text">For current package files, use the <a href="https://audittoolkitlabs.github.io/releases/Audit%20Toolkit/" target="_blank" rel="noopener">public download card</a>. For older artefacts, contact <a href="support.html#contact">support</a> or the licence team for archive access.</p>
         </div>
       </div>
 

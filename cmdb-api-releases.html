@@ -32,7 +32,7 @@
   <a href="releases.html">Releases</a>
   <a href="licensing.html">Licensing</a>
   <a href="support.html">Support</a>
-  <a href="support.html#contact" style="color:var(--accent);font-weight:600;">Contact Us</a>
+  <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
 </div>
 
 <div class="page-hero">
@@ -80,8 +80,8 @@
           <div class="flex gap-8 flex-wrap mt-8 mb-8">
             <a href="doc-viewer.html?src=customer-docs/cmdb-api/21-maintenance-patching-and-release-runbook.md" class="btn btn-primary btn-sm">Open Release Runbook</a>
           </div>
-          <p style="font-size:.95rem;margin:0 0 12px;color:var(--text);font-weight:600;">General Availability Baseline &mdash; Security and Documentation Alignment</p>
-          <p style="font-size:.9rem;margin:0 0 12px;">v1.0 marks the GA release baseline with aligned release distribution, security evidence, and customer-facing operational documentation.</p>
+          <p class="release-title-note">General Availability Baseline &mdash; Security and Documentation Alignment</p>
+          <p class="release-note">v1.0 marks the GA release baseline with aligned release distribution, security evidence, and customer-facing operational documentation.</p>
           <ul class="release-changes">
             <li><strong>GA release target:</strong> customer documentation and release metadata aligned to <strong>v1.0</strong></li>
             <li><strong>Release assets moved:</strong> packages now published through the SharePoint customer release portal</li>
@@ -89,27 +89,27 @@
             <li><strong>Detailed security report added:</strong> new Doc 35 provides expanded assessment evidence and tooling output context</li>
             <li>Targeted updater workflow from v0.2.9-v0.2.11 remains fully supported for in-place maintenance releases</li>
           </ul>
-          <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
-            <p style="font-size:.85rem;font-weight:600;margin:0 0 10px;">Access v1.0 package files</p>
+          <div class="release-access-block">
+            <p class="release-access-heading">Access v1.0 package files</p>
             <div class="flex gap-12 flex-wrap">
               <a href="https://audittoolkitlabs.github.io/releases/CMDB%20API%20Data%20Collection%20Tool/v1.0/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Open Release Assets Portal</a>
               <a href="support.html#contact" class="btn btn-secondary btn-sm">Request Archive Assistance</a>
             </div>
-            <p style="font-size:.78rem;color:var(--text-muted);margin:8px 0 0;">A valid Keygen licence key is required. <a href="licensing.html">Purchase a licence &rarr;</a></p>
+            <p class="release-access-footnote">A valid Keygen licence key is required. <a href="licensing.html">Purchase a licence &rarr;</a></p>
           </div>
         </div>
       </div>
 
       <!-- v0.2.10 -->
       <div class="release-entry" id="v0210">
-        <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div><div class="release-line"></div></div>
+        <div class="release-timeline"><div class="release-dot release-dot-muted"></div><div class="release-line"></div></div>
         <div class="release-body">
           <div class="release-meta">
             <span class="version">v0.2.10</span>
             <span class="badge badge-muted">Beta</span>
             <span class="date">May 2026</span>
           </div>
-          <p style="font-size:.9rem;margin:0 0 12px;">Maintenance patch: stability improvements and dependency hygiene following the targeted updater introduction.</p>
+          <p class="release-note">Maintenance patch: stability improvements and dependency hygiene following the targeted updater introduction.</p>
           <ul class="release-changes">
             <li>Minor fixups to <code>apply_targeted_update.py</code> dry-run output formatting</li>
             <li>Dependency audit and version pin review; zero CVEs at release date</li>
@@ -120,14 +120,14 @@
 
       <!-- v0.2.9 -->
       <div class="release-entry" id="v029">
-        <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div><div class="release-line"></div></div>
+        <div class="release-timeline"><div class="release-dot release-dot-muted"></div><div class="release-line"></div></div>
         <div class="release-body">
           <div class="release-meta">
             <span class="version">v0.2.9</span>
             <span class="badge badge-muted">Beta</span>
             <span class="date">April 2026</span>
           </div>
-          <p style="font-size:.9rem;margin:0 0 12px;font-weight:600;">Targeted update bundles — in-place core server patching without full reinstall.</p>
+          <p class="release-note release-note-strong">Targeted update bundles — in-place core server patching without full reinstall.</p>
           <ul class="release-changes">
             <li>Introduces targeted update bundles (<code>cmdb-tool-update-linux-&lt;ver&gt;.tar.gz</code> and <code>cmdb-tool-update-windows-&lt;ver&gt;.zip</code>) for patching application files in place while preserving deployed database, configuration, and collected data paths</li>
             <li><code>apply_targeted_update.py</code> script included in each update bundle; supports <code>--dry-run</code> mode, explicit <code>--install-root</code>, <code>--config-path</code>, and optional <code>--database-url</code> overrides</li>
@@ -140,14 +140,14 @@
 
       <!-- v0.2.8 -->
       <div class="release-entry" id="v028">
-        <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div><div class="release-line"></div></div>
+        <div class="release-timeline"><div class="release-dot release-dot-muted"></div><div class="release-line"></div></div>
         <div class="release-body">
           <div class="release-meta">
             <span class="version">v0.2.8</span>
             <span class="badge badge-muted">Beta</span>
             <span class="date">April 2026</span>
           </div>
-          <p style="font-size:.9rem;margin:0 0 12px;">Connector reliability improvements and agent heartbeat stability.</p>
+          <p class="release-note">Connector reliability improvements and agent heartbeat stability.</p>
           <ul class="release-changes">
             <li>Improved reconnect handling in Celery task queue under Redis failover scenarios</li>
             <li>Agent heartbeat timeout extended and made configurable per connector group</li>
@@ -158,14 +158,14 @@
 
       <!-- v0.2.7 -->
       <div class="release-entry" id="v027">
-        <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div><div class="release-line"></div></div>
+        <div class="release-timeline"><div class="release-dot release-dot-muted"></div><div class="release-line"></div></div>
         <div class="release-body">
           <div class="release-meta">
             <span class="version">v0.2.7</span>
             <span class="badge badge-muted">Beta</span>
             <span class="date">April 2026</span>
           </div>
-          <p style="font-size:.9rem;margin:0 0 12px;">Post-OWASP audit maintenance: dependency refresh and minor hardening follow-ups.</p>
+          <p class="release-note">Post-OWASP audit maintenance: dependency refresh and minor hardening follow-ups.</p>
           <ul class="release-changes">
             <li>Dependency version refresh following v0.2.6 OWASP audit; all production packages re-pinned</li>
             <li>Bandit and pip-audit re-run confirming zero new findings</li>
@@ -176,7 +176,7 @@
 
       <!-- v0.2.6 -->
       <div class="release-entry" id="v026">
-        <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div><div class="release-line"></div></div>
+        <div class="release-timeline"><div class="release-dot release-dot-muted"></div><div class="release-line"></div></div>
         <div class="release-body">
           <div class="release-meta">
             <span class="version">v0.2.6</span>
@@ -188,8 +188,8 @@
           <div class="flex gap-8 flex-wrap mt-8 mb-8">
             <a href="#v0211" class="btn btn-primary btn-sm">View Latest Release Notes</a>
           </div>
-          <p style="font-size:.95rem;margin:0 0 12px;color:var(--text);font-weight:600;">Security Verified &mdash; Enterprise Ready</p>
-          <p style="font-size:.9rem;margin:0 0 12px;">Full OWASP Top 10:2021 audit completed. All findings addressed. Zero CVEs across 25 pinned production dependencies at release date.</p>
+          <p class="release-title-note">Security Verified &mdash; Enterprise Ready</p>
+          <p class="release-note">Full OWASP Top 10:2021 audit completed. All findings addressed. Zero CVEs across 25 pinned production dependencies at release date.</p>
           <ul class="release-changes">
             <li>OWASP Top 10:2021 full source-code audit &mdash; 8 PASS, 1 PARTIAL, 0 FAIL, zero open findings at GA</li>
             <li>HTTP security headers on all responses: Content-Security-Policy, X-Frame-Options, Referrer-Policy, Permissions-Policy, X-Content-Type-Options</li>
@@ -201,7 +201,7 @@
             <li>Customer documentation: OWASP Scorecard (Doc 34) and Procurement Security FAQ (Doc 33) added</li>
             <li>542 automated tests passing; SQLAlchemy LegacyAPIWarning resolved</li>
           </ul>
-          <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
+          <div class="release-access-block">
             <div class="table-wrap">
               <table class="data-table">
                 <thead><tr><th>OWASP Category</th><th>Result</th><th>Notes</th></tr></thead>
@@ -220,27 +220,27 @@
               </table>
             </div>
           </div>
-          <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
-            <p style="font-size:.85rem;font-weight:600;margin:0 0 10px;">Access v0.2.6 package files</p>
+          <div class="release-access-block">
+            <p class="release-access-heading">Access v0.2.6 package files</p>
             <div class="flex gap-12 flex-wrap">
               <a href="https://audittoolkitlabs.github.io/releases/CMDB%20API%20Data%20Collection%20Tool/v1.0/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Open Release Assets Portal</a>
               <a href="doc-viewer.html?src=customer-docs/cmdb-api/21-maintenance-patching-and-release-runbook.md" class="btn btn-secondary btn-sm">View Patch Runbook</a>
             </div>
-            <p style="font-size:.78rem;color:var(--text-muted);margin:8px 0 0;">A valid Keygen licence key is required. <a href="licensing.html">Purchase a licence &rarr;</a></p>
+            <p class="release-access-footnote">A valid Keygen licence key is required. <a href="licensing.html">Purchase a licence &rarr;</a></p>
           </div>
         </div>
       </div>
 
       <!-- v0.2.5 -->
       <div class="release-entry" id="v025">
-        <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div><div class="release-line"></div></div>
+        <div class="release-timeline"><div class="release-dot release-dot-muted"></div><div class="release-line"></div></div>
         <div class="release-body">
           <div class="release-meta">
             <span class="version">v0.2.5</span>
             <span class="badge badge-muted">Beta</span>
             <span class="date">29 April 2026</span>
           </div>
-          <p style="font-size:.9rem;margin:0 0 12px;">Overview and legal UX redesign with EULA update.</p>
+          <p class="release-note">Overview and legal UX redesign with EULA update.</p>
           <ul class="release-changes">
             <li>Redesigned overview page with card layout and collapsible deep-dive sections</li>
             <li>Added /legal route with Security, Liability, and Indemnity Notice</li>
@@ -252,14 +252,14 @@
 
       <!-- v0.2.4 -->
       <div class="release-entry" id="v024">
-        <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div><div class="release-line"></div></div>
+        <div class="release-timeline"><div class="release-dot release-dot-muted"></div><div class="release-line"></div></div>
         <div class="release-body">
           <div class="release-meta">
             <span class="version">v0.2.4</span>
             <span class="badge badge-muted">Beta</span>
             <span class="date">April 2026</span>
           </div>
-          <p style="font-size:.9rem;margin:0 0 12px;">Packaging stability and dependency management improvements.</p>
+          <p class="release-note">Packaging stability and dependency management improvements.</p>
           <ul class="release-changes">
             <li>Dependency pinning and requirements audit</li>
             <li>Build and packaging pipeline improvements</li>
@@ -271,13 +271,13 @@
 
       <!-- Earlier -->
       <div class="release-entry" id="earlier">
-        <div class="release-timeline"><div class="release-dot" style="background:var(--subtle);box-shadow:none;"></div></div>
+        <div class="release-timeline"><div class="release-dot release-dot-muted"></div></div>
         <div class="release-body">
           <div class="release-meta">
             <span class="version">v0.2.x &mdash; Earlier Releases</span>
             <span class="badge badge-muted">Archive</span>
           </div>
-          <p style="font-size:.9rem;margin:0 0 12px;">Earlier v0.2.x releases covering initial connector framework, authentication, multi-tenancy, SIEM integration, and reporting foundations.</p>
+          <p class="release-note">Earlier v0.2.x releases covering initial connector framework, authentication, multi-tenancy, SIEM integration, and reporting foundations.</p>
           <ul class="release-changes">
             <li>Initial 29+ connector framework and modular architecture</li>
             <li>Multi-tenant RBAC with workspace isolation</li>
@@ -288,7 +288,7 @@
             <li>PDF and CSV export reporting foundations</li>
             <li>SSO (SAML/OIDC) and TOTP MFA integration</li>
           </ul>
-          <div style="margin-top:16px;">
+          <div class="release-mini-top">
             <a href="support.html#contact" class="btn btn-secondary btn-sm">Request Archived History</a>
           </div>
         </div>
@@ -317,9 +317,9 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span style="font-weight:700;font-size:1.05rem;">AuditToolkit Labs</span></div>
+        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span class="footer-brand-name">AuditToolkit Labs</span></div>
         <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
-        <p style="font-size:.82rem;">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+        <p class="footer-copy">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
       </div>
       <div class="footer-col"><h4>Products</h4><ul>
         <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>

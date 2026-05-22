@@ -424,7 +424,44 @@ figcaption { padding: 10px 14px; color: var(--muted); font-size: .88rem; }
 .release-summary { font-size: .93rem; margin: 0 0 8px; }
 .release-actions { margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap; }
 .release-dot-muted { background: var(--subtle) !important; box-shadow: none !important; }
+.release-title-note { font-size: .95rem; margin: 0 0 12px; color: var(--text); font-weight: 600; }
+.release-note { font-size: .9rem; margin: 0 0 12px; }
+.release-note-strong { font-weight: 600; }
+.release-access-block { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+.release-access-heading { font-size: .85rem; font-weight: 600; margin: 0 0 10px; color: var(--text); }
+.release-access-footnote { font-size: .78rem; color: var(--muted); margin: 8px 0 0; }
+.release-list-compact { margin: 10px 0 4px; padding-left: 20px; font-size: .9rem; }
+.release-list-tight-bottom { margin-bottom: 0; }
+.release-caption { margin: 8px 0 0; font-size: .85rem; }
 .gallery-title { margin: 0 0 12px; }
+.link-inherit { color: inherit; }
+.callout-mb40 { margin-bottom: 40px; }
+.pricing-amount {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+  font-style: normal;
+  margin-bottom: 4px;
+}
+.btn-block-center {
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+.addons-block { margin-top: 32px; }
+.addons-title { font-size: 1.3rem; margin: 0 0 10px; }
+.addons-intro { font-size: .9rem; color: var(--muted); margin: 0 0 16px; }
+.addons-intro-tight { font-size: .9rem; color: var(--muted); margin: 0; }
+.addon-price { margin-bottom: 10px; color: var(--text); }
+.addon-desc { font-size: .88rem; color: var(--muted); margin-bottom: 14px; }
+.addon-price-spaced { margin-bottom: 10px; }
+.addon-desc-spaced { margin-bottom: 14px; }
+.pricing-links-block { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--border); }
+.pricing-links-item { font-size: .9rem; color: var(--accent); }
+.pricing-section-no-top { border-top: none !important; padding-top: 0; }
+.dim-intro-text { font-size: .9rem; color: var(--muted); margin: 0 0 4px; }
+.combo-block { margin-top: 40px; }
+.combo-title { font-size: 1rem; margin-bottom: 12px; color: var(--text); }
 
 @media (max-width: 640px) {
   .hero  { padding: 60px 0 48px; }

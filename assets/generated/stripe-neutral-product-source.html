@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neutral Product Image</title>
+  <style>
+    html, body {
+      margin: 0;
+      width: 1200px;
+      height: 675px;
+      overflow: hidden;
+      background: #0b1220;
+    }
+    body {
+      position: relative;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(160deg, #08101d 0%, #0f1930 60%, #0d1c38 100%);
+    }
+    .glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(18px);
+      pointer-events: none;
+    }
+    .glow.blue { width: 520px; height: 520px; left: -40px; top: 40px; background: rgba(90,160,255,.14); }
+    .glow.green { width: 360px; height: 360px; right: 80px; top: 40px; background: rgba(110,231,183,.10); }
+    .glow.pink { width: 260px; height: 260px; right: 90px; bottom: 60px; background: rgba(244,114,182,.08); }
+    svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .tile {
+      fill: rgba(24,35,61,.72);
+      stroke: rgba(90,160,255,.30);
+      stroke-width: 2;
+    }
+    .line { stroke: rgba(90,160,255,.80); stroke-width: 3; stroke-linecap: round; }
+    .line2 { stroke: rgba(110,231,183,.75); stroke-width: 3; stroke-linecap: round; }
+    .line3 { stroke: rgba(244,114,182,.75); stroke-width: 3; stroke-linecap: round; }
+    .grid { stroke: rgba(96,118,156,.55); stroke-width: 2; }
+    .node { fill: rgba(255,255,255,.08); stroke: rgba(255,255,255,.20); stroke-width: 2; }
+    .chip { fill: rgba(14,23,42,.86); stroke: rgba(90,160,255,.28); stroke-width: 1.5; }
+    .brand-label {
+      font-family: Arial, sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-anchor: middle;
+      dominant-baseline: middle;
+      fill: rgba(255,255,255,.94);
+    }
+    .brand-subtitle {
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-anchor: middle;
+      dominant-baseline: middle;
+      fill: rgba(178,194,223,.88);
+    }
+  </style>
+</head>
+<body>
+  <div class="glow blue"></div>
+  <div class="glow green"></div>
+  <div class="glow pink"></div>
+  <svg viewBox="0 0 1200 675" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="tilebg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#17233e" stop-opacity="0.92" />
+        <stop offset="100%" stop-color="#0f1830" stop-opacity="0.92" />
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="675" fill="transparent" />
+    <g opacity="0.95">
+      <rect class="tile" x="96" y="128" rx="18" ry="18" width="248" height="128" fill="url(#tilebg)" />
+      <rect class="tile" x="380" y="104" rx="18" ry="18" width="272" height="178" fill="url(#tilebg)" />
+      <rect class="tile" x="694" y="138" rx="18" ry="18" width="286" height="122" fill="url(#tilebg)" />
+      <rect class="tile" x="158" y="334" rx="18" ry="18" width="314" height="170" fill="url(#tilebg)" />
+      <rect class="tile" x="520" y="326" rx="18" ry="18" width="324" height="172" fill="url(#tilebg)" />
+      <rect class="tile" x="872" y="310" rx="18" ry="18" width="220" height="188" fill="url(#tilebg)" />
+    </g>
+    <g opacity="0.65">
+      <ellipse cx="310" cy="320" rx="230" ry="170" fill="rgba(90,160,255,.12)" />
+      <ellipse cx="922" cy="170" rx="170" ry="140" fill="rgba(110,231,183,.10)" />
+      <ellipse cx="940" cy="450" rx="160" ry="130" fill="rgba(244,114,182,.08)" />
+    </g>
+    <g>
+      <path class="grid" d="M430 202H770M430 266H770M430 330H770M430 394H770M430 202V394M515 202V394M600 202V394M685 202V394" />
+      <path class="line" d="M450 216H690" />
+      <path class="line2" d="M450 280H690" />
+      <path class="line3" d="M450 344H690" />
+      <path class="line" d="M450 216V344" />
+      <path class="line2" d="M530 216V344" />
+      <path class="line3" d="M610 216V344" />
+      <path class="line" d="M690 216V344" />
+      <circle class="node" cx="450" cy="216" r="9" />
+      <circle class="node" cx="530" cy="216" r="9" />
+      <circle class="node" cx="610" cy="216" r="9" />
+      <circle class="node" cx="690" cy="216" r="9" />
+      <circle class="node" cx="450" cy="280" r="9" />
+      <circle class="node" cx="530" cy="280" r="9" />
+      <circle class="node" cx="610" cy="280" r="9" />
+      <circle class="node" cx="690" cy="280" r="9" />
+      <circle class="node" cx="450" cy="344" r="9" />
+      <circle class="node" cx="530" cy="344" r="9" />
+      <circle class="node" cx="610" cy="344" r="9" />
+      <circle class="node" cx="690" cy="344" r="9" />
+    </g>
+    <g opacity="0.85">
+      <path d="M118 214c58-84 152-128 232-122" fill="none" stroke="rgba(110,231,183,.80)" stroke-width="4" stroke-linecap="round" />
+      <path d="M708 76c82-30 170-8 238 58" fill="none" stroke="rgba(90,160,255,.78)" stroke-width="4" stroke-linecap="round" />
+      <path d="M885 540H1018" fill="none" stroke="rgba(90,160,255,.70)" stroke-width="5" stroke-linecap="round" />
+      <path d="M913 570H1018" fill="none" stroke="rgba(110,231,183,.65)" stroke-width="4" stroke-linecap="round" />
+    </g>
+    <g>
+      <rect class="chip" x="78" y="568" rx="16" ry="16" width="200" height="56" />
+      <rect class="chip" x="874" y="72" rx="14" ry="14" width="168" height="42" />
+      <rect class="chip" x="118" y="82" rx="14" ry="14" width="184" height="42" />
+    </g>
+    <g>
+      <rect x="260" y="286" width="680" height="104" rx="28" ry="28" fill="rgba(9,16,29,.56)" stroke="rgba(255,255,255,.10)" stroke-width="1.5" />
+      <text class="brand-label" x="600" y="325">AuditToolkitLabs</text>
+      <text class="brand-subtitle" x="600" y="360">PRODUCT</text>
+    </g>
+  </svg>
+</body>
+</html>
