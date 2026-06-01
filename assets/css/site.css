@@ -59,6 +59,7 @@ code {
 .wrap       { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
 .section    { padding: 80px 0; }
 .section-sm { padding: 48px 0; }
+.section-divider { border-top: 1px solid var(--border); }
 hr.divider  { border: none; border-top: 1px solid var(--border); margin: 0; }
 
 /* ── Navigation ───────────────────────────────────────── */
@@ -342,6 +343,7 @@ hr.divider  { border: none; border-top: 1px solid var(--border); margin: 0; }
 
 /* ── Contact cards ────────────────────────────────────── */
 .contact-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+.capability-icon { font-size: 1.6rem; margin-bottom: 12px; }
 
 /* ── Gallery ──────────────────────────────────────────── */
 .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 16px; }
@@ -418,6 +420,22 @@ figcaption { padding: 10px 14px; color: var(--muted); font-size: .88rem; }
 .callout-mb20    { margin-bottom: 20px; }
 .callout-mb16    { margin-bottom: 16px; }
 .nav-mobile-contact { color: var(--accent) !important; font-weight: 600; }
+.security-section {
+  background: linear-gradient(160deg, #0a1524 0%, #0b1220 100%);
+}
+.badge-compact {
+  font-size: .82rem;
+  padding: 6px 14px;
+}
+.owasp-summary-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.owasp-summary-subtitle {
+  font-size: .83rem;
+  color: var(--subtle);
+}
 .section-surface { background: linear-gradient(160deg,#0a1524 0%,#0b1220 100%); border-top: 1px solid var(--border); }
 .section-border-top { border-top: 1px solid var(--border); }
 .text-right { text-align: right !important; }

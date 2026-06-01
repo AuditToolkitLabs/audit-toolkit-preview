@@ -7,7 +7,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Licensing &amp; Pricing — AuditToolkit Labs</title>
-  <meta name="description" content="Licensing and pricing for all AuditToolkit Labs products. Select a product below to view its full tier breakdown and pricing." />
+  <meta name="description" content="Licensing and pricing for the AuditToolkit Labs suite. Community free tier available. Starter, Professional, Business, and Enterprise tiers. BSL converts to MIT by 2031." />
   <link rel="stylesheet" href="assets/css/site.css" />
   <style>
     .product-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:32px 28px;display:flex;flex-direction:column;gap:0}
@@ -38,6 +38,8 @@
       <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
       <ul class="nav-links">
         <li><a href="index.html#products">Products</a></li><li><a href="toolkit-overview.html">Overview</a></li>
+        <li><a href="script-coverage.html">Coverage</a></li>
+        <li><a href="regulated-industries.html">Regulated</a></li>
         <li><a href="docs.html">Documentation</a></li>
         <li><a href="releases.html">Releases</a></li>
         <li><a href="licensing.html" class="active">Licensing</a></li>
@@ -52,6 +54,8 @@
   <a href="index.html">Home</a>
   <a href="index.html#products">Products</a>
   <a href="toolkit-overview.html">Overview</a>
+  <a href="script-coverage.html">Coverage</a>
+  <a href="regulated-industries.html">Regulated</a>
   <a href="docs.html">Documentation</a>
   <a href="releases.html">Releases</a>
   <a href="licensing.html">Licensing</a>
@@ -78,6 +82,55 @@
 <section class="section">
   <div class="wrap">
 
+    <div class="section-head">
+      <p class="eyebrow">Decision Guide</p>
+      <h2>Which licence do I need?</h2>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Use case</th>
+            <th>Licence path</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Internal IT or security team, own environment only</td>
+            <td>Community (free) or paid tier for your server count</td>
+            <td><a href="support.html#contact">Download or request evaluation access</a></td>
+          </tr>
+          <tr>
+            <td>CI/CD pipeline integration on a single Linux host</td>
+            <td>Linux Security Lite Community - free, no key required</td>
+            <td><a href="support.html#contact">Request evaluation access</a></td>
+          </tr>
+          <tr>
+            <td>Multi-server fleet, internal use only</td>
+            <td>Paid tier matching your server count</td>
+            <td><a href="support.html#contact">Request pricing</a></td>
+          </tr>
+          <tr>
+            <td>Managed service - operating on behalf of customers</td>
+            <td>Commercial MSP agreement required</td>
+            <td><a href="mailto:License@audittoolkitlabs.com">Contact licensing team</a></td>
+          </tr>
+          <tr>
+            <td>Embedding in a commercial product</td>
+            <td>OEM agreement required before use</td>
+            <td><a href="mailto:License@audittoolkitlabs.com">Contact licensing team</a></td>
+          </tr>
+          <tr>
+            <td>SaaS or hosted service offering</td>
+            <td>Commercial agreement required</td>
+            <td><a href="mailto:License@audittoolkitlabs.com">Contact licensing team</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-muted text-sm mt-16">If your use case is not listed here, contact us before deployment. Using the software outside permitted scope is a material breach of the BSL terms.</p>
+
     <div class="callout callout-info callout-spaced">
       <strong>Licensing is product-specific.</strong> All commercial products are currently handled via the licence team and Contact Sales workflow, including invoice/PO handling. Enterprise, MSP / OEM / volume enquiries are handled via <a href="support.html#contact">contact us</a>. Evaluation access remains available on request.
     </div>
@@ -95,9 +148,10 @@
           <span class="badge badge-muted">5 Plan Tiers</span>
           <span class="badge badge-muted">4 Deployment Tiers</span>
         </div>
-        <p class="product-price-hint">POA &middot; Free or evaluation access available on request</p>
+        <p class="product-price-hint">Evaluation access available on request. Production use requires commercial licence.</p>
+        <p class="text-muted text-sm mt-8">Five plan tiers combined with four deployment tiers. Contact us for current pricing.</p>
         <div class="card-actions">
-          <a href="cmdb-api-pricing.html" class="btn btn-primary btn-sm">View Pricing &rarr;</a>
+          <a href="support.html#contact" class="btn btn-primary btn-sm">Request pricing</a>
           <a href="cmdb-tool.html" class="btn btn-secondary btn-sm">Product Details</a>
         </div>
       </div>
@@ -114,9 +168,13 @@
           <span class="badge badge-muted">3 Add-ons Available</span>
           <span class="badge badge-muted">Converts to MIT Feb 2030</span>
         </div>
-        <p class="product-price-hint">POA</p>
+        <p class="product-price-hint">Community - Free. Up to 25 servers. No licence key required.</p>
+        <p class="text-muted text-sm mt-8">Starter, Professional, Business, and Enterprise tiers available. Optional add-ons: Integrations Pack, Evidence Pack, Operations Pack.</p>
+        <div class="callout info mt-16">
+          <strong>Source protection note:</strong> This product is licensed under BSL 1.1. The source code automatically converts to the MIT licence on 14 February 2030. After that date, your deployed instance and its source code carry no licence restrictions. Your deployment rights are permanent.
+        </div>
         <div class="card-actions">
-          <a href="audit-admin-toolkit-pricing.html" class="btn btn-primary btn-sm">View Pricing &rarr;</a>
+          <a href="support.html#contact" class="btn btn-primary btn-sm">Request pricing</a>
           <a href="audit-toolkit.html" class="btn btn-secondary btn-sm">Product Details</a>
         </div>
       </div>
@@ -131,9 +189,13 @@
           <span class="badge badge-muted">4 Paid + Free Eval</span>
           <span class="badge badge-muted">Converts to MIT Feb 2030</span>
         </div>
-        <p class="product-price-hint">POA &middot; Evaluation access available on request</p>
+        <p class="product-price-hint">Free evaluation route available on request.</p>
+        <p class="text-muted text-sm mt-8">Starter, Professional, Business, and Enterprise Features add-on annual tiers. Cloud connector support on paid tiers.</p>
+        <div class="callout info mt-16">
+          <strong>Source protection note:</strong> This product is licensed under BSL 1.1. The source code automatically converts to the MIT licence on 14 February 2030. After that date, your deployed instance and its source code carry no licence restrictions. Your deployment rights are permanent.
+        </div>
         <div class="card-actions">
-          <a href="cmdb-asset-platform-pricing.html" class="btn btn-primary btn-sm">View Pricing &rarr;</a>
+          <a href="support.html#contact" class="btn btn-primary btn-sm">Request pricing</a>
           <a href="cmdb-asset-platform.html" class="btn btn-secondary btn-sm">Product Details</a>
         </div>
       </div>
@@ -151,10 +213,15 @@
           <span class="badge badge-muted">2 Add-ons</span>
           <span class="badge badge-muted">Converts to MIT Feb 2031</span>
         </div>
-        <p class="product-price-hint">POA</p>
+        <p class="product-price-hint">Community - Free. Single-server use. No licence key and no time limit.</p>
+        <p class="text-muted text-sm mt-8">Starter, Professional, and Business tiers for fleet and multi-server deployments. MSP and MSSP use requires commercial agreement.</p>
+        <p class="text-muted text-sm">Optional add-ons: Advanced Operations Pack, Enterprise Integrations Pack.</p>
+        <div class="callout info mt-16">
+          <strong>Source protection note:</strong> This product is licensed under BSL 1.1. The source code automatically converts to the MIT licence on 9 February 2031. After that date, your deployed instance and its source code carry no licence restrictions. Your deployment rights are permanent.
+        </div>
         <!-- AUTO-LICENSING:LICENSING_LINUX_CARD_END -->
         <div class="card-actions">
-          <a href="linux-expansion-pricing.html" class="btn btn-primary btn-sm">View Pricing &rarr;</a>
+          <a href="support.html#contact" class="btn btn-primary btn-sm">Request pricing</a>
           <a href="linux-expansion.html" class="btn btn-secondary btn-sm">Product Details</a>
         </div>
       </div>
@@ -169,9 +236,13 @@
           <span class="badge badge-muted">Evaluation Available</span>
           <span class="badge badge-muted">Enterprise Procurement</span>
         </div>
-        <p class="product-price-hint">POA</p>
+        <p class="product-price-hint">Evaluation access available on request.</p>
+        <p class="text-muted text-sm mt-8">Starter, Professional, and Business annual tiers. Enterprise procurement support available.</p>
+        <div class="callout info mt-16">
+          <strong>Source protection note:</strong> This product is licensed under BSL 1.1. Commercial licence terms apply to production use. Contact us for change-date details specific to this product. Your deployment rights are permanent.
+        </div>
         <div class="card-actions">
-          <a href="secure-exposure-centre-pricing.html" class="btn btn-primary btn-sm">View Pricing &rarr;</a>
+          <a href="support.html#contact" class="btn btn-primary btn-sm">Request pricing</a>
           <a href="secure-exposure-centre.html" class="btn btn-secondary btn-sm">Product Details</a>
         </div>
       </div>
@@ -212,6 +283,23 @@
   </div>
 </section>
 
+<section class="section" id="msp-mssp-oem">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Commercial Agreements</p>
+      <h2>MSP, MSSP, and OEM licensing</h2>
+      <p>If you intend to manage customer environments, offer this suite as part of a managed security service, or embed any component in a commercial product, a separate commercial agreement is required before production use.</p>
+    </div>
+    <div class="callout info">
+      <p>MSP and MSSP arrangements are supported across the suite. Commercial terms cover per-customer or per-endpoint usage reporting, quarterly royalty billing, and white-label rights where applicable.</p>
+      <p>OEM and embedded use requires a separately negotiated signed agreement. Use without such an agreement is a material breach of the BSL terms.</p>
+      <p><strong>AuditToolkit Labs — Michael Churchill trading as AuditToolkitLabs</strong><br />4th Floor, Silverstream House, 45 Fitzroy Street, Fitzrovia, London W1T 6EB<br />Licensing: <a href="mailto:License@audittoolkitlabs.com">License@audittoolkitlabs.com</a><br />Tel: +44 (0) 20 8090 9610</p>
+      <a href="mailto:License@audittoolkitlabs.com" class="btn btn-primary btn-sm">Contact Licensing Team</a>
+    </div>
+    <p class="text-sm text-muted mt-16">Regulated deployment guidance is available on the <a href="regulated-industries.html">regulated industries page</a>.</p>
+  </div>
+</section>
+
 <footer class="footer">
   <div class="wrap">
     <div class="footer-grid">
@@ -227,6 +315,8 @@
           <li><a href="cmdb-asset-platform.html">Asset Command Center</a></li>
           <li><a href="linux-expansion.html">Linux Security Lite</a></li>
           <li><a href="secure-exposure-centre.html">Secure Exposure Centre</a></li>
+          <li><a href="script-coverage.html">Script Coverage</a></li>
+          <li><a href="remediation.html">Remediation</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -235,6 +325,8 @@
           <li><a href="docs.html">Documentation</a></li>
           <li><a href="releases.html">Releases</a></li>
           <li><a href="licensing.html">Licensing</a></li>
+          <li><a href="regulated-industries.html">Regulated Industries</a></li>
+          <li><a href="compliance-evidence.html">Compliance Evidence</a></li>
           <li><a href="support.html">Support</a></li>
         </ul>
       </div>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Linux Security Lite — AuditToolkit Labs</title>
-  <meta name="description" content="Linux Security Lite — expanded Linux audit breadth for the Audit Admin Toolkit. Deeper hardening verification, CIS benchmark coverage, policy compliance checking, and evidence-focused reporting across RHEL, Debian, Ubuntu, and SLES." />
+  <meta name="description" content="500 Linux audit scripts across 11 domains. CI-friendly with versioned control catalog and stable IDs. RHEL, Debian, Ubuntu, SLES, Alpine, Arch, openSUSE support." />
   <link rel="stylesheet" href="assets/css/site.css" />
   <style>
     .nav-mobile-contact{color:var(--accent);font-weight:600}
@@ -31,6 +31,8 @@
       <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
       <ul class="nav-links">
         <li><a href="index.html#products">Products</a></li><li><a href="toolkit-overview.html">Overview</a></li>
+        <li><a href="script-coverage.html">Coverage</a></li>
+        <li><a href="regulated-industries.html">Regulated</a></li>
         <li><a href="docs.html">Documentation</a></li>
         <li><a href="releases.html">Releases</a></li><li><a href="licensing.html">Licensing</a></li>
         <li><a href="support.html">Support</a></li>
@@ -44,6 +46,8 @@
   <a href="index.html">Home</a>
   <a href="index.html#products">Products</a>
   <a href="toolkit-overview.html">Overview</a>
+  <a href="script-coverage.html">Coverage</a>
+  <a href="regulated-industries.html">Regulated</a>
   <a href="docs.html">Documentation</a>
   <a href="releases.html">Releases</a>
   <a href="licensing.html">Licensing</a>
@@ -79,6 +83,76 @@
     </div>
   </div>
 </div>
+
+<section class="section" id="script-domain-breakdown">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Coverage Matrix</p>
+      <h2>Linux audit script breakdown (500 scripts)</h2>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Domain</th><th>Script count</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Platform</td><td>140</td></tr>
+          <tr><td>Apps</td><td>67</td></tr>
+          <tr><td>Cloud</td><td>57</td></tr>
+          <tr><td>Security</td><td>56</td></tr>
+          <tr><td>Network</td><td>44</td></tr>
+          <tr><td>Data</td><td>36</td></tr>
+          <tr><td>Storage</td><td>23</td></tr>
+          <tr><td>Web</td><td>25</td></tr>
+          <tr><td>Advanced controls</td><td>24</td></tr>
+          <tr><td>Automation</td><td>22</td></tr>
+          <tr><td>Alpine</td><td>6</td></tr>
+          <tr><td><strong>Total</strong></td><td><strong>500</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section section-divider" id="ci-cd-integration">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">CI/CD Integration</p>
+      <h2>Pipeline-ready control validation</h2>
+    </div>
+    <ul class="feature-list">
+      <li><span class="icon">&#10003;</span><span class="text">AUDIT_SKIP_LICENSE_CHECK environment variable for pipeline use.</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">Stable control IDs with CI guard via id-lock.v1.json.</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">JSON and CSV output formats for tooling and policy gates.</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">SIEM webhook push for centralized ingest.</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">GitHub issue creation from findings for remediation tracking.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section-divider" id="supported-distributions">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Supported Distributions</p>
+      <h2>Package manager and distro coverage</h2>
+    </div>
+    <ul class="feature-list">
+      <li><span class="icon">&#10003;</span><span class="text">RHEL, Fedora, Alma, Rocky (DNF)</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">Ubuntu and Debian (APT)</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">openSUSE and SLES (Zypper)</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">Arch and Manjaro (Pacman)</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">Alpine (Apk, OpenRC)</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section-divider" id="control-plane-contract">
+  <div class="wrap">
+    <div class="callout info">
+      <strong>Control Plane Contract v1:</strong> All result ingest and export operations implement Control Plane Contract v1. Outbound queue delivery is idempotent with dead-letter and replay support, compatible with enterprise SIEM and workflow ingest patterns.
+    </div>
+  </div>
+</section>
 
 <section class="section" id="outcomes">
   <div class="wrap">
@@ -326,10 +400,14 @@
         <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
         <li><a href="cmdb-asset-platform.html">Asset Command Center</a></li>
         <li><a href="linux-expansion.html">Linux Security Lite</a></li>
+        <li><a href="script-coverage.html">Script Coverage</a></li>
+        <li><a href="remediation.html">Remediation</a></li>
       </ul></div>
       <div class="footer-col"><h4>Resources</h4><ul>
         <li><a href="docs.html">Documentation</a></li>
         <li><a href="releases.html">Release Notes</a></li>
+        <li><a href="regulated-industries.html">Regulated Industries</a></li>
+        <li><a href="compliance-evidence.html">Compliance Evidence</a></li>
         <li><a href="licensing.html">Licensing &amp; Pricing</a></li>
         <li><a href="support.html">Support</a></li>
         <li><a href="support.html#security">Security Policy</a></li>

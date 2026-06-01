@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CMDB API Data Collection Tool — AuditToolkit Labs</title>
-  <meta name="description" content="Multi-tenant CMDB data collection platform with 29+ connectors, CVE correlation, AES-256 encryption, and enterprise-grade security controls." />
+  <meta name="description" content="Multi-platform CMDB data collection with 29+ connectors, agents for Windows, Linux, macOS, BSD, and containers. CVE correlation per host. Dual-mode standalone or integrated feeder operation." />
   <link rel="stylesheet" href="assets/css/site.css" />
 </head>
 <body>
@@ -14,6 +14,8 @@
       <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
       <ul class="nav-links">
         <li><a href="index.html#products">Products</a></li><li><a href="toolkit-overview.html">Overview</a></li>
+        <li><a href="script-coverage.html">Coverage</a></li>
+        <li><a href="regulated-industries.html">Regulated</a></li>
         <li><a href="docs.html">Documentation Hub</a></li>
         <li><a href="releases.html">Releases</a></li><li><a href="licensing.html">Licensing</a></li>
         <li><a href="support.html">Support</a></li>
@@ -27,11 +29,13 @@
   <a href="index.html">Home</a>
   <a href="index.html#products">Products</a>
   <a href="toolkit-overview.html">Overview</a>
+  <a href="script-coverage.html">Coverage</a>
+  <a href="regulated-industries.html">Regulated</a>
   <a href="docs.html">Documentation Hub</a>
   <a href="releases.html">Releases</a>
   <a href="licensing.html">Licensing</a>
   <a href="support.html">Support</a>
-  <a href="support.html#contact" style="color:var(--accent);font-weight:600;">Contact Us</a>
+  <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
 </div>
 
 <div class="page-hero">
@@ -42,15 +46,15 @@
       <span class="cur">CMDB API Data Collection Tool</span>
     </div>
     <div class="flex flex-wrap gap-8 mb-16">
-      <span class="badge badge-green">GA v1.0</span>
+      <span class="badge badge-amber">Beta v0.2.11</span>
       <span class="badge badge-blue">Flask &middot; SQLAlchemy &middot; Celery</span>
       <span class="badge badge-muted">Python 3.12+</span>
     </div>
     <h1>CMDB API Data Collection Tool</h1>
     <p>Multi-tenant infrastructure data collection, vulnerability correlation, and CMDB population platform. Built for IT operations teams managing complex hybrid environments.</p>
     <div class="flex gap-12 flex-wrap mt-24">
-      <a href="cmdb-api-releases.html#v100" class="btn btn-primary">Release Notes v1.0 (GA)</a>
-      <a href="https://audittoolkitlabs.github.io/releases/CMDB%20API%20Data%20Collection%20Tool/v1.0/" target="_blank" rel="noopener" class="btn btn-secondary">Release Assets Portal</a>
+      <a href="cmdb-api-releases.html" class="btn btn-primary">Release Notes v0.2.11</a>
+      <a href="https://audittoolkitlabs.github.io/releases/CMDB%20API%20Data%20Collection%20Tool/" target="_blank" rel="noopener" class="btn btn-secondary">Release Assets Portal</a>
       <a href="cmdb-api-releases.html" target="_blank" rel="noopener" class="btn btn-secondary">View All CMDB Releases</a>
       <a href="cmdb-api-documentation.html" class="btn btn-secondary">Browse CMDB API Documentation</a>
       <a href="support.html#contact" class="btn btn-secondary">Licence Enquiry</a>
@@ -67,47 +71,47 @@
     </div>
     <div class="grid-3">
       <div class="card">
-        <div style="font-size:1.6rem;margin-bottom:12px;">&#128225;</div>
+        <div class="capability-icon">&#128225;</div>
         <h3>29+ Infrastructure Connectors</h3>
         <p>VMware vCenter, ESXi, Azure, AWS, Nutanix, HAProxy, Cisco, Juniper, Palo Alto, SNMP, WMI, SSH, and more. Modular connector framework for custom sources.</p>
       </div>
       <div class="card">
-        <div style="font-size:1.6rem;margin-bottom:12px;">&#128737;</div>
+        <div class="capability-icon">&#128737;</div>
         <h3>CVE &amp; Vulnerability Correlation</h3>
         <p>Per-host CVE correlation with CVSS v3 scoring, risk prioritisation, compliance posture, and vulnerability lifecycle tracking from detection through remediation.</p>
       </div>
       <div class="card">
-        <div style="font-size:1.6rem;margin-bottom:12px;">&#128273;</div>
+        <div class="capability-icon">&#128273;</div>
         <h3>AES-256 Field Encryption</h3>
         <p>All connector credentials, SSO secrets, and sensitive configuration fields encrypted at rest using Fernet (AES-256-CBC). Separate encryption and application keys.</p>
       </div>
       <div class="card">
-        <div style="font-size:1.6rem;margin-bottom:12px;">&#128202;</div>
+        <div class="capability-icon">&#128202;</div>
         <h3>SIEM &amp; ITSM Integration</h3>
         <p>Native integrations for Splunk, Elastic/Kibana, ServiceNow, Jira, PagerDuty, and generic webhook targets with configurable payload templates.</p>
       </div>
       <div class="card">
-        <div style="font-size:1.6rem;margin-bottom:12px;">&#128100;</div>
+        <div class="capability-icon">&#128100;</div>
         <h3>Multi-Tenant RBAC</h3>
         <p>Role-based access control with admin, operator, auditor, and read-only tiers. Per-workspace data isolation. Tenant-scoped API key management.</p>
       </div>
       <div class="card">
-        <div style="font-size:1.6rem;margin-bottom:12px;">&#129302;</div>
+        <div class="capability-icon">&#129302;</div>
         <h3>Managed Agent</h3>
         <p>Lightweight collector agent for network-isolated segments. Secure agent registration, encrypted heartbeat, and remote collection scheduling from the central platform.</p>
       </div>
       <div class="card">
-        <div style="font-size:1.6rem;margin-bottom:12px;">&#128196;</div>
+        <div class="capability-icon">&#128196;</div>
         <h3>PDF &amp; Export Reporting</h3>
         <p>On-demand and scheduled PDF export of asset inventory, vulnerability reports, compliance posture, and audit trails. CSV and JSON export available.</p>
       </div>
       <div class="card">
-        <div style="font-size:1.6rem;margin-bottom:12px;">&#128196;</div>
+        <div class="capability-icon">&#128196;</div>
         <h3>SSO &amp; MFA</h3>
         <p>SAML 2.0 and OIDC single sign-on with configurable claim mapping. TOTP MFA, login brute-force protection, and configurable session timeout policies.</p>
       </div>
       <div class="card">
-        <div style="font-size:1.6rem;margin-bottom:12px;">&#128722;</div>
+        <div class="capability-icon">&#128722;</div>
         <h3>Backup &amp; DR</h3>
         <p>Automated database backup scheduling, backup encryption, and documented restore runbook. Supports local, NFS, and S3-compatible backup targets.</p>
       </div>
@@ -115,7 +119,61 @@
   </div>
 </section>
 
-<section class="section" id="whats-new" style="border-top:1px solid var(--border);">
+<section class="section section-divider" id="agent-platforms">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Agent Platforms</p>
+      <h2>Multi-platform collection agents</h2>
+    </div>
+    <ul class="feature-list">
+      <li><span class="icon">&#10003;</span><span class="text">Windows agent (.NET 8) with guided MSI installer or portable ZIP.</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">Linux agent (Go static binary) distributed as tarball bundle.</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">macOS agent bundles for x64 and ARM64 platforms.</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">BSD agent support for FreeBSD and OpenBSD.</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">Container deployment through GHCR image workflows.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section-divider" id="dual-mode">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Dual-Mode Operation</p>
+      <h2>Standalone and integrated feeder modes</h2>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Standalone mode</h3>
+        <p>Full local CMDB collection, vulnerability enrichment, reporting, and exports from a self-contained deployment.</p>
+      </div>
+      <div class="card">
+        <h3>Integrated mode</h3>
+        <p>Optimized feeder into core platform using canonical payload contract schema_version 2026.05.1 for normalized asset records.</p>
+      </div>
+      <div class="card">
+        <h3>Dual mode</h3>
+        <p>Local standalone capabilities with synchronized feeder payloads sent to core platform for enterprise-wide correlation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-divider" id="reliability">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Reliability</p>
+      <h2>Delivery and update safety controls</h2>
+    </div>
+    <ul class="feature-list">
+      <li><span class="icon">&#10003;</span><span class="text">Idempotency keys per payload hash to prevent duplicate processing.</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">Retry with exponential backoff for transient delivery failures.</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">Dead-letter queue state for exhausted retry paths.</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">In-place update tooling with pre-change backup and dry-run checks.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section-divider" id="whats-new">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">What’s New</p>
@@ -126,17 +184,17 @@
       <div class="card">
         <div class="flex items-center gap-8 mb-8">
           <span class="badge badge-amber">CMDB API Tool</span>
-          <span class="badge badge-muted">v1.0 (GA)</span>
+          <span class="badge badge-muted">v0.2.11</span>
         </div>
-        <h3 style="margin-top:0;">CMDB API v1.0</h3>
-        <ul class="feature-list" style="margin-top:8px;">
-          <li><span class="icon">&#10003;</span><span class="text">General Availability baseline published as <strong>v1.0</strong>.</span></li>
+        <h3 class="mt-0">CMDB API v0.2.11</h3>
+        <ul class="feature-list mt-8">
+          <li><span class="icon">&#10003;</span><span class="text">Current beta baseline published as <strong>v0.2.11</strong>.</span></li>
           <li><span class="icon">&#10003;</span><span class="text">Customer release assets are now delivered through the SharePoint release portal.</span></li>
           <li><span class="icon">&#10003;</span><span class="text">Security reporting expanded: OWASP scorecard (Doc 34) plus detailed assessment report (Doc 35).</span></li>
           <li><span class="icon">&#10003;</span><span class="text">Release gate posture: <strong>8 PASS, 1 PARTIAL, 0 FAIL</strong> with zero Critical/High/Medium open findings.</span></li>
         </ul>
         <div class="flex gap-12 flex-wrap mt-16">
-          <a href="cmdb-api-releases.html#v100" class="btn btn-primary btn-sm">CMDB v1.0 Release Notes</a>
+          <a href="cmdb-api-releases.html" class="btn btn-primary btn-sm">CMDB v0.2.11 Release Notes</a>
           <a href="doc-viewer.html?src=customer-docs/cmdb-api/34-owasp-security-scorecard.md" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">OWASP Scorecard</a>
           <a href="cmdb-api-documentation.html" class="btn btn-secondary btn-sm">CMDB Documentation</a>
         </div>
@@ -145,11 +203,11 @@
       <div class="card">
         <div class="flex items-center gap-8 mb-8">
           <span class="badge badge-amber">Audit Admin Toolkit</span>
-          <span class="badge badge-muted">v6.4.4</span>
+          <span class="badge badge-muted">v6.4.8</span>
         </div>
-        <h3 style="margin-top:0;">Audit Toolkit v6.4.4</h3>
-        <ul class="feature-list" style="margin-top:8px;">
-          <li><span class="icon">&#10003;</span><span class="text">v6.4.4 supersedes v6.4.3 for production deployments requiring fully aligned release metadata and customer-facing notes.</span></li>
+        <h3 class="mt-0">Audit Toolkit v6.4.8</h3>
+        <ul class="feature-list mt-8">
+          <li><span class="icon">&#10003;</span><span class="text">v6.4.8 expands script coverage and remediation hardening across Linux, Windows, and hypervisors.</span></li>
           <li><span class="icon">&#10003;</span><span class="text">Release-note alignment refreshed to accurately reflect helper scripts, validation orchestration updates, packaging helper changes, and asset-discovery hardening covered in 6.4.x.</span></li>
           <li><span class="icon">&#10003;</span><span class="text">6.4.x update chain includes dashboard clarity improvements, reporting backfill support, and sensitive admin tool hardening.</span></li>
           <li><span class="icon">&#10003;</span><span class="text">Public website release references now track the current canonical version baseline.</span></li>
@@ -165,8 +223,8 @@
           <span class="badge badge-amber">Linux Security Lite</span>
           <span class="badge badge-muted">v1.1.4</span>
         </div>
-        <h3 style="margin-top:0;">Linux Tool v1.1.4</h3>
-        <ul class="feature-list" style="margin-top:8px;">
+        <h3 class="mt-0">Linux Tool v1.1.4</h3>
+        <ul class="feature-list mt-8">
           <li><span class="icon">&#10003;</span><span class="text">Bundled <code>toolkit-updater.sh</code> now included in all release package formats.</span></li>
           <li><span class="icon">&#10003;</span><span class="text">Configuration and log directories preserved automatically during package upgrades and rollback.</span></li>
           <li><span class="icon">&#10003;</span><span class="text">Rollback now uses rsync rather than destructive removal — existing config and log files protected.</span></li>
@@ -181,7 +239,7 @@
   </div>
 </section>
 
-<section class="section" id="screenshots" style="border-top:1px solid var(--border);">
+<section class="section section-divider" id="screenshots">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Screenshots</p>
@@ -250,7 +308,7 @@
   </div>
 </section>
 
-<section class="section" id="specs" style="border-top:1px solid var(--border);">
+<section class="section section-divider" id="specs">
   <div class="wrap">
     <div class="split">
       <div>
@@ -295,7 +353,7 @@
   </div>
 </section>
 
-<section class="section" id="docs" style="border-top:1px solid var(--border);">
+<section class="section section-divider" id="docs">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Documentation</p>
@@ -303,7 +361,7 @@
       <p>Full deployment, operation, integration, and security documentation included with every release. All documents are provided in Markdown format within the release package.</p>
     </div>
     <div class="callout info mb-32">
-      The CMDB API Data Collection Tool repository is private. Documentation is included in each release package. Access the latest release assets via the <a href="https://audittoolkitlabs.github.io/releases/CMDB%20API%20Data%20Collection%20Tool/v1.0/" target="_blank" rel="noopener">AuditToolkit Customer Release Portal</a>.
+      The CMDB API Data Collection Tool repository is private. Documentation is included in each release package. Access the latest release assets via the <a href="https://audittoolkitlabs.github.io/releases/CMDB%20API%20Data%20Collection%20Tool/" target="_blank" rel="noopener">AuditToolkit Customer Release Portal</a>.
     </div>
     <div class="flex gap-12 flex-wrap">
       <a href="docs.html" class="btn btn-primary">Browse Full Documentation Catalogue</a>
@@ -331,19 +389,23 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span style="font-weight:700;font-size:1.05rem;">AuditToolkit Labs</span></div>
+        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span class="footer-brand-name">AuditToolkit Labs</span></div>
         <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
-        <p style="font-size:.82rem;">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+        <p class="footer-copy">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
       </div>
       <div class="footer-col"><h4>Products</h4><ul>
         <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
         <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
-        <li><a href="index.html#products">Asset Command Center</a></li>
-        <li><a href="index.html#products">Linux Security Lite</a></li>
+        <li><a href="cmdb-asset-platform.html">Asset Command Center</a></li>
+        <li><a href="linux-expansion.html">Linux Security Lite</a></li>
+        <li><a href="script-coverage.html">Script Coverage</a></li>
+        <li><a href="remediation.html">Remediation</a></li>
       </ul></div>
       <div class="footer-col"><h4>Resources</h4><ul>
         <li><a href="docs.html">Documentation Hub</a></li>
         <li><a href="releases.html">Release Notes</a></li>
+        <li><a href="regulated-industries.html">Regulated Industries</a></li>
+        <li><a href="compliance-evidence.html">Compliance Evidence</a></li>
         <li><a href="licensing.html">Licensing &amp; Pricing</a></li>
         <li><a href="support.html">Support</a></li>
         <li><a href="support.html#security">Security Policy</a></li>

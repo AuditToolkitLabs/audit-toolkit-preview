@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atomic Remediation - AuditToolkit Labs</title>
+  <meta name="description" content="Transaction-safe atomic remediation with automatic rollback, dead man's switch, and SuperAdmin-gated execution. SSH for Linux and WinRM for Windows." />
+  <link rel="stylesheet" href="assets/css/site.css" />
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="script-coverage.html">Coverage</a></li>
+        <li><a href="regulated-industries.html">Regulated</a></li>
+        <li><a href="toolkit-overview.html">Overview</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="releases.html">Releases</a></li>
+        <li><a href="licensing.html">Licensing</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+      <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="index.html#products">Products</a>
+  <a href="script-coverage.html">Coverage</a>
+  <a href="regulated-industries.html">Regulated</a>
+  <a href="toolkit-overview.html">Overview</a>
+  <a href="docs.html">Documentation</a>
+  <a href="releases.html">Releases</a>
+  <a href="licensing.html">Licensing</a>
+  <a href="support.html">Support</a>
+  <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Remediation</p>
+    <h1>Controlled remediation. Automatic rollback. Full audit trail.</h1>
+    <p>Atomic transaction-safe remediation for security teams that cannot accept uncontrolled change execution.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <h2>The problem with most remediation tools</h2>
+    <p>Most audit platforms identify what is wrong and stop there. When they do offer remediation, it is script execution without safety nets, no backup, no rollback, and no confirmation that the change worked. A failed fix applied to a production server at 2am is a worse outcome than the original finding.</p>
+  </div>
+</section>
+
+<section class="section section-border-top">
+  <div class="wrap">
+    <h2>How atomic remediation works</h2>
+    <pre class="card">
+1. START TRANSACTION
+   Create rollback point with configurable timeout (default: 5 min)
+
+2. BACKUP
+   Original files backed up with SHA256 checksums in manifest.json
+
+3. APPLY
+   Configuration changes applied. Services restarted if required.
+
+4. VALIDATE
+   Success -> COMMIT (backups retained for manual rollback)
+   Failure -> AUTO-ROLLBACK (original files restored automatically)
+    </pre>
+  </div>
+</section>
+
+<section class="section section-border-top">
+  <div class="wrap">
+    <h2>Dead man's switch</h2>
+    <p>Every remediation transaction has a timeout. If post-execution confirmation is not received within the configured window, the transaction automatically rolls back. Weekend emergencies from bad patches are prevented by design, not by process.</p>
+  </div>
+</section>
+
+<section class="section section-border-top">
+  <div class="wrap">
+    <h2>Access controls</h2>
+    <ul class="feature-list">
+      <li><span class="icon">&#10003;</span><span class="text">SuperAdmin role required for remediation endpoints</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">Secondary auth token required for every remediation session</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">Remediation must be explicitly enabled in platform settings</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">Preview and dry-run mode before execution</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section-border-top">
+  <div class="wrap">
+    <h2>Operator workflow</h2>
+    <ol>
+      <li>Verify host connectivity (SSH or WinRM test built into platform)</li>
+      <li>Unlock remediation with secondary auth token</li>
+      <li>Select fix from eligible fix catalogue</li>
+      <li>Run dry-run preview and review expected changes</li>
+      <li>Execute against selected host or canary group</li>
+      <li>Review execution history</li>
+      <li>Apply rollback if outcome is not compliant</li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section-border-top">
+  <div class="wrap">
+    <h2>API surface</h2>
+    <ul class="feature-list">
+      <li><span class="icon">&#10003;</span><span class="text">POST /api/remediation/auth/unlock</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">POST /api/remediation/preview</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">POST /api/remediation/execute</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">GET /api/remediation/history</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">POST /api/remediation/rollback/&lt;execution_id&gt;</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">GET /api/remediation/fixes</span></li>
+      <li><span class="icon">&#10003;</span><span class="text">GET /api/remediation/settings</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section-border-top">
+  <div class="wrap">
+    <h2>What this toolkit has that most alternatives do not</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Feature</th><th>This toolkit</th><th>OpenVAS</th><th>Nessus</th><th>Qualys</th></tr></thead>
+        <tbody>
+          <tr><td>Atomic rollback</td><td>Yes</td><td>No</td><td>No</td><td>No</td></tr>
+          <tr><td>Auto-backup before change</td><td>Yes</td><td>No</td><td>No</td><td>Limited</td></tr>
+          <tr><td>Transaction timeout</td><td>Yes</td><td>No</td><td>No</td><td>No</td></tr>
+          <tr><td>Self-hosted deployment</td><td>Yes</td><td>Yes</td><td>No</td><td>No</td></tr>
+          <tr><td>Air-gap capable</td><td>Yes</td><td>Limited</td><td>No</td><td>No</td></tr>
+          <tr><td>Script-level audit trail</td><td>Yes</td><td>No</td><td>No</td><td>No</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="flex gap-12 flex-wrap mt-24">
+      <a href="audit-toolkit.html" class="btn btn-primary">View Audit Admin Toolkit</a>
+      <a href="support.html#contact" class="btn btn-secondary">Arrange Evaluation</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand"><p>AuditToolkit Labs</p></div>
+      <div class="footer-col"><h4>Products</h4><ul><li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li><li><a href="script-coverage.html">Script Coverage</a></li><li><a href="remediation.html">Remediation</a></li></ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul><li><a href="regulated-industries.html">Regulated Industries</a></li><li><a href="compliance-evidence.html">Compliance Evidence</a></li><li><a href="licensing.html">Licensing</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="support.html#contact">Contact</a></li></ul></div>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>

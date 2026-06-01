@@ -1,0 +1,47 @@
+{
+  "versions": {
+    "auditAdminToolkit": "v6.4.8",
+    "linuxSecurityLite": "v1.1.4",
+    "cmdbApi": "v0.2.11",
+    "assetCommandCenter": "v1.1.0",
+    "secureExposureCentre": "v0.1.2"
+  },
+  "scriptCounts": {
+    "auditTotal": 1019,
+    "fixTotalRunnable": 712,
+    "combinedTotal": 1731,
+    "linuxAudit": 500,
+    "windowsAudit": 503,
+    "hypervisorAudit": 16,
+    "linuxFixRunnable": 348,
+    "windowsFix": 353,
+    "hypervisorFix": 11,
+    "linuxFixIncludingLib": 352
+  },
+  "bslToMitDates": {
+    "auditAdminToolkit": "14 February 2030",
+    "assetCommandCenter": "14 February 2030",
+    "linuxSecurityLite": "9 February 2031"
+  },
+  "claims": {
+    "siemIntegrationsCount": 7,
+    "apiEndpoints": "390+",
+    "cmdbConnectors": "29+"
+  },
+  "approvedThemes": [
+    "No data leaves your environment",
+    "Offline MSI available for restricted environments",
+    "Atomic transaction-safe remediation with automatic rollback",
+    "SHA-256 signed auditor-ready evidence packages",
+    "BSL source code converts to MIT - your investment is protected"
+  ],
+  "prohibitedInternalReferences": [
+    "internal pipeline",
+    "model training repo",
+    "training data repo",
+    "script generation repo",
+    "SCP ingestion pipeline",
+    "OSCAL ingestion pipeline",
+    "internal enrichment system"
+  ]
+}

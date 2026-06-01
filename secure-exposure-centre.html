@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Secure Exposure Centre - AuditToolkit Labs</title>
-  <meta name="description" content="Secure Exposure Centre is a switch-focused exposure and advisory platform for network estates, with multi-vendor collection, CVE correlation, and remediation reporting." />
+  <meta name="description" content="Switch firmware advisory and CVE correlation for Cisco, Juniper, Arista, Aruba, and Dell. SAN coverage for Brocade and Cisco MDS. CVSS, KEV, and remediation state per device." />
   <link rel="stylesheet" href="assets/css/site.css" />
 </head>
 <body>
@@ -14,6 +14,8 @@
       <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
       <ul class="nav-links">
         <li><a href="index.html#products">Products</a></li>
+        <li><a href="script-coverage.html">Coverage</a></li>
+        <li><a href="regulated-industries.html">Regulated</a></li>
         <li><a href="toolkit-overview.html">Overview</a></li>
         <li><a href="docs.html">Documentation</a></li>
         <li><a href="releases.html">Releases</a></li>
@@ -28,6 +30,8 @@
 <div class="nav-mobile" id="nav-mobile">
   <a href="index.html">Home</a>
   <a href="index.html#products">Products</a>
+  <a href="script-coverage.html">Coverage</a>
+  <a href="regulated-industries.html">Regulated</a>
   <a href="toolkit-overview.html">Overview</a>
   <a href="docs.html">Documentation</a>
   <a href="releases.html">Releases</a>
@@ -45,7 +49,7 @@
     </div>
     <div class="flex flex-wrap gap-8 mb-16">
       <span class="badge badge-amber">Beta</span>
-      <span class="badge badge-blue">v0.1.1</span>
+      <span class="badge badge-blue">v0.1.2</span>
       <span class="badge badge-muted">Switch-focused exposure platform</span>
       <span class="badge badge-muted">Flask API + SQLAlchemy + static console</span>
     </div>
@@ -113,14 +117,30 @@
       <p class="eyebrow">Supported Vendors</p>
       <h2>Current MVP coverage</h2>
     </div>
-    <div class="flex gap-8 flex-wrap">
-      <span class="badge badge-blue">Cisco IOS-XE / NX-OS</span>
-      <span class="badge badge-blue">Juniper JunOS</span>
-      <span class="badge badge-blue">Arista EOS</span>
-      <span class="badge badge-blue">Aruba AOS-CX</span>
-      <span class="badge badge-blue">Dell OS10</span>
-      <span class="badge badge-muted">Brocade (scaffolded)</span>
-      <span class="badge badge-muted">Cisco MDS (scaffolded)</span>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Live API-backed collection</h3>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Cisco IOS-XE and NX-OS (PSIRT RSS live feed enabled)</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Juniper JunOS</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Arista EOS</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Aruba AOS-CX</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Dell OS10</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>SAN connector support</h3>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Brocade (connector scaffolding present)</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Cisco MDS (connector scaffolding present)</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout info mt-24">
+      <strong>Advisory source model:</strong> Advisory data sources include Cisco PSIRT RSS (live), CISA KEV (live), and NVD (live). Juniper, Arista, Aruba, Dell, Brocade, and Cisco MDS advisory access requires customer-supplied vendor feed credentials or a customer-managed local export file. Vendor-gated advisory access is a customer responsibility and the platform provides the ingestion infrastructure.
+    </div>
+    <div class="callout mt-16">
+      <strong>Advisory automation:</strong> Advisory refresh runs on an external scheduler model (Windows Task Scheduler, cron, or container orchestrator). Per-vendor refresh can be enabled independently and refresh API responses report source status with fallback state per vendor.
     </div>
     <div class="flex gap-12 flex-wrap mt-24">
       <a href="secure-exposure-centre-documentation.html" class="btn btn-primary">Open Documentation</a>
@@ -143,10 +163,14 @@
         <li><a href="cmdb-asset-platform.html">Asset Command Center</a></li>
         <li><a href="linux-expansion.html">Linux Security Lite</a></li>
         <li><a href="secure-exposure-centre.html">Secure Exposure Centre</a></li>
+        <li><a href="script-coverage.html">Script Coverage</a></li>
+        <li><a href="remediation.html">Remediation</a></li>
       </ul></div>
       <div class="footer-col"><h4>Resources</h4><ul>
         <li><a href="docs.html">Documentation Hub</a></li>
         <li><a href="releases.html">Releases Hub</a></li>
+        <li><a href="regulated-industries.html">Regulated Industries</a></li>
+        <li><a href="compliance-evidence.html">Compliance Evidence</a></li>
         <li><a href="licensing.html">Licensing &amp; Pricing</a></li>
         <li><a href="support.html">Support</a></li>
       </ul></div>

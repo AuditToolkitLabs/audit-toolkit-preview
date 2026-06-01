@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Toolkit Overview — AuditToolkit Labs</title>
-  <meta name="description" content="How the five AuditToolkit Labs tools fit together: use cases, workflow, and role-based starting paths." />
+  <meta name="description" content="How the five AuditToolkit Labs products fit together. Discover, collect, audit, remediate, and generate compliance evidence in one self-hosted platform." />
   <link rel="stylesheet" href="assets/css/site.css" />
   <style>
     .nav-mobile-contact{color:var(--accent);font-weight:600}
@@ -29,6 +29,8 @@
       <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
       <ul class="nav-links">
         <li><a href="index.html#products">Products</a></li>
+        <li><a href="script-coverage.html">Coverage</a></li>
+        <li><a href="regulated-industries.html">Regulated</a></li>
         <li><a href="toolkit-overview.html" class="active">Overview</a></li>
         <li><a href="docs.html">Documentation</a></li>
         <li><a href="releases.html">Releases</a></li><li><a href="licensing.html">Licensing</a></li>
@@ -42,6 +44,8 @@
 <div class="nav-mobile" id="nav-mobile">
   <a href="index.html">Home</a>
   <a href="index.html#products">Products</a>
+  <a href="script-coverage.html">Coverage</a>
+  <a href="regulated-industries.html">Regulated</a>
   <a href="toolkit-overview.html">Overview</a>
   <a href="docs.html">Documentation</a>
   <a href="releases.html">Releases</a>
@@ -58,13 +62,13 @@
     </div>
     <p class="eyebrow">How It Fits Together</p>
     <h1>Five Tools. One Operational Workflow.</h1>
-    <p>This page shows where each product fits, which use cases it covers, and how the main toolkit is composed of sub-tools and agent layers for end-to-end security, compliance, and CMDB operations.</p>
+    <p>From asset discovery through audit execution, controlled remediation with rollback, and tamper-evident evidence packaging, the five products in this suite cover the full security operations and compliance lifecycle. Each tool is purpose-built and self-hostable. Together they form a complete platform that deploys in your environment without external cloud dependencies.</p>
     <div class="flex flex-wrap gap-8 mt-24">
-      <span class="badge badge-blue">Audit Admin Toolkit v6.4.4</span>
+      <span class="badge badge-blue">Audit Admin Toolkit v6.4.8</span>
       <span class="badge badge-amber">Linux Security Lite v1.1.4</span>
       <span class="badge badge-muted">CMDB API v0.2.11</span>
       <span class="badge badge-green">Asset Command Center v1.1.0</span>
-      <span class="badge badge-amber">Secure Exposure Centre v0.1.1</span>
+      <span class="badge badge-amber">Secure Exposure Centre v0.1.2</span>
     </div>
   </div>
 </div>
@@ -106,6 +110,11 @@
             <td>Linux Security Lite, CMDB API Data Collection Tool, Asset Command Center, Secure Exposure Centre</td>
             <td>Adds deeper Linux controls, ingestion/normalization, and asset governance context</td>
           </tr>
+          <tr>
+            <td>Remediation and evidence</td>
+            <td>SuperAdmin-gated direct host remediation over SSH and WinRM. Secondary auth token required. Atomic rollback by execution ID. SHA-256 signed evidence packages with MANIFEST.json for auditor delivery.</td>
+            <td>Controlled change execution with full audit trail, rollback safety, and tamper-evident compliance evidence output.</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -132,10 +141,11 @@
           </div>
         </div>
         <ul class="feature-list">
-          <li><span class="icon">&#10003;</span><span class="text">Collects infrastructure and vulnerability data from connectors, agents, and APIs.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Includes Windows agent (.NET 8), Linux agent (Go), and managed agent server workflows.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Normalizes records for CMDB workflows and downstream reporting.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Best for: inventory intake, connector integrations, CVE correlation.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">29+ connectors: VMware, Azure, AWS, Nutanix, HAProxy, and network integrations.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Agents for Windows (.NET 8), Linux (Go), macOS, BSD, and containers.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Dual-mode operation: standalone CMDB or integrated feeder to core platform.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Canonical payload contract (schema_version 2026.05.1) for normalized asset and vulnerability records.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Dead-letter queue with retry and backoff for reliable delivery.</span></li>
         </ul>
         <div class="mt-24"><a href="cmdb-tool.html" class="btn btn-secondary btn-sm">View CMDB API Tool</a></div>
       </div>
@@ -149,11 +159,12 @@
           </div>
         </div>
         <ul class="feature-list">
-          <li><span class="icon">&#10003;</span><span class="text">Runs audit workflows from findings through remediation and closure.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Core toolkit with sub-tools: web console, automation API, script libraries, and agent control patterns.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Agent model includes Standalone Agent, Fleet Agent, Hypervisor agent, and coordinator service.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Produces evidence-ready reporting for operational and compliance review.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Best for: audit governance, evidence, recurring control checks.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">1,019 audit scripts across Linux (500), Windows (503), and hypervisors (16).</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">712 fix scripts: Linux (348 runnable), Windows (353), and hypervisors (11).</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Integrated asset discovery with CVE and KEV correlation per asset.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">SuperAdmin-gated remediation with secondary auth, dry-run preview, execution history, and rollback by execution ID.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Seven SIEM integrations and ticketing integrations for operational workflows.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">SHA-256 signed auditor-ready evidence packages.</span></li>
         </ul>
         <div class="mt-24"><a href="audit-toolkit.html" class="btn btn-secondary btn-sm">View Audit Admin Toolkit</a></div>
       </div>
@@ -167,11 +178,12 @@
           </div>
         </div>
         <ul class="feature-list">
-          <li><span class="icon">&#10003;</span><span class="text">Extends Linux-specific hardening and posture checks.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Enterprise interfaces are available through web pages, API routes, and CLI commands.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Includes agent mode for local operator dashboard use cases.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Maps findings to compliance controls and enterprise reporting paths.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Best for: Linux estates with deeper compliance requirements.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">500 Linux audit scripts across 11 domains: platform (140), apps (67), cloud (57), security (56), network (44), data (36), advanced-controls (24), automation (22), storage (23), web (25), Alpine (6).</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Versioned control catalog with stable ID lock and CI guard enforcement.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Control plane contract v1 for result ingest and export operations.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Idempotent outbound queue with dead-letter and replay support.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">SIEM webhook push and GitHub issue creation from audit findings.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">RHEL, Debian, Ubuntu, SLES, Alpine, Arch, and openSUSE support.</span></li>
         </ul>
         <div class="mt-24"><a href="linux-expansion.html" class="btn btn-secondary btn-sm">View Linux Security Lite</a></div>
       </div>
@@ -185,9 +197,11 @@
           </div>
         </div>
         <ul class="feature-list">
-          <li><span class="icon">&#10003;</span><span class="text">Provides enriched asset context and broader lifecycle visibility.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Complements collection and audit products with asset command workflows.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Best for: enterprise asset governance and command-center operations.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Auto-discovery across hypervisor and cloud environments.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">CVE and KEV vulnerability context per asset.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Offline MSI for air-gapped and restricted environment deployment.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">CMDB-aligned data normalization and enrichment.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Windows and Linux agent-based collection.</span></li>
         </ul>
         <div class="mt-24"><a href="cmdb-asset-platform.html" class="btn btn-secondary btn-sm">View Asset Command Center</a></div>
       </div>
@@ -201,9 +215,11 @@
           </div>
         </div>
         <ul class="feature-list">
-          <li><span class="icon">&#10003;</span><span class="text">Switch-focused inventory, advisory normalization, and CVE correlation.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Multi-vendor network estate posture visibility with remediation context.</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Best for: network security operations and switch vulnerability governance.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Cisco IOS-XE/NX-OS, Juniper JunOS, Arista EOS, Aruba AOS-CX, and Dell OS10 live API-backed collection.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">SAN connector scaffolding for Brocade and Cisco MDS.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">CVSS, KEV, and remediation state per device and firmware version.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Advisory automation with external scheduler model.</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Customer-provided vendor feed credentials for gated advisory access.</span></li>
         </ul>
         <div class="mt-24"><a href="secure-exposure-centre.html" class="btn btn-secondary btn-sm">View Secure Exposure Centre</a></div>
       </div>
@@ -242,6 +258,18 @@
             <td>Findings queue, evidence reports, closure records</td>
           </tr>
           <tr>
+            <td>Direct host remediation with atomic rollback</td>
+            <td>Audit Admin Toolkit</td>
+            <td>SuperAdmin remediation APIs</td>
+            <td>Execution history, rollback records, change evidence</td>
+          </tr>
+          <tr>
+            <td>Asset discovery with CVE and KEV correlation</td>
+            <td>Audit Admin Toolkit (native asset discovery)</td>
+            <td>CMDB API Data Collection Tool</td>
+            <td>Normalized asset records with CVE and KEV risk context</td>
+          </tr>
+          <tr>
             <td>Linux hardening and compliance control verification</td>
             <td>Linux Security Lite</td>
             <td>Audit Admin Toolkit</td>
@@ -278,22 +306,30 @@
       <h2>How they fit in one lifecycle</h2>
       <p>The tools are designed as an operational chain, not isolated silos.</p>
     </div>
-    <div class="grid-4">
+    <div class="grid-3">
       <div class="card">
-        <h3 class="flow-step-title">1. Discover and Collect</h3>
-        <p>CMDB API pulls data from connectors and agents, then normalizes it for CMDB consumption.</p>
+        <h3 class="flow-step-title">1. Discover and collect</h3>
+        <p>CMDB API and asset discovery gather host, software, and network inventory. CVE and KEV context are applied per asset.</p>
       </div>
       <div class="card">
-        <h3 class="flow-step-title">2. Enrich and Contextualize</h3>
-        <p>Asset Command Center layers governance context, ownership, and asset intelligence.</p>
+        <h3 class="flow-step-title">2. Enrich and contextualize</h3>
+        <p>Asset Command Center layers governance context, ownership, and lifecycle visibility. Secure Exposure Centre adds network infrastructure posture.</p>
       </div>
       <div class="card">
-        <h3 class="flow-step-title">3. Audit and Validate</h3>
-        <p>Audit Admin Toolkit runs audit workflows; Linux Security Lite adds deeper Linux controls.</p>
+        <h3 class="flow-step-title">3. Audit and validate</h3>
+        <p>Audit Admin Toolkit runs audit workflows and Linux Security Lite adds deeper Linux control verification.</p>
       </div>
       <div class="card">
-        <h3 class="flow-step-title">4. Report and Improve</h3>
-        <p>Evidence and trend outputs support remediation planning, compliance review, and continual improvement.</p>
+        <h3 class="flow-step-title">4. Remediate</h3>
+        <p>SuperAdmin-gated direct host remediation over SSH and WinRM with secondary auth and dry-run preview before every execution.</p>
+      </div>
+      <div class="card">
+        <h3 class="flow-step-title">5. Validate and roll back</h3>
+        <p>Post-remediation validation with automatic or manual rollback by execution ID when outcomes are not compliant.</p>
+      </div>
+      <div class="card">
+        <h3 class="flow-step-title">6. Evidence and improve</h3>
+        <p>SHA-256 signed evidence packages, SIEM export, trend analysis, and compliance trajectory reporting for continual improvement.</p>
       </div>
     </div>
   </div>
@@ -339,6 +375,53 @@
   </div>
 </section>
 
+<section class="section section-divider">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Deployment Models</p>
+      <h2>How to deploy by operating pattern</h2>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Mode</th>
+            <th>Description</th>
+            <th>Best for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Single-host (Standalone Agent)</td>
+            <td>Core platform plus Standalone Agent on one machine. Local dashboard, local findings, and no coordinator required.</td>
+            <td>Small environments, evaluation, developer workstations</td>
+          </tr>
+          <tr>
+            <td>Fleet (Fleet Agent + Coordinator)</td>
+            <td>Fleet Agent deployed to target hosts with a coordinator service for centralized collection and reporting.</td>
+            <td>Multi-server environments and recurring scheduled audits</td>
+          </tr>
+          <tr>
+            <td>Hypervisor-native</td>
+            <td>Hypervisor agent for ESXi, KVM, Nutanix, Proxmox, and Xen with audit scripts run against hypervisor layers directly.</td>
+            <td>Virtualization estate audit and compliance</td>
+          </tr>
+          <tr>
+            <td>Air-gapped / offline</td>
+            <td>Offline MSI installers with no outbound internet requirement and agent deployment without external connectivity.</td>
+            <td>Financial services, healthcare, government, and defense supply chain</td>
+          </tr>
+          <tr>
+            <td>CI/CD integration</td>
+            <td>Linux Security Lite with AUDIT_SKIP_LICENSE_CHECK for pipeline use, stable control IDs, and JSON/CSV outputs with GitHub issue creation.</td>
+            <td>DevSecOps, developer workstations, and pipeline gates</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <div class="cta-band">
   <div class="wrap">
     <div class="cta-band-inner">
@@ -368,11 +451,15 @@
         <li><a href="cmdb-asset-platform.html">Asset Command Center</a></li>
         <li><a href="linux-expansion.html">Linux Security Lite</a></li>
         <li><a href="secure-exposure-centre.html">Secure Exposure Centre</a></li>
+        <li><a href="script-coverage.html">Script Coverage</a></li>
+        <li><a href="remediation.html">Remediation</a></li>
       </ul></div>
       <div class="footer-col"><h4>Resources</h4><ul>
         <li><a href="toolkit-overview.html">Toolkit Overview</a></li>
         <li><a href="docs.html">Documentation Hub</a></li>
         <li><a href="releases.html">Release Notes</a></li>
+        <li><a href="regulated-industries.html">Regulated Industries</a></li>
+        <li><a href="compliance-evidence.html">Compliance Evidence</a></li>
         <li><a href="licensing.html">Licensing &amp; Pricing</a></li>
         <li><a href="support.html">Support</a></li>
       </ul></div>
