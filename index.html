@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AuditToolkit Labs - Self-Hosted Security Audit and Remediation Suite</title>
-  <meta name="description" content="Self-hosted security audit platform with 1,019 audit scripts, 712 fix scripts, and atomic rollback. Linux, Windows, hypervisors, and network infrastructure." />
-  <meta property="og:title" content="AuditToolkit Labs - Self-Hosted Security Audit and Remediation Suite" />
-  <meta property="og:description" content="1,731 audit and fix scripts. Atomic rollback. Air-gap capable. Auditor-ready evidence. Fully self-hosted." />
+  <title>AuditToolkit Platform - Unified Security Auditing</title>
+  <meta name="description" content="The complete, self-hosted security audit and remediation platform. One subscription, all the tools." />
+  <meta property="og:title" content="AuditToolkit Platform - Unified Security Auditing" />
+  <meta property="og:description" content="One subscription for our entire suite of security, audit, and compliance tools. Fully self-hosted." />
   <link rel="stylesheet" href="assets/css/site.css" />
 </head>
 <body>
@@ -15,49 +15,41 @@
     <div class="nav-inner">
       <a href="index.html" class="nav-brand">
         <span class="brand-icon">A</span>
-        <span>AuditToolkit Labs</span>
+        <span>AuditToolkit Platform</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#products">Products</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
         <li><a href="script-coverage.html">Coverage</a></li>
         <li><a href="regulated-industries.html">Regulated</a></li>
         <li><a href="toolkit-overview.html">Overview</a></li>
         <li><a href="docs.html">Documentation</a></li>
-        <li><a href="releases.html">Releases</a></li><li><a href="licensing.html">Licensing</a></li>
+        <li><a href="releases.html">Releases</a></li>
         <li><a href="support.html">Support</a></li>
       </ul>
       <div class="nav-cta">
-        <a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a>
+        <a href="pricing.html" class="btn btn-primary btn-sm">View Pricing</a>
       </div>
       <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
     </div>
   </div>
 </nav>
 <div class="nav-mobile" id="nav-mobile">
-  <a href="#products">Products</a>
+  <a href="pricing.html">Pricing</a>
   <a href="script-coverage.html">Coverage</a>
   <a href="regulated-industries.html">Regulated</a>
   <a href="toolkit-overview.html">Overview</a>
   <a href="docs.html">Documentation</a>
   <a href="releases.html">Releases</a>
-  <a href="licensing.html">Licensing</a>
   <a href="support.html">Support</a>
   <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
 </div>
 
 <section class="hero" id="home">
   <div class="wrap hero-inner">
-    <div class="hero-badges">
-      <span class="badge badge-blue">Audit Admin Toolkit v6.4.8</span>
-      <span class="badge badge-amber">Linux Security Lite v1.1.4</span>
-      <span class="badge badge-muted">CMDB API v0.2.11</span>
-      <span class="badge badge-amber">Secure Exposure Centre v0.1.2</span>
-      <span class="badge badge-green">Customer docs mirrored on this site</span>
-    </div>
-    <h1>Self-hosted security audit, remediation, and compliance intelligence.</h1>
-    <p class="hero-sub">1,019 audit scripts. 712 fix scripts. Atomic rollback. Auditor-ready evidence. Linux, Windows, hypervisors, and network infrastructure in a single self-hosted platform with no data leaving your environment.</p>
+    <h1>The AuditToolkit Platform</h1>
+    <p class="hero-sub">One subscription for our entire suite of self-hosted security, audit, and compliance tools. 1,019 audit scripts, 712 fix scripts, and atomic rollback with no data leaving your environment.</p>
     <div class="hero-actions">
-      <a href="#products" class="btn btn-primary btn-lg">Explore the Suite</a>
+      <a href="pricing.html" class="btn btn-primary btn-lg">View Pricing</a>
       <a href="script-coverage.html" class="btn btn-secondary btn-lg">View Coverage</a>
       <a href="docs.html" class="btn btn-secondary btn-lg">Documentation</a>
     </div>
@@ -69,121 +61,34 @@
   </div>
 </section>
 
-<section class="section" id="products">
+<section class="section" id="platform-overview">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">Products</p>
-      <h2>Tools for every layer of the stack</h2>
-      <p>Five dedicated tools covering CMDB data collection, audit workflows, remediation, asset intelligence, and Linux posture assessment across hybrid infrastructure.</p>
+      <p class="eyebrow">Platform</p>
+      <h2>One Subscription, All The Tools</h2>
+      <p>Your subscription includes access to our complete suite of tools for CMDB, auditing, asset intelligence, and more.</p>
     </div>
     <div class="grid-2">
-      <a href="cmdb-tool.html" class="product-card">
-        <div class="product-card-head">
-          <div class="product-icon bg-accent-blue">&#128225;</div>
-          <span class="badge badge-amber">Beta v0.2.11</span>
-        </div>
-        <div>
-          <h3>CMDB API Data Collection Tool</h3>
-          <p>Multi-platform infrastructure data collection with 29+ connectors, agent-based collection across Windows, Linux, macOS, BSD, and containers, and CVE correlation per host.</p>
-        </div>
-        <ul class="product-features">
-          <li>29+ connectors: VMware, Azure, AWS, Nutanix, HAProxy, network</li>
-          <li>Agents for Windows, Linux, macOS, BSD, and container deployment</li>
-          <li>CVE correlation and CVSS scoring per host</li>
-          <li>Dual-mode operation: standalone or integrated feeder to core platform</li>
-          <li>AES-256 field encryption and OWASP Top 10 pass posture</li>
-          <li>Dead-letter queue with retry and backoff for reliable delivery</li>
-        </ul>
-        <div class="product-card-foot">
-          <span class="badge badge-blue">Flask &middot; SQLAlchemy &middot; Celery</span>
-          <span class="text-accent text-sm">View details &rarr;</span>
-        </div>
-      </a>
-      <a href="audit-toolkit.html" class="product-card">
-        <div class="product-card-head">
-          <div class="product-icon bg-accent-green">&#128269;</div>
-          <span class="badge badge-amber">Beta</span>
-        </div>
-        <div>
-          <h3>Audit Admin Toolkit</h3>
-          <p>Operator-focused audit and remediation platform with 1,019 audit scripts, 712 fix scripts, and atomic transaction-safe rollback across Linux, Windows, and hypervisors.</p>
-        </div>
-        <ul class="product-features">
-          <li>1,019 audit scripts across Linux, Windows, ESXi, KVM, Proxmox, Nutanix, Xen</li>
-          <li>712 fix scripts with atomic rollback and dead man&#39;s switch</li>
-          <li>SuperAdmin-gated remediation with secondary auth token</li>
-          <li>SHA-256 signed auditor-ready evidence packages</li>
-          <li>Seven SIEM integrations: Splunk, Elastic, Sentinel, Wazuh, QRadar, Graylog, Prometheus/Grafana</li>
-          <li>Integrated asset discovery with CVE and KEV correlation</li>
-        </ul>
-        <div class="product-card-foot">
-          <span class="badge badge-amber">Beta</span>
-          <span class="text-accent text-sm">View product &rarr;</span>
-        </div>
-      </a>
-      <a href="cmdb-asset-platform.html" class="product-card">
-        <div class="product-card-head">
-          <div class="product-icon bg-accent-pink">&#127959;</div>
-          <span class="badge badge-green">Current</span>
-        </div>
-        <div>
-          <h3>Asset Command Center</h3>
-          <p>Asset discovery, inventory, and vulnerability context platform with auto-discovery across hypervisor and cloud environments. Offline MSI available for air-gapped deployment.</p>
-        </div>
-        <ul class="product-features">
-          <li>Auto-discovery across hypervisor and cloud</li>
-          <li>CVE and KEV vulnerability context per asset</li>
-          <li>Offline MSI installer for restricted and air-gapped environments</li>
-          <li>CMDB-aligned data normalisation and enrichment</li>
-          <li>Windows and Linux agent-based collection</li>
-        </ul>
-        <div class="product-card-foot">
-          <span class="badge badge-green">v1.1.0</span>
-          <span class="text-accent text-sm">View details &rarr;</span>
-        </div>
-      </a>
-      <a href="linux-expansion.html" class="product-card">
-        <div class="product-card-head">
-          <div class="product-icon bg-accent-warn">&#128039;</div>
-          <span class="badge badge-green">Current Release</span>
-        </div>
-        <div>
-          <h3>Linux Security Lite</h3>
-          <p>Lightweight Linux-first audit producer with 500 audit scripts across 11 domains. CI-friendly with a versioned control catalog and stable IDs.</p>
-        </div>
-        <ul class="product-features">
-          <li>500 Linux audit scripts across platform, cloud, apps, network, security, storage, web, advanced controls, automation, data, Alpine</li>
-          <li>Versioned control catalog with stable ID lock for CI integration</li>
-          <li>Control plane contract for enterprise result ingest and export</li>
-          <li>RHEL, Debian, Ubuntu, SLES, Alpine, Arch, openSUSE support</li>
-          <li>SIEM webhook push and GitHub issue creation from findings</li>
-        </ul>
-        <div class="product-card-foot">
-          <span class="badge badge-green">Current Release</span>
-          <span class="text-accent text-sm">View details &rarr;</span>
-        </div>
-      </a>
-      <a href="secure-exposure-centre.html" class="product-card">
-        <div class="product-card-head">
-          <div class="product-icon bg-accent-teal">&#128260;</div>
-          <span class="badge badge-amber">Beta v0.1.2</span>
-        </div>
-        <div>
-          <h3>Secure Exposure Centre</h3>
-          <p>Switch-focused exposure intelligence platform with firmware-level advisory and CVE correlation for multi-vendor network estates and SAN infrastructure.</p>
-        </div>
-        <ul class="product-features">
-          <li>Vendor coverage: Cisco IOS-XE/NX-OS, Juniper JunOS, Arista EOS, Aruba AOS-CX, Dell OS10</li>
-          <li>SAN connector support: Brocade and Cisco MDS</li>
-          <li>CVSS, KEV, and remediation state correlated per device per firmware</li>
-          <li>Advisory automation with scheduler-safe external trigger model</li>
-          <li>CISA KEV and NVD enrichment on public sources</li>
-        </ul>
-        <div class="product-card-foot">
-          <span class="badge badge-amber">Beta</span>
-          <span class="text-accent text-sm">View details &rarr;</span>
-        </div>
-      </a>
+      <div class="product-card">
+        <h3>CMDB API Data Collection</h3>
+        <p>Multi-platform infrastructure data collection with 29+ connectors and agent-based collection.</p>
+      </div>
+      <div class="product-card">
+        <h3>Audit Admin Toolkit</h3>
+        <p>Operator-focused audit and remediation platform with 1,019 audit scripts and 712 fix scripts.</p>
+      </div>
+      <div class="product-card">
+        <h3>Asset Command Center</h3>
+        <p>Asset discovery, inventory, and vulnerability context with auto-discovery across environments.</p>
+      </div>
+      <div class="product-card">
+        <h3>Linux Security Lite</h3>
+        <p>Lightweight Linux-first audit producer with 500 audit scripts across 11 domains.</p>
+      </div>
+      <div class="product-card">
+        <h3>Secure Exposure Centre</h3>
+        <p>Switch-focused exposure intelligence with firmware-level advisory and CVE correlation.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -213,211 +118,16 @@
   </div>
 </section>
 
-<section class="section section-border-top" id="differentiators">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Differentiators</p>
-      <h2>What this suite includes that most alternatives do not</h2>
-    </div>
-    <div class="table-wrap">
-      <table class="data-table">
-        <tbody>
-          <tr>
-            <td>&#10003; Atomic rollback</td>
-            <td>&#10003; Self-hosted deployment</td>
-            <td>&#10003; Air-gap capable</td>
-            <td>&#10003; Auditor-ready evidence packages</td>
-            <td>&#10003; No SaaS dependency</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="text-sm text-muted mt-16">Compare coverage in detail on the <a href="audit-toolkit.html">Audit Admin Toolkit product page</a>.</p>
-  </div>
-</section>
-
-<section class="section section-border-top" id="releases">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Releases</p>
-      <h2>What&rsquo;s new</h2>
-      <p>Latest release highlights across AuditToolkit Labs products.</p>
-    </div>
-    <div class="release-stack">
-      <div class="release-entry release-latest">
-        <div class="release-timeline"><div class="release-dot"></div><div class="release-line"></div></div>
-        <div class="release-body">
-          <div class="release-meta">
-            <span class="version">Audit Admin Toolkit v6.4.8</span>
-            <span class="badge badge-green">Latest</span>
-            <span class="date">June 2026</span>
-          </div>
-          <p class="release-summary">Script library expansion and remediation hardening release.</p>
-          <ul class="release-changes">
-            <li>1,019 audit scripts and 712 fix scripts across Linux, Windows, and hypervisors at v6.4.8.</li>
-            <li>SuperAdmin direct host remediation with secondary auth token and execution history.</li>
-            <li>Asset discovery with integrated CVE and KEV correlation.</li>
-            <li>Atomic transaction-safe remediation with dead man&#39;s switch rollback.</li>
-          </ul>
-          <div class="release-actions">
-            <a href="audit-toolkit-releases.html" class="btn btn-secondary btn-sm">Full Release Notes</a>
-            <a href="audit-toolkit.html" class="btn btn-secondary btn-sm">Product Details</a>
-          </div>
-        </div>
-      </div>
-      <div class="release-entry">
-        <div class="release-timeline"><div class="release-dot release-dot-muted"></div><div class="release-line"></div></div>
-        <div class="release-body">
-          <div class="release-meta">
-            <span class="version">Linux Security Lite v1.1.4</span>
-            <span class="badge badge-green">Current Release</span>
-            <span class="date">May 2026</span>
-          </div>
-          <p class="release-summary">Maintenance and hardening release. Bundled updater script, safe upgrade preservation, and release-validation CI gate.</p>
-          <ul class="release-changes">
-            <li>Bundled <code>toolkit-updater.sh</code> now included in all release package formats (.deb, .rpm, tarball).</li>
-            <li>Config and log directories preserved automatically during package upgrades.</li>
-            <li>Safe rollback using <code>rsync</code> &mdash; existing configuration and log files not removed during rollback.</li>
-            <li>Release gate added: documentation version must pass validation before a release tag is created.</li>
-          </ul>
-          <div class="release-actions">
-            <a href="linux-security-lite-releases.html" class="btn btn-secondary btn-sm">Linux Release Notes</a>
-            <a href="linux-expansion.html" class="btn btn-secondary btn-sm">Product Details</a>
-          </div>
-        </div>
-      </div>
-      <div class="release-entry">
-        <div class="release-timeline"><div class="release-dot release-dot-muted"></div><div class="release-line"></div></div>
-        <div class="release-body">
-          <div class="release-meta">
-            <span class="version">CMDB API Tool v0.2.11</span>
-            <span class="badge badge-amber">Beta</span>
-            <span class="date">May 2026</span>
-          </div>
-          <p class="release-summary">Targeted updater hardening: version guard, non-SQLite deployment safety, and pre-change backup on every run.</p>
-          <ul class="release-changes">
-            <li>Version guard in <code>apply_targeted_update.py</code> &mdash; auto-aborts if bundle is same or older than installed version.</li>
-            <li>Non-SQLite deployment safety warning ensures DBA snapshot exists before automated patching proceeds.</li>
-            <li>Targeted updater creates pre-change backup of SQLite database and config file on every run.</li>
-          </ul>
-          <div class="release-actions">
-            <a href="cmdb-api-releases.html" class="btn btn-secondary btn-sm">CMDB API Release Notes</a>
-            <a href="cmdb-tool.html" class="btn btn-secondary btn-sm">Product Details</a>
-          </div>
-        </div>
-      </div>
-      <div class="release-entry">
-        <div class="release-timeline"><div class="release-dot release-dot-muted"></div><div class="release-line"></div></div>
-        <div class="release-body">
-          <div class="release-meta">
-            <span class="version">Asset Command Center v1.1.0</span>
-            <span class="badge badge-green">Current</span>
-            <span class="date">May 2026</span>
-          </div>
-          <p class="release-summary">Current customer baseline release. Documentation, legal, and security assurance narratives are aligned to v1.1.0 publication.</p>
-          <ul class="release-changes">
-            <li>Release documentation baseline updated to 1.1.0 across operational, legal, and customer-facing security guidance.</li>
-            <li>Security assurance and production posture reports aligned to the 1.1.0 evidence narrative.</li>
-            <li>Release-gating evidence remains aligned with zero-finding expectations for standard security checks.</li>
-            <li>Pricing journey now maps to Contact Sales procurement and licence delivery messaging.</li>
-          </ul>
-          <div class="release-actions">
-            <a href="cmdb-asset-platform-releases.html" class="btn btn-secondary btn-sm">ACC Release Notes</a>
-            <a href="cmdb-asset-platform.html" class="btn btn-secondary btn-sm">Product Details</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="text-right mt-8">
-      <a href="releases.html" class="btn btn-secondary btn-sm">All Releases &rarr;</a>
-    </div>
-  </div>
-</section>
-
-<section class="section section-border-top" id="screenshots">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Screenshots</p>
-      <h2>Product screenshots by tool</h2>
-      <p>Screenshot previews are grouped by product to avoid cross-tool confusion. No downloads or commercial checkout links are present on this site.</p>
-    </div>
-
-    <h3 class="gallery-title">CMDB API Data Collection Tool</h3>
-    <div class="gallery mb-24">
-      <figure>
-        <img src="customer-docs/cmdb-api/screenshots/02-cmdb-overview.png" alt="CMDB API overview dashboard" loading="lazy" />
-        <figcaption>CMDB API &mdash; overview dashboard</figcaption>
-      </figure>
-      <figure>
-        <img src="customer-docs/cmdb-api/screenshots/04-cmdb-hosts.png" alt="CMDB API host inventory view" loading="lazy" />
-        <figcaption>CMDB API &mdash; host inventory and collection view</figcaption>
-      </figure>
-      <figure>
-        <img src="customer-docs/cmdb-api/screenshots/05-cmdb-vulnerabilities.png" alt="CMDB API vulnerabilities panel" loading="lazy" />
-        <figcaption>CMDB API &mdash; vulnerability correlation and prioritization</figcaption>
-      </figure>
-      <figure>
-        <img src="customer-docs/cmdb-api/screenshots/09-cmdb-reporting.png" alt="CMDB API reporting page" loading="lazy" />
-        <figcaption>CMDB API &mdash; reporting and analytics</figcaption>
-      </figure>
-    </div>
-
-    <h3 class="gallery-title">Audit Admin Toolkit - Asset Discovery</h3>
-    <div class="gallery mb-24">
-      <figure>
-        <img src="customer-docs/audit-toolkit/screenshots/13-asset-discovery-dashboard.png" alt="Asset discovery dashboard" loading="lazy" />
-        <figcaption>Audit Admin Toolkit &mdash; asset discovery and inventory dashboard</figcaption>
-      </figure>
-      <figure>
-        <img src="customer-docs/audit-toolkit/screenshots/15-asset-discovery-vulnerabilities.png" alt="Vulnerability view" loading="lazy" />
-        <figcaption>Audit Admin Toolkit &mdash; vulnerability and risk assessment view</figcaption>
-      </figure>
-      <figure>
-        <img src="customer-docs/audit-toolkit/screenshots/14-asset-discovery-assets.png" alt="Asset inventory records" loading="lazy" />
-        <figcaption>Audit Admin Toolkit &mdash; asset inventory records view</figcaption>
-      </figure>
-    </div>
-
-    <h3 class="gallery-title">Audit Admin Toolkit</h3>
-    <div class="gallery mb-24">
-      <figure>
-        <img src="customer-docs/audit-toolkit/screenshots/03-dashboard.png" alt="Audit toolkit dashboard" loading="lazy" />
-        <figcaption>Audit Admin Toolkit &mdash; core dashboard</figcaption>
-      </figure>
-      <figure>
-        <img src="customer-docs/audit-toolkit/screenshots/04-console-audits.png" alt="Audit console" loading="lazy" />
-        <figcaption>Audit console and findings workflow</figcaption>
-      </figure>
-      <figure>
-        <img src="customer-docs/audit-toolkit/screenshots/06-reports.png" alt="Reports" loading="lazy" />
-        <figcaption>Reporting and evidence views</figcaption>
-      </figure>
-      <figure>
-        <img src="customer-docs/audit-toolkit/screenshots/08-settings.png" alt="Settings" loading="lazy" />
-        <figcaption>Administration and settings</figcaption>
-      </figure>
-    </div>
-
-    <div class="callout callout-mb16">
-      <strong>Linux Security Lite visuals:</strong> Linux-specific screenshots are being curated and are shown on Linux pages only when Linux-native captures are available.
-    </div>
-
-    <div class="callout info">
-      Preview screenshots only &mdash; no installers or release binaries are hosted on this site. Commercial licensing is available through Contact Sales via the <a href="licensing.html">Licensing &amp; Pricing</a> page.
-    </div>
-  </div>
-</section>
-
 <div class="cta-band">
   <div class="wrap">
     <div class="cta-band-inner">
       <div>
-        <h2 class="mb-8">Ready to evaluate or deploy?</h2>
-        <p>Contact us for licence enquiries, technical evaluation, or to register interest in upcoming products.</p>
+        <h2 class="mb-8">Ready to get started?</h2>
+        <p>Choose a plan and get instant access to the entire AuditToolkit Platform.</p>
       </div>
       <div class="cta-band-actions">
-        <a href="support.html#contact" class="btn btn-primary btn-lg">Contact Support</a>
-        <a href="docs.html"            class="btn btn-secondary btn-lg">Browse Documentation</a>
+        <a href="pricing.html" class="btn btn-primary btn-lg">View Pricing</a>
+        <a href="docs.html" class="btn btn-secondary btn-lg">Browse Documentation</a>
       </div>
     </div>
   </div>
@@ -429,18 +139,15 @@
       <div class="footer-brand">
         <div class="flex items-center gap-12 mb-16">
           <span class="brand-icon">A</span>
-          <span class="footer-brand-name">AuditToolkit Labs</span>
+          <span class="footer-brand-name">AuditToolkit Platform</span>
         </div>
         <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
         <p class="footer-copy">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
       </div>
       <div class="footer-col">
-        <h4>Products</h4>
+        <h4>Platform</h4>
         <ul>
-          <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
-          <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
-          <li><a href="cmdb-asset-platform.html">Asset Command Center</a></li>
-          <li><a href="linux-expansion.html">Linux Security Lite</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
           <li><a href="script-coverage.html">Script Coverage</a></li>
           <li><a href="remediation.html">Remediation</a></li>
         </ul>
@@ -452,7 +159,6 @@
           <li><a href="releases.html">Release Notes</a></li>
           <li><a href="regulated-industries.html">Regulated Industries</a></li>
           <li><a href="compliance-evidence.html">Compliance Evidence</a></li>
-          <li><a href="licensing.html">Licensing &amp; Pricing</a></li>
           <li><a href="support.html">Support</a></li>
           <li><a href="support.html#security">Security Policy</a></li>
         </ul>
