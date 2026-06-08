@@ -1,4 +1,5 @@
 name = "audittoolkit-billing-worker"
+account_id = "b9eb1163fc6440479c809ea7e925ad55"
 main = "src/index.js"
 compatibility_date = "2026-05-16"
 workers_dev = true

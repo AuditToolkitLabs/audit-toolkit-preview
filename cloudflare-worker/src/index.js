@@ -1,4 +1,29 @@
 const TEXT_ENCODER = new TextEncoder();
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
+
+function handleOptions(request) {
+  if (
+    request.headers.get("Origin") !== null &&
+    request.headers.get("Access-Control-Request-Method") !== null &&
+    request.headers.get("Access-Control-Request-Headers") !== null
+  ) {
+    // Handle CORS preflight requests.
+    return new Response(null, {
+      headers: corsHeaders,
+    });
+  } else {
+    // Handle standard OPTIONS request.
+    return new Response(null, {
+      headers: {
+        Allow: "POST, OPTIONS",
+      },
+    });
+  }
+}
 
 function json(data, status = 200) {
   return new Response(JSON.stringify(data, null, 2), {
@@ -2748,7 +2773,11 @@ async function sendResendForBillingEvent(env, eventType, payload) {
             `Payment Status: ${sanitizeText(payload?.paymentStatus) || "paid"}`,
             `Stripe Session: ${sanitizeText(payload?.stripeSessionId) || "N/A"}`,
             `Stripe Event: ${sanitizeText(payload?.stripeEventId) || "N/A"}`,
-            legalLinks.supportUrl ? `Support: ${legalLinks.supportUrl}` : ""
+            legalLinks.supportUrl ? `Support: ${legalLinks.supportUrl}` : "",
+            legalLinks.licensingUrl ? `License Terms: ${legalLinks.licensingUrl}` : "",
+            "",
+            "Please renew before expiry to avoid service interruption.",
+            "Action: Renew your license or contact support before the expiry date."
           ]
             .filter(Boolean)
             .join("\n"),
@@ -3135,9 +3164,9 @@ async function sendResendForBillingEvent(env, eventType, payload) {
     if (legalLinks.licensingUrl) {
       summaryRows.push({
         label: "License Terms",
-        value: "View license terms",
+        value: "View terms",
         href: legalLinks.licensingUrl,
-        linkLabel: "View license terms"
+        linkLabel: "View terms"
       });
     }
 
@@ -3180,7 +3209,7 @@ async function sendResendForBillingEvent(env, eventType, payload) {
         label: "License Terms",
         value: "View terms",
         href: legalLinks.licensingUrl,
-        linkLabel: "View license terms"
+        linkLabel: "View terms"
       });
     }
 
@@ -3712,7 +3741,11 @@ function serverError(err) {
 }
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
+    if (request.method === "OPTIONS") {
+      return handleOptions(request);
+    }
+
     const url = new URL(request.url);
 
     if (request.method === "GET" && url.pathname === "/health") {
@@ -4088,6 +4121,77 @@ export default {
       }
     }
 
+    if (request.method === "POST" && url.pathname === "/api/create-checkout-session") {
+      try {
+        const { priceId } = await request.json();
+
+        const allowedPriceIds = [
+          "price_1Tg530F107vmGJKCr4SBUcnP", // Starter
+          "price_1Tg530F107vmGJKCmDIIOi7m", // Starter
+          "price_1Tg530F107vmGJKCwK4GP7LZ", // Professional
+          "price_1Tg530F107vmGJKCwnbcGXCw", // Business
+          "price_1Tg530F107vmGJKCcIyq3aFd", // Enterprise
+        ];
+
+        if (!priceId || !allowedPriceIds.includes(priceId)) {
+          const response = json({ ok: false, error: "invalid_price_id" }, 400);
+          Object.entries(corsHeaders).forEach(([key, value]) => {
+            response.headers.set(key, value);
+          });
+          return response;
+        }
+
+        if (!env.STRIPE_API_SECRET) {
+          const response = json({ ok: false, error: "stripe_api_secret_not_configured" }, 500);
+          Object.entries(corsHeaders).forEach(([key, value]) => {
+            response.headers.set(key, value);
+          });
+          return response;
+        }
+
+        const successUrl = env.STRIPE_CHECKOUT_SUCCESS_URL || "https://audittoolkitlabs.com/success.html";
+        const cancelUrl = env.STRIPE_CHECKOUT_CANCEL_URL || "https://audittoolkitlabs.com/cancel.html";
+
+        const body = new URLSearchParams();
+        body.append("mode", "payment");
+        body.append("line_items[0][price]", priceId);
+        body.append("line_items[0][quantity]", "1");
+        body.append("success_url", successUrl);
+        body.append("cancel_url", cancelUrl);
+
+        const stripeResponse = await fetch("https://api.stripe.com/v1/checkout/sessions", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${env.STRIPE_API_SECRET}`,
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: body,
+        });
+
+        const stripeSession = await stripeResponse.json();
+        if (!stripeResponse.ok) {
+          const response = json({ ok: false, error: stripeSession.error?.message || "stripe_api_error" }, stripeResponse.status);
+          Object.entries(corsHeaders).forEach(([key, value]) => {
+            response.headers.set(key, value);
+          });
+          return response;
+        }
+
+        const response = json({ ok: true, url: stripeSession.url });
+        Object.entries(corsHeaders).forEach(([key, value]) => {
+          response.headers.set(key, value);
+        });
+        return response;
+
+      } catch (e) {
+        const response = json({ ok: false, error: "internal_server_error", details: e.message }, 500);
+        Object.entries(corsHeaders).forEach(([key, value]) => {
+          response.headers.set(key, value);
+        });
+        return response;
+      }
+    }
+
     return json({ ok: false, error: "not_found" }, 404);
-  }
+  },
 };
