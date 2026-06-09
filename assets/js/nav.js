@@ -87,7 +87,7 @@
   function isAllowedLiveCheckout(url) {
     if (!url) return false;
     if (url.protocol !== 'https:') return false;
-    if (url.hostname !== LIVE_CHECKOUT_HOST) return false;
+    if (url.hostname !== LIVE_CHECKOUT_HOST && url.hostname !== 'buy.stripe.com') return false;
 
     var combined = (url.pathname || '') + (url.search || '') + (url.hash || '');
     if (TEST_HINT_RE.test(combined)) return false;
