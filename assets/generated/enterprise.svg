@@ -1,9 +1,27 @@
-<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#f0f4f8"/>
-  <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#333">
-    AuditToolkit Platform
-  </text>
-  <text x="50%" y="65%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#007bff">
-    Enterprise
-  </text>
+<svg width="800" height="520" viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#060e17"/>
+      <stop offset="100%" stop-color="#1b2340"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="520" fill="url(#bg)"/>
+  <circle cx="126" cy="96" r="152" fill="#a78bfa" fill-opacity="0.12"/>
+  <circle cx="676" cy="98" r="182" fill="#22d3ee" fill-opacity="0.10"/>
+  <circle cx="674" cy="416" r="144" fill="#60a5fa" fill-opacity="0.10"/>
+  <path d="M0 352C126 292 238 258 350 266C464 274 544 326 650 332C708 336 754 330 800 316V520H0Z" fill="#08101a" fill-opacity="0.46"/>
+  <path d="M118 98h248c20 0 36 16 36 36v126c0 20-16 36-36 36H118c-20 0-36-16-36-36V134c0-20 16-36 36-36Z" fill="#ffffff" fill-opacity="0.05" stroke="#ddd6fe" stroke-opacity="0.14"/>
+  <rect x="150" y="132" width="168" height="14" rx="7" fill="#f8fafc" fill-opacity="0.82"/>
+  <rect x="150" y="158" width="200" height="10" rx="5" fill="#cbd5e1" fill-opacity="0.4"/>
+  <rect x="150" y="182" width="182" height="10" rx="5" fill="#cbd5e1" fill-opacity="0.28"/>
+  <rect x="150" y="210" width="104" height="30" rx="15" fill="#a78bfa" fill-opacity="0.94"/>
+  <path d="M418 116h250c22 0 40 18 40 40v110c0 22-18 40-40 40H418c-22 0-40-18-40-40V156c0-22 18-40 40-40Z" fill="#ffffff" fill-opacity="0.05" stroke="#c4b5fd" stroke-opacity="0.14"/>
+  <circle cx="482" cy="212" r="34" fill="#a78bfa" fill-opacity="0.9"/>
+  <circle cx="548" cy="182" r="26" fill="#22d3ee" fill-opacity="0.88"/>
+  <circle cx="606" cy="228" r="40" fill="#60a5fa" fill-opacity="0.86"/>
+  <path d="M482 212L548 182L606 228" fill="none" stroke="url(#accent)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.78"/>
 </svg>
