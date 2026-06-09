@@ -1,0 +1,66 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">AuditToolkit Platform hero graphic</title>
+  <desc id="desc">Blue security shield on the left with a dashboard screen on the right and the AuditToolkit Platform wordmark.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#031020"/>
+      <stop offset="55%" stop-color="#081a31"/>
+      <stop offset="100%" stop-color="#0c2c4f"/>
+    </linearGradient>
+    <linearGradient id="shieldOuter" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="shieldInner" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eff6ff"/>
+      <stop offset="100%" stop-color="#dbeafe"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a203c"/>
+      <stop offset="100%" stop-color="#071526"/>
+    </linearGradient>
+    <linearGradient id="accentLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1400" height="900" fill="url(#bg)"/>
+  <circle cx="168" cy="112" r="124" fill="#1d4ed8" fill-opacity="0.18"/>
+  <circle cx="1188" cy="158" r="164" fill="#38bdf8" fill-opacity="0.08"/>
+  <circle cx="1208" cy="764" r="182" fill="#2563eb" fill-opacity="0.08"/>
+  <path d="M0 736C258 642 472 590 724 602C962 614 1168 682 1400 706V900H0Z" fill="#04101e" fill-opacity="0.55"/>
+
+  <g transform="translate(58 108)">
+    <path d="M108 24L216 70V184C216 272 157 340 108 364C59 340 0 272 0 184V70L108 24Z" fill="url(#shieldOuter)"/>
+    <path d="M108 48L194 86V180C194 252 148 308 108 330C68 308 22 252 22 180V86L108 48Z" fill="#0b1f3c"/>
+    <path d="M108 68L164 92V174C164 226 132 272 108 288C84 272 52 226 52 174V92L108 68Z" fill="url(#shieldInner)"/>
+    <path d="M88 178L104 194L142 148" fill="none" stroke="#ffffff" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M420 54V346" stroke="#6ba8ff" stroke-opacity="0.45" stroke-width="3"/>
+  </g>
+
+  <g transform="translate(470 120)">
+    <text x="0" y="0" font-family="Segoe UI, Arial, sans-serif" font-size="92" font-weight="700" fill="#ffffff">AuditToolkit</text>
+    <text x="6" y="90" font-family="Segoe UI, Arial, sans-serif" font-size="50" font-weight="600" letter-spacing="14" fill="#38bdf8">PLATFORM</text>
+    <text x="0" y="182" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="600" fill="#e5eefc">Unified. Powerful. Secure.</text>
+    <text x="0" y="240" font-family="Segoe UI, Arial, sans-serif" font-size="24" fill="#82b7ff">One License. Complete Visibility.</text>
+  </g>
+
+  <g transform="translate(930 168)">
+    <path d="M38 12h258c20 0 36 16 36 36v420c0 20-16 36-36 36H38c-20 0-36-16-36-36V48c0-20 16-36 36-36Z" fill="#09192e" stroke="#1d4ed8" stroke-opacity="0.35" stroke-width="2"/>
+    <path d="M64 84h228c12 0 22 10 22 22v302c0 12-10 22-22 22H64c-12 0-22-10-22-22V106c0-12 10-22 22-22Z" fill="url(#screen)" stroke="#3b82f6" stroke-opacity="0.24"/>
+    <rect x="88" y="116" width="100" height="12" rx="6" fill="#38bdf8" fill-opacity="0.88"/>
+    <rect x="88" y="150" width="142" height="8" rx="4" fill="#93c5fd" fill-opacity="0.36"/>
+    <rect x="88" y="182" width="176" height="8" rx="4" fill="#93c5fd" fill-opacity="0.28"/>
+    <rect x="88" y="214" width="132" height="8" rx="4" fill="#93c5fd" fill-opacity="0.22"/>
+    <rect x="88" y="256" width="120" height="14" rx="7" fill="#2563eb" fill-opacity="0.9"/>
+    <rect x="88" y="286" width="184" height="14" rx="7" fill="#38bdf8" fill-opacity="0.85"/>
+    <rect x="88" y="318" width="158" height="14" rx="7" fill="#1d4ed8" fill-opacity="0.82"/>
+    <circle cx="266" cy="150" r="64" fill="none" stroke="#60a5fa" stroke-width="18" stroke-opacity="0.56"/>
+    <path d="M266 88a64 64 0 0 1 48 20l-48 44Z" fill="#38bdf8" fill-opacity="0.82"/>
+    <path d="M266 88a64 64 0 0 0-60 44l60 20Z" fill="#93c5fd" fill-opacity="0.58"/>
+    <path d="M266 88a64 64 0 0 1 0 128c-16 0-28-2-40-8l40-56Z" fill="#0f172a" fill-opacity="0.9"/>
+    <rect x="-2" y="488" width="312" height="12" rx="6" fill="#0b1220" fill-opacity="0.85"/>
+    <path d="M20 470H290" stroke="url(#accentLine)" stroke-width="4" stroke-linecap="round" stroke-opacity="0.6"/>
+  </g>
+</svg>
