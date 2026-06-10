@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integrations — AuditToolkit</title>
+  <meta name="description" content="AuditToolkit integrates with Splunk, Sentinel, Wazuh, ServiceNow, Jira, Slack, GitHub Actions, AWS, Azure, GCP, Cisco, Juniper, and more — 7 SIEMs, 2 ITSM platforms, and 40+ vendor connectors." />
+  <link rel="stylesheet" href="assets/css/site.css" />
+  <style>
+    .nav-mobile-contact{color:var(--accent);font-weight:600}
+    .footer-brand-title{font-weight:700;font-size:1.05rem}
+    .footer-copy-small{font-size:.82rem}
+    .integration-jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+    .int-section-icon{font-size:1.4rem;margin-bottom:8px}
+    .transport-tag{display:inline-block;font-size:.75rem;font-weight:600;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:2px 8px;color:var(--muted)}
+    .int-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+    .int-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:20px}
+    .int-card h4{margin:0 0 6px}
+    .int-card p{font-size:.9rem;margin:0 0 10px;color:var(--muted)}
+    .int-card .feature-list{margin:0}
+    .int-card .feature-list li{font-size:.88rem}
+    .section-divider-top{border-top:1px solid var(--border)}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="script-coverage.html">Coverage</a></li>
+        <li><a href="regulated-industries.html">Regulated</a></li>
+        <li><a href="toolkit-overview.html">Overview</a></li>
+        <li><a href="use-cases.html">Use Cases</a></li>
+        <li><a href="integrations.html" class="active">Integrations</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="releases.html">Releases</a></li>
+        <li><a href="licensing.html">Licensing</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+      <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="index.html#products">Products</a>
+  <a href="script-coverage.html">Coverage</a>
+  <a href="regulated-industries.html">Regulated</a>
+  <a href="toolkit-overview.html">Overview</a>
+  <a href="use-cases.html">Use Cases</a>
+  <a href="integrations.html">Integrations</a>
+  <a href="docs.html">Documentation</a>
+  <a href="releases.html">Releases</a>
+  <a href="licensing.html">Licensing</a>
+  <a href="support.html">Support</a>
+  <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span>
+      <span class="cur">Integrations</span>
+    </div>
+    <p class="eyebrow">Ecosystem</p>
+    <h1>AuditToolkit integrates into your existing stack rather than replacing it.</h1>
+    <p>Findings flow to your SIEM. Tickets open in your ITSM. Alerts land in Slack or Teams. Audit results surface in your GitHub Security tab. The platform ships with pre-built integrations across 7 SIEM platforms, 2 ITSM systems, major cloud providers, and 40+ vendor connectors — no integration projects required.</p>
+    <div class="integration-jump">
+      <a href="#siem" class="badge badge-blue">SIEM</a>
+      <a href="#itsm" class="badge badge-green">ITSM</a>
+      <a href="#collaboration" class="badge badge-muted">Collaboration</a>
+      <a href="#cicd" class="badge badge-amber">CI/CD</a>
+      <a href="#identity" class="badge badge-muted">Identity</a>
+      <a href="#cloud" class="badge badge-blue">Cloud</a>
+      <a href="#network" class="badge badge-green">Network</a>
+    </div>
+  </div>
+</div>
+
+<!-- SIEM -->
+<section class="section" id="siem">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">SIEM &amp; Security Operations</p>
+      <h2>7 SIEM Platforms</h2>
+      <p>Every integration supports real-time event streaming. Your SOC sees configuration risk and compliance state changes alongside threat telemetry, in the tools they already monitor.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Platform</th>
+            <th>Transport</th>
+            <th>What flows through</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Wazuh</strong></td>
+            <td><span class="transport-tag">Syslog</span> <span class="transport-tag">REST API</span></td>
+            <td>Finding events, compliance state changes, remediation actions — correlates with Wazuh intrusion detection alerts</td>
+          </tr>
+          <tr>
+            <td><strong>Splunk</strong></td>
+            <td><span class="transport-tag">HTTP Event Collector (HEC)</span></td>
+            <td>JSON-formatted finding events with full control mapping metadata — build SPL queries across compliance and threat data</td>
+          </tr>
+          <tr>
+            <td><strong>Elastic Stack (ELK)</strong></td>
+            <td><span class="transport-tag">Webhook (JSON)</span> <span class="transport-tag">Filebeat log output</span></td>
+            <td>Structured finding events with severity, control ID, host, and timestamp — visualise in Kibana alongside Elasticsearch threat data</td>
+          </tr>
+          <tr>
+            <td><strong>Microsoft Sentinel</strong></td>
+            <td><span class="transport-tag">Webhook → Azure Log Analytics</span></td>
+            <td>Finding events in JSON format with full control context — feed Sentinel analytics rules and workbooks</td>
+          </tr>
+          <tr>
+            <td><strong>IBM QRadar</strong></td>
+            <td><span class="transport-tag">Syslog (CEF)</span> <span class="transport-tag">REST API</span></td>
+            <td>CEF-formatted finding events with severity mapping — correlate with QRadar offenses and reference sets</td>
+          </tr>
+          <tr>
+            <td><strong>Graylog</strong></td>
+            <td><span class="transport-tag">GELF</span> <span class="transport-tag">Syslog</span></td>
+            <td>Structured finding events across Graylog streams and dashboards alongside other log sources</td>
+          </tr>
+          <tr>
+            <td><strong>Prometheus + Grafana</strong></td>
+            <td><span class="transport-tag">Prometheus metrics endpoint</span></td>
+            <td>60+ metrics — compliance scores, finding counts by severity, remediation velocity, host coverage — alert via Alertmanager</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ITSM -->
+<section class="section section-divider-top" id="itsm">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">ITSM &amp; Workflow</p>
+      <h2>ServiceNow &amp; Jira</h2>
+      <p>Remediation tickets open automatically when findings exceed a configured severity threshold. Status is kept in sync as findings are addressed — no manual handoff between security and operations.</p>
+    </div>
+    <div class="int-grid">
+      <div class="int-card">
+        <div class="int-section-icon">&#128203;</div>
+        <h4>ServiceNow</h4>
+        <p>Bi-directional REST API integration</p>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Automatic incident or problem record creation with finding detail, severity, affected host, and remediation guidance pre-populated</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">SLA timer alignment to finding severity levels</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Ticket closure in ServiceNow acknowledged in AuditToolkit; re-opened findings re-open or create new tickets</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Instance URL, API credentials, and field mapping configured via admin panel</span></li>
+        </ul>
+      </div>
+      <div class="int-card">
+        <div class="int-section-icon">&#128196;</div>
+        <h4>Jira</h4>
+        <p>Bi-directional Jira REST API with deduplication</p>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Automatic issue creation in a configurable project with labels, priority, and description derived from the finding</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Deduplication — existing open issues are tracked by ID; no duplicate issues for the same finding</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Issue transitions in Jira reflected back to AuditToolkit finding status</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Instance URL, project key, API token, and field mapping configured via admin panel</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Collaboration -->
+<section class="section section-divider-top" id="collaboration">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Collaboration</p>
+      <h2>Slack &amp; Microsoft Teams</h2>
+      <p>Daily digest summaries and real-time critical-finding alerts delivered to the channels where your team already operates.</p>
+    </div>
+    <div class="int-grid">
+      <div class="int-card">
+        <div class="int-section-icon">&#128172;</div>
+        <h4>Slack</h4>
+        <p>Incoming Webhook — configurable channel and threshold</p>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Daily digest: compliance posture changes, new critical findings, and remediation progress on schedule</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Real-time alert when a FAIL finding at or above the configured severity threshold is detected</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Structured message blocks with severity colour coding, affected host, control reference, and direct link to the finding</span></li>
+        </ul>
+      </div>
+      <div class="int-card">
+        <div class="int-section-icon">&#128241;</div>
+        <h4>Microsoft Teams</h4>
+        <p>Incoming Webhook — Adaptive Card format</p>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Daily digest delivered to a Teams channel on the same schedule as the Slack integration</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Real-time Teams message for critical findings with severity, host, control reference, and direct link</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Adaptive Card format for rich rendering in Teams channels</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CI/CD -->
+<section class="section section-divider-top" id="cicd">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Developer &amp; CI/CD</p>
+      <h2>GitHub Actions, SARIF &amp; External Ingest</h2>
+      <p>Embed audit results in the development workflow. Configuration regressions surface in pull requests before reaching production.</p>
+    </div>
+    <div class="int-grid">
+      <div class="int-card">
+        <div class="int-section-icon">&#9881;</div>
+        <h4>GitHub Actions &amp; Security Tab</h4>
+        <p>SARIF output + upload-sarif action</p>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">SARIF output uploaded to the GitHub Security tab — findings appear alongside code scanning results</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Pull request merges blocked when audits introduce new critical findings</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">CI workflow templates provided for immediate integration into existing pipelines</span></li>
+        </ul>
+      </div>
+      <div class="int-card">
+        <div class="int-section-icon">&#128030;</div>
+        <h4>GitHub Issues</h4>
+        <p>Linux Security Lite — direct issue creation from findings</p>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Deduplicated GitHub Issues created from audit findings — existing open issues are not duplicated</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Automatically assigned and labelled for triage by the owning team</span></li>
+        </ul>
+      </div>
+      <div class="int-card">
+        <div class="int-section-icon">&#128257;</div>
+        <h4>External Ingest API</h4>
+        <p><code>POST /api/external-ingest</code> — API key authenticated</p>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Push findings from any third-party or in-house tool into the AuditToolkit unified posture view</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Uses the standard producer-output schema — no custom adapters required</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Idempotency key support prevents duplicate records from repeated pushes</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Identity -->
+<section class="section section-divider-top" id="identity">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Identity &amp; Access</p>
+      <h2>AD, Entra ID, Okta &amp; TOTP MFA</h2>
+      <p>Integrate with the identity infrastructure your organisation already runs. Role-based access control applied throughout — every UI screen and API endpoint.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Provider</th>
+            <th>Protocol</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>LDAP / Active Directory</strong></td>
+            <td><span class="transport-tag">RFC 4510 (ldap3)</span></td>
+            <td>AD group membership mapped to AuditToolkit RBAC roles</td>
+          </tr>
+          <tr>
+            <td><strong>Microsoft Entra ID</strong></td>
+            <td><span class="transport-tag">OAuth 2.0 / OIDC</span></td>
+            <td>Single sign-on; Entra group membership used for RBAC role assignment</td>
+          </tr>
+          <tr>
+            <td><strong>Okta</strong></td>
+            <td><span class="transport-tag">OIDC</span></td>
+            <td>SSO with Okta as identity provider; supports Okta MFA policies</td>
+          </tr>
+          <tr>
+            <td><strong>TOTP MFA</strong></td>
+            <td><span class="transport-tag">RFC 6238</span></td>
+            <td>QR code enrollment, backup recovery codes generated at enrollment for account recovery</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Cloud -->
+<section class="section section-divider-top" id="cloud">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Cloud Platforms</p>
+      <h2>AWS, Azure, GCP &amp; Oracle Cloud</h2>
+      <p>Native connectors for all four major cloud providers. Asset discovery and configuration collection without deploying agents in cloud workloads.</p>
+    </div>
+    <div class="int-grid">
+      <div class="int-card">
+        <div class="int-section-icon">&#9729;</div>
+        <h4>Amazon Web Services</h4>
+        <p>AWS SDK — IAM role or access key auth</p>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">EC2, RDS, S3, IAM, VPC, EKS, Lambda</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">CloudTrail, Config, Security Hub</span></li>
+        </ul>
+      </div>
+      <div class="int-card">
+        <div class="int-section-icon">&#128312;</div>
+        <h4>Microsoft Azure</h4>
+        <p>Azure SDK — service principal or managed identity</p>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Virtual Machines, AKS, Azure SQL, Storage Accounts</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Key Vault, Entra ID, Defender for Cloud</span></li>
+        </ul>
+      </div>
+      <div class="int-card">
+        <div class="int-section-icon">&#128313;</div>
+        <h4>Google Cloud Platform</h4>
+        <p>GCP SDK — service account auth</p>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Compute Engine, GKE, Cloud SQL, Cloud Storage</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">IAM, Security Command Center</span></li>
+        </ul>
+      </div>
+      <div class="int-card">
+        <div class="int-section-icon">&#128314;</div>
+        <h4>Oracle Cloud Infrastructure</h4>
+        <p>OCI SDK</p>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Compute, VCN, Object Storage</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">IAM, Database</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Network -->
+<section class="section section-divider-top" id="network">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Network &amp; Infrastructure</p>
+      <h2>Cisco, Juniper, Arista, Aruba, Dell &amp; more</h2>
+      <p>Live API-backed collection from network switching infrastructure. Firmware versions correlated against vendor advisories, CVE databases, and CISA KEV status. No CLI scraping — structured API data only.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Vendor</th>
+            <th>Platform</th>
+            <th>Transport</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cisco</strong></td>
+            <td>IOS-XE, NX-OS</td>
+            <td><span class="transport-tag">REST API</span> <span class="transport-tag">NETCONF</span></td>
+          </tr>
+          <tr>
+            <td><strong>Cisco</strong></td>
+            <td>MDS SAN fabric</td>
+            <td><span class="transport-tag">Scaffolded — roadmap</span></td>
+          </tr>
+          <tr>
+            <td><strong>Juniper</strong></td>
+            <td>JunOS</td>
+            <td><span class="transport-tag">REST API</span> <span class="transport-tag">NETCONF/YANG</span></td>
+          </tr>
+          <tr>
+            <td><strong>Arista</strong></td>
+            <td>EOS</td>
+            <td><span class="transport-tag">eAPI (REST)</span></td>
+          </tr>
+          <tr>
+            <td><strong>Aruba (HPE)</strong></td>
+            <td>AOS-CX</td>
+            <td><span class="transport-tag">REST API</span></td>
+          </tr>
+          <tr>
+            <td><strong>Dell</strong></td>
+            <td>OS10</td>
+            <td><span class="transport-tag">REST API</span></td>
+          </tr>
+          <tr>
+            <td><strong>Brocade</strong></td>
+            <td>SAN fabric</td>
+            <td><span class="transport-tag">Scaffolded — roadmap</span></td>
+          </tr>
+          <tr>
+            <td><strong>Checkpoint</strong></td>
+            <td>Firewall management</td>
+            <td><span class="transport-tag">Management API</span></td>
+          </tr>
+          <tr>
+            <td><strong>Fortinet</strong></td>
+            <td>FortiGate</td>
+            <td><span class="transport-tag">Management API</span></td>
+          </tr>
+          <tr>
+            <td><strong>Infoblox</strong></td>
+            <td>IPAM / DDI</td>
+            <td><span class="transport-tag">Management API</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout info mt-24">
+      <strong>Switch Exposure Center:</strong> firmware currency and CVE advisory correlation for all live API-backed network vendors above. Vendor advisory feeds via public RSS, vendor-gated account feeds, or customer-managed CSV/XML imports.
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <div class="cta-band-inner">
+      <div>
+        <h2 class="mb-8">Integration not listed?</h2>
+        <p>The External Ingest API accepts findings from any tool using the standard producer schema. Contact us to discuss your environment.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a href="support.html#contact" class="btn btn-primary btn-lg">Contact Us</a>
+        <a href="docs.html" class="btn btn-secondary btn-lg">Browse Documentation</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span class="footer-brand-title">AuditToolkit Labs</span></div>
+        <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
+        <p class="footer-copy-small">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+      </div>
+      <div class="footer-col"><h4>Products</h4><ul>
+        <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
+        <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
+        <li><a href="cmdb-asset-platform.html">Asset Command Center</a></li>
+        <li><a href="linux-expansion.html">Linux Security Lite</a></li>
+        <li><a href="secure-exposure-centre.html">Secure Exposure Center</a></li>
+        <li><a href="script-coverage.html">Script Coverage</a></li>
+        <li><a href="remediation.html">Remediation</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul>
+        <li><a href="toolkit-overview.html">Toolkit Overview</a></li>
+        <li><a href="use-cases.html">Use Cases</a></li>
+        <li><a href="integrations.html">Integrations</a></li>
+        <li><a href="docs.html">Documentation Hub</a></li>
+        <li><a href="releases.html">Release Notes</a></li>
+        <li><a href="regulated-industries.html">Regulated Industries</a></li>
+        <li><a href="compliance-evidence.html">Compliance Evidence</a></li>
+        <li><a href="licensing.html">Licensing &amp; Pricing</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
+        <li><a href="support.html#contact">Send an Enquiry</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>Licence: Business Source Licence (BSL). See individual product EULA for full usage rights.</p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/nav.js?v=20260609"></script>
+</body>
+</html>

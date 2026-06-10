@@ -529,6 +529,8 @@ figcaption { padding: 10px 14px; color: var(--muted); font-size: .88rem; }
 .pricing-card-business::before { background-image: url('../generated/business.svg'); }
 .pricing-card-enterprise::before { background-image: url('../generated/enterprise.svg'); }
 
+.pricing-card-feature-list { text-align: left; margin-bottom: 24px; }
+
 .pricing-card > * {
   position: relative;
   z-index: 1;

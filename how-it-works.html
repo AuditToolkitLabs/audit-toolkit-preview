@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How It Works — AuditToolkit</title>
+  <meta name="description" content="How AuditToolkit works: from asset discovery through audit execution, controlled remediation, and tamper-evident evidence packaging — seven steps from discovery to continuous monitoring." />
+  <link rel="stylesheet" href="assets/css/site.css" />
+  <style>
+    .nav-mobile-contact{color:var(--accent);font-weight:600}
+    .footer-brand-title{font-weight:700;font-size:1.05rem}
+    .footer-copy-small{font-size:.82rem}
+
+    /* Step flow */
+    .step-flow{display:flex;flex-direction:column;gap:0}
+    .step{display:grid;grid-template-columns:56px 1fr;gap:24px;align-items:start;padding:32px 0;border-bottom:1px solid var(--border)}
+    .step:last-child{border-bottom:none}
+    .step-num{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid var(--border);font-size:1rem;font-weight:700;color:var(--accent);flex-shrink:0;margin-top:4px}
+    .step-body h3{margin:0 0 6px;font-size:1.1rem}
+    .step-body p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.6}
+    .step-tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);background:rgba(90,160,255,.1);border:1px solid rgba(90,160,255,.2);border-radius:4px;padding:2px 8px;margin-bottom:8px}
+    .step-tag.green{color:#6ee7b7;background:rgba(110,231,183,.08);border-color:rgba(110,231,183,.2)}
+    .step-tag.amber{color:#fbbf24;background:rgba(251,191,36,.08);border-color:rgba(251,191,36,.2)}
+
+    /* Architecture summary */
+    .arch-row{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;text-align:center}
+    .arch-arrow{font-size:1.5rem;color:var(--muted)}
+    .arch-box{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:20px 16px}
+    .arch-box h4{margin:0 0 6px;font-size:.95rem}
+    .arch-box p{margin:0;font-size:.83rem;color:var(--muted)}
+    @media(max-width:640px){
+      .arch-row{grid-template-columns:1fr;gap:8px}
+      .arch-arrow{display:none}
+    }
+
+    /* Deployment table */
+    .section-divider-top{border-top:1px solid var(--border)}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="script-coverage.html">Coverage</a></li>
+        <li><a href="toolkit-overview.html">Overview</a></li>
+        <li><a href="how-it-works.html" class="active">How It Works</a></li>
+        <li><a href="use-cases.html">Use Cases</a></li>
+        <li><a href="integrations.html">Integrations</a></li>
+        <li><a href="docs.html">Documentation</a></li>
+        <li><a href="releases.html">Releases</a></li>
+        <li><a href="licensing.html">Licensing</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+      <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="index.html#products">Products</a>
+  <a href="script-coverage.html">Coverage</a>
+  <a href="toolkit-overview.html">Overview</a>
+  <a href="how-it-works.html">How It Works</a>
+  <a href="use-cases.html">Use Cases</a>
+  <a href="integrations.html">Integrations</a>
+  <a href="docs.html">Documentation</a>
+  <a href="releases.html">Releases</a>
+  <a href="licensing.html">Licensing</a>
+  <a href="support.html">Support</a>
+  <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span>
+      <span class="cur">How It Works</span>
+    </div>
+    <p class="eyebrow">Architecture</p>
+    <h1>From discovery to continuous monitoring — seven steps.</h1>
+    <p>AuditToolkit runs on a producer-consumer architecture. Specialised tools collect data from every layer of your infrastructure and deliver it to a central platform that correlates, remediates, and reports — without any of that data leaving your environment.</p>
+  </div>
+</div>
+
+<!-- 7-step flow -->
+<section class="section">
+  <div class="wrap">
+    <div class="step-flow">
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-tag">Discovery</div>
+          <h3>Your infrastructure is inventoried.</h3>
+          <p>Cloud platforms, on-premises servers, network devices, and endpoints are discovered automatically across 40+ vendor connectors — SSH, WinRM, SNMP, NETCONF, and REST API. No manual asset lists to maintain.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-tag">Data Collection — Producers</div>
+          <h3>Satellite tools collect from every layer.</h3>
+          <p>Five purpose-built producers — Linux Security Lite, CMDB Data Collection, Switch Exposure Center, Asset Command Center, and the Audit Assurance Node — each cover a distinct infrastructure layer and deliver normalised findings under a shared data contract.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-tag amber">Execution Layer — Audit Assurance Node</div>
+          <h3>Audit scripts run across your estate in parallel.</h3>
+          <p>The Audit Assurance Node executes PowerShell and shell audit scripts across any SSH- or WinRM-accessible host. Every result is wrapped in an HMAC-signed, SHA-256 verified evidence bundle before it leaves the host — integrity guaranteed from point of collection.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-tag">Processing</div>
+          <h3>Findings are normalised, correlated, and mapped.</h3>
+          <p>All producer data arrives at the central Audit Admin Toolkit platform, is normalised to a common schema, correlated across sources into unified host records, and automatically mapped to CIS Benchmarks, PCI-DSS, SOC 2, NIST SP 800-53, and ISO 27001 controls — in a single pass.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <div class="step-tag">Reporting</div>
+          <h3>Live posture. Differential analysis. Trend data.</h3>
+          <p>Dashboards show current compliance posture across every audited host. Differential reports compare any two assessment runs. 30/60/90-day trend analysis tracks improvement across the estate — and surfaces regressions before they become audit findings.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <div class="step-tag green">Evidence Generation</div>
+          <h3>Auditor-ready packages. On demand. In minutes.</h3>
+          <p>Tamper-evident evidence packages are assembled and signed on demand — SHA-256 checksums on every artifact, provenance metadata on every finding, a MANIFEST.json auditors can verify independently. What used to take weeks to assemble takes minutes.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">7</div>
+        <div class="step-body">
+          <div class="step-tag green">Continuous Monitoring</div>
+          <h3>Posture is tracked over time, not measured once.</h3>
+          <p>Every collection run is compared against the prior baseline. Regressions surface automatically. Findings flow to your SIEM, tickets open in your ITSM, and alerts land in Slack or Teams — so the rest of the organisation stays in the loop without changing how they work.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Architecture summary -->
+<section class="section section-divider-top">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Architecture Model</p>
+      <h2>Producers feed a central platform.</h2>
+      <p>Each satellite producer operates independently and can be deployed where it has the best access to its target infrastructure. The central platform sees everything — regardless of which producers are active or how many are running.</p>
+    </div>
+    <div class="arch-row">
+      <div class="arch-box">
+        <h4>Satellite Producers</h4>
+        <p>Linux Security Lite &middot; Audit Assurance Node &middot; CMDB Data Collection &middot; Switch Exposure Center &middot; Asset Command Center</p>
+      </div>
+      <div class="arch-arrow">&#8594;</div>
+      <div class="arch-box">
+        <h4>Audit Admin Toolkit</h4>
+        <p>Ingest &middot; Normalise &middot; Correlate &middot; Remediate &middot; Report &middot; Package evidence</p>
+      </div>
+    </div>
+    <div class="callout info mt-24">
+      <strong>Data contract:</strong> every producer delivers findings under a versioned JSON schema (<code>producer-output.schema.json</code>). The central platform and every producer negotiate a schema version on delivery — preventing silent data corruption across upgrades.
+    </div>
+  </div>
+</section>
+
+<!-- Deployment options -->
+<section class="section section-divider-top">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Deployment</p>
+      <h2>Four deployment modes. All self-hosted.</h2>
+      <p>Every deployment path keeps data in your environment. No cloud dependency. No telemetry by default.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Mode</th>
+            <th>How it deploys</th>
+            <th>Best for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Linux server (native)</strong></td>
+            <td>Application installed directly on Ubuntu, Debian, or RHEL — PostgreSQL + Redis + Nginx</td>
+            <td>Production deployments with full control over the host stack</td>
+          </tr>
+          <tr>
+            <td><strong>VM appliance</strong></td>
+            <td>Ready-to-import OVF, OVA (VMware), or VHDX (Hyper-V) — boot and configure</td>
+            <td>Rapid enterprise deployment to existing virtualisation infrastructure</td>
+          </tr>
+          <tr>
+            <td><strong>Docker Compose</strong></td>
+            <td>Container stack for test and staging environments</td>
+            <td>Evaluation, development, and pre-production validation</td>
+          </tr>
+          <tr>
+            <td><strong>Agent-based (air-gap)</strong></td>
+            <td>HTTPS push agents on endpoints — agent initiates outbound connection, no inbound firewall rules required. Offline MSI available.</td>
+            <td>Restricted networks, air-gapped environments, endpoints without SSH or WinRM</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Platform security -->
+<section class="section section-divider-top">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Platform Security</p>
+      <h2>Held to the same standard it audits.</h2>
+      <p>AuditToolkit holds credentials, configuration data, and compliance findings. The platform is built to the same security standard it applies to the systems it audits.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <h3 class="mt-0">Authentication &amp; access</h3>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">bcrypt password hashing throughout — no MD5, no SHA-1</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">TOTP MFA with backup recovery codes on all user accounts</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Role-based access control on every UI screen and API endpoint</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">No hardcoded credentials — bootstrap tokens for first login, environment variables for secrets</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="mt-0">Transport &amp; data</h3>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">TLS enforced on all external communication via reverse proxy</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">OWASP-compliant input validation at every API boundary</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">SSRF protection on all webhook and outbound integration configurations</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">defusedxml for safe XML parsing — no XXE exposure</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="mt-0">Audit trail</h3>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Append-only, tamper-evident audit trail within the platform</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Every remediation logged with operator identity, timestamp, and before/after configuration state</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Evidence packages include provenance metadata traceable to source system and collection run</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <div class="cta-band-inner">
+      <div>
+        <h2 class="mb-8">See the architecture in your environment.</h2>
+        <p>The Community tier covers one host at no cost. Or contact us to design the right deployment path for your estate.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a href="price.html" class="btn btn-primary btn-lg">View Pricing</a>
+        <a href="support.html#contact" class="btn btn-secondary btn-lg">Talk to Us</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span class="footer-brand-title">AuditToolkit Labs</span></div>
+        <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
+        <p class="footer-copy-small">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+      </div>
+      <div class="footer-col"><h4>Products</h4><ul>
+        <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
+        <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
+        <li><a href="cmdb-asset-platform.html">Asset Command Center</a></li>
+        <li><a href="linux-expansion.html">Linux Security Lite</a></li>
+        <li><a href="secure-exposure-centre.html">Secure Exposure Center</a></li>
+        <li><a href="script-coverage.html">Script Coverage</a></li>
+        <li><a href="remediation.html">Remediation</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul>
+        <li><a href="toolkit-overview.html">Toolkit Overview</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="use-cases.html">Use Cases</a></li>
+        <li><a href="integrations.html">Integrations</a></li>
+        <li><a href="docs.html">Documentation Hub</a></li>
+        <li><a href="releases.html">Release Notes</a></li>
+        <li><a href="regulated-industries.html">Regulated Industries</a></li>
+        <li><a href="compliance-evidence.html">Compliance Evidence</a></li>
+        <li><a href="licensing.html">Licensing &amp; Pricing</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
+        <li><a href="support.html#contact">Send an Enquiry</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>Licence: Business Source Licence (BSL). See individual product EULA for full usage rights.</p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/nav.js?v=20260609"></script>
+</body>
+</html>
