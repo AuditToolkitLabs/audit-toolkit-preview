@@ -418,6 +418,7 @@ figcaption { padding: 10px 14px; color: var(--muted); font-size: .88rem; }
 .text-green   { color: var(--accent-2) !important; }
 .text-accent  { color: var(--accent) !important; }
 .text-sm      { font-size: .9rem !important; }
+.mb-0         { margin-bottom: 0 !important; }
 .badge-sm     { font-size: .75rem; padding: 2px 8px; }
 .mb-20        { margin-bottom: 20px !important; }
 .mt-0         { margin-top: 0 !important; }
@@ -476,6 +477,13 @@ figcaption { padding: 10px 14px; color: var(--muted); font-size: .88rem; }
 .gallery-title { margin: 0 0 12px; }
 .link-inherit { color: inherit; }
 .callout-mb40 { margin-bottom: 40px; }
+.code-muted {
+  font-size: .85rem;
+  color: var(--muted);
+}
+.is-hidden {
+  display: none !important;
+}
 .pricing-amount {
   font-size: 1.4rem;
   font-weight: 700;
