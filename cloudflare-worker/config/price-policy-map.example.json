@@ -1,24 +1,24 @@
 {
   "byPriceId": {
-    "price_1AAA111BBB222": {
+    "price_example_starter": {
       "planCode": "audit-starter",
-      "keygenPolicyId": "KEYGEN_POLICY_ID_AUDIT_STARTER"
+      "keygenPolicyId": "KEYGEN_POLICY_ID_EXAMPLE_AUDIT_STARTER"
     },
-    "price_1CCC333DDD444": {
+    "price_example_professional": {
       "planCode": "audit-professional",
-      "keygenPolicyId": "KEYGEN_POLICY_ID_AUDIT_PROFESSIONAL"
+      "keygenPolicyId": "KEYGEN_POLICY_ID_EXAMPLE_AUDIT_PROFESSIONAL"
     }
   },
   "byLookupKey": {
     "linux-business": {
       "planCode": "linux-business",
-      "keygenPolicyId": "KEYGEN_POLICY_ID_LINUX_BUSINESS"
+      "keygenPolicyId": "KEYGEN_POLICY_ID_EXAMPLE_LINUX_BUSINESS"
     }
   },
   "byProductId": {
-    "prod_ABC123XYZ": {
+    "product_example_cmdb_api": {
       "planCode": "cmdb-api-standard",
-      "keygenPolicyId": "KEYGEN_POLICY_ID_CMDB_API_STANDARD"
+      "keygenPolicyId": "KEYGEN_POLICY_ID_EXAMPLE_CMDB_API_STANDARD"
     }
   }
 }
