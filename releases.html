@@ -8,9 +8,14 @@
   <link rel="stylesheet" href="assets/css/site.css" />
   <style>
     .nav-mobile-contact{color:var(--accent);font-weight:600}
-    .release-tag-note{font-size:.85rem;margin:8px 0 0}
     .footer-brand-title{font-weight:700;font-size:1.05rem}
     .footer-copy-small{font-size:.82rem}
+    .coming-soon-wrap{max-width:640px;margin:0 auto;text-align:center;padding:64px 0}
+    .coming-soon-badge{font-size:1rem;padding:8px 20px;margin-bottom:32px;display:inline-block}
+    .coming-soon-title{margin-bottom:20px}
+    .coming-soon-lead{font-size:1.1rem;line-height:1.7;margin-bottom:16px}
+    .coming-soon-sub{color:var(--text-muted);margin-bottom:40px}
+    .coming-soon-actions{justify-content:center}
   </style>
 </head>
 <body>
@@ -47,105 +52,25 @@
       <a href="index.html">Home</a><span class="sep">/</span>
       <span class="cur">Releases Hub</span>
     </div>
-    <p class="eyebrow">Release History</p>
+    <p class="eyebrow">Releases</p>
     <h1>Releases Hub</h1>
-    <p>Version history, changelogs, and security bulletins for each AuditToolkit Labs product. Release packages are now accessed through the public Releases portal cards, while source code remains managed in the internal delivery workflow.</p>
-    <div class="flex gap-12 flex-wrap mt-24">
-      <a href="https://audittoolkitlabs.github.io/releases/" class="btn btn-primary" target="_blank" rel="noopener">Open Public Releases Portal</a>
-      <a href="support.html#contact" class="btn btn-secondary">Request Evaluation Access</a>
-    </div>
+    <p>Release packages and version history for all AuditToolkit Labs products.</p>
   </div>
 </div>
 <section class="section">
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">All Products</p>
-      <h2>Choose a Product</h2>
-      <p>Each product has its own release timeline, changelog, and security bulletin history.</p>
-    </div>
-    <div class="product-grid">
-      <a href="cmdb-api-releases.html" class="product-card">
-        <div class="product-card-header">
-          <span class="badge badge-amber">Latest Beta &mdash; v0.2.11</span>
-        </div>
-        <h3>CMDB API Data Collection Tool</h3>
-        <p>Full release history including OWASP audit results, security bulletins, dependency changelogs, and version notes.</p>
-        <p class="release-tag-note">Release tag <strong>cmdb-api/v0.2.11</strong> is now available. Open the CMDB API release page for tag notes and access instructions.</p>
-        <div class="product-card-footer"><span class="link-arrow">View Release Notes &rarr;</span></div>
-      </a>
-      <a href="https://audittoolkitlabs.github.io/releases/CMDB%20API%20Data%20Collection%20Tool/" class="product-card" target="_blank" rel="noopener">
-        <div class="product-card-header">
-          <span class="badge badge-green">Public Download Card</span>
-        </div>
-        <h3>CMDB API Downloads</h3>
-        <p>Open the public CMDB API release card to browse available versions and package files.</p>
-        <div class="product-card-footer"><span class="link-arrow">Open Public Card &rarr;</span></div>
-      </a>
-      <a href="audit-toolkit-releases.html" class="product-card">
-        <div class="product-card-header"><span class="badge badge-amber">Latest Beta &mdash; v6.4.8</span></div>
-        <h3>Audit Admin Toolkit</h3>
-        <p>Release <strong>v6.4.8</strong> is now available with script library expansion and remediation hardening for production deployments.</p>
-        <div class="product-card-footer"><span class="link-arrow">View Release Notes &rarr;</span></div>
-      </a>
-      <a href="https://audittoolkitlabs.github.io/releases/Audit%20Toolkit/" class="product-card" target="_blank" rel="noopener">
-        <div class="product-card-header"><span class="badge badge-green">Public Download Card</span></div>
-        <h3>Audit Toolkit Downloads</h3>
-        <p>Open the public Audit Toolkit release card for current release packages and downloadable artefacts.</p>
-        <div class="product-card-footer"><span class="link-arrow">Open Public Card &rarr;</span></div>
-      </a>
-      <a href="cmdb-asset-platform-releases.html" class="product-card">
-        <div class="product-card-header"><span class="badge badge-green">Release &mdash; v1.1.0</span></div>
-        <h3>Asset Command Center</h3>
-        <p>Current release baseline <strong>v1.1.0</strong> with customer documentation, legal, and security assurance narratives aligned to the latest publication.</p>
-        <div class="product-card-footer"><span class="link-arrow">View Release Notes &rarr;</span></div>
-      </a>
-      <a href="https://audittoolkitlabs.github.io/releases/Asset%20Command%20Center/" class="product-card" target="_blank" rel="noopener">
-        <div class="product-card-header"><span class="badge badge-green">Public Download Card</span></div>
-        <h3>Asset Command Center Downloads</h3>
-        <p>Open the public Asset Command Center release card to browse available versions and package files.</p>
-        <div class="product-card-footer"><span class="link-arrow">Open Public Card &rarr;</span></div>
-      </a>
-      <a href="linux-security-lite-releases.html" class="product-card">
-        <div class="product-card-header"><span class="badge badge-green">Current Release &mdash; v1.1.4</span></div>
-        <h3>Linux Security Lite</h3>
-        <p>Release tag <strong>audit-toolkit-lite/v1.1.4</strong> is available with updater hardening and safe rollback improvements.</p>
-        <div class="product-card-footer"><span class="link-arrow">View Release Notes &rarr;</span></div>
-      </a>
-      <a href="https://audittoolkitlabs.github.io/releases/Linux%20Security%20Lite/" class="product-card" target="_blank" rel="noopener">
-        <div class="product-card-header"><span class="badge badge-green">Public Download Card</span></div>
-        <h3>Linux Security Lite Downloads</h3>
-        <p>Open the public Linux Security Lite release card for package files and available version bundles.</p>
-        <div class="product-card-footer"><span class="link-arrow">Open Public Card &rarr;</span></div>
-      </a>
-      <a href="secure-exposure-centre-releases.html" class="product-card">
-        <div class="product-card-header"><span class="badge badge-amber">Beta - v0.1.2</span></div>
-        <h3>Secure Exposure Center</h3>
-        <p>Release <strong>v0.1.2</strong> continues secure switch advisory workflows with current deployment hardening and feed operations updates.</p>
-        <div class="product-card-footer"><span class="link-arrow">View Release Notes &rarr;</span></div>
-      </a>
-      <a href="https://audittoolkitlabs.github.io/releases/Switch%20Exposure%20Centre/" class="product-card" target="_blank" rel="noopener">
-        <div class="product-card-header"><span class="badge badge-green">Public Download Card</span></div>
-        <h3>Secure Exposure Center Downloads</h3>
-        <p>Open the public release card path for Secure Exposure Center package bundles and release artifacts.</p>
-        <div class="product-card-footer"><span class="link-arrow">Open Public Card &rarr;</span></div>
-      </a>
+    <div class="coming-soon-wrap">
+      <span class="badge badge-amber coming-soon-badge">New Version Coming Soon</span>
+      <h2 class="coming-soon-title">New Version &amp; Layout Coming Soon</h2>
+      <p class="coming-soon-lead">The AuditToolkit platform has been completely redesigned. All previous versions of the toolkit are no longer supported and will not continue to work.</p>
+      <p class="coming-soon-sub">The new release portal and updated documentation will be available here shortly. Contact us if you have questions about your current deployment or wish to be notified when the new version launches.</p>
+      <div class="flex gap-12 flex-wrap coming-soon-actions">
+        <a href="support.html#contact" class="btn btn-primary">Contact Us</a>
+        <a href="index.html" class="btn btn-secondary">Back to Home</a>
+      </div>
     </div>
   </div>
 </section>
-<div class="cta-band">
-  <div class="wrap">
-    <div class="cta-band-inner">
-      <div>
-        <h2 class="mb-8">Want to be notified of new releases?</h2>
-        <p>Contact us to register for release notifications or to request evaluation access.</p>
-      </div>
-      <div class="cta-band-actions">
-        <a href="support.html#contact" class="btn btn-primary btn-lg">Contact Sales -></a>
-        <a href="index.html#products" class="btn btn-secondary btn-lg">All Products</a>
-      </div>
-    </div>
-  </div>
-</div>
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
