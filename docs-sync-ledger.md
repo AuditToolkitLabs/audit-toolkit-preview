@@ -63,3 +63,19 @@ Files Affected:
 
 Description: Added offline reconciliation checklist sections and CI guard to require sync-ledger updates for documentation changes.
 Sync Status: pending
+
+---
+
+Date: 2026-06-12
+Type: LOCAL_UPDATE
+Source: local
+Files Affected:
+
+- doc-viewer.html
+- docs-source-config.json
+- ci/docs-remote-canary-smoke.py
+- .github/workflows/docs-remote-canary-smoke.yml
+- README.md
+
+Description: Added strict remote-only canary toggle path and CI smoke test that validates remote docs when local customer-docs is disabled.
+Sync Status: pending

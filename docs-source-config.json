@@ -3,5 +3,8 @@
   "localDocsRoot": "customer-docs",
   "remoteMirrorBaseUrl": "https://audittoolkitlabs.com",
   "enableRemoteFallback": true,
+  "enableCanaryRemoteOnly": false,
+  "canaryQueryParam": "canary",
+  "canaryQueryValue": "remote-only",
   "centralDocsRepositoryPath": "F:/AuditProducts/AuditToolkit-Docs"
 }

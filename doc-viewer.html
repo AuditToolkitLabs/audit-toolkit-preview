@@ -93,6 +93,7 @@
   var params = new URLSearchParams(window.location.search);
   var src    = params.get('src');
   var sourceModeParam = (params.get('source') || '').toLowerCase();
+  var canaryModeParam = (params.get('canary') || '').toLowerCase();
   var docBody     = document.getElementById('doc-body');
   var heroTitle   = document.getElementById('doc-hero-title');
   var bcTitle     = document.getElementById('bc-title');
@@ -113,7 +114,10 @@
     mode: 'local-first',
     localDocsRoot: 'customer-docs',
     remoteMirrorBaseUrl: 'https://audittoolkitlabs.com',
-    enableRemoteFallback: true
+    enableRemoteFallback: true,
+    enableCanaryRemoteOnly: false,
+    canaryQueryParam: 'canary',
+    canaryQueryValue: 'remote-only'
   };
 
   // Detect product
@@ -253,6 +257,15 @@
         if (typeof cfg.enableRemoteFallback === 'boolean') {
           sourceConfig.enableRemoteFallback = cfg.enableRemoteFallback;
         }
+        if (typeof cfg.enableCanaryRemoteOnly === 'boolean') {
+          sourceConfig.enableCanaryRemoteOnly = cfg.enableCanaryRemoteOnly;
+        }
+        if (typeof cfg.canaryQueryParam === 'string' && cfg.canaryQueryParam.trim()) {
+          sourceConfig.canaryQueryParam = cfg.canaryQueryParam.trim();
+        }
+        if (typeof cfg.canaryQueryValue === 'string' && cfg.canaryQueryValue.trim()) {
+          sourceConfig.canaryQueryValue = cfg.canaryQueryValue.trim().toLowerCase();
+        }
       })
       .catch(function () {
         // Use defaults when config file is not present.
@@ -266,8 +279,24 @@
     }
 
     var remoteUrl = buildRemoteUrl(localPath);
-    var shouldForceRemote = sourceModeParam === 'remote' || sourceConfig.mode === 'remote-only';
-    var localFirst = sourceConfig.mode !== 'remote-only' && sourceModeParam !== 'remote';
+    var canaryParamName = sourceConfig.canaryQueryParam || 'canary';
+    var canaryParamValue = (params.get(canaryParamName) || '').toLowerCase();
+    var canaryEnabled = sourceConfig.enableCanaryRemoteOnly;
+    var canaryRemoteOnly = canaryEnabled && canaryParamValue === sourceConfig.canaryQueryValue;
+
+    var shouldForceRemote =
+      sourceModeParam === 'remote' ||
+      sourceModeParam === 'remote-only' ||
+      sourceConfig.mode === 'remote-only' ||
+      canaryModeParam === 'remote-only' ||
+      canaryRemoteOnly;
+
+    var localFirst =
+      sourceConfig.mode !== 'remote-only' &&
+      sourceModeParam !== 'remote' &&
+      sourceModeParam !== 'remote-only' &&
+      canaryModeParam !== 'remote-only' &&
+      !canaryRemoteOnly;
     var canFallback = sourceConfig.enableRemoteFallback && !!remoteUrl;
 
     if (window.location.protocol === 'file:') {

@@ -25,6 +25,10 @@ Customer documentation governance:
 - Mandatory ledger: `docs-sync-ledger.md`.
 - Docs source config: `docs-source-config.json` (used by `doc-viewer.html` for
   local-first fetch with optional remote fallback).
+- Canary remote-only toggle: set `enableCanaryRemoteOnly` in
+  `docs-source-config.json` and open docs with `?canary=remote-only`.
+- CI smoke workflow: `.github/workflows/docs-remote-canary-smoke.yml` validates
+  remote doc availability with local `customer-docs/` temporarily disabled.
 
 ## Not included
 
