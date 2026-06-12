@@ -15,6 +15,15 @@ It is intentionally limited to **documentation and screenshots only**.
 - `PUBLISHING-SCREENSHOT-MANIFEST.csv` — spreadsheet/storefront mapping export
 - `customer-docs/<product>/screenshots/` — approved preview-safe screenshots by product
 
+Customer documentation governance:
+
+- `customer-docs/` is the local website documentation store in this repository.
+- Primary baseline source repository path: `F:/AuditProducts/AuditToolkit-Docs`.
+- Local, governed updates are allowed here when the baseline source is offline.
+- Policy contract: `customer-docs/SOURCE-OF-TRUTH-POLICY.md`.
+- Operating model: `OFFLINE-DOC-SYNC-RECONCILIATION-MODEL.md`.
+- Mandatory ledger: `docs-sync-ledger.md`.
+
 ## Not included
 
 - installers
@@ -23,6 +32,8 @@ It is intentionally limited to **documentation and screenshots only**.
 - customer bundles
 - public Gumroad checkout links
 - licensing or activation flow
+- unmanaged documentation changes outside the policy and audit contract in
+  `customer-docs/SOURCE-OF-TRUTH-POLICY.md`
 
 ## How to use
 

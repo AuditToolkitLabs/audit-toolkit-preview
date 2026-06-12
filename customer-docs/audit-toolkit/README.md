@@ -42,3 +42,10 @@ section directly to a clause in their service-management system.
 | --- | --- |
 | `LICENSE-EULA.md` | End-User Licence Agreement (BSL 1.1) — presented in-product at first sign-in |
 | `NOTICE.md` | Third-party software notices and attributions |
+
+## Source governance
+
+This documentation set is maintained locally in this repository for website
+publication and offline continuity. Baseline/sync governance:
+
+- `../SOURCE-OF-TRUTH-POLICY.md`

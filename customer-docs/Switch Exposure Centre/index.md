@@ -12,6 +12,19 @@ This index covers the customer-facing documentation set for Switch Exposure
 Center. The documents are numbered in a suggested reading order, but they can
 also be used independently as reference material.
 
+## Offline reconciliation checklist
+
+When documentation updates are made in this repository while central docs are
+offline, follow this checklist:
+
+1. Add or update an entry in `docs-sync-ledger.md`.
+2. Classify the event type (`LOCAL_UPDATE`, `CENTRAL_SYNC`, or
+   `RECONCILIATION`).
+3. List all changed files under **Files Affected**.
+4. Reconcile valid local updates to `F:/AuditProducts/AuditToolkit-Docs` when
+   available.
+5. Re-sync this repository from central and update the ledger status.
+
 ---
 
 ## Core product documents

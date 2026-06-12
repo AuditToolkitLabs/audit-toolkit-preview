@@ -38,3 +38,10 @@ section directly to a clause in their service-management system.
 - Update the `Last updated` date in each document section when publishing material changes.
 - All documentation cross-references should point to current v1.0.1 or later release versions.
 - Deprecated version references (v0.x, early v1.0 beta) should be removed except in CHANGELOG.
+
+## Source governance
+
+This documentation set is maintained locally in this repository for website
+publication and offline continuity. Baseline/sync governance:
+
+- `../SOURCE-OF-TRUTH-POLICY.md`

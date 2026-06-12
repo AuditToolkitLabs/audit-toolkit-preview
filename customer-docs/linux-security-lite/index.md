@@ -14,6 +14,19 @@ Linux Security Lite version 1.2.2. Documents are numbered to reflect
 the recommended reading order; you do not need to read every document
 before using the toolkit.
 
+## Offline reconciliation checklist
+
+When documentation updates are made in this repository while central docs are
+offline, follow this checklist:
+
+1. Add or update an entry in `docs-sync-ledger.md`.
+2. Classify the event type (`LOCAL_UPDATE`, `CENTRAL_SYNC`, or
+   `RECONCILIATION`).
+3. List all changed files under **Files Affected**.
+4. Reconcile valid local updates to `F:/AuditProducts/AuditToolkit-Docs` when
+   available.
+5. Re-sync this repository from central and update the ledger status.
+
 ---
 
 ## Core service documents
@@ -92,4 +105,3 @@ Telephone: +44 (0) 20 8090 9610
 | Licensing and contracts | [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com) |
 
 Full engagement guide: [20 — Support Engagement Guide](20-support-engagement-guide.md)
-

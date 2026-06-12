@@ -2,6 +2,13 @@
 
 Legacy-focused asset inventory and discovery service.
 
+## Source governance
+
+This documentation set is maintained locally in this repository for website
+publication and offline continuity. Baseline/sync governance:
+
+- `../SOURCE-OF-TRUTH-POLICY.md`
+
 ## Purpose
 
 This service tracks hosts and network assets using protocol-compatible
@@ -407,4 +414,3 @@ Out of scope:
 
 Internal architecture and implementation material now lives under
 `docs/asset-command-center/`.
-

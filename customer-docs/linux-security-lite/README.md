@@ -40,3 +40,9 @@ AuditToolkitLabs (Michael Churchill)
 [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com) |
 +44 (0) 20 8090 9610
 
+## Source governance
+
+This documentation set is maintained locally in this repository for website
+publication and offline continuity. Baseline/sync governance:
+
+- `../SOURCE-OF-TRUTH-POLICY.md`

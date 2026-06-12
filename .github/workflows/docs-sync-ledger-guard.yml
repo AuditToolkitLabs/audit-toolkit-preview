@@ -1,0 +1,49 @@
+name: Docs Sync Ledger Guard
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  docs-sync-ledger-guard:
+    name: Docs Sync Ledger Guard
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compute changed files
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
+            git fetch origin "${GITHUB_BASE_REF}" --depth=1
+            git diff --name-only "origin/${GITHUB_BASE_REF}...HEAD" > changed-files.txt
+          else
+            BEFORE="${{ github.event.before }}"
+            if [[ -z "${BEFORE}" || "${BEFORE}" == "0000000000000000000000000000000000000000" ]]; then
+              git diff --name-only HEAD~1 HEAD > changed-files.txt
+            else
+              git diff --name-only "${BEFORE}" "${GITHUB_SHA}" > changed-files.txt
+            fi
+          fi
+
+          echo "Changed files:"
+          cat changed-files.txt
+
+      - name: Validate docs sync ledger
+        run: python3 ci/validate-docs-sync-ledger.py --changed-files changed-files.txt

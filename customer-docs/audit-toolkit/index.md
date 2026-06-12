@@ -28,6 +28,19 @@ environment. It is written for:
 Each section maps to one or more ISO/IEC 20000-1:2018 clauses, shown in
 italics next to the section title.
 
+## Offline reconciliation checklist
+
+When documentation updates are made in this repository while central docs are
+offline, follow this checklist:
+
+1. Add or update an entry in `docs-sync-ledger.md`.
+2. Classify the event type (`LOCAL_UPDATE`, `CENTRAL_SYNC`, or
+   `RECONCILIATION`).
+3. List all changed files under **Files Affected**.
+4. Reconcile valid local updates to `F:/AuditProducts/AuditToolkit-Docs` when
+   available.
+5. Re-sync this repository from central and update the ledger status.
+
 ## Table of contents
 
 1. [Document Purpose and Audience](01-purpose-and-audience)
