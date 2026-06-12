@@ -178,21 +178,14 @@
 
   function filterDocs() {
     var query = searchInput.value.toLowerCase().trim();
-    var docCards = listContainer.querySelectorAll('.product-card');
-    var categoryGroups = listContainer.querySelectorAll('.doc-category-group');
-
-    docCards.forEach(function(card) {
-      var title = card.getAttribute('data-title');
-      var cardCategory = card.closest('.doc-category-group').getAttribute('data-category');
-      var isVisible = title.includes(query);
-      card.style.display = isVisible ? '' : 'none';
+    if (!query) {
+      renderDocs(allDocs);
+      return;
+    }
+    var filteredDocs = allDocs.filter(function(doc) {
+      return doc.title.toLowerCase().includes(query);
     });
-
-    categoryGroups.forEach(function(group) {
-      var visibleCards = group.querySelectorAll('.product-card[style*="display:"]');
-      var allCards = group.querySelectorAll('.product-card');
-      group.style.display = visibleCards.length === allCards.length ? 'none' : '';
-    });
+    renderDocs(filteredDocs);
   }
 
   fetch('docs-manifest.json')
