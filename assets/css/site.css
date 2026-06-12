@@ -236,6 +236,38 @@ pre.card {
   --card-image-opacity: .06;
 }
 
+/* Third pass: page-family visual tuning */
+body.page-family-home .card,
+body.page-family-product .card {
+  --card-image: url('../images/hero/hero-particles.jpg');
+  --card-image-opacity: .19;
+}
+
+body.page-family-pricing .card {
+  --card-image: url('../images/hero/hero-dark-tech.jpg');
+  --card-image-opacity: .16;
+}
+
+body.page-family-operations .card {
+  --card-image: url('../images/hero/hero-network.jpg');
+  --card-image-opacity: .13;
+}
+
+body.page-family-docs .card,
+body.page-family-release .card,
+body.page-family-support .card {
+  --card-image-opacity: .05;
+  --card-overlay: linear-gradient(180deg, rgba(17,26,46,.92) 0%, rgba(17,26,46,.95) 100%);
+}
+
+body.page-family-docs .page-hero,
+body.page-family-release .page-hero,
+body.page-family-support .page-hero {
+  background-image:
+    linear-gradient(160deg, rgba(8,16,29,.97) 0%, rgba(15,25,48,.92) 58%, rgba(13,28,56,.90) 100%),
+    url('../images/hero/hero-dark-tech.jpg');
+}
+
 /* ── Grids ────────────────────────────────────────────── */
 .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px,1fr)); gap: 20px; }
 .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; }

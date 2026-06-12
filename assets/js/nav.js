@@ -3,6 +3,8 @@
 (function () {
   'use strict';
 
+  var path = window.location.pathname.split('/').pop() || 'index.html';
+
   /* ── Global nav normalization (large menu on every page) ── */
   var NAV_LINKS = [
     { href: 'index.html#products', label: 'Products' },
@@ -45,6 +47,54 @@
     }
   }
 
+  function setPageFamily() {
+    var body = document.body;
+    if (!body) return;
+
+    var familyMap = {
+      home: ['index.html'],
+      product: [
+        'audit-toolkit.html',
+        'cmdb-tool.html',
+        'cmdb-asset-platform.html',
+        'linux-expansion.html',
+        'secure-exposure-centre.html'
+      ],
+      pricing: ['price.html', 'pricing.html', 'licensing.html'],
+      docs: ['docs.html', 'doc-viewer.html', 'doc-tools.html', 'brand-assets.html'],
+      release: [
+        'releases.html',
+        'audit-toolkit-releases.html',
+        'cmdb-api-releases.html',
+        'cmdb-asset-platform-releases.html',
+        'linux-security-lite-releases.html',
+        'secure-exposure-centre-releases.html'
+      ],
+      support: ['support.html', 'success.html', 'cancel.html'],
+      operations: [
+        'how-it-works.html',
+        'use-cases.html',
+        'integrations.html',
+        'script-coverage.html',
+        'regulated-industries.html',
+        'remediation.html',
+        'toolkit-overview.html'
+      ]
+    };
+
+    var family = 'generic';
+    Object.keys(familyMap).some(function (key) {
+      if (familyMap[key].indexOf(path) !== -1) {
+        family = key;
+        return true;
+      }
+      return false;
+    });
+
+    body.classList.add('page-family-' + family);
+  }
+
+  setPageFamily();
   normalizeNavigation();
 
   /* ── Mobile hamburger ─────────────────────────────── */
@@ -69,7 +119,6 @@
   }
 
   /* ── Active link — cross-page ─────────────────────── */
-  var path = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-links a').forEach(function (a) {
     var href = (a.getAttribute('href') || '').split('#')[0];
     if (href === path || (path === '' && href === 'index.html')) {
