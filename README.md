@@ -23,6 +23,8 @@ Customer documentation governance:
 - Policy contract: `customer-docs/SOURCE-OF-TRUTH-POLICY.md`.
 - Operating model: `OFFLINE-DOC-SYNC-RECONCILIATION-MODEL.md`.
 - Mandatory ledger: `docs-sync-ledger.md`.
+- Docs source config: `docs-source-config.json` (used by `doc-viewer.html` for
+  local-first fetch with optional remote fallback).
 
 ## Not included
 

@@ -1,0 +1,7 @@
+{
+  "mode": "local-first",
+  "localDocsRoot": "customer-docs",
+  "remoteMirrorBaseUrl": "https://audittoolkitlabs.com",
+  "enableRemoteFallback": true,
+  "centralDocsRepositoryPath": "F:/AuditProducts/AuditToolkit-Docs"
+}

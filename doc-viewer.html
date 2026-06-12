@@ -92,6 +92,7 @@
 (function () {
   var params = new URLSearchParams(window.location.search);
   var src    = params.get('src');
+  var sourceModeParam = (params.get('source') || '').toLowerCase();
   var docBody     = document.getElementById('doc-body');
   var heroTitle   = document.getElementById('doc-hero-title');
   var bcTitle     = document.getElementById('bc-title');
@@ -107,6 +108,13 @@
     heroTitle.textContent = 'Document Not Found';
     return;
   }
+
+  var sourceConfig = {
+    mode: 'local-first',
+    localDocsRoot: 'customer-docs',
+    remoteMirrorBaseUrl: 'https://audittoolkitlabs.com',
+    enableRemoteFallback: true
+  };
 
   // Detect product
   var productName = 'Documentation';
@@ -142,14 +150,6 @@
   var numMatch = filename.match(/^(\d+)-/);
   if (numMatch) { numBadge.textContent = 'Doc ' + numMatch[1]; docMeta.style.display = 'flex'; }
 
-  // Fetch mirrored markdown content from this website repository.
-  // If opened from file://, fall back to the published GitHub-hosted site.
-  var localUrl = src.replace(/^\/+/, '');
-  var fetchUrl = localUrl;
-  if (window.location.protocol === 'file:') {
-    fetchUrl = 'https://audittoolkitlabs.com/' + localUrl;
-  }
-
   function normalizePath(path) {
     var parts = path.split('/');
     var out = [];
@@ -163,6 +163,16 @@
       out.push(p);
     }
     return out.join('/');
+  }
+
+  function ensureDocsRoot(pathValue) {
+    if (!pathValue) return null;
+    var clean = normalizePath(pathValue.replace(/^\/+/, ''));
+    if (!clean) return null;
+    if (clean.indexOf(sourceConfig.localDocsRoot + '/') === 0) {
+      return clean;
+    }
+    return normalizePath(sourceConfig.localDocsRoot + '/' + clean);
   }
 
   function resolveMarkdownHref(currentSrc, href) {
@@ -209,15 +219,102 @@
     });
   }
 
-  fetch(fetchUrl)
-    .then(function (r) {
-      if (!r.ok) throw new Error('HTTP ' + r.status);
+  function trimTrailingSlash(value) {
+    return (value || '').replace(/\/+$/, '');
+  }
+
+  function buildRemoteUrl(pathValue) {
+    var base = trimTrailingSlash(sourceConfig.remoteMirrorBaseUrl);
+    return base ? (base + '/' + pathValue) : null;
+  }
+
+  function fetchTextFrom(urlValue) {
+    return fetch(urlValue).then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status + ' at ' + urlValue);
       return r.text();
+    });
+  }
+
+  function loadConfig() {
+    return fetch('docs-source-config.json', { cache: 'no-store' })
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function (cfg) {
+        if (!cfg || typeof cfg !== 'object') return;
+        if (typeof cfg.mode === 'string') sourceConfig.mode = cfg.mode;
+        if (typeof cfg.localDocsRoot === 'string' && cfg.localDocsRoot.trim()) {
+          sourceConfig.localDocsRoot = normalizePath(cfg.localDocsRoot.trim()) || sourceConfig.localDocsRoot;
+        }
+        if (typeof cfg.remoteMirrorBaseUrl === 'string' && cfg.remoteMirrorBaseUrl.trim()) {
+          sourceConfig.remoteMirrorBaseUrl = cfg.remoteMirrorBaseUrl.trim();
+        }
+        if (typeof cfg.enableRemoteFallback === 'boolean') {
+          sourceConfig.enableRemoteFallback = cfg.enableRemoteFallback;
+        }
+      })
+      .catch(function () {
+        // Use defaults when config file is not present.
+      });
+  }
+
+  function resolveDocContent(requestedSrc) {
+    var localPath = ensureDocsRoot(requestedSrc);
+    if (!localPath) {
+      return Promise.reject(new Error('Invalid document path'));
+    }
+
+    var remoteUrl = buildRemoteUrl(localPath);
+    var shouldForceRemote = sourceModeParam === 'remote' || sourceConfig.mode === 'remote-only';
+    var localFirst = sourceConfig.mode !== 'remote-only' && sourceModeParam !== 'remote';
+    var canFallback = sourceConfig.enableRemoteFallback && !!remoteUrl;
+
+    if (window.location.protocol === 'file:') {
+      if (!remoteUrl) {
+        return Promise.reject(new Error('Remote mirror URL is not configured'));
+      }
+      return fetchTextFrom(remoteUrl).then(function (text) {
+        return { markdown: text, resolvedSrc: localPath };
+      });
+    }
+
+    if (shouldForceRemote) {
+      if (!remoteUrl) return Promise.reject(new Error('Remote mirror URL is not configured'));
+      return fetchTextFrom(remoteUrl).then(function (text) {
+        return { markdown: text, resolvedSrc: localPath };
+      });
+    }
+
+    if (localFirst) {
+      return fetchTextFrom(localPath)
+        .then(function (text) {
+          return { markdown: text, resolvedSrc: localPath };
+        })
+        .catch(function (localErr) {
+          if (!canFallback) throw localErr;
+          return fetchTextFrom(remoteUrl).then(function (text) {
+            return { markdown: text, resolvedSrc: localPath };
+          });
+        });
+    }
+
+    if (!remoteUrl) return Promise.reject(new Error('Remote mirror URL is not configured'));
+    return fetchTextFrom(remoteUrl).then(function (text) {
+      return { markdown: text, resolvedSrc: localPath };
+    });
+  }
+
+  loadConfig()
+    .then(function () {
+      return resolveDocContent(src);
     })
-    .then(function (md) {
+    .then(function (result) {
+      var md = result.markdown;
+      var resolvedSrc = result.resolvedSrc;
       var html = marked.parse(md);
       docBody.innerHTML = html;
-      rewriteInternalDocLinks(localUrl);
+      rewriteInternalDocLinks(resolvedSrc);
 
       // Extract title from first H1, promote to hero
       var firstH1 = docBody.querySelector('h1');
