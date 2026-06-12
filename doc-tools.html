@@ -77,14 +77,12 @@
 
 <h3>Documentation Sources</h3>
 
-<p>Documentation is served from a configurable source that can be:</p>
+<p>Documentation is served from a governed central source:</p>
 <ul>
-<li><strong>Local</strong> — From the <code>customer-docs/</code> directory in this repository</li>
-<li><strong>Remote</strong> — From a central documentation mirror on <code>audittoolkitlabs.com</code></li>
-<li><strong>Hybrid</strong> — Local-first with automatic remote fallback (default)</li>
+<li><strong>Remote (central)</strong> — From the configured central documentation mirror</li>
 </ul>
 
-<p>The source configuration is controlled in <code>docs-source-config.json</code> and can be toggled without changing any documentation links.</p>
+<p>The source configuration is controlled in <code>docs-source-config.json</code> and is enforced as remote-only for this site.</p>
 
 <hr>
 
@@ -96,7 +94,6 @@
 <div class="tool-title">📍 Source Mode Badge</div>
 <p>Each page displays a colored badge indicating where the documentation is being served from:</p>
 <ul>
-<li><strong>Source: local</strong> — Served from local customer-docs/</li>
 <li><strong>Source: remote</strong> — Served from remote mirror</li>
 <li><strong>Source: remote (canary)</strong> — Served from remote in test mode</li>
 </ul>
@@ -143,7 +140,7 @@
 <tr>
 <td><code>src</code></td>
 <td><code>customer-docs/...</code></td>
-<td>Request a specific documentation file</td>
+<td>Request a specific path resolved from the central docs source</td>
 </tr>
 <tr>
 <td><code>canary</code></td>
@@ -157,126 +154,18 @@
 
 <hr>
 
-<h2>Sync Ledger Dashboard</h2>
+<h2>Remote Availability Validation</h2>
 
-<p>The <a href="ledger-dashboard.html">ledger-dashboard.html</a> provides a searchable, filterable audit trail of all documentation changes.</p>
-
-<div class="tool-section">
-<div class="tool-title">📊 Audit Trail</div>
-<p>View all documentation synchronization events with:</p>
-<ul>
-<li>Entry date</li>
-<li>Type (Local Update, Central Sync, Reconciliation)</li>
-<li>Source (local or central repository)</li>
-<li>List of affected files</li>
-<li>Sync status (Pending, Synced, Rejected)</li>
-</ul>
-</div>
-
-<div class="tool-section">
-<div class="tool-title">🔍 Search & Filters</div>
-<p>Quickly find entries by:</p>
-<ul>
-<li><strong>Search box</strong> — Full-text search across descriptions, dates, and file names</li>
-<li><strong>Type filters</strong> — Local Updates, Central Syncs, Reconciliation events</li>
-<li><strong>Sync status</strong> — Track which events are pending, synced, or rejected</li>
-</ul>
-</div>
-
-<div class="tool-section">
-<div class="tool-title">📈 Statistics</div>
-<p>Dashboard displays real-time metrics:</p>
-<ul>
-<li>Total documentation events</li>
-<li>Pending synchronizations awaiting central sync</li>
-<li>Completed sync operations</li>
-<li>Count of unique files affected</li>
-</ul>
-</div>
-
-<h3>Understanding Entry Types</h3>
-
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>LOCAL_UPDATE</strong></td>
-<td>Documentation was updated locally when the central repository was offline. Requires reconciliation with central during next sync window.</td>
-</tr>
-<tr>
-<td><strong>CENTRAL_SYNC</strong></td>
-<td>Documentation was synchronized from the central repository. Local and central are now in sync.</td>
-</tr>
-<tr>
-<td><strong>RECONCILIATION</strong></td>
-<td>Conflicting local and central changes were reconciled. Both sources have been aligned.</td>
-</tr>
-</tbody>
-</table>
-
-<hr>
-
-<h2>Freshness Validation</h2>
-
-<p>The freshness validator compares local documentation against the central repository to identify staleness and sync drift.</p>
-
-<div class="tool-section">
-<div class="tool-title">🔄 Validation Process</div>
-<p>Computes SHA256 hashes of all files and reports:</p>
-<ul>
-<li><strong>Fresh</strong> — Local files match central repository</li>
-<li><strong>Mismatches</strong> — Hash differences detected (local diverged from central)</li>
-<li><strong>Missing locally</strong> — Central has files not yet synced to local</li>
-<li><strong>Diverged</strong> — Local has changes not yet pushed to central</li>
-</ul>
-</div>
+<p>Remote availability checks validate that central documentation sources resolve correctly for documentation viewer paths.</p>
 
 <div class="tool-section">
 <div class="tool-title">⏰ Scheduled Validation</div>
-<p>Freshness checks run automatically:</p>
+<p>Remote canary checks run as needed:</p>
 <ul>
-<li><strong>Weekly schedule</strong> — Monday 9 AM UTC</li>
-<li><strong>Manual trigger</strong> — Anytime via GitHub Actions workflow_dispatch</li>
-<li><strong>Non-blocking</strong> — Validation does not prevent merges</li>
+<li><strong>Manual trigger</strong> — Run the canary smoke workflow via GitHub Actions</li>
+<li><strong>Pre-merge validation</strong> — Pull request checks validate remote docs resolution</li>
 </ul>
 </div>
-
-<h3>Running Manual Validation</h3>
-
-<p>To check freshness immediately:</p>
-
-<pre><code>python ci/validate-docs-freshness.py --show-diffs</code></pre>
-
-<p><strong>Parameters:</strong></p>
-<table>
-<thead>
-<tr>
-<th>Flag</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>--show-diffs</code></td>
-<td>Display detailed hash comparisons for mismatches</td>
-</tr>
-<tr>
-<td><code>--timeout-seconds N</code></td>
-<td>Operation timeout (default 30 seconds)</td>
-</tr>
-</tbody>
-</table>
-
-<p><strong>Exit codes:</strong></p>
-<ul>
-<li><code>0</code> — Fresh or diverged (informational)</li>
-<li><code>1</code> — Out of sync (hash mismatches or missing files)</li>
-</ul>
 
 <hr>
 
@@ -285,14 +174,13 @@
 <p>Documentation source resolution is controlled by <code>docs-source-config.json</code>:</p>
 
 <pre><code>{
-  "mode": "local-first",
+  "mode": "remote-only",
   "localDocsRoot": "customer-docs",
-  "remoteMirrorBaseUrl": "https://audittoolkitlabs.com",
-  "enableRemoteFallback": true,
+  "remoteMirrorBaseUrl": "https://raw.githubusercontent.com/AuditToolkitLabs/AuditToolkit-Docs/main",
+  "enableRemoteFallback": false,
   "enableCanaryRemoteOnly": false,
   "canaryQueryParam": "canary",
-  "canaryQueryValue": "remote-only",
-  "centralDocsRepositoryPath": "F:/AuditProducts/AuditToolkit-Docs"
+  "canaryQueryValue": "remote-only"
 }</code></pre>
 
 <h3>Configuration Fields</h3>
@@ -307,19 +195,19 @@
 <tbody>
 <tr>
 <td><code>mode</code></td>
-<td>Source priority: <code>local-first</code>, <code>remote-only</code>, <code>remote-with-fallback</code></td>
+<td>Source policy (set to <code>remote-only</code> for this site)</td>
 </tr>
 <tr>
 <td><code>localDocsRoot</code></td>
-<td>Relative path to local documentation directory</td>
+<td>Logical root prefix used to resolve document paths</td>
 </tr>
 <tr>
 <td><code>remoteMirrorBaseUrl</code></td>
-<td>Base URL for remote documentation mirror</td>
+<td>Base URL for central remote documentation source</td>
 </tr>
 <tr>
 <td><code>enableRemoteFallback</code></td>
-<td>Allow fallback to remote if local fetch fails</td>
+<td>Retained for compatibility; disabled in remote-only mode</td>
 </tr>
 <tr>
 <td><code>enableCanaryRemoteOnly</code></td>
@@ -328,10 +216,6 @@
 <tr>
 <td><code>canaryQueryParam</code> &amp; <code>canaryQueryValue</code></td>
 <td>Query parameter name and value to trigger canary mode</td>
-</tr>
-<tr>
-<td><code>centralDocsRepositoryPath</code></td>
-<td>Local path to central docs repository (for freshness validation)</td>
 </tr>
 </tbody>
 </table>
@@ -346,7 +230,7 @@
 <ol>
 <li>Click <strong>Copy debug context</strong> in the doc viewer</li>
 <li>Verify <code>resolvedSrc</code> matches expected source</li>
-<li>Check <code>sourceKind</code> (local, remote, or fallback)</li>
+<li>Check <code>sourceKind</code> (remote or remote-canary)</li>
 <li>Review <strong>Show resolution log</strong> for fetch errors</li>
 </ol>
 
@@ -364,10 +248,9 @@
 
 <p><strong>Check:</strong></p>
 <ol>
-<li>Run <code>python ci/validate-docs-freshness.py --show-diffs</code></li>
-<li>Review sync ledger dashboard for pending entries</li>
-<li>Check if local updates are awaiting central sync</li>
-<li>Reconcile hash mismatches according to operating model</li>
+<li>Confirm the requested central path exists at the configured remote source</li>
+<li>Use <strong>Copy debug context</strong> and <strong>Show resolution log</strong> for triage details</li>
+<li>Review docs-source configuration and remote mirror URL</li>
 </ol>
 
 <h3>Remote Docs Unavailable</h3>
@@ -386,7 +269,6 @@
 
 <ul>
 <li><a href="doc-viewer.html">Documentation Viewer</a></li>
-<li><a href="ledger-dashboard.html">Sync Ledger Dashboard</a></li>
 <li><a href="docs.html">Central Documentation Library</a></li>
 <li><a href="support.html">Support &amp; Contact</a></li>
 </ul>

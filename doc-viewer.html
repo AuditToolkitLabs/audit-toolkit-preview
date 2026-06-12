@@ -169,10 +169,10 @@
   }
 
   var sourceConfig = {
-    mode: 'local-first',
+    mode: 'remote-only',
     localDocsRoot: 'customer-docs',
-    remoteMirrorBaseUrl: 'https://audittoolkitlabs.com',
-    enableRemoteFallback: true,
+    remoteMirrorBaseUrl: 'https://raw.githubusercontent.com/AuditToolkitLabs/AuditToolkit-Docs/main',
+    enableRemoteFallback: false,
     enableCanaryRemoteOnly: false,
     canaryQueryParam: 'canary',
     canaryQueryValue: 'remote-only'
@@ -359,14 +359,6 @@
       canaryModeParam === 'remote-only' ||
       canaryRemoteOnly;
 
-    var localFirst =
-      sourceConfig.mode !== 'remote-only' &&
-      sourceModeParam !== 'remote' &&
-      sourceModeParam !== 'remote-only' &&
-      canaryModeParam !== 'remote-only' &&
-      !canaryRemoteOnly;
-    var canFallback = sourceConfig.enableRemoteFallback && !!remoteUrl;
-
     if (window.location.protocol === 'file:') {
       if (!remoteUrl) {
         return Promise.reject(new Error('Remote mirror URL is not configured'));
@@ -391,27 +383,6 @@
             : 'remote-forced'
         };
       });
-    }
-
-    if (localFirst) {
-      return fetchTextFrom(localPath)
-        .then(function (text) {
-          return {
-            markdown: text,
-            resolvedSrc: localPath,
-            sourceKind: 'local-primary'
-          };
-        })
-        .catch(function (localErr) {
-          if (!canFallback) throw localErr;
-          return fetchTextFrom(remoteUrl).then(function (text) {
-            return {
-              markdown: text,
-              resolvedSrc: localPath,
-              sourceKind: 'remote-fallback'
-            };
-          });
-        });
     }
 
     if (!remoteUrl) return Promise.reject(new Error('Remote mirror URL is not configured'));

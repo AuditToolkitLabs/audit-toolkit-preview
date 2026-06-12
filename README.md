@@ -13,36 +13,24 @@ It is intentionally limited to **documentation and screenshots only**.
 - `.nojekyll` — allows simple static Pages hosting
 - `PUBLISHING-SCREENSHOT-MANIFEST.md` — screenshot mapping reference
 - `PUBLISHING-SCREENSHOT-MANIFEST.csv` — spreadsheet/storefront mapping export
-- `customer-docs/<product>/screenshots/` — approved preview-safe screenshots by product
 
 Customer documentation governance:
 
-- `customer-docs/` is the local website documentation store in this repository.
-- Primary baseline source repository path: `F:/AuditProducts/AuditToolkit-Docs`.
-- Local, governed updates are allowed here when the baseline source is offline.
-- Policy contract: `customer-docs/SOURCE-OF-TRUTH-POLICY.md`.
-- Operating model: `OFFLINE-DOC-SYNC-RECONCILIATION-MODEL.md`.
-- Mandatory ledger: `docs-sync-ledger.md`.
+- Documentation is sourced from the governed central docs repository via remote-only resolution.
 - Docs source config: `docs-source-config.json` (used by `doc-viewer.html` for
-  local-first fetch with optional remote fallback).
+  remote-only fetch from the configured central mirror).
 - Canary remote-only toggle: set `enableCanaryRemoteOnly` in
   `docs-source-config.json` and open docs with `?canary=remote-only`.
 - CI smoke workflow: `.github/workflows/docs-remote-canary-smoke.yml` validates
-  remote doc availability with local `customer-docs/` temporarily disabled.
-- Viewer source badge: `doc-viewer.html` shows `Source: local`,
-  `Source: remote`, or `Source: remote (canary)` for test visibility.
+  remote doc availability for central source paths.
+- Viewer source badge: `doc-viewer.html` shows `Source: remote`
+  or `Source: remote (canary)` for test visibility.
 - Viewer debug helper: `doc-viewer.html` includes **Copy debug context** to
   copy source mode, resolved path, and effective docs-source config for
   support triage.
 - Viewer resolution log: `doc-viewer.html` has **Show resolution log** to
   display live source resolution steps with millisecond timings for
   performance debugging during development.
-- Ledger dashboard: `ledger-dashboard.html` provides searchable audit trail of
-  all documentation changes with filters by type (Local/Central/Reconciliation)
-  and sync status tracking.
-- Freshness validation: `ci/validate-docs-freshness.py` compares local
-  customer-docs with central repository via file hashes to detect staleness
-  and out-of-sync files. Runs on schedule and can be invoked manually.
 
 ## Not included
 
@@ -52,8 +40,7 @@ Customer documentation governance:
 - customer bundles
 - public Gumroad checkout links
 - licensing or activation flow
-- unmanaged documentation changes outside the policy and audit contract in
-  `customer-docs/SOURCE-OF-TRUTH-POLICY.md`
+- unmanaged documentation changes outside the central documentation governance process
 
 ## How to use
 

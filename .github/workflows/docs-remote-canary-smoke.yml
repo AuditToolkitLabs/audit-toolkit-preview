@@ -36,13 +36,5 @@ jobs:
           cfg_path.write_text(json.dumps(cfg, indent=2) + "\n", encoding="utf-8")
           PY
 
-      - name: Temporarily disable local customer docs
-        shell: bash
-        run: |
-          set -euo pipefail
-          if [ -d customer-docs ]; then
-            mv customer-docs customer-docs.__ci_disabled
-          fi
-
       - name: Run remote canary smoke test
         run: python3 ci/docs-remote-canary-smoke.py --sample-size 30
