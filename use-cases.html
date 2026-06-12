@@ -66,8 +66,8 @@
       <span class="cur">Use Cases</span>
     </div>
     <p class="eyebrow">Who Uses AuditToolkit</p>
-    <h1>From compliance evidence to CI/CD gates — real outcomes across eight scenarios.</h1>
-    <p>AuditToolkit is used by security operations teams, compliance managers, managed service providers, and infrastructure engineers. The platform is purpose-built for teams that need real answers about their security posture — continuously, not just at audit time.</p>
+    <h1>From compliance evidence to CI/CD gates — real outcomes across ten scenarios.</h1>
+    <p>AuditToolkit is used by security operations teams, compliance managers, managed service providers, network infrastructure teams, and infrastructure engineers. The platform is purpose-built for teams that need real answers about their security posture — continuously, not just at audit time.</p>
   </div>
 </div>
 
@@ -348,6 +348,77 @@
           <span class="badge badge-green">Asset Command Center</span>
           <span class="badge badge-muted">CMDB Data Collection</span>
           <span class="badge badge-blue">Audit Admin Toolkit</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Use Case 9: Network Security & Exposure Management -->
+<section class="section" id="network-security">
+  <div class="wrap">
+    <div class="use-case-number">Use Case 09</div>
+    <div class="use-case-card">
+      <div>
+        <h2>Network Security &amp; Switch Exposure Management</h2>
+        <p><strong>Who:</strong> Network security teams, infrastructure architects, and compliance managers responsible for switch estate visibility and firmware lifecycle risk management.</p>
+        <div class="use-case-problem">
+          <p>Network switches are often the forgotten tier — operating independently from server audit workflows. Firmware versions drift across the estate. CVE and advisory correlation requires manual effort across multiple vendor feeds. No visibility into exposure scope until a vendor alert drops or an incident occurs. The result is unmanaged risk in the infrastructure layer most critical to availability.</p>
+        </div>
+        <div class="use-case-outcome">
+          <strong>Business Outcome</strong>
+          Automated inventory of all switches across the estate with firmware versions automatically correlated against vendor advisories, CVE databases, and CISA KEV status. Risk is quantified and prioritized. Remediation workflows include firmware compatibility matrix and staged rollout guidance. Network exposure is visible alongside server compliance.</div>
+      </div>
+      <div>
+        <h3>How AuditToolkit helps</h3>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Secure Exposure Center discovers switches via REST API and NETCONF across Cisco IOS-XE, NX-OS, Juniper JunOS, Arista EOS, Aruba AOS-CX, and Dell OS10</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Firmware versions automatically mapped to vendor advisories — every CVE and security notice flagged for your exact hardware and OS version</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">CISA Known Exploited Vulnerabilities status included — prioritizes which advisories have active exploitation in the wild</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Configuration checks across device hardening, AAA authentication, logging, and control plane protection aligned to CIS Network Device Benchmarks</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Remediation guidance includes firmware compatibility matrices and staged deployment workflows to avoid network downtime</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Network findings correlate with server inventory findings — full visibility when network config changes impact downstream systems</span></li>
+        </ul>
+        <div class="products-used">
+          <span class="badge badge-teal">Secure Exposure Center</span>
+          <span class="badge badge-muted">CMDB Data Collection</span>
+          <span class="badge badge-blue">Audit Admin Toolkit</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Use Case 10: MSP & Multi-Tenant Operations -->
+<section class="section section-alt" id="msp-operations">
+  <div class="wrap">
+    <div class="use-case-number">Use Case 10</div>
+    <div class="use-case-card">
+      <div>
+        <h2>Managed Service Provider &amp; Multi-Tenant Operations</h2>
+        <p><strong>Who:</strong> MSPs, managed security service providers (MSSPs), and service operators managing compliance and security across multiple customer environments with distinct entitlements, reporting, and automation boundaries.</p>
+        <div class="use-case-problem">
+          <p>Multi-tenant security operations require strict tenant isolation, per-customer entitlements, and independent audit trails. Customer data must never commingle. Reporting is often manual or requires duplicate tooling per tenant. Automation runbooks cannot safely execute across customer boundaries. The operational overhead of managing disconnected toolchains per customer erodes margin and limits scale.</p>
+        </div>
+        <div class="use-case-outcome">
+          <strong>Business Outcome</strong>
+          One central deployment serving all customer environments with complete tenant isolation. Each customer sees only their own findings, evidence, and audit logs. Automation is tenant-aware and can scale safely across customer boundaries. Per-customer billing, entitlements, and SLAs are enforced at the platform layer. Operations teams scale with customer count, not linearly with tooling complexity.</div>
+      </div>
+      <div>
+        <h3>How AuditToolkit helps</h3>
+        <ul class="feature-list">
+          <li><span class="icon">&#10003;</span><span class="text">Tenant boundaries enforced at every layer — findings, evidence, logs, and API responses are strictly partitioned by tenant ID</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Per-tenant RBAC and entitlements — customers can invite internal teams to view their audit findings without exposing other tenants' data</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Automated remediation at scale — schedules can target multiple customer environments with built-in rollback and safeguards</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Central audit trail with tenant filtering — every action (audit run, remediation, evidence export, user login) is logged with tenant context</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Customer self-service reporting — customers can export evidence packages, run on-demand audits, and access dashboards in their own isolated view</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Billing and SLA tracking per tenant — integrate with PSA systems via API for usage-based billing and SLA compliance reporting</span></li>
+          <li><span class="icon">&#10003;</span><span class="text">Integration-ready APIs — customer findings, tickets, and events flow to customer-owned SIEM, ITSM, and reporting platforms via webhooks and REST APIs</span></li>
+        </ul>
+        <div class="products-used">
+          <span class="badge badge-blue">Audit Admin Toolkit</span>
+          <span class="badge badge-muted">All Suite Products</span>
+          <span class="badge badge-green">Asset Command Center</span>
         </div>
       </div>
     </div>
