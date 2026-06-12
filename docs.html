@@ -127,18 +127,22 @@
 <script src="assets/js/nav.js?v=20260612"></script>
 <script>
 (function() {
+  console.log('Initializing documentation index script...');
   var searchInput = document.getElementById('doc-search');
   var listContainer = document.getElementById('doc-list-container');
   var allDocs = [];
 
   function renderDocs(docs) {
-    if (!listContainer) return;
+    console.log('Rendering ' + docs.length + ' documents...');
+    if (!listContainer) {
+      console.error('List container not found!');
+      return;
+    }
     if (!docs || docs.length === 0) {
       listContainer.innerHTML = '<p class="text-center muted">No documents found.</p>';
       return;
     }
 
-    // Group documents by category
     var groupedDocs = docs.reduce(function(acc, doc) {
       var category = doc.category || 'General';
       if (!acc[category]) {
@@ -147,6 +151,7 @@
       acc[category].push(doc);
       return acc;
     }, {});
+    console.log('Documents grouped into ' + Object.keys(groupedDocs).length + ' categories.');
 
     var html = '';
     var categoryOrder = ['Overview', 'Administrator Guide', 'api', 'customer', 'deployment', 'docs', 'execution', 'legal', 'licensing', 'platform', 'release-bundles', 'releases', 'review', 'scripts', 'validation', 'General'];
@@ -175,10 +180,12 @@
     });
 
     listContainer.innerHTML = html;
+    console.log('Rendering complete.');
   }
 
   function filterDocs() {
     var query = searchInput.value.toLowerCase().trim();
+    console.log('Filtering with query: "' + query + '"');
     if (!query) {
       renderDocs(allDocs);
       return;
@@ -189,25 +196,30 @@
     renderDocs(filteredDocs);
   }
 
+  console.log('Fetching docs-manifest.json...');
   fetch('docs-manifest.json')
     .then(function(response) {
       if (!response.ok) {
+        console.error('Fetch failed with status: ' + response.status);
         throw new Error('Network response was not ok');
       }
+      console.log('Manifest fetched successfully.');
       return response.json();
     })
     .then(function(data) {
+      console.log('Manifest parsed. Total documents: ' + data.length);
       allDocs = data;
       renderDocs(allDocs);
       if (searchInput) {
         searchInput.addEventListener('input', filterDocs);
+        console.log('Search input listener attached.');
       }
     })
     .catch(function(error) {
       if (listContainer) {
         listContainer.innerHTML = '<p class="text-center muted">Error loading documentation index. Please try again later.</p>';
       }
-      console.error('Error fetching docs manifest:', error);
+      console.error('Error in documentation script:', error);
     });
 })();
 
