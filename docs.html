@@ -158,8 +158,9 @@
         html += `<h2 class="category-title">${categoryTitle}</h2>`;
         html += '<div class="grid-3">';
         groupedDocs[category].forEach(function(doc) {
+          var relativePath = doc.path.replace('customer-docs/', '');
           html += `
-            <a href="doc-viewer.html?src=${encodeURIComponent(doc.path)}" class="product-card" data-title="${doc.title.toLowerCase()}">
+            <a href="doc-viewer.html?src=${encodeURIComponent(relativePath)}" class="product-card" data-title="${doc.title.toLowerCase()}">
               <div>
                 <h3>${doc.title}</h3>
               </div>
