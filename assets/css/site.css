@@ -172,11 +172,37 @@ hr.divider  { border: none; border-top: 1px solid var(--border); margin: 0; }
 
 /* ── Cards ────────────────────────────────────────────── */
 .card {
-  background: var(--panel); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 24px;
-  transition: border-color .2s, box-shadow .2s;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(15,23,42,.88) 0%, rgba(17,26,46,.94) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  transition: border-color .2s, box-shadow .2s, transform .2s;
 }
-.card:hover { border-color: var(--border-l); box-shadow: var(--shadow); }
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../images/hero/hero-server-rack.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: .14;
+  z-index: 0;
+}
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(165deg, rgba(90,160,255,.10) 0%, rgba(13,28,56,.36) 45%, rgba(17,26,46,.64) 100%);
+  z-index: 0;
+}
+.card > * { position: relative; z-index: 1; }
+.card:hover {
+  border-color: var(--border-l);
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
 
 /* ── Grids ────────────────────────────────────────────── */
 .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px,1fr)); gap: 20px; }
@@ -252,7 +278,11 @@ hr.divider  { border: none; border-top: 1px solid var(--border); margin: 0; }
 /* ── Page hero (inner pages) ──────────────────────────── */
 .page-hero {
   padding: 64px 0 52px;
-  background: linear-gradient(160deg, #08101d 0%, #0f1930 100%);
+  background-image:
+    linear-gradient(160deg, rgba(8,16,29,.95) 0%, rgba(15,25,48,.88) 55%, rgba(13,28,56,.82) 100%),
+    url('../images/hero/hero-particles.jpg');
+  background-size: cover;
+  background-position: center;
   border-bottom: 1px solid var(--border);
   position: relative; overflow: hidden;
 }
