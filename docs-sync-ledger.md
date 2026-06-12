@@ -92,3 +92,16 @@ Files Affected:
 
 Description: Added visible source mode badge in doc viewer for local, remote, and remote-canary rendering states.
 Sync Status: pending
+
+---
+
+Date: 2026-06-12
+Type: LOCAL_UPDATE
+Source: local
+Files Affected:
+
+- doc-viewer.html
+- README.md
+
+Description: Added copyable debug context helper in doc viewer for source troubleshooting and support triage.
+Sync Status: pending

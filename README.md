@@ -31,6 +31,9 @@ Customer documentation governance:
   remote doc availability with local `customer-docs/` temporarily disabled.
 - Viewer source badge: `doc-viewer.html` shows `Source: local`,
   `Source: remote`, or `Source: remote (canary)` for test visibility.
+- Viewer debug helper: `doc-viewer.html` includes **Copy debug context** to
+  copy source mode, resolved path, and effective docs-source config for
+  support triage.
 
 ## Not included
 

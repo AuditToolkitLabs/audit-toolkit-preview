@@ -46,6 +46,16 @@
     .source-mode-badge.local { background: var(--panel); color: var(--text); }
     .source-mode-badge.remote { background: var(--panel-2); color: var(--accent-2); }
     .source-mode-badge.canary { background: #fff3cd; color: #8a6d3b; border-color: #ffe69c; }
+    .doc-debug-btn {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--panel);
+      color: var(--muted);
+      padding: 4px 10px;
+      font-size: .82rem;
+      cursor: pointer;
+    }
+    .doc-debug-btn:hover { color: var(--text); background: var(--panel-2); }
   </style>
 </head>
 <body>
@@ -82,6 +92,7 @@
       <span class="badge badge-muted" id="doc-num-badge"></span>
       <span class="badge badge-blue" id="doc-product-badge"></span>
       <span class="badge source-mode-badge" id="doc-source-badge"></span>
+      <button type="button" class="doc-debug-btn" id="doc-debug-copy-btn">Copy debug context</button>
     </div>
     <div class="doc-body" id="doc-body">
       <p class="doc-loading">Loading document&#8230;</p>
@@ -109,6 +120,8 @@
   var numBadge    = document.getElementById('doc-num-badge');
   var prodBadge   = document.getElementById('doc-product-badge');
   var sourceBadge = document.getElementById('doc-source-badge');
+  var debugCopyBtn = document.getElementById('doc-debug-copy-btn');
+  var currentDebugContext = null;
 
   if (!src) {
     docBody.innerHTML = '<p class="doc-error">No document specified. <a href="docs.html">Return to Documentation Hub.</a></p>';
@@ -382,6 +395,73 @@
     docMeta.style.display = 'flex';
   }
 
+  function buildDebugContext(result) {
+    return {
+      requestedSrc: src,
+      resolvedSrc: result && result.resolvedSrc ? result.resolvedSrc : null,
+      sourceKind: result && result.sourceKind ? result.sourceKind : null,
+      sourceModeQuery: sourceModeParam || null,
+      canaryModeQuery: canaryModeParam || null,
+      effectiveSourceConfig: {
+        mode: sourceConfig.mode,
+        localDocsRoot: sourceConfig.localDocsRoot,
+        remoteMirrorBaseUrl: sourceConfig.remoteMirrorBaseUrl,
+        enableRemoteFallback: sourceConfig.enableRemoteFallback,
+        enableCanaryRemoteOnly: sourceConfig.enableCanaryRemoteOnly,
+        canaryQueryParam: sourceConfig.canaryQueryParam,
+        canaryQueryValue: sourceConfig.canaryQueryValue
+      },
+      pageUrl: window.location.href,
+      generatedAtUtc: new Date().toISOString()
+    };
+  }
+
+  function fallbackCopyText(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', 'readonly');
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+    } finally {
+      document.body.removeChild(ta);
+    }
+  }
+
+  function copyDebugContext() {
+    if (!currentDebugContext) return;
+    var payload = JSON.stringify(currentDebugContext, null, 2);
+
+    function markCopied() {
+      if (!debugCopyBtn) return;
+      var original = debugCopyBtn.textContent;
+      debugCopyBtn.textContent = 'Debug context copied';
+      setTimeout(function () {
+        debugCopyBtn.textContent = original;
+      }, 1800);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(payload)
+        .then(markCopied)
+        .catch(function () {
+          fallbackCopyText(payload);
+          markCopied();
+        });
+      return;
+    }
+
+    fallbackCopyText(payload);
+    markCopied();
+  }
+
+  if (debugCopyBtn) {
+    debugCopyBtn.addEventListener('click', copyDebugContext);
+  }
+
   loadConfig()
     .then(function () {
       return resolveDocContent(src);
@@ -389,6 +469,7 @@
     .then(function (result) {
       var md = result.markdown;
       var resolvedSrc = result.resolvedSrc;
+      currentDebugContext = buildDebugContext(result);
       var html = marked.parse(md);
       docBody.innerHTML = html;
       rewriteInternalDocLinks(resolvedSrc);
