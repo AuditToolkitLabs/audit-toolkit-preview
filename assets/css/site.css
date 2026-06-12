@@ -157,6 +157,12 @@ hr.divider  { border: none; border-top: 1px solid var(--border); margin: 0; }
 .btn-outline-green:hover {
   background: rgba(110,231,183,.08); color: var(--accent-2); text-decoration: none;
 }
+.btn:focus-visible,
+.nav-links a:focus-visible,
+.nav-mobile a:focus-visible {
+  outline: 2px solid var(--accent-h);
+  outline-offset: 2px;
+}
 
 /* ── Badges ───────────────────────────────────────────── */
 .badge {
@@ -175,6 +181,8 @@ hr.divider  { border: none; border-top: 1px solid var(--border); margin: 0; }
   --card-image: url('../images/hero/hero-server-rack.jpg');
   --card-image-opacity: .12;
   --card-overlay: linear-gradient(165deg, rgba(90,160,255,.09) 0%, rgba(13,28,56,.34) 45%, rgba(17,26,46,.66) 100%);
+  --card-text: #eef4ff;
+  --card-muted: #c4d1ec;
   position: relative;
   overflow: hidden;
   background: linear-gradient(180deg, rgba(15,23,42,.88) 0%, rgba(17,26,46,.94) 100%);
@@ -201,6 +209,21 @@ hr.divider  { border: none; border-top: 1px solid var(--border); margin: 0; }
   z-index: 0;
 }
 .card > * { position: relative; z-index: 1; }
+.card h1,
+.card h2,
+.card h3,
+.card h4 { color: var(--card-text); }
+.card p,
+.card li,
+.card .text,
+.card .text-muted { color: var(--card-muted) !important; }
+.card a:not(.btn) {
+  color: #9cc4ff;
+  text-underline-offset: 2px;
+}
+.card a:not(.btn):hover {
+  color: #c1dcff;
+}
 .card:hover {
   border-color: var(--border-l);
   box-shadow: var(--shadow);
@@ -258,6 +281,7 @@ body.page-family-release .card,
 body.page-family-support .card {
   --card-image-opacity: .05;
   --card-overlay: linear-gradient(180deg, rgba(17,26,46,.92) 0%, rgba(17,26,46,.95) 100%);
+  --card-muted: #cfdbf3;
 }
 
 body.page-family-docs .page-hero,
@@ -360,7 +384,7 @@ body.page-family-support .page-hero {
 .page-hero .wrap { position: relative; z-index: 1; }
 .page-hero .eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
 .page-hero h1 { margin-bottom: 14px; }
-.page-hero p  { font-size: 1.08rem; max-width: 580px; margin: 0 0 20px; }
+.page-hero p  { font-size: 1.08rem; max-width: 580px; margin: 0 0 20px; color: #d4def4; }
 
 /* ── Portal Quick Links strip ────────────────────────── */
 .portal-quick-links {
