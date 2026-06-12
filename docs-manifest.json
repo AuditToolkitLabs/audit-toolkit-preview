@@ -1,554 +1,467 @@
 [
   {
-    "product": "Customer Docs",
-    "title": "CENTRAL DOCS REPO STRUCTURE",
-    "src": "customer-docs/CENTRAL-DOCS-REPO-STRUCTURE.md",
-    "description": "Documentation for CENTRAL DOCS REPO STRUCTURE"
+    "title": "Central Docs Repo Structure",
+    "path": "customer-docs/CENTRAL-DOCS-REPO-STRUCTURE.md",
+    "category": "General"
   },
   {
-    "product": "Customer Docs",
-    "title": "Docs Inventory",
-    "src": "customer-docs/docs-inventory.md",
-    "description": "Documentation for docs inventory"
+    "title": "Documentation Inventory",
+    "path": "customer-docs/docs-inventory.md",
+    "category": "General"
   },
   {
-    "product": "Customer Docs",
-    "title": "DOCUMENT CONSOLIDATION ACTION PLAN",
-    "src": "customer-docs/DOCUMENT-CONSOLIDATION-ACTION-PLAN.md",
-    "description": "Documentation for DOCUMENT CONSOLIDATION ACTION PLAN"
+    "title": "Document Consolidation Action Plan",
+    "path": "customer-docs/DOCUMENT-CONSOLIDATION-ACTION-PLAN.md",
+    "category": "General"
   },
   {
-    "product": "Customer Docs",
-    "title": "Index",
-    "src": "customer-docs/index.md",
-    "description": "Documentation for index"
+    "title": "AuditToolkit Documentation",
+    "path": "customer-docs/index.md",
+    "category": "Overview"
   },
   {
-    "product": "Customer Docs",
-    "title": "README",
-    "src": "customer-docs/README.md",
-    "description": "Documentation for README"
+    "title": "AuditToolkit Docs",
+    "path": "customer-docs/README.md",
+    "category": "General"
   },
   {
-    "product": "Bundle 1.0.0",
-    "title": "CUSTOMER DEPLOYMENT PACK",
-    "src": "customer-docs/.stage/bundle-1.0.0/CUSTOMER-DEPLOYMENT-PACK.md",
-    "description": "Documentation for CUSTOMER DEPLOYMENT PACK"
-  },
-  {
-    "product": "Bundle 1.0.0",
-    "title": "RELEASE BUNDLE STRUCTURE",
-    "src": "customer-docs/.stage/bundle-1.0.0/RELEASE-BUNDLE-STRUCTURE.md",
-    "description": "Documentation for RELEASE BUNDLE STRUCTURE"
-  },
-  {
-    "product": "Legal",
-    "title": "EULA",
-    "src": "customer-docs/.stage/bundle-1.0.0/legal/EULA.md",
-    "description": "Documentation for EULA"
-  },
-  {
-    "product": "Legal",
-    "title": "LIABILITY DISCLAIMER AND INDEMNITY",
-    "src": "customer-docs/.stage/bundle-1.0.0/legal/LIABILITY-DISCLAIMER-AND-INDEMNITY.md",
-    "description": "Documentation for LIABILITY DISCLAIMER AND INDEMNITY"
-  },
-  {
-    "product": "Licensing",
-    "title": "LICENSING",
-    "src": "customer-docs/.stage/bundle-1.0.0/licensing/LICENSING.md",
-    "description": "Documentation for LICENSING"
-  },
-  {
-    "product": "Api",
-    "title": "Authentication",
-    "src": "customer-docs/api/authentication.md",
-    "description": "Documentation for authentication"
-  },
-  {
-    "product": "Api",
-    "title": "Index",
-    "src": "customer-docs/api/index.md",
-    "description": "Documentation for index"
-  },
-  {
-    "product": "Api",
-    "title": "Library Api Reference",
-    "src": "customer-docs/api/library-api-reference.md",
-    "description": "Documentation for library api reference"
-  },
-  {
-    "product": "Api",
-    "title": "Standards",
-    "src": "customer-docs/api/standards.md",
-    "description": "Documentation for standards"
-  },
-  {
-    "product": "Customer",
-    "title": "CUSTOMER DOCS LIBRARY PLAN",
-    "src": "customer-docs/customer/CUSTOMER-DOCS-LIBRARY-PLAN.md",
-    "description": "Documentation for CUSTOMER DOCS LIBRARY PLAN"
-  },
-  {
-    "product": "Customer",
-    "title": "Index",
-    "src": "customer-docs/customer/index.md",
-    "description": "Documentation for index"
-  },
-  {
-    "product": "Administration",
-    "title": "Administration Guide",
-    "src": "customer-docs/customer/administration/administration-guide.md",
-    "description": "Documentation for administration guide"
-  },
-  {
-    "product": "Administration",
-    "title": "Index",
-    "src": "customer-docs/customer/administration/index.md",
-    "description": "Documentation for index"
-  },
-  {
-    "product": "Api Automation",
-    "title": "Index",
-    "src": "customer-docs/customer/api-automation/index.md",
-    "description": "Documentation for index"
-  },
-  {
-    "product": "Compliance Assurance",
-    "title": "Index",
-    "src": "customer-docs/customer/compliance-assurance/index.md",
-    "description": "Documentation for index"
-  },
-  {
-    "product": "Deployment",
-    "title": "Index",
-    "src": "customer-docs/customer/deployment/index.md",
-    "description": "Documentation for index"
-  },
-  {
-    "product": "Deployment",
-    "title": "Service Transition",
-    "src": "customer-docs/customer/deployment/service-transition.md",
-    "description": "Documentation for service transition"
-  },
-  {
-    "product": "Integrations",
-    "title": "Index",
-    "src": "customer-docs/customer/integrations/index.md",
-    "description": "Documentation for index"
-  },
-  {
-    "product": "Operations",
-    "title": "Index",
-    "src": "customer-docs/customer/operations/index.md",
-    "description": "Documentation for index"
-  },
-  {
-    "product": "Operations",
-    "title": "Operations And Support",
-    "src": "customer-docs/customer/operations/operations-and-support.md",
-    "description": "Documentation for operations and support"
-  },
-  {
-    "product": "Products",
-    "title": "Index",
-    "src": "customer-docs/customer/products/index.md",
-    "description": "Documentation for index"
-  },
-  {
-    "product": "Asset Command Centre",
-    "title": "Discovery Connectors",
-    "src": "customer-docs/customer/products/asset-command-centre/discovery-connectors.md",
-    "description": "Documentation for discovery connectors"
-  },
-  {
-    "product": "Asset Command Centre",
-    "title": "Index",
-    "src": "customer-docs/customer/products/asset-command-centre/index.md",
-    "description": "Documentation for index"
-  },
-  {
-    "product": "Asset Command Centre",
-    "title": "Overview",
-    "src": "customer-docs/customer/products/asset-command-centre/overview.md",
-    "description": "Documentation for overview"
-  },
-  {
-    "product": "Audit Assurance Node",
-    "title": "Adapters",
-    "src": "customer-docs/customer/products/audit-assurance-node/adapters.md",
-    "description": "Documentation for adapters"
-  },
-  {
-    "product": "Audit Assurance Node",
-    "title": "Authentication",
-    "src": "customer-docs/customer/products/audit-assurance-node/authentication.md",
-    "description": "Documentation for authentication"
-  },
-  {
-    "product": "Audit Assurance Node",
-    "title": "Deployment",
-    "src": "customer-docs/customer/products/audit-assurance-node/deployment.md",
-    "description": "Documentation for deployment"
-  },
-  {
-    "product": "Audit Assurance Node",
-    "title": "Index",
-    "src": "customer-docs/customer/products/audit-assurance-node/index.md",
-    "description": "Documentation for index"
-  },
-  {
-    "product": "Audit Assurance Node",
-    "title": "Logging Observability",
-    "src": "customer-docs/customer/products/audit-assurance-node/logging-observability.md",
-    "description": "Documentation for logging observability"
-  },
-  {
-    "product": "Audit Assurance Node",
-    "title": "Operational Limits",
-    "src": "customer-docs/customer/products/audit-assurance-node/operational-limits.md",
-    "description": "Documentation for operational limits"
-  },
-  {
-    "product": "Audit Assurance Node",
-    "title": "Overview",
-    "src": "customer-docs/customer/products/audit-assurance-node/overview.md",
-    "description": "Documentation for overview"
-  },
-  {
-    "product": "Audit Assurance Node",
-    "title": "Parallel Tracing",
-    "src": "customer-docs/customer/products/audit-assurance-node/parallel-tracing.md",
-    "description": "Documentation for parallel tracing"
-  },
-  {
-    "product": "Audit Assurance Node",
-    "title": "Runtime Validation",
-    "src": "customer-docs/customer/products/audit-assurance-node/runtime-validation.md",
-    "description": "Documentation for runtime validation"
-  },
-  {
-    "product": "Audit Assurance Node",
-    "title": "Ssh Winrm Api Agent Transports",
-    "src": "customer-docs/customer/products/audit-assurance-node/ssh-winrm-api-agent-transports.md",
-    "description": "Documentation for ssh winrm api agent transports"
-  },
-  {
-    "product": "Audit Tool",
-    "title": "Agents",
-    "src": "customer-docs/customer/products/audit-tool/agents.md",
-    "description": "Documentation for agents"
-  },
-  {
-    "product": "Audit Tool",
-    "title": "Index",
-    "src": "customer-docs/customer/products/audit-tool/index.md",
-    "description": "Documentation for index"
-  },
-  {
-    "product": "Audit Tool",
-    "title": "Overview",
-    "src": "customer-docs/customer/products/audit-tool/overview.md",
-    "description": "Documentation for overview"
-  },
-  {
-    "product": "Cmdb Api Data Collection Tool",
-    "title": "Connector Setup",
-    "src": "customer-docs/customer/products/cmdb-api-data-collection-tool/connector-setup.md",
-    "description": "Documentation for connector setup"
-  },
-  {
-    "product": "Cmdb Api Data Collection Tool",
-    "title": "Index",
-    "src": "customer-docs/customer/products/cmdb-api-data-collection-tool/index.md",
-    "description": "Documentation for index"
-  },
-  {
-    "product": "Cmdb Api Data Collection Tool",
-    "title": "Overview",
-    "src": "customer-docs/customer/products/cmdb-api-data-collection-tool/overview.md",
-    "description": "Documentation for overview"
-  },
-  {
-    "product": "Linux Security Lite",
-    "title": "Index",
-    "src": "customer-docs/customer/products/linux-security-lite/index.md",
-    "description": "Documentation for index"
-  },
-  {
-    "product": "Linux Security Lite",
-    "title": "Overview",
-    "src": "customer-docs/customer/products/linux-security-lite/overview.md",
-    "description": "Documentation for overview"
-  },
-  {
-    "product": "Linux Security Lite",
-    "title": "Scheduled Audits",
-    "src": "customer-docs/customer/products/linux-security-lite/scheduled-audits.md",
-    "description": "Documentation for scheduled audits"
-  },
-  {
-    "product": "Switch Exposure Center",
-    "title": "Advisory Refresh",
-    "src": "customer-docs/customer/products/switch-exposure-center/advisory-refresh.md",
-    "description": "Documentation for advisory refresh"
-  },
-  {
-    "product": "Switch Exposure Center",
-    "title": "Index",
-    "src": "customer-docs/customer/products/switch-exposure-center/index.md",
-    "description": "Documentation for index"
-  },
-  {
-    "product": "Switch Exposure Center",
-    "title": "Overview",
-    "src": "customer-docs/customer/products/switch-exposure-center/overview.md",
-    "description": "Documentation for overview"
-  },
-  {
-    "product": "Reference",
-    "title": "Index",
-    "src": "customer-docs/customer/reference/index.md",
-    "description": "Documentation for index"
-  },
-  {
-    "product": "Security",
-    "title": "Index",
-    "src": "customer-docs/customer/security/index.md",
-    "description": "Documentation for index"
-  },
-  {
-    "product": "Security",
-    "title": "Security Access Data Protection",
-    "src": "customer-docs/customer/security/security-access-data-protection.md",
-    "description": "Documentation for security access data protection"
-  },
-  {
-    "product": "Start Here",
-    "title": "Index",
-    "src": "customer-docs/customer/start-here/index.md",
-    "description": "Documentation for index"
-  },
-  {
-    "product": "Start Here",
-    "title": "Purpose And Audience",
-    "src": "customer-docs/customer/start-here/purpose-and-audience.md",
-    "description": "Documentation for purpose and audience"
-  },
-  {
-    "product": "Suite",
-    "title": "Index",
-    "src": "customer-docs/customer/suite/index.md",
-    "description": "Documentation for index"
-  },
-  {
-    "product": "Suite",
-    "title": "Roles And Governance",
-    "src": "customer-docs/customer/suite/roles-and-governance.md",
-    "description": "Documentation for roles and governance"
-  },
-  {
-    "product": "Suite",
-    "title": "Service Overview",
-    "src": "customer-docs/customer/suite/service-overview.md",
-    "description": "Documentation for service overview"
-  },
-  {
-    "product": "Deployment",
     "title": "Customer Deployment Pack",
-    "src": "customer-docs/deployment/customer-deployment-pack.md",
-    "description": "Documentation for customer deployment pack"
+    "path": "customer-docs/.stage/bundle-1.0.0/CUSTOMER-DEPLOYMENT-PACK.md",
+    "category": ".stage\\bundle-1.0.0"
   },
   {
-    "product": "Deployment",
-    "title": "Operator Runbook",
-    "src": "customer-docs/deployment/operator-runbook.md",
-    "description": "Documentation for operator runbook"
-  },
-  {
-    "product": "Deployment",
     "title": "Release Bundle Structure",
-    "src": "customer-docs/deployment/release-bundle-structure.md",
-    "description": "Documentation for release bundle structure"
+    "path": "customer-docs/.stage/bundle-1.0.0/RELEASE-BUNDLE-STRUCTURE.md",
+    "category": ".stage\\bundle-1.0.0"
   },
   {
-    "product": "Marketing",
-    "title": "COMPETITIVE POSITIONING",
-    "src": "customer-docs/docs/marketing/COMPETITIVE-POSITIONING.md",
-    "description": "Documentation for COMPETITIVE POSITIONING"
+    "title": "End User License Agreement (EULA)",
+    "path": "customer-docs/.stage/bundle-1.0.0/legal/EULA.md",
+    "category": ".stage\\bundle-1.0.0\\legal"
   },
   {
-    "product": "Marketing",
-    "title": "CONTENT CALENDAR 90 DAY",
-    "src": "customer-docs/docs/marketing/CONTENT-CALENDAR-90-DAY.md",
-    "description": "Documentation for CONTENT CALENDAR 90 DAY"
+    "title": "Liability Disclaimer and Indemnity",
+    "path": "customer-docs/.stage/bundle-1.0.0/legal/LIABILITY-DISCLAIMER-AND-INDEMNITY.md",
+    "category": ".stage\\bundle-1.0.0\\legal"
   },
   {
-    "product": "Marketing",
-    "title": "IDEAL CUSTOMER PROFILES",
-    "src": "customer-docs/docs/marketing/IDEAL-CUSTOMER-PROFILES.md",
-    "description": "Documentation for IDEAL CUSTOMER PROFILES"
+    "title": "Licensing Overview",
+    "path": "customer-docs/.stage/bundle-1.0.0/licensing/LICENSING.md",
+    "category": ".stage\\bundle-1.0.0\\licensing"
   },
   {
-    "product": "Marketing",
-    "title": "MESSAGING PILLARS",
-    "src": "customer-docs/docs/marketing/MESSAGING-PILLARS.md",
-    "description": "Documentation for MESSAGING PILLARS"
+    "title": "API Authentication",
+    "path": "customer-docs/api/authentication.md",
+    "category": "api"
   },
   {
-    "product": "Marketing",
-    "title": "PRODUCT ONE PAGERS",
-    "src": "customer-docs/docs/marketing/PRODUCT-ONE-PAGERS.md",
-    "description": "Documentation for PRODUCT ONE PAGERS"
+    "title": "API Standards",
+    "path": "customer-docs/api/index.md",
+    "category": "Overview"
   },
   {
-    "product": "Marketing",
-    "title": "PROOF POINTS AND TRUST SIGNALS",
-    "src": "customer-docs/docs/marketing/PROOF-POINTS-AND-TRUST-SIGNALS.md",
-    "description": "Documentation for PROOF POINTS AND TRUST SIGNALS"
+    "title": "Library API Reference",
+    "path": "customer-docs/api/library-api-reference.md",
+    "category": "api"
   },
   {
-    "product": "Marketing",
-    "title": "README",
-    "src": "customer-docs/docs/marketing/README.md",
-    "description": "Documentation for README"
+    "title": "API Conventions",
+    "path": "customer-docs/api/standards.md",
+    "category": "api"
   },
   {
-    "product": "Marketing",
-    "title": "SUITE POSITIONING GUIDE",
-    "src": "customer-docs/docs/marketing/SUITE-POSITIONING-GUIDE.md",
-    "description": "Documentation for SUITE POSITIONING GUIDE"
+    "title": "Customer Documentation Library Plan",
+    "path": "customer-docs/customer/CUSTOMER-DOCS-LIBRARY-PLAN.md",
+    "category": "customer"
   },
   {
-    "product": "Marketing",
-    "title": "USE CASE PLAYBOOK",
-    "src": "customer-docs/docs/marketing/USE-CASE-PLAYBOOK.md",
-    "description": "Documentation for USE CASE PLAYBOOK"
+    "title": "Customer Documentation",
+    "path": "customer-docs/customer/index.md",
+    "category": "Overview"
   },
   {
-    "product": "Marketing",
-    "title": "WEBSITE COPY BLOCKS",
-    "src": "customer-docs/docs/marketing/WEBSITE-COPY-BLOCKS.md",
-    "description": "Documentation for WEBSITE COPY BLOCKS"
+    "title": "Administration Guide",
+    "path": "customer-docs/customer/administration/administration-guide.md",
+    "category": "customer\\administration"
   },
   {
-    "product": "Validation",
-    "title": "DOCUMENTATION SYSTEM VALIDATION",
-    "src": "customer-docs/docs/validation/DOCUMENTATION-SYSTEM-VALIDATION.md",
-    "description": "Documentation for DOCUMENTATION SYSTEM VALIDATION"
+    "title": "Administration",
+    "path": "customer-docs/customer/administration/index.md",
+    "category": "Overview"
   },
   {
-    "product": "Execution",
+    "title": "API Automation",
+    "path": "customer-docs/customer/api-automation/index.md",
+    "category": "Overview"
+  },
+  {
+    "title": "Compliance Assurance",
+    "path": "customer-docs/customer/compliance-assurance/index.md",
+    "category": "Overview"
+  },
+  {
+    "title": "Deployment",
+    "path": "customer-docs/customer/deployment/index.md",
+    "category": "Overview"
+  },
+  {
+    "title": "Service Transition And Initial Setup",
+    "path": "customer-docs/customer/deployment/service-transition.md",
+    "category": "customer\\deployment"
+  },
+  {
+    "title": "Integrations",
+    "path": "customer-docs/customer/integrations/index.md",
+    "category": "Overview"
+  },
+  {
+    "title": "Operations",
+    "path": "customer-docs/customer/operations/index.md",
+    "category": "Overview"
+  },
+  {
+    "title": "Operations And Support Model",
+    "path": "customer-docs/customer/operations/operations-and-support.md",
+    "category": "customer\\operations"
+  },
+  {
+    "title": "Product Guides",
+    "path": "customer-docs/customer/products/index.md",
+    "category": "Overview"
+  },
+  {
+    "title": "Asset Command Centre Discovery Connectors",
+    "path": "customer-docs/customer/products/asset-command-centre/discovery-connectors.md",
+    "category": "customer\\products\\asset-command-centre"
+  },
+  {
+    "title": "Asset Command Centre",
+    "path": "customer-docs/customer/products/asset-command-centre/index.md",
+    "category": "Overview"
+  },
+  {
+    "title": "Asset Command Centre Overview",
+    "path": "customer-docs/customer/products/asset-command-centre/overview.md",
+    "category": "Overview"
+  },
+  {
+    "title": "Audit Assurance Node Adapter Model",
+    "path": "customer-docs/customer/products/audit-assurance-node/adapters.md",
+    "category": "customer\\products\\audit-assurance-node"
+  },
+  {
+    "title": "Audit Assurance Node Authentication",
+    "path": "customer-docs/customer/products/audit-assurance-node/authentication.md",
+    "category": "customer\\products\\audit-assurance-node"
+  },
+  {
+    "title": "Audit Assurance Node Deployment",
+    "path": "customer-docs/customer/products/audit-assurance-node/deployment.md",
+    "category": "customer\\products\\audit-assurance-node"
+  },
+  {
+    "title": "Audit Assurance Node",
+    "path": "customer-docs/customer/products/audit-assurance-node/index.md",
+    "category": "Overview"
+  },
+  {
+    "title": "Audit Assurance Node Logging And Observability",
+    "path": "customer-docs/customer/products/audit-assurance-node/logging-observability.md",
+    "category": "customer\\products\\audit-assurance-node"
+  },
+  {
+    "title": "Audit Assurance Node Operational Limits",
+    "path": "customer-docs/customer/products/audit-assurance-node/operational-limits.md",
+    "category": "customer\\products\\audit-assurance-node"
+  },
+  {
+    "title": "Audit Assurance Node Overview",
+    "path": "customer-docs/customer/products/audit-assurance-node/overview.md",
+    "category": "Overview"
+  },
+  {
+    "title": "Audit Assurance Node Parallel Tracing",
+    "path": "customer-docs/customer/products/audit-assurance-node/parallel-tracing.md",
+    "category": "customer\\products\\audit-assurance-node"
+  },
+  {
+    "title": "Audit Assurance Node Runtime Validation",
+    "path": "customer-docs/customer/products/audit-assurance-node/runtime-validation.md",
+    "category": "customer\\products\\audit-assurance-node"
+  },
+  {
+    "title": "Audit Assurance Node Transport Guide",
+    "path": "customer-docs/customer/products/audit-assurance-node/ssh-winrm-api-agent-transports.md",
+    "category": "customer\\products\\audit-assurance-node"
+  },
+  {
+    "title": "Audit-Tool Agent Deployment",
+    "path": "customer-docs/customer/products/audit-tool/agents.md",
+    "category": "customer\\products\\audit-tool"
+  },
+  {
+    "title": "Audit-Tool",
+    "path": "customer-docs/customer/products/audit-tool/index.md",
+    "category": "Overview"
+  },
+  {
+    "title": "Audit-Tool Overview",
+    "path": "customer-docs/customer/products/audit-tool/overview.md",
+    "category": "Overview"
+  },
+  {
+    "title": "CMDB API Data Collection Tool Connector Setup",
+    "path": "customer-docs/customer/products/cmdb-api-data-collection-tool/connector-setup.md",
+    "category": "customer\\products\\cmdb-api-data-collection-tool"
+  },
+  {
+    "title": "CMDB API Data Collection Tool",
+    "path": "customer-docs/customer/products/cmdb-api-data-collection-tool/index.md",
+    "category": "Overview"
+  },
+  {
+    "title": "CMDB API Data Collection Tool Overview",
+    "path": "customer-docs/customer/products/cmdb-api-data-collection-tool/overview.md",
+    "category": "Overview"
+  },
+  {
+    "title": "AuditToolkit Linux Security Lite",
+    "path": "customer-docs/customer/products/linux-security-lite/index.md",
+    "category": "Overview"
+  },
+  {
+    "title": "AuditToolkit Linux Security Lite Overview",
+    "path": "customer-docs/customer/products/linux-security-lite/overview.md",
+    "category": "Overview"
+  },
+  {
+    "title": "AuditToolkit Linux Security Lite Scheduled Audits",
+    "path": "customer-docs/customer/products/linux-security-lite/scheduled-audits.md",
+    "category": "customer\\products\\linux-security-lite"
+  },
+  {
+    "title": "Switch Exposure Center Advisory Refresh",
+    "path": "customer-docs/customer/products/switch-exposure-center/advisory-refresh.md",
+    "category": "customer\\products\\switch-exposure-center"
+  },
+  {
+    "title": "Switch Exposure Center",
+    "path": "customer-docs/customer/products/switch-exposure-center/index.md",
+    "category": "Overview"
+  },
+  {
+    "title": "Switch Exposure Center Overview",
+    "path": "customer-docs/customer/products/switch-exposure-center/overview.md",
+    "category": "Overview"
+  },
+  {
+    "title": "Reference",
+    "path": "customer-docs/customer/reference/index.md",
+    "category": "Overview"
+  },
+  {
+    "title": "Security",
+    "path": "customer-docs/customer/security/index.md",
+    "category": "Overview"
+  },
+  {
+    "title": "Security Access And Data Protection",
+    "path": "customer-docs/customer/security/security-access-data-protection.md",
+    "category": "customer\\security"
+  },
+  {
+    "title": "Start Here",
+    "path": "customer-docs/customer/start-here/index.md",
+    "category": "Overview"
+  },
+  {
+    "title": "Purpose And Audience",
+    "path": "customer-docs/customer/start-here/purpose-and-audience.md",
+    "category": "customer\\start-here"
+  },
+  {
+    "title": "Suite Documentation",
+    "path": "customer-docs/customer/suite/index.md",
+    "category": "Overview"
+  },
+  {
+    "title": "Roles And Governance",
+    "path": "customer-docs/customer/suite/roles-and-governance.md",
+    "category": "customer\\suite"
+  },
+  {
+    "title": "Service Overview",
+    "path": "customer-docs/customer/suite/service-overview.md",
+    "category": "Overview"
+  },
+  {
+    "title": "Customer Deployment Pack",
+    "path": "customer-docs/deployment/customer-deployment-pack.md",
+    "category": "deployment"
+  },
+  {
+    "title": "Operator Runbook",
+    "path": "customer-docs/deployment/operator-runbook.md",
+    "category": "deployment"
+  },
+  {
+    "title": "Release Bundle Structure",
+    "path": "customer-docs/deployment/release-bundle-structure.md",
+    "category": "deployment"
+  },
+  {
+    "title": "Competitive Positioning",
+    "path": "customer-docs/docs/marketing/COMPETITIVE-POSITIONING.md",
+    "category": "docs\\marketing"
+  },
+  {
+    "title": "90 Day Content Calendar",
+    "path": "customer-docs/docs/marketing/CONTENT-CALENDAR-90-DAY.md",
+    "category": "docs\\marketing"
+  },
+  {
+    "title": "Ideal Customer Profiles",
+    "path": "customer-docs/docs/marketing/IDEAL-CUSTOMER-PROFILES.md",
+    "category": "docs\\marketing"
+  },
+  {
+    "title": "Messaging Pillars",
+    "path": "customer-docs/docs/marketing/MESSAGING-PILLARS.md",
+    "category": "docs\\marketing"
+  },
+  {
+    "title": "Product One-Pagers",
+    "path": "customer-docs/docs/marketing/PRODUCT-ONE-PAGERS.md",
+    "category": "docs\\marketing"
+  },
+  {
+    "title": "Proof Points And Trust Signals",
+    "path": "customer-docs/docs/marketing/PROOF-POINTS-AND-TRUST-SIGNALS.md",
+    "category": "docs\\marketing"
+  },
+  {
+    "title": "Marketing Content Pack",
+    "path": "customer-docs/docs/marketing/README.md",
+    "category": "docs\\marketing"
+  },
+  {
+    "title": "Suite Positioning Guide",
+    "path": "customer-docs/docs/marketing/SUITE-POSITIONING-GUIDE.md",
+    "category": "docs\\marketing"
+  },
+  {
+    "title": "Use Case Playbook",
+    "path": "customer-docs/docs/marketing/USE-CASE-PLAYBOOK.md",
+    "category": "docs\\marketing"
+  },
+  {
+    "title": "Website Copy Blocks",
+    "path": "customer-docs/docs/marketing/WEBSITE-COPY-BLOCKS.md",
+    "category": "docs\\marketing"
+  },
+  {
+    "title": "Documentation System Validation",
+    "path": "customer-docs/docs/validation/DOCUMENTATION-SYSTEM-VALIDATION.md",
+    "category": "docs\\validation"
+  },
+  {
     "title": "Adapter Standard",
-    "src": "customer-docs/execution/adapter-standard.md",
-    "description": "Documentation for adapter standard"
+    "path": "customer-docs/execution/adapter-standard.md",
+    "category": "execution"
   },
   {
-    "product": "Execution",
-    "title": "Ci Cd",
-    "src": "customer-docs/execution/ci-cd.md",
-    "description": "Documentation for ci cd"
+    "title": "CI/CD Execution",
+    "path": "customer-docs/execution/ci-cd.md",
+    "category": "execution"
   },
   {
-    "product": "Execution",
     "title": "Execution Standard",
-    "src": "customer-docs/execution/execution-standard.md",
-    "description": "Documentation for execution standard"
+    "path": "customer-docs/execution/execution-standard.md",
+    "category": "execution"
   },
   {
-    "product": "Execution",
     "title": "Fleet Agent Contract",
-    "src": "customer-docs/execution/fleet-agent-contract.md",
-    "description": "Documentation for fleet agent contract"
+    "path": "customer-docs/execution/fleet-agent-contract.md",
+    "category": "execution"
   },
   {
-    "product": "Execution",
-    "title": "Index",
-    "src": "customer-docs/execution/index.md",
-    "description": "Documentation for index"
+    "title": "Execution Standards",
+    "path": "customer-docs/execution/index.md",
+    "category": "Overview"
   },
   {
-    "product": "Execution",
-    "title": "Orchestrator Examples",
-    "src": "customer-docs/execution/orchestrator-examples.md",
-    "description": "Documentation for orchestrator examples"
+    "title": "Orchestrator Usage Examples",
+    "path": "customer-docs/execution/orchestrator-examples.md",
+    "category": "execution"
   },
   {
-    "product": "Legal",
-    "title": "Authority",
-    "src": "customer-docs/legal/authority.md",
-    "description": "Documentation for authority"
+    "title": "Legal Authority",
+    "path": "customer-docs/legal/authority.md",
+    "category": "legal"
   },
   {
-    "product": "Legal",
-    "title": "Eula",
-    "src": "customer-docs/legal/eula.md",
-    "description": "Documentation for eula"
+    "title": "End User License Agreement (EULA)",
+    "path": "customer-docs/legal/eula.md",
+    "category": "legal"
   },
   {
-    "product": "Legal",
-    "title": "Liability Disclaimer And Indemnity",
-    "src": "customer-docs/legal/liability-disclaimer-and-indemnity.md",
-    "description": "Documentation for liability disclaimer and indemnity"
+    "title": "Liability Disclaimer and Indemnity",
+    "path": "customer-docs/legal/liability-disclaimer-and-indemnity.md",
+    "category": "legal"
   },
   {
-    "product": "Licensing",
-    "title": "Authority",
-    "src": "customer-docs/licensing/authority.md",
-    "description": "Documentation for authority"
+    "title": "Licensing Authority",
+    "path": "customer-docs/licensing/authority.md",
+    "category": "licensing"
   },
   {
-    "product": "Licensing",
-    "title": "Overview",
-    "src": "customer-docs/licensing/overview.md",
-    "description": "Documentation for overview"
+    "title": "Licensing Overview",
+    "path": "customer-docs/licensing/overview.md",
+    "category": "Overview"
   },
   {
-    "product": "Platform",
-    "title": "Offline Licensing Standardisation Summary",
-    "src": "customer-docs/platform/offline-licensing-standardisation-summary.md",
-    "description": "Documentation for offline licensing standardisation summary"
+    "title": "AuditToolkit Platform Administrator Guide",
+    "path": "customer-docs/platform/administrator-guide.md",
+    "category": "Administrator Guide"
   },
   {
-    "product": "Release Bundles",
-    "title": "README",
-    "src": "customer-docs/release-bundles/README.md",
-    "description": "Documentation for README"
+    "title": "Offline Licensing Standardisation — Platform Summary",
+    "path": "customer-docs/platform/offline-licensing-standardisation-summary.md",
+    "category": "platform"
   },
   {
-    "product": "Releases",
-    "title": "Index",
-    "src": "customer-docs/releases/index.md",
-    "description": "Documentation for index"
+    "title": "Release Bundle Documentation Sync",
+    "path": "customer-docs/release-bundles/README.md",
+    "category": "release-bundles"
   },
   {
-    "product": "Review",
-    "title": "DOCUMENT CONSOLIDATION REVIEW",
-    "src": "customer-docs/review/DOCUMENT-CONSOLIDATION-REVIEW.md",
-    "description": "Documentation for DOCUMENT CONSOLIDATION REVIEW"
+    "title": "Releases",
+    "path": "customer-docs/releases/index.md",
+    "category": "Overview"
   },
   {
-    "product": "Review",
-    "title": "DOCUMENTATION SOURCE OF TRUTH POLICY",
-    "src": "customer-docs/review/DOCUMENTATION-SOURCE-OF-TRUTH-POLICY.md",
-    "description": "Documentation for DOCUMENTATION SOURCE OF TRUTH POLICY"
+    "title": "Document Consolidation Review",
+    "path": "customer-docs/review/DOCUMENT-CONSOLIDATION-REVIEW.md",
+    "category": "review"
   },
   {
-    "product": "Validation",
-    "title": "Index",
-    "src": "customer-docs/validation/index.md",
-    "description": "Documentation for index"
+    "title": "Documentation Source Of Truth Policy",
+    "path": "customer-docs/review/DOCUMENTATION-SOURCE-OF-TRUTH-POLICY.md",
+    "category": "review"
   },
   {
-    "product": "Validation",
+    "title": "Validation And Release Gates",
+    "path": "customer-docs/validation/index.md",
+    "category": "Overview"
+  },
+  {
     "title": "Release Gates",
-    "src": "customer-docs/validation/release-gates.md",
-    "description": "Documentation for release gates"
+    "path": "customer-docs/validation/release-gates.md",
+    "category": "validation"
   },
   {
-    "product": "Offline Fallback",
-    "title": "First Live Issuance Validation Summary",
-    "src": "customer-docs/validation/offline-fallback/first-live-issuance-validation-summary.md",
-    "description": "Documentation for first live issuance validation summary"
+    "title": "First Live Offline Fallback Issuance - Validation Summary",
+    "path": "customer-docs/validation/offline-fallback/first-live-issuance-validation-summary.md",
+    "category": "validation\\offline-fallback"
   }
 ]

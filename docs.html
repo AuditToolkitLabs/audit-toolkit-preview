@@ -138,37 +138,61 @@
       return;
     }
 
-    var html = '<div class="grid-3">';
-    docs.forEach(function(doc) {
-      html += `
-        <a href="doc-viewer.html?src=${encodeURIComponent(doc.src)}" class="product-card">
-          <div>
-            <h3>${doc.title}</h3>
-            <p>${doc.description}</p>
-          </div>
-          <div class="product-card-foot">
-            <span class="badge badge-blue">${doc.product}</span>
-            <span class="text-accent text-sm">Read doc &rarr;</span>
-          </div>
-        </a>
-      `;
+    // Group documents by category
+    var groupedDocs = docs.reduce(function(acc, doc) {
+      var category = doc.category || 'General';
+      if (!acc[category]) {
+        acc[category] = [];
+      }
+      acc[category].push(doc);
+      return acc;
+    }, {});
+
+    var html = '';
+    var categoryOrder = ['Overview', 'Administrator Guide', 'api', 'customer', 'deployment', 'docs', 'execution', 'legal', 'licensing', 'platform', 'release-bundles', 'releases', 'review', 'scripts', 'validation', 'General'];
+    
+    categoryOrder.forEach(function(category) {
+      if (groupedDocs[category]) {
+        var categoryTitle = category.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        html += `<div class="doc-category-group" data-category="${category}">`;
+        html += `<h2 class="category-title">${categoryTitle}</h2>`;
+        html += '<div class="grid-3">';
+        groupedDocs[category].forEach(function(doc) {
+          html += `
+            <a href="doc-viewer.html?src=${encodeURIComponent(doc.path)}" class="product-card" data-title="${doc.title.toLowerCase()}">
+              <div>
+                <h3>${doc.title}</h3>
+              </div>
+              <div class="product-card-foot">
+                <span class="text-accent text-sm">Read doc &rarr;</span>
+              </div>
+            </a>
+          `;
+        });
+        html += '</div></div>';
+      }
     });
-    html += '</div>';
+
     listContainer.innerHTML = html;
   }
 
   function filterDocs() {
     var query = searchInput.value.toLowerCase().trim();
-    if (!query) {
-      renderDocs(allDocs);
-      return;
-    }
-    var filteredDocs = allDocs.filter(function(doc) {
-      return doc.title.toLowerCase().includes(query) ||
-             doc.product.toLowerCase().includes(query) ||
-             doc.description.toLowerCase().includes(query);
+    var docCards = listContainer.querySelectorAll('.product-card');
+    var categoryGroups = listContainer.querySelectorAll('.doc-category-group');
+
+    docCards.forEach(function(card) {
+      var title = card.getAttribute('data-title');
+      var cardCategory = card.closest('.doc-category-group').getAttribute('data-category');
+      var isVisible = title.includes(query);
+      card.style.display = isVisible ? '' : 'none';
     });
-    renderDocs(filteredDocs);
+
+    categoryGroups.forEach(function(group) {
+      var visibleCards = group.querySelectorAll('.product-card[style*="display:"]');
+      var allCards = group.querySelectorAll('.product-card');
+      group.style.display = visibleCards.length === allCards.length ? 'none' : '';
+    });
   }
 
   fetch('docs-manifest.json')
