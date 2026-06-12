@@ -95,6 +95,37 @@
   </div>
 </section>
 
+<section class="section section-divider-top">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Data Flow</p>
+      <h2>How Linux Security Lite executes</h2>
+      <p>Linux Security Lite provides multiple access methods to reach Linux hosts, from direct local execution to agent-based or remote SSH collection, adapting to your deployment topology.</p>
+    </div>
+    <div class="diagram-container">
+      <svg viewBox="0 0 960 380" class="diagram-svg mermaid">
+        flowchart TB
+        
+        TOOL["Linux Security Lite"]
+        
+        LOCAL["Local Execution"]
+        SSH["SSH"]
+        AGENT["Fleet Agent"]
+        
+        LINUX["Linux Hosts"]
+        
+        TOOL --> LOCAL
+        TOOL --> SSH
+        TOOL --> AGENT
+        
+        LOCAL --> LINUX
+        SSH --> LINUX
+        AGENT --> LINUX
+      </svg>
+    </div>
+  </div>
+</section>
+
 <div class="cta-band">
   <div class="wrap">
     <div class="cta-band-inner">

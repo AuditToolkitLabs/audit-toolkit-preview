@@ -82,6 +82,37 @@
   </div>
 </div>
 
+<!-- Execution Model -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Execution Flexibility</p>
+      <h2>Five integration paths from any tool</h2>
+      <p>AuditToolkit audit tools support five execution methods to fit any infrastructure environment. Choose the best fit for your network topology — from direct SSH/WinRM to agent-based or local execution.</p>
+    </div>
+    <div class="diagram-container">
+      <svg viewBox="0 0 960 320" class="diagram-svg mermaid">
+        flowchart LR
+        
+        TOOL["Audit Tool"]
+        
+        TOOL -->|"Local"| LOCAL["Local Execution"]
+        TOOL -->|"Agent"| AGENT["Fleet Agent"]
+        TOOL -->|"SSH"| SSH["SSH"]
+        TOOL -->|"WinRM"| WINRM["WinRM"]
+        TOOL -->|"SNMP"| SNMP["SNMP"]
+        
+        AGENT --> TARGET["Target Host"]
+        SSH --> TARGET
+        WINRM --> TARGET
+        SNMP --> TARGET
+        LOCAL --> TARGET
+      </svg>
+    </div>
+    <p class="diagram-note"><strong>Why it matters:</strong> Each execution path is optimized for different scenarios — agents work best for air-gapped networks, SSH/WinRM for open infrastructure, SNMP for network devices, and local execution for single-host verification.</p>
+  </div>
+</section>
+
 <!-- SIEM -->
 <section class="section" id="siem">
   <div class="wrap">

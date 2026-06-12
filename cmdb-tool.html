@@ -95,6 +95,34 @@
   </div>
 </section>
 
+<section class="section section-divider-top">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Data Flow</p>
+      <h2>How CMDB Data Collection works</h2>
+      <p>The data collector ingests structured data from external APIs and agent-based collection, normalising results into a canonical schema for the central platform or standalone CMDB operation.</p>
+    </div>
+    <div class="diagram-container">
+      <svg viewBox="0 0 960 340" class="diagram-svg mermaid">
+        flowchart TB
+        
+        TOOL["CMDB Data Collector"]
+        
+        API["External APIs"]
+        AGENT["Fleet Agent"]
+        
+        DATA["Structured Data Store"]
+        
+        TOOL --> API
+        TOOL --> AGENT
+        
+        API --> DATA
+        AGENT --> DATA
+      </svg>
+    </div>
+  </div>
+</section>
+
 <div class="cta-band">
   <div class="wrap">
     <div class="cta-band-inner">

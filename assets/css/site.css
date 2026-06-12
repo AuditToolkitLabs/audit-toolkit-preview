@@ -498,6 +498,21 @@ figcaption { padding: 10px 14px; color: var(--muted); font-size: .88rem; }
   text-align: center;
   display: block;
 }
+
+/* ── Diagram styling ──────────────────────────────────── */
+.diagram-container {
+  margin-top: 24px;
+  overflow-x: auto;
+}
+.diagram-svg {
+  min-width: 100%;
+  height: auto;
+}
+.diagram-note {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
 .addons-block { margin-top: 32px; }
 .addons-title { font-size: 1.3rem; margin: 0 0 10px; }
 .addons-intro { font-size: .9rem; color: var(--muted); margin: 0 0 16px; }

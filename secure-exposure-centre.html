@@ -94,6 +94,40 @@
   </div>
 </section>
 
+<section class="section section-divider-top">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Data Flow</p>
+      <h2>How Secure Exposure Center operates</h2>
+      <p>The platform collects network device configuration and exposure data through SNMP APIs and agent-based collection, delivering firmware-level vulnerability correlation to the central platform.</p>
+    </div>
+    <div class="diagram-container">
+      <svg viewBox="0 0 960 340" class="diagram-svg mermaid">
+        flowchart TB
+        
+        USER["User"]
+        TOOL["Secure Exposure Center"]
+        
+        EXEC["Execution Layer"]
+        
+        SNMP["SNMP"]
+        AGENT["Fleet Agent"]
+        
+        NETWORK["Network Devices"]
+        
+        USER --> TOOL
+        TOOL --> EXEC
+        
+        EXEC --> SNMP
+        EXEC --> AGENT
+        
+        SNMP --> NETWORK
+        AGENT --> NETWORK
+      </svg>
+    </div>
+  </div>
+</section>
+
 <div class="cta-band">
   <div class="wrap">
     <div class="cta-band-inner">

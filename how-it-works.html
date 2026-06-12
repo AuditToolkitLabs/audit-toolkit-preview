@@ -158,6 +158,70 @@
   </div>
 </section>
 
+<!-- Platform Architecture -->
+<section class="section section-divider-top">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Platform Architecture</p>
+      <h2>Complete platform architecture</h2>
+      <p>The Control Plane orchestrates five specialised tools that operate independently across your infrastructure. Each tool collects from a distinct layer — discovery, audit, network, asset inventory — and feeds findings into the central platform for correlation, remediation, and evidence generation.</p>
+    </div>
+    <div class="diagram-container">
+      <svg viewBox="0 0 960 540" class="diagram-svg mermaid">
+        flowchart TB
+        
+        subgraph ControlPlane["Control Plane"]
+            CC["AuditToolkit Control Centre"]
+            API["API Layer"]
+        end
+        
+        subgraph Tools["Audit Tools"]
+            T1["Audit-Tool"]
+            T2["Switch Exposure Center"]
+            T3["CMDB Data Collector"]
+            T4["Linux Security Lite"]
+            T5["Audit Assurance Node"]
+        end
+        
+        subgraph Execution["Execution Methods"]
+            AG["Fleet Agent"]
+            SSH["SSH"]
+            WINRM["WinRM"]
+            SNMP["SNMP"]
+        end
+        
+        subgraph Targets["Target Systems"]
+            LINUX["Linux Hosts"]
+            WINDOWS["Windows Hosts"]
+            NETWORK["Network Devices"]
+        end
+        
+        CC --> API
+        API --> T1
+        API --> T2
+        API --> T3
+        API --> T4
+        API --> T5
+        
+        T1 --> AG
+        T2 --> AG
+        T3 --> AG
+        
+        T1 --> SSH
+        T1 --> WINRM
+        T2 --> SNMP
+        
+        AG --> LINUX
+        AG --> WINDOWS
+        
+        SSH --> LINUX
+        WINRM --> WINDOWS
+        SNMP --> NETWORK
+      </svg>
+    </div>
+  </div>
+</section>
+
 <!-- Architecture summary -->
 <section class="section section-divider-top">
   <div class="wrap">

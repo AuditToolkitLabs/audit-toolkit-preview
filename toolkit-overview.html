@@ -83,6 +83,69 @@
 <section class="section">
   <div class="wrap">
     <div class="section-head">
+      <p class="eyebrow">Complete Architecture</p>
+      <h2>Producers feed a central platform</h2>
+      <p>Each specialised tool operates independently as a satellite producer, can be deployed where it has the best access to its target infrastructure. The central Audit Admin Toolkit sees everything — and correlates, remediates, and packages evidence for the entire estate.</p>
+    </div>
+    <div class="diagram-container">
+      <svg viewBox="0 0 960 540" class="diagram-svg mermaid">
+        flowchart TB
+        
+        subgraph ControlPlane["Control Plane"]
+            CC["AuditToolkit Control Centre"]
+            API["API Layer"]
+        end
+        
+        subgraph Tools["Audit Tools"]
+            T1["Audit-Tool"]
+            T2["Switch Exposure Center"]
+            T3["CMDB Data Collector"]
+            T4["Linux Security Lite"]
+            T5["Audit Assurance Node"]
+        end
+        
+        subgraph Execution["Execution Methods"]
+            AG["Fleet Agent"]
+            SSH["SSH"]
+            WINRM["WinRM"]
+            SNMP["SNMP"]
+        end
+        
+        subgraph Targets["Target Systems"]
+            LINUX["Linux Hosts"]
+            WINDOWS["Windows Hosts"]
+            NETWORK["Network Devices"]
+        end
+        
+        CC --> API
+        API --> T1
+        API --> T2
+        API --> T3
+        API --> T4
+        API --> T5
+        
+        T1 --> AG
+        T2 --> AG
+        T3 --> AG
+        
+        T1 --> SSH
+        T1 --> WINRM
+        T2 --> SNMP
+        
+        AG --> LINUX
+        AG --> WINDOWS
+        
+        SSH --> LINUX
+        WINRM --> WINDOWS
+        SNMP --> NETWORK
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
       <p class="eyebrow">Toolkit Structure</p>
       <h2>Main toolkit, sub-tools, and agent layers</h2>
       <p>The Audit Admin Toolkit is the core platform, with distinct sub-tools and agent models that support different deployment patterns across six products.</p>

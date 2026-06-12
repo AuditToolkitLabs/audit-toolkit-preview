@@ -96,6 +96,48 @@
   </div>
 </section>
 
+<section class="section section-divider-top">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Data Flow</p>
+      <h2>How Audit Admin Toolkit operates</h2>
+      <p>The platform acts as the orchestration layer, interfacing with the API and routing operations across multiple execution adapters to reach target systems efficiently.</p>
+    </div>
+    <div class="diagram-container">
+      <svg viewBox="0 0 960 400" class="diagram-svg mermaid">
+        flowchart TB
+        
+        USER["User / Operator"]
+        TOOL["Audit Admin Toolkit"]
+        
+        API["Platform API"]
+        EXEC["Execution Adapter Layer"]
+        
+        AGENT["Fleet Agent"]
+        SSH["SSH"]
+        WINRM["WinRM"]
+        SNMP["SNMP"]
+        
+        TARGETS["Target Systems"]
+        
+        USER --> TOOL
+        TOOL --> API
+        API --> EXEC
+        
+        EXEC --> AGENT
+        EXEC --> SSH
+        EXEC --> WINRM
+        EXEC --> SNMP
+        
+        AGENT --> TARGETS
+        SSH --> TARGETS
+        WINRM --> TARGETS
+        SNMP --> TARGETS
+      </svg>
+    </div>
+  </div>
+</section>
+
 <div class="cta-band">
   <div class="wrap">
     <div class="cta-band-inner">
