@@ -1,20 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Checkout Cancelled - AuditToolkit</title>
-    <style>
-        body { font-family: sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f4f4f4; color: #333; text-align: center; }
-        .container { max-width: 800px; margin: auto; background: #fff; padding: 30px; border-radius: 5px; margin-top: 50px; }
-        h1 { color: #c0392b; }
-    </style>
+    <meta name="description" content="Checkout was cancelled. Return to pricing or continue exploring AuditToolkit resources." />
+    <link rel="stylesheet" href="assets/css/site.css?v=20260612c" />
 </head>
 <body>
-    <div class="container">
-        <h1>Checkout Cancelled</h1>
-        <p>Your checkout session has been cancelled. You have not been charged.</p>
-        <p><a href="pricing.html">View Pricing</a> or <a href="index.html">Return to Homepage</a></p>
+<nav class="nav">
+    <div class="wrap">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">
+                <span class="brand-icon">A</span>
+                <span>AuditToolkit</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="price.html">Pricing</a></li>
+                <li><a href="docs.html">Documentation</a></li>
+                <li><a href="releases.html">Releases</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="price.html" class="btn btn-primary btn-sm">View Pricing</a>
+            </div>
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+        </div>
     </div>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+    <a href="price.html">Pricing</a>
+    <a href="docs.html">Documentation</a>
+    <a href="releases.html">Releases</a>
+    <a href="support.html">Support</a>
+    <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
+</div>
+
+<section class="page-hero">
+    <div class="wrap">
+        <h1>Checkout Cancelled</h1>
+        <p>Your checkout session was cancelled and no charge was made.</p>
+    </div>
+</section>
+
+<main class="section">
+    <div class="wrap">
+        <article class="card">
+            <h3>Continue When Ready</h3>
+            <p>You can review license tiers, return to the home page, or reach support if you need help selecting the right package.</p>
+            <div class="hero-actions">
+                <a href="price.html" class="btn btn-primary">View Pricing</a>
+                <a href="index.html" class="btn btn-secondary">Return to Homepage</a>
+                <a href="support.html" class="btn btn-secondary">Contact Support</a>
+            </div>
+        </article>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span class="footer-brand-name">AuditToolkit Labs</span></div>
+                <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
+                <p class="footer-copy">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+            </div>
+            <div class="footer-col"><h4>Resources</h4><ul>
+                <li><a href="docs.html">Central Documentation Library</a></li>
+                <li><a href="releases.html">Release Notes</a></li>
+                <li><a href="price.html">Licensing &amp; Pricing</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul></div>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/nav.js?v=20260612"></script>
 </body>
 </html>
