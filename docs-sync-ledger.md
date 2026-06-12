@@ -79,3 +79,16 @@ Files Affected:
 
 Description: Added strict remote-only canary toggle path and CI smoke test that validates remote docs when local customer-docs is disabled.
 Sync Status: pending
+
+---
+
+Date: 2026-06-12
+Type: LOCAL_UPDATE
+Source: local
+Files Affected:
+
+- doc-viewer.html
+- README.md
+
+Description: Added visible source mode badge in doc viewer for local, remote, and remote-canary rendering states.
+Sync Status: pending

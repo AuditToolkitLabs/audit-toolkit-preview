@@ -29,6 +29,8 @@ Customer documentation governance:
   `docs-source-config.json` and open docs with `?canary=remote-only`.
 - CI smoke workflow: `.github/workflows/docs-remote-canary-smoke.yml` validates
   remote doc availability with local `customer-docs/` temporarily disabled.
+- Viewer source badge: `doc-viewer.html` shows `Source: local`,
+  `Source: remote`, or `Source: remote (canary)` for test visibility.
 
 ## Not included
 
