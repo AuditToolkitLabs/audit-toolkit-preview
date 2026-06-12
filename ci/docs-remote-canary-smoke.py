@@ -17,11 +17,7 @@ CONFIG_PATH = REPO_ROOT / "docs-source-config.json"
 VIEWER_PATH = REPO_ROOT / "doc-viewer.html"
 
 DOC_INDEX_FILES = [
-    REPO_ROOT / "audit-toolkit-documentation.html",
-    REPO_ROOT / "cmdb-api-documentation.html",
-    REPO_ROOT / "cmdb-asset-platform-documentation.html",
-    REPO_ROOT / "linux-security-lite-documentation.html",
-    REPO_ROOT / "secure-exposure-centre-documentation.html",
+    REPO_ROOT / "docs.html",
 ]
 
 SRC_PATTERN = re.compile(r"doc-viewer\.html\?src=([^\"'&]+)", re.IGNORECASE)

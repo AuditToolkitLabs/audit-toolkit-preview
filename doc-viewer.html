@@ -185,20 +185,30 @@
   var prodBadgeText = '';
 
   if (src.indexOf('linux-security-lite') !== -1) {
-    productName  = 'Linux Security Lite Docs';
-    productLink  = 'linux-security-lite-documentation.html';
+    productName  = 'Linux Security Lite';
+    productLink  = 'docs.html';
     eyebrowText  = 'Linux Security Lite';
     prodBadgeText = 'Linux Security Lite';
   } else if (src.indexOf('audit-toolkit') !== -1) {
-    productName  = 'Audit Admin Toolkit Docs';
-    productLink  = 'audit-toolkit-documentation.html';
+    productName  = 'Audit Admin Toolkit';
+    productLink  = 'docs.html';
     eyebrowText  = 'Audit Admin Toolkit';
     prodBadgeText = 'Audit Admin Toolkit';
   } else if (src.indexOf('cmdb-api') !== -1) {
-    productName  = 'CMDB API Docs';
-    productLink  = 'cmdb-api-documentation.html';
+    productName  = 'CMDB API Data Collection Tool';
+    productLink  = 'docs.html';
     eyebrowText  = 'CMDB API Data Collection Tool';
     prodBadgeText = 'CMDB API Data Collection Tool';
+  } else if (src.indexOf('asset-command-center') !== -1) {
+    productName  = 'Asset Command Center';
+    productLink  = 'docs.html';
+    eyebrowText  = 'Asset Command Center';
+    prodBadgeText = 'Asset Command Center';
+  } else if (src.indexOf('Switch Exposure Centre') !== -1) {
+    productName  = 'Secure Exposure Center';
+    productLink  = 'docs.html';
+    eyebrowText  = 'Secure Exposure Center';
+    prodBadgeText = 'Secure Exposure Center';
   }
 
   bcProduct.textContent = productName;
