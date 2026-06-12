@@ -37,6 +37,12 @@ Customer documentation governance:
 - Viewer resolution log: `doc-viewer.html` has **Show resolution log** to
   display live source resolution steps with millisecond timings for
   performance debugging during development.
+- Ledger dashboard: `ledger-dashboard.html` provides searchable audit trail of
+  all documentation changes with filters by type (Local/Central/Reconciliation)
+  and sync status tracking.
+- Freshness validation: `ci/validate-docs-freshness.py` compares local
+  customer-docs with central repository via file hashes to detect staleness
+  and out-of-sync files. Runs on schedule and can be invoked manually.
 
 ## Not included
 

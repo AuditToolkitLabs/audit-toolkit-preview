@@ -118,3 +118,30 @@ Files Affected:
 
 Description: Added collapsible source resolution log panel showing live resolution steps and millisecond timings for development debugging.
 Sync Status: pending
+
+---
+
+Date: 2026-06-12
+Type: LOCAL_UPDATE
+Source: local
+Files Affected:
+
+- ledger-dashboard.html
+- README.md
+
+Description: Added documentation sync ledger dashboard with searchable audit trail, filters by type and status, and file-level tracking of all documentation changes.
+Sync Status: pending
+
+---
+
+Date: 2026-06-12
+Type: LOCAL_UPDATE
+Source: local
+Files Affected:
+
+- ci/validate-docs-freshness.py
+- .github/workflows/docs-freshness-validation.yml
+- README.md
+
+Description: Added freshness validation to compare local customer-docs against central repository via SHA256 file hashes, identifying mismatches and sync drift. Weekly scheduled validation with manual trigger support.
+Sync Status: pending

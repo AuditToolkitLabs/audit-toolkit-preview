@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation Sync Ledger Dashboard</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --text: #e6e1de;
+      --muted: #a8a39f;
+      --border: #2e2a28;
+      --panel: #1a1714;
+      --panel-2: #242118;
+      --accent-1: #ff6b6b;
+      --accent-2: #51cf66;
+      --radius-sm: 4px;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f0d0b;
+      color: var(--text);
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .header {
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+    }
+    .header h1 { font-size: 2rem; margin-bottom: 8px; }
+    .header p { color: var(--muted); font-size: .95rem; }
+    .controls {
+      display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap;
+      align-items: center;
+    }
+    .controls input {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      flex: 1; min-width: 200px;
+    }
+    .controls input::placeholder { color: var(--muted); }
+    .filter-btn {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover { background: var(--panel-2); color: var(--text); }
+    .filter-btn.active {
+      background: var(--accent-2);
+      color: #0f0d0b;
+      border-color: var(--accent-2);
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      text-align: center;
+    }
+    .stat-number { font-size: 1.8rem; font-weight: 600; color: var(--accent-2); }
+    .stat-label { color: var(--muted); font-size: .85rem; margin-top: 4px; }
+    .ledger-entry {
+      background: var(--panel);
+      border-left: 3px solid var(--accent-2);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .ledger-entry:hover { background: var(--panel-2); border-left-color: var(--accent-1); }
+    .ledger-entry.hidden { display: none; }
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      gap: 8px;
+    }
+    .entry-date {
+      font-weight: 600;
+      color: var(--accent-2);
+      font-size: .95rem;
+    }
+    .entry-type {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: .75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .entry-type.local_update { background: #ff6b6b44; color: var(--accent-1); }
+    .entry-type.central_sync { background: #51cf6644; color: var(--accent-2); }
+    .entry-type.reconciliation { background: #4c6ef544; color: #748ffc; }
+    .entry-desc {
+      color: var(--text);
+      margin-bottom: 12px;
+      font-size: .95rem;
+    }
+    .entry-meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: .85rem;
+      color: var(--muted);
+    }
+    .entry-source {
+      padding: 2px 6px;
+      background: var(--panel-2);
+      border-radius: 3px;
+    }
+    .entry-status {
+      padding: 2px 6px;
+      background: var(--panel-2);
+      border-radius: 3px;
+      font-weight: 500;
+    }
+    .entry-status.pending { color: #ffa94d; }
+    .entry-status.synced { color: var(--accent-2); }
+    .entry-status.rejected { color: var(--accent-1); }
+    .files-section {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .files-label {
+      color: var(--muted);
+      font-size: .8rem;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .files-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 6px;
+    }
+    .file-tag {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      padding: 4px 8px;
+      border-radius: 3px;
+      font-size: .8rem;
+      color: var(--muted);
+      word-break: break-word;
+    }
+    .no-results {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      display: none;
+    }
+    .no-results.visible {
+      display: block;
+    }
+    .refresh-btn {
+      background: var(--accent-2);
+      color: #0f0d0b;
+      border: none;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .refresh-btn:hover { opacity: 0.9; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Documentation Sync Ledger</h1>
+      <p>Audit trail of all documentation changes and synchronization events</p>
+    </div>
+
+    <div class="controls">
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search by description, file, or date..."
+        autocomplete="off"
+      >
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="LOCAL_UPDATE">Local Updates</button>
+      <button class="filter-btn" data-filter="CENTRAL_SYNC">Central Syncs</button>
+      <button class="filter-btn" data-filter="RECONCILIATION">Reconciliation</button>
+      <button class="refresh-btn" id="refresh-btn">Refresh</button>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number" id="stat-total">0</div>
+        <div class="stat-label">Total Entries</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="stat-pending">0</div>
+        <div class="stat-label">Pending Sync</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="stat-synced">0</div>
+        <div class="stat-label">Synced</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="stat-files">0</div>
+        <div class="stat-label">Files Affected</div>
+      </div>
+    </div>
+
+    <div id="ledger-container"></div>
+    <div id="no-results" class="no-results"></div>
+      No entries match your search criteria
+    </div>
+  </div>
+
+  <script>
+    var allEntries = [];
+    var currentFilter = 'all';
+    var currentSearch = '';
+
+    async function loadLedger() {
+      try {
+        const response = await fetch('docs-sync-ledger.md');
+        const text = await response.text();
+        parseLedger(text);
+        renderEntries();
+        updateStats();
+      } catch (e) {
+        document.getElementById('ledger-container').innerHTML =
+          '<div class="no-results">Error loading ledger: ' + e.message + '</div>';
+      }
+    }
+
+    function parseLedger(text) {
+      const entries = [];
+      const parts = text.split(/^---$/m);
+
+      for (let i = 1; i < parts.length; i++) {
+        const section = parts[i].trim();
+        if (!section) continue;
+
+        const lines = section.split('\n');
+        const entry = {};
+        let currentKey = null;
+        let filesAffected = [];
+
+        for (let line of lines) {
+          line = line.trim();
+          if (!line) continue;
+
+          if (line.startsWith('Date:')) {
+            entry.date = line.replace('Date:', '').trim();
+          } else if (line.startsWith('Type:')) {
+            entry.type = line.replace('Type:', '').trim();
+          } else if (line.startsWith('Source:')) {
+            entry.source = line.replace('Source:', '').trim();
+          } else if (line.startsWith('Files Affected:')) {
+            currentKey = 'files';
+          } else if (line.startsWith('Description:')) {
+            entry.description = line.replace('Description:', '').trim();
+            currentKey = null;
+          } else if (line.startsWith('Sync Status:')) {
+            entry.syncStatus = line.replace('Sync Status:', '').trim();
+            currentKey = null;
+          } else if (currentKey === 'files' && line.startsWith('- ')) {
+            filesAffected.push(line.substring(2));
+          }
+        }
+
+        entry.filesAffected = filesAffected;
+        if (entry.date && entry.type) {
+          entries.push(entry);
+        }
+      }
+
+      allEntries = entries.sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+
+    function renderEntries() {
+      const container = document.getElementById('ledger-container');
+      const noResults = document.getElementById('no-results');
+      container.innerHTML = '';
+      let visibleCount = 0;
+
+      for (let entry of allEntries) {
+        if (!matchesFilter(entry)) {
+          continue;
+        }
+        visibleCount++;
+
+        const typeClass = entry.type.toLowerCase().replace(' ', '_');
+        const statusClass = entry.syncStatus.toLowerCase();
+
+        const html = `
+          <div class="ledger-entry">
+            <div class="entry-header">
+              <span class="entry-date">${entry.date}</span>
+              <span class="entry-type ${typeClass}">${entry.type}</span>
+            </div>
+            <div class="entry-desc">${escapeHtml(entry.description)}</div>
+            <div class="entry-meta">
+              <div class="entry-source">Source: ${escapeHtml(entry.source)}</div>
+              <div class="entry-status ${statusClass}">Status: ${escapeHtml(entry.syncStatus)}</div>
+              <div>${entry.filesAffected.length} file(s)</div>
+            </div>
+            ${entry.filesAffected.length > 0 ? `
+              <div class="files-section">
+                <span class="files-label">Files Affected</span>
+                <div class="files-list">
+                  ${entry.filesAffected.map(f => 
+                    '<div class="file-tag">' + escapeHtml(f) + '</div>'
+                  ).join('')}
+                </div>
+              </div>
+            ` : ''}
+          </div>
+        `;
+        container.innerHTML += html;
+      }
+
+      if (visibleCount === 0) {
+        noResults.classList.add('visible');
+      } else {
+        noResults.classList.remove('visible');
+      }
+    }
+
+    function matchesFilter(entry) {
+      const typeMatch = currentFilter === 'all' || entry.type === currentFilter;
+      if (!typeMatch) return false;
+
+      if (!currentSearch) return true;
+
+      const search = currentSearch.toLowerCase();
+      return (
+        entry.description.toLowerCase().includes(search) ||
+        entry.date.includes(search) ||
+        entry.filesAffected.some(f => f.toLowerCase().includes(search))
+      );
+    }
+
+    function updateStats() {
+      let total = allEntries.length;
+      let pending = allEntries.filter(e => e.syncStatus === 'pending').length;
+      let synced = allEntries.filter(e => e.syncStatus === 'synced').length;
+      let files = new Set();
+      allEntries.forEach(e => e.filesAffected.forEach(f => files.add(f)));
+
+      document.getElementById('stat-total').textContent = total;
+      document.getElementById('stat-pending').textContent = pending;
+      document.getElementById('stat-synced').textContent = synced;
+      document.getElementById('stat-files').textContent = files.size;
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    document.getElementById('search-input').addEventListener('input', (e) => {
+      currentSearch = e.target.value;
+      renderEntries();
+    });
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        currentFilter = e.target.dataset.filter;
+        renderEntries();
+      });
+    });
+
+    document.getElementById('refresh-btn').addEventListener('click', () => {
+      loadLedger();
+    });
+
+    loadLedger();
+  </script>
+</body>
+</html>
