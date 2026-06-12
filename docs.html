@@ -45,113 +45,16 @@
     <p class="eyebrow">Documentation</p>
     <h1>Central Documentation Library</h1>
     <p>Use one central documentation entry point across the full AuditToolkit platform, with direct access to product indexes and core operational guidance.</p>
+    <div class="mt-24">
+      <input type="search" id="doc-search" placeholder="Search all documentation..." class="form-control form-control-lg" />
+    </div>
   </div>
 </div>
 
 <section class="section">
   <div class="wrap">
-    <div class="callout info callout-mb20">
-      <strong>Central docs mode:</strong> This page is now the primary cross-product documentation entry point. Start here, then open any product index directly in the unified doc viewer.
-    </div>
-    <div class="callout info callout-mb20">
-      Customer documentation is served from the governed central documentation source. This site no longer serves local mirrored customer-docs content.
-    </div>
-    <div class="section-head">
-      <p class="eyebrow">Unified Entry Points</p>
-      <h2>Open Product Indexes In The Central Doc Viewer</h2>
-      <p>Each card opens the product index in the shared viewer so navigation and source resolution stay consistent across the platform.</p>
-    </div>
-    <div class="grid-2">
-      <a href="doc-viewer.html?src=customer-docs/cmdb-api/index.md" class="product-card">
-        <div class="product-card-head">
-          <div class="product-icon bg-accent-blue"><img src="assets/images/audittoolkit-icon-pack/svg/cmdb-api-data-collection-tool-deployment.svg" alt="CMDB API icon" /></div>
-          <span class="badge badge-amber">Beta</span>
-        </div>
-        <div>
-          <h3>CMDB API Data Collection Tool</h3>
-          <p>Central index for API collection deployment, integration quick starts, operations runbooks, and security guidance.</p>
-        </div>
-        <div class="product-card-foot">
-          <span class="badge badge-blue">Index + 30+ Docs</span>
-          <span class="text-accent text-sm">Open central docs &rarr;</span>
-        </div>
-      </a>
-
-      <a href="doc-viewer.html?src=customer-docs/audit-toolkit/index.md" class="product-card">
-        <div class="product-card-head">
-          <div class="product-icon bg-accent-green"><img src="assets/images/audittoolkit-icon-pack/svg/audit-tool-control-plane.svg" alt="Audit Admin Toolkit icon" /></div>
-          <span class="badge badge-amber">Beta</span>
-        </div>
-        <div>
-          <h3>Audit Admin Toolkit</h3>
-          <p>Central index for platform deployment, operations, API automation, remediation workflows, and security assurance documentation.</p>
-        </div>
-        <div class="product-card-foot">
-          <span class="badge badge-blue">Index + 27 Docs</span>
-          <span class="badge badge-green badge-sm">OWASP A+</span>
-          <span class="text-accent text-sm">Open central docs &rarr;</span>
-        </div>
-      </a>
-
-      <a href="doc-viewer.html?src=customer-docs/asset-command-center/index.md" class="product-card">
-        <div class="product-card-head">
-          <div class="product-icon bg-accent-pink"><img src="assets/images/audittoolkit-icon-pack/svg/asset-command-centre-analytics.svg" alt="Asset Command Center icon" /></div>
-          <span class="badge badge-green">Current</span>
-        </div>
-        <div>
-          <h3>Asset Command Center</h3>
-          <p>Central index for asset intelligence workflows, integrations, governance controls, and operational security guidance.</p>
-        </div>
-        <div class="product-card-foot">
-          <span class="badge badge-blue">Index + 40+ Docs</span>
-          <span class="text-accent text-sm">Open central docs &rarr;</span>
-        </div>
-      </a>
-
-      <a href="doc-viewer.html?src=customer-docs/linux-security-lite/index.md" class="product-card">
-        <div class="product-card-head">
-          <div class="product-icon bg-accent-warn"><img src="assets/images/audittoolkit-icon-pack/svg/linux-security-lite-security.svg" alt="Linux Security Lite icon" /></div>
-          <span class="badge badge-amber">Beta</span>
-        </div>
-        <div>
-          <h3>Linux Security Lite</h3>
-          <p>Central index for Linux hardening, control mappings, CI/CD compliance gates, support runbooks, and compliance outputs.</p>
-        </div>
-        <div class="product-card-foot">
-          <span class="badge badge-blue">Index + 24 Docs</span>
-          <span class="text-accent text-sm">Open central docs &rarr;</span>
-        </div>
-      </a>
-
-      <a href="doc-viewer.html?src=customer-docs/Switch%20Exposure%20Centre/index.md" class="product-card">
-        <div class="product-card-head">
-          <div class="product-icon bg-accent-teal"><img src="assets/images/audittoolkit-icon-pack/svg/switch-exposure-center-ingestion.svg" alt="Secure Exposure Center icon" /></div>
-          <span class="badge badge-amber">Beta</span>
-        </div>
-        <div>
-          <h3>Secure Exposure Center</h3>
-          <p>Central index for switch exposure intelligence, advisory refresh operations, network security workflows, and legal guidance.</p>
-        </div>
-        <div class="product-card-foot">
-          <span class="badge badge-blue">Index + 28 Docs</span>
-          <span class="text-accent text-sm">Open central docs &rarr;</span>
-        </div>
-      </a>
-
-      <a href="how-it-works.html#architecture-model" class="product-card">
-        <div class="product-card-head">
-          <div class="product-icon bg-accent-blue"><img src="assets/images/audittoolkit-icon-pack/svg/audit-assurance-node-ingestion.svg" alt="Audit Assurance Node icon" /></div>
-          <span class="badge badge-amber">Coverage In Progress</span>
-        </div>
-        <div>
-          <h3>Audit Assurance Node</h3>
-          <p>Execution-layer documentation is being consolidated into the central docs baseline. Use architecture and toolkit docs now while dedicated index publication completes.</p>
-        </div>
-        <div class="product-card-foot">
-          <span class="badge badge-blue">Execution Layer</span>
-          <span class="text-accent text-sm">View current guidance &rarr;</span>
-        </div>
-      </a>
+    <div id="doc-list-container">
+      <p class="text-center muted">Loading documentation index...</p>
     </div>
   </div>
 </section>
@@ -221,7 +124,72 @@
     </div>
   </div>
 </footer>
-<script src="assets/js/nav.js?v=20260609"></script>
-</body>
-</html>
+<script src="assets/js/nav.js?v=20260612"></script>
+<script>
+(function() {
+  var searchInput = document.getElementById('doc-search');
+  var listContainer = document.getElementById('doc-list-container');
+  var allDocs = [];
+
+  function renderDocs(docs) {
+    if (!listContainer) return;
+    if (!docs || docs.length === 0) {
+      listContainer.innerHTML = '<p class="text-center muted">No documents found.</p>';
+      return;
+    }
+
+    var html = '<div class="grid-3">';
+    docs.forEach(function(doc) {
+      html += `
+        <a href="doc-viewer.html?src=${encodeURIComponent(doc.src)}" class="product-card">
+          <div>
+            <h3>${doc.title}</h3>
+            <p>${doc.description}</p>
+          </div>
+          <div class="product-card-foot">
+            <span class="badge badge-blue">${doc.product}</span>
+            <span class="text-accent text-sm">Read doc &rarr;</span>
+          </div>
+        </a>
+      `;
+    });
+    html += '</div>';
+    listContainer.innerHTML = html;
+  }
+
+  function filterDocs() {
+    var query = searchInput.value.toLowerCase().trim();
+    if (!query) {
+      renderDocs(allDocs);
+      return;
+    }
+    var filteredDocs = allDocs.filter(function(doc) {
+      return doc.title.toLowerCase().includes(query) ||
+             doc.product.toLowerCase().includes(query) ||
+             doc.description.toLowerCase().includes(query);
+    });
+    renderDocs(filteredDocs);
+  }
+
+  fetch('docs-manifest.json')
+    .then(function(response) {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(function(data) {
+      allDocs = data;
+      renderDocs(allDocs);
+      if (searchInput) {
+        searchInput.addEventListener('input', filterDocs);
+      }
+    })
+    .catch(function(error) {
+      if (listContainer) {
+        listContainer.innerHTML = '<p class="text-center muted">Error loading documentation index. Please try again later.</p>';
+      }
+      console.error('Error fetching docs manifest:', error);
+    });
+})();
 
