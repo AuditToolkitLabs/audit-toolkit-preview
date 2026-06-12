@@ -171,11 +171,19 @@
   var sourceConfig = {
     mode: 'remote-only',
     localDocsRoot: 'customer-docs',
-    remoteMirrorBaseUrl: 'https://raw.githubusercontent.com/AuditToolkitLabs/AuditToolkit-Docs/main',
+    remoteMirrorBaseUrl: 'https://raw.githubusercontent.com/AuditToolkitLabs/releases/main',
     enableRemoteFallback: false,
     enableCanaryRemoteOnly: false,
     canaryQueryParam: 'canary',
     canaryQueryValue: 'remote-only'
+  };
+
+  var centralPathMap = {
+    'customer-docs/cmdb-api/index.md': 'downloads/CMDB API Data Collection Tool/v1.0.1/README.md',
+    'customer-docs/audit-toolkit/index.md': 'downloads/Audit Toolkit/v6.4.4/changelog.md',
+    'customer-docs/asset-command-center/index.md': 'downloads/Asset Command Center/v1.1.0/README.md',
+    'customer-docs/linux-security-lite/index.md': 'downloads/Linux Security Lite/v1.2.2/README.md',
+    'customer-docs/Switch Exposure Centre/index.md': 'downloads/Switch Exposure Centre/v0.1.1/README.md'
   };
 
   // Detect product
@@ -295,9 +303,21 @@
     return (value || '').replace(/\/+$/, '');
   }
 
+  function encodePathSegments(pathValue) {
+    return (pathValue || '')
+      .split('/')
+      .map(function (segment) { return encodeURIComponent(segment); })
+      .join('/');
+  }
+
+  function mapCentralPath(pathValue) {
+    return centralPathMap[pathValue] || pathValue;
+  }
+
   function buildRemoteUrl(pathValue) {
     var base = trimTrailingSlash(sourceConfig.remoteMirrorBaseUrl);
-    return base ? (base + '/' + pathValue) : null;
+    var encodedPath = encodePathSegments(pathValue);
+    return base && encodedPath ? (base + '/' + encodedPath) : null;
   }
 
   function fetchTextFrom(urlValue) {
@@ -346,7 +366,8 @@
       return Promise.reject(new Error('Invalid document path'));
     }
 
-    var remoteUrl = buildRemoteUrl(localPath);
+    var remotePath = mapCentralPath(localPath);
+    var remoteUrl = buildRemoteUrl(remotePath);
     var canaryParamName = sourceConfig.canaryQueryParam || 'canary';
     var canaryParamValue = (params.get(canaryParamName) || '').toLowerCase();
     var canaryEnabled = sourceConfig.enableCanaryRemoteOnly;
@@ -366,7 +387,7 @@
       return fetchTextFrom(remoteUrl).then(function (text) {
         return {
           markdown: text,
-          resolvedSrc: localPath,
+          resolvedSrc: remotePath,
           sourceKind: 'remote-file-mode'
         };
       });
@@ -377,7 +398,7 @@
       return fetchTextFrom(remoteUrl).then(function (text) {
         return {
           markdown: text,
-          resolvedSrc: localPath,
+          resolvedSrc: remotePath,
           sourceKind: canaryRemoteOnly || canaryModeParam === 'remote-only'
             ? 'remote-canary'
             : 'remote-forced'
@@ -389,7 +410,7 @@
     return fetchTextFrom(remoteUrl).then(function (text) {
       return {
         markdown: text,
-        resolvedSrc: localPath,
+        resolvedSrc: remotePath,
         sourceKind: 'remote-default'
       };
     });

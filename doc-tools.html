@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Documentation Tools & Operations — AuditToolkit Labs</title>
-  <meta name="description" content="Guide to documentation management tools, sync ledger dashboard, freshness validation, and troubleshooting for AuditToolkit documentation system." />
+  <meta name="description" content="Guide to documentation management tools, remote availability validation, source configuration, and troubleshooting for AuditToolkit documentation system." />
   <meta name="robots" content="noindex" />
   <link rel="stylesheet" href="assets/css/site.css" />
   <style>
@@ -64,7 +64,7 @@
     </div>
     <p class="eyebrow">Developer Reference</p>
     <h1>Documentation Tools & Operations</h1>
-    <p>Guides for managing documentation, viewing change history, validating sync status, and troubleshooting documentation access.</p>
+    <p>Guides for managing documentation, validating remote availability, configuring source resolution, and troubleshooting documentation access.</p>
   </div>
 </div>
 
@@ -176,7 +176,7 @@
 <pre><code>{
   "mode": "remote-only",
   "localDocsRoot": "customer-docs",
-  "remoteMirrorBaseUrl": "https://raw.githubusercontent.com/AuditToolkitLabs/AuditToolkit-Docs/main",
+  "remoteMirrorBaseUrl": "https://raw.githubusercontent.com/AuditToolkitLabs/releases/main",
   "enableRemoteFallback": false,
   "enableCanaryRemoteOnly": false,
   "canaryQueryParam": "canary",

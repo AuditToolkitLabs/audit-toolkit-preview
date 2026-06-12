@@ -1,7 +1,7 @@
 {
   "mode": "remote-only",
   "localDocsRoot": "customer-docs",
-  "remoteMirrorBaseUrl": "https://raw.githubusercontent.com/AuditToolkitLabs/AuditToolkit-Docs/main",
+  "remoteMirrorBaseUrl": "https://raw.githubusercontent.com/AuditToolkitLabs/releases/main",
   "enableRemoteFallback": false,
   "enableCanaryRemoteOnly": false,
   "canaryQueryParam": "canary",

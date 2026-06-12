@@ -22,6 +22,24 @@ DOC_INDEX_FILES = [
 
 SRC_PATTERN = re.compile(r"doc-viewer\.html\?src=([^\"'&]+)", re.IGNORECASE)
 
+CENTRAL_PATH_MAP = {
+    "customer-docs/cmdb-api/index.md": (
+        "downloads/CMDB API Data Collection Tool/v1.0.1/README.md"
+    ),
+    "customer-docs/audit-toolkit/index.md": (
+        "downloads/Audit Toolkit/v6.4.4/changelog.md"
+    ),
+    "customer-docs/asset-command-center/index.md": (
+        "downloads/Asset Command Center/v1.1.0/README.md"
+    ),
+    "customer-docs/linux-security-lite/index.md": (
+        "downloads/Linux Security Lite/v1.2.2/README.md"
+    ),
+    "customer-docs/Switch Exposure Centre/index.md": (
+        "downloads/Switch Exposure Centre/v0.1.1/README.md"
+    ),
+}
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -85,6 +103,15 @@ def check_url(url: str, timeout_seconds: int) -> tuple[bool, str]:
         return False, f"URL error: {exc.reason}"
 
 
+def map_source_path(src: str) -> str:
+    return CENTRAL_PATH_MAP.get(src, src)
+
+
+def encode_source_path(src: str) -> str:
+    segments = [urllib.parse.quote(part, safe="") for part in src.split("/")]
+    return "/".join(segments)
+
+
 def main() -> int:
     args = parse_args()
 
@@ -119,11 +146,15 @@ def main() -> int:
 
     tested = 0
     for src in sources[: max(1, args.sample_size)]:
-        url = f"{remote_base}/{src.lstrip('/')}"
+        mapped = map_source_path(src).lstrip("/")
+        url = f"{remote_base}/{encode_source_path(mapped)}"
         ok, message = check_url(url, args.timeout_seconds)
         tested += 1
         if not ok:
-            print(f"FAIL {src} -> {message}", file=sys.stderr)
+            fail_message = (
+                f"FAIL {src} (mapped: {mapped}) -> {message}"
+            )
+            print(fail_message, file=sys.stderr)
             return 1
 
     print(f"Remote canary smoke passed. Tested {tested} documentation links.")
