@@ -282,17 +282,7 @@
   </div>
 </footer>
 
-<script>
-var hamburger = document.getElementById('nav-hamburger');
-var mobile = document.getElementById('nav-mobile');
-if (hamburger) {
-  hamburger.addEventListener('click', function() {
-    var expanded = this.getAttribute('aria-expanded') === 'true';
-    this.setAttribute('aria-expanded', !expanded);
-    mobile.style.display = expanded ? 'none' : 'flex';
-  });
-}
-</script>
+<script src="assets/js/nav.js?v=20260612e"></script>
 
 </body>
 </html>

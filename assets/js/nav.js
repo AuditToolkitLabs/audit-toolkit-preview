@@ -3,6 +3,50 @@
 (function () {
   'use strict';
 
+  /* ── Global nav normalization (large menu on every page) ── */
+  var NAV_LINKS = [
+    { href: 'index.html#products', label: 'Products' },
+    { href: 'script-coverage.html', label: 'Coverage' },
+    { href: 'regulated-industries.html', label: 'Regulated' },
+    { href: 'toolkit-overview.html', label: 'Overview' },
+    { href: 'how-it-works.html', label: 'How It Works' },
+    { href: 'use-cases.html', label: 'Use Cases' },
+    { href: 'integrations.html', label: 'Integrations' },
+    { href: 'docs.html', label: 'Documentation' },
+    { href: 'releases.html', label: 'Releases' },
+    { href: 'licensing.html', label: 'Licensing' },
+    { href: 'support.html', label: 'Support' }
+  ];
+
+  function normalizeNavigation() {
+    var brandText = document.querySelector('.nav-brand span:last-child');
+    var navLinks = document.querySelector('.nav-links');
+    var navCta = document.querySelector('.nav-cta');
+    var mobile = document.getElementById('nav-mobile');
+
+    if (brandText) {
+      brandText.textContent = 'AuditToolkit Labs';
+    }
+
+    if (navLinks) {
+      navLinks.innerHTML = NAV_LINKS.map(function (item) {
+        return '<li><a href="' + item.href + '">' + item.label + '</a></li>';
+      }).join('');
+    }
+
+    if (navCta) {
+      navCta.innerHTML = '<a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a>';
+    }
+
+    if (mobile) {
+      mobile.innerHTML = NAV_LINKS.map(function (item) {
+        return '<a href="' + item.href + '">' + item.label + '</a>';
+      }).join('') + '<a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>';
+    }
+  }
+
+  normalizeNavigation();
+
   /* ── Mobile hamburger ─────────────────────────────── */
   var btn  = document.getElementById('nav-hamburger');
   var menu = document.getElementById('nav-mobile');
