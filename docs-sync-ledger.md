@@ -41,6 +41,7 @@ Files Affected:
 
 - OFFLINE-DOC-SYNC-RECONCILIATION-MODEL.md
 - docs-sync-ledger.md
+- sync-docs-to-website.ps1
 
 Description: Added formal offline sync and reconciliation operating model and mandatory ledger.
 Sync Status: pending
