@@ -513,6 +513,32 @@ figcaption { padding: 10px 14px; color: var(--muted); font-size: .88rem; }
   font-size: 0.9rem;
   color: var(--muted);
 }
+.brand-sheet {
+  background: #f4f7fb;
+}
+.brand-sheet figcaption {
+  border-top: 1px solid var(--border);
+}
+.brand-icon-preview {
+  width: 96px;
+  height: 96px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: rgba(90,160,255,.06);
+  object-fit: cover;
+  display: block;
+}
+.brand-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.brand-icon-name {
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--text);
+}
 .addons-block { margin-top: 32px; }
 .addons-title { font-size: 1.3rem; margin: 0 0 10px; }
 .addons-intro { font-size: .9rem; color: var(--muted); margin: 0 0 16px; }
