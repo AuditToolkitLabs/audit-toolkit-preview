@@ -19,6 +19,19 @@ Type: LOCAL_UPDATE
 Source: local
 Files Affected:
 
+- doc-tools.html
+- docs.html
+
+Description: Added site integration for documentation tools: created doc-tools.html reference page documenting viewer features, ledger dashboard, freshness validation, and troubleshooting. Updated docs.html to link new tools and added footer navigation.
+Sync Status: pending
+
+---
+
+Date: 2026-06-12
+Type: LOCAL_UPDATE
+Source: local
+Files Affected:
+
 - customer-docs/SOURCE-OF-TRUTH-POLICY.md
 - customer-docs/README.md
 - README.md

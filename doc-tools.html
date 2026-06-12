@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation Tools & Operations — AuditToolkit Labs</title>
+  <meta name="description" content="Guide to documentation management tools, sync ledger dashboard, freshness validation, and troubleshooting for AuditToolkit documentation system." />
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="assets/css/site.css" />
+  <style>
+    .doc-body { max-width: 860px; }
+    .doc-body h1 { font-size: clamp(1.5rem,3vw,2.1rem); color: var(--text); margin: 0 0 .6em; }
+    .doc-body h2 { font-size: 1.35rem; color: var(--text); margin: 2em 0 .5em; padding-bottom: .4em; border-bottom: 1px solid var(--border); }
+    .doc-body h3 { font-size: 1.08rem; color: var(--text); margin: 1.5em 0 .4em; }
+    .doc-body h4 { font-size: .97rem; color: var(--muted); margin: 1.2em 0 .3em; }
+    .doc-body p  { color: var(--muted); margin: 0 0 1em; }
+    .doc-body ul, .doc-body ol { color: var(--muted); padding-left: 1.4em; margin: 0 0 1em; }
+    .doc-body li { margin-bottom: 5px; }
+    .doc-body a  { color: var(--accent); }
+    .doc-body a:hover { color: var(--accent-h); }
+    .doc-body strong { color: var(--text); }
+    .doc-body em { color: var(--muted); }
+    .doc-body blockquote {
+      border-left: 3px solid var(--accent);
+      margin: 1.2em 0; padding: .6em 1em;
+      background: var(--panel); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      color: var(--muted);
+    }
+    .doc-body blockquote p { margin: 0; }
+    .doc-body pre {
+      background: var(--panel-2); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 1em 1.2em;
+      overflow-x: auto; margin: 0 0 1.2em;
+    }
+    .doc-body pre code { background: none; padding: 0; color: var(--accent-2); font-size: .87em; border-radius: 0; }
+    .doc-body code { font-size: .88em; background: var(--panel-2); padding: 2px 6px; border-radius: 4px; color: var(--accent-2); }
+    .doc-body table { width: 100%; border-collapse: collapse; margin: 0 0 1.5em; font-size: .92em; }
+    .doc-body th { background: var(--panel-2); color: var(--text); text-align: left; padding: 9px 13px; border: 1px solid var(--border); font-weight: 600; }
+    .doc-body td { padding: 8px 13px; border: 1px solid var(--border); color: var(--muted); vertical-align: top; }
+    .doc-body tr:nth-child(even) td { background: var(--panel); }
+    .doc-body hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+    .doc-body img { max-width: 100%; border-radius: var(--radius-sm); margin: .5em 0; }
+    .tool-section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.2em;
+      margin: 1.5em 0;
+    }
+    .tool-title { color: var(--accent-2); font-weight: 600; margin-bottom: .5em; }
+  </style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap"><div class="nav-inner"><a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a><ul class="nav-links"><li><a href="index.html#products">Products</a></li><li><a href="toolkit-overview.html">Overview</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="use-cases.html">Use Cases</a></li><li><a href="integrations.html">Integrations</a></li><li><a href="docs.html" class="active">Documentation</a></li><li><a href="releases.html">Releases</a></li><li><a href="licensing.html">Licensing</a></li><li><a href="support.html">Support</a></li></ul><div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div><button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button></div></div></nav>
+<div class="nav-mobile" id="nav-mobile"><a href="index.html">Home</a><a href="index.html#products">Products</a><a href="toolkit-overview.html">Overview</a><a href="how-it-works.html">How It Works</a><a href="use-cases.html">Use Cases</a><a href="integrations.html">Integrations</a><a href="docs.html">Documentation</a><a href="releases.html">Releases</a><a href="licensing.html">Licensing</a><a href="support.html">Support</a></div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span>
+      <a href="docs.html">Documentation</a><span class="sep">/</span>
+      <span class="cur">Tools & Operations</span>
+    </div>
+    <p class="eyebrow">Developer Reference</p>
+    <h1>Documentation Tools & Operations</h1>
+    <p>Guides for managing documentation, viewing change history, validating sync status, and troubleshooting documentation access.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="doc-body">
+
+<h2>Overview</h2>
+
+<p>This reference documents the tools and operations available for managing AuditToolkit Labs documentation.</p>
+
+<h3>Documentation Sources</h3>
+
+<p>Documentation is served from a configurable source that can be:</p>
+<ul>
+<li><strong>Local</strong> — From the <code>customer-docs/</code> directory in this repository</li>
+<li><strong>Remote</strong> — From a central documentation mirror on <code>audittoolkitlabs.com</code></li>
+<li><strong>Hybrid</strong> — Local-first with automatic remote fallback (default)</li>
+</ul>
+
+<p>The source configuration is controlled in <code>docs-source-config.json</code> and can be toggled without changing any documentation links.</p>
+
+<hr>
+
+<h2>Documentation Viewer</h2>
+
+<p>The documentation viewer at <a href="doc-viewer.html">doc-viewer.html</a> provides an interactive documentation browser with advanced features.</p>
+
+<div class="tool-section">
+<div class="tool-title">📍 Source Mode Badge</div>
+<p>Each page displays a colored badge indicating where the documentation is being served from:</p>
+<ul>
+<li><strong>Source: local</strong> — Served from local customer-docs/</li>
+<li><strong>Source: remote</strong> — Served from remote mirror</li>
+<li><strong>Source: remote (canary)</strong> — Served from remote in test mode</li>
+</ul>
+</div>
+
+<div class="tool-section">
+<div class="tool-title">🐛 Debug Context Helper</div>
+<p>Click <strong>Copy debug context</strong> to copy JSON containing:</p>
+<ul>
+<li>Requested vs. resolved document source</li>
+<li>Source mode and canary parameters</li>
+<li>Effective configuration (all fields)</li>
+<li>Page URL and timestamp</li>
+</ul>
+<p>Use this for troubleshooting documentation access issues and support triage.</p>
+</div>
+
+<div class="tool-section">
+<div class="tool-title">⏱️ Resolution Log</div>
+<p>Click <strong>Show resolution log</strong> to display live source resolution steps with millisecond timings:</p>
+<ul>
+<li>Doc load started</li>
+<li>Config loaded</li>
+<li>Content resolved from [local|remote]</li>
+<li>Parsing, rendering, and link rewriting steps</li>
+<li>Total time elapsed</li>
+</ul>
+<p>Use this to identify performance bottlenecks and debug fetch failures.</p>
+</div>
+
+<h3>Query Parameters</h3>
+
+<p>The viewer supports the following query parameters to control source resolution:</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>src</code></td>
+<td><code>customer-docs/...</code></td>
+<td>Request a specific documentation file</td>
+</tr>
+<tr>
+<td><code>canary</code></td>
+<td><code>remote-only</code></td>
+<td>Force remote-only mode (when enabled)</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Example:</strong> <code>doc-viewer.html?src=customer-docs/audit-toolkit/README.md&canary=remote-only</code></p>
+
+<hr>
+
+<h2>Sync Ledger Dashboard</h2>
+
+<p>The <a href="ledger-dashboard.html">ledger-dashboard.html</a> provides a searchable, filterable audit trail of all documentation changes.</p>
+
+<div class="tool-section">
+<div class="tool-title">📊 Audit Trail</div>
+<p>View all documentation synchronization events with:</p>
+<ul>
+<li>Entry date</li>
+<li>Type (Local Update, Central Sync, Reconciliation)</li>
+<li>Source (local or central repository)</li>
+<li>List of affected files</li>
+<li>Sync status (Pending, Synced, Rejected)</li>
+</ul>
+</div>
+
+<div class="tool-section">
+<div class="tool-title">🔍 Search & Filters</div>
+<p>Quickly find entries by:</p>
+<ul>
+<li><strong>Search box</strong> — Full-text search across descriptions, dates, and file names</li>
+<li><strong>Type filters</strong> — Local Updates, Central Syncs, Reconciliation events</li>
+<li><strong>Sync status</strong> — Track which events are pending, synced, or rejected</li>
+</ul>
+</div>
+
+<div class="tool-section">
+<div class="tool-title">📈 Statistics</div>
+<p>Dashboard displays real-time metrics:</p>
+<ul>
+<li>Total documentation events</li>
+<li>Pending synchronizations awaiting central sync</li>
+<li>Completed sync operations</li>
+<li>Count of unique files affected</li>
+</ul>
+</div>
+
+<h3>Understanding Entry Types</h3>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LOCAL_UPDATE</strong></td>
+<td>Documentation was updated locally when the central repository was offline. Requires reconciliation with central during next sync window.</td>
+</tr>
+<tr>
+<td><strong>CENTRAL_SYNC</strong></td>
+<td>Documentation was synchronized from the central repository. Local and central are now in sync.</td>
+</tr>
+<tr>
+<td><strong>RECONCILIATION</strong></td>
+<td>Conflicting local and central changes were reconciled. Both sources have been aligned.</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2>Freshness Validation</h2>
+
+<p>The freshness validator compares local documentation against the central repository to identify staleness and sync drift.</p>
+
+<div class="tool-section">
+<div class="tool-title">🔄 Validation Process</div>
+<p>Computes SHA256 hashes of all files and reports:</p>
+<ul>
+<li><strong>Fresh</strong> — Local files match central repository</li>
+<li><strong>Mismatches</strong> — Hash differences detected (local diverged from central)</li>
+<li><strong>Missing locally</strong> — Central has files not yet synced to local</li>
+<li><strong>Diverged</strong> — Local has changes not yet pushed to central</li>
+</ul>
+</div>
+
+<div class="tool-section">
+<div class="tool-title">⏰ Scheduled Validation</div>
+<p>Freshness checks run automatically:</p>
+<ul>
+<li><strong>Weekly schedule</strong> — Monday 9 AM UTC</li>
+<li><strong>Manual trigger</strong> — Anytime via GitHub Actions workflow_dispatch</li>
+<li><strong>Non-blocking</strong> — Validation does not prevent merges</li>
+</ul>
+</div>
+
+<h3>Running Manual Validation</h3>
+
+<p>To check freshness immediately:</p>
+
+<pre><code>python ci/validate-docs-freshness.py --show-diffs</code></pre>
+
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--show-diffs</code></td>
+<td>Display detailed hash comparisons for mismatches</td>
+</tr>
+<tr>
+<td><code>--timeout-seconds N</code></td>
+<td>Operation timeout (default 30 seconds)</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Exit codes:</strong></p>
+<ul>
+<li><code>0</code> — Fresh or diverged (informational)</li>
+<li><code>1</code> — Out of sync (hash mismatches or missing files)</li>
+</ul>
+
+<hr>
+
+<h2>Source Configuration</h2>
+
+<p>Documentation source resolution is controlled by <code>docs-source-config.json</code>:</p>
+
+<pre><code>{
+  "mode": "local-first",
+  "localDocsRoot": "customer-docs",
+  "remoteMirrorBaseUrl": "https://audittoolkitlabs.com",
+  "enableRemoteFallback": true,
+  "enableCanaryRemoteOnly": false,
+  "canaryQueryParam": "canary",
+  "canaryQueryValue": "remote-only",
+  "centralDocsRepositoryPath": "F:/AuditProducts/AuditToolkit-Docs"
+}</code></pre>
+
+<h3>Configuration Fields</h3>
+
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mode</code></td>
+<td>Source priority: <code>local-first</code>, <code>remote-only</code>, <code>remote-with-fallback</code></td>
+</tr>
+<tr>
+<td><code>localDocsRoot</code></td>
+<td>Relative path to local documentation directory</td>
+</tr>
+<tr>
+<td><code>remoteMirrorBaseUrl</code></td>
+<td>Base URL for remote documentation mirror</td>
+</tr>
+<tr>
+<td><code>enableRemoteFallback</code></td>
+<td>Allow fallback to remote if local fetch fails</td>
+</tr>
+<tr>
+<td><code>enableCanaryRemoteOnly</code></td>
+<td>When true, <code>?canary=remote-only</code> parameter enables remote-only testing</td>
+</tr>
+<tr>
+<td><code>canaryQueryParam</code> &amp; <code>canaryQueryValue</code></td>
+<td>Query parameter name and value to trigger canary mode</td>
+</tr>
+<tr>
+<td><code>centralDocsRepositoryPath</code></td>
+<td>Local path to central docs repository (for freshness validation)</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2>Troubleshooting</h2>
+
+<h3>Documentation Not Loading</h3>
+
+<p><strong>Check:</strong></p>
+<ol>
+<li>Click <strong>Copy debug context</strong> in the doc viewer</li>
+<li>Verify <code>resolvedSrc</code> matches expected source</li>
+<li>Check <code>sourceKind</code> (local, remote, or fallback)</li>
+<li>Review <strong>Show resolution log</strong> for fetch errors</li>
+</ol>
+
+<h3>Wrong Source Being Used</h3>
+
+<p><strong>Check:</strong></p>
+<ol>
+<li>Verify <code>docs-source-config.json</code> mode setting</li>
+<li>Check active query parameters in URL</li>
+<li>Inspect source mode badge color</li>
+<li>Look at <strong>resolution log</strong> to see why source was selected</li>
+</ol>
+
+<h3>Documentation Out of Sync</h3>
+
+<p><strong>Check:</strong></p>
+<ol>
+<li>Run <code>python ci/validate-docs-freshness.py --show-diffs</code></li>
+<li>Review sync ledger dashboard for pending entries</li>
+<li>Check if local updates are awaiting central sync</li>
+<li>Reconcile hash mismatches according to operating model</li>
+</ol>
+
+<h3>Remote Docs Unavailable</h3>
+
+<p><strong>Check:</strong></p>
+<ol>
+<li>Verify remote mirror URL in config is accessible</li>
+<li>Enable canary testing: Set <code>enableCanaryRemoteOnly: true</code> in config</li>
+<li>Test with <code>?canary=remote-only</code> query parameter</li>
+<li>Review CI smoke test results in GitHub Actions</li>
+</ol>
+
+<hr>
+
+<h2>Related Documentation</h2>
+
+<ul>
+<li><a href="doc-viewer.html">Documentation Viewer</a></li>
+<li><a href="ledger-dashboard.html">Sync Ledger Dashboard</a></li>
+<li><a href="docs.html">Documentation Hub</a></li>
+<li><a href="support.html">Support &amp; Contact</a></li>
+</ul>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>&copy; 2026 AuditToolkit Labs. All rights reserved. | <a href="support.html">Support</a></p>
+  </div>
+</footer>
+
+<script>
+var hamburger = document.getElementById('nav-hamburger');
+var mobile = document.getElementById('nav-mobile');
+if (hamburger) {
+  hamburger.addEventListener('click', function() {
+    var expanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', !expanded);
+    mobile.style.display = expanded ? 'none' : 'flex';
+  });
+}
+</script>
+
+</body>
+</html>
