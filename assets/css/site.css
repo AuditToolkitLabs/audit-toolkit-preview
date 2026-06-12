@@ -172,29 +172,32 @@ hr.divider  { border: none; border-top: 1px solid var(--border); margin: 0; }
 
 /* ── Cards ────────────────────────────────────────────── */
 .card {
+  --card-image: url('../images/hero/hero-server-rack.jpg');
+  --card-image-opacity: .12;
+  --card-overlay: linear-gradient(165deg, rgba(90,160,255,.09) 0%, rgba(13,28,56,.34) 45%, rgba(17,26,46,.66) 100%);
   position: relative;
   overflow: hidden;
   background: linear-gradient(180deg, rgba(15,23,42,.88) 0%, rgba(17,26,46,.94) 100%);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 20px;
+  padding: 18px;
   transition: border-color .2s, box-shadow .2s, transform .2s;
 }
 .card::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('../images/hero/hero-server-rack.jpg');
+  background-image: var(--card-image);
   background-size: cover;
   background-position: center;
-  opacity: .14;
+  opacity: var(--card-image-opacity);
   z-index: 0;
 }
 .card::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(165deg, rgba(90,160,255,.10) 0%, rgba(13,28,56,.36) 45%, rgba(17,26,46,.64) 100%);
+  background: var(--card-overlay);
   z-index: 0;
 }
 .card > * { position: relative; z-index: 1; }
@@ -202,6 +205,35 @@ hr.divider  { border: none; border-top: 1px solid var(--border); margin: 0; }
   border-color: var(--border-l);
   box-shadow: var(--shadow);
   transform: translateY(-2px);
+}
+
+/* Contextual card tuning for cleaner readability */
+.grid-2 .card,
+.grid-3 .card,
+.grid-4 .card,
+.pricing-grid-custom .card {
+  --card-image-opacity: .18;
+  --card-image: url('../images/hero/hero-dark-tech.jpg');
+}
+
+.doc-render .card,
+.doc-body .card,
+pre.card,
+.card pre,
+.card code,
+.table-wrap,
+.release-body {
+  --card-image-opacity: 0;
+  --card-overlay: linear-gradient(180deg, rgba(17,26,46,.90) 0%, rgba(17,26,46,.90) 100%);
+}
+
+pre.card {
+  background: var(--panel-2);
+}
+
+.cta-band .card,
+.site-footer .card {
+  --card-image-opacity: .06;
 }
 
 /* ── Grids ────────────────────────────────────────────── */
