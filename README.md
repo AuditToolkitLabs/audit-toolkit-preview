@@ -34,6 +34,9 @@ Customer documentation governance:
 - Viewer debug helper: `doc-viewer.html` includes **Copy debug context** to
   copy source mode, resolved path, and effective docs-source config for
   support triage.
+- Viewer resolution log: `doc-viewer.html` has **Show resolution log** to
+  display live source resolution steps with millisecond timings for
+  performance debugging during development.
 
 ## Not included
 

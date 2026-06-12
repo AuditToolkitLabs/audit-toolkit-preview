@@ -105,3 +105,16 @@ Files Affected:
 
 Description: Added copyable debug context helper in doc viewer for source troubleshooting and support triage.
 Sync Status: pending
+
+---
+
+Date: 2026-06-12
+Type: LOCAL_UPDATE
+Source: local
+Files Affected:
+
+- doc-viewer.html
+- README.md
+
+Description: Added collapsible source resolution log panel showing live resolution steps and millisecond timings for development debugging.
+Sync Status: pending

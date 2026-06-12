@@ -56,6 +56,31 @@
       cursor: pointer;
     }
     .doc-debug-btn:hover { color: var(--text); background: var(--panel-2); }
+    .doc-status-panel {
+      display: none;
+      position: fixed; bottom: 8px; right: 8px;
+      background: var(--panel-2); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 12px; max-width: 380px;
+      font-size: .78rem; color: var(--muted); z-index: 9999;
+      max-height: 320px; overflow-y: auto;
+    }
+    .doc-status-panel.visible { display: block; }
+    .doc-status-panel-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border);
+    }
+    .doc-status-panel-title { font-weight: 600; color: var(--text); }
+    .doc-status-toggle-btn {
+      background: none; border: none; color: var(--muted); cursor: pointer;
+      font-size: .75rem; padding: 2px 4px;
+    }
+    .doc-status-toggle-btn:hover { color: var(--text); }
+    .doc-status-step {
+      margin-bottom: 6px; padding: 4px 6px; background: var(--panel);
+      border-left: 2px solid var(--accent-2); border-radius: 2px;
+    }
+    .doc-status-step-time { color: var(--accent-2); font-weight: 500; }
+    .doc-status-step-msg { color: var(--muted); }
   </style>
 </head>
 <body>
@@ -93,6 +118,14 @@
       <span class="badge badge-blue" id="doc-product-badge"></span>
       <span class="badge source-mode-badge" id="doc-source-badge"></span>
       <button type="button" class="doc-debug-btn" id="doc-debug-copy-btn">Copy debug context</button>
+      <button type="button" class="doc-debug-btn" id="doc-status-toggle-btn">Show resolution log</button>
+    </div>
+    <div class="doc-status-panel" id="doc-status-panel">
+      <div class="doc-status-panel-header">
+        <span class="doc-status-panel-title">Source Resolution</span>
+        <button type="button" class="doc-status-toggle-btn" id="doc-status-close-btn">✕</button>
+      </div>
+      <div id="doc-status-steps"></div>
     </div>
     <div class="doc-body" id="doc-body">
       <p class="doc-loading">Loading document&#8230;</p>
@@ -121,7 +154,13 @@
   var prodBadge   = document.getElementById('doc-product-badge');
   var sourceBadge = document.getElementById('doc-source-badge');
   var debugCopyBtn = document.getElementById('doc-debug-copy-btn');
+  var statusPanel = document.getElementById('doc-status-panel');
+  var statusStepsDiv = document.getElementById('doc-status-steps');
+  var statusToggleBtn = document.getElementById('doc-status-toggle-btn');
+  var statusCloseBtn = document.getElementById('doc-status-close-btn');
   var currentDebugContext = null;
+  var resolutionSteps = [];
+  var resolutionStartTime = Date.now();
 
   if (!src) {
     docBody.innerHTML = '<p class="doc-error">No document specified. <a href="docs.html">Return to Documentation Hub.</a></p>';
@@ -458,22 +497,63 @@
     markCopied();
   }
 
+  function recordStep(message) {
+    var elapsed = Date.now() - resolutionStartTime;
+    resolutionSteps.push({ time: elapsed, message: message });
+  }
+
+  function updateStatusPanel() {
+    if (!statusStepsDiv) return;
+    statusStepsDiv.innerHTML = '';
+    resolutionSteps.forEach(function (step) {
+      var div = document.createElement('div');
+      div.className = 'doc-status-step';
+      div.innerHTML =
+        '<span class="doc-status-step-time">' + step.time + 'ms</span> ' +
+        '<span class="doc-status-step-msg">' + (step.message || '') + '</span>';
+      statusStepsDiv.appendChild(div);
+    });
+  }
+
+  function toggleStatusPanel() {
+    if (!statusPanel) return;
+    statusPanel.classList.toggle('visible');
+    if (statusPanel.classList.contains('visible')) {
+      updateStatusPanel();
+    }
+  }
+
   if (debugCopyBtn) {
     debugCopyBtn.addEventListener('click', copyDebugContext);
   }
+  if (statusToggleBtn) {
+    statusToggleBtn.addEventListener('click', toggleStatusPanel);
+  }
+  if (statusCloseBtn) {
+    statusCloseBtn.addEventListener('click', toggleStatusPanel);
+  }
+
+  recordStep('Starting doc load for: ' + src);
 
   loadConfig()
     .then(function () {
+      recordStep('Config loaded');
       return resolveDocContent(src);
     })
     .then(function (result) {
+      recordStep('Content resolved from: ' + (result.sourceKind || 'unknown'));
       var md = result.markdown;
       var resolvedSrc = result.resolvedSrc;
       currentDebugContext = buildDebugContext(result);
+      recordStep('Parsing markdown...');
       var html = marked.parse(md);
+      recordStep('Rendering to DOM');
       docBody.innerHTML = html;
+      recordStep('Rewriting internal links');
       rewriteInternalDocLinks(resolvedSrc);
+      recordStep('Updating source badge');
       updateSourceBadge(result);
+      recordStep('Complete (' + (Date.now() - resolutionStartTime) + 'ms total)');
 
       // Extract title from first H1, promote to hero
       var firstH1 = docBody.querySelector('h1');
