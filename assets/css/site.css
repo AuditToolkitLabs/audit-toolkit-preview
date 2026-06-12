@@ -180,7 +180,7 @@ hr.divider  { border: none; border-top: 1px solid var(--border); margin: 0; }
 
 /* ── Grids ────────────────────────────────────────────── */
 .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px,1fr)); gap: 20px; }
-.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; }
 .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px,1fr)); gap: 16px; }
 .split  { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
 
@@ -600,4 +600,35 @@ figcaption { padding: 10px 14px; color: var(--muted); font-size: .88rem; }
   h1     { font-size: 1.75rem; }
   .split { gap: 28px; }
   .cta-band-inner { flex-direction: column; align-items: flex-start; }
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text);
+  background-color: var(--panel);
+  background-clip: padding-box;
+  border: 1px solid var(--border-l);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: var(--radius-sm);
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.form-control:focus {
+  color: var(--text);
+  background-color: var(--panel-2);
+  border-color: var(--accent);
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(90,160,255,.25);
+}
+.form-control-lg {
+  min-height: calc(1.5em + 1rem + 2px);
+  padding: .5rem 1rem;
+  font-size: 1.25rem;
+  border-radius: var(--radius);
 }
