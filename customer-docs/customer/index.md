@@ -14,17 +14,17 @@ all supported AuditToolkit products.
 
 ## Browse By Task
 
-| Task | Section |
-| --- | --- |
-| Understand the suite | [Suite](suite/index.md) |
-| Install or transition a service | [Deployment](deployment/index.md) |
-| Administer a deployment | [Administration](administration/index.md) |
-| Operate and support a deployment | [Operations](operations/index.md) |
-| Integrate with external systems | [Integrations](integrations/index.md) |
-| Review security posture | [Security](security/index.md) |
-| Review procurement evidence | [Compliance Assurance](compliance-assurance/index.md) |
-| Automate with APIs | [API Automation](api-automation/index.md) |
-| Find paths and terminology | [Reference](reference/index.md) |
+| Task                             | Section                                               |
+| -------------------------------- | ----------------------------------------------------- |
+| Understand the suite             | [Suite](suite/index.md)                               |
+| Install or transition a service  | [Deployment](deployment/index.md)                     |
+| Administer a deployment          | [Administration](administration/index.md)             |
+| Operate and support a deployment | [Operations](operations/index.md)                     |
+| Integrate with external systems  | [Integrations](integrations/index.md)                 |
+| Review security posture          | [Security](security/index.md)                         |
+| Review procurement evidence      | [Compliance Assurance](compliance-assurance/index.md) |
+| Automate with APIs               | [API Automation](api-automation/index.md)             |
+| Find paths and terminology       | [Reference](reference/index.md)                       |
 
 ## Browse By Product
 

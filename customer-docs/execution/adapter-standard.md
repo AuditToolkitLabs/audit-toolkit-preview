@@ -15,13 +15,13 @@ not interpret, filter, or re-score findings.
 
 Every adapter exposes a consistent capability surface:
 
-| Capability | Requirement |
-| --- | --- |
-| Connect | Establish an authenticated session to the target. |
-| Execute | Run a command or script and return stdout, stderr, and exit code. |
-| Transfer | Stage and retrieve files where the transport supports it. |
-| Probe | Report target identity and reachability without side effects. |
-| Disconnect | Release the session and any temporary material. |
+| Capability | Requirement                                                       |
+| ---------- | ----------------------------------------------------------------- |
+| Connect    | Establish an authenticated session to the target.                 |
+| Execute    | Run a command or script and return stdout, stderr, and exit code. |
+| Transfer   | Stage and retrieve files where the transport supports it.         |
+| Probe      | Report target identity and reachability without side effects.     |
+| Disconnect | Release the session and any temporary material.                   |
 
 ## 3. Transport Notes
 

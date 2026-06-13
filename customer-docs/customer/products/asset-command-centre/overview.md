@@ -21,13 +21,13 @@ Asset Command Centre supports:
 
 ## Active Operating Profile
 
-| Area | Supported direction |
-| --- | --- |
-| Product role | Standalone collector and local reporting node. |
-| Connector mode | `legacy-only` by default. |
-| Collection profile | `inventory-only` by default. |
-| Primary target | Ubuntu single-node release target unless a release says otherwise. |
-| Primary methods | SSH, WinRM, SNMP, IPMI, Nmap sweep, and Ansible-unified collection. |
+| Area               | Supported direction                                                 |
+| ------------------ | ------------------------------------------------------------------- |
+| Product role       | Standalone collector and local reporting node.                      |
+| Connector mode     | `legacy-only` by default.                                           |
+| Collection profile | `inventory-only` by default.                                        |
+| Primary target     | Ubuntu single-node release target unless a release says otherwise.  |
+| Primary methods    | SSH, WinRM, SNMP, IPMI, Nmap sweep, and Ansible-unified collection. |
 
 ## In-Scope Behavior
 

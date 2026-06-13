@@ -147,10 +147,7 @@ async function main() {
       throw new Error("download-search command requires a query string, e.g. keywordSearch=openssl");
     }
 
-    const { filePath } = await fetchDownloadToFile(
-      `${broker}/nvd/download/search?${query}`,
-      `nvd-search-${Date.now()}.json`
-    );
+    const { filePath } = await fetchDownloadToFile(`${broker}/nvd/download/search?${query}`, `nvd-search-${Date.now()}.json`);
 
     console.log(`Saved: ${filePath}`);
     return;

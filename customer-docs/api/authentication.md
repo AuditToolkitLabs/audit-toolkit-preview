@@ -4,11 +4,11 @@ Common authentication and authorization rules for AuditToolkit product APIs.
 
 ## 1. Authentication Methods
 
-| Method | Use |
-| --- | --- |
-| API key / token | Service-to-service and automation clients. |
-| Session / bearer token | Interactive UI and short-lived sessions. |
-| Mutual TLS or signed agent token | Managed and lightweight agents. |
+| Method                           | Use                                        |
+| -------------------------------- | ------------------------------------------ |
+| API key / token                  | Service-to-service and automation clients. |
+| Session / bearer token           | Interactive UI and short-lived sessions.   |
+| Mutual TLS or signed agent token | Managed and lightweight agents.            |
 
 Product-specific setup guides document exact header names, token formats, and
 key locations. The rules below are authoritative for how credentials behave.

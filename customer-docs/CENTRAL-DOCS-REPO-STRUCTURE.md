@@ -25,27 +25,27 @@ Primary outcomes:
 
 The following documentation classes are authoritative in `AuditToolkit-Docs`:
 
-| Class | Examples | Per-repo action |
-| --- | --- | --- |
-| Legal | EULA, liability, indemnity, notices, legal FAQs | Replace with short pointer or remove duplicate text. |
-| Licensing | online/offline licensing, Keygen setup, entitlement maps | Keep only product-specific license path notes locally. |
-| Platform architecture | suite architecture, deployment model, data flows | Replace duplicate platform diagrams with central links. |
-| API standards | OpenAPI standards, envelope schemas, API conventions | Keep product endpoint references only if generated from code. |
-| Execution standards | agent execution, adapter standards, scheduling contracts | Keep product-specific command examples only. |
-| Validation reports | readiness reports, security scorecards, release gates | Move final reports and matrices central. |
-| Release notes | product release history and bundle notes | Publish centrally; include a copy in release bundles. |
-| Packaging standards | MSI/DEB/RPM bundle format, checksums, manifests | Keep only local build commands in product repos. |
+| Class                 | Examples                                                 | Per-repo action                                               |
+| --------------------- | -------------------------------------------------------- | ------------------------------------------------------------- |
+| Legal                 | EULA, liability, indemnity, notices, legal FAQs          | Replace with short pointer or remove duplicate text.          |
+| Licensing             | online/offline licensing, Keygen setup, entitlement maps | Keep only product-specific license path notes locally.        |
+| Platform architecture | suite architecture, deployment model, data flows         | Replace duplicate platform diagrams with central links.       |
+| API standards         | OpenAPI standards, envelope schemas, API conventions     | Keep product endpoint references only if generated from code. |
+| Execution standards   | agent execution, adapter standards, scheduling contracts | Keep product-specific command examples only.                  |
+| Validation reports    | readiness reports, security scorecards, release gates    | Move final reports and matrices central.                      |
+| Release notes         | product release history and bundle notes                 | Publish centrally; include a copy in release bundles.         |
+| Packaging standards   | MSI/DEB/RPM bundle format, checksums, manifests          | Keep only local build commands in product repos.              |
 
 ### Must Stay Per Repo
 
 The following files remain local to each product repository:
 
-| Local doc | Purpose |
-| --- | --- |
-| `README.md` | Minimal repo identity, build/test commands, and central docs links. |
-| `INSTALL.md` | Product-specific local developer or package install notes. |
-| `CONFIG.md` | Product-specific config keys and local examples. |
-| Tool-specific usage | CLI examples or workflows unique to that repo. |
+| Local doc            | Purpose                                                               |
+| -------------------- | --------------------------------------------------------------------- |
+| `README.md`          | Minimal repo identity, build/test commands, and central docs links.   |
+| `INSTALL.md`         | Product-specific local developer or package install notes.            |
+| `CONFIG.md`          | Product-specific config keys and local examples.                      |
+| Tool-specific usage  | CLI examples or workflows unique to that repo.                        |
 | Generated API output | Allowed only when generated from product source and linked centrally. |
 
 ### Must Be Removed As Duplication
@@ -130,18 +130,18 @@ AuditToolkit-Docs/
 
 ## 4. Migration Map
 
-| Existing source | Central destination | Local repo residue |
-| --- | --- | --- |
-| `*/customer-docs/*end-user-license-agreement*` | `legal/eula.md` | Link only. |
-| `*/customer-docs/*liability*` | `legal/liability-disclaimer-and-indemnity.md` | Link only. |
-| `*/docs/LICENSING.md` | `licensing/overview.md` or product subsection | Product license path notes only. |
-| `*/docs/OFFLINE-LICENSING.md` | `licensing/offline-licensing.md` | Product file path notes only. |
-| `*/docs/*ARCHITECTURE*` | `platform/architecture.md` or product architecture page | Short pointer. |
-| `*/docs/*API*` and OpenAPI specs | `api/` | Generated product API reference if needed. |
-| `*/docs/*EXECUTION*` and agent contracts | `execution/` | Product examples only. |
-| `*/docs/*VALIDATION*`, scorecards, readiness reports | `validation/` | Latest local validation command only. |
-| `*/docs/*RELEASE*`, changelogs | `releases/` | Link to central release note. |
-| `*/docs/*PACKAGE*`, MSI/DEB/RPM docs | `deployment/` | Local build command only. |
+| Existing source                                      | Central destination                                     | Local repo residue                         |
+| ---------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------ |
+| `*/customer-docs/*end-user-license-agreement*`       | `legal/eula.md`                                         | Link only.                                 |
+| `*/customer-docs/*liability*`                        | `legal/liability-disclaimer-and-indemnity.md`           | Link only.                                 |
+| `*/docs/LICENSING.md`                                | `licensing/overview.md` or product subsection           | Product license path notes only.           |
+| `*/docs/OFFLINE-LICENSING.md`                        | `licensing/offline-licensing.md`                        | Product file path notes only.              |
+| `*/docs/*ARCHITECTURE*`                              | `platform/architecture.md` or product architecture page | Short pointer.                             |
+| `*/docs/*API*` and OpenAPI specs                     | `api/`                                                  | Generated product API reference if needed. |
+| `*/docs/*EXECUTION*` and agent contracts             | `execution/`                                            | Product examples only.                     |
+| `*/docs/*VALIDATION*`, scorecards, readiness reports | `validation/`                                           | Latest local validation command only.      |
+| `*/docs/*RELEASE*`, changelogs                       | `releases/`                                             | Link to central release note.              |
+| `*/docs/*PACKAGE*`, MSI/DEB/RPM docs                 | `deployment/`                                           | Local build command only.                  |
 
 ## 5. Per-Repo Minimal README Standard
 

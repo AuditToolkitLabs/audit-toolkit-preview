@@ -8,6 +8,7 @@ The Linux audit framework includes a matrix job to run audits in official distro
 containers.
 
 ## Matrix Images
+
 - ubuntu:24.04
 - debian:12
 - almalinux:9
@@ -17,6 +18,7 @@ containers.
 - alpine:3.19
 
 ## How to Add a New Distro
+
 1. Add the container image to the `matrix.image` list in `.github/workflows/ci.yml`.
 2. Update `ci/bootstrap.sh` to install minimal dependencies in that image.
 3. If the distro has unique package/service tools, extend shims in `lib/pkg.sh`,

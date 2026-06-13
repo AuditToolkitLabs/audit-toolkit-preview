@@ -202,9 +202,7 @@
       "payment_link_url": "https://checkout.audittoolkitlabs.com/b/fZu4gz0nk4D873YbLXfQI02",
       "price": 0,
       "duration": "30 days ",
-      "issues": [
-        "duration mismatch: sheet='30 days ' stripe has no recurring/trial duration"
-      ]
+      "issues": ["duration mismatch: sheet='30 days ' stripe has no recurring/trial duration"]
     },
     {
       "line": 23,
@@ -226,9 +224,7 @@
       "payment_link_url": "https://checkout.audittoolkitlabs.com/b/aFafZhda61qW4VQaHTfQI07",
       "price": 1500,
       "duration": "Yearly",
-      "issues": [
-        "duration mismatch: sheet='Yearly' stripe=1 month"
-      ]
+      "issues": ["duration mismatch: sheet='Yearly' stripe=1 month"]
     },
     {
       "line": 25,

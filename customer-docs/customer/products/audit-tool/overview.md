@@ -22,20 +22,20 @@ Audit-Tool supports:
 
 ## In-Scope Components
 
-| Component | Customer-facing role |
-| --- | --- |
-| Web application | Administration console, dashboards, reporting, user and role management, API key handling. |
-| REST API | Machine and customer automation access for agents, connectors, and integrations. |
-| Linux audit scripts | Read-only Linux security and hardening checks. |
-| Windows audit scripts | Windows Server, workstation, Active Directory, and IIS audit checks. |
-| Hypervisor audit scripts | ESXi, vCenter, Proxmox, KVM/libvirt, and related hypervisor checks. |
-| Toolkit Agent direct mode | Local execution with direct HTTPS result push. |
-| Toolkit Agent coordinated mode | Central policy and command polling with host-side execution. |
-| Hypervisor agent | Platform-aware hypervisor audit package. |
-| External ingest API | Machine-to-machine ingest for findings and assets. |
-| Scheduler | Recurring audit runs, coordination, and alert delivery. |
-| Script Studio | Customer-side script authoring, testing, and deployment. |
-| Scanner workbench | Authorized network and host scanning workspace with report export. |
+| Component                      | Customer-facing role                                                                       |
+| ------------------------------ | ------------------------------------------------------------------------------------------ |
+| Web application                | Administration console, dashboards, reporting, user and role management, API key handling. |
+| REST API                       | Machine and customer automation access for agents, connectors, and integrations.           |
+| Linux audit scripts            | Read-only Linux security and hardening checks.                                             |
+| Windows audit scripts          | Windows Server, workstation, Active Directory, and IIS audit checks.                       |
+| Hypervisor audit scripts       | ESXi, vCenter, Proxmox, KVM/libvirt, and related hypervisor checks.                        |
+| Toolkit Agent direct mode      | Local execution with direct HTTPS result push.                                             |
+| Toolkit Agent coordinated mode | Central policy and command polling with host-side execution.                               |
+| Hypervisor agent               | Platform-aware hypervisor audit package.                                                   |
+| External ingest API            | Machine-to-machine ingest for findings and assets.                                         |
+| Scheduler                      | Recurring audit runs, coordination, and alert delivery.                                    |
+| Script Studio                  | Customer-side script authoring, testing, and deployment.                                   |
+| Scanner workbench              | Authorized network and host scanning workspace with report export.                         |
 
 ## Supported Deployment Models
 

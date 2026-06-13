@@ -6,7 +6,10 @@ function normalizeBaseUrl(value) {
 }
 
 function normalizeBase64(value) {
-  const normalized = String(value || "").trim().replace(/-/g, "+").replace(/_/g, "/");
+  const normalized = String(value || "")
+    .trim()
+    .replace(/-/g, "+")
+    .replace(/_/g, "/");
   if (!normalized) return "";
 
   const paddingNeeded = (4 - (normalized.length % 4)) % 4;
@@ -57,8 +60,7 @@ async function main() {
     process.exit(1);
   }
 
-  const resendWebhookId =
-    String(process.env.RESEND_WEBHOOK_ID || "").trim() || `msg_${Date.now()}`;
+  const resendWebhookId = String(process.env.RESEND_WEBHOOK_ID || "").trim() || `msg_${Date.now()}`;
   const resendTimestamp = String(Math.floor(Date.now() / 1000));
   const payload = buildSampleEvent();
   const rawBody = JSON.stringify(payload);

@@ -26,11 +26,11 @@ Use this guide if you are responsible for one or more of the following tasks:
 
 AuditToolkit is delivered as native operating system packages:
 
-| Platform | Package type | Installation method |
-| --- | --- | --- |
-| Ubuntu / Debian | `.deb` | `apt` or `dpkg` |
-| RHEL / Rocky / Alma / Fedora / openSUSE | `.rpm` | `dnf`, `yum`, or `zypper` |
-| Windows Server | `.msi` | Windows Installer |
+| Platform                                | Package type | Installation method       |
+| --------------------------------------- | ------------ | ------------------------- |
+| Ubuntu / Debian                         | `.deb`       | `apt` or `dpkg`           |
+| RHEL / Rocky / Alma / Fedora / openSUSE | `.rpm`       | `dnf`, `yum`, or `zypper` |
+| Windows Server                          | `.msi`       | Windows Installer         |
 
 Release archives such as `.zip` or `.tar.gz` are not the customer deployment
 format. They may be used internally for build transport, but customers should
@@ -40,22 +40,22 @@ install only the signed MSI, DEB, or RPM package provided in the release bundle.
 
 ### Linux Runtime Locations
 
-| Purpose | Path |
-| --- | --- |
-| Application files | `/opt/audittoolkit/<product>/` |
-| Configuration | `/etc/audittoolkit/<product>/` |
-| Runtime data | `/var/lib/audittoolkit/<product>/` |
-| Logs | `/var/log/audittoolkit/<product>/` |
-| systemd units | `/lib/systemd/system/` or `/usr/lib/systemd/system/` |
+| Purpose           | Path                                                 |
+| ----------------- | ---------------------------------------------------- |
+| Application files | `/opt/audittoolkit/<product>/`                       |
+| Configuration     | `/etc/audittoolkit/<product>/`                       |
+| Runtime data      | `/var/lib/audittoolkit/<product>/`                   |
+| Logs              | `/var/log/audittoolkit/<product>/`                   |
+| systemd units     | `/lib/systemd/system/` or `/usr/lib/systemd/system/` |
 
 ### Windows Runtime Locations
 
-| Purpose | Path |
-| --- | --- |
-| Application files | `C:\Program Files\AuditToolkit\<Product>\` |
-| Configuration and runtime data | `C:\ProgramData\AuditToolkit\<Product>\` |
-| Logs | `C:\ProgramData\AuditToolkit\<Product>\logs\` |
-| Service registration | Windows Service Control Manager |
+| Purpose                        | Path                                          |
+| ------------------------------ | --------------------------------------------- |
+| Application files              | `C:\Program Files\AuditToolkit\<Product>\`    |
+| Configuration and runtime data | `C:\ProgramData\AuditToolkit\<Product>\`      |
+| Logs                           | `C:\ProgramData\AuditToolkit\<Product>\logs\` |
+| Service registration           | Windows Service Control Manager               |
 
 Product-specific release notes may list additional paths for optional agents or
 connectors. Do not move installed files manually after installation.
@@ -278,13 +278,13 @@ purposes unless the product-specific uninstall guide says otherwise.
 
 ## 15. Troubleshooting
 
-| Symptom | First checks |
-| --- | --- |
-| Service does not start | Check service logs, missing config, port conflicts, and file permissions. |
-| License rejected | Confirm system time, license path, file permissions, and product match. |
-| Health endpoint unavailable | Confirm service state, firewall rules, bind address, and configured port. |
-| Package install fails | Verify OS support, checksum, package architecture, and package-manager output. |
-| Upgrade fails | Restore backup if needed, capture installer logs, and contact support. |
+| Symptom                     | First checks                                                                   |
+| --------------------------- | ------------------------------------------------------------------------------ |
+| Service does not start      | Check service logs, missing config, port conflicts, and file permissions.      |
+| License rejected            | Confirm system time, license path, file permissions, and product match.        |
+| Health endpoint unavailable | Confirm service state, firewall rules, bind address, and configured port.      |
+| Package install fails       | Verify OS support, checksum, package architecture, and package-manager output. |
+| Upgrade fails               | Restore backup if needed, capture installer logs, and contact support.         |
 
 ## 16. Support Package
 

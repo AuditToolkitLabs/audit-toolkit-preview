@@ -31,13 +31,13 @@ Switch Exposure Center helps teams answer:
 
 ## Runtime Components
 
-| Component | Customer-facing role |
-| --- | --- |
-| Flask application | Product runtime and API route registration. |
-| SQLAlchemy model | Devices, advisories, exposures, jobs, and reports. |
-| Connector layer | Vendor-specific collection and normalization. |
+| Component                 | Customer-facing role                                 |
+| ------------------------- | ---------------------------------------------------- |
+| Flask application         | Product runtime and API route registration.          |
+| SQLAlchemy model          | Devices, advisories, exposures, jobs, and reports.   |
+| Connector layer           | Vendor-specific collection and normalization.        |
 | Advisory enrichment layer | Vendor bulletin and vulnerability metadata handling. |
-| Static console | Browser-based operator interaction. |
+| Static console            | Browser-based operator interaction.                  |
 
 ## Collection Pattern
 

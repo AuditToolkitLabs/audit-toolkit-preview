@@ -73,10 +73,10 @@ scope unless the executed commercial agreement explicitly states otherwise.
 
 Products may use runtime context values such as:
 
-| Context | Default | Purpose |
-| --- | --- | --- |
-| `TENANT_ID` | `default` | Separates tenant-scoped entitlement checks. |
-| `DEPLOYMENT_MODE` | `single` | Distinguishes standalone, bundled, and multi-tenant operation. |
+| Context           | Default   | Purpose                                                        |
+| ----------------- | --------- | -------------------------------------------------------------- |
+| `TENANT_ID`       | `default` | Separates tenant-scoped entitlement checks.                    |
+| `DEPLOYMENT_MODE` | `single`  | Distinguishes standalone, bundled, and multi-tenant operation. |
 
 Product-specific configuration documents may list exact variable names or UI
 fields. The rules above remain the central authority for how those values are
@@ -87,22 +87,22 @@ interpreted.
 Product-specific release notes define the exact license path. Standard defaults
 are:
 
-| Platform | Standard location pattern |
-| --- | --- |
-| Linux | `/var/lib/audittoolkit/<product>/data/licenses/` |
-| Windows | `C:\ProgramData\AuditToolkit\<Product>\data\licenses\` |
+| Platform | Standard location pattern                              |
+| -------- | ------------------------------------------------------ |
+| Linux    | `/var/lib/audittoolkit/<product>/data/licenses/`       |
+| Windows  | `C:\ProgramData\AuditToolkit\<Product>\data\licenses\` |
 
 Do not store private signing keys, Keygen administrator tokens, or internal
 operator material in customer license directories.
 
 ## 7. Customer-Safe Troubleshooting
 
-| Symptom | First checks |
-| --- | --- |
-| License key rejected | Confirm product, tier, expiry, system time, and outbound HTTPS access. |
-| Offline file rejected | Confirm file path, permissions, product match, expiry, and offline TTL. |
-| Feature unavailable | Confirm tier entitlement and deployment mode. |
-| Host or entitlement limit reached | Remove unused registered hosts where supported or upgrade entitlement. |
+| Symptom                             | First checks                                                                      |
+| ----------------------------------- | --------------------------------------------------------------------------------- |
+| License key rejected                | Confirm product, tier, expiry, system time, and outbound HTTPS access.            |
+| Offline file rejected               | Confirm file path, permissions, product match, expiry, and offline TTL.           |
+| Feature unavailable                 | Confirm tier entitlement and deployment mode.                                     |
+| Host or entitlement limit reached   | Remove unused registered hosts where supported or upgrade entitlement.            |
 | License status changed unexpectedly | Contact AuditToolkit support with product, version, and non-secret status output. |
 
 Never send private keys, administrator tokens, passwords, or raw customer

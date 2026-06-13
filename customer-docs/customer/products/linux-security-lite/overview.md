@@ -22,11 +22,11 @@ dashboards require customer-side integration or the main AuditToolkit platform.
 
 ## Architecture
 
-| Layer | Component | Purpose |
-| --- | --- | --- |
-| Orchestrator | `orchestrator/orchestrator.sh` | Discovers, filters, runs, and aggregates audit scripts. |
-| Audit library | `audits/linux/<domain>/<category>/<name>.sh` | Read-only checks organized by domain and category. |
-| Compatibility shims | `lib/*.sh` | Distro-agnostic wrappers for package, service, firewall, and security detection. |
+| Layer               | Component                                    | Purpose                                                                          |
+| ------------------- | -------------------------------------------- | -------------------------------------------------------------------------------- |
+| Orchestrator        | `orchestrator/orchestrator.sh`               | Discovers, filters, runs, and aggregates audit scripts.                          |
+| Audit library       | `audits/linux/<domain>/<category>/<name>.sh` | Read-only checks organized by domain and category.                               |
+| Compatibility shims | `lib/*.sh`                                   | Distro-agnostic wrappers for package, service, firewall, and security detection. |
 
 Supporting components include discovery, a stable JSON report schema, and a CI
 schema validation helper.

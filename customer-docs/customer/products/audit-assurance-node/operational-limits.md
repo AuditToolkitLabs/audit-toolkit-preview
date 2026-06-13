@@ -27,12 +27,12 @@ Recommended practice:
 
 ## Transport Limits
 
-| Transport | Limit |
-| --- | --- |
-| SSH | Requires network reachability and approved Linux credentials or keys. Privileged checks may require sudo policy. |
-| WinRM | Requires PowerShell remoting and approved Windows credentials or constrained endpoints. |
-| API | Depends on platform API availability, token scope, rate limits, and response stability. |
-| Agent | Depends on trusted agent enrollment, output delivery, and replay protection. |
+| Transport | Limit                                                                                                            |
+| --------- | ---------------------------------------------------------------------------------------------------------------- |
+| SSH       | Requires network reachability and approved Linux credentials or keys. Privileged checks may require sudo policy. |
+| WinRM     | Requires PowerShell remoting and approved Windows credentials or constrained endpoints.                          |
+| API       | Depends on platform API availability, token scope, rate limits, and response stability.                          |
+| Agent     | Depends on trusted agent enrollment, output delivery, and replay protection.                                     |
 
 ## Evidence And Storage Limits
 

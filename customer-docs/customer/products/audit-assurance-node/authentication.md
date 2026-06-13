@@ -25,11 +25,11 @@ for secrets in customer deployments.
 
 Common secret inputs include:
 
-| Secret | Typical use |
-| --- | --- |
-| `API_TOKEN` | Bearer token or API credential for API adapter workflows. |
+| Secret            | Typical use                                               |
+| ----------------- | --------------------------------------------------------- |
+| `API_TOKEN`       | Bearer token or API credential for API adapter workflows. |
 | `SSH_PRIVATE_KEY` | Path to the SSH private key used by approved SSH targets. |
-| `WINRM_PASSWORD` | WinRM password for approved Windows remoting targets. |
+| `WINRM_PASSWORD`  | WinRM password for approved Windows remoting targets.     |
 
 The local authentication configuration file must not be committed to source
 control. Treat it as a secret-bearing runtime file.
@@ -45,12 +45,12 @@ production use and restrict administrator accounts to named operational users.
 
 ## Transport Access Controls
 
-| Transport | Control expectation |
-| --- | --- |
-| SSH | Use scoped accounts or keys approved for audit execution. Confirm sudo policy before running privileged checks. |
-| WinRM | Use scoped Windows credentials or constrained endpoints such as JEA where available. |
-| API | Use tokens with read-only or audit-specific privileges where the platform supports them. |
-| Agent | Validate agent identity and result provenance before ingesting outputs. |
+| Transport | Control expectation                                                                                             |
+| --------- | --------------------------------------------------------------------------------------------------------------- |
+| SSH       | Use scoped accounts or keys approved for audit execution. Confirm sudo policy before running privileged checks. |
+| WinRM     | Use scoped Windows credentials or constrained endpoints such as JEA where available.                            |
+| API       | Use tokens with read-only or audit-specific privileges where the platform supports them.                        |
+| Agent     | Validate agent identity and result provenance before ingesting outputs.                                         |
 
 ## Secure Practices
 

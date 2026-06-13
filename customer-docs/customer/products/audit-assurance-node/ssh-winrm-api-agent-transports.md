@@ -8,13 +8,13 @@ use each transport and what customers should verify before enabling it.
 
 ## Transport Summary
 
-| Transport | Best fit | Customer checks |
-| --- | --- | --- |
-| Local | Lab runs or host-local validation | Confirm local script path, execution policy, and evidence output path. |
-| SSH | Approved Linux or Unix-like remote targets | Confirm network reachability, account scope, key handling, sudo policy, and logging. |
-| WinRM | Approved Windows remote targets | Confirm PowerShell remoting, endpoint policy, credential scope, and event logging. |
-| API | Platforms exposing structured management APIs | Confirm token scope, endpoint availability, rate limits, and API response contract. |
-| Agent | Constrained or air-gapped environments | Confirm agent identity, output provenance, delivery path, and replay controls. |
+| Transport | Best fit                                      | Customer checks                                                                      |
+| --------- | --------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Local     | Lab runs or host-local validation             | Confirm local script path, execution policy, and evidence output path.               |
+| SSH       | Approved Linux or Unix-like remote targets    | Confirm network reachability, account scope, key handling, sudo policy, and logging. |
+| WinRM     | Approved Windows remote targets               | Confirm PowerShell remoting, endpoint policy, credential scope, and event logging.   |
+| API       | Platforms exposing structured management APIs | Confirm token scope, endpoint availability, rate limits, and API response contract.  |
+| Agent     | Constrained or air-gapped environments        | Confirm agent identity, output provenance, delivery path, and replay controls.       |
 
 ## SSH Transport
 

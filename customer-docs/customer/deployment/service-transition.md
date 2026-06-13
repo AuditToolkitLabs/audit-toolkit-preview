@@ -13,17 +13,17 @@ transition controls.
 
 Before deployment, confirm:
 
-| Area | Requirement |
-| --- | --- |
-| Authorization | Written approval exists for the systems, networks, tenants, or data sources in scope. |
-| Host platform | The target OS, VM, container host, or appliance model is supported for the product release. |
-| Network | Required inbound and outbound paths are approved, including identity, API, connector, agent, or license endpoints where used. |
-| Identity | Local, LDAP, SSO, Entra, Okta, or other identity configuration has an owner and test plan. |
-| TLS | Customer-approved TLS certificates and hostnames are available where HTTPS is used. |
-| Database and storage | Required database, data directories, retention, and backup locations are defined. |
-| Secrets | Product secrets, API keys, credentials, and license files have a protected storage model. |
-| Monitoring | Health checks, logs, job failures, and support escalation paths are monitored. |
-| Rollback | A rollback or uninstall procedure is approved before production use. |
+| Area                 | Requirement                                                                                                                   |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Authorization        | Written approval exists for the systems, networks, tenants, or data sources in scope.                                         |
+| Host platform        | The target OS, VM, container host, or appliance model is supported for the product release.                                   |
+| Network              | Required inbound and outbound paths are approved, including identity, API, connector, agent, or license endpoints where used. |
+| Identity             | Local, LDAP, SSO, Entra, Okta, or other identity configuration has an owner and test plan.                                    |
+| TLS                  | Customer-approved TLS certificates and hostnames are available where HTTPS is used.                                           |
+| Database and storage | Required database, data directories, retention, and backup locations are defined.                                             |
+| Secrets              | Product secrets, API keys, credentials, and license files have a protected storage model.                                     |
+| Monitoring           | Health checks, logs, job failures, and support escalation paths are monitored.                                                |
+| Rollback             | A rollback or uninstall procedure is approved before production use.                                                          |
 
 ## Initial Setup Pattern
 

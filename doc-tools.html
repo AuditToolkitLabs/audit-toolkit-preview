@@ -1,179 +1,298 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Documentation Tools & Operations — AuditToolkit Labs</title>
-  <meta name="description" content="Guide to documentation management tools, remote availability validation, source configuration, and troubleshooting for AuditToolkit documentation system." />
-  <meta name="robots" content="noindex" />
-  <link rel="stylesheet" href="assets/css/site.css?v=20260612g" />
-  <style>
-    .doc-body { max-width: 860px; }
-    .doc-body h1 { font-size: clamp(1.5rem,3vw,2.1rem); color: var(--text); margin: 0 0 .6em; }
-    .doc-body h2 { font-size: 1.35rem; color: var(--text); margin: 2em 0 .5em; padding-bottom: .4em; border-bottom: 1px solid var(--border); }
-    .doc-body h3 { font-size: 1.08rem; color: var(--text); margin: 1.5em 0 .4em; }
-    .doc-body h4 { font-size: .97rem; color: var(--muted); margin: 1.2em 0 .3em; }
-    .doc-body p  { color: var(--muted); margin: 0 0 1em; }
-    .doc-body ul, .doc-body ol { color: var(--muted); padding-left: 1.4em; margin: 0 0 1em; }
-    .doc-body li { margin-bottom: 5px; }
-    .doc-body a  { color: var(--accent); }
-    .doc-body a:hover { color: var(--accent-h); }
-    .doc-body strong { color: var(--text); }
-    .doc-body em { color: var(--muted); }
-    .doc-body blockquote {
-      border-left: 3px solid var(--accent);
-      margin: 1.2em 0; padding: .6em 1em;
-      background: var(--panel); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      color: var(--muted);
-    }
-    .doc-body blockquote p { margin: 0; }
-    .doc-body pre {
-      background: var(--panel-2); border: 1px solid var(--border);
-      border-radius: var(--radius-sm); padding: 1em 1.2em;
-      overflow-x: auto; margin: 0 0 1.2em;
-    }
-    .doc-body pre code { background: none; padding: 0; color: var(--accent-2); font-size: .87em; border-radius: 0; }
-    .doc-body code { font-size: .88em; background: var(--panel-2); padding: 2px 6px; border-radius: 4px; color: var(--accent-2); }
-    .doc-body table { width: 100%; border-collapse: collapse; margin: 0 0 1.5em; font-size: .92em; }
-    .doc-body th { background: var(--panel-2); color: var(--text); text-align: left; padding: 9px 13px; border: 1px solid var(--border); font-weight: 600; }
-    .doc-body td { padding: 8px 13px; border: 1px solid var(--border); color: var(--muted); vertical-align: top; }
-    .doc-body tr:nth-child(even) td { background: var(--panel); }
-    .doc-body hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
-    .doc-body img { max-width: 100%; border-radius: var(--radius-sm); margin: .5em 0; }
-    .tool-section {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 1.2em;
-      margin: 1.5em 0;
-    }
-    .tool-title { color: var(--accent-2); font-weight: 600; margin-bottom: .5em; }
-  </style>
-</head>
-<body>
-
-<nav class="nav"><div class="wrap"><div class="nav-inner"><a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a><ul class="nav-links"><li><a href="index.html#products">Products</a></li><li><a href="toolkit-overview.html">Overview</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="use-cases.html">Use Cases</a></li><li><a href="integrations.html">Integrations</a></li><li><a href="docs.html" class="active">Central Docs</a></li><li><a href="releases.html">Releases</a></li><li><a href="licensing.html">Licensing</a></li><li><a href="support.html">Support</a></li></ul><div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div><button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button></div></div></nav>
-<div class="nav-mobile" id="nav-mobile"><a href="index.html">Home</a><a href="index.html#products">Products</a><a href="toolkit-overview.html">Overview</a><a href="how-it-works.html">How It Works</a><a href="use-cases.html">Use Cases</a><a href="integrations.html">Integrations</a><a href="docs.html">Central Docs</a><a href="releases.html">Releases</a><a href="licensing.html">Licensing</a><a href="support.html">Support</a></div>
-
-<div class="page-hero">
-  <div class="wrap">
-    <div class="breadcrumb">
-      <a href="index.html">Home</a><span class="sep">/</span>
-      <a href="docs.html">Central Docs</a><span class="sep">/</span>
-      <span class="cur">Tools & Operations</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <title>Documentation Tools & Operations — AuditToolkit Labs</title>
+    <meta
+      name="description"
+      content="Guide to documentation tools, remote availability validation, source configuration, and AuditToolkit docs troubleshooting."
+    />
+    <meta name="robots" content="noindex" />
+    <link rel="stylesheet" href="assets/css/site.css?v=20260612g" />
+    <style>
+      .doc-body {
+        max-width: 860px;
+      }
+      .doc-body h1 {
+        font-size: clamp(1.5rem, 3vw, 2.1rem);
+        color: var(--text);
+        margin: 0 0 0.6em;
+      }
+      .doc-body h2 {
+        font-size: 1.35rem;
+        color: var(--text);
+        margin: 2em 0 0.5em;
+        padding-bottom: 0.4em;
+        border-bottom: 1px solid var(--border);
+      }
+      .doc-body h3 {
+        font-size: 1.08rem;
+        color: var(--text);
+        margin: 1.5em 0 0.4em;
+      }
+      .doc-body h4 {
+        font-size: 0.97rem;
+        color: var(--muted);
+        margin: 1.2em 0 0.3em;
+      }
+      .doc-body p {
+        color: var(--muted);
+        margin: 0 0 1em;
+      }
+      .doc-body ul,
+      .doc-body ol {
+        color: var(--muted);
+        padding-left: 1.4em;
+        margin: 0 0 1em;
+      }
+      .doc-body li {
+        margin-bottom: 5px;
+      }
+      .doc-body a {
+        color: var(--accent);
+      }
+      .doc-body a:hover {
+        color: var(--accent-h);
+      }
+      .doc-body strong {
+        color: var(--text);
+      }
+      .doc-body em {
+        color: var(--muted);
+      }
+      .doc-body blockquote {
+        border-left: 3px solid var(--accent);
+        margin: 1.2em 0;
+        padding: 0.6em 1em;
+        background: var(--panel);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        color: var(--muted);
+      }
+      .doc-body blockquote p {
+        margin: 0;
+      }
+      .doc-body pre {
+        background: var(--panel-2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 1em 1.2em;
+        overflow-x: auto;
+        margin: 0 0 1.2em;
+      }
+      .doc-body pre code {
+        background: none;
+        padding: 0;
+        color: var(--accent-2);
+        font-size: 0.87em;
+        border-radius: 0;
+      }
+      .doc-body code {
+        font-size: 0.88em;
+        background: var(--panel-2);
+        padding: 2px 6px;
+        border-radius: 4px;
+        color: var(--accent-2);
+      }
+      .doc-body table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0 0 1.5em;
+        font-size: 0.92em;
+      }
+      .doc-body th {
+        background: var(--panel-2);
+        color: var(--text);
+        text-align: left;
+        padding: 9px 13px;
+        border: 1px solid var(--border);
+        font-weight: 600;
+      }
+      .doc-body td {
+        padding: 8px 13px;
+        border: 1px solid var(--border);
+        color: var(--muted);
+        vertical-align: top;
+      }
+      .doc-body tr:nth-child(even) td {
+        background: var(--panel);
+      }
+      .doc-body hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 2em 0;
+      }
+      .doc-body img {
+        max-width: 100%;
+        border-radius: var(--radius-sm);
+        margin: 0.5em 0;
+      }
+      .tool-section {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 1.2em;
+        margin: 1.5em 0;
+      }
+      .tool-title {
+        color: var(--accent-2);
+        font-weight: 600;
+        margin-bottom: 0.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="wrap">
+        <div class="nav-inner">
+          <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+          <ul class="nav-links">
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="toolkit-overview.html">Overview</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="use-cases.html">Use Cases</a></li>
+            <li><a href="integrations.html">Integrations</a></li>
+            <li><a href="docs.html" class="active">Central Docs</a></li>
+            <li><a href="releases.html">Releases</a></li>
+            <li><a href="licensing.html">Licensing</a></li>
+            <li><a href="support.html">Support</a></li>
+          </ul>
+          <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+          <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="index.html">Home</a><a href="index.html#products">Products</a><a href="toolkit-overview.html">Overview</a
+      ><a href="how-it-works.html">How It Works</a><a href="use-cases.html">Use Cases</a><a href="integrations.html">Integrations</a
+      ><a href="docs.html">Central Docs</a><a href="releases.html">Releases</a><a href="licensing.html">Licensing</a
+      ><a href="support.html">Support</a>
     </div>
-    <p class="eyebrow">Developer Reference</p>
-    <h1>Documentation Tools & Operations</h1>
-    <p>Guides for managing documentation, validating remote availability, configuring source resolution, and troubleshooting documentation access.</p>
-  </div>
-</div>
 
-<div class="wrap">
-  <div class="doc-body">
+    <div class="page-hero">
+      <div class="wrap">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a><span class="sep">/</span> <a href="docs.html">Central Docs</a><span class="sep">/</span>
+          <span class="cur">Tools & Operations</span>
+        </div>
+        <p class="eyebrow">Developer Reference</p>
+        <h1>Documentation Tools & Operations</h1>
+        <p>
+          Guides for managing documentation, validating remote availability, configuring source resolution, and troubleshooting
+          documentation access.
+        </p>
+      </div>
+    </div>
 
-<h2>Overview</h2>
+    <div class="wrap">
+      <div class="doc-body">
+        <h2>Overview</h2>
 
-<p>This reference documents the tools and operations available for managing AuditToolkit Labs documentation.</p>
+        <p>This reference documents the tools and operations available for managing AuditToolkit Labs documentation.</p>
 
-<h3>Documentation Sources</h3>
+        <h3>Documentation Sources</h3>
 
-<p>Documentation is served from a governed central source:</p>
-<ul>
-<li><strong>Remote (central)</strong> — From the configured central documentation mirror</li>
-</ul>
+        <p>Documentation is served from a governed central source:</p>
+        <ul>
+          <li><strong>Remote (central)</strong> — From the configured central documentation mirror</li>
+        </ul>
 
-<p>The source configuration is controlled in <code>docs-source-config.json</code> and is enforced as remote-only for this site.</p>
+        <p>The source configuration is controlled in <code>docs-source-config.json</code> and is enforced as remote-only for this site.</p>
 
-<hr>
+        <hr />
 
-<h2>Documentation Viewer</h2>
+        <h2>Documentation Viewer</h2>
 
-<p>The documentation viewer at <a href="doc-viewer.html">doc-viewer.html</a> provides an interactive documentation browser with advanced features.</p>
+        <p>
+          The documentation viewer at <a href="doc-viewer.html">doc-viewer.html</a> provides an interactive documentation browser with
+          advanced features.
+        </p>
 
-<div class="tool-section">
-<div class="tool-title">📍 Source Mode Badge</div>
-<p>Each page displays a colored badge indicating where the documentation is being served from:</p>
-<ul>
-<li><strong>Source: remote</strong> — Served from remote mirror</li>
-<li><strong>Source: remote (canary)</strong> — Served from remote in test mode</li>
-</ul>
-</div>
+        <div class="tool-section">
+          <div class="tool-title">📍 Source Mode Badge</div>
+          <p>Each page displays a colored badge indicating where the documentation is being served from:</p>
+          <ul>
+            <li><strong>Source: remote</strong> — Served from remote mirror</li>
+            <li><strong>Source: remote (canary)</strong> — Served from remote in test mode</li>
+          </ul>
+        </div>
 
-<div class="tool-section">
-<div class="tool-title">🐛 Debug Context Helper</div>
-<p>Click <strong>Copy debug context</strong> to copy JSON containing:</p>
-<ul>
-<li>Requested vs. resolved document source</li>
-<li>Source mode and canary parameters</li>
-<li>Effective configuration (all fields)</li>
-<li>Page URL and timestamp</li>
-</ul>
-<p>Use this for troubleshooting documentation access issues and support triage.</p>
-</div>
+        <div class="tool-section">
+          <div class="tool-title">🐛 Debug Context Helper</div>
+          <p>Click <strong>Copy debug context</strong> to copy JSON containing:</p>
+          <ul>
+            <li>Requested vs. resolved document source</li>
+            <li>Source mode and canary parameters</li>
+            <li>Effective configuration (all fields)</li>
+            <li>Page URL and timestamp</li>
+          </ul>
+          <p>Use this for troubleshooting documentation access issues and support triage.</p>
+        </div>
 
-<div class="tool-section">
-<div class="tool-title">⏱️ Resolution Log</div>
-<p>Click <strong>Show resolution log</strong> to display live source resolution steps with millisecond timings:</p>
-<ul>
-<li>Doc load started</li>
-<li>Config loaded</li>
-<li>Content resolved from [local|remote]</li>
-<li>Parsing, rendering, and link rewriting steps</li>
-<li>Total time elapsed</li>
-</ul>
-<p>Use this to identify performance bottlenecks and debug fetch failures.</p>
-</div>
+        <div class="tool-section">
+          <div class="tool-title">⏱️ Resolution Log</div>
+          <p>Click <strong>Show resolution log</strong> to display live source resolution steps with millisecond timings:</p>
+          <ul>
+            <li>Doc load started</li>
+            <li>Config loaded</li>
+            <li>Content resolved from [local|remote]</li>
+            <li>Parsing, rendering, and link rewriting steps</li>
+            <li>Total time elapsed</li>
+          </ul>
+          <p>Use this to identify performance bottlenecks and debug fetch failures.</p>
+        </div>
 
-<h3>Query Parameters</h3>
+        <h3>Query Parameters</h3>
 
-<p>The viewer supports the following query parameters to control source resolution:</p>
+        <p>The viewer supports the following query parameters to control source resolution:</p>
 
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Value</th>
-<th>Effect</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>src</code></td>
-<td><code>customer-docs/...</code></td>
-<td>Request a specific path resolved from the central docs source</td>
-</tr>
-<tr>
-<td><code>canary</code></td>
-<td><code>remote-only</code></td>
-<td>Force remote-only mode (when enabled)</td>
-</tr>
-</tbody>
-</table>
+        <table>
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Value</th>
+              <th>Effect</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>src</code></td>
+              <td><code>customer-docs/...</code></td>
+              <td>Request a specific path resolved from the central docs source</td>
+            </tr>
+            <tr>
+              <td><code>canary</code></td>
+              <td><code>remote-only</code></td>
+              <td>Force remote-only mode (when enabled)</td>
+            </tr>
+          </tbody>
+        </table>
 
-<p><strong>Example:</strong> <code>doc-viewer.html?src=customer-docs/audit-toolkit/README.md&canary=remote-only</code></p>
+        <p><strong>Example:</strong> <code>doc-viewer.html?src=customer-docs/audit-toolkit/README.md&canary=remote-only</code></p>
 
-<hr>
+        <hr />
 
-<h2>Remote Availability Validation</h2>
+        <h2>Remote Availability Validation</h2>
 
-<p>Remote availability checks validate that central documentation sources resolve correctly for documentation viewer paths.</p>
+        <p>Remote availability checks validate that central documentation sources resolve correctly for documentation viewer paths.</p>
 
-<div class="tool-section">
-<div class="tool-title">⏰ Scheduled Validation</div>
-<p>Remote canary checks run as needed:</p>
-<ul>
-<li><strong>Manual trigger</strong> — Run the canary smoke workflow via GitHub Actions</li>
-<li><strong>Pre-merge validation</strong> — Pull request checks validate remote docs resolution</li>
-</ul>
-</div>
+        <div class="tool-section">
+          <div class="tool-title">⏰ Scheduled Validation</div>
+          <p>Remote canary checks run as needed:</p>
+          <ul>
+            <li><strong>Manual trigger</strong> — Run the canary smoke workflow via GitHub Actions</li>
+            <li><strong>Pre-merge validation</strong> — Pull request checks validate remote docs resolution</li>
+          </ul>
+        </div>
 
-<hr>
+        <hr />
 
-<h2>Source Configuration</h2>
+        <h2>Source Configuration</h2>
 
-<p>Documentation source resolution is controlled by <code>docs-source-config.json</code>:</p>
+        <p>Documentation source resolution is controlled by <code>docs-source-config.json</code>:</p>
 
-<pre><code>{
+        <pre><code>{
   "mode": "remote-only",
   "localDocsRoot": "customer-docs",
   "remoteMirrorBaseUrl": "https://raw.githubusercontent.com/AuditToolkitLabs/releases/main",
@@ -183,106 +302,104 @@
   "canaryQueryValue": "remote-only"
 }</code></pre>
 
-<h3>Configuration Fields</h3>
+        <h3>Configuration Fields</h3>
 
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>mode</code></td>
-<td>Source policy (set to <code>remote-only</code> for this site)</td>
-</tr>
-<tr>
-<td><code>localDocsRoot</code></td>
-<td>Logical root prefix used to resolve document paths</td>
-</tr>
-<tr>
-<td><code>remoteMirrorBaseUrl</code></td>
-<td>Base URL for central remote documentation source</td>
-</tr>
-<tr>
-<td><code>enableRemoteFallback</code></td>
-<td>Retained for compatibility; disabled in remote-only mode</td>
-</tr>
-<tr>
-<td><code>enableCanaryRemoteOnly</code></td>
-<td>When true, <code>?canary=remote-only</code> parameter enables remote-only testing</td>
-</tr>
-<tr>
-<td><code>canaryQueryParam</code> &amp; <code>canaryQueryValue</code></td>
-<td>Query parameter name and value to trigger canary mode</td>
-</tr>
-</tbody>
-</table>
+        <table>
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>mode</code></td>
+              <td>Source policy (set to <code>remote-only</code> for this site)</td>
+            </tr>
+            <tr>
+              <td><code>localDocsRoot</code></td>
+              <td>Logical root prefix used to resolve document paths</td>
+            </tr>
+            <tr>
+              <td><code>remoteMirrorBaseUrl</code></td>
+              <td>Base URL for central remote documentation source</td>
+            </tr>
+            <tr>
+              <td><code>enableRemoteFallback</code></td>
+              <td>Retained for compatibility; disabled in remote-only mode</td>
+            </tr>
+            <tr>
+              <td><code>enableCanaryRemoteOnly</code></td>
+              <td>When true, <code>?canary=remote-only</code> parameter enables remote-only testing</td>
+            </tr>
+            <tr>
+              <td><code>canaryQueryParam</code> &amp; <code>canaryQueryValue</code></td>
+              <td>Query parameter name and value to trigger canary mode</td>
+            </tr>
+          </tbody>
+        </table>
 
-<hr>
+        <hr />
 
-<h2>Troubleshooting</h2>
+        <h2>Troubleshooting</h2>
 
-<h3>Documentation Not Loading</h3>
+        <h3>Documentation Not Loading</h3>
 
-<p><strong>Check:</strong></p>
-<ol>
-<li>Click <strong>Copy debug context</strong> in the doc viewer</li>
-<li>Verify <code>resolvedSrc</code> matches expected source</li>
-<li>Check <code>sourceKind</code> (remote or remote-canary)</li>
-<li>Review <strong>Show resolution log</strong> for fetch errors</li>
-</ol>
+        <p><strong>Check:</strong></p>
+        <ol>
+          <li>Click <strong>Copy debug context</strong> in the doc viewer</li>
+          <li>Verify <code>resolvedSrc</code> matches expected source</li>
+          <li>Check <code>sourceKind</code> (remote or remote-canary)</li>
+          <li>Review <strong>Show resolution log</strong> for fetch errors</li>
+        </ol>
 
-<h3>Wrong Source Being Used</h3>
+        <h3>Wrong Source Being Used</h3>
 
-<p><strong>Check:</strong></p>
-<ol>
-<li>Verify <code>docs-source-config.json</code> mode setting</li>
-<li>Check active query parameters in URL</li>
-<li>Inspect source mode badge color</li>
-<li>Look at <strong>resolution log</strong> to see why source was selected</li>
-</ol>
+        <p><strong>Check:</strong></p>
+        <ol>
+          <li>Verify <code>docs-source-config.json</code> mode setting</li>
+          <li>Check active query parameters in URL</li>
+          <li>Inspect source mode badge color</li>
+          <li>Look at <strong>resolution log</strong> to see why source was selected</li>
+        </ol>
 
-<h3>Documentation Out of Sync</h3>
+        <h3>Documentation Out of Sync</h3>
 
-<p><strong>Check:</strong></p>
-<ol>
-<li>Confirm the requested central path exists at the configured remote source</li>
-<li>Use <strong>Copy debug context</strong> and <strong>Show resolution log</strong> for triage details</li>
-<li>Review docs-source configuration and remote mirror URL</li>
-</ol>
+        <p><strong>Check:</strong></p>
+        <ol>
+          <li>Confirm the requested central path exists at the configured remote source</li>
+          <li>Use <strong>Copy debug context</strong> and <strong>Show resolution log</strong> for triage details</li>
+          <li>Review docs-source configuration and remote mirror URL</li>
+        </ol>
 
-<h3>Remote Docs Unavailable</h3>
+        <h3>Remote Docs Unavailable</h3>
 
-<p><strong>Check:</strong></p>
-<ol>
-<li>Verify remote mirror URL in config is accessible</li>
-<li>Enable canary testing: Set <code>enableCanaryRemoteOnly: true</code> in config</li>
-<li>Test with <code>?canary=remote-only</code> query parameter</li>
-<li>Review CI smoke test results in GitHub Actions</li>
-</ol>
+        <p><strong>Check:</strong></p>
+        <ol>
+          <li>Verify remote mirror URL in config is accessible</li>
+          <li>Enable canary testing: Set <code>enableCanaryRemoteOnly: true</code> in config</li>
+          <li>Test with <code>?canary=remote-only</code> query parameter</li>
+          <li>Review CI smoke test results in GitHub Actions</li>
+        </ol>
 
-<hr>
+        <hr />
 
-<h2>Related Documentation</h2>
+        <h2>Related Documentation</h2>
 
-<ul>
-<li><a href="doc-viewer.html">Documentation Viewer</a></li>
-<li><a href="docs.html">Central Documentation Library</a></li>
-<li><a href="support.html">Support &amp; Contact</a></li>
-</ul>
+        <ul>
+          <li><a href="doc-viewer.html">Documentation Viewer</a></li>
+          <li><a href="docs.html">Central Documentation Library</a></li>
+          <li><a href="support.html">Support &amp; Contact</a></li>
+        </ul>
+      </div>
+    </div>
 
-  </div>
-</div>
+    <footer class="footer">
+      <div class="wrap">
+        <p>&copy; 2026 AuditToolkit Labs. All rights reserved. | <a href="support.html">Support</a></p>
+      </div>
+    </footer>
 
-<footer class="footer">
-  <div class="wrap">
-    <p>&copy; 2026 AuditToolkit Labs. All rights reserved. | <a href="support.html">Support</a></p>
-  </div>
-</footer>
-
-<script src="assets/js/nav.js?v=20260612e"></script>
-
-</body>
+    <script src="assets/js/nav.js?v=20260612e"></script>
+  </body>
 </html>

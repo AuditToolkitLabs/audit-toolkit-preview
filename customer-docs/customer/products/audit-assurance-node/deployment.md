@@ -8,13 +8,13 @@ node is used against approved targets.
 
 ## Deployment Modes
 
-| Mode | Customer use | Notes |
-| --- | --- | --- |
-| Local development | Developer or lab validation | Uses local Python runtime and environment profiles. |
-| Standalone web runtime | Small standalone assurance node | Runs the FastAPI web UI and backing audit control plane. |
-| Docker container | Isolated runtime packaging | Mount persistent `data/` and `config/` paths. |
-| Docker Compose | Lab, test, or simple service composition | Uses repository compose configuration where supplied. |
-| Windows service | Long-running Windows-hosted node | Use an approved service wrapper such as NSSM with `run-service.ps1`. |
+| Mode                   | Customer use                             | Notes                                                                |
+| ---------------------- | ---------------------------------------- | -------------------------------------------------------------------- |
+| Local development      | Developer or lab validation              | Uses local Python runtime and environment profiles.                  |
+| Standalone web runtime | Small standalone assurance node          | Runs the FastAPI web UI and backing audit control plane.             |
+| Docker container       | Isolated runtime packaging               | Mount persistent `data/` and `config/` paths.                        |
+| Docker Compose         | Lab, test, or simple service composition | Uses repository compose configuration where supplied.                |
+| Windows service        | Long-running Windows-hosted node         | Use an approved service wrapper such as NSSM with `run-service.ps1`. |
 
 ## Environment Profiles
 

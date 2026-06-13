@@ -1,285 +1,333 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AuditToolkit - Unified Security Auditing</title>
-  <meta name="description" content="The complete, self-hosted security audit and remediation platform. One subscription, all the tools." />
-  <meta property="og:title" content="AuditToolkit - Unified Security Auditing" />
-  <meta property="og:description" content="One subscription for our entire suite of security, audit, and compliance tools. Fully self-hosted." />
-  <link rel="stylesheet" href="assets/css/site.css?v=20260612g" />
-</head>
-<body>
-<nav class="nav">
-  <div class="wrap">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-brand">
-        <span class="brand-icon">A</span>
-        <span>AuditToolkit</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="price.html">Pricing</a></li>
-        <li><a href="docs.html">Documentation</a></li>
-        <li><a href="releases.html">Releases</a></li>
-        <li><a href="support.html">Support</a></li>
-      </ul>
-      <div class="nav-cta">
-        <a href="price.html" class="btn btn-primary btn-sm">View Pricing</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <title>AuditToolkit - Unified Security Auditing</title>
+    <meta
+      name="description"
+      content="The complete, self-hosted security audit and remediation platform. One subscription, all the tools."
+    />
+    <meta property="og:title" content="AuditToolkit - Unified Security Auditing" />
+    <meta
+      property="og:description"
+      content="One subscription for our entire suite of security, audit, and compliance tools. Fully self-hosted."
+    />
+    <link rel="stylesheet" href="assets/css/site.css?v=20260612g" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="wrap">
+        <div class="nav-inner">
+          <a href="index.html" class="nav-brand">
+            <span class="brand-icon">A</span>
+            <span>AuditToolkit</span>
+          </a>
+          <ul class="nav-links">
+            <li><a href="price.html">Pricing</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="releases.html">Releases</a></li>
+            <li><a href="support.html">Support</a></li>
+          </ul>
+          <div class="nav-cta">
+            <a href="price.html" class="btn btn-primary btn-sm">View Pricing</a>
+          </div>
+          <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+        </div>
       </div>
-      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    </nav>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="price.html">Pricing</a>
+      <a href="docs.html">Documentation</a>
+      <a href="releases.html">Releases</a>
+      <a href="support.html">Support</a>
+      <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
     </div>
-  </div>
-</nav>
-<div class="nav-mobile" id="nav-mobile">
-  <a href="price.html">Pricing</a>
-  <a href="docs.html">Documentation</a>
-  <a href="releases.html">Releases</a>
-  <a href="support.html">Support</a>
-  <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
-</div>
 
-<section class="hero" id="home">
-  <div class="wrap hero-inner">
-    <div class="hero-layout">
-      <div class="hero-copy">
-        <h1>The AuditToolkit</h1>
-        <p class="hero-sub">One subscription for our entire suite of self-hosted security, audit, and compliance tools. 1,019 audit scripts, 712 fix scripts, and atomic rollback with no data leaving your environment.</p>
-        <div class="hero-cta">
-          <a href="price.html" class="btn btn-primary">View Pricing</a>
-          <a href="script-coverage.html" class="btn btn-secondary">View Coverage</a>
-          <a href="docs.html" class="btn btn-secondary">Documentation</a>
-        </div>
-        <div class="hero-stats">
-          <div><div class="stat-value">1,731</div><p class="stat-label">Audit and fix scripts across Linux, Windows, and hypervisors</p></div>
-          <div><div class="stat-value">Atomic</div><p class="stat-label">Transaction-safe remediation with automatic rollback and dead man&#39;s switch</p></div>
-          <div><div class="stat-value">Air-gap</div><p class="stat-label">Fully self-hosted with offline MSI support and no data leaving your environment</p></div>
+    <section class="hero" id="home">
+      <div class="wrap hero-inner">
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <h1>The AuditToolkit</h1>
+            <p class="hero-sub">
+              One subscription for our entire suite of self-hosted security, audit, and compliance tools. 1,019 audit scripts, 712 fix
+              scripts, and atomic rollback with no data leaving your environment.
+            </p>
+            <div class="hero-cta">
+              <a href="price.html" class="btn btn-primary">View Pricing</a>
+              <a href="script-coverage.html" class="btn btn-secondary">View Coverage</a>
+              <a href="docs.html" class="btn btn-secondary">Documentation</a>
+            </div>
+            <div class="hero-stats">
+              <div>
+                <div class="stat-value">1,731</div>
+                <p class="stat-label">Audit and fix scripts across Linux, Windows, and hypervisors</p>
+              </div>
+              <div>
+                <div class="stat-value">Atomic</div>
+                <p class="stat-label">Transaction-safe remediation with automatic rollback and dead man&#39;s switch</p>
+              </div>
+              <div>
+                <div class="stat-value">Air-gap</div>
+                <p class="stat-label">Fully self-hosted with offline MSI support and no data leaving your environment</p>
+              </div>
+            </div>
+          </div>
+          <figure class="hero-visual">
+            <img src="assets/generated/home-hero.svg" alt="AuditToolkit professional hero graphic" />
+          </figure>
         </div>
       </div>
-      <figure class="hero-visual">
-        <img src="assets/generated/home-hero.svg" alt="AuditToolkit professional hero graphic" />
-      </figure>
-    </div>
-  </div>
-</section>
+    </section>
 
-<div class="portal-quick-links">
-  <div class="wrap">
-    <div class="portal-quick-links-inner">
-      <a href="price.html" class="portal-quick-link">
-        <span class="pql-dot pql-dot-blue"></span>
-        <span class="pql-label">Pricing<span class="pql-sub">Plans &amp; licensing</span></span>
-      </a>
-      <a href="docs.html" class="portal-quick-link">
-        <span class="pql-dot pql-dot-green"></span>
-        <span class="pql-label">Documentation<span class="pql-sub">Guides &amp; reference</span></span>
-      </a>
-      <a href="releases.html" class="portal-quick-link">
-        <span class="pql-dot pql-dot-blue"></span>
-        <span class="pql-label">Releases<span class="pql-sub">Changelogs &amp; downloads</span></span>
-      </a>
-      <a href="script-coverage.html" class="portal-quick-link">
-        <span class="pql-dot pql-dot-warn"></span>
-        <span class="pql-label">Script Coverage<span class="pql-sub">1,731 audit scripts</span></span>
-      </a>
-      <a href="integrations.html" class="portal-quick-link">
-        <span class="pql-dot pql-dot-green"></span>
-        <span class="pql-label">Integrations<span class="pql-sub">Connections &amp; APIs</span></span>
-      </a>
-      <a href="how-it-works.html" class="portal-quick-link">
-        <span class="pql-dot pql-dot-pink"></span>
-        <span class="pql-label">How It Works<span class="pql-sub">Architecture &amp; flows</span></span>
-      </a>
-      <a href="support.html" class="portal-quick-link">
-        <span class="pql-dot pql-dot-blue"></span>
-        <span class="pql-label">Support<span class="pql-sub">Contact &amp; help</span></span>
-      </a>
+    <div class="portal-quick-links">
+      <div class="wrap">
+        <div class="portal-quick-links-inner">
+          <a href="price.html" class="portal-quick-link">
+            <span class="pql-dot pql-dot-blue"></span>
+            <span class="pql-label">Pricing<span class="pql-sub">Plans &amp; licensing</span></span>
+          </a>
+          <a href="docs.html" class="portal-quick-link">
+            <span class="pql-dot pql-dot-green"></span>
+            <span class="pql-label">Documentation<span class="pql-sub">Guides &amp; reference</span></span>
+          </a>
+          <a href="releases.html" class="portal-quick-link">
+            <span class="pql-dot pql-dot-blue"></span>
+            <span class="pql-label">Releases<span class="pql-sub">Changelogs &amp; downloads</span></span>
+          </a>
+          <a href="script-coverage.html" class="portal-quick-link">
+            <span class="pql-dot pql-dot-warn"></span>
+            <span class="pql-label">Script Coverage<span class="pql-sub">1,731 audit scripts</span></span>
+          </a>
+          <a href="integrations.html" class="portal-quick-link">
+            <span class="pql-dot pql-dot-green"></span>
+            <span class="pql-label">Integrations<span class="pql-sub">Connections &amp; APIs</span></span>
+          </a>
+          <a href="how-it-works.html" class="portal-quick-link">
+            <span class="pql-dot pql-dot-pink"></span>
+            <span class="pql-label">How It Works<span class="pql-sub">Architecture &amp; flows</span></span>
+          </a>
+          <a href="support.html" class="portal-quick-link">
+            <span class="pql-dot pql-dot-blue"></span>
+            <span class="pql-label">Support<span class="pql-sub">Contact &amp; help</span></span>
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<section class="section" id="whats-new">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">What&#39;s New</p>
-      <h2>Recent Platform Updates You Can Explore</h2>
-      <p>We have expanded use cases, remediation workflows, and architecture visibility across key documentation pages.</p>
-    </div>
-    <div class="grid-2">
-      <div class="card">
-        <h3 class="mt-0">Expanded Use Cases</h3>
-        <p>Now includes 10 customer scenarios with dedicated coverage for network security teams and MSP operations.</p>
-        <p><a href="use-cases.html">View use cases</a></p>
-      </div>
-      <div class="card">
-        <h3 class="mt-0">Remediation Workflows</h3>
-        <p>New guidance on prioritisation strategy, ownership and approvals, and CI/CD automation patterns.</p>
-        <p><a href="remediation.html">View remediation workflows</a></p>
-      </div>
-      <div class="card">
-        <h3 class="mt-0">Architecture Visuals</h3>
-        <p>New Mermaid architecture and data-flow diagrams across platform and product pages for faster understanding.</p>
-        <p><a href="how-it-works.html">View platform architecture</a></p>
-      </div>
-      <div class="card">
-        <h3 class="mt-0">Integration Execution Paths</h3>
-        <p>Execution model now visualised across Local, Agent, SSH, WinRM, and SNMP channels.</p>
-        <p><a href="integrations.html">View execution model</a></p>
-      </div>
-        <div class="card">
-          <h3 class="mt-0">Brand Concepts And Icon Set</h3>
-          <p>Designer source sheets and six reusable concept icons are now available for product and documentation pages.</p>
-          <p><a href="brand-assets.html">View brand assets</a></p>
+    <section class="section" id="whats-new">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">What&#39;s New</p>
+          <h2>Recent Platform Updates You Can Explore</h2>
+          <p>We have expanded use cases, remediation workflows, and architecture visibility across key documentation pages.</p>
         </div>
-    </div>
-  </div>
-</section>
+        <div class="grid-2">
+          <div class="card">
+            <h3 class="mt-0">Expanded Use Cases</h3>
+            <p>Now includes 10 customer scenarios with dedicated coverage for network security teams and MSP operations.</p>
+            <p><a href="use-cases.html">View use cases</a></p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Remediation Workflows</h3>
+            <p>New guidance on prioritisation strategy, ownership and approvals, and CI/CD automation patterns.</p>
+            <p><a href="remediation.html">View remediation workflows</a></p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Architecture Visuals</h3>
+            <p>New Mermaid architecture and data-flow diagrams across platform and product pages for faster understanding.</p>
+            <p><a href="how-it-works.html">View platform architecture</a></p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Integration Execution Paths</h3>
+            <p>Execution model now visualised across Local, Agent, SSH, WinRM, and SNMP channels.</p>
+            <p><a href="integrations.html">View execution model</a></p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Brand Concepts And Icon Set</h3>
+            <p>Designer source sheets and six reusable concept icons are now available for product and documentation pages.</p>
+            <p><a href="brand-assets.html">View brand assets</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section class="section" id="platform-overview">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Platform</p>
-      <h2>One Subscription, All The Tools</h2>
-      <p>AuditToolkit is a continuous compliance engine replacing point-in-time audits with real-time verifiable evidence.</p>
-      <p>Reduce audit preparation time from weeks to hours.</p>
-      <p>Your subscription includes access to our complete suite of tools for CMDB, auditing, asset intelligence, and more.</p>
-    </div>
-    <div class="grid-2">
-      <div class="product-card">
-        <div class="product-title-row">
-          <div class="product-icon bg-accent-blue"><img src="assets/images/audittoolkit-icon-pack/svg/cmdb-api-data-collection-tool-deployment.svg" alt="CMDB API icon" /></div>
-          <h3 class="mb-0">CMDB API Data Collection</h3>
+    <section class="section" id="platform-overview">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Platform</p>
+          <h2>One Subscription, All The Tools</h2>
+          <p>AuditToolkit is a continuous compliance engine replacing point-in-time audits with real-time verifiable evidence.</p>
+          <p>Reduce audit preparation time from weeks to hours.</p>
+          <p>Your subscription includes access to our complete suite of tools for CMDB, auditing, asset intelligence, and more.</p>
         </div>
-        <p>Multi-platform infrastructure data collection with 40+ integrations across cloud, network, identity, and enterprise systems, with agent-based collection.</p>
-      </div>
-      <div class="product-card">
-        <div class="product-title-row">
-          <div class="product-icon bg-accent-green"><img src="assets/images/audittoolkit-icon-pack/svg/audit-tool-control-plane.svg" alt="Audit Admin Toolkit icon" /></div>
-          <h3 class="mb-0">Audit Admin Toolkit</h3>
+        <div class="grid-2">
+          <div class="product-card">
+            <div class="product-title-row">
+              <div class="product-icon bg-accent-blue">
+                <img src="assets/images/audittoolkit-icon-pack/svg/cmdb-api-data-collection-tool-deployment.svg" alt="CMDB API icon" />
+              </div>
+              <h3 class="mb-0">CMDB API Data Collection</h3>
+            </div>
+            <p>
+              Multi-platform infrastructure data collection with 40+ integrations across cloud, network, identity, and enterprise systems,
+              with agent-based collection.
+            </p>
+          </div>
+          <div class="product-card">
+            <div class="product-title-row">
+              <div class="product-icon bg-accent-green">
+                <img src="assets/images/audittoolkit-icon-pack/svg/audit-tool-control-plane.svg" alt="Audit Admin Toolkit icon" />
+              </div>
+              <h3 class="mb-0">Audit Admin Toolkit</h3>
+            </div>
+            <p>Operator-focused audit and remediation platform with 1,019 audit scripts and 712 fix scripts.</p>
+          </div>
+          <div class="product-card">
+            <div class="product-title-row">
+              <div class="product-icon bg-accent-pink">
+                <img src="assets/images/audittoolkit-icon-pack/svg/asset-command-centre-analytics.svg" alt="Asset Command Center icon" />
+              </div>
+              <h3 class="mb-0">Asset Command Center</h3>
+            </div>
+            <p>Asset discovery, inventory, and vulnerability context with auto-discovery across environments.</p>
+          </div>
+          <div class="product-card">
+            <div class="product-title-row">
+              <div class="product-icon bg-accent-warn">
+                <img src="assets/images/audittoolkit-icon-pack/svg/linux-security-lite-security.svg" alt="Linux Security Lite icon" />
+              </div>
+              <h3 class="mb-0">Linux Security Lite</h3>
+            </div>
+            <p>Lightweight Linux-first audit producer with 500 audit scripts across 11 domains.</p>
+          </div>
+          <div class="product-card">
+            <div class="product-title-row">
+              <div class="product-icon bg-accent-teal">
+                <img
+                  src="assets/images/audittoolkit-icon-pack/svg/switch-exposure-center-ingestion.svg"
+                  alt="Secure Exposure Center icon"
+                />
+              </div>
+              <h3 class="mb-0">Secure Exposure Center</h3>
+            </div>
+            <p>Switch-focused exposure intelligence with firmware-level advisory and CVE correlation.</p>
+          </div>
+          <div class="product-card">
+            <div class="product-title-row">
+              <div class="product-icon bg-accent-blue">
+                <img src="assets/images/audittoolkit-icon-pack/svg/audit-assurance-node-ingestion.svg" alt="Audit Assurance Node icon" />
+              </div>
+              <h3 class="mb-0">Audit Assurance Node</h3>
+            </div>
+            <p>Distributed execution layer for parallel Linux and Windows audit collection with signed, tamper-evident evidence bundles.</p>
+          </div>
         </div>
-        <p>Operator-focused audit and remediation platform with 1,019 audit scripts and 712 fix scripts.</p>
       </div>
-      <div class="product-card">
-        <div class="product-title-row">
-          <div class="product-icon bg-accent-pink"><img src="assets/images/audittoolkit-icon-pack/svg/asset-command-centre-analytics.svg" alt="Asset Command Center icon" /></div>
-          <h3 class="mb-0">Asset Command Center</h3>
-        </div>
-        <p>Asset discovery, inventory, and vulnerability context with auto-discovery across environments.</p>
-      </div>
-      <div class="product-card">
-        <div class="product-title-row">
-          <div class="product-icon bg-accent-warn"><img src="assets/images/audittoolkit-icon-pack/svg/linux-security-lite-security.svg" alt="Linux Security Lite icon" /></div>
-          <h3 class="mb-0">Linux Security Lite</h3>
-        </div>
-        <p>Lightweight Linux-first audit producer with 500 audit scripts across 11 domains.</p>
-      </div>
-      <div class="product-card">
-        <div class="product-title-row">
-          <div class="product-icon bg-accent-teal"><img src="assets/images/audittoolkit-icon-pack/svg/switch-exposure-center-ingestion.svg" alt="Secure Exposure Center icon" /></div>
-          <h3 class="mb-0">Secure Exposure Center</h3>
-        </div>
-        <p>Switch-focused exposure intelligence with firmware-level advisory and CVE correlation.</p>
-      </div>
-      <div class="product-card">
-        <div class="product-title-row">
-          <div class="product-icon bg-accent-blue"><img src="assets/images/audittoolkit-icon-pack/svg/audit-assurance-node-ingestion.svg" alt="Audit Assurance Node icon" /></div>
-          <h3 class="mb-0">Audit Assurance Node</h3>
-        </div>
-        <p>Distributed execution layer for parallel Linux and Windows audit collection with signed, tamper-evident evidence bundles.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section class="section section-surface" id="self-hosted">
-  <div class="wrap">
-    <div class="section-head mb-20">
-      <p class="eyebrow">Deployment Model</p>
-      <h2>Built for environments where data cannot leave</h2>
-      <p>Deploy every component on your own infrastructure without SaaS dependencies.</p>
-    </div>
-    <div class="grid-3">
-      <div class="card">
-        <h3 class="mt-0">Fully self-hosted</h3>
-        <p>Every component of the suite deploys on your own infrastructure. No cloud dependency. No data transmitted to external services. No SaaS lock-in. Your audit data, findings, and evidence stay in your environment.</p>
-      </div>
-      <div class="card">
-        <h3 class="mt-0">Air-gap capable</h3>
-        <p>Offline MSI installers available for restricted environments. Agent deployment supported without outbound internet access. Designed for financial services, healthcare, government, and defense supply chain environments.</p>
-      </div>
-      <div class="card">
-        <h3 class="mt-0">BSL converts to MIT</h3>
-        <p>All BSL-licensed products in this suite convert to the MIT licence by 2031. Your deployment rights are permanent regardless of any future commercial relationship. Source code becomes fully open and your investment is protected.</p>
-      </div>
-    </div>
-    <p class="text-sm text-muted mt-20">Telemetry is disabled by default across all products. When optionally enabled, only non-sensitive operational metadata is transmitted and no inventory, host, vulnerability, or credential data leaves your environment.</p>
-  </div>
-</section>
-
-<div class="cta-band">
-  <div class="wrap">
-    <div class="cta-band-inner">
-      <div>
-        <h2 class="mb-8">Ready to get started?</h2>
-        <p>Choose a plan and get instant access to the entire AuditToolkit.</p>
-      </div>
-      <div class="cta-band-actions">
-        <a href="price.html" class="btn btn-primary btn-lg">View Pricing</a>
-        <a href="docs.html" class="btn btn-secondary btn-lg">Browse Documentation</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="flex items-center gap-12 mb-16">
-          <span class="brand-icon">A</span>
-          <span class="footer-brand-name">AuditToolkit</span>
+    <section class="section section-surface" id="self-hosted">
+      <div class="wrap">
+        <div class="section-head mb-20">
+          <p class="eyebrow">Deployment Model</p>
+          <h2>Built for environments where data cannot leave</h2>
+          <p>Deploy every component on your own infrastructure without SaaS dependencies.</p>
         </div>
-        <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
-        <p class="footer-copy">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+        <div class="grid-3">
+          <div class="card">
+            <h3 class="mt-0">Fully self-hosted</h3>
+            <p>
+              Every component of the suite deploys on your own infrastructure. No cloud dependency. No data transmitted to external
+              services. No SaaS lock-in. Your audit data, findings, and evidence stay in your environment.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Air-gap capable</h3>
+            <p>
+              Offline MSI installers available for restricted environments. Agent deployment supported without outbound internet access.
+              Designed for financial services, healthcare, government, and defense supply chain environments.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">BSL converts to MIT</h3>
+            <p>
+              All BSL-licensed products in this suite convert to the MIT licence by 2031. Your deployment rights are permanent regardless of
+              any future commercial relationship. Source code becomes fully open and your investment is protected.
+            </p>
+          </div>
+        </div>
+        <p class="text-sm text-muted mt-20">
+          Telemetry is disabled by default across all products. When optionally enabled, only non-sensitive operational metadata is
+          transmitted and no inventory, host, vulnerability, or credential data leaves your environment.
+        </p>
       </div>
-      <div class="footer-col">
-        <h4>Platform</h4>
-        <ul>
-          <li><a href="price.html">Pricing</a></li>
-          <li><a href="script-coverage.html">Script Coverage</a></li>
-          <li><a href="remediation.html">Remediation</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="docs.html">Documentation</a></li>
-          <li><a href="releases.html">Release Notes</a></li>
-          <li><a href="regulated-industries.html">Regulated Industries</a></li>
-          <li><a href="compliance-evidence.html">Compliance Evidence</a></li>
-        <li><a href="how-it-works.html">How It Works</a></li>
-        <li><a href="use-cases.html">Use Cases</a></li>
-        <li><a href="integrations.html">Integrations</a></li>
-          <li><a href="brand-assets.html">Brand Assets</a></li>
-          <li><a href="support.html">Support</a></li>
-          <li><a href="support.html#security">Security Policy</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
-          <li><a href="releases.html" target="_blank" rel="noopener">Release Hub</a></li>
-          <li><a href="support.html#contact">Send an Enquiry</a></li>
-        </ul>
+    </section>
+
+    <div class="cta-band">
+      <div class="wrap">
+        <div class="cta-band-inner">
+          <div>
+            <h2 class="mb-8">Ready to get started?</h2>
+            <p>Choose a plan and get instant access to the entire AuditToolkit.</p>
+          </div>
+          <div class="cta-band-actions">
+            <a href="price.html" class="btn btn-primary btn-lg">View Pricing</a>
+            <a href="docs.html" class="btn btn-secondary btn-lg">Browse Documentation</a>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>Licence: Business Source Licence (BSL). See individual product EULA for full usage rights.</p>
-      <p>This site is for informational and preview purposes only. No production downloads available.</p>
-    </div>
-  </div>
-</footer>
-<script src="assets/js/nav.js?v=20260612e"></script>
-</body>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="flex items-center gap-12 mb-16">
+              <span class="brand-icon">A</span>
+              <span class="footer-brand-name">AuditToolkit</span>
+            </div>
+            <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
+            <p class="footer-copy">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Platform</h4>
+            <ul>
+              <li><a href="price.html">Pricing</a></li>
+              <li><a href="script-coverage.html">Script Coverage</a></li>
+              <li><a href="remediation.html">Remediation</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="docs.html">Documentation</a></li>
+              <li><a href="releases.html">Release Notes</a></li>
+              <li><a href="regulated-industries.html">Regulated Industries</a></li>
+              <li><a href="compliance-evidence.html">Compliance Evidence</a></li>
+              <li><a href="how-it-works.html">How It Works</a></li>
+              <li><a href="use-cases.html">Use Cases</a></li>
+              <li><a href="integrations.html">Integrations</a></li>
+              <li><a href="brand-assets.html">Brand Assets</a></li>
+              <li><a href="support.html">Support</a></li>
+              <li><a href="support.html#security">Security Policy</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
+              <li><a href="releases.html" target="_blank" rel="noopener">Release Hub</a></li>
+              <li><a href="support.html#contact">Send an Enquiry</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>Licence: Business Source Licence (BSL). See individual product EULA for full usage rights.</p>
+          <p>This site is for informational and preview purposes only. No production downloads available.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="assets/js/nav.js?v=20260612e"></script>
+  </body>
 </html>
-

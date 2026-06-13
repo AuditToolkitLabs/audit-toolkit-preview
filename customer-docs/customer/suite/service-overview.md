@@ -18,13 +18,13 @@ The products share a common operating pattern:
 
 ## Product Roles
 
-| Product | Role in the suite |
-| --- | --- |
-| Audit-Tool | Core audit platform and broadest customer deployment model. |
-| Asset Command Centre | Asset inventory, discovery, local reporting, and forwarding. |
-| AuditToolkit Linux Security Lite | Linux-only audit execution and compliance evidence. |
-| CMDB API Data Collection Tool | CMDB-oriented API and connector collection. |
-| Switch Exposure Center | Network switch exposure, advisory, and reporting workflows. |
+| Product                                                           | Role in the suite                                                                                                                  |
+| ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Audit-Tool                                                        | Core audit platform and broadest customer deployment model.                                                                        |
+| Asset Command Centre                                              | Asset inventory, discovery, local reporting, and forwarding.                                                                       |
+| AuditToolkit Linux Security Lite                                  | Linux-only audit execution and compliance evidence.                                                                                |
+| CMDB API Data Collection Tool                                     | CMDB-oriented API and connector collection.                                                                                        |
+| Switch Exposure Center                                            | Network switch exposure, advisory, and reporting workflows.                                                                        |
 | [Audit Assurance Node](../products/audit-assurance-node/index.md) | Transport-neutral assurance execution, adapter-based evidence collection, parallel tracing, and standalone web runtime validation. |
 
 ## Deployment Model

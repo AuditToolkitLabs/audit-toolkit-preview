@@ -8,14 +8,14 @@ activity.
 
 ## Validation Families
 
-| Validation | Purpose |
-| --- | --- |
-| Health check | Confirms the web runtime is responsive. |
-| Login page smoke check | Confirms the UI template path renders correctly. |
-| Dashboard smoke check | Confirms authenticated UI pages can render with shared context. |
-| Adapter contract tests | Confirms transport adapters return the required normalized result object. |
+| Validation                    | Purpose                                                                      |
+| ----------------------------- | ---------------------------------------------------------------------------- |
+| Health check                  | Confirms the web runtime is responsive.                                      |
+| Login page smoke check        | Confirms the UI template path renders correctly.                             |
+| Dashboard smoke check         | Confirms authenticated UI pages can render with shared context.              |
+| Adapter contract tests        | Confirms transport adapters return the required normalized result object.    |
 | Web runtime integration tests | Confirms the UI can trigger a run and serve bundles, summaries, and reports. |
-| Parallel tracing tests | Confirms concurrent execution evidence is complete and deterministic. |
+| Parallel tracing tests        | Confirms concurrent execution evidence is complete and deterministic.        |
 
 ## Web Runtime Integration Tests
 

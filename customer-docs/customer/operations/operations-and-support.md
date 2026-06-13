@@ -2,15 +2,15 @@
 
 ## Support Responsibilities
 
-| Activity | Customer | AuditToolkitLabs |
-| --- | --- | --- |
-| First-line support for local users and operators | Yes | Guidance where needed |
-| Host OS, VM, container, network, database, and backup support | Yes | No |
-| Product defect investigation | Triage and evidence | Yes |
-| Product patches, releases, and advisories | No | Yes |
-| License entitlement and renewal support | Request and evidence | Yes |
-| Customer data redaction before escalation | Yes | No |
-| Roadmap and product change decisions | Input | Yes |
+| Activity                                                      | Customer             | AuditToolkitLabs      |
+| ------------------------------------------------------------- | -------------------- | --------------------- |
+| First-line support for local users and operators              | Yes                  | Guidance where needed |
+| Host OS, VM, container, network, database, and backup support | Yes                  | No                    |
+| Product defect investigation                                  | Triage and evidence  | Yes                   |
+| Product patches, releases, and advisories                     | No                   | Yes                   |
+| License entitlement and renewal support                       | Request and evidence | Yes                   |
+| Customer data redaction before escalation                     | Yes                  | No                    |
+| Roadmap and product change decisions                          | Input                | Yes                   |
 
 Support requests to AuditToolkitLabs should be raised by a named application
 administrator, service owner, security owner, or licensed customer contact.
@@ -41,12 +41,12 @@ First-line triage should confirm:
 
 ## Severity Guidance
 
-| Severity | Description | Suggested route |
-| --- | --- | --- |
-| Critical | Complete product outage, confirmed product-linked data loss, or suspected security exposure. | Email [Security@audittoolkitlabs.com](mailto:Security@audittoolkitlabs.com). |
-| High | Repeated product failure affecting a class of targets, jobs, agents, or integrations with no workaround. | Email [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com). |
-| Medium | Incorrect output, degraded coverage, partial integration failure, or workaround available. | Email [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com). |
-| Low | Documentation question, cosmetic issue, feature request, or general how-to question. | Email [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com). |
+| Severity | Description                                                                                              | Suggested route                                                              |
+| -------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Critical | Complete product outage, confirmed product-linked data loss, or suspected security exposure.             | Email [Security@audittoolkitlabs.com](mailto:Security@audittoolkitlabs.com). |
+| High     | Repeated product failure affecting a class of targets, jobs, agents, or integrations with no workaround. | Email [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com).   |
+| Medium   | Incorrect output, degraded coverage, partial integration failure, or workaround available.               | Email [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com).   |
+| Low      | Documentation question, cosmetic issue, feature request, or general how-to question.                     | Email [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com).   |
 
 ## Escalation Package
 

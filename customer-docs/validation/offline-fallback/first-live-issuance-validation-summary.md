@@ -2,13 +2,13 @@
 
 ## Metadata
 
-| Field | Value |
-| --- | --- |
-| Product context | AuditToolkit-Control-Centre offline fallback licensing workflow |
-| Execution date | 2026-06-11 |
-| Summary status | PASS |
-| Source of evidence | Internal operator execution and runtime verifier output |
-| Published in central docs | 2026-06-12 |
+| Field                     | Value                                                           |
+| ------------------------- | --------------------------------------------------------------- |
+| Product context           | AuditToolkit-Control-Centre offline fallback licensing workflow |
+| Execution date            | 2026-06-11                                                      |
+| Summary status            | PASS                                                            |
+| Source of evidence        | Internal operator execution and runtime verifier output         |
+| Published in central docs | 2026-06-12                                                      |
 
 ## Purpose
 

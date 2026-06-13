@@ -26,16 +26,16 @@ Audit Assurance Node supports:
 
 ## In-Scope Components
 
-| Component | Customer-facing role |
-| --- | --- |
-| Standalone web UI | Browser console for login, dashboard review, audit launch, bundle history, and latest report access. |
-| FastAPI runtime | Web and API surface used by the standalone UI and runtime smoke checks. |
-| PowerShell assurance pipeline | Executes configured audit workflows and coordinates result handling. |
-| Transport adapters | Local, SSH, WinRM, API, and agent execution or ingestion boundaries. |
-| Adapter contract validator | Rejects malformed transport results before evidence generation. |
-| Evidence bundle store | Local evidence and report output path for completed runs. |
-| Logging subsystem | Global and per-run JSON logs for operations and troubleshooting. |
-| Configuration profiles | Environment-specific settings for development, test, and production operation. |
+| Component                     | Customer-facing role                                                                                 |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------- |
+| Standalone web UI             | Browser console for login, dashboard review, audit launch, bundle history, and latest report access. |
+| FastAPI runtime               | Web and API surface used by the standalone UI and runtime smoke checks.                              |
+| PowerShell assurance pipeline | Executes configured audit workflows and coordinates result handling.                                 |
+| Transport adapters            | Local, SSH, WinRM, API, and agent execution or ingestion boundaries.                                 |
+| Adapter contract validator    | Rejects malformed transport results before evidence generation.                                      |
+| Evidence bundle store         | Local evidence and report output path for completed runs.                                            |
+| Logging subsystem             | Global and per-run JSON logs for operations and troubleshooting.                                     |
+| Configuration profiles        | Environment-specific settings for development, test, and production operation.                       |
 
 ## Runtime Model
 

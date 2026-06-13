@@ -7,7 +7,10 @@ function normalizeBaseUrl(value) {
 }
 
 function normalizeBase64(value) {
-  const normalized = String(value || "").trim().replace(/-/g, "+").replace(/_/g, "/");
+  const normalized = String(value || "")
+    .trim()
+    .replace(/-/g, "+")
+    .replace(/_/g, "/");
   if (!normalized) return "";
 
   const paddingNeeded = (4 - (normalized.length % 4)) % 4;
@@ -71,13 +74,9 @@ async function main() {
   }
 
   const workerBaseUrl = normalizeBaseUrl(process.env.WORKER_BASE_URL);
-  const resendWebhookId =
-    String(process.env.RESEND_WEBHOOK_ID || "").trim() || `replay_${Date.now()}`;
-  const resendTimestamp =
-    String(process.env.RESEND_WEBHOOK_TIMESTAMP || "").trim() ||
-    String(Math.floor(Date.now() / 1000));
-  const signatureVersion =
-    String(process.env.RESEND_SIGNATURE_VERSION || "").trim() || "v1";
+  const resendWebhookId = String(process.env.RESEND_WEBHOOK_ID || "").trim() || `replay_${Date.now()}`;
+  const resendTimestamp = String(process.env.RESEND_WEBHOOK_TIMESTAMP || "").trim() || String(Math.floor(Date.now() / 1000));
+  const signatureVersion = String(process.env.RESEND_SIGNATURE_VERSION || "").trim() || "v1";
   const contentType = String(process.env.RESEND_CONTENT_TYPE || "").trim() || "application/json";
 
   const rawBody = await readFile(payloadFile, "utf8");

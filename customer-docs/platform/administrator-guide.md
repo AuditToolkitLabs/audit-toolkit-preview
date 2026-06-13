@@ -34,4 +34,4 @@ Security is at the heart of the AuditToolkit platform. These documents provide g
 
 ---
 
-*This guide is a living document. As the platform evolves, we will continue to update and expand it. For any questions not covered here, please contact our [Support team](https://audittoolkitlabs.com/support.html).*
+_This guide is a living document. As the platform evolves, we will continue to update and expand it. For any questions not covered here, please contact our [Support team](https://audittoolkitlabs.com/support.html)._

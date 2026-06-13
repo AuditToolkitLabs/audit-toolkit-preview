@@ -11,11 +11,13 @@ Quick reference for the enhanced orchestrator with automatic audit selection.
 ## Basic Examples
 
 ### 1. Interactive Selection (Easiest!)
+
 ```bash
 bash orchestrator/orchestrator.sh --interactive
 ```
 
 **What you'll see:**
+
 ```
 Available audits:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -42,6 +44,7 @@ Your selection: 1-4
 ```
 
 **Selections you can make:**
+
 - `1 3 5` - Run audits 1, 3, and 5
 - `1-4` - Run audits 1 through 4 (inclusive)
 - `1-4 6` - Run audits 1 through 4, plus audit 6
@@ -53,37 +56,48 @@ Your selection: 1-4
 ### 2. Quick Presets (No Interaction!)
 
 #### Minimal Daily Check
+
 ```bash
 bash orchestrator/orchestrator.sh --preset minimal
 ```
+
 Runs 4 essential audits:
+
 - updates.sh
 - svc-basics.sh
 - firewall-state.sh
 - hardware-info-audit.sh
 
 #### Security Focused
+
 ```bash
 bash orchestrator/orchestrator.sh --preset security
 ```
+
 Runs all security-critical audits (firewall, SSH, updates, hardening).
 
 #### Platform Audits Only
+
 ```bash
 bash orchestrator/orchestrator.sh --preset platform
 ```
+
 Runs all platform domain audits.
 
 #### Web Stack Audits Only
+
 ```bash
 bash orchestrator/orchestrator.sh --preset web
 ```
+
 Runs all web server audits (nginx, apache, PHP-FPM, TLS).
 
 #### Everything
+
 ```bash
 bash orchestrator/orchestrator.sh --preset all
 ```
+
 Runs every discovered audit.
 
 ---
@@ -135,26 +149,31 @@ bash orchestrator/orchestrator.sh --domain platform --exclude monitoring
 ### Create Reusable Plan File
 
 **Option 1: Save from interactive selection**
+
 ```bash
 bash orchestrator/orchestrator.sh --interactive --save-plan my-audits.txt
 ```
 
 **Option 2: Save from preset**
+
 ```bash
 bash orchestrator/orchestrator.sh --preset security --save-plan security-baseline.txt
 ```
 
 **Option 3: Save from domain filtering**
+
 ```bash
 bash orchestrator/orchestrator.sh --domain web --save-plan web-stack.txt
 ```
 
 ### Reuse Saved Plan
+
 ```bash
 bash orchestrator/orchestrator.sh --plan my-audits.txt
 ```
 
 **Example plan file contents:**
+
 ```
 audits/platform/baseline/updates.sh
 audits/platform/baseline/svc-basics.sh
@@ -167,6 +186,7 @@ audits/web/servers/nginx-security-audit.sh
 ## Practical Workflows
 
 ### Workflow 1: Morning Health Check
+
 ```bash
 # Create once
 bash orchestrator/orchestrator.sh --preset minimal --save-plan morning-check.txt
@@ -176,6 +196,7 @@ bash orchestrator/orchestrator.sh --plan morning-check.txt
 ```
 
 **What it checks:**
+
 - Pending system updates
 - Core services status
 - Firewall state
@@ -184,6 +205,7 @@ bash orchestrator/orchestrator.sh --plan morning-check.txt
 ---
 
 ### Workflow 2: Weekly Security Review
+
 ```bash
 # Create once
 bash orchestrator/orchestrator.sh --preset security --save-plan weekly-security.txt
@@ -195,6 +217,7 @@ bash orchestrator/orchestrator.sh --plan weekly-security.txt
 ---
 
 ### Workflow 3: Pre-Deployment Validation
+
 ```bash
 # Before deploying web app changes
 bash orchestrator/orchestrator.sh \
@@ -204,6 +227,7 @@ bash orchestrator/orchestrator.sh \
 ```
 
 Select what you want to check:
+
 - Nginx config
 - PHP-FPM security
 - Database access
@@ -212,12 +236,14 @@ Select what you want to check:
 ---
 
 ### Workflow 4: New Server Baseline
+
 ```bash
 # After provisioning new server
 bash orchestrator/orchestrator.sh --preset platform
 ```
 
 Validates:
+
 - OS baseline configured
 - Services enabled
 - Updates applied
@@ -227,6 +253,7 @@ Validates:
 ---
 
 ### Workflow 5: Compliance Full Audit
+
 ```bash
 # Run everything, save results
 bash orchestrator/orchestrator.sh --preset all | tee audit-$(date +%Y%m%d).log
@@ -237,6 +264,7 @@ bash orchestrator/orchestrator.sh --preset all | tee audit-$(date +%Y%m%d).log
 ## Advanced Combinations
 
 ### Interactive + Domain + Save
+
 ```bash
 # Pick from web audits, save selection
 bash orchestrator/orchestrator.sh \
@@ -246,6 +274,7 @@ bash orchestrator/orchestrator.sh \
 ```
 
 ### Multiple Domains + Pattern Match
+
 ```bash
 # Web and data audits that mention "security"
 bash orchestrator/orchestrator.sh \
@@ -255,6 +284,7 @@ bash orchestrator/orchestrator.sh \
 ```
 
 ### Preset + Exclude
+
 ```bash
 # Security preset without database audits
 bash orchestrator/orchestrator.sh \
@@ -267,6 +297,7 @@ bash orchestrator/orchestrator.sh \
 ## Listing and Testing
 
 ### List What Would Run (No Execution)
+
 ```bash
 # See what minimal preset includes
 bash orchestrator/orchestrator.sh --preset minimal --list
@@ -282,6 +313,7 @@ bash orchestrator/orchestrator.sh --interactive --list
 ```
 
 ### Dry Run
+
 ```bash
 # Show what would run, then exit
 bash orchestrator/orchestrator.sh --preset security --dry-run
@@ -294,18 +326,21 @@ bash orchestrator/orchestrator.sh --preset security --dry-run
 ### Cron Jobs
 
 **Daily minimal check:**
+
 ```bash
 # crontab -e
 0 9 * * * cd /path/to/repo && bash orchestrator/orchestrator.sh --preset minimal
 ```
 
 **Weekly security audit:**
+
 ```bash
 # crontab -e
 0 9 * * 1 cd /path/to/repo && bash orchestrator/orchestrator.sh --preset security
 ```
 
 **Monthly full audit:**
+
 ```bash
 # crontab -e
 0 9 1 * * cd /path/to/repo && bash orchestrator/orchestrator.sh --preset all | mail -s "Monthly Audit" support@audittoolkitlabs.com
@@ -316,6 +351,7 @@ bash orchestrator/orchestrator.sh --preset security --dry-run
 ### CI/CD Integration
 
 **Pre-deployment check:**
+
 ```bash
 # .gitlab-ci.yml or .github/workflows/deploy.yml
 before_deploy:
@@ -323,6 +359,7 @@ before_deploy:
 ```
 
 **Scheduled compliance scan:**
+
 ```bash
 # GitHub Actions (.github/workflows/weekly-audit.yml)
 schedule:
@@ -340,6 +377,7 @@ jobs:
 ## Output Examples
 
 ### Execution Summary
+
 ```
 ==> Planned scripts (4):
   audits/platform/baseline/updates.sh
@@ -374,6 +412,7 @@ jobs:
 ```
 
 ### Exit Code
+
 - `0` = All passed (only PASS/SKIP)
 - `1` = Warnings present
 - `2` = Failures detected
@@ -393,6 +432,7 @@ jobs:
 ## Common Issues
 
 **Q: No audits discovered**
+
 ```bash
 # Make sure you're in the repo root
 cd /path/to/repo
@@ -400,6 +440,7 @@ bash orchestrator/orchestrator.sh --interactive
 ```
 
 **Q: fzf not working**
+
 ```bash
 # Install fzf (optional, but recommended)
 sudo apt install fzf  # Ubuntu/Debian
@@ -411,6 +452,7 @@ bash orchestrator/orchestrator.sh --interactive
 ```
 
 **Q: Plan file not found**
+
 ```bash
 # Use absolute path or ensure you're in repo root
 bash orchestrator/orchestrator.sh --plan /full/path/to/my-plan.txt

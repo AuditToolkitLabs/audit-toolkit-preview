@@ -11,13 +11,13 @@ needing to know which transport produced it.
 
 ## Supported Transport Families
 
-| Transport | Customer use |
-| --- | --- |
-| Local | Execute directly on the operator or runtime host. |
-| SSH | Execute scripts on approved remote Linux hosts. |
-| WinRM | Execute scripts on approved remote Windows hosts through PowerShell remoting. |
-| API | Query structured management APIs such as platforms, hypervisors, consoles, or appliances. |
-| Agent | Trigger or ingest agent-produced audit output where direct remote access is not desired. |
+| Transport | Customer use                                                                              |
+| --------- | ----------------------------------------------------------------------------------------- |
+| Local     | Execute directly on the operator or runtime host.                                         |
+| SSH       | Execute scripts on approved remote Linux hosts.                                           |
+| WinRM     | Execute scripts on approved remote Windows hosts through PowerShell remoting.             |
+| API       | Query structured management APIs such as platforms, hypervisors, consoles, or appliances. |
+| Agent     | Trigger or ingest agent-produced audit output where direct remote access is not desired.  |
 
 ## Adapter Contract
 

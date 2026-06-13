@@ -61,20 +61,20 @@ targets.
 
 ## 4. Required Files
 
-| File | Required | Purpose |
-| --- | --- | --- |
-| `README.md` | Yes | Short bundle overview and quick start. |
-| `RELEASE-NOTES.md` | Yes | Version, changes, known issues, upgrade notes. |
-| `CUSTOMER-DEPLOYMENT-PACK.md` | Yes | Customer install and operation guide. |
-| `manifest/release-manifest.json` | Yes | Machine-readable artifact inventory. |
-| `manifest/docs-sync.json` | Yes | Central docs commit and sync evidence. |
-| `manifest/SHA256SUMS.txt` | Yes | Checksum list for all customer-delivered files. |
-| `packages/` | Yes | Native OS packages. |
-| `legal/` | Yes | Current approved legal terms. |
-| `licensing/` | Yes | Customer-facing license operation guidance. |
-| `licenses/README.md` | Yes | Explains online and offline license handling. |
-| `support/` | Recommended | Customer-safe diagnostics collection scripts. |
-| `checks/` | Recommended | Bundle integrity verification scripts. |
+| File                             | Required    | Purpose                                         |
+| -------------------------------- | ----------- | ----------------------------------------------- |
+| `README.md`                      | Yes         | Short bundle overview and quick start.          |
+| `RELEASE-NOTES.md`               | Yes         | Version, changes, known issues, upgrade notes.  |
+| `CUSTOMER-DEPLOYMENT-PACK.md`    | Yes         | Customer install and operation guide.           |
+| `manifest/release-manifest.json` | Yes         | Machine-readable artifact inventory.            |
+| `manifest/docs-sync.json`        | Yes         | Central docs commit and sync evidence.          |
+| `manifest/SHA256SUMS.txt`        | Yes         | Checksum list for all customer-delivered files. |
+| `packages/`                      | Yes         | Native OS packages.                             |
+| `legal/`                         | Yes         | Current approved legal terms.                   |
+| `licensing/`                     | Yes         | Customer-facing license operation guidance.     |
+| `licenses/README.md`             | Yes         | Explains online and offline license handling.   |
+| `support/`                       | Recommended | Customer-safe diagnostics collection scripts.   |
+| `checks/`                        | Recommended | Bundle integrity verification scripts.          |
 
 ## 5. Manifest Schema
 
@@ -88,11 +88,7 @@ The release manifest must be JSON and include at least the following fields:
   "releaseDate": "2026-06-11",
   "commit": "<source-commit>",
   "docsCommit": "<audittoolkit-docs-commit>",
-  "supportedPlatforms": [
-    "windows-x64",
-    "linux-amd64-deb",
-    "linux-amd64-rpm"
-  ],
+  "supportedPlatforms": ["windows-x64", "linux-amd64-deb", "linux-amd64-rpm"],
   "artifacts": [
     {
       "path": "packages/linux/deb/audit-tool_6.4.10_amd64.deb",

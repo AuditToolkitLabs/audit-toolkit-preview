@@ -9,11 +9,11 @@ target system.
 
 ## Agent Modes
 
-| Mode | Use case |
-| --- | --- |
-| Toolkit Agent direct mode | Single-host or simple deployments where the agent pushes directly to the Audit-Tool API. |
-| Toolkit Agent coordinated mode | Fleet deployments coordinated by the built-in agent coordination service. |
-| Hypervisor agent | On-hypervisor auditing for supported hypervisor platforms. |
+| Mode                           | Use case                                                                                 |
+| ------------------------------ | ---------------------------------------------------------------------------------------- |
+| Toolkit Agent direct mode      | Single-host or simple deployments where the agent pushes directly to the Audit-Tool API. |
+| Toolkit Agent coordinated mode | Fleet deployments coordinated by the built-in agent coordination service.                |
+| Hypervisor agent               | On-hypervisor auditing for supported hypervisor platforms.                               |
 
 ## Prerequisites
 
@@ -82,13 +82,13 @@ Recommended controls:
 
 ## Troubleshooting
 
-| Symptom | First checks |
-| --- | --- |
-| Agent does not appear in console | Confirm network path, API key, server URL, and TLS trust. |
-| Agent shows offline | Confirm service status and recent agent logs. |
-| TLS error | Confirm the target trusts the issuing CA. |
-| Unauthorized error | Reissue or verify the API key or registration token. |
-| Results not received | Confirm execution logs, outbound HTTPS, and central ingest health. |
+| Symptom                          | First checks                                                       |
+| -------------------------------- | ------------------------------------------------------------------ |
+| Agent does not appear in console | Confirm network path, API key, server URL, and TLS trust.          |
+| Agent shows offline              | Confirm service status and recent agent logs.                      |
+| TLS error                        | Confirm the target trusts the issuing CA.                          |
+| Unauthorized error               | Reissue or verify the API key or registration token.               |
+| Results not received             | Confirm execution logs, outbound HTTPS, and central ingest health. |
 
 Do not send full API keys, tokens, private keys, or unredacted agent logs in
 support requests.

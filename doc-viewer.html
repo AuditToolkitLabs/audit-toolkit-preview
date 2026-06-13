@@ -1,577 +1,757 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Documentation — AuditToolkit Labs</title>
-  <meta name="robots" content="noindex" />
-  <link rel="stylesheet" href="assets/css/site.css?v=20260612g" />
-  <style>
-    .doc-body { max-width: 860px; }
-    .doc-body h1 { font-size: clamp(1.5rem,3vw,2.1rem); color: var(--text); margin: 0 0 .6em; }
-    .doc-body h2 { font-size: 1.35rem; color: var(--text); margin: 2em 0 .5em; padding-bottom: .4em; border-bottom: 1px solid var(--border); }
-    .doc-body h3 { font-size: 1.08rem; color: var(--text); margin: 1.5em 0 .4em; }
-    .doc-body h4 { font-size: .97rem; color: var(--muted); margin: 1.2em 0 .3em; }
-    .doc-body p  { color: var(--muted); margin: 0 0 1em; }
-    .doc-body ul, .doc-body ol { color: var(--muted); padding-left: 1.4em; margin: 0 0 1em; }
-    .doc-body li { margin-bottom: 5px; }
-    .doc-body a  { color: var(--accent); }
-    .doc-body a:hover { color: var(--accent-h); }
-    .doc-body strong { color: var(--text); }
-    .doc-body em { color: var(--muted); }
-    .doc-body blockquote {
-      border-left: 3px solid var(--accent);
-      margin: 1.2em 0; padding: .6em 1em;
-      background: var(--panel); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      color: var(--muted);
-    }
-    .doc-body blockquote p { margin: 0; }
-    .doc-body pre {
-      background: var(--panel-2); border: 1px solid var(--border);
-      border-radius: var(--radius-sm); padding: 1em 1.2em;
-      overflow-x: auto; margin: 0 0 1.2em;
-    }
-    .doc-body pre code { background: none; padding: 0; color: var(--accent-2); font-size: .87em; border-radius: 0; }
-    .doc-body code { font-size: .88em; background: var(--panel-2); padding: 2px 6px; border-radius: 4px; color: var(--accent-2); }
-    .doc-body table { width: 100%; border-collapse: collapse; margin: 0 0 1.5em; font-size: .92em; }
-    .doc-body th { background: var(--panel-2); color: var(--text); text-align: left; padding: 9px 13px; border: 1px solid var(--border); font-weight: 600; }
-    .doc-body td { padding: 8px 13px; border: 1px solid var(--border); color: var(--muted); vertical-align: top; }
-    .doc-body tr:nth-child(even) td { background: var(--panel); }
-    .doc-body hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
-    .doc-body img { max-width: 100%; border-radius: var(--radius-sm); margin: .5em 0; }
-    .doc-loading { color: var(--muted); text-align: center; padding: 64px 0; font-size: 1rem; }
-    .doc-error   { color: var(--accent-3); }
-    .doc-meta    { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
-    .source-mode-badge { border: 1px solid var(--border); }
-    .source-mode-badge.local { background: var(--panel); color: var(--text); }
-    .source-mode-badge.remote { background: var(--panel-2); color: var(--accent-2); }
-    .source-mode-badge.canary { background: #fff3cd; color: #8a6d3b; border-color: #ffe69c; }
-    .doc-debug-btn {
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      background: var(--panel);
-      color: var(--muted);
-      padding: 4px 10px;
-      font-size: .82rem;
-      cursor: pointer;
-    }
-    .doc-debug-btn:hover { color: var(--text); background: var(--panel-2); }
-    .doc-status-panel {
-      display: none;
-      position: fixed; bottom: 8px; right: 8px;
-      background: var(--panel-2); border: 1px solid var(--border);
-      border-radius: var(--radius-sm); padding: 12px; max-width: 380px;
-      font-size: .78rem; color: var(--muted); z-index: 9999;
-      max-height: 320px; overflow-y: auto;
-    }
-    .doc-status-panel.visible { display: block; }
-    .doc-status-panel-header {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border);
-    }
-    .doc-status-panel-title { font-weight: 600; color: var(--text); }
-    .doc-status-toggle-btn {
-      background: none; border: none; color: var(--muted); cursor: pointer;
-      font-size: .75rem; padding: 2px 4px;
-    }
-    .doc-status-toggle-btn:hover { color: var(--text); }
-    .doc-status-step {
-      margin-bottom: 6px; padding: 4px 6px; background: var(--panel);
-      border-left: 2px solid var(--accent-2); border-radius: 2px;
-    }
-    .doc-status-step-time { color: var(--accent-2); font-weight: 500; }
-    .doc-status-step-msg { color: var(--muted); }
-  </style>
-</head>
-<body>
-
-<nav class="nav"><div class="wrap"><div class="nav-inner"><a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a><ul class="nav-links"><li><a href="index.html#products">Products</a></li><li><a href="toolkit-overview.html">Overview</a></li>
-        <li><a href="how-it-works.html">How It Works</a></li>
-        <li><a href="use-cases.html">Use Cases</a></li>
-        <li><a href="integrations.html">Integrations</a></li><li><a href="docs.html" class="active">Central Docs</a></li><li><a href="releases.html">Releases</a></li><li><a href="licensing.html">Licensing</a></li><li><a href="support.html">Support</a></li></ul><div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div><button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button></div></div></nav>
-<div class="nav-mobile" id="nav-mobile"><a href="index.html">Home</a><a href="index.html#products">Products</a>
-  <a href="toolkit-overview.html">Overview</a>
-  <a href="how-it-works.html">How It Works</a>
-  <a href="use-cases.html">Use Cases</a>
-  <a href="integrations.html">Integrations</a><a href="docs.html">Central Docs</a><a href="releases.html">Releases</a><a href="licensing.html">Licensing</a><a href="support.html">Support</a></div>
-
-<div class="page-hero" id="page-hero">
-  <div class="wrap">
-    <div class="breadcrumb" id="breadcrumb">
-      <a href="index.html">Home</a><span class="sep">/</span>
-      <a href="docs.html">Central Documentation Library</a><span class="sep">/</span>
-      <a href="#" id="bc-product">Docs</a><span class="sep">/</span>
-      <span class="cur" id="bc-title">Loading&#8230;</span>
-    </div>
-    <p class="eyebrow" id="doc-eyebrow">Documentation</p>
-    <h1 id="doc-hero-title">Loading document&#8230;</h1>
-    <div class="flex flex-wrap gap-8 mt-16">
-      <a href="#" id="back-btn" class="btn btn-secondary btn-sm">&#8592; Back to Docs Index</a>
-    </div>
-  </div>
-</div>
-
-<section class="section">
-  <div class="wrap">
-    <div class="doc-meta is-hidden" id="doc-meta">
-      <span class="badge badge-muted" id="doc-num-badge"></span>
-      <span class="badge badge-blue" id="doc-product-badge"></span>
-      <span class="badge source-mode-badge" id="doc-source-badge"></span>
-      <button type="button" class="doc-debug-btn" id="doc-debug-copy-btn">Copy debug context</button>
-      <button type="button" class="doc-debug-btn" id="doc-status-toggle-btn">Show resolution log</button>
-    </div>
-    <div class="doc-status-panel" id="doc-status-panel">
-      <div class="doc-status-panel-header">
-        <span class="doc-status-panel-title">Source Resolution</span>
-        <button type="button" class="doc-status-toggle-btn" id="doc-status-close-btn">✕</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <title>Documentation — AuditToolkit Labs</title>
+    <meta name="robots" content="noindex" />
+    <link rel="stylesheet" href="assets/css/site.css?v=20260612g" />
+    <style>
+      .doc-body {
+        max-width: 860px;
+      }
+      .doc-body h1 {
+        font-size: clamp(1.5rem, 3vw, 2.1rem);
+        color: var(--text);
+        margin: 0 0 0.6em;
+      }
+      .doc-body h2 {
+        font-size: 1.35rem;
+        color: var(--text);
+        margin: 2em 0 0.5em;
+        padding-bottom: 0.4em;
+        border-bottom: 1px solid var(--border);
+      }
+      .doc-body h3 {
+        font-size: 1.08rem;
+        color: var(--text);
+        margin: 1.5em 0 0.4em;
+      }
+      .doc-body h4 {
+        font-size: 0.97rem;
+        color: var(--muted);
+        margin: 1.2em 0 0.3em;
+      }
+      .doc-body p {
+        color: var(--muted);
+        margin: 0 0 1em;
+      }
+      .doc-body ul,
+      .doc-body ol {
+        color: var(--muted);
+        padding-left: 1.4em;
+        margin: 0 0 1em;
+      }
+      .doc-body li {
+        margin-bottom: 5px;
+      }
+      .doc-body a {
+        color: var(--accent);
+      }
+      .doc-body a:hover {
+        color: var(--accent-h);
+      }
+      .doc-body strong {
+        color: var(--text);
+      }
+      .doc-body em {
+        color: var(--muted);
+      }
+      .doc-body blockquote {
+        border-left: 3px solid var(--accent);
+        margin: 1.2em 0;
+        padding: 0.6em 1em;
+        background: var(--panel);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        color: var(--muted);
+      }
+      .doc-body blockquote p {
+        margin: 0;
+      }
+      .doc-body pre {
+        background: var(--panel-2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 1em 1.2em;
+        overflow-x: auto;
+        margin: 0 0 1.2em;
+      }
+      .doc-body pre code {
+        background: none;
+        padding: 0;
+        color: var(--accent-2);
+        font-size: 0.87em;
+        border-radius: 0;
+      }
+      .doc-body code {
+        font-size: 0.88em;
+        background: var(--panel-2);
+        padding: 2px 6px;
+        border-radius: 4px;
+        color: var(--accent-2);
+      }
+      .doc-body table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0 0 1.5em;
+        font-size: 0.92em;
+      }
+      .doc-body th {
+        background: var(--panel-2);
+        color: var(--text);
+        text-align: left;
+        padding: 9px 13px;
+        border: 1px solid var(--border);
+        font-weight: 600;
+      }
+      .doc-body td {
+        padding: 8px 13px;
+        border: 1px solid var(--border);
+        color: var(--muted);
+        vertical-align: top;
+      }
+      .doc-body tr:nth-child(even) td {
+        background: var(--panel);
+      }
+      .doc-body hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 2em 0;
+      }
+      .doc-body img {
+        max-width: 100%;
+        border-radius: var(--radius-sm);
+        margin: 0.5em 0;
+      }
+      .doc-loading {
+        color: var(--muted);
+        text-align: center;
+        padding: 64px 0;
+        font-size: 1rem;
+      }
+      .doc-error {
+        color: var(--accent-3);
+      }
+      .doc-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 32px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--border);
+      }
+      .source-mode-badge {
+        border: 1px solid var(--border);
+      }
+      .source-mode-badge.local {
+        background: var(--panel);
+        color: var(--text);
+      }
+      .source-mode-badge.remote {
+        background: var(--panel-2);
+        color: var(--accent-2);
+      }
+      .source-mode-badge.canary {
+        background: #fff3cd;
+        color: #8a6d3b;
+        border-color: #ffe69c;
+      }
+      .doc-debug-btn {
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        background: var(--panel);
+        color: var(--muted);
+        padding: 4px 10px;
+        font-size: 0.82rem;
+        cursor: pointer;
+      }
+      .doc-debug-btn:hover {
+        color: var(--text);
+        background: var(--panel-2);
+      }
+      .doc-status-panel {
+        display: none;
+        position: fixed;
+        bottom: 8px;
+        right: 8px;
+        background: var(--panel-2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 12px;
+        max-width: 380px;
+        font-size: 0.78rem;
+        color: var(--muted);
+        z-index: 9999;
+        max-height: 320px;
+        overflow-y: auto;
+      }
+      .doc-status-panel.visible {
+        display: block;
+      }
+      .doc-status-panel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid var(--border);
+      }
+      .doc-status-panel-title {
+        font-weight: 600;
+        color: var(--text);
+      }
+      .doc-status-toggle-btn {
+        background: none;
+        border: none;
+        color: var(--muted);
+        cursor: pointer;
+        font-size: 0.75rem;
+        padding: 2px 4px;
+      }
+      .doc-status-toggle-btn:hover {
+        color: var(--text);
+      }
+      .doc-status-step {
+        margin-bottom: 6px;
+        padding: 4px 6px;
+        background: var(--panel);
+        border-left: 2px solid var(--accent-2);
+        border-radius: 2px;
+      }
+      .doc-status-step-time {
+        color: var(--accent-2);
+        font-weight: 500;
+      }
+      .doc-status-step-msg {
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="wrap">
+        <div class="nav-inner">
+          <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+          <ul class="nav-links">
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="toolkit-overview.html">Overview</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="use-cases.html">Use Cases</a></li>
+            <li><a href="integrations.html">Integrations</a></li>
+            <li><a href="docs.html" class="active">Central Docs</a></li>
+            <li><a href="releases.html">Releases</a></li>
+            <li><a href="licensing.html">Licensing</a></li>
+            <li><a href="support.html">Support</a></li>
+          </ul>
+          <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+          <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+        </div>
       </div>
-      <div id="doc-status-steps"></div>
+    </nav>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="index.html">Home</a><a href="index.html#products">Products</a>
+      <a href="toolkit-overview.html">Overview</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="integrations.html">Integrations</a><a href="docs.html">Central Docs</a><a href="releases.html">Releases</a
+      ><a href="licensing.html">Licensing</a><a href="support.html">Support</a>
     </div>
-    <div class="doc-body" id="doc-body">
-      <p class="doc-loading">Loading document&#8230;</p>
+
+    <div class="page-hero" id="page-hero">
+      <div class="wrap">
+        <div class="breadcrumb" id="breadcrumb">
+          <a href="index.html">Home</a><span class="sep">/</span> <a href="docs.html">Central Documentation Library</a
+          ><span class="sep">/</span> <a href="#" id="bc-product">Docs</a><span class="sep">/</span>
+          <span class="cur" id="bc-title">Loading&#8230;</span>
+        </div>
+        <p class="eyebrow" id="doc-eyebrow">Documentation</p>
+        <h1 id="doc-hero-title">Loading document&#8230;</h1>
+        <div class="flex flex-wrap gap-8 mt-16">
+          <a href="#" id="back-btn" class="btn btn-secondary btn-sm">&#8592; Back to Docs Index</a>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
 
-<footer class="site-footer"><div class="wrap"><div class="footer-bottom"><p>&copy; 2026 AuditToolkit Labs. All rights reserved.</p></div></div></footer>
+    <section class="section">
+      <div class="wrap">
+        <div class="doc-meta is-hidden" id="doc-meta">
+          <span class="badge badge-muted" id="doc-num-badge"></span>
+          <span class="badge badge-blue" id="doc-product-badge"></span>
+          <span class="badge source-mode-badge" id="doc-source-badge"></span>
+          <button type="button" class="doc-debug-btn" id="doc-debug-copy-btn">Copy debug context</button>
+          <button type="button" class="doc-debug-btn" id="doc-status-toggle-btn">Show resolution log</button>
+        </div>
+        <div class="doc-status-panel" id="doc-status-panel">
+          <div class="doc-status-panel-header">
+            <span class="doc-status-panel-title">Source Resolution</span>
+            <button type="button" class="doc-status-toggle-btn" id="doc-status-close-btn">✕</button>
+          </div>
+          <div id="doc-status-steps"></div>
+        </div>
+        <div class="doc-body" id="doc-body">
+          <p class="doc-loading">Loading document&#8230;</p>
+        </div>
+      </div>
+    </section>
 
-<script src="assets/js/nav.js?v=20260612e"></script>
-<script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
-<script>
-(function () {
-  var params = new URLSearchParams(window.location.search);
-  var src    = params.get('src');
-  var sourceModeParam = (params.get('source') || '').toLowerCase();
-  var canaryModeParam = (params.get('canary') || '').toLowerCase();
-  var docBody     = document.getElementById('doc-body');
-  var heroTitle   = document.getElementById('doc-hero-title');
-  var bcTitle     = document.getElementById('bc-title');
-  var bcProduct   = document.getElementById('bc-product');
-  var backBtn     = document.getElementById('back-btn');
-  var eyebrow     = document.getElementById('doc-eyebrow');
-  var docMeta     = document.getElementById('doc-meta');
-  var numBadge    = document.getElementById('doc-num-badge');
-  var prodBadge   = document.getElementById('doc-product-badge');
-  var sourceBadge = document.getElementById('doc-source-badge');
-  var debugCopyBtn = document.getElementById('doc-debug-copy-btn');
-  var statusPanel = document.getElementById('doc-status-panel');
-  var statusStepsDiv = document.getElementById('doc-status-steps');
-  var statusToggleBtn = document.getElementById('doc-status-toggle-btn');
-  var statusCloseBtn = document.getElementById('doc-status-close-btn');
-  var currentDebugContext = null;
-  var resolutionSteps = [];
-  var resolutionStartTime = Date.now();
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-bottom"><p>&copy; 2026 AuditToolkit Labs. All rights reserved.</p></div>
+      </div>
+    </footer>
 
-  if (!src) {
-    docBody.innerHTML = '<p class="doc-error">No document specified. <a href="docs.html">Return to Central Documentation Library.</a></p>';
-    heroTitle.textContent = 'Document Not Found';
-    return;
-  }
+    <script src="assets/js/nav.js?v=20260612e"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var src = params.get("src");
+        var sourceModeParam = (params.get("source") || "").toLowerCase();
+        var canaryModeParam = (params.get("canary") || "").toLowerCase();
+        var docBody = document.getElementById("doc-body");
+        var heroTitle = document.getElementById("doc-hero-title");
+        var bcTitle = document.getElementById("bc-title");
+        var bcProduct = document.getElementById("bc-product");
+        var backBtn = document.getElementById("back-btn");
+        var eyebrow = document.getElementById("doc-eyebrow");
+        var docMeta = document.getElementById("doc-meta");
+        var numBadge = document.getElementById("doc-num-badge");
+        var prodBadge = document.getElementById("doc-product-badge");
+        var sourceBadge = document.getElementById("doc-source-badge");
+        var debugCopyBtn = document.getElementById("doc-debug-copy-btn");
+        var statusPanel = document.getElementById("doc-status-panel");
+        var statusStepsDiv = document.getElementById("doc-status-steps");
+        var statusToggleBtn = document.getElementById("doc-status-toggle-btn");
+        var statusCloseBtn = document.getElementById("doc-status-close-btn");
+        var currentDebugContext = null;
+        var resolutionSteps = [];
+        var resolutionStartTime = Date.now();
 
-  var sourceConfig = {
-    mode: 'remote-only',
-    localDocsRoot: 'customer-docs',
-    remoteMirrorBaseUrl: 'https://raw.githubusercontent.com/AuditToolkitLabs/releases/main',
-    enableRemoteFallback: false,
-    enableCanaryRemoteOnly: false,
-    canaryQueryParam: 'canary',
-    canaryQueryValue: 'remote-only'
-  };
-
-  var centralPathMap = {
-    'customer-docs/cmdb-api/index.md': 'downloads/CMDB API Data Collection Tool/v1.0.1/README.md',
-    'customer-docs/audit-toolkit/index.md': 'downloads/Audit Toolkit/v6.4.4/README.md',
-    'customer-docs/asset-command-center/index.md': 'downloads/Asset Command Center/v1.1.0/README.md',
-    'customer-docs/linux-security-lite/index.md': 'downloads/Linux Security Lite/v1.2.2/README.md',
-    'customer-docs/Switch Exposure Centre/index.md': 'downloads/Switch Exposure Centre/v0.1.1/README.md'
-  };
-
-  // Detect product
-  var productName = 'Documentation';
-  var productLink = 'docs.html';
-  var eyebrowText = 'Documentation';
-  var prodBadgeText = '';
-
-  if (src.indexOf('linux-security-lite') !== -1) {
-    productName  = 'Linux Security Lite';
-    productLink  = 'docs.html';
-    eyebrowText  = 'Linux Security Lite';
-    prodBadgeText = 'Linux Security Lite';
-  } else if (src.indexOf('audit-toolkit') !== -1) {
-    productName  = 'Audit Admin Toolkit';
-    productLink  = 'docs.html';
-    eyebrowText  = 'Audit Admin Toolkit';
-    prodBadgeText = 'Audit Admin Toolkit';
-  } else if (src.indexOf('cmdb-api') !== -1) {
-    productName  = 'CMDB API Data Collection Tool';
-    productLink  = 'docs.html';
-    eyebrowText  = 'CMDB API Data Collection Tool';
-    prodBadgeText = 'CMDB API Data Collection Tool';
-  } else if (src.indexOf('asset-command-center') !== -1) {
-    productName  = 'Asset Command Center';
-    productLink  = 'docs.html';
-    eyebrowText  = 'Asset Command Center';
-    prodBadgeText = 'Asset Command Center';
-  } else if (src.indexOf('Switch Exposure Centre') !== -1) {
-    productName  = 'Secure Exposure Center';
-    productLink  = 'docs.html';
-    eyebrowText  = 'Secure Exposure Center';
-    prodBadgeText = 'Secure Exposure Center';
-  }
-
-  bcProduct.textContent = productName;
-  bcProduct.href        = productLink;
-  backBtn.href          = productLink;
-  eyebrow.textContent   = eyebrowText;
-  prodBadge.textContent = prodBadgeText;
-
-  // Extract doc number from filename (e.g. "01-purpose-and-audience.md" → "Doc 01")
-  var filename = src.split('/').pop();
-  var numMatch = filename.match(/^(\d+)-/);
-  if (numMatch) { numBadge.textContent = 'Doc ' + numMatch[1]; docMeta.style.display = 'flex'; }
-
-  function normalizePath(path) {
-    var parts = path.split('/');
-    var out = [];
-    for (var i = 0; i < parts.length; i++) {
-      var p = parts[i];
-      if (!p || p === '.') continue;
-      if (p === '..') {
-        if (out.length) out.pop();
-        continue;
-      }
-      out.push(p);
-    }
-    return out.join('/');
-  }
-
-  function ensureDocsRoot(pathValue) {
-    if (!pathValue) return null;
-    var clean = normalizePath(pathValue.replace(/^\/+/, ''));
-    if (!clean) return null;
-    if (clean.indexOf(sourceConfig.localDocsRoot + '/') === 0) {
-      return clean;
-    }
-    return normalizePath(sourceConfig.localDocsRoot + '/' + clean);
-  }
-
-  function resolveMarkdownHref(currentSrc, href) {
-    var baseDir = currentSrc.split('/').slice(0, -1).join('/');
-    var rawHref = href || '';
-    var hash = '';
-    var hashPos = rawHref.indexOf('#');
-    if (hashPos !== -1) {
-      hash = rawHref.slice(hashPos);
-      rawHref = rawHref.slice(0, hashPos);
-    }
-
-    if (!rawHref) return null;
-    if (/^(?:https?:|mailto:|tel:|javascript:)/i.test(rawHref)) return null;
-    if (/\.html?$/i.test(rawHref)) return null;
-
-    var candidate = rawHref;
-    if (!/\.[a-z0-9]+$/i.test(candidate)) {
-      candidate = candidate + '.md';
-    }
-
-    if (candidate.charAt(0) === '/') {
-      candidate = candidate.slice(1);
-    } else {
-      candidate = baseDir ? (baseDir + '/' + candidate) : candidate;
-    }
-
-    candidate = normalizePath(candidate);
-    if (!candidate) return null;
-
-    return 'doc-viewer.html?src=' + encodeURIComponent(candidate) + hash;
-  }
-
-  function rewriteInternalDocLinks(currentSrc) {
-    var anchors = docBody.querySelectorAll('a[href]');
-    anchors.forEach(function (a) {
-      var href = a.getAttribute('href');
-      var rewritten = resolveMarkdownHref(currentSrc, href);
-      if (!rewritten) return;
-      a.setAttribute('href', rewritten);
-      if (!a.getAttribute('target')) {
-        a.setAttribute('target', '_self');
-      }
-    });
-  }
-
-  function trimTrailingSlash(value) {
-    return (value || '').replace(/\/+$/, '');
-  }
-
-  function encodePathSegments(pathValue) {
-    return (pathValue || '')
-      .split('/')
-      .map(function (segment) { return encodeURIComponent(segment); })
-      .join('/');
-  }
-
-  function mapCentralPath(pathValue) {
-    return centralPathMap[pathValue] || pathValue;
-  }
-
-  function buildRemoteUrl(pathValue) {
-    var base = trimTrailingSlash(sourceConfig.remoteMirrorBaseUrl);
-    var encodedPath = encodePathSegments(pathValue);
-    return base && encodedPath ? (base + '/' + encodedPath) : null;
-  }
-
-  function fetchTextFrom(urlValue) {
-    return fetch(urlValue).then(function (r) {
-      if (!r.ok) throw new Error('HTTP ' + r.status + ' at ' + urlValue);
-      return r.text();
-    });
-  }
-
-  function loadConfig() {
-    return fetch('docs-source-config.json', { cache: 'no-store' })
-      .then(function (r) {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.json();
-      })
-      .then(function (cfg) {
-        if (!cfg || typeof cfg !== 'object') return;
-        if (typeof cfg.mode === 'string') sourceConfig.mode = cfg.mode;
-        if (typeof cfg.localDocsRoot === 'string' && cfg.localDocsRoot.trim()) {
-          sourceConfig.localDocsRoot = normalizePath(cfg.localDocsRoot.trim()) || sourceConfig.localDocsRoot;
+        if (!src) {
+          docBody.innerHTML =
+            '<p class="doc-error">No document specified. <a href="docs.html">Return to Central Documentation Library.</a></p>';
+          heroTitle.textContent = "Document Not Found";
+          return;
         }
-        if (typeof cfg.remoteMirrorBaseUrl === 'string' && cfg.remoteMirrorBaseUrl.trim()) {
-          sourceConfig.remoteMirrorBaseUrl = cfg.remoteMirrorBaseUrl.trim();
-        }
-        if (typeof cfg.enableRemoteFallback === 'boolean') {
-          sourceConfig.enableRemoteFallback = cfg.enableRemoteFallback;
-        }
-        if (typeof cfg.enableCanaryRemoteOnly === 'boolean') {
-          sourceConfig.enableCanaryRemoteOnly = cfg.enableCanaryRemoteOnly;
-        }
-        if (typeof cfg.canaryQueryParam === 'string' && cfg.canaryQueryParam.trim()) {
-          sourceConfig.canaryQueryParam = cfg.canaryQueryParam.trim();
-        }
-        if (typeof cfg.canaryQueryValue === 'string' && cfg.canaryQueryValue.trim()) {
-          sourceConfig.canaryQueryValue = cfg.canaryQueryValue.trim().toLowerCase();
-        }
-      })
-      .catch(function () {
-        // Use defaults when config file is not present.
-      });
-  }
 
-  function resolveDocContent(requestedSrc) {
-    var localPath = ensureDocsRoot(requestedSrc);
-    if (!localPath) {
-      return Promise.reject(new Error('Invalid document path'));
-    }
-
-    var remotePath = mapCentralPath(localPath);
-    var remoteUrl = buildRemoteUrl(remotePath);
-    var canaryParamName = sourceConfig.canaryQueryParam || 'canary';
-    var canaryParamValue = (params.get(canaryParamName) || '').toLowerCase();
-    var canaryEnabled = sourceConfig.enableCanaryRemoteOnly;
-    var canaryRemoteOnly = canaryEnabled && canaryParamValue === sourceConfig.canaryQueryValue;
-
-    var shouldForceRemote =
-      sourceModeParam === 'remote' ||
-      sourceModeParam === 'remote-only' ||
-      sourceConfig.mode === 'remote-only' ||
-      canaryModeParam === 'remote-only' ||
-      canaryRemoteOnly;
-
-    if (window.location.protocol === 'file:') {
-      if (!remoteUrl) {
-        return Promise.reject(new Error('Remote mirror URL is not configured'));
-      }
-      return fetchTextFrom(remoteUrl).then(function (text) {
-        return {
-          markdown: text,
-          resolvedSrc: remotePath,
-          sourceKind: 'remote-file-mode'
+        var sourceConfig = {
+          mode: "remote-only",
+          localDocsRoot: "customer-docs",
+          remoteMirrorBaseUrl: "https://raw.githubusercontent.com/AuditToolkitLabs/releases/main",
+          enableRemoteFallback: false,
+          enableCanaryRemoteOnly: false,
+          canaryQueryParam: "canary",
+          canaryQueryValue: "remote-only"
         };
-      });
-    }
 
-    if (shouldForceRemote) {
-      if (!remoteUrl) return Promise.reject(new Error('Remote mirror URL is not configured'));
-      return fetchTextFrom(remoteUrl).then(function (text) {
-        return {
-          markdown: text,
-          resolvedSrc: remotePath,
-          sourceKind: canaryRemoteOnly || canaryModeParam === 'remote-only'
-            ? 'remote-canary'
-            : 'remote-forced'
+        var centralPathMap = {
+          "customer-docs/cmdb-api/index.md": "downloads/CMDB API Data Collection Tool/v1.0.1/README.md",
+          "customer-docs/audit-toolkit/index.md": "downloads/Audit Toolkit/v6.4.4/README.md",
+          "customer-docs/asset-command-center/index.md": "downloads/Asset Command Center/v1.1.0/README.md",
+          "customer-docs/linux-security-lite/index.md": "downloads/Linux Security Lite/v1.2.2/README.md",
+          "customer-docs/Switch Exposure Centre/index.md": "downloads/Switch Exposure Centre/v0.1.1/README.md"
         };
-      });
-    }
 
-    if (!remoteUrl) return Promise.reject(new Error('Remote mirror URL is not configured'));
-    return fetchTextFrom(remoteUrl).then(function (text) {
-      return {
-        markdown: text,
-        resolvedSrc: remotePath,
-        sourceKind: 'remote-default'
-      };
-    });
-  }
+        // Detect product
+        var productName = "Documentation";
+        var productLink = "docs.html";
+        var eyebrowText = "Documentation";
+        var prodBadgeText = "";
 
-  function updateSourceBadge(result) {
-    if (!sourceBadge) return;
+        if (src.indexOf("linux-security-lite") !== -1) {
+          productName = "Linux Security Lite";
+          productLink = "docs.html";
+          eyebrowText = "Linux Security Lite";
+          prodBadgeText = "Linux Security Lite";
+        } else if (src.indexOf("audit-toolkit") !== -1) {
+          productName = "Audit Admin Toolkit";
+          productLink = "docs.html";
+          eyebrowText = "Audit Admin Toolkit";
+          prodBadgeText = "Audit Admin Toolkit";
+        } else if (src.indexOf("cmdb-api") !== -1) {
+          productName = "CMDB API Data Collection Tool";
+          productLink = "docs.html";
+          eyebrowText = "CMDB API Data Collection Tool";
+          prodBadgeText = "CMDB API Data Collection Tool";
+        } else if (src.indexOf("asset-command-center") !== -1) {
+          productName = "Asset Command Center";
+          productLink = "docs.html";
+          eyebrowText = "Asset Command Center";
+          prodBadgeText = "Asset Command Center";
+        } else if (src.indexOf("Switch Exposure Centre") !== -1) {
+          productName = "Secure Exposure Center";
+          productLink = "docs.html";
+          eyebrowText = "Secure Exposure Center";
+          prodBadgeText = "Secure Exposure Center";
+        }
 
-    var kind = result && result.sourceKind ? result.sourceKind : '';
-    var text = 'Source: local';
-    var className = 'badge source-mode-badge local';
+        bcProduct.textContent = productName;
+        bcProduct.href = productLink;
+        backBtn.href = productLink;
+        eyebrow.textContent = eyebrowText;
+        prodBadge.textContent = prodBadgeText;
 
-    if (kind === 'remote-canary') {
-      text = 'Source: remote (canary)';
-      className = 'badge source-mode-badge canary';
-    } else if (kind.indexOf('remote') === 0) {
-      text = 'Source: remote';
-      className = 'badge source-mode-badge remote';
-    }
+        // Extract doc number from filename (e.g. "01-purpose-and-audience.md" → "Doc 01")
+        var filename = src.split("/").pop();
+        var numMatch = filename.match(/^(\d+)-/);
+        if (numMatch) {
+          numBadge.textContent = "Doc " + numMatch[1];
+          docMeta.style.display = "flex";
+        }
 
-    sourceBadge.className = className;
-    sourceBadge.textContent = text;
-    docMeta.style.display = 'flex';
-  }
+        function normalizePath(path) {
+          var parts = path.split("/");
+          var out = [];
+          for (var i = 0; i < parts.length; i++) {
+            var p = parts[i];
+            if (!p || p === ".") continue;
+            if (p === "..") {
+              if (out.length) out.pop();
+              continue;
+            }
+            out.push(p);
+          }
+          return out.join("/");
+        }
 
-  function buildDebugContext(result) {
-    return {
-      requestedSrc: src,
-      resolvedSrc: result && result.resolvedSrc ? result.resolvedSrc : null,
-      sourceKind: result && result.sourceKind ? result.sourceKind : null,
-      sourceModeQuery: sourceModeParam || null,
-      canaryModeQuery: canaryModeParam || null,
-      effectiveSourceConfig: {
-        mode: sourceConfig.mode,
-        localDocsRoot: sourceConfig.localDocsRoot,
-        remoteMirrorBaseUrl: sourceConfig.remoteMirrorBaseUrl,
-        enableRemoteFallback: sourceConfig.enableRemoteFallback,
-        enableCanaryRemoteOnly: sourceConfig.enableCanaryRemoteOnly,
-        canaryQueryParam: sourceConfig.canaryQueryParam,
-        canaryQueryValue: sourceConfig.canaryQueryValue
-      },
-      pageUrl: window.location.href,
-      generatedAtUtc: new Date().toISOString()
-    };
-  }
+        function ensureDocsRoot(pathValue) {
+          if (!pathValue) return null;
+          var clean = normalizePath(pathValue.replace(/^\/+/, ""));
+          if (!clean) return null;
+          if (clean.indexOf(sourceConfig.localDocsRoot + "/") === 0) {
+            return clean;
+          }
+          return normalizePath(sourceConfig.localDocsRoot + "/" + clean);
+        }
 
-  function fallbackCopyText(text) {
-    var ta = document.createElement('textarea');
-    ta.value = text;
-    ta.setAttribute('readonly', 'readonly');
-    ta.style.position = 'fixed';
-    ta.style.left = '-9999px';
-    document.body.appendChild(ta);
-    ta.select();
-    try {
-      document.execCommand('copy');
-    } finally {
-      document.body.removeChild(ta);
-    }
-  }
+        function resolveMarkdownHref(currentSrc, href) {
+          var baseDir = currentSrc.split("/").slice(0, -1).join("/");
+          var rawHref = href || "";
+          var hash = "";
+          var hashPos = rawHref.indexOf("#");
+          if (hashPos !== -1) {
+            hash = rawHref.slice(hashPos);
+            rawHref = rawHref.slice(0, hashPos);
+          }
 
-  function copyDebugContext() {
-    if (!currentDebugContext) return;
-    var payload = JSON.stringify(currentDebugContext, null, 2);
+          if (!rawHref) return null;
+          if (/^(?:https?:|mailto:|tel:|javascript:)/i.test(rawHref)) return null;
+          if (/\.html?$/i.test(rawHref)) return null;
 
-    function markCopied() {
-      if (!debugCopyBtn) return;
-      var original = debugCopyBtn.textContent;
-      debugCopyBtn.textContent = 'Debug context copied';
-      setTimeout(function () {
-        debugCopyBtn.textContent = original;
-      }, 1800);
-    }
+          var candidate = rawHref;
+          if (!/\.[a-z0-9]+$/i.test(candidate)) {
+            candidate = candidate + ".md";
+          }
 
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(payload)
-        .then(markCopied)
-        .catch(function () {
+          if (candidate.charAt(0) === "/") {
+            candidate = candidate.slice(1);
+          } else {
+            candidate = baseDir ? baseDir + "/" + candidate : candidate;
+          }
+
+          candidate = normalizePath(candidate);
+          if (!candidate) return null;
+
+          return "doc-viewer.html?src=" + encodeURIComponent(candidate) + hash;
+        }
+
+        function rewriteInternalDocLinks(currentSrc) {
+          var anchors = docBody.querySelectorAll("a[href]");
+          anchors.forEach(function (a) {
+            var href = a.getAttribute("href");
+            var rewritten = resolveMarkdownHref(currentSrc, href);
+            if (!rewritten) return;
+            a.setAttribute("href", rewritten);
+            if (!a.getAttribute("target")) {
+              a.setAttribute("target", "_self");
+            }
+          });
+        }
+
+        function trimTrailingSlash(value) {
+          return (value || "").replace(/\/+$/, "");
+        }
+
+        function encodePathSegments(pathValue) {
+          return (pathValue || "")
+            .split("/")
+            .map(function (segment) {
+              return encodeURIComponent(segment);
+            })
+            .join("/");
+        }
+
+        function mapCentralPath(pathValue) {
+          return centralPathMap[pathValue] || pathValue;
+        }
+
+        function buildRemoteUrl(pathValue) {
+          var base = trimTrailingSlash(sourceConfig.remoteMirrorBaseUrl);
+          var encodedPath = encodePathSegments(pathValue);
+          return base && encodedPath ? base + "/" + encodedPath : null;
+        }
+
+        function fetchTextFrom(urlValue) {
+          return fetch(urlValue).then(function (r) {
+            if (!r.ok) throw new Error("HTTP " + r.status + " at " + urlValue);
+            return r.text();
+          });
+        }
+
+        function loadConfig() {
+          return fetch("docs-source-config.json", { cache: "no-store" })
+            .then(function (r) {
+              if (!r.ok) throw new Error("HTTP " + r.status);
+              return r.json();
+            })
+            .then(function (cfg) {
+              if (!cfg || typeof cfg !== "object") return;
+              if (typeof cfg.mode === "string") sourceConfig.mode = cfg.mode;
+              if (typeof cfg.localDocsRoot === "string" && cfg.localDocsRoot.trim()) {
+                sourceConfig.localDocsRoot = normalizePath(cfg.localDocsRoot.trim()) || sourceConfig.localDocsRoot;
+              }
+              if (typeof cfg.remoteMirrorBaseUrl === "string" && cfg.remoteMirrorBaseUrl.trim()) {
+                sourceConfig.remoteMirrorBaseUrl = cfg.remoteMirrorBaseUrl.trim();
+              }
+              if (typeof cfg.enableRemoteFallback === "boolean") {
+                sourceConfig.enableRemoteFallback = cfg.enableRemoteFallback;
+              }
+              if (typeof cfg.enableCanaryRemoteOnly === "boolean") {
+                sourceConfig.enableCanaryRemoteOnly = cfg.enableCanaryRemoteOnly;
+              }
+              if (typeof cfg.canaryQueryParam === "string" && cfg.canaryQueryParam.trim()) {
+                sourceConfig.canaryQueryParam = cfg.canaryQueryParam.trim();
+              }
+              if (typeof cfg.canaryQueryValue === "string" && cfg.canaryQueryValue.trim()) {
+                sourceConfig.canaryQueryValue = cfg.canaryQueryValue.trim().toLowerCase();
+              }
+            })
+            .catch(function () {
+              // Use defaults when config file is not present.
+            });
+        }
+
+        function resolveDocContent(requestedSrc) {
+          var localPath = ensureDocsRoot(requestedSrc);
+          if (!localPath) {
+            return Promise.reject(new Error("Invalid document path"));
+          }
+
+          var remotePath = mapCentralPath(localPath);
+          var remoteUrl = buildRemoteUrl(remotePath);
+          var canaryParamName = sourceConfig.canaryQueryParam || "canary";
+          var canaryParamValue = (params.get(canaryParamName) || "").toLowerCase();
+          var canaryEnabled = sourceConfig.enableCanaryRemoteOnly;
+          var canaryRemoteOnly = canaryEnabled && canaryParamValue === sourceConfig.canaryQueryValue;
+
+          var shouldForceRemote =
+            sourceModeParam === "remote" ||
+            sourceModeParam === "remote-only" ||
+            sourceConfig.mode === "remote-only" ||
+            canaryModeParam === "remote-only" ||
+            canaryRemoteOnly;
+
+          if (window.location.protocol === "file:") {
+            if (!remoteUrl) {
+              return Promise.reject(new Error("Remote mirror URL is not configured"));
+            }
+            return fetchTextFrom(remoteUrl).then(function (text) {
+              return {
+                markdown: text,
+                resolvedSrc: remotePath,
+                sourceKind: "remote-file-mode"
+              };
+            });
+          }
+
+          if (shouldForceRemote) {
+            if (!remoteUrl) return Promise.reject(new Error("Remote mirror URL is not configured"));
+            return fetchTextFrom(remoteUrl).then(function (text) {
+              return {
+                markdown: text,
+                resolvedSrc: remotePath,
+                sourceKind: canaryRemoteOnly || canaryModeParam === "remote-only" ? "remote-canary" : "remote-forced"
+              };
+            });
+          }
+
+          if (!remoteUrl) return Promise.reject(new Error("Remote mirror URL is not configured"));
+          return fetchTextFrom(remoteUrl).then(function (text) {
+            return {
+              markdown: text,
+              resolvedSrc: remotePath,
+              sourceKind: "remote-default"
+            };
+          });
+        }
+
+        function updateSourceBadge(result) {
+          if (!sourceBadge) return;
+
+          var kind = result && result.sourceKind ? result.sourceKind : "";
+          var text = "Source: local";
+          var className = "badge source-mode-badge local";
+
+          if (kind === "remote-canary") {
+            text = "Source: remote (canary)";
+            className = "badge source-mode-badge canary";
+          } else if (kind.indexOf("remote") === 0) {
+            text = "Source: remote";
+            className = "badge source-mode-badge remote";
+          }
+
+          sourceBadge.className = className;
+          sourceBadge.textContent = text;
+          docMeta.style.display = "flex";
+        }
+
+        function buildDebugContext(result) {
+          return {
+            requestedSrc: src,
+            resolvedSrc: result && result.resolvedSrc ? result.resolvedSrc : null,
+            sourceKind: result && result.sourceKind ? result.sourceKind : null,
+            sourceModeQuery: sourceModeParam || null,
+            canaryModeQuery: canaryModeParam || null,
+            effectiveSourceConfig: {
+              mode: sourceConfig.mode,
+              localDocsRoot: sourceConfig.localDocsRoot,
+              remoteMirrorBaseUrl: sourceConfig.remoteMirrorBaseUrl,
+              enableRemoteFallback: sourceConfig.enableRemoteFallback,
+              enableCanaryRemoteOnly: sourceConfig.enableCanaryRemoteOnly,
+              canaryQueryParam: sourceConfig.canaryQueryParam,
+              canaryQueryValue: sourceConfig.canaryQueryValue
+            },
+            pageUrl: window.location.href,
+            generatedAtUtc: new Date().toISOString()
+          };
+        }
+
+        function fallbackCopyText(text) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "readonly");
+          ta.style.position = "fixed";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          try {
+            document.execCommand("copy");
+          } finally {
+            document.body.removeChild(ta);
+          }
+        }
+
+        function copyDebugContext() {
+          if (!currentDebugContext) return;
+          var payload = JSON.stringify(currentDebugContext, null, 2);
+
+          function markCopied() {
+            if (!debugCopyBtn) return;
+            var original = debugCopyBtn.textContent;
+            debugCopyBtn.textContent = "Debug context copied";
+            setTimeout(function () {
+              debugCopyBtn.textContent = original;
+            }, 1800);
+          }
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard
+              .writeText(payload)
+              .then(markCopied)
+              .catch(function () {
+                fallbackCopyText(payload);
+                markCopied();
+              });
+            return;
+          }
+
           fallbackCopyText(payload);
           markCopied();
-        });
-      return;
-    }
+        }
 
-    fallbackCopyText(payload);
-    markCopied();
-  }
+        function recordStep(message) {
+          var elapsed = Date.now() - resolutionStartTime;
+          resolutionSteps.push({ time: elapsed, message: message });
+        }
 
-  function recordStep(message) {
-    var elapsed = Date.now() - resolutionStartTime;
-    resolutionSteps.push({ time: elapsed, message: message });
-  }
+        function updateStatusPanel() {
+          if (!statusStepsDiv) return;
+          statusStepsDiv.innerHTML = "";
+          resolutionSteps.forEach(function (step) {
+            var div = document.createElement("div");
+            div.className = "doc-status-step";
+            div.innerHTML =
+              '<span class="doc-status-step-time">' +
+              step.time +
+              "ms</span> " +
+              '<span class="doc-status-step-msg">' +
+              (step.message || "") +
+              "</span>";
+            statusStepsDiv.appendChild(div);
+          });
+        }
 
-  function updateStatusPanel() {
-    if (!statusStepsDiv) return;
-    statusStepsDiv.innerHTML = '';
-    resolutionSteps.forEach(function (step) {
-      var div = document.createElement('div');
-      div.className = 'doc-status-step';
-      div.innerHTML =
-        '<span class="doc-status-step-time">' + step.time + 'ms</span> ' +
-        '<span class="doc-status-step-msg">' + (step.message || '') + '</span>';
-      statusStepsDiv.appendChild(div);
-    });
-  }
+        function toggleStatusPanel() {
+          if (!statusPanel) return;
+          statusPanel.classList.toggle("visible");
+          if (statusPanel.classList.contains("visible")) {
+            updateStatusPanel();
+          }
+        }
 
-  function toggleStatusPanel() {
-    if (!statusPanel) return;
-    statusPanel.classList.toggle('visible');
-    if (statusPanel.classList.contains('visible')) {
-      updateStatusPanel();
-    }
-  }
+        if (debugCopyBtn) {
+          debugCopyBtn.addEventListener("click", copyDebugContext);
+        }
+        if (statusToggleBtn) {
+          statusToggleBtn.addEventListener("click", toggleStatusPanel);
+        }
+        if (statusCloseBtn) {
+          statusCloseBtn.addEventListener("click", toggleStatusPanel);
+        }
 
-  if (debugCopyBtn) {
-    debugCopyBtn.addEventListener('click', copyDebugContext);
-  }
-  if (statusToggleBtn) {
-    statusToggleBtn.addEventListener('click', toggleStatusPanel);
-  }
-  if (statusCloseBtn) {
-    statusCloseBtn.addEventListener('click', toggleStatusPanel);
-  }
+        recordStep("Starting doc load for: " + src);
 
-  recordStep('Starting doc load for: ' + src);
+        loadConfig()
+          .then(function () {
+            recordStep("Config loaded");
+            return resolveDocContent(src);
+          })
+          .then(function (result) {
+            recordStep("Content resolved from: " + (result.sourceKind || "unknown"));
+            var md = result.markdown;
+            var resolvedSrc = result.resolvedSrc;
+            currentDebugContext = buildDebugContext(result);
+            recordStep("Parsing markdown...");
+            var html = marked.parse(md);
+            recordStep("Rendering to DOM");
+            docBody.innerHTML = html;
+            recordStep("Rewriting internal links");
+            rewriteInternalDocLinks(resolvedSrc);
+            recordStep("Updating source badge");
+            updateSourceBadge(result);
+            recordStep("Complete (" + (Date.now() - resolutionStartTime) + "ms total)");
 
-  loadConfig()
-    .then(function () {
-      recordStep('Config loaded');
-      return resolveDocContent(src);
-    })
-    .then(function (result) {
-      recordStep('Content resolved from: ' + (result.sourceKind || 'unknown'));
-      var md = result.markdown;
-      var resolvedSrc = result.resolvedSrc;
-      currentDebugContext = buildDebugContext(result);
-      recordStep('Parsing markdown...');
-      var html = marked.parse(md);
-      recordStep('Rendering to DOM');
-      docBody.innerHTML = html;
-      recordStep('Rewriting internal links');
-      rewriteInternalDocLinks(resolvedSrc);
-      recordStep('Updating source badge');
-      updateSourceBadge(result);
-      recordStep('Complete (' + (Date.now() - resolutionStartTime) + 'ms total)');
-
-      // Extract title from first H1, promote to hero
-      var firstH1 = docBody.querySelector('h1');
-      var title   = firstH1 ? firstH1.textContent.trim() : filename.replace(/\.md$/,'').replace(/-/g,' ');
-      document.title    = title + ' — AuditToolkit Labs';
-      heroTitle.textContent = title;
-      bcTitle.textContent   = title;
-      if (firstH1) firstH1.remove(); // already shown in page hero
-    })
-    .catch(function (err) {
-      docBody.innerHTML = '<p class="doc-error">Could not load document (' + err.message + '). <a href="' + productLink + '">Return to docs index.</a></p>';
-      heroTitle.textContent = 'Document Unavailable';
-      bcTitle.textContent   = 'Error';
-    });
-}());
-</script>
-
-</body>
+            // Extract title from first H1, promote to hero
+            var firstH1 = docBody.querySelector("h1");
+            var title = firstH1 ? firstH1.textContent.trim() : filename.replace(/\.md$/, "").replace(/-/g, " ");
+            document.title = title + " — AuditToolkit Labs";
+            heroTitle.textContent = title;
+            bcTitle.textContent = title;
+            if (firstH1) firstH1.remove(); // already shown in page hero
+          })
+          .catch(function (err) {
+            docBody.innerHTML =
+              '<p class="doc-error">Could not load document (' +
+              err.message +
+              '). <a href="' +
+              productLink +
+              '">Return to docs index.</a></p>';
+            heroTitle.textContent = "Document Unavailable";
+            bcTitle.textContent = "Error";
+          });
+      })();
+    </script>
+  </body>
 </html>

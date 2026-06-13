@@ -1,30 +1,341 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Script Coverage - AuditToolkit Labs</title>
-  <meta name="description" content="1,019 audit scripts and 712 fix scripts across Linux, Windows, and hypervisors. Full domain and category breakdown." />
-  <link rel="stylesheet" href="assets/css/site.css?v=20260612g" />
-</head>
-<body>
-<nav class="nav"><div class="wrap"><div class="nav-inner"><a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a><ul class="nav-links"><li><a href="index.html#products">Products</a></li><li><a href="script-coverage.html">Coverage</a></li><li><a href="regulated-industries.html">Regulated</a></li><li><a href="toolkit-overview.html">Overview</a></li>
-        <li><a href="how-it-works.html">How It Works</a></li>
-        <li><a href="use-cases.html">Use Cases</a></li>
-        <li><a href="integrations.html">Integrations</a></li><li><a href="docs.html">Documentation</a></li><li><a href="releases.html">Releases</a></li><li><a href="licensing.html">Licensing</a></li><li><a href="support.html">Support</a></li></ul><div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div><button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button></div></div></nav>
-<div class="nav-mobile" id="nav-mobile"><a href="index.html">Home</a><a href="index.html#products">Products</a><a href="script-coverage.html">Coverage</a><a href="regulated-industries.html">Regulated</a><a href="toolkit-overview.html">Overview</a>
-  <a href="how-it-works.html">How It Works</a>
-  <a href="use-cases.html">Use Cases</a>
-  <a href="integrations.html">Integrations</a><a href="docs.html">Documentation</a><a href="releases.html">Releases</a><a href="licensing.html">Licensing</a><a href="support.html">Support</a></div>
-<div class="page-hero"><div class="wrap"><p class="eyebrow">Coverage Matrix</p><h1>What the suite audits and fixes</h1><p>Coverage figures are tracked in the repository and updated at each release. Current baseline: v6.4.8.</p></div></div>
-<section class="section"><div class="wrap"><h2>Headline totals</h2><div class="table-wrap"><table class="data-table"><tbody><tr><td>Audit scripts - total</td><td>1,019</td></tr><tr><td>Runnable fix scripts - total</td><td>712</td></tr><tr><td>Linux audit scripts</td><td>500</td></tr><tr><td>Windows audit scripts</td><td>503</td></tr><tr><td>Hypervisor audit scripts</td><td>16</td></tr><tr><td>Linux fix scripts (runnable)</td><td>348</td></tr><tr><td>Windows fix scripts</td><td>353</td></tr><tr><td>Hypervisor fix scripts</td><td>11</td></tr></tbody></table></div></div></section>
-<section class="section section-border-top"><div class="wrap"><h2>Linux audit breakdown (500 scripts)</h2><div class="table-wrap"><table class="data-table"><tbody><tr><td>Platform</td><td>140</td></tr><tr><td>Apps</td><td>67</td></tr><tr><td>Cloud</td><td>57</td></tr><tr><td>Security</td><td>56</td></tr><tr><td>Network</td><td>44</td></tr><tr><td>Data</td><td>36</td></tr><tr><td>Web</td><td>25</td></tr><tr><td>Storage</td><td>23</td></tr><tr><td>Advanced controls</td><td>24</td></tr><tr><td>Automation</td><td>22</td></tr><tr><td>Alpine</td><td>6</td></tr></tbody></table></div></div></section>
-<section class="section section-border-top"><div class="wrap"><h2>Windows audit breakdown (503 scripts)</h2><div class="table-wrap"><table class="data-table"><tbody><tr><td>Common</td><td>417</td></tr><tr><td>Apps</td><td>42</td></tr><tr><td>Desktop</td><td>15</td></tr><tr><td>Server</td><td>15</td></tr><tr><td>Platform</td><td>14</td></tr></tbody></table></div></div></section>
-<section class="section section-border-top"><div class="wrap"><h2>Hypervisor audit breakdown (16 scripts)</h2><div class="table-wrap"><table class="data-table"><tbody><tr><td>Xen</td><td>4</td></tr><tr><td>ESXi</td><td>6</td></tr><tr><td>KVM</td><td>2</td></tr><tr><td>Nutanix</td><td>2</td></tr><tr><td>Proxmox</td><td>2</td></tr></tbody></table></div></div></section>
-<section class="section section-border-top"><div class="wrap"><h2>Linux fix breakdown (348 runnable)</h2><div class="table-wrap"><table class="data-table"><tbody><tr><td>Platform</td><td>238</td></tr><tr><td>Cloud</td><td>47</td></tr><tr><td>Apps</td><td>26</td></tr><tr><td>Web</td><td>19</td></tr><tr><td>Network</td><td>16</td></tr><tr><td>CIS</td><td>2</td></tr></tbody></table></div></div></section>
-<section class="section section-border-top"><div class="wrap"><h2>Windows fix breakdown (353 scripts)</h2><div class="table-wrap"><table class="data-table"><tbody><tr><td>Platform</td><td>350</td></tr><tr><td>Server</td><td>3</td></tr></tbody></table></div></div></section>
-<section class="section section-border-top"><div class="wrap"><h2>Hypervisor fix breakdown (11 scripts)</h2><div class="table-wrap"><table class="data-table"><tbody><tr><td>ESXi</td><td>3</td></tr><tr><td>Proxmox</td><td>2</td></tr><tr><td>Xen</td><td>2</td></tr><tr><td>CIS</td><td>2</td></tr><tr><td>KVM</td><td>1</td></tr><tr><td>Nutanix</td><td>1</td></tr></tbody></table></div><p class="text-muted text-sm mt-16">Script counts are repository-scoped and deterministic. Counts updated as part of release preparation. Helper library files are excluded from all counts.</p><div class="flex gap-12 flex-wrap mt-24"><a href="audit-toolkit.html" class="btn btn-primary">View Audit Admin Toolkit</a><a href="linux-expansion.html" class="btn btn-secondary">View Linux Security Lite</a><a href="support.html#contact" class="btn btn-secondary">Arrange Evaluation</a></div></div></section>
-<footer class="site-footer"><div class="wrap"><div class="footer-grid"><div class="footer-brand"><p>AuditToolkit Labs</p></div><div class="footer-col"><h4>Products</h4><ul><li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li><li><a href="script-coverage.html">Script Coverage</a></li><li><a href="remediation.html">Remediation</a></li></ul></div><div class="footer-col"><h4>Resources</h4><ul><li><a href="regulated-industries.html">Regulated Industries</a></li><li><a href="compliance-evidence.html">Compliance Evidence</a></li><li><a href="licensing.html">Licensing</a></li></ul></div><div class="footer-col"><h4>Contact</h4><ul><li><a href="support.html#contact">Contact</a></li></ul></div></div></div></footer>
-<script src="assets/js/nav.js?v=20260612e"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <title>Script Coverage - AuditToolkit Labs</title>
+    <meta
+      name="description"
+      content="1,019 audit scripts and 712 fix scripts across Linux, Windows, and hypervisors. Full domain and category breakdown."
+    />
+    <link rel="stylesheet" href="assets/css/site.css?v=20260612g" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="wrap">
+        <div class="nav-inner">
+          <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+          <ul class="nav-links">
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="script-coverage.html">Coverage</a></li>
+            <li><a href="regulated-industries.html">Regulated</a></li>
+            <li><a href="toolkit-overview.html">Overview</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="use-cases.html">Use Cases</a></li>
+            <li><a href="integrations.html">Integrations</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="releases.html">Releases</a></li>
+            <li><a href="licensing.html">Licensing</a></li>
+            <li><a href="support.html">Support</a></li>
+          </ul>
+          <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+          <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="index.html">Home</a><a href="index.html#products">Products</a><a href="script-coverage.html">Coverage</a
+      ><a href="regulated-industries.html">Regulated</a><a href="toolkit-overview.html">Overview</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="integrations.html">Integrations</a><a href="docs.html">Documentation</a><a href="releases.html">Releases</a
+      ><a href="licensing.html">Licensing</a><a href="support.html">Support</a>
+    </div>
+    <div class="page-hero">
+      <div class="wrap">
+        <p class="eyebrow">Coverage Matrix</p>
+        <h1>What the suite audits and fixes</h1>
+        <p>Coverage figures are tracked in the repository and updated at each release. Current baseline: v6.4.8.</p>
+      </div>
+    </div>
+    <section class="section">
+      <div class="wrap">
+        <h2>Headline totals</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <tbody>
+              <tr>
+                <td>Audit scripts - total</td>
+                <td>1,019</td>
+              </tr>
+              <tr>
+                <td>Runnable fix scripts - total</td>
+                <td>712</td>
+              </tr>
+              <tr>
+                <td>Linux audit scripts</td>
+                <td>500</td>
+              </tr>
+              <tr>
+                <td>Windows audit scripts</td>
+                <td>503</td>
+              </tr>
+              <tr>
+                <td>Hypervisor audit scripts</td>
+                <td>16</td>
+              </tr>
+              <tr>
+                <td>Linux fix scripts (runnable)</td>
+                <td>348</td>
+              </tr>
+              <tr>
+                <td>Windows fix scripts</td>
+                <td>353</td>
+              </tr>
+              <tr>
+                <td>Hypervisor fix scripts</td>
+                <td>11</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section class="section section-border-top">
+      <div class="wrap">
+        <h2>Linux audit breakdown (500 scripts)</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <tbody>
+              <tr>
+                <td>Platform</td>
+                <td>140</td>
+              </tr>
+              <tr>
+                <td>Apps</td>
+                <td>67</td>
+              </tr>
+              <tr>
+                <td>Cloud</td>
+                <td>57</td>
+              </tr>
+              <tr>
+                <td>Security</td>
+                <td>56</td>
+              </tr>
+              <tr>
+                <td>Network</td>
+                <td>44</td>
+              </tr>
+              <tr>
+                <td>Data</td>
+                <td>36</td>
+              </tr>
+              <tr>
+                <td>Web</td>
+                <td>25</td>
+              </tr>
+              <tr>
+                <td>Storage</td>
+                <td>23</td>
+              </tr>
+              <tr>
+                <td>Advanced controls</td>
+                <td>24</td>
+              </tr>
+              <tr>
+                <td>Automation</td>
+                <td>22</td>
+              </tr>
+              <tr>
+                <td>Alpine</td>
+                <td>6</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section class="section section-border-top">
+      <div class="wrap">
+        <h2>Windows audit breakdown (503 scripts)</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <tbody>
+              <tr>
+                <td>Common</td>
+                <td>417</td>
+              </tr>
+              <tr>
+                <td>Apps</td>
+                <td>42</td>
+              </tr>
+              <tr>
+                <td>Desktop</td>
+                <td>15</td>
+              </tr>
+              <tr>
+                <td>Server</td>
+                <td>15</td>
+              </tr>
+              <tr>
+                <td>Platform</td>
+                <td>14</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section class="section section-border-top">
+      <div class="wrap">
+        <h2>Hypervisor audit breakdown (16 scripts)</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <tbody>
+              <tr>
+                <td>Xen</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>ESXi</td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <td>KVM</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>Nutanix</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>Proxmox</td>
+                <td>2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section class="section section-border-top">
+      <div class="wrap">
+        <h2>Linux fix breakdown (348 runnable)</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <tbody>
+              <tr>
+                <td>Platform</td>
+                <td>238</td>
+              </tr>
+              <tr>
+                <td>Cloud</td>
+                <td>47</td>
+              </tr>
+              <tr>
+                <td>Apps</td>
+                <td>26</td>
+              </tr>
+              <tr>
+                <td>Web</td>
+                <td>19</td>
+              </tr>
+              <tr>
+                <td>Network</td>
+                <td>16</td>
+              </tr>
+              <tr>
+                <td>CIS</td>
+                <td>2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section class="section section-border-top">
+      <div class="wrap">
+        <h2>Windows fix breakdown (353 scripts)</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <tbody>
+              <tr>
+                <td>Platform</td>
+                <td>350</td>
+              </tr>
+              <tr>
+                <td>Server</td>
+                <td>3</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section class="section section-border-top">
+      <div class="wrap">
+        <h2>Hypervisor fix breakdown (11 scripts)</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <tbody>
+              <tr>
+                <td>ESXi</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>Proxmox</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>Xen</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>CIS</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>KVM</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>Nutanix</td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-muted text-sm mt-16">
+          Script counts are repository-scoped and deterministic. Counts updated as part of release preparation. Helper library files are
+          excluded from all counts.
+        </p>
+        <div class="flex gap-12 flex-wrap mt-24">
+          <a href="audit-toolkit.html" class="btn btn-primary">View Audit Admin Toolkit</a
+          ><a href="linux-expansion.html" class="btn btn-secondary">View Linux Security Lite</a
+          ><a href="support.html#contact" class="btn btn-secondary">Arrange Evaluation</a>
+        </div>
+      </div>
+    </section>
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand"><p>AuditToolkit Labs</p></div>
+          <div class="footer-col">
+            <h4>Products</h4>
+            <ul>
+              <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
+              <li><a href="script-coverage.html">Script Coverage</a></li>
+              <li><a href="remediation.html">Remediation</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="regulated-industries.html">Regulated Industries</a></li>
+              <li><a href="compliance-evidence.html">Compliance Evidence</a></li>
+              <li><a href="licensing.html">Licensing</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="support.html#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="assets/js/nav.js?v=20260612e"></script>
+  </body>
 </html>

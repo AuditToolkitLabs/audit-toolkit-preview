@@ -129,6 +129,7 @@ Tools will eventually support **three independent NVD access modes**, with custo
 ### Positioning in Sales Materials
 
 **Current messaging:**
+
 > "AuditToolkit includes centralized CVE intelligence powered by NVD, with intelligent caching and rate limiting. Fully managed—no configuration required. Enterprise customers can configure their own NVD API key for dedicated access."
 
 **Sample marketing bullet:**
@@ -154,11 +155,10 @@ Tools will eventually support **three independent NVD access modes**, with custo
 # No NVD configuration needed
 # Tool defaults to central broker
 nvd_broker_url: "https://audittoolkit-billing-worker.billing-hooksaudittoolkitlabscom.workers.dev"
-nvd_api_key: null  # Not required
+nvd_api_key: null # Not required
 ```
 
 ### Scenario B: Enterprise Customer (Using Own API Key)
-
 
 **Deployment steps:**
 
@@ -172,11 +172,10 @@ nvd_api_key: null  # Not required
 ```yaml
 # Customer provides their own NVD key
 nvd_api_key: "sk_nist_xxxxxxxxxxxxx"
-nvd_mode: "direct"  # Bypass central broker
+nvd_mode: "direct" # Bypass central broker
 ```
 
 ### Scenario C: Air-Gapped Enterprise (Using Public Access)
-
 
 **Deployment steps:**
 
@@ -190,7 +189,7 @@ nvd_mode: "direct"  # Bypass central broker
 ```yaml
 # No credentials; use public NVD endpoints
 nvd_mode: "public"
-nvd_cache_dir: "/var/cache/nvd"  # Local cache
+nvd_cache_dir: "/var/cache/nvd" # Local cache
 ```
 
 ---
@@ -203,18 +202,18 @@ nvd_cache_dir: "/var/cache/nvd"  # Local cache
 **Language:** JavaScript/Node.js  
 **Runtime:** Cloudflare Workers Edge Network  
 **Caching:** Dual-layer (Cache API + KV namespace)  
-**Rate Limiting:** KV-backed token bucket coordination  
+**Rate Limiting:** KV-backed token bucket coordination
 
 ### Broker Endpoints
 
-| Endpoint | Purpose | Auth |
-| -------- | ------- | ---- |
-| `GET /nvd/cve/:cveId` | Lookup single CVE | Optional |
-| `GET /nvd/search?cpeName=...` | Search CVEs | Optional |
-| `GET /nvd/download/cve/:cveId` | Download CVE as JSON | Public |
-| `GET /nvd/download/search?...` | Download search results | Public |
-| `POST /admin/nvd/refresh` | Refresh cache | Admin token |
-| `POST /admin/nvd/prewarm` | Batch preload cache | Admin token |
+| Endpoint                       | Purpose                 | Auth        |
+| ------------------------------ | ----------------------- | ----------- |
+| `GET /nvd/cve/:cveId`          | Lookup single CVE       | Optional    |
+| `GET /nvd/search?cpeName=...`  | Search CVEs             | Optional    |
+| `GET /nvd/download/cve/:cveId` | Download CVE as JSON    | Public      |
+| `GET /nvd/download/search?...` | Download search results | Public      |
+| `POST /admin/nvd/refresh`      | Refresh cache           | Admin token |
+| `POST /admin/nvd/prewarm`      | Batch preload cache     | Admin token |
 
 ### Configuration Variables
 
@@ -327,12 +326,12 @@ When customers bring their own keys:
 
 As Phase 2 rolls out, monitor:
 
-| Metric | Purpose |
-| ------ | ------- |
-| Customers using own keys | Adoption of direct API mode |
-| Cache hit rate | Efficiency of caching layer |
-| Rate limit violations | Identify customers needing own keys |
-| Downstream NVD API calls | Total upstream usage |
+| Metric                   | Purpose                             |
+| ------------------------ | ----------------------------------- |
+| Customers using own keys | Adoption of direct API mode         |
+| Cache hit rate           | Efficiency of caching layer         |
+| Rate limit violations    | Identify customers needing own keys |
+| Downstream NVD API calls | Total upstream usage                |
 
 ---
 

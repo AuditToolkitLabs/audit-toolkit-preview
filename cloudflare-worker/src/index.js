@@ -2,7 +2,7 @@ const TEXT_ENCODER = new TextEncoder();
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Headers": "Content-Type"
 };
 
 function handleOptions(request) {
@@ -13,14 +13,14 @@ function handleOptions(request) {
   ) {
     // Handle CORS preflight requests.
     return new Response(null, {
-      headers: corsHeaders,
+      headers: corsHeaders
     });
   } else {
     // Handle standard OPTIONS request.
     return new Response(null, {
       headers: {
-        Allow: "POST, OPTIONS",
-      },
+        Allow: "POST, OPTIONS"
+      }
     });
   }
 }
@@ -67,13 +67,7 @@ function timingSafeEqual(a, b) {
 }
 
 async function hmacSha256Hex(secret, payload) {
-  const key = await crypto.subtle.importKey(
-    "raw",
-    TEXT_ENCODER.encode(secret),
-    { name: "HMAC", hash: "SHA-256" },
-    false,
-    ["sign"]
-  );
+  const key = await crypto.subtle.importKey("raw", TEXT_ENCODER.encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
 
   const signature = await crypto.subtle.sign("HMAC", key, TEXT_ENCODER.encode(payload));
   const bytes = new Uint8Array(signature);
@@ -123,13 +117,7 @@ async function hmacSha256Base64(secret, payload) {
   const keyBytes = decodeSvixSecret(secret);
   if (!keyBytes) return "";
 
-  const key = await crypto.subtle.importKey(
-    "raw",
-    keyBytes,
-    { name: "HMAC", hash: "SHA-256" },
-    false,
-    ["sign"]
-  );
+  const key = await crypto.subtle.importKey("raw", keyBytes, { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
 
   const signature = await crypto.subtle.sign("HMAC", key, TEXT_ENCODER.encode(payload));
   return bytesToBase64(new Uint8Array(signature));
@@ -143,9 +131,7 @@ async function verifyResendWebhook(request, rawBody, env) {
   const resendId = sanitizeText(request.headers.get("svix-id"));
   const resendTimestamp = sanitizeText(request.headers.get("svix-timestamp"));
   const resendSignatureHeader = request.headers.get("svix-signature");
-  const signatures = parseResendSignatures(resendSignatureHeader).filter(
-    (entry) => entry.version === "v1"
-  );
+  const signatures = parseResendSignatures(resendSignatureHeader).filter((entry) => entry.version === "v1");
 
   if (!resendId || !resendTimestamp || signatures.length === 0) {
     return { ok: false, reason: "missing-or-invalid-resend-signature-headers" };
@@ -163,9 +149,7 @@ async function verifyResendWebhook(request, rawBody, env) {
     return { ok: false, reason: "resend-signature-generation-failed" };
   }
 
-  const signatureMatch = signatures.some((entry) =>
-    timingSafeEqual(normalizeBase64(entry.signature), expected)
-  );
+  const signatureMatch = signatures.some((entry) => timingSafeEqual(normalizeBase64(entry.signature), expected));
 
   if (!signatureMatch) {
     return { ok: false, reason: "resend-signature-mismatch" };
@@ -254,9 +238,7 @@ async function verifyKeygenWebhook(request, rawBody, env) {
     return { ok: false, verified: false, reason: "missing-keygen-public-key" };
   }
 
-  const signatureHeader =
-    request.headers.get("keygen-signature") ||
-    request.headers.get("x-keygen-signature");
+  const signatureHeader = request.headers.get("keygen-signature") || request.headers.get("x-keygen-signature");
   const parsedSignature = parseHttpSignatureHeader(signatureHeader);
 
   if (!parsedSignature) {
@@ -342,30 +324,18 @@ async function verifyKeygenWebhook(request, rawBody, env) {
     return { ok: false, verified: false, reason: "invalid-keygen-public-key" };
   }
 
-  const spki = spkiBytes.buffer.slice(
-    spkiBytes.byteOffset,
-    spkiBytes.byteOffset + spkiBytes.byteLength
-  );
+  const spki = spkiBytes.buffer.slice(spkiBytes.byteOffset, spkiBytes.byteOffset + spkiBytes.byteLength);
 
   let verified = false;
   try {
-    const key = await crypto.subtle.importKey("spki", spki, { name: "Ed25519" }, false, [
-      "verify"
-    ]);
+    const key = await crypto.subtle.importKey("spki", spki, { name: "Ed25519" }, false, ["verify"]);
 
-    verified = await crypto.subtle.verify(
-      "Ed25519",
-      key,
-      signatureBytes,
-      TEXT_ENCODER.encode(signingData)
-    );
+    verified = await crypto.subtle.verify("Ed25519", key, signatureBytes, TEXT_ENCODER.encode(signingData));
   } catch (error) {
     return {
       ok: false,
       verified: false,
-      reason: `keygen-verification-runtime-error:${
-        error instanceof Error ? error.message : String(error)
-      }`
+      reason: `keygen-verification-runtime-error:${error instanceof Error ? error.message : String(error)}`
     };
   }
 
@@ -562,9 +532,7 @@ function sanitizeQuotaCustomerId(value) {
 }
 
 function resolveNvdCustomerIdentity(request, env) {
-  const explicitCustomerId = sanitizeQuotaCustomerId(
-    request.headers.get("x-customer-id") || request.headers.get("x-toolkit-customer-id")
-  );
+  const explicitCustomerId = sanitizeQuotaCustomerId(request.headers.get("x-customer-id") || request.headers.get("x-toolkit-customer-id"));
 
   if (explicitCustomerId) {
     return {
@@ -578,8 +546,7 @@ function resolveNvdCustomerIdentity(request, env) {
   if (config.enforceCustomerId) {
     return {
       error: "missing_customer_id",
-      message:
-        "Missing customer identity header. Send x-customer-id (or x-toolkit-customer-id), or disable NVD_ENFORCE_CUSTOMER_ID."
+      message: "Missing customer identity header. Send x-customer-id (or x-toolkit-customer-id), or disable NVD_ENFORCE_CUSTOMER_ID."
     };
   }
 
@@ -678,7 +645,13 @@ async function enforceNvdCustomerQuota(request, env) {
           error: "nvd_monthly_quota_exceeded",
           message: "Monthly broker quota exhausted for this customer.",
           retryAfterSeconds,
-          quota: { monthlyLimit, monthlyUsed, monthlyResetAtUnix: monthResetAt, customerId: identity.customerId, customerSource: identity.source }
+          quota: {
+            monthlyLimit,
+            monthlyUsed,
+            monthlyResetAtUnix: monthResetAt,
+            customerId: identity.customerId,
+            customerSource: identity.source
+          }
         },
         429
       )
@@ -749,10 +722,7 @@ async function enforceNvdCustomerQuota(request, env) {
 }
 
 async function fetchNvdData(urlPathAndQuery, env, options = {}) {
-  const cacheTtlSeconds = toPositiveInteger(
-    env.NVD_CACHE_TTL_SECONDS,
-    options.defaultCacheTtlSeconds || 3600
-  );
+  const cacheTtlSeconds = toPositiveInteger(env.NVD_CACHE_TTL_SECONDS, options.defaultCacheTtlSeconds || 3600);
   const cacheKey = buildNvdProxyCacheKey(urlPathAndQuery);
 
   const cached = await readNvdCache(env, cacheKey);
@@ -1073,7 +1043,7 @@ async function handleNvdPrewarm(request, env) {
       {
         ok: false,
         error: "missing_or_invalid_cve_ids",
-        message: "Provide body { cveIds: [\"CVE-YYYY-NNNN\", ...] }"
+        message: 'Provide body { cveIds: ["CVE-YYYY-NNNN", ...] }'
       },
       400
     );
@@ -1156,15 +1126,12 @@ function resolveFromProductId(productId, mapping) {
 async function fetchStripeSessionLineItemInfo(sessionId, env) {
   if (!sessionId || !env.STRIPE_API_SECRET) return null;
 
-  const response = await fetch(
-    `https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(sessionId)}/line_items?limit=1`,
-    {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${env.STRIPE_API_SECRET}`
-      }
+  const response = await fetch(`https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(sessionId)}/line_items?limit=1`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${env.STRIPE_API_SECRET}`
     }
-  );
+  });
 
   if (!response.ok) return null;
 
@@ -1183,15 +1150,12 @@ async function fetchStripeCheckoutSession(sessionId, env) {
   const normalizedSessionId = sanitizeText(sessionId);
   if (!normalizedSessionId || !env.STRIPE_API_SECRET) return null;
 
-  const response = await fetch(
-    `https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(normalizedSessionId)}`,
-    {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${env.STRIPE_API_SECRET}`
-      }
+  const response = await fetch(`https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(normalizedSessionId)}`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${env.STRIPE_API_SECRET}`
     }
-  );
+  });
 
   if (!response.ok) return null;
   return parseJsonSafe(await response.text(), null);
@@ -1201,15 +1165,12 @@ async function fetchStripePaymentLink(paymentLinkId, env) {
   const normalizedPaymentLinkId = sanitizeText(paymentLinkId);
   if (!normalizedPaymentLinkId || !env.STRIPE_API_SECRET) return null;
 
-  const response = await fetch(
-    `https://api.stripe.com/v1/payment_links/${encodeURIComponent(normalizedPaymentLinkId)}`,
-    {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${env.STRIPE_API_SECRET}`
-      }
+  const response = await fetch(`https://api.stripe.com/v1/payment_links/${encodeURIComponent(normalizedPaymentLinkId)}`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${env.STRIPE_API_SECRET}`
     }
-  );
+  });
 
   if (!response.ok) return null;
   return parseJsonSafe(await response.text(), null);
@@ -1219,15 +1180,12 @@ async function fetchStripePaymentIntent(paymentIntentId, env) {
   const normalizedPaymentIntentId = sanitizeText(paymentIntentId);
   if (!normalizedPaymentIntentId || !env.STRIPE_API_SECRET) return null;
 
-  const response = await fetch(
-    `https://api.stripe.com/v1/payment_intents/${encodeURIComponent(normalizedPaymentIntentId)}`,
-    {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${env.STRIPE_API_SECRET}`
-      }
+  const response = await fetch(`https://api.stripe.com/v1/payment_intents/${encodeURIComponent(normalizedPaymentIntentId)}`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${env.STRIPE_API_SECRET}`
     }
-  );
+  });
 
   if (!response.ok) return null;
   return parseJsonSafe(await response.text(), null);
@@ -1237,15 +1195,12 @@ async function fetchStripeCustomer(customerId, env) {
   const normalizedCustomerId = sanitizeText(customerId);
   if (!normalizedCustomerId || !env.STRIPE_API_SECRET) return null;
 
-  const response = await fetch(
-    `https://api.stripe.com/v1/customers/${encodeURIComponent(normalizedCustomerId)}`,
-    {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${env.STRIPE_API_SECRET}`
-      }
+  const response = await fetch(`https://api.stripe.com/v1/customers/${encodeURIComponent(normalizedCustomerId)}`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${env.STRIPE_API_SECRET}`
     }
-  );
+  });
 
   if (!response.ok) return null;
   return parseJsonSafe(await response.text(), null);
@@ -1259,15 +1214,12 @@ async function fetchStripeInvoice(invoiceId, env) {
   query.append("expand[]", "customer");
   query.append("expand[]", "payment_intent.latest_charge");
 
-  const response = await fetch(
-    `https://api.stripe.com/v1/invoices/${encodeURIComponent(normalizedInvoiceId)}?${query.toString()}`,
-    {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${env.STRIPE_API_SECRET}`
-      }
+  const response = await fetch(`https://api.stripe.com/v1/invoices/${encodeURIComponent(normalizedInvoiceId)}?${query.toString()}`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${env.STRIPE_API_SECRET}`
     }
-  );
+  });
 
   if (!response.ok) return null;
   return parseJsonSafe(await response.text(), null);
@@ -1281,15 +1233,12 @@ async function fetchLatestCheckoutSessionForCustomer(customerId, env) {
   query.append("customer", normalizedCustomerId);
   query.append("limit", "1");
 
-  const response = await fetch(
-    `https://api.stripe.com/v1/checkout/sessions?${query.toString()}`,
-    {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${env.STRIPE_API_SECRET}`
-      }
+  const response = await fetch(`https://api.stripe.com/v1/checkout/sessions?${query.toString()}`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${env.STRIPE_API_SECRET}`
     }
-  );
+  });
 
   if (!response.ok) return null;
 
@@ -1303,25 +1252,18 @@ async function fetchRecentPaidCheckoutSessions(env, limit = 10) {
   const query = new URLSearchParams();
   query.append("limit", String(limit));
 
-  const response = await fetch(
-    `https://api.stripe.com/v1/checkout/sessions?${query.toString()}`,
-    {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${env.STRIPE_API_SECRET}`
-      }
+  const response = await fetch(`https://api.stripe.com/v1/checkout/sessions?${query.toString()}`, {
+    method: "GET",
+    headers: {
+      authorization: `Bearer ${env.STRIPE_API_SECRET}`
     }
-  );
+  });
 
   if (!response.ok) return [];
 
   const payload = parseJsonSafe(await response.text(), {});
   return Array.isArray(payload?.data)
-    ? payload.data.filter(
-        (session) =>
-          sanitizeText(session?.status) === "complete" &&
-          sanitizeText(session?.payment_status) === "paid"
-      )
+    ? payload.data.filter((session) => sanitizeText(session?.status) === "complete" && sanitizeText(session?.payment_status) === "paid")
     : [];
 }
 
@@ -1341,10 +1283,8 @@ async function findMatchingCheckoutSessionForInvoice(stripeObject, env) {
 
   for (const session of sessions) {
     const lineItemInfo = await fetchStripeSessionLineItemInfo(session.id, env);
-    const priceMatches =
-      invoiceItemIdentity.priceId && lineItemInfo?.priceId === invoiceItemIdentity.priceId;
-    const productMatches =
-      invoiceItemIdentity.productId && lineItemInfo?.productId === invoiceItemIdentity.productId;
+    const priceMatches = invoiceItemIdentity.priceId && lineItemInfo?.priceId === invoiceItemIdentity.priceId;
+    const productMatches = invoiceItemIdentity.productId && lineItemInfo?.productId === invoiceItemIdentity.productId;
 
     if (priceMatches || productMatches) {
       return session;
@@ -1371,9 +1311,7 @@ function mergeCustomerIntoPayload(payload, mergeData) {
     sanitizeText(customerDetails.name);
 
   const mergedCustomerCompany =
-    sanitizeText(mergeData.customerCompany) ||
-    sanitizeText(payload?.customerCompany) ||
-    sanitizeText(customerDetails.business_name);
+    sanitizeText(mergeData.customerCompany) || sanitizeText(payload?.customerCompany) || sanitizeText(customerDetails.business_name);
 
   const mergedBillingAddressRaw =
     sanitizeText(mergeData.customerBillingAddress) ||
@@ -1420,14 +1358,8 @@ function hasCustomerIdentity(payload) {
 
 async function enrichBillingPayloadWithStripeCustomer(payload, env) {
   const stripeObject = payload?.stripeObject || {};
-  const stripeCustomerId =
-    typeof stripeObject.customer === "string"
-      ? stripeObject.customer
-      : stripeObject.customer?.id;
-  const paymentIntentId =
-    typeof stripeObject.payment_intent === "string"
-      ? stripeObject.payment_intent
-      : stripeObject.payment_intent?.id;
+  const stripeCustomerId = typeof stripeObject.customer === "string" ? stripeObject.customer : stripeObject.customer?.id;
+  const paymentIntentId = typeof stripeObject.payment_intent === "string" ? stripeObject.payment_intent : stripeObject.payment_intent?.id;
 
   const hasFullDetails =
     Boolean(stripeObject.customer_details?.name) ||
@@ -1518,12 +1450,10 @@ async function enrichBillingPayloadWithStripeCustomer(payload, env) {
       sanitizeText(expandedCustomer?.metadata?.organization);
 
     enriched = mergeCustomerIntoPayload(enriched, {
-      customerEmail:
-        sanitizeText(expandedCustomer?.email) || sanitizeText(billingDetails?.email),
+      customerEmail: sanitizeText(expandedCustomer?.email) || sanitizeText(billingDetails?.email),
       customerName: sanitizeText(expandedCustomer?.name) || sanitizeText(billingDetails?.name),
       customerCompany: invoiceCompany,
-      customerBillingAddress:
-        formatAddress(expandedCustomer?.address) || formatAddress(billingDetails?.address)
+      customerBillingAddress: formatAddress(expandedCustomer?.address) || formatAddress(billingDetails?.address)
     });
     enrichmentSources.push("invoice-expanded-charge");
 
@@ -1737,10 +1667,7 @@ function getAutoRetryConfig(env) {
   const enabled = enabledRaw === "" || enabledRaw === "1" || enabledRaw === "true";
 
   const maxAttempts = Math.max(1, Math.min(20, Number(env.AUTO_RETRY_MAX_ATTEMPTS) || 6));
-  const baseDelaySeconds = Math.max(
-    30,
-    Math.min(24 * 60 * 60, Number(env.AUTO_RETRY_BASE_DELAY_SECONDS) || 300)
-  );
+  const baseDelaySeconds = Math.max(30, Math.min(24 * 60 * 60, Number(env.AUTO_RETRY_BASE_DELAY_SECONDS) || 300));
 
   return {
     enabled,
@@ -1967,13 +1894,9 @@ async function resolveKeygenLicenseContext(env, keygenPayload) {
       formatTimestampIso(innerAttributes?.expiresAt) ||
       formatTimestampIso(innerAttributes?.exp),
     customerEmail: findEmailInKeygenPayload(payload),
-    customerCompany:
-      sanitizeText(innerAttributes?.metadata?.customer_company) ||
-      sanitizeText(innerAttributes?.metadata?.company),
+    customerCompany: sanitizeText(innerAttributes?.metadata?.customer_company) || sanitizeText(innerAttributes?.metadata?.company),
     productId: sanitizeText(innerRelationships?.product?.data?.id),
-    licenseType:
-      sanitizeText(innerAttributes?.metadata?.plan_code) ||
-      sanitizeText(innerRelationships?.policy?.data?.id)
+    licenseType: sanitizeText(innerAttributes?.metadata?.plan_code) || sanitizeText(innerRelationships?.policy?.data?.id)
   };
 
   if (!context.licenseId) {
@@ -1993,14 +1916,10 @@ async function resolveKeygenLicenseContext(env, keygenPayload) {
       formatTimestampIso(nestedAttrs?.exp);
     context.customerEmail = context.customerEmail || findEmailInKeygenPayload(eventPayload);
     context.customerCompany =
-      context.customerCompany ||
-      sanitizeText(nestedAttrs?.metadata?.customer_company) ||
-      sanitizeText(nestedAttrs?.metadata?.company);
+      context.customerCompany || sanitizeText(nestedAttrs?.metadata?.customer_company) || sanitizeText(nestedAttrs?.metadata?.company);
     context.productId = context.productId || sanitizeText(nestedRels?.product?.data?.id);
     context.licenseType =
-      context.licenseType ||
-      sanitizeText(nestedAttrs?.metadata?.plan_code) ||
-      sanitizeText(nestedRels?.policy?.data?.id);
+      context.licenseType || sanitizeText(nestedAttrs?.metadata?.plan_code) || sanitizeText(nestedRels?.policy?.data?.id);
   }
 
   if (!env.KEYGEN_ACCOUNT_ID || !env.KEYGEN_API_TOKEN || !context.licenseId) {
@@ -2036,11 +1955,8 @@ async function resolveKeygenLicenseContext(env, keygenPayload) {
       formatTimestampIso(licenseAttrs?.expiresAt) ||
       formatTimestampIso(licenseAttrs?.exp);
     context.licenseType =
-      context.licenseType ||
-      sanitizeText(licenseAttrs?.metadata?.plan_code) ||
-      sanitizeText(licenseData?.relationships?.policy?.data?.id);
-    context.productId =
-      context.productId || sanitizeText(licenseData?.relationships?.product?.data?.id);
+      context.licenseType || sanitizeText(licenseAttrs?.metadata?.plan_code) || sanitizeText(licenseData?.relationships?.policy?.data?.id);
+    context.productId = context.productId || sanitizeText(licenseData?.relationships?.product?.data?.id);
 
     for (const item of included) {
       const itemType = sanitizeText(item?.type);
@@ -2149,11 +2065,7 @@ function sanitizeText(value) {
 }
 
 function normalizeIdentityValue(value) {
-  return sanitizeText(value)
-    .toLowerCase()
-    .replace(/,/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
+  return sanitizeText(value).toLowerCase().replace(/,/g, " ").replace(/\s+/g, " ").trim();
 }
 
 function isFixtureEmail(value) {
@@ -2181,10 +2093,7 @@ function sanitizeCustomerName(value, context = {}) {
 
   if (isFixtureEmail(context.email)) return "";
 
-  if (
-    isFixtureCustomerName(normalized) &&
-    isFixtureCustomerBillingAddress(context.billingAddress)
-  ) {
+  if (isFixtureCustomerName(normalized) && isFixtureCustomerBillingAddress(context.billingAddress)) {
     return "";
   }
 
@@ -2197,10 +2106,7 @@ function sanitizeCustomerBillingAddress(value, context = {}) {
 
   if (isFixtureEmail(context.email)) return "";
 
-  if (
-    isFixtureCustomerBillingAddress(normalized) &&
-    isFixtureCustomerName(context.name)
-  ) {
+  if (isFixtureCustomerBillingAddress(normalized) && isFixtureCustomerName(context.name)) {
     return "";
   }
 
@@ -2246,13 +2152,9 @@ function extractCustomerContext(payload) {
     sanitizeCustomerEmail(stripeObject.customer_details?.email);
 
   const rawName =
-    sanitizeText(payload?.customerName) ||
-    sanitizeText(stripeObject.customer_name) ||
-    sanitizeText(stripeObject.customer_details?.name);
+    sanitizeText(payload?.customerName) || sanitizeText(stripeObject.customer_name) || sanitizeText(stripeObject.customer_details?.name);
 
-  const company =
-    sanitizeText(payload?.customerCompany) ||
-    sanitizeText(stripeObject.customer_details?.business_name);
+  const company = sanitizeText(payload?.customerCompany) || sanitizeText(stripeObject.customer_details?.business_name);
 
   const rawBillingAddress =
     sanitizeText(payload?.customerBillingAddress) ||
@@ -2288,18 +2190,26 @@ function renderEmailHtml({ title, subtitle, accentColor, rows, footer }) {
         ? `<a href="${escapeHtml(href)}" style="color:#0f6cbd;text-decoration:underline;font-weight:600;">${linkLabel}</a>`
         : value;
 
-      return `<tr><td style="padding:8px 0;color:#5f6b7a;font-size:13px;vertical-align:top;width:160px;">${label}</td><td style="padding:8px 0;color:#111827;font-size:14px;font-weight:600;word-break:break-word;">${valueHtml}</td></tr>`;
+      return [
+        '<tr><td style="padding:8px 0;color:#5f6b7a;font-size:13px;vertical-align:top;width:160px;">',
+        label,
+        '</td><td style="padding:8px 0;color:#111827;font-size:14px;font-weight:600;word-break:break-word;">',
+        valueHtml,
+        "</td></tr>"
+      ].join("");
     })
     .join("");
 
   return [
-    "<html><body style=\"margin:0;padding:0;background:#f3f6fb;font-family:Segoe UI,Arial,sans-serif;\">",
-    "<table role=\"presentation\" style=\"width:100%;border-collapse:collapse;\"><tr><td align=\"center\" style=\"padding:28px 16px;\">",
-    "<table role=\"presentation\" style=\"max-width:640px;width:100%;background:#ffffff;border:1px solid #dbe4f0;border-radius:12px;overflow:hidden;border-collapse:separate;\">",
+    '<html><body style="margin:0;padding:0;background:#f3f6fb;font-family:Segoe UI,Arial,sans-serif;">',
+    '<table role="presentation" style="width:100%;border-collapse:collapse;"><tr><td align="center" style="padding:28px 16px;">',
+    '<table role="presentation" style="max-width:640px;width:100%;background:#ffffff;border:1px solid #dbe4f0;' +
+      'border-radius:12px;overflow:hidden;border-collapse:separate;">',
     `<tr><td style=\"background:${color};padding:16px 20px;color:#ffffff;font-size:20px;font-weight:700;\">Audit Toolkit Labs</td></tr>`,
     `<tr><td style=\"padding:20px 20px 8px 20px;color:#111827;font-size:22px;font-weight:700;\">${safeTitle}</td></tr>`,
     `<tr><td style=\"padding:0 20px 16px 20px;color:#4b5563;font-size:14px;\">${safeSubtitle}</td></tr>`,
-    `<tr><td style=\"padding:0 20px 12px 20px;\"><table role=\"presentation\" style=\"width:100%;border-collapse:collapse;\">${rowsHtml}</table></td></tr>`,
+    `<tr><td style=\"padding:0 20px 12px 20px;\"><table role=\"presentation\" ` +
+      `style=\"width:100%;border-collapse:collapse;\">${rowsHtml}</table></td></tr>`,
     `<tr><td style=\"padding:12px 20px 20px 20px;color:#6b7280;font-size:12px;border-top:1px solid #e5e7eb;\">${safeFooter}</td></tr>`,
     "</table></td></tr></table>",
     "</body></html>"
@@ -2365,8 +2275,7 @@ function toAbsoluteUrl(base, path) {
 function getLegalLinks(env) {
   const siteBase = trimTrailingSlash(env.PUBLIC_SITE_BASE_URL || "https://audittoolkitlabs.com");
 
-  const licensingUrl =
-    sanitizeText(env.LICENSE_TERMS_URL) || toAbsoluteUrl(siteBase, "licensing.html");
+  const licensingUrl = sanitizeText(env.LICENSE_TERMS_URL) || toAbsoluteUrl(siteBase, "licensing.html");
   const supportUrl = sanitizeText(env.SUPPORT_URL) || toAbsoluteUrl(siteBase, "support.html");
   const privacyUrl = sanitizeText(env.PRIVACY_URL) || toAbsoluteUrl(siteBase, "privacy.html");
 
@@ -2390,15 +2299,12 @@ async function fetchStripePaidCheckoutSessionsSince(env, sinceUnix) {
       query.append("starting_after", startingAfter);
     }
 
-    const response = await fetch(
-      `https://api.stripe.com/v1/checkout/sessions?${query.toString()}`,
-      {
-        method: "GET",
-        headers: {
-          authorization: `Bearer ${env.STRIPE_API_SECRET}`
-        }
+    const response = await fetch(`https://api.stripe.com/v1/checkout/sessions?${query.toString()}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${env.STRIPE_API_SECRET}`
       }
-    );
+    });
 
     if (!response.ok) break;
 
@@ -2410,10 +2316,7 @@ async function fetchStripePaidCheckoutSessionsSince(env, sinceUnix) {
     for (const session of data) {
       const created = Number(session?.created);
       if (Number.isFinite(created) && created >= sinceUnix) {
-        if (
-          sanitizeText(session?.status) === "complete" &&
-          sanitizeText(session?.payment_status) === "paid"
-        ) {
+        if (sanitizeText(session?.status) === "complete" && sanitizeText(session?.payment_status) === "paid") {
           sessions.push(session);
         }
       }
@@ -2544,15 +2447,23 @@ async function sendWeeklyReconciliationReport(env, options = {}) {
     `Orphan licenses: ${orphanLicenses.length}`,
     "",
     "Missing licenses (Stripe paid without Keygen):",
-    ...topMissing.map(
-      (item) =>
-        `- ${item.stripeSessionId} | ${item.customerEmail || "(no-email)"} | ${formatMinorAmount(item.amountTotal, item.currency)} | ${new Date(Number(item.created) * 1000).toISOString()}`
+    ...topMissing.map((item) =>
+      [
+        `- ${item.stripeSessionId}`,
+        item.customerEmail || "(no-email)",
+        formatMinorAmount(item.amountTotal, item.currency),
+        new Date(Number(item.created) * 1000).toISOString()
+      ].join(" | ")
     ),
     "",
     "Orphan licenses (Keygen issued without Stripe paid in window):",
-    ...topOrphans.map(
-      (item) =>
-        `- ${item.keygenLicenseId || "(no-license-id)"} | ${item.stripeSessionId} | ${item.planCode || "(no-plan)"} | ${formatTimestampIso(item.issuedAt)}`
+    ...topOrphans.map((item) =>
+      [
+        `- ${item.keygenLicenseId || "(no-license-id)"}`,
+        item.stripeSessionId,
+        item.planCode || "(no-plan)",
+        formatTimestampIso(item.issuedAt)
+      ].join(" | ")
     ),
     "",
     "If missing licenses are non-zero, treat as operational incident and reconcile immediately."
@@ -2709,7 +2620,8 @@ async function sendResendForBillingEvent(env, eventType, payload) {
       accentColor: "#0f6cbd",
       rows: customerRows,
       footer:
-        "This transaction grants software license rights only and does not transfer intellectual property ownership. Indemnity, liability limitations, and warranty terms are governed by your applicable license terms."
+        "This transaction grants software license rights only and does not transfer intellectual property ownership. " +
+        "Indemnity, liability limitations, and warranty terms are governed by your applicable license terms."
     });
 
     const customerMessage = looksLikeEmail(customerEmail)
@@ -2859,17 +2771,13 @@ async function sendResendForBillingEvent(env, eventType, payload) {
           `Stripe Session: ${sanitizeText(payload?.stripeSessionId) || "N/A"}`,
           `Stripe Event: ${sanitizeText(payload?.stripeEventId) || "N/A"}`,
           "",
-          "Required Action: Contact customer manually and verify recipient email." 
+          "Required Action: Contact customer manually and verify recipient email."
         ].join("\n")
       });
     }
 
     return {
-      sent:
-        customerMessage.sent ||
-        receiptMessage.sent ||
-        opsMessage.sent ||
-        licenseEmailFailureEscalation.sent,
+      sent: customerMessage.sent || receiptMessage.sent || opsMessage.sent || licenseEmailFailureEscalation.sent,
       provider: "resend",
       customer: customerMessage,
       receipt: receiptMessage,
@@ -2882,10 +2790,7 @@ async function sendResendForBillingEvent(env, eventType, payload) {
   const customer = extractCustomerContext(payload);
   const enrichmentDebug = payload?.enrichmentDebug || null;
   const legalLinks = getLegalLinks(env);
-  const readableEvent = eventType
-    .replace("billing.", "")
-    .replace(/_/g, " ")
-    .toUpperCase();
+  const readableEvent = eventType.replace("billing.", "").replace(/_/g, " ").toUpperCase();
 
   console.log("billing-customer-enrichment", {
     eventType,
@@ -2984,7 +2889,9 @@ async function sendResendForBillingEvent(env, eventType, payload) {
 
     if (keygenEventType === "license.created") {
       recipientOverride = getSalesEmail(env);
-      subjectOverride = `[Sales] KEYGEN LICENSE CREATED - ${looksLikeEmail(keygenCustomerEmail) ? keygenCustomerEmail : sanitizeText(keygenData?.id) || "license"}`;
+      subjectOverride = `[Sales] KEYGEN LICENSE CREATED - ${
+        looksLikeEmail(keygenCustomerEmail) ? keygenCustomerEmail : sanitizeText(keygenData?.id) || "license"
+      }`;
       summaryRows.push({ label: "Action", value: "Informational success event. No action required." });
     }
 
@@ -3062,10 +2969,9 @@ async function sendResendForBillingEvent(env, eventType, payload) {
       });
       summaryRows.push({
         label: "Action",
-        value:
-          customerInvoiceMessage.sent
-            ? "Reminder delivered to customer."
-            : "Customer email missing - update Keygen license metadata/user email."
+        value: customerInvoiceMessage.sent
+          ? "Reminder delivered to customer."
+          : "Customer email missing - update Keygen license metadata/user email."
       });
 
       if (looksLikeEmail(expiryReminderEmail)) {
@@ -3092,7 +2998,10 @@ async function sendResendForBillingEvent(env, eventType, payload) {
     }
 
     const toList = Array.isArray(resendData?.to) ? resendData.to : [];
-    const toLine = toList.map((entry) => sanitizeText(entry)).filter(Boolean).join(", ");
+    const toLine = toList
+      .map((entry) => sanitizeText(entry))
+      .filter(Boolean)
+      .join(", ");
     if (toLine) {
       summaryRows.push({ label: "To", value: toLine });
     }
@@ -3184,9 +3093,7 @@ async function sendResendForBillingEvent(env, eventType, payload) {
     const invoiceNumber = sanitizeText(stripeObject?.number) || sanitizeText(stripeObject?.id) || "N/A";
     const amountPaid = formatMinorAmount(stripeObject?.amount_paid, stripeObject?.currency);
     const paidAtUnix = Number(stripeObject?.status_transitions?.paid_at);
-    const paidAt = Number.isFinite(paidAtUnix) && paidAtUnix > 0
-      ? new Date(paidAtUnix * 1000).toISOString()
-      : timestamp;
+    const paidAt = Number.isFinite(paidAtUnix) && paidAtUnix > 0 ? new Date(paidAtUnix * 1000).toISOString() : timestamp;
 
     const customerInvoiceRows = [
       { label: "Invoice", value: invoiceNumber },
@@ -3237,7 +3144,8 @@ async function sendResendForBillingEvent(env, eventType, payload) {
       accentColor: "#107c10",
       rows: customerInvoiceRows,
       footer:
-        "This confirmation is for software license payment only. Indemnity, liability limitations, and other legal terms are governed by your applicable license terms and agreement."
+        "This confirmation is for software license payment only. Indemnity, liability limitations, " +
+        "and other legal terms are governed by your applicable license terms and agreement."
     });
 
     customerInvoiceMessage = await sendResendEmail(env, {
@@ -3250,9 +3158,7 @@ async function sendResendForBillingEvent(env, eventType, payload) {
         "Transaction Classification: Software license payment",
         `Amount Paid: ${amountPaid}`,
         `Payment Date: ${paidAt}`,
-        stripeObject?.hosted_invoice_url
-          ? `Invoice Link: ${sanitizeText(stripeObject.hosted_invoice_url)}`
-          : "Invoice Link: Not available",
+        stripeObject?.hosted_invoice_url ? `Invoice Link: ${sanitizeText(stripeObject.hosted_invoice_url)}` : "Invoice Link: Not available",
         legalLinks.licensingUrl ? `License Terms: ${legalLinks.licensingUrl}` : "",
         legalLinks.supportUrl ? `Support: ${legalLinks.supportUrl}` : "",
         legalLinks.privacyUrl ? `Privacy: ${legalLinks.privacyUrl}` : "",
@@ -3304,27 +3210,19 @@ async function sendResendForBillingEvent(env, eventType, payload) {
   }
 
   const defaultSubject =
-    eventType === "billing.plan_unresolved"
-      ? `[Ops][ACTION REQUIRED] ${readableEvent}`
-      : `${subjectPrefix} ${readableEvent}`;
+    eventType === "billing.plan_unresolved" ? `[Ops][ACTION REQUIRED] ${readableEvent}` : `${subjectPrefix} ${readableEvent}`;
   const rawPayloadNote =
     eventType === "billing.keygen_event"
       ? "Keygen event details are summarized above."
       : "Raw payload omitted in email for readability. Check Stripe dashboard for full object details.";
-  const defaultBody = [
-    "Billing worker event.",
-    "",
-    ...summaryRows.map((row) => `${row.label}: ${row.value}`),
-    "",
-    rawPayloadNote
-  ].join("\n");
+  const defaultBody = ["Billing worker event.", "", ...summaryRows.map((row) => `${row.label}: ${row.value}`), "", rawPayloadNote].join(
+    "\n"
+  );
 
   const defaultOpsHtml = renderEmailHtml({
     title: eventType === "billing.keygen_event" ? "Keygen webhook event" : "Billing event",
     subtitle:
-      eventType === "billing.keygen_event"
-        ? "Operational event received from Keygen."
-        : "Operational event from the billing worker.",
+      eventType === "billing.keygen_event" ? "Operational event received from Keygen." : "Operational event from the billing worker.",
     accentColor: "#5c2d91",
     rows: summaryRows,
     footer: rawPayloadNote
@@ -3453,14 +3351,9 @@ async function processCheckoutSessionForLicense(session, env, context = {}) {
 
   if (!resolvedPlan) {
     const existingRecord = await getPlanUnresolvedRecord(env, session?.id);
-    const effectiveRetryCount = Number.isFinite(retryCount)
-      ? retryCount
-      : Number(existingRecord?.retryCount) || 0;
+    const effectiveRetryCount = Number.isFinite(retryCount) ? retryCount : Number(existingRecord?.retryCount) || 0;
 
-    const retryDelaySeconds = Math.min(
-      retryConfig.baseDelaySeconds * Math.pow(2, Math.min(effectiveRetryCount, 6)),
-      24 * 60 * 60
-    );
+    const retryDelaySeconds = Math.min(retryConfig.baseDelaySeconds * Math.pow(2, Math.min(effectiveRetryCount, 6)), 24 * 60 * 60);
     const nextRetryAt = new Date(Date.now() + retryDelaySeconds * 1000).toISOString();
 
     await setPlanUnresolvedRecord(env, session?.id, {
@@ -3525,20 +3418,14 @@ async function processCheckoutSessionForLicense(session, env, context = {}) {
   await deletePlanUnresolvedRecord(env, session?.id);
 
   const normalizedCustomerEmail = sanitizeCustomerEmail(session?.customer_details?.email);
-  const normalizedCustomerName = sanitizeCustomerName(
-    sanitizeText(session?.customer_details?.name),
-    {
-      email: normalizedCustomerEmail,
-      billingAddress: formatAddress(session?.customer_details?.address)
-    }
-  );
-  const normalizedCustomerBillingAddress = sanitizeCustomerBillingAddress(
-    formatAddress(session?.customer_details?.address),
-    {
-      email: normalizedCustomerEmail,
-      name: sanitizeText(session?.customer_details?.name)
-    }
-  );
+  const normalizedCustomerName = sanitizeCustomerName(sanitizeText(session?.customer_details?.name), {
+    email: normalizedCustomerEmail,
+    billingAddress: formatAddress(session?.customer_details?.address)
+  });
+  const normalizedCustomerBillingAddress = sanitizeCustomerBillingAddress(formatAddress(session?.customer_details?.address), {
+    email: normalizedCustomerEmail,
+    name: sanitizeText(session?.customer_details?.name)
+  });
 
   if (session?.customer) {
     await setCustomerProfile(env, session.customer, {
@@ -3651,10 +3538,7 @@ async function retryPendingPlanUnresolvedSessions(env) {
     const session = await fetchStripeCheckoutSession(sessionId, env);
     if (!session) {
       failed += 1;
-      const retryDelaySeconds = Math.min(
-        retryConfig.baseDelaySeconds * Math.pow(2, Math.min(attemptNumber, 6)),
-        24 * 60 * 60
-      );
+      const retryDelaySeconds = Math.min(retryConfig.baseDelaySeconds * Math.pow(2, Math.min(attemptNumber, 6)), 24 * 60 * 60);
       await setPlanUnresolvedRecord(env, sessionId, {
         ...record,
         retryCount: attemptNumber,
@@ -3757,9 +3641,7 @@ export default {
           resendEmailDispatch: Boolean(env.RESEND_API_KEY && env.RESEND_FROM_EMAIL),
           resendWebhookValidation: Boolean(env.RESEND_WEBHOOK_SECRET),
           m365FlowForwarding: Boolean(env.M365_FLOW_WEBHOOK_URL),
-          keygenWebhookValidation: Boolean(
-            env.KEYGEN_WEBHOOK_PUBLIC_KEY || env.KEYGEN_WEBHOOK_SECRET
-          ),
+          keygenWebhookValidation: Boolean(env.KEYGEN_WEBHOOK_PUBLIC_KEY || env.KEYGEN_WEBHOOK_SECRET),
           idempotencyKv: Boolean(env.BILLING_EVENTS_KV),
           nvdBroker: true,
           nvdApiKeyConfigured: Boolean(env.NVD_API_KEY),
@@ -3974,9 +3856,7 @@ export default {
         const event = parseJsonSafe(rawBody, {});
         const resendEventType = sanitizeText(event?.type) || "unknown";
         const resendWebhookId =
-          sanitizeText(verification?.resendWebhookId) ||
-          sanitizeText(request.headers.get("svix-id")) ||
-          `resend-${Date.now()}`;
+          sanitizeText(verification?.resendWebhookId) || sanitizeText(request.headers.get("svix-id")) || `resend-${Date.now()}`;
 
         const dedupe = await ensureNotDuplicateEvent(env, `resend:${resendWebhookId}`);
         if (dedupe.duplicate) {
@@ -3988,15 +3868,11 @@ export default {
           });
         }
 
-        const notification = await dispatchBillingNotifications(
-          env,
-          "billing.resend_inbound_event",
-          {
-            resendWebhookId,
-            resendEventType,
-            resendEvent: event
-          }
-        );
+        const notification = await dispatchBillingNotifications(env, "billing.resend_inbound_event", {
+          resendWebhookId,
+          resendEventType,
+          resendEvent: event
+        });
 
         return json({
           ok: true,
@@ -4130,7 +4006,7 @@ export default {
           "price_1Tg530F107vmGJKCmDIIOi7m", // Starter
           "price_1Tg530F107vmGJKCwK4GP7LZ", // Professional
           "price_1Tg530F107vmGJKCwnbcGXCw", // Business
-          "price_1Tg530F107vmGJKCcIyq3aFd", // Enterprise
+          "price_1Tg530F107vmGJKCcIyq3aFd" // Enterprise
         ];
 
         if (!priceId || !allowedPriceIds.includes(priceId)) {
@@ -4165,7 +4041,7 @@ export default {
             Authorization: `Bearer ${env.STRIPE_API_SECRET}`,
             "Content-Type": "application/x-www-form-urlencoded"
           },
-          body: body,
+          body: body
         });
 
         const stripeSession = await stripeResponse.json();
@@ -4182,7 +4058,6 @@ export default {
           response.headers.set(key, value);
         });
         return response;
-
       } catch (e) {
         const response = json({ ok: false, error: "internal_server_error", details: e.message }, 500);
         Object.entries(corsHeaders).forEach(([key, value]) => {
@@ -4193,5 +4068,5 @@ export default {
     }
 
     return json({ ok: false, error: "not_found" }, 404);
-  },
+  }
 };

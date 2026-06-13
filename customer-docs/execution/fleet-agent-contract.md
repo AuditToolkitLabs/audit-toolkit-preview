@@ -26,12 +26,12 @@ suite.
 
 ## 4. Health And Lifecycle
 
-| Phase | Requirement |
-| --- | --- |
-| Enrol | Authenticated registration with scoped token. |
+| Phase     | Requirement                                           |
+| --------- | ----------------------------------------------------- |
+| Enrol     | Authenticated registration with scoped token.         |
 | Heartbeat | Periodic liveness with version and capability report. |
-| Update | Controlled upgrade path with rollback. |
-| Retire | Revoke token and remove registration cleanly. |
+| Update    | Controlled upgrade path with rollback.                |
+| Retire    | Revoke token and remove registration cleanly.         |
 
 ## 5. Least Privilege
 

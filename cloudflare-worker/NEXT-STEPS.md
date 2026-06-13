@@ -100,13 +100,13 @@ Once the test purchase works end-to-end, wire up the real products:
 
 ## Reference
 
-| Item | Value |
-| --- | --- |
-| Worker URL | `https://audittoolkit-billing-worker.billing-hooksaudittoolkitlabscom.workers.dev` |
-| Stripe webhook destination ID | `we_1TSCvuF107vmGJKCgCkDfcgp` |
-| Stripe webhook path | `/webhooks/stripe` |
-| Keygen webhook path | `/webhooks/keygen` |
-| KV namespace (production) | `23253825a905423e90de008f824ddc7f` |
-| GitHub environment | `github-pages` |
-| Test payment link | `https://checkout.audittoolkitlabs.com/b/28EdR9b1Y6Lg73Y8zLfQI0o` |
-| Test Keygen policy ID | `b3655163-203f-4e08-94b7-a51b7e5c7e9b` |
+| Item                          | Value                                                                              |
+| ----------------------------- | ---------------------------------------------------------------------------------- |
+| Worker URL                    | `https://audittoolkit-billing-worker.billing-hooksaudittoolkitlabscom.workers.dev` |
+| Stripe webhook destination ID | `we_1TSCvuF107vmGJKCgCkDfcgp`                                                      |
+| Stripe webhook path           | `/webhooks/stripe`                                                                 |
+| Keygen webhook path           | `/webhooks/keygen`                                                                 |
+| KV namespace (production)     | `23253825a905423e90de008f824ddc7f`                                                 |
+| GitHub environment            | `github-pages`                                                                     |
+| Test payment link             | `https://checkout.audittoolkitlabs.com/b/28EdR9b1Y6Lg73Y8zLfQI0o`                  |
+| Test Keygen policy ID         | `b3655163-203f-4e08-94b7-a51b7e5c7e9b`                                             |

@@ -1,9 +1,9 @@
 # Liability Disclaimer and Indemnity
 
-**AuditToolkit Product Suite**  
-**Licensor**: Michael Churchill trading as AuditToolkitLabs  
-**Licensor Address**: 4th Floor, Silverstream House, 45 Fitzroy Street, Fitzrovia, London W1T 6EB  
-**Version**: current  
+**AuditToolkit Product Suite**
+**Licensor**: Michael Churchill trading as AuditToolkitLabs
+**Licensor Address**: 4th Floor, Silverstream House, 45 Fitzroy Street, Fitzrovia, London W1T 6EB
+**Version**: current
 **Effective Date**: June 2026
 
 This document applies to all products in the AuditToolkit suite:
@@ -251,5 +251,5 @@ If you do not agree to these terms, you must uninstall the Software immediately 
 
 ---
 
-*Last updated: June 2026*  
-*Michael Churchill trading as AuditToolkitLabs — 4th Floor, Silverstream House, 45 Fitzroy Street, Fitzrovia, London W1T 6EB*
+_Last updated: June 2026_
+_Michael Churchill trading as AuditToolkitLabs — 4th Floor, Silverstream House, 45 Fitzroy Street, Fitzrovia, London W1T 6EB_

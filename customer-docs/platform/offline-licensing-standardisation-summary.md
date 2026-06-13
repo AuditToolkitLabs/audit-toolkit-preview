@@ -1,10 +1,10 @@
 # Offline Licensing Standardisation — Platform Summary
 
-| | |
-| --- | --- |
-| **Completed** | 2026-06-11 |
-| **Author** | AuditToolkit Platform Team |
-| **Status** | COMPLETE — all 6 repos verified |
+|               |                                 |
+| ------------- | ------------------------------- |
+| **Completed** | 2026-06-11                      |
+| **Author**    | AuditToolkit Platform Team      |
+| **Status**    | COMPLETE — all 6 repos verified |
 
 ---
 
@@ -21,22 +21,22 @@ products would fall back to community tier if the Keygen API was unreachable.
 
 ## Architectural Rules (hard constraints)
 
-| Rule | Rationale |
-| --- | --- |
-| No repo depends on Audit-Tool- being present | Customer site deployments are standalone |
-| No signing or generation in product repos | Only Control Centre may issue licenses |
-| No Control Centre logic in product repos | Separation of issuance and consumption |
-| Control Centre unchanged | Standardisation is consumer-side only |
-| Every standalone tool validates the same format | One .lic file works everywhere |
+| Rule                                            | Rationale                                |
+| ----------------------------------------------- | ---------------------------------------- |
+| No repo depends on Audit-Tool- being present    | Customer site deployments are standalone |
+| No signing or generation in product repos       | Only Control Centre may issue licenses   |
+| No Control Centre logic in product repos        | Separation of issuance and consumption   |
+| Control Centre unchanged                        | Standardisation is consumer-side only    |
+| Every standalone tool validates the same format | One .lic file works everywhere           |
 
 ---
 
 ## Files Deployed to Each Product Repo
 
-| File | Purpose |
-| --- | --- |
+| File                                      | Purpose                                                                 |
+| ----------------------------------------- | ----------------------------------------------------------------------- |
 | `shared/licensing/verify_license_file.py` | Ed25519 verifier — exact copy of authoritative version in `Audit-Tool-` |
-| `shared/licensing/license_schema.json` | JSON schema — validates 16 required fields before signature check |
+| `shared/licensing/license_schema.json`    | JSON schema — validates 16 required fields before signature check       |
 
 Each file is placed at `<repo_root>/shared/licensing/`. Python imports it via namespace packages (no `__init__.py` required under Python 3.3+).
 
@@ -44,14 +44,14 @@ Each file is placed at `<repo_root>/shared/licensing/`. Python imports it via na
 
 ## Repos Standardised
 
-| Repo | Licensing module modified | `parents[N]` for repo root | cryptography |
-| --- | --- | --- | --- |
-| `Audit-Tool-` | `shared/licensing/verify_license_file.py` (authoritative) | n/a | ✓ present |
-| `audit-assurance-node` | `web/licensing.py` (new) | `parents[1]` | added `>=42.0.0` |
-| `Switch-Exposure-Center` | `src/services/licensing.py` | `parents[2]` | ✓ present |
-| `Asset-Command-Centre` | `tools/asset-management/src/services/licensing.py` | `parents[4]` | ✓ present |
-| `audittoolkit-linux-security-lite` | `agents/html-linux/web/licensing.py` | `parents[3]` | ✓ present |
-| `cmdb-api-data-collection-tool` | `app/license.py` | `parents[1]` | ✓ present |
+| Repo                               | Licensing module modified                                 | `parents[N]` for repo root | cryptography     |
+| ---------------------------------- | --------------------------------------------------------- | -------------------------- | ---------------- |
+| `Audit-Tool-`                      | `shared/licensing/verify_license_file.py` (authoritative) | n/a                        | ✓ present        |
+| `audit-assurance-node`             | `web/licensing.py` (new)                                  | `parents[1]`               | added `>=42.0.0` |
+| `Switch-Exposure-Center`           | `src/services/licensing.py`                               | `parents[2]`               | ✓ present        |
+| `Asset-Command-Centre`             | `tools/asset-management/src/services/licensing.py`        | `parents[4]`               | ✓ present        |
+| `audittoolkit-linux-security-lite` | `agents/html-linux/web/licensing.py`                      | `parents[3]`               | ✓ present        |
+| `cmdb-api-data-collection-tool`    | `app/license.py`                                          | `parents[1]`               | ✓ present        |
 
 ---
 
@@ -116,11 +116,11 @@ valid file found:
 
 ## Signing Key
 
-| Field | Value |
-| --- | --- |
-| Algorithm | Ed25519 |
-| `key_id` | `v1` |
-| Public key | `MCowBQYDK2VwAyEAY3U5oFRB6zBcgKSKP7UJ5r8964pBuP+YkVbEiiHLeII=` |
+| Field                | Value                                                                         |
+| -------------------- | ----------------------------------------------------------------------------- |
+| Algorithm            | Ed25519                                                                       |
+| `key_id`             | `v1`                                                                          |
+| Public key           | `MCowBQYDK2VwAyEAY3U5oFRB6zBcgKSKP7UJ5r8964pBuP+YkVbEiiHLeII=`                |
 | Private key location | `F:\AuditProducts\keys\offline-license-ed25519-pkcs8.pem` (outside all repos) |
 
 ---
@@ -131,22 +131,22 @@ Test .lic: `e312f62d-a5fa-4fde-8c4d-034413182651.offline.lic` (tier: starter, ex
 
 ### Positive tests — all 6 repos
 
-| Repo | Result | Tier |
-| --- | --- | --- |
-| `Audit-Tool-` | PASS | starter |
-| `audit-assurance-node` | PASS | starter |
-| `Switch-Exposure-Center` | PASS | starter |
-| `Asset-Command-Centre` | PASS | starter |
-| `audittoolkit-linux-security-lite` | PASS | starter |
-| `cmdb-api-data-collection-tool` | PASS | starter |
+| Repo                               | Result | Tier    |
+| ---------------------------------- | ------ | ------- |
+| `Audit-Tool-`                      | PASS   | starter |
+| `audit-assurance-node`             | PASS   | starter |
+| `Switch-Exposure-Center`           | PASS   | starter |
+| `Asset-Command-Centre`             | PASS   | starter |
+| `audittoolkit-linux-security-lite` | PASS   | starter |
+| `cmdb-api-data-collection-tool`    | PASS   | starter |
 
 ### Negative tests (all run against `audit-assurance-node` verifier)
 
-| Case | Expected | Actual reason |
-| --- | --- | --- |
-| Corrupted signature (invalid base64 content) | FAIL | `Signature verification failed` |
-| Missing required field (`tier` removed) | FAIL | `Missing required fields: tier` |
-| Tampered payload (tier changed to `enterprise` post-sign) | FAIL | `Signature verification failed` |
+| Case                                                      | Expected | Actual reason                   |
+| --------------------------------------------------------- | -------- | ------------------------------- |
+| Corrupted signature (invalid base64 content)              | FAIL     | `Signature verification failed` |
+| Missing required field (`tier` removed)                   | FAIL     | `Missing required fields: tier` |
+| Tampered payload (tier changed to `enterprise` post-sign) | FAIL     | `Signature verification failed` |
 
 ---
 

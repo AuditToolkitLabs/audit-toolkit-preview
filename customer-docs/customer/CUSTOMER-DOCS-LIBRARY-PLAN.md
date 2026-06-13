@@ -14,14 +14,14 @@ cannot be generalized safely.
 
 The library covers six product repositories:
 
-| Product | Repository | Product slug | Current customer-doc source |
-| --- | --- | --- | --- |
-| Audit-Tool | `Audit-Tool-` | `audit-tool` | `customer-docs/` |
-| Asset Command Centre | `Asset-Command-Centre` | `asset-command-centre` | `customer-docs/asset-command-center/` |
-| AuditToolkit Linux Security Lite | `audittoolkit-linux-security-lite` | `linux-security-lite` | `customer-docs/` |
-| CMDB API Data Collection Tool | `cmdb-api-data-collection-tool` | `cmdb-api-data-collection-tool` | `customer-docs/` |
-| Switch Exposure Center | `Switch-Exposure-Center` | `switch-exposure-center` | `docs/customer-docs/switch-exposure-center/` |
-| Audit Assurance Node | `audit-assurance-node` | `audit-assurance-node` | `README.md` and `docs/` |
+| Product                          | Repository                         | Product slug                    | Current customer-doc source                  |
+| -------------------------------- | ---------------------------------- | ------------------------------- | -------------------------------------------- |
+| Audit-Tool                       | `Audit-Tool-`                      | `audit-tool`                    | `customer-docs/`                             |
+| Asset Command Centre             | `Asset-Command-Centre`             | `asset-command-centre`          | `customer-docs/asset-command-center/`        |
+| AuditToolkit Linux Security Lite | `audittoolkit-linux-security-lite` | `linux-security-lite`           | `customer-docs/`                             |
+| CMDB API Data Collection Tool    | `cmdb-api-data-collection-tool`    | `cmdb-api-data-collection-tool` | `customer-docs/`                             |
+| Switch Exposure Center           | `Switch-Exposure-Center`           | `switch-exposure-center`        | `docs/customer-docs/switch-exposure-center/` |
+| Audit Assurance Node             | `audit-assurance-node`             | `audit-assurance-node`          | `README.md` and `docs/`                      |
 
 ## 3. Library Principles
 
@@ -41,32 +41,32 @@ The library covers six product repositories:
 
 The library is organized by task and by product:
 
-| Section | Purpose |
-| --- | --- |
-| `customer/start-here/` | Audience, support model, documentation usage. |
-| `customer/suite/` | Shared product-suite overview, governance, and roles. |
-| `customer/products/` | Product-specific customer guides and limits. |
-| `customer/deployment/` | Installation, transition, verification, and uninstall guidance. |
-| `customer/administration/` | Administration, retention, access, and configuration. |
-| `customer/operations/` | Monitoring, support, patching, backup, recovery, and limits. |
-| `customer/integrations/` | API, SIEM, webhooks, authentication, schedulers, connectors. |
-| `customer/security/` | Access, data protection, hardening, secrets, certificates. |
+| Section                          | Purpose                                                             |
+| -------------------------------- | ------------------------------------------------------------------- |
+| `customer/start-here/`           | Audience, support model, documentation usage.                       |
+| `customer/suite/`                | Shared product-suite overview, governance, and roles.               |
+| `customer/products/`             | Product-specific customer guides and limits.                        |
+| `customer/deployment/`           | Installation, transition, verification, and uninstall guidance.     |
+| `customer/administration/`       | Administration, retention, access, and configuration.               |
+| `customer/operations/`           | Monitoring, support, patching, backup, recovery, and limits.        |
+| `customer/integrations/`         | API, SIEM, webhooks, authentication, schedulers, connectors.        |
+| `customer/security/`             | Access, data protection, hardening, secrets, certificates.          |
 | `customer/compliance-assurance/` | Procurement, assurance, OWASP, STIG, and release security evidence. |
-| `customer/api-automation/` | API consumer patterns, payloads, automation examples. |
-| `customer/reference/` | Glossary, paths, troubleshooting, and support package reference. |
+| `customer/api-automation/`       | API consumer patterns, payloads, automation examples.               |
+| `customer/reference/`            | Glossary, paths, troubleshooting, and support package reference.    |
 
 ## 5. Migration Rules
 
 Each source document is classified as one of:
 
-| Classification | Rule |
-| --- | --- |
-| `central-common` | Merge into shared `customer/` documentation. |
-| `central-product` | Move into `customer/products/<product>/`. |
-| `local-pointer` | Replace product copy with a pointer to central docs. |
-| `local-keep` | Keep in the product repo because it is implementation-specific. |
-| `internal-only` | Do not publish in customer docs or release bundles. |
-| `release-bundle` | Include through release-bundle documentation sync. |
+| Classification    | Rule                                                            |
+| ----------------- | --------------------------------------------------------------- |
+| `central-common`  | Merge into shared `customer/` documentation.                    |
+| `central-product` | Move into `customer/products/<product>/`.                       |
+| `local-pointer`   | Replace product copy with a pointer to central docs.            |
+| `local-keep`      | Keep in the product repo because it is implementation-specific. |
+| `internal-only`   | Do not publish in customer docs or release bundles.             |
+| `release-bundle`  | Include through release-bundle documentation sync.              |
 
 ## 6. First Implementation Pass
 

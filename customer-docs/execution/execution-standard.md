@@ -14,12 +14,12 @@ explicitly invoked capability and is never implied by an audit run.
 Every executed check emits one of the following markers so orchestrators and
 aggregators can parse results consistently:
 
-| Marker | Meaning | Exit contribution |
-| --- | --- | --- |
-| `[PASS]` | Control satisfied | 0 |
-| `[WARN]` | Non-blocking concern | 1 |
-| `[FAIL]` | Control not satisfied | 2 |
-| `[SKIP]` | Not applicable on this target | unchanged |
+| Marker   | Meaning                       | Exit contribution |
+| -------- | ----------------------------- | ----------------- |
+| `[PASS]` | Control satisfied             | 0                 |
+| `[WARN]` | Non-blocking concern          | 1                 |
+| `[FAIL]` | Control not satisfied         | 2                 |
+| `[SKIP]` | Not applicable on this target | unchanged         |
 
 The overall exit code is the highest severity observed: `0` (PASS/SKIP only),
 `1` (any WARN, no FAIL), `2` (any FAIL).

@@ -8,12 +8,12 @@ anchored to direct network collection rather than host-based agent workflows.
 
 ## Supported Baseline
 
-| Area | Baseline |
-| --- | --- |
-| Connector model | Agentless direct network collection. |
-| Operating mode | `legacy-only`. |
-| Collection profile | `inventory-only`. |
-| Primary protocols | SSH, WinRM, SNMP, and optional IPMI. |
+| Area               | Baseline                             |
+| ------------------ | ------------------------------------ |
+| Connector model    | Agentless direct network collection. |
+| Operating mode     | `legacy-only`.                       |
+| Collection profile | `inventory-only`.                    |
+| Primary protocols  | SSH, WinRM, SNMP, and optional IPMI. |
 
 ## Primary Connector Allowlist
 

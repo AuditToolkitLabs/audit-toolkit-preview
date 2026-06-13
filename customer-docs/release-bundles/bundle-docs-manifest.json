@@ -34,12 +34,5 @@
       "products": ["*"]
     }
   ],
-  "excludedPatterns": [
-    "**/INTERNAL-*",
-    "**/*OPERATOR-RUNBOOK*",
-    "**/*SIGNING*",
-    "**/.github/**",
-    "**/scripts/**",
-    "**/docs-inventory.md"
-  ]
+  "excludedPatterns": ["**/INTERNAL-*", "**/*OPERATOR-RUNBOOK*", "**/*SIGNING*", "**/.github/**", "**/scripts/**", "**/docs-inventory.md"]
 }

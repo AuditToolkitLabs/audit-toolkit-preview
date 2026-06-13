@@ -9,6 +9,7 @@ Complete API documentation for all exported functions in `lib/` for use in audit
 ## Overview
 
 The library is organized into functional modules:
+
 - **common.sh** — Logging, checks, and framework utilities (REQUIRED in all audits)
 - **distro.sh** — OS detection and feature probes
 - **pkg.sh** — Package manager shims
@@ -34,6 +35,7 @@ setup_colors
 ```
 
 **Environment Variables:**
+
 - `NO_COLOR=true` — Disable all colors (POSIX standard)
 - Auto-detects non-TTY output and disables colors
 
@@ -51,17 +53,20 @@ register_check "Skipped Check" SKIP "reason for skip"
 ```
 
 **Parameters:**
+
 - `name` (string) — Check description (shown in output)
 - `result` (PASS|WARN|FAIL|SKIP) — Outcome
 - `message` (optional) — Details appended after name
 
 **Behavior:**
+
 - Prints `[PASS]`, `[WARN]`, `[FAIL]`, or `[SKIP]` prefix
 - Updates internal counters: `$TOTAL_CHECKS`, `$PASSED_CHECKS`, `$FAILED_CHECKS`, `$WARNING_CHECKS`, `$SKIPPED_CHECKS`
 - Sets `$EXIT_CODE` to highest severity (0=PASS, 1=WARN, 2=FAIL)
 - Logs to `$LOG_FILE` if set (silently ignored if write fails)
 
 **Exit Code Semantics:**
+
 - PASS → EXIT_CODE remains 0 (or higher if already set)
 - WARN → EXIT_CODE becomes 1 (if currently 0)
 - FAIL → EXIT_CODE becomes 2 (always)
@@ -81,6 +86,7 @@ register_check "Check 2" FAIL
 ```
 
 **Output:**
+
 ```
 ============================================================
  OS Baseline Configuration
@@ -101,6 +107,7 @@ exit "$EXIT_CODE"
 ```
 
 **Output Example:**
+
 ```
 +==========================================================+
  AUDIT SUMMARY
@@ -120,7 +127,7 @@ The orchestrator scrapes `[PASS]`, `[WARN]`, `[FAIL]`, `[SKIP]` markers from out
 
 ---
 
-### _log(level, message)
+### \_log(level, message)
 
 Internal logging function (discouraged; use standard functions below instead).
 
@@ -132,12 +139,14 @@ _log TRACE "Very detailed info (only shown with VERY_VERBOSE=true)"
 ```
 
 **Levels:**
+
 - `ERROR`, `WARN` — Sent to stderr, always shown (unless QUIET=true)
 - `INFO`, `DEBUG` — Sent to stdout, DEBUG only shown if VERBOSE=true
 - `TRACE` — Sent to stdout, only shown if VERY_VERBOSE=true
 - All levels appended to `$LOG_FILE` if set
 
 **Environment Variables:**
+
 - `QUIET=true` — Suppress console output
 - `VERBOSE=true` — Show DEBUG messages
 - `VERY_VERBOSE=true` — Show TRACE messages
@@ -159,11 +168,13 @@ distro=$(detect_distro)
 ```
 
 **Behavior:**
+
 - Reads `/etc/os-release` (POSIX standard)
 - Returns lowercase ID
 - Returns "unknown" if unrecognized
 
 **Example:**
+
 ```bash
 . "$(dirname "$0")/../../lib/distro.sh"
 case "$(detect_distro)" in
@@ -248,6 +259,7 @@ fi
 ```
 
 **Commands by Distro:**
+
 - Ubuntu/Debian: `apt -qq update`
 - RHEL/Fedora: `dnf -q makecache` (or `yum` fallback)
 - openSUSE: `zypper -q refresh`
@@ -271,11 +283,13 @@ fi
 ```
 
 **Parameters:**
+
 - `package` (string) — Package name (distro-specific; e.g., `curl`, `openssh-client`)
 
 **Returns:** 0 (installed), 1 (not installed)
 
 **Commands by Distro:**
+
 - Ubuntu/Debian: `dpkg -s`
 - RHEL/Fedora: `rpm -q`
 - openSUSE: `rpm -q`
@@ -301,6 +315,7 @@ fi
 **Returns:** Multi-line output (one package per line), or empty if none available.
 
 **Commands by Distro:**
+
 - Ubuntu/Debian: `apt list --upgradable`
 - RHEL/Fedora: `dnf -q check-update`
 - openSUSE: `zypper list-updates`
@@ -326,11 +341,13 @@ fi
 ```
 
 **Parameters:**
+
 - `service` (string) — Service name (e.g., `sshd`, `nginx`, `postgresql`)
 
 **Returns:** 0 (enabled), 1 (not enabled)
 
 **Commands by Init:**
+
 - systemd: `systemctl is-enabled --quiet <service>`
 - OpenRC: `rc-update show | grep <service>`
 
@@ -349,11 +366,13 @@ fi
 ```
 
 **Parameters:**
+
 - `service` (string) — Service name
 
 **Returns:** 0 (active), 1 (not active)
 
 **Commands by Init:**
+
 - systemd: `systemctl is-active --quiet <service>`
 - OpenRC: `rc-status | grep <service> \[ *started *\]`
 
@@ -372,11 +391,13 @@ fi
 ```
 
 **Parameters:**
+
 - `service` (string) — Service name
 
 **Returns:** 0 on success, non-zero on failure
 
 **Commands by Init:**
+
 - systemd: `systemctl reload <service>`
 - OpenRC: `rc-service <service> reload`
 
@@ -396,6 +417,7 @@ echo "Firewall: $state"
 ```
 
 **Returns:** One of:
+
 - `Status: active` (ufw)
 - `running` (firewalld)
 - `nftables present` (nft)
@@ -418,6 +440,7 @@ fi
 **Returns:** 0 (active), 1 (inactive or not found)
 
 **Supported Tools (in order of preference):**
+
 - ufw: `ufw status | grep "Status: active"`
 - firewall-cmd: `firewall-cmd --state | grep running`
 - nftables: `nft list tables`
@@ -434,6 +457,7 @@ echo "$rules" | head -20
 ```
 
 **Returns:** Firewall rules (format depends on available tool):
+
 - ufw: `ufw status numbered`
 - firewall-cmd: `firewall-cmd --list-all`
 - iptables: `iptables -L -n`
@@ -461,6 +485,7 @@ esac
 ```
 
 **Returns:** One of:
+
 - `enforcing` — Violations are blocked
 - `permissive` — Violations logged but allowed
 - `disabled` — SELinux not active

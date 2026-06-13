@@ -3,6 +3,7 @@
 Generated icon pack for AuditToolkit platform and related repositories.
 
 ## Included icons
+
 - audit-tool-control-plane
 - license-portal-shield
 - audit-assurance-node-ingestion
@@ -13,10 +14,12 @@ Generated icon pack for AuditToolkit platform and related repositories.
 - ci-workflow-automation
 
 ## Sizes
+
 PNG variants are generated in 16, 32, 64, 128, and 256 pixel folders.
 SVG variants are included in the `svg/` folder for clean scaling.
 
 ## Suggested repo mapping
+
 - Audit-Tool- → audit-tool-control-plane
 - license-portal → license-portal-shield
 - audit-assurance-node → audit-assurance-node-ingestion

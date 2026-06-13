@@ -297,12 +297,12 @@ If any provision of this Agreement is held invalid, illegal, or unenforceable, t
 
 ## Contact
 
-| Purpose | Address |
-| --- | --- |
-| Licensing and key delivery | [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com) |
-| General and commercial enquiries | [admin@audittoolkitlabs.com](mailto:admin@audittoolkitlabs.com) |
-| Product support | [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com) |
-| Security disclosures | [Security@audittoolkitlabs.com](mailto:Security@audittoolkitlabs.com) |
+| Purpose                          | Address                                                               |
+| -------------------------------- | --------------------------------------------------------------------- |
+| Licensing and key delivery       | [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com)   |
+| General and commercial enquiries | [admin@audittoolkitlabs.com](mailto:admin@audittoolkitlabs.com)       |
+| Product support                  | [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com)   |
+| Security disclosures             | [Security@audittoolkitlabs.com](mailto:Security@audittoolkitlabs.com) |
 
 ---
 

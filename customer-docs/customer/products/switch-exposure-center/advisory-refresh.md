@@ -40,13 +40,13 @@ evidence.
 
 ## Common Issues
 
-| Issue | First checks |
-| --- | --- |
-| Bad feed URL | Confirm URL, TLS trust, proxy, and outbound network policy. |
-| File path error | Confirm path, permissions, and file freshness. |
-| Missing credentials | Confirm vendor account, secret storage, and rotation status. |
-| Sample fallback | Confirm production source mode and source status. |
-| No exposure change | Confirm inventory data, platform mapping, and advisory applicability. |
+| Issue               | First checks                                                          |
+| ------------------- | --------------------------------------------------------------------- |
+| Bad feed URL        | Confirm URL, TLS trust, proxy, and outbound network policy.           |
+| File path error     | Confirm path, permissions, and file freshness.                        |
+| Missing credentials | Confirm vendor account, secret storage, and rotation status.          |
+| Sample fallback     | Confirm production source mode and source status.                     |
+| No exposure change  | Confirm inventory data, platform mapping, and advisory applicability. |
 
 ## Operating Rules
 

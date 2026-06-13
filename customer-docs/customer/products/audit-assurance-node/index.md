@@ -40,15 +40,15 @@ Before running Audit Assurance Node against customer systems, confirm that:
 
 ## Common Workflows
 
-| Workflow | Start with |
-| --- | --- |
-| Plan a new standalone node | [Deployment](deployment.md) |
-| Choose an execution transport | [SSH WinRM API and agent transports](ssh-winrm-api-agent-transports.md) |
-| Review the normalized result boundary | [Adapter model](adapters.md) |
-| Configure secrets and access | [Authentication](authentication.md) |
-| Investigate a failed run | [Logging and observability](logging-observability.md) |
-| Confirm concurrent execution behaved correctly | [Parallel tracing](parallel-tracing.md) |
-| Validate UI and adapter quality gates | [Runtime validation](runtime-validation.md) |
+| Workflow                                       | Start with                                                              |
+| ---------------------------------------------- | ----------------------------------------------------------------------- |
+| Plan a new standalone node                     | [Deployment](deployment.md)                                             |
+| Choose an execution transport                  | [SSH WinRM API and agent transports](ssh-winrm-api-agent-transports.md) |
+| Review the normalized result boundary          | [Adapter model](adapters.md)                                            |
+| Configure secrets and access                   | [Authentication](authentication.md)                                     |
+| Investigate a failed run                       | [Logging and observability](logging-observability.md)                   |
+| Confirm concurrent execution behaved correctly | [Parallel tracing](parallel-tracing.md)                                 |
+| Validate UI and adapter quality gates          | [Runtime validation](runtime-validation.md)                             |
 
 ## Shared Guidance
 

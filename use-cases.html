@@ -1,482 +1,904 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Use Cases — AuditToolkit</title>
-  <meta name="description" content="How security, compliance, and infrastructure teams use AuditToolkit to reduce audit prep time, demonstrate continuous compliance, and manage risk across hybrid infrastructure." />
-  <link rel="stylesheet" href="assets/css/site.css?v=20260612g" />
-  <style>
-    .nav-mobile-contact{color:var(--accent);font-weight:600}
-    .footer-brand-title{font-weight:700;font-size:1.05rem}
-    .footer-copy-small{font-size:.82rem}
-    .use-case-card{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
-    .use-case-problem{border-left:3px solid var(--accent-red,#f87171);padding-left:16px;margin-bottom:20px}
-    .use-case-outcome{background:rgba(110,231,183,.08);border-left:3px solid var(--accent-green,#6ee7b7);padding:14px 16px;border-radius:0 6px 6px 0;margin-top:20px}
-    .use-case-outcome strong{display:block;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-green,#6ee7b7);margin-bottom:4px}
-    .use-case-number{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-    .products-used{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
-    .section-alt{background:linear-gradient(160deg,#0a1524 0%,#0b1220 100%)}
-    @media(max-width:768px){.use-case-card{grid-template-columns:1fr}}
-  </style>
-</head>
-<body>
-<nav class="nav">
-  <div class="wrap">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
-      <ul class="nav-links">
-        <li><a href="index.html#products">Products</a></li>
-        <li><a href="script-coverage.html">Coverage</a></li>
-        <li><a href="regulated-industries.html">Regulated</a></li>
-        <li><a href="toolkit-overview.html">Overview</a></li>
-        <li><a href="how-it-works.html">How It Works</a></li>
-        <li><a href="use-cases.html" class="active">Use Cases</a></li>
-        <li><a href="integrations.html">Integrations</a></li>
-        <li><a href="docs.html">Documentation</a></li>
-        <li><a href="releases.html">Releases</a></li>
-        <li><a href="licensing.html">Licensing</a></li>
-        <li><a href="support.html">Support</a></li>
-      </ul>
-      <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
-      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <title>Use Cases — AuditToolkit</title>
+    <meta
+      name="description"
+      content="How security, compliance, and infrastructure teams use AuditToolkit to reduce audit prep time and manage hybrid risk."
+    />
+    <link rel="stylesheet" href="assets/css/site.css?v=20260612g" />
+    <style>
+      .nav-mobile-contact {
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .footer-brand-title {
+        font-weight: 700;
+        font-size: 1.05rem;
+      }
+      .footer-copy-small {
+        font-size: 0.82rem;
+      }
+      .use-case-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        align-items: start;
+      }
+      .use-case-problem {
+        border-left: 3px solid var(--accent-red, #f87171);
+        padding-left: 16px;
+        margin-bottom: 20px;
+      }
+      .use-case-outcome {
+        background: rgba(110, 231, 183, 0.08);
+        border-left: 3px solid var(--accent-green, #6ee7b7);
+        padding: 14px 16px;
+        border-radius: 0 6px 6px 0;
+        margin-top: 20px;
+      }
+      .use-case-outcome strong {
+        display: block;
+        font-size: 0.78rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--accent-green, #6ee7b7);
+        margin-bottom: 4px;
+      }
+      .use-case-number {
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+      .products-used {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 16px;
+      }
+      .section-alt {
+        background: linear-gradient(160deg, #0a1524 0%, #0b1220 100%);
+      }
+      @media (max-width: 768px) {
+        .use-case-card {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="wrap">
+        <div class="nav-inner">
+          <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+          <ul class="nav-links">
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="script-coverage.html">Coverage</a></li>
+            <li><a href="regulated-industries.html">Regulated</a></li>
+            <li><a href="toolkit-overview.html">Overview</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="use-cases.html" class="active">Use Cases</a></li>
+            <li><a href="integrations.html">Integrations</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="releases.html">Releases</a></li>
+            <li><a href="licensing.html">Licensing</a></li>
+            <li><a href="support.html">Support</a></li>
+          </ul>
+          <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+          <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="script-coverage.html">Coverage</a>
+      <a href="regulated-industries.html">Regulated</a>
+      <a href="toolkit-overview.html">Overview</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="integrations.html">Integrations</a>
+      <a href="docs.html">Documentation</a>
+      <a href="releases.html">Releases</a>
+      <a href="licensing.html">Licensing</a>
+      <a href="support.html">Support</a>
+      <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
     </div>
-  </div>
-</nav>
-<div class="nav-mobile" id="nav-mobile">
-  <a href="index.html">Home</a>
-  <a href="index.html#products">Products</a>
-  <a href="script-coverage.html">Coverage</a>
-  <a href="regulated-industries.html">Regulated</a>
-  <a href="toolkit-overview.html">Overview</a>
-  <a href="how-it-works.html">How It Works</a>
-  <a href="use-cases.html">Use Cases</a>
-  <a href="integrations.html">Integrations</a>
-  <a href="docs.html">Documentation</a>
-  <a href="releases.html">Releases</a>
-  <a href="licensing.html">Licensing</a>
-  <a href="support.html">Support</a>
-  <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
-</div>
 
-<div class="page-hero">
-  <div class="wrap">
-    <div class="breadcrumb">
-      <a href="index.html">Home</a><span class="sep">/</span>
-      <span class="cur">Use Cases</span>
+    <div class="page-hero">
+      <div class="wrap">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a><span class="sep">/</span>
+          <span class="cur">Use Cases</span>
+        </div>
+        <p class="eyebrow">Who Uses AuditToolkit</p>
+        <h1>From compliance evidence to CI/CD gates — real outcomes across ten scenarios.</h1>
+        <p>
+          AuditToolkit is used by security operations teams, compliance managers, managed service providers, network infrastructure teams,
+          and infrastructure engineers. The platform is purpose-built for teams that need real answers about their security posture —
+          continuously, not just at audit time.
+        </p>
+      </div>
     </div>
-    <p class="eyebrow">Who Uses AuditToolkit</p>
-    <h1>From compliance evidence to CI/CD gates — real outcomes across ten scenarios.</h1>
-    <p>AuditToolkit is used by security operations teams, compliance managers, managed service providers, network infrastructure teams, and infrastructure engineers. The platform is purpose-built for teams that need real answers about their security posture — continuously, not just at audit time.</p>
-  </div>
-</div>
 
-<!-- Use Case 1: Continuous Compliance -->
-<section class="section" id="continuous-compliance">
-  <div class="wrap">
-    <div class="use-case-number">Use Case 01</div>
-    <div class="use-case-card">
-      <div>
-        <h2>Continuous Compliance — SOC 2 &amp; ISO 27001</h2>
-        <p><strong>Who:</strong> Compliance managers and security leads preparing for Type II audits and ISO 27001 certification.</p>
-        <div class="use-case-problem">
-          <p>SOC 2 Type II and ISO 27001 continuous improvement requirements demand evidence of monitoring over time — not a single snapshot taken the week before an auditor arrives. Assembling that evidence manually, across multiple tools and teams, routinely takes weeks and still produces stale, inconsistent data.</p>
-        </div>
-        <div class="use-case-outcome">
-          <strong>Business Outcome</strong>
-          Auditors receive time-stamped, integrity-verified evidence packages covering the full assessment period. The continuous monitoring requirement is satisfied by 30/60/90-day trend reports, not manual attestation. Audit preparation is measured in hours, not weeks.
+    <!-- Use Case 1: Continuous Compliance -->
+    <section class="section" id="continuous-compliance">
+      <div class="wrap">
+        <div class="use-case-number">Use Case 01</div>
+        <div class="use-case-card">
+          <div>
+            <h2>Continuous Compliance — SOC 2 &amp; ISO 27001</h2>
+            <p><strong>Who:</strong> Compliance managers and security leads preparing for Type II audits and ISO 27001 certification.</p>
+            <div class="use-case-problem">
+              <p>
+                SOC 2 Type II and ISO 27001 continuous improvement requirements demand evidence of monitoring over time — not a single
+                snapshot taken the week before an auditor arrives. Assembling that evidence manually, across multiple tools and teams,
+                routinely takes weeks and still produces stale, inconsistent data.
+              </p>
+            </div>
+            <div class="use-case-outcome">
+              <strong>Business Outcome</strong>
+              Auditors receive time-stamped, integrity-verified evidence packages covering the full assessment period. The continuous
+              monitoring requirement is satisfied by 30/60/90-day trend reports, not manual attestation. Audit preparation is measured in
+              hours, not weeks.
+            </div>
+          </div>
+          <div>
+            <h3>How AuditToolkit helps</h3>
+            <ul class="feature-list">
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Compliance checks run on schedule across every host in scope — findings are continuous, not point-in-time</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text">30/60/90-day trend analysis demonstrates the continuous monitoring SOC 2 Type II auditors require</span>
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Every finding is automatically mapped to SOC 2 Trust Services Criteria and ISO 27001 Annex A controls</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Tamper-evident evidence packages — SHA-256 checksums on every artifact — generated on demand in minutes</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Remediation records show that failures were addressed, with operator identity, timestamp, and before/after
+                  configuration</span
+                >
+              </li>
+            </ul>
+            <div class="products-used">
+              <span class="badge badge-blue">Audit Admin Toolkit</span>
+              <span class="badge badge-muted">Audit Assurance Node</span>
+              <span class="badge badge-amber">Linux Security Lite</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div>
-        <h3>How AuditToolkit helps</h3>
-        <ul class="feature-list">
-          <li><span class="icon">&#10003;</span><span class="text">Compliance checks run on schedule across every host in scope — findings are continuous, not point-in-time</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">30/60/90-day trend analysis demonstrates the continuous monitoring SOC 2 Type II auditors require</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Every finding is automatically mapped to SOC 2 Trust Services Criteria and ISO 27001 Annex A controls</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Tamper-evident evidence packages — SHA-256 checksums on every artifact — generated on demand in minutes</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Remediation records show that failures were addressed, with operator identity, timestamp, and before/after configuration</span></li>
-        </ul>
-        <div class="products-used">
-          <span class="badge badge-blue">Audit Admin Toolkit</span>
-          <span class="badge badge-muted">Audit Assurance Node</span>
-          <span class="badge badge-amber">Linux Security Lite</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Use Case 2: PCI-DSS Readiness -->
-<section class="section section-alt" id="pci-dss">
-  <div class="wrap">
-    <div class="use-case-number">Use Case 02</div>
-    <div class="use-case-card">
-      <div>
-        <h2>PCI-DSS Readiness</h2>
-        <p><strong>Who:</strong> Security and compliance teams preparing for a QSA assessment across cardholder data environments.</p>
-        <div class="use-case-problem">
-          <p>PCI-DSS v4.0 requires demonstrable secure configuration across all system components in the CDE — Requirements 2, 6, 7, 8, and 10 all have infrastructure configuration implications. Manually mapping hundreds of configuration findings to PCI-DSS requirements is slow and error-prone. Gaps surface on-site with the QSA, not before.</p>
-        </div>
-        <div class="use-case-outcome">
-          <strong>Business Outcome</strong>
-          Control-tagged evidence is available for the QSA on the first day of the assessment. Findings are pre-mapped to the specific PCI-DSS requirements they satisfy. No scrambling, no manual cross-referencing, no gaps discovered during the assessment window.
+    <!-- Use Case 2: PCI-DSS Readiness -->
+    <section class="section section-alt" id="pci-dss">
+      <div class="wrap">
+        <div class="use-case-number">Use Case 02</div>
+        <div class="use-case-card">
+          <div>
+            <h2>PCI-DSS Readiness</h2>
+            <p><strong>Who:</strong> Security and compliance teams preparing for a QSA assessment across cardholder data environments.</p>
+            <div class="use-case-problem">
+              <p>
+                PCI-DSS v4.0 requires demonstrable secure configuration across all system components in the CDE — Requirements 2, 6, 7, 8,
+                and 10 all have infrastructure configuration implications. Manually mapping hundreds of configuration findings to PCI-DSS
+                requirements is slow and error-prone. Gaps surface on-site with the QSA, not before.
+              </p>
+            </div>
+            <div class="use-case-outcome">
+              <strong>Business Outcome</strong>
+              Control-tagged evidence is available for the QSA on the first day of the assessment. Findings are pre-mapped to the specific
+              PCI-DSS requirements they satisfy. No scrambling, no manual cross-referencing, no gaps discovered during the assessment
+              window.
+            </div>
+          </div>
+          <div>
+            <h3>How AuditToolkit helps</h3>
+            <ul class="feature-list">
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Every audit check is tagged with the PCI-DSS requirements it satisfies — mapping is built in, not bolted on</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text">Evidence packages include control references attached to every finding — format accepted by QSAs</span>
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text">Covers Windows Server 2016–2025 and all major Linux distributions in one assessment run</span>
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text">712 automated remediation scripts close configuration gaps before the assessment window opens</span>
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text">Access control, logging, and authentication checks aligned to Requirements 7, 8, and 10</span>
+              </li>
+            </ul>
+            <div class="products-used">
+              <span class="badge badge-blue">Audit Admin Toolkit</span>
+              <span class="badge badge-amber">Linux Security Lite</span>
+              <span class="badge badge-muted">Audit Assurance Node</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div>
-        <h3>How AuditToolkit helps</h3>
-        <ul class="feature-list">
-          <li><span class="icon">&#10003;</span><span class="text">Every audit check is tagged with the PCI-DSS requirements it satisfies — mapping is built in, not bolted on</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Evidence packages include control references attached to every finding — format accepted by QSAs</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Covers Windows Server 2016–2025 and all major Linux distributions in one assessment run</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">712 automated remediation scripts close configuration gaps before the assessment window opens</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Access control, logging, and authentication checks aligned to Requirements 7, 8, and 10</span></li>
-        </ul>
-        <div class="products-used">
-          <span class="badge badge-blue">Audit Admin Toolkit</span>
-          <span class="badge badge-amber">Linux Security Lite</span>
-          <span class="badge badge-muted">Audit Assurance Node</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Use Case 3: Audit Preparation -->
-<section class="section" id="audit-preparation">
-  <div class="wrap">
-    <div class="use-case-number">Use Case 03</div>
-    <div class="use-case-card">
-      <div>
-        <h2>Audit Preparation — From Weeks to Hours</h2>
-        <p><strong>Who:</strong> Security and GRC teams running annual or semi-annual external audits across multi-system environments.</p>
-        <div class="use-case-problem">
-          <p>Audit preparation typically starts three to four weeks before the engagement window. Data is pulled from separate tools, assembled into spreadsheets, passed between teams for review, and submitted — only to be stale relative to the state of the environment by submission time. Evidence assembled under pressure introduces inconsistencies that auditors flag.</p>
-        </div>
-        <div class="use-case-outcome">
-          <strong>Business Outcome</strong>
-          Evidence that previously took weeks to assemble is generated in minutes. It is complete, verifiable, and current — collected continuously, not assembled under pressure. External auditors receive a structured package with provenance metadata on every finding.
+    <!-- Use Case 3: Audit Preparation -->
+    <section class="section" id="audit-preparation">
+      <div class="wrap">
+        <div class="use-case-number">Use Case 03</div>
+        <div class="use-case-card">
+          <div>
+            <h2>Audit Preparation — From Weeks to Hours</h2>
+            <p>
+              <strong>Who:</strong> Security and GRC teams running annual or semi-annual external audits across multi-system environments.
+            </p>
+            <div class="use-case-problem">
+              <p>
+                Audit preparation typically starts three to four weeks before the engagement window. Data is pulled from separate tools,
+                assembled into spreadsheets, passed between teams for review, and submitted — only to be stale relative to the state of the
+                environment by submission time. Evidence assembled under pressure introduces inconsistencies that auditors flag.
+              </p>
+            </div>
+            <div class="use-case-outcome">
+              <strong>Business Outcome</strong>
+              Evidence that previously took weeks to assemble is generated in minutes. It is complete, verifiable, and current — collected
+              continuously, not assembled under pressure. External auditors receive a structured package with provenance metadata on every
+              finding.
+            </div>
+          </div>
+          <div>
+            <h3>How AuditToolkit helps</h3>
+            <ul class="feature-list">
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Evidence generated on demand from continuously collected findings — always current, never assembled under pressure</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >SHA-256 checksums and HMAC signing on every artifact — external auditors can verify evidence was not modified after
+                  collection</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Cover report maps every included control to its assessment result, with timestamps and host identity for each check</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Remediation records included where failures were addressed — showing the full lifecycle from finding to closure</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >A single audit execution produces evidence across CIS, PCI-DSS, SOC 2, NIST, and ISO 27001 simultaneously</span
+                >
+              </li>
+            </ul>
+            <div class="products-used">
+              <span class="badge badge-blue">Audit Admin Toolkit</span>
+              <span class="badge badge-muted">Audit Assurance Node</span>
+              <span class="badge badge-amber">Linux Security Lite</span>
+              <span class="badge badge-muted">CMDB Data Collection</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div>
-        <h3>How AuditToolkit helps</h3>
-        <ul class="feature-list">
-          <li><span class="icon">&#10003;</span><span class="text">Evidence generated on demand from continuously collected findings — always current, never assembled under pressure</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">SHA-256 checksums and HMAC signing on every artifact — external auditors can verify evidence was not modified after collection</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Cover report maps every included control to its assessment result, with timestamps and host identity for each check</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Remediation records included where failures were addressed — showing the full lifecycle from finding to closure</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">A single audit execution produces evidence across CIS, PCI-DSS, SOC 2, NIST, and ISO 27001 simultaneously</span></li>
-        </ul>
-        <div class="products-used">
-          <span class="badge badge-blue">Audit Admin Toolkit</span>
-          <span class="badge badge-muted">Audit Assurance Node</span>
-          <span class="badge badge-amber">Linux Security Lite</span>
-          <span class="badge badge-muted">CMDB Data Collection</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Use Case 4: Cyber Insurance -->
-<section class="section section-alt" id="cyber-insurance">
-  <div class="wrap">
-    <div class="use-case-number">Use Case 04</div>
-    <div class="use-case-card">
-      <div>
-        <h2>Cyber Insurance Evidence</h2>
-        <p><strong>Who:</strong> Security teams supporting insurance renewal and enterprise vendor questionnaires that require evidence of specific technical controls.</p>
-        <div class="use-case-problem">
-          <p>Cyber insurance underwriters and enterprise procurement teams increasingly require evidence of CIS Benchmark compliance, EDR deployment and health, and patch management practices. Gathering this across a multi-system estate involves multiple teams, tools, and weeks of coordination — with no guarantee the evidence will survive scrutiny.</p>
-        </div>
-        <div class="use-case-outcome">
-          <strong>Business Outcome</strong>
-          Insurance renewal evidence is produced in hours, not weeks. Underwriters and security questionnaire reviewers receive tamper-evident packages with SHA-256 verified artifacts covering CIS hardening, EDR health, and vulnerability remediation timelines — independently verifiable, with no integrity gaps.
+    <!-- Use Case 4: Cyber Insurance -->
+    <section class="section section-alt" id="cyber-insurance">
+      <div class="wrap">
+        <div class="use-case-number">Use Case 04</div>
+        <div class="use-case-card">
+          <div>
+            <h2>Cyber Insurance Evidence</h2>
+            <p>
+              <strong>Who:</strong> Security teams supporting insurance renewal and enterprise vendor questionnaires that require evidence
+              of specific technical controls.
+            </p>
+            <div class="use-case-problem">
+              <p>
+                Cyber insurance underwriters and enterprise procurement teams increasingly require evidence of CIS Benchmark compliance, EDR
+                deployment and health, and patch management practices. Gathering this across a multi-system estate involves multiple teams,
+                tools, and weeks of coordination — with no guarantee the evidence will survive scrutiny.
+              </p>
+            </div>
+            <div class="use-case-outcome">
+              <strong>Business Outcome</strong>
+              Insurance renewal evidence is produced in hours, not weeks. Underwriters and security questionnaire reviewers receive
+              tamper-evident packages with SHA-256 verified artifacts covering CIS hardening, EDR health, and vulnerability remediation
+              timelines — independently verifiable, with no integrity gaps.
+            </div>
+          </div>
+          <div>
+            <h3>How AuditToolkit helps</h3>
+            <ul class="feature-list">
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text">CIS Benchmark Level 1 and Level 2 compliance reports across Windows and Linux server estates</span>
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >EDR validation for 11 platforms — Defender, CrowdStrike, SentinelOne, Carbon Black, Sophos, and more — confirms agents
+                  are installed, current, and healthy</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >CVE exposure reports with CVSS scoring and CISA KEV status per asset demonstrate vulnerability management practices</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >90-day trend reports show continuous improvement — the evidence underwriters require, not a single point-in-time
+                  claim</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >All packages tamper-evident: SHA-256 checksums on every artifact, provenance metadata on every finding</span
+                >
+              </li>
+            </ul>
+            <div class="products-used">
+              <span class="badge badge-blue">Audit Admin Toolkit</span>
+              <span class="badge badge-muted">Audit Assurance Node</span>
+              <span class="badge badge-amber">Linux Security Lite</span>
+              <span class="badge badge-muted">CMDB Data Collection</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div>
-        <h3>How AuditToolkit helps</h3>
-        <ul class="feature-list">
-          <li><span class="icon">&#10003;</span><span class="text">CIS Benchmark Level 1 and Level 2 compliance reports across Windows and Linux server estates</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">EDR validation for 11 platforms — Defender, CrowdStrike, SentinelOne, Carbon Black, Sophos, and more — confirms agents are installed, current, and healthy</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">CVE exposure reports with CVSS scoring and CISA KEV status per asset demonstrate vulnerability management practices</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">90-day trend reports show continuous improvement — the evidence underwriters require, not a single point-in-time claim</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">All packages tamper-evident: SHA-256 checksums on every artifact, provenance metadata on every finding</span></li>
-        </ul>
-        <div class="products-used">
-          <span class="badge badge-blue">Audit Admin Toolkit</span>
-          <span class="badge badge-muted">Audit Assurance Node</span>
-          <span class="badge badge-amber">Linux Security Lite</span>
-          <span class="badge badge-muted">CMDB Data Collection</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Use Case 5: Executive Reporting -->
-<section class="section" id="executive-reporting">
-  <div class="wrap">
-    <div class="use-case-number">Use Case 05</div>
-    <div class="use-case-card">
-      <div>
-        <h2>Executive Reporting &amp; Board Visibility</h2>
-        <p><strong>Who:</strong> CISOs and security directors who need to demonstrate programme effectiveness and justify security investment at board level.</p>
-        <div class="use-case-problem">
-          <p>Security tools produce findings, not business outcomes. CISOs presenting to the board have to manually translate raw vulnerability counts into risk language, without trend data to show whether the programme is improving, and without ROI metrics to justify continued investment.</p>
-        </div>
-        <div class="use-case-outcome">
-          <strong>Business Outcome</strong>
-          Security spend becomes a boardroom conversation. CISOs present compliance improvement trajectories, open risk by severity, and remediation velocity — not raw finding counts. Programme effectiveness is measurable and defensible.
+    <!-- Use Case 5: Executive Reporting -->
+    <section class="section" id="executive-reporting">
+      <div class="wrap">
+        <div class="use-case-number">Use Case 05</div>
+        <div class="use-case-card">
+          <div>
+            <h2>Executive Reporting &amp; Board Visibility</h2>
+            <p>
+              <strong>Who:</strong> CISOs and security directors who need to demonstrate programme effectiveness and justify security
+              investment at board level.
+            </p>
+            <div class="use-case-problem">
+              <p>
+                Security tools produce findings, not business outcomes. CISOs presenting to the board have to manually translate raw
+                vulnerability counts into risk language, without trend data to show whether the programme is improving, and without ROI
+                metrics to justify continued investment.
+              </p>
+            </div>
+            <div class="use-case-outcome">
+              <strong>Business Outcome</strong>
+              Security spend becomes a boardroom conversation. CISOs present compliance improvement trajectories, open risk by severity, and
+              remediation velocity — not raw finding counts. Programme effectiveness is measurable and defensible.
+            </div>
+          </div>
+          <div>
+            <h3>How AuditToolkit helps</h3>
+            <ul class="feature-list">
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >30/60/90-day compliance improvement trend reports — improvement is quantified, regression is visible before it becomes a
+                  problem</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Before/after remediation comparison with compliance delta — security investment tied directly to measurable risk
+                  reduction</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Executive summary reports translate infrastructure findings into risk language appropriate for board-level review</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Open findings by severity across the entire estate — prioritised and context-enriched with CVE and KEV data</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Prometheus metrics endpoint for continuous monitoring dashboards in Grafana — live posture visibility without manual
+                  reporting cycles</span
+                >
+              </li>
+            </ul>
+            <div class="products-used">
+              <span class="badge badge-blue">Audit Admin Toolkit</span>
+              <span class="badge badge-muted">CMDB Data Collection</span>
+              <span class="badge badge-green">Asset Command Center</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div>
-        <h3>How AuditToolkit helps</h3>
-        <ul class="feature-list">
-          <li><span class="icon">&#10003;</span><span class="text">30/60/90-day compliance improvement trend reports — improvement is quantified, regression is visible before it becomes a problem</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Before/after remediation comparison with compliance delta — security investment tied directly to measurable risk reduction</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Executive summary reports translate infrastructure findings into risk language appropriate for board-level review</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Open findings by severity across the entire estate — prioritised and context-enriched with CVE and KEV data</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Prometheus metrics endpoint for continuous monitoring dashboards in Grafana — live posture visibility without manual reporting cycles</span></li>
-        </ul>
-        <div class="products-used">
-          <span class="badge badge-blue">Audit Admin Toolkit</span>
-          <span class="badge badge-muted">CMDB Data Collection</span>
-          <span class="badge badge-green">Asset Command Center</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Use Case 6: MSP Multi-Tenant -->
-<section class="section section-alt" id="msp">
-  <div class="wrap">
-    <div class="use-case-number">Use Case 06</div>
-    <div class="use-case-card">
-      <div>
-        <h2>MSP Multi-Tenant Security Operations</h2>
-        <p><strong>Who:</strong> Managed service providers running security posture programmes across multiple client environments with different infrastructure and compliance requirements.</p>
-        <div class="use-case-problem">
-          <p>Managing separate tooling per client does not scale. Building a unified view across dozens of environments, with client isolation, requires significant engineering effort that MSPs cannot justify per-client. Manual reporting consumes analyst time that should go to actual security work.</p>
-        </div>
-        <div class="use-case-outcome">
-          <strong>Business Outcome</strong>
-          A single platform manages all client security postures with client-scoped dashboards and isolated findings. Reporting is automated — PDF compliance reports delivered on schedule. ITSM integration ensures every critical finding becomes a tracked, SLA-bound remediation ticket without analyst intervention.
+    <!-- Use Case 6: MSP Multi-Tenant -->
+    <section class="section section-alt" id="msp">
+      <div class="wrap">
+        <div class="use-case-number">Use Case 06</div>
+        <div class="use-case-card">
+          <div>
+            <h2>MSP Multi-Tenant Security Operations</h2>
+            <p>
+              <strong>Who:</strong> Managed service providers running security posture programmes across multiple client environments with
+              different infrastructure and compliance requirements.
+            </p>
+            <div class="use-case-problem">
+              <p>
+                Managing separate tooling per client does not scale. Building a unified view across dozens of environments, with client
+                isolation, requires significant engineering effort that MSPs cannot justify per-client. Manual reporting consumes analyst
+                time that should go to actual security work.
+              </p>
+            </div>
+            <div class="use-case-outcome">
+              <strong>Business Outcome</strong>
+              A single platform manages all client security postures with client-scoped dashboards and isolated findings. Reporting is
+              automated — PDF compliance reports delivered on schedule. ITSM integration ensures every critical finding becomes a tracked,
+              SLA-bound remediation ticket without analyst intervention.
+            </div>
+          </div>
+          <div>
+            <h3>How AuditToolkit helps</h3>
+            <ul class="feature-list">
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Satellite producers deploy in each client environment and report to a centralised Audit-Tool instance — one view across
+                  all clients</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >External ingest API (<code>/api/external-ingest</code>) pulls findings from existing client-side tooling into the unified
+                  posture view</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text">Per-client compliance dashboards and scheduled PDF reports for client delivery — fully automated</span>
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >ServiceNow and Jira integration: critical findings automatically generate remediation tickets with SLA tracking,
+                  deduplication, and bi-directional status sync</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Trend reports show compliance improvement across each engagement period — demonstrable value to the client</span
+                >
+              </li>
+            </ul>
+            <div class="products-used">
+              <span class="badge badge-blue">Audit Admin Toolkit</span>
+              <span class="badge badge-muted">Audit Assurance Node</span>
+              <span class="badge badge-amber">Linux Security Lite</span>
+              <span class="badge badge-muted">CMDB Data Collection</span>
+              <span class="badge badge-green">Asset Command Center</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div>
-        <h3>How AuditToolkit helps</h3>
-        <ul class="feature-list">
-          <li><span class="icon">&#10003;</span><span class="text">Satellite producers deploy in each client environment and report to a centralised Audit-Tool instance — one view across all clients</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">External ingest API (<code>/api/external-ingest</code>) pulls findings from existing client-side tooling into the unified posture view</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Per-client compliance dashboards and scheduled PDF reports for client delivery — fully automated</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">ServiceNow and Jira integration: critical findings automatically generate remediation tickets with SLA tracking, deduplication, and bi-directional status sync</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Trend reports show compliance improvement across each engagement period — demonstrable value to the client</span></li>
-        </ul>
-        <div class="products-used">
-          <span class="badge badge-blue">Audit Admin Toolkit</span>
-          <span class="badge badge-muted">Audit Assurance Node</span>
-          <span class="badge badge-amber">Linux Security Lite</span>
-          <span class="badge badge-muted">CMDB Data Collection</span>
-          <span class="badge badge-green">Asset Command Center</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Use Case 7: DevSecOps -->
-<section class="section" id="devsecops">
-  <div class="wrap">
-    <div class="use-case-number">Use Case 07</div>
-    <div class="use-case-card">
-      <div>
-        <h2>DevSecOps &amp; CI/CD Security Gates</h2>
-        <p><strong>Who:</strong> DevOps and platform engineering teams embedding security checks into the deployment pipeline.</p>
-        <div class="use-case-problem">
-          <p>Infrastructure-as-code changes silently reverse hardening that was achieved last quarter. Configuration regressions go undetected until the next scheduled audit — weeks or months later. Security is not in the pipeline, so developers have no visibility into the security impact of their changes before they reach production.</p>
-        </div>
-        <div class="use-case-outcome">
-          <strong>Business Outcome</strong>
-          Security regressions are caught in the pull request, not after deployment. Developers see finding details alongside code scanning results in the GitHub Security tab. Security teams see pipeline findings in the same platform as runtime assessments — no separate tooling required.
+    <!-- Use Case 7: DevSecOps -->
+    <section class="section" id="devsecops">
+      <div class="wrap">
+        <div class="use-case-number">Use Case 07</div>
+        <div class="use-case-card">
+          <div>
+            <h2>DevSecOps &amp; CI/CD Security Gates</h2>
+            <p><strong>Who:</strong> DevOps and platform engineering teams embedding security checks into the deployment pipeline.</p>
+            <div class="use-case-problem">
+              <p>
+                Infrastructure-as-code changes silently reverse hardening that was achieved last quarter. Configuration regressions go
+                undetected until the next scheduled audit — weeks or months later. Security is not in the pipeline, so developers have no
+                visibility into the security impact of their changes before they reach production.
+              </p>
+            </div>
+            <div class="use-case-outcome">
+              <strong>Business Outcome</strong>
+              Security regressions are caught in the pull request, not after deployment. Developers see finding details alongside code
+              scanning results in the GitHub Security tab. Security teams see pipeline findings in the same platform as runtime assessments
+              — no separate tooling required.
+            </div>
+          </div>
+          <div>
+            <h3>How AuditToolkit helps</h3>
+            <ul class="feature-list">
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >SARIF output uploaded to the GitHub Security tab — configuration findings appear alongside code scanning results</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text">GitHub Actions integration blocks pull request merges when audits introduce new critical findings</span>
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Linux Security Lite creates deduplicated GitHub Issues from audit findings — automatically assigned and labelled for
+                  triage</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text">Stable control IDs and versioned control catalog prevent false regressions across tool upgrades</span>
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text">Runs in pure Bash with no dependencies — deploys in any CI environment without agent installation</span>
+              </li>
+            </ul>
+            <div class="products-used">
+              <span class="badge badge-amber">Linux Security Lite</span>
+              <span class="badge badge-blue">Audit Admin Toolkit</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div>
-        <h3>How AuditToolkit helps</h3>
-        <ul class="feature-list">
-          <li><span class="icon">&#10003;</span><span class="text">SARIF output uploaded to the GitHub Security tab — configuration findings appear alongside code scanning results</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">GitHub Actions integration blocks pull request merges when audits introduce new critical findings</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Linux Security Lite creates deduplicated GitHub Issues from audit findings — automatically assigned and labelled for triage</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Stable control IDs and versioned control catalog prevent false regressions across tool upgrades</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Runs in pure Bash with no dependencies — deploys in any CI environment without agent installation</span></li>
-        </ul>
-        <div class="products-used">
-          <span class="badge badge-amber">Linux Security Lite</span>
-          <span class="badge badge-blue">Audit Admin Toolkit</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Use Case 8: Legacy Infrastructure -->
-<section class="section section-alt" id="legacy-infrastructure">
-  <div class="wrap">
-    <div class="use-case-number">Use Case 08</div>
-    <div class="use-case-card">
-      <div>
-        <h2>Legacy &amp; Heterogeneous Infrastructure</h2>
-        <p><strong>Who:</strong> Enterprise IT and security teams managing mixed estates that span modern cloud, on-premises servers, legacy UNIX systems, and multi-vendor networking.</p>
-        <div class="use-case-problem">
-          <p>No single tool reaches everything in a heterogeneous estate. Modern agent-based tools skip legacy systems. API-driven discovery misses anything without a management API. The result is coverage gaps in exactly the parts of the estate most likely to be overlooked — and most likely to be targeted.</p>
-        </div>
-        <div class="use-case-outcome">
-          <strong>Business Outcome</strong>
-          A unified security posture across an estate that no other single tool could fully assess. Every asset — regardless of protocol, OS generation, or management API support — feeds into the same compliance view. Coverage gaps are eliminated. Compliance evidence is complete.
+    <!-- Use Case 8: Legacy Infrastructure -->
+    <section class="section section-alt" id="legacy-infrastructure">
+      <div class="wrap">
+        <div class="use-case-number">Use Case 08</div>
+        <div class="use-case-card">
+          <div>
+            <h2>Legacy &amp; Heterogeneous Infrastructure</h2>
+            <p>
+              <strong>Who:</strong> Enterprise IT and security teams managing mixed estates that span modern cloud, on-premises servers,
+              legacy UNIX systems, and multi-vendor networking.
+            </p>
+            <div class="use-case-problem">
+              <p>
+                No single tool reaches everything in a heterogeneous estate. Modern agent-based tools skip legacy systems. API-driven
+                discovery misses anything without a management API. The result is coverage gaps in exactly the parts of the estate most
+                likely to be overlooked — and most likely to be targeted.
+              </p>
+            </div>
+            <div class="use-case-outcome">
+              <strong>Business Outcome</strong>
+              A unified security posture across an estate that no other single tool could fully assess. Every asset — regardless of
+              protocol, OS generation, or management API support — feeds into the same compliance view. Coverage gaps are eliminated.
+              Compliance evidence is complete.
+            </div>
+          </div>
+          <div>
+            <h3>How AuditToolkit helps</h3>
+            <ul class="feature-list">
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Asset Command Center collects via SSH, WinRM, SNMP v2c/v3, NETCONF, and REST API — every protocol tier in one
+                  platform</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Offline MSI installers for Windows endpoints in air-gapped and restricted environments — no outbound internet
+                  required</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Linux, macOS, BSD, and Windows agents extend reach to endpoints that cannot accept inbound connections</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Bash orchestrator with Windows-native delegation for environments where Linux-to-Windows SSH is not permitted</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >All discovered assets feed the central platform — one compliance view regardless of how each asset was reached</span
+                >
+              </li>
+            </ul>
+            <div class="products-used">
+              <span class="badge badge-green">Asset Command Center</span>
+              <span class="badge badge-muted">CMDB Data Collection</span>
+              <span class="badge badge-blue">Audit Admin Toolkit</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div>
-        <h3>How AuditToolkit helps</h3>
-        <ul class="feature-list">
-          <li><span class="icon">&#10003;</span><span class="text">Asset Command Center collects via SSH, WinRM, SNMP v2c/v3, NETCONF, and REST API — every protocol tier in one platform</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Offline MSI installers for Windows endpoints in air-gapped and restricted environments — no outbound internet required</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Linux, macOS, BSD, and Windows agents extend reach to endpoints that cannot accept inbound connections</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Bash orchestrator with Windows-native delegation for environments where Linux-to-Windows SSH is not permitted</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">All discovered assets feed the central platform — one compliance view regardless of how each asset was reached</span></li>
-        </ul>
-        <div class="products-used">
-          <span class="badge badge-green">Asset Command Center</span>
-          <span class="badge badge-muted">CMDB Data Collection</span>
-          <span class="badge badge-blue">Audit Admin Toolkit</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Use Case 9: Network Security & Exposure Management -->
-<section class="section" id="network-security">
-  <div class="wrap">
-    <div class="use-case-number">Use Case 09</div>
-    <div class="use-case-card">
-      <div>
-        <h2>Network Security &amp; Switch Exposure Management</h2>
-        <p><strong>Who:</strong> Network security teams, infrastructure architects, and compliance managers responsible for switch estate visibility and firmware lifecycle risk management.</p>
-        <div class="use-case-problem">
-          <p>Network switches are often the forgotten tier — operating independently from server audit workflows. Firmware versions drift across the estate. CVE and advisory correlation requires manual effort across multiple vendor feeds. No visibility into exposure scope until a vendor alert drops or an incident occurs. The result is unmanaged risk in the infrastructure layer most critical to availability.</p>
+    <!-- Use Case 9: Network Security & Exposure Management -->
+    <section class="section" id="network-security">
+      <div class="wrap">
+        <div class="use-case-number">Use Case 09</div>
+        <div class="use-case-card">
+          <div>
+            <h2>Network Security &amp; Switch Exposure Management</h2>
+            <p>
+              <strong>Who:</strong> Network security teams, infrastructure architects, and compliance managers responsible for switch estate
+              visibility and firmware lifecycle risk management.
+            </p>
+            <div class="use-case-problem">
+              <p>
+                Network switches are often the forgotten tier — operating independently from server audit workflows. Firmware versions drift
+                across the estate. CVE and advisory correlation requires manual effort across multiple vendor feeds. No visibility into
+                exposure scope until a vendor alert drops or an incident occurs. The result is unmanaged risk in the infrastructure layer
+                most critical to availability.
+              </p>
+            </div>
+            <div class="use-case-outcome">
+              <strong>Business Outcome</strong>
+              Automated inventory of all switches across the estate with firmware versions automatically correlated against vendor
+              advisories, CVE databases, and CISA KEV status. Risk is quantified and prioritized. Remediation workflows include firmware
+              compatibility matrix and staged rollout guidance. Network exposure is visible alongside server compliance.
+            </div>
+          </div>
+          <div>
+            <h3>How AuditToolkit helps</h3>
+            <ul class="feature-list">
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Secure Exposure Center discovers switches via REST API and NETCONF across Cisco IOS-XE, NX-OS, Juniper JunOS, Arista EOS,
+                  Aruba AOS-CX, and Dell OS10</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Firmware versions automatically mapped to vendor advisories — every CVE and security notice flagged for your exact
+                  hardware and OS version</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >CISA Known Exploited Vulnerabilities status included — prioritizes which advisories have active exploitation in the
+                  wild</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Configuration checks across device hardening, AAA authentication, logging, and control plane protection aligned to CIS
+                  Network Device Benchmarks</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Remediation guidance includes firmware compatibility matrices and staged deployment workflows to avoid network
+                  downtime</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Network findings correlate with server inventory findings — full visibility when network config changes impact downstream
+                  systems</span
+                >
+              </li>
+            </ul>
+            <div class="products-used">
+              <span class="badge badge-teal">Secure Exposure Center</span>
+              <span class="badge badge-muted">CMDB Data Collection</span>
+              <span class="badge badge-blue">Audit Admin Toolkit</span>
+            </div>
+          </div>
         </div>
-        <div class="use-case-outcome">
-          <strong>Business Outcome</strong>
-          Automated inventory of all switches across the estate with firmware versions automatically correlated against vendor advisories, CVE databases, and CISA KEV status. Risk is quantified and prioritized. Remediation workflows include firmware compatibility matrix and staged rollout guidance. Network exposure is visible alongside server compliance.</div>
       </div>
-      <div>
-        <h3>How AuditToolkit helps</h3>
-        <ul class="feature-list">
-          <li><span class="icon">&#10003;</span><span class="text">Secure Exposure Center discovers switches via REST API and NETCONF across Cisco IOS-XE, NX-OS, Juniper JunOS, Arista EOS, Aruba AOS-CX, and Dell OS10</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Firmware versions automatically mapped to vendor advisories — every CVE and security notice flagged for your exact hardware and OS version</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">CISA Known Exploited Vulnerabilities status included — prioritizes which advisories have active exploitation in the wild</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Configuration checks across device hardening, AAA authentication, logging, and control plane protection aligned to CIS Network Device Benchmarks</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Remediation guidance includes firmware compatibility matrices and staged deployment workflows to avoid network downtime</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Network findings correlate with server inventory findings — full visibility when network config changes impact downstream systems</span></li>
-        </ul>
-        <div class="products-used">
-          <span class="badge badge-teal">Secure Exposure Center</span>
-          <span class="badge badge-muted">CMDB Data Collection</span>
-          <span class="badge badge-blue">Audit Admin Toolkit</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Use Case 10: MSP & Multi-Tenant Operations -->
-<section class="section section-alt" id="msp-operations">
-  <div class="wrap">
-    <div class="use-case-number">Use Case 10</div>
-    <div class="use-case-card">
-      <div>
-        <h2>Managed Service Provider &amp; Multi-Tenant Operations</h2>
-        <p><strong>Who:</strong> MSPs, managed security service providers (MSSPs), and service operators managing compliance and security across multiple customer environments with distinct entitlements, reporting, and automation boundaries.</p>
-        <div class="use-case-problem">
-          <p>Multi-tenant security operations require strict tenant isolation, per-customer entitlements, and independent audit trails. Customer data must never commingle. Reporting is often manual or requires duplicate tooling per tenant. Automation runbooks cannot safely execute across customer boundaries. The operational overhead of managing disconnected toolchains per customer erodes margin and limits scale.</p>
+    <!-- Use Case 10: MSP & Multi-Tenant Operations -->
+    <section class="section section-alt" id="msp-operations">
+      <div class="wrap">
+        <div class="use-case-number">Use Case 10</div>
+        <div class="use-case-card">
+          <div>
+            <h2>Managed Service Provider &amp; Multi-Tenant Operations</h2>
+            <p>
+              <strong>Who:</strong> MSPs, managed security service providers (MSSPs), and service operators managing compliance and security
+              across multiple customer environments with distinct entitlements, reporting, and automation boundaries.
+            </p>
+            <div class="use-case-problem">
+              <p>
+                Multi-tenant security operations require strict tenant isolation, per-customer entitlements, and independent audit trails.
+                Customer data must never commingle. Reporting is often manual or requires duplicate tooling per tenant. Automation runbooks
+                cannot safely execute across customer boundaries. The operational overhead of managing disconnected toolchains per customer
+                erodes margin and limits scale.
+              </p>
+            </div>
+            <div class="use-case-outcome">
+              <strong>Business Outcome</strong>
+              One central deployment serving all customer environments with complete tenant isolation. Each customer sees only their own
+              findings, evidence, and audit logs. Automation is tenant-aware and can scale safely across customer boundaries. Per-customer
+              billing, entitlements, and SLAs are enforced at the platform layer. Operations teams scale with customer count, not linearly
+              with tooling complexity.
+            </div>
+          </div>
+          <div>
+            <h3>How AuditToolkit helps</h3>
+            <ul class="feature-list">
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Tenant boundaries enforced at every layer — findings, evidence, logs, and API responses are strictly partitioned by
+                  tenant ID</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Per-tenant RBAC and entitlements — customers can invite internal teams to view their audit findings without exposing
+                  other tenants' data</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Automated remediation at scale — schedules can target multiple customer environments with built-in rollback and
+                  safeguards</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Central audit trail with tenant filtering — every action (audit run, remediation, evidence export, user login) is logged
+                  with tenant context</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Customer self-service reporting — customers can export evidence packages, run on-demand audits, and access dashboards in
+                  their own isolated view</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Billing and SLA tracking per tenant — integrate with PSA systems via API for usage-based billing and SLA compliance
+                  reporting</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Integration-ready APIs — customer findings, tickets, and events flow to customer-owned SIEM, ITSM, and reporting
+                  platforms via webhooks and REST APIs</span
+                >
+              </li>
+            </ul>
+            <div class="products-used">
+              <span class="badge badge-blue">Audit Admin Toolkit</span>
+              <span class="badge badge-muted">All Suite Products</span>
+              <span class="badge badge-green">Asset Command Center</span>
+            </div>
+          </div>
         </div>
-        <div class="use-case-outcome">
-          <strong>Business Outcome</strong>
-          One central deployment serving all customer environments with complete tenant isolation. Each customer sees only their own findings, evidence, and audit logs. Automation is tenant-aware and can scale safely across customer boundaries. Per-customer billing, entitlements, and SLAs are enforced at the platform layer. Operations teams scale with customer count, not linearly with tooling complexity.</div>
       </div>
-      <div>
-        <h3>How AuditToolkit helps</h3>
-        <ul class="feature-list">
-          <li><span class="icon">&#10003;</span><span class="text">Tenant boundaries enforced at every layer — findings, evidence, logs, and API responses are strictly partitioned by tenant ID</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Per-tenant RBAC and entitlements — customers can invite internal teams to view their audit findings without exposing other tenants' data</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Automated remediation at scale — schedules can target multiple customer environments with built-in rollback and safeguards</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Central audit trail with tenant filtering — every action (audit run, remediation, evidence export, user login) is logged with tenant context</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Customer self-service reporting — customers can export evidence packages, run on-demand audits, and access dashboards in their own isolated view</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Billing and SLA tracking per tenant — integrate with PSA systems via API for usage-based billing and SLA compliance reporting</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Integration-ready APIs — customer findings, tickets, and events flow to customer-owned SIEM, ITSM, and reporting platforms via webhooks and REST APIs</span></li>
-        </ul>
-        <div class="products-used">
-          <span class="badge badge-blue">Audit Admin Toolkit</span>
-          <span class="badge badge-muted">All Suite Products</span>
-          <span class="badge badge-green">Asset Command Center</span>
+    </section>
+
+    <div class="cta-band">
+      <div class="wrap">
+        <div class="cta-band-inner">
+          <div>
+            <h2 class="mb-8">Ready to see it in your environment?</h2>
+            <p>The Community tier is free, covers one host, and has no time limit. Or contact us to walk through your specific scenario.</p>
+          </div>
+          <div class="cta-band-actions">
+            <a href="price.html" class="btn btn-primary btn-lg">View Pricing</a>
+            <a href="support.html#contact" class="btn btn-secondary btn-lg">Talk to Us</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<div class="cta-band">
-  <div class="wrap">
-    <div class="cta-band-inner">
-      <div>
-        <h2 class="mb-8">Ready to see it in your environment?</h2>
-        <p>The Community tier is free, covers one host, and has no time limit. Or contact us to walk through your specific scenario.</p>
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="flex items-center gap-12 mb-16">
+              <span class="brand-icon">A</span><span class="footer-brand-title">AuditToolkit Labs</span>
+            </div>
+            <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
+            <p class="footer-copy-small">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Products</h4>
+            <ul>
+              <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
+              <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
+              <li><a href="cmdb-asset-platform.html">Asset Command Center</a></li>
+              <li><a href="linux-expansion.html">Linux Security Lite</a></li>
+              <li><a href="secure-exposure-centre.html">Secure Exposure Center</a></li>
+              <li><a href="script-coverage.html">Script Coverage</a></li>
+              <li><a href="remediation.html">Remediation</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="toolkit-overview.html">Toolkit Overview</a></li>
+              <li><a href="use-cases.html">Use Cases</a></li>
+              <li><a href="docs.html">Central Documentation Library</a></li>
+              <li><a href="releases.html">Release Notes</a></li>
+              <li><a href="regulated-industries.html">Regulated Industries</a></li>
+              <li><a href="compliance-evidence.html">Compliance Evidence</a></li>
+              <li><a href="licensing.html">Licensing &amp; Pricing</a></li>
+              <li><a href="support.html">Support</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
+              <li><a href="support.html#contact">Send an Enquiry</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>Licence: Business Source Licence (BSL). See individual product EULA for full usage rights.</p>
+        </div>
       </div>
-      <div class="cta-band-actions">
-        <a href="price.html" class="btn btn-primary btn-lg">View Pricing</a>
-        <a href="support.html#contact" class="btn btn-secondary btn-lg">Talk to Us</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span class="footer-brand-title">AuditToolkit Labs</span></div>
-        <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
-        <p class="footer-copy-small">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
-      </div>
-      <div class="footer-col"><h4>Products</h4><ul>
-        <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
-        <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
-        <li><a href="cmdb-asset-platform.html">Asset Command Center</a></li>
-        <li><a href="linux-expansion.html">Linux Security Lite</a></li>
-        <li><a href="secure-exposure-centre.html">Secure Exposure Center</a></li>
-        <li><a href="script-coverage.html">Script Coverage</a></li>
-        <li><a href="remediation.html">Remediation</a></li>
-      </ul></div>
-      <div class="footer-col"><h4>Resources</h4><ul>
-        <li><a href="toolkit-overview.html">Toolkit Overview</a></li>
-        <li><a href="use-cases.html">Use Cases</a></li>
-        <li><a href="docs.html">Central Documentation Library</a></li>
-        <li><a href="releases.html">Release Notes</a></li>
-        <li><a href="regulated-industries.html">Regulated Industries</a></li>
-        <li><a href="compliance-evidence.html">Compliance Evidence</a></li>
-        <li><a href="licensing.html">Licensing &amp; Pricing</a></li>
-        <li><a href="support.html">Support</a></li>
-      </ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul>
-        <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
-        <li><a href="support.html#contact">Send an Enquiry</a></li>
-      </ul></div>
-    </div>
-    <div class="footer-bottom">
-      <p>Licence: Business Source Licence (BSL). See individual product EULA for full usage rights.</p>
-    </div>
-  </div>
-</footer>
-<script src="assets/js/nav.js?v=20260612e"></script>
-</body>
+    </footer>
+    <script src="assets/js/nav.js?v=20260612e"></script>
+  </body>
 </html>

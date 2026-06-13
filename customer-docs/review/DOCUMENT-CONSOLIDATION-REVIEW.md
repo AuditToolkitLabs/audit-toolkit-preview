@@ -20,41 +20,41 @@ package staging, caches, and generated runtime output.
 
 ## Inventory Summary
 
-| Metric | Count |
-| --- | ---: |
-| Documentation files reviewed | 598 |
-| Exact duplicate content groups | 9 |
-| Repeated filename groups | 68 |
+| Metric                         | Count |
+| ------------------------------ | ----: |
+| Documentation files reviewed   |   598 |
+| Exact duplicate content groups |     9 |
+| Repeated filename groups       |    68 |
 
 ### Documents By Top-Level Folder
 
-| Folder | Count |
-| --- | ---: |
-| `Audit-Tool-` | 246 |
-| `audittoolkit-linux-security-lite` | 98 |
-| `Switch-Exposure-Center` | 75 |
-| `cmdb-api-data-collection-tool` | 73 |
-| `Asset-Command-Centre` | 67 |
-| `audit-assurance-node` | 16 |
-| `AuditToolkit-Control-Centre` | 7 |
-| `docs` | 7 |
-| `contracts` | 5 |
-| `legal` | 3 |
-| `AuditToolkit-Docs` | 1 |
+| Folder                             | Count |
+| ---------------------------------- | ----: |
+| `Audit-Tool-`                      |   246 |
+| `audittoolkit-linux-security-lite` |    98 |
+| `Switch-Exposure-Center`           |    75 |
+| `cmdb-api-data-collection-tool`    |    73 |
+| `Asset-Command-Centre`             |    67 |
+| `audit-assurance-node`             |    16 |
+| `AuditToolkit-Control-Centre`      |     7 |
+| `docs`                             |     7 |
+| `contracts`                        |     5 |
+| `legal`                            |     3 |
+| `AuditToolkit-Docs`                |     1 |
 
 ### Documents By Classification
 
-| Type | Count |
-| --- | ---: |
-| OTHER | 178 |
-| API | 116 |
-| USAGE | 62 |
-| INSTALL | 58 |
-| EXECUTION | 53 |
-| LEGAL | 53 |
-| VALIDATION | 35 |
-| CONFIG | 26 |
-| PACKAGING | 17 |
+| Type       | Count |
+| ---------- | ----: |
+| OTHER      |   178 |
+| API        |   116 |
+| USAGE      |    62 |
+| INSTALL    |    58 |
+| EXECUTION  |    53 |
+| LEGAL      |    53 |
+| VALIDATION |    35 |
+| CONFIG     |    26 |
+| PACKAGING  |    17 |
 
 ## Findings
 
@@ -192,17 +192,17 @@ local validation commands in product repos.
 
 The exact duplicate scan found these groups:
 
-| Duplicate content | Paths |
-| --- | --- |
+| Duplicate content                | Paths                                                                                                                                                                                                  |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Liability/indemnity customer doc | `audittoolkit-linux-security-lite/customer-docs/28-liability-disclaimer-and-indemnity.md`; `Switch-Exposure-Center/docs/customer-docs/switch-exposure-center/28-liability-disclaimer-and-indemnity.md` |
-| Library API reference | `Audit-Tool-/docs/06-library-api-reference.md`; `audittoolkit-linux-security-lite/docs/06-library-api-reference.md` |
-| CI/CD doc | `Audit-Tool-/docs/05-ci-cd.md`; `audittoolkit-linux-security-lite/docs/05-ci-cd.md` |
-| CMDB screenshot storage state | `cmdb-api-data-collection-tool/customer-docs/screenshots/storage_state.json`; `cmdb-api-data-collection-tool/docs/assets/screenshots/v0.2.5/storage_state.json` |
-| AGPL license example | `Audit-Tool-/docs/licensing-examples/LICENSE-AGPL-EXAMPLE.txt`; `audittoolkit-linux-security-lite/docs/licensing-examples/LICENSE-AGPL-EXAMPLE.txt` |
-| CMDB screenshot manifest | `cmdb-api-data-collection-tool/customer-docs/screenshots/manifest.csv`; `cmdb-api-data-collection-tool/docs/assets/screenshots/v0.2.5/manifest.csv` |
-| Orchestrator examples | `Audit-Tool-/docs/11-orchestrator-examples.md`; `audittoolkit-linux-security-lite/docs/11-orchestrator-examples.md` |
-| Linux Lite OWASP scorecard | `audittoolkit-linux-security-lite/customer-docs/OWASP-SECURITY-SCORECARD.md`; `audittoolkit-linux-security-lite/docs/OWASP-SECURITY-SCORECARD.md` |
-| BSL license example | `Audit-Tool-/docs/licensing-examples/LICENSE-BSL-EXAMPLE.txt`; `audittoolkit-linux-security-lite/docs/licensing-examples/LICENSE-BSL-EXAMPLE.txt` |
+| Library API reference            | `Audit-Tool-/docs/06-library-api-reference.md`; `audittoolkit-linux-security-lite/docs/06-library-api-reference.md`                                                                                    |
+| CI/CD doc                        | `Audit-Tool-/docs/05-ci-cd.md`; `audittoolkit-linux-security-lite/docs/05-ci-cd.md`                                                                                                                    |
+| CMDB screenshot storage state    | `cmdb-api-data-collection-tool/customer-docs/screenshots/storage_state.json`; `cmdb-api-data-collection-tool/docs/assets/screenshots/v0.2.5/storage_state.json`                                        |
+| AGPL license example             | `Audit-Tool-/docs/licensing-examples/LICENSE-AGPL-EXAMPLE.txt`; `audittoolkit-linux-security-lite/docs/licensing-examples/LICENSE-AGPL-EXAMPLE.txt`                                                    |
+| CMDB screenshot manifest         | `cmdb-api-data-collection-tool/customer-docs/screenshots/manifest.csv`; `cmdb-api-data-collection-tool/docs/assets/screenshots/v0.2.5/manifest.csv`                                                    |
+| Orchestrator examples            | `Audit-Tool-/docs/11-orchestrator-examples.md`; `audittoolkit-linux-security-lite/docs/11-orchestrator-examples.md`                                                                                    |
+| Linux Lite OWASP scorecard       | `audittoolkit-linux-security-lite/customer-docs/OWASP-SECURITY-SCORECARD.md`; `audittoolkit-linux-security-lite/docs/OWASP-SECURITY-SCORECARD.md`                                                      |
+| BSL license example              | `Audit-Tool-/docs/licensing-examples/LICENSE-BSL-EXAMPLE.txt`; `audittoolkit-linux-security-lite/docs/licensing-examples/LICENSE-BSL-EXAMPLE.txt`                                                      |
 
 ## Recommended Consolidation Model
 

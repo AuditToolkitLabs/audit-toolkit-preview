@@ -17,26 +17,26 @@ is excluded from customer release bundles.
 
 The library covers:
 
-| Product | Primary customer use |
-| --- | --- |
-| Audit-Tool | Full security audit platform with web UI, API, agents, reporting, and release bundles. |
-| Asset Command Centre | Standalone asset discovery, inventory, local reporting, and optional upstream forwarding. |
-| AuditToolkit Linux Security Lite | Linux-only audit toolkit for local checks, scheduled audits, SIEM export, and CI/CD gates. |
-| CMDB API Data Collection Tool | On-site CMDB and API data collection with connectors and managed agent onboarding. |
-| Switch Exposure Center | Switch inventory, advisory refresh, exposure analysis, reports, scheduler, and API workflows. |
-| Audit Assurance Node | Remote assurance and elevation framework using SSH, WinRM, API, and agent adapters. |
+| Product                          | Primary customer use                                                                          |
+| -------------------------------- | --------------------------------------------------------------------------------------------- |
+| Audit-Tool                       | Full security audit platform with web UI, API, agents, reporting, and release bundles.        |
+| Asset Command Centre             | Standalone asset discovery, inventory, local reporting, and optional upstream forwarding.     |
+| AuditToolkit Linux Security Lite | Linux-only audit toolkit for local checks, scheduled audits, SIEM export, and CI/CD gates.    |
+| CMDB API Data Collection Tool    | On-site CMDB and API data collection with connectors and managed agent onboarding.            |
+| Switch Exposure Center           | Switch inventory, advisory refresh, exposure analysis, reports, scheduler, and API workflows. |
+| Audit Assurance Node             | Remote assurance and elevation framework using SSH, WinRM, API, and agent adapters.           |
 
 ## Intended Audience
 
-| Audience | What they will find here |
-| --- | --- |
-| Evaluators and procurement reviewers | Product scope, security posture, support model, licensing, legal terms, and assurance evidence. |
-| End users and analysts | How to use dashboards, results, reports, inventory views, exposures, and audit outputs. |
-| Application administrators | How to configure users, roles, identity sources, license state, integrations, and operational settings. |
-| IT operations teams | How to install, monitor, back up, patch, recover, and support customer deployments. |
-| Security and assurance teams | Access controls, logging, data protection, credential handling, OWASP posture, and evidence packs. |
-| Integration engineers | API, SIEM, webhook, scheduler, authentication, connector, and automation patterns. |
-| Auditors and assessors | Governance model, change records, acceptance evidence, support boundaries, and compliance artifacts. |
+| Audience                             | What they will find here                                                                                |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------- |
+| Evaluators and procurement reviewers | Product scope, security posture, support model, licensing, legal terms, and assurance evidence.         |
+| End users and analysts               | How to use dashboards, results, reports, inventory views, exposures, and audit outputs.                 |
+| Application administrators           | How to configure users, roles, identity sources, license state, integrations, and operational settings. |
+| IT operations teams                  | How to install, monitor, back up, patch, recover, and support customer deployments.                     |
+| Security and assurance teams         | Access controls, logging, data protection, credential handling, OWASP posture, and evidence packs.      |
+| Integration engineers                | API, SIEM, webhook, scheduler, authentication, connector, and automation patterns.                      |
+| Auditors and assessors               | Governance model, change records, acceptance evidence, support boundaries, and compliance artifacts.    |
 
 ## Documentation Conventions
 
@@ -64,12 +64,12 @@ This library does not document:
 
 Use email for support and escalation:
 
-| Purpose | Contact |
-| --- | --- |
-| General, account, and commercial questions | [admin@audittoolkitlabs.com](mailto:admin@audittoolkitlabs.com) |
-| Product support, defects, and how-to questions | [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com) |
-| Security vulnerabilities and advisories | [Security@audittoolkitlabs.com](mailto:Security@audittoolkitlabs.com) |
-| Licensing and contract questions | [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com) |
+| Purpose                                        | Contact                                                               |
+| ---------------------------------------------- | --------------------------------------------------------------------- |
+| General, account, and commercial questions     | [admin@audittoolkitlabs.com](mailto:admin@audittoolkitlabs.com)       |
+| Product support, defects, and how-to questions | [Support@audittoolkitlabs.com](mailto:Support@audittoolkitlabs.com)   |
+| Security vulnerabilities and advisories        | [Security@audittoolkitlabs.com](mailto:Security@audittoolkitlabs.com) |
+| Licensing and contract questions               | [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com)   |
 
 Do not send passwords, private keys, API tokens, raw customer secrets, or
 unredacted production data in support requests.

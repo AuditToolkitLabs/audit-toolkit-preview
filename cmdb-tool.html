@@ -1,178 +1,214 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CMDB API Data Collection Tool — AuditToolkit Labs</title>
-  <meta name="description" content="CMDB API Data Collection Tool: multi-platform infrastructure data ingestion and normalisation with 40+ integrations across cloud, network, identity, and enterprise systems." />
-  <link rel="stylesheet" href="assets/css/site.css?v=20260612g" />
-  <style>
-    .nav-mobile-contact{color:var(--accent);font-weight:600}
-    .footer-brand-title{font-weight:700;font-size:1.05rem}
-    .footer-copy-small{font-size:.82rem}
-  </style>
-</head>
-<body>
-<nav class="nav">
-  <div class="wrap">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
-      <ul class="nav-links">
-        <li><a href="index.html#products">Products</a></li>
-        <li><a href="toolkit-overview.html">Overview</a></li>
-        <li><a href="how-it-works.html">How It Works</a></li>
-        <li><a href="use-cases.html">Use Cases</a></li>
-        <li><a href="integrations.html">Integrations</a></li>
-        <li><a href="docs.html">Documentation</a></li>
-        <li><a href="releases.html">Releases</a></li>
-        <li><a href="licensing.html">Licensing</a></li>
-        <li><a href="support.html">Support</a></li>
-      </ul>
-      <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
-      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
-    </div>
-  </div>
-</nav>
-<div class="nav-mobile" id="nav-mobile">
-  <a href="index.html">Home</a>
-  <a href="index.html#products">Products</a>
-  <a href="toolkit-overview.html">Overview</a>
-  <a href="how-it-works.html">How It Works</a>
-  <a href="use-cases.html">Use Cases</a>
-  <a href="integrations.html">Integrations</a>
-  <a href="docs.html">Documentation</a>
-  <a href="releases.html">Releases</a>
-  <a href="licensing.html">Licensing</a>
-  <a href="support.html">Support</a>
-  <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
-</div>
-
-<div class="page-hero">
-  <div class="wrap">
-    <div class="breadcrumb">
-      <a href="index.html">Home</a><span class="sep">/</span>
-      <a href="toolkit-overview.html">Overview</a><span class="sep">/</span>
-      <span class="cur">CMDB API Data Collection Tool</span>
-    </div>
-    <p class="eyebrow">Ingestion Layer</p>
-    <h1>CMDB API Data Collection Tool</h1>
-    <p>The CMDB API Data Collection Tool is the ingestion and normalisation layer of the AuditToolkit. It collects infrastructure data via 40+ integrations across cloud, network, identity, and enterprise systems, delivering normalised records to the core platform or standalone CMDB.</p>
-    <div class="flex gap-12 flex-wrap mt-24">
-      <span class="badge badge-amber">v0.2.11</span>
-    </div>
-    <div class="flex gap-12 flex-wrap mt-16">
-      <a href="doc-viewer.html?src=customer-docs/cmdb-api/index.md" class="btn btn-primary">View Documentation</a>
-      <a href="cmdb-api-releases.html" class="btn btn-secondary">Release Notes</a>
-      <a href="support.html#contact" class="btn btn-secondary">Contact Sales</a>
-    </div>
-  </div>
-</div>
-
-<section class="section">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Capabilities</p>
-      <h2>Key Features</h2>
-    </div>
-    <div class="card">
-      <div class="flex items-center gap-12 mb-16">
-        <div class="product-icon bg-accent-blue">&#128225;</div>
-        <div>
-          <h3 class="mt-0 mb-0">CMDB API Data Collection Tool</h3>
-          <p class="mb-0 text-sm text-muted">Multi-platform infrastructure data ingestion and normalisation</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <title>CMDB API Data Collection Tool — AuditToolkit Labs</title>
+    <meta
+      name="description"
+      content="CMDB API Data Collection Tool: infrastructure data ingestion with 40+ cloud, network, identity, and enterprise integrations."
+    />
+    <link rel="stylesheet" href="assets/css/site.css?v=20260612g" />
+    <style>
+      .nav-mobile-contact {
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .footer-brand-title {
+        font-weight: 700;
+        font-size: 1.05rem;
+      }
+      .footer-copy-small {
+        font-size: 0.82rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="wrap">
+        <div class="nav-inner">
+          <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+          <ul class="nav-links">
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="toolkit-overview.html">Overview</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="use-cases.html">Use Cases</a></li>
+            <li><a href="integrations.html">Integrations</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="releases.html">Releases</a></li>
+            <li><a href="licensing.html">Licensing</a></li>
+            <li><a href="support.html">Support</a></li>
+          </ul>
+          <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+          <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
         </div>
       </div>
-      <ul class="feature-list">
-          <li><span class="icon">&#10003;</span><span class="text">40+ integrations across cloud, network, identity, and enterprise systems</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Agents for Windows (.NET 8), Linux (Go), macOS, BSD, and containers</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Dual-mode operation: standalone CMDB or integrated feeder to the core platform</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Canonical payload contract (schema_version 2026.05.1) for normalised asset and vulnerability records</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Dead-letter queue with retry and backoff for reliable delivery</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">SSO claim and attribute mapping for enterprise identity integration</span></li>
-          <li><span class="icon">&#10003;</span><span class="text">Full tenant and workspace governance model</span></li>
-      </ul>
+    </nav>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="toolkit-overview.html">Overview</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="integrations.html">Integrations</a>
+      <a href="docs.html">Documentation</a>
+      <a href="releases.html">Releases</a>
+      <a href="licensing.html">Licensing</a>
+      <a href="support.html">Support</a>
+      <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
     </div>
-  </div>
-</section>
 
-<section class="section section-divider-top">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Data Flow</p>
-      <h2>How CMDB Data Collection works</h2>
-      <p>The data collector ingests structured data from external APIs and agent-based collection, normalising results into a canonical schema for the central platform or standalone CMDB operation.</p>
-    </div>
-    <div class="diagram-container">
-      <svg viewBox="0 0 960 340" class="diagram-svg mermaid">
-        flowchart TB
-        
-        TOOL["CMDB Data Collector"]
-        
-        API["External APIs"]
-        AGENT["Fleet Agent"]
-        
-        DATA["Structured Data Store"]
-        
-        TOOL --> API
-        TOOL --> AGENT
-        
-        API --> DATA
-        AGENT --> DATA
-      </svg>
-    </div>
-  </div>
-</section>
-
-<div class="cta-band">
-  <div class="wrap">
-    <div class="cta-band-inner">
-      <div>
-        <h2 class="mb-8">Ready to evaluate CMDB API Data Collection Tool?</h2>
-        <p>Contact us to arrange an evaluation or request access to the full documentation set.</p>
-      </div>
-      <div class="cta-band-actions">
-        <a href="support.html#contact" class="btn btn-primary btn-lg">Contact Sales</a>
-        <a href="doc-viewer.html?src=customer-docs/cmdb-api/index.md" class="btn btn-secondary btn-lg">Browse Documentation</a>
+    <div class="page-hero">
+      <div class="wrap">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a><span class="sep">/</span> <a href="toolkit-overview.html">Overview</a><span class="sep">/</span>
+          <span class="cur">CMDB API Data Collection Tool</span>
+        </div>
+        <p class="eyebrow">Ingestion Layer</p>
+        <h1>CMDB API Data Collection Tool</h1>
+        <p>
+          The CMDB API Data Collection Tool is the ingestion and normalisation layer of the AuditToolkit. It collects infrastructure data
+          via 40+ integrations across cloud, network, identity, and enterprise systems, delivering normalised records to the core platform
+          or standalone CMDB.
+        </p>
+        <div class="flex gap-12 flex-wrap mt-24">
+          <span class="badge badge-amber">v0.2.11</span>
+        </div>
+        <div class="flex gap-12 flex-wrap mt-16">
+          <a href="doc-viewer.html?src=customer-docs/cmdb-api/index.md" class="btn btn-primary">View Documentation</a>
+          <a href="cmdb-api-releases.html" class="btn btn-secondary">Release Notes</a>
+          <a href="support.html#contact" class="btn btn-secondary">Contact Sales</a>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="flex items-center gap-12 mb-16"><span class="brand-icon">A</span><span class="footer-brand-title">AuditToolkit Labs</span></div>
-        <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
-        <p class="footer-copy-small">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Capabilities</p>
+          <h2>Key Features</h2>
+        </div>
+        <div class="card">
+          <div class="flex items-center gap-12 mb-16">
+            <div class="product-icon bg-accent-blue">&#128225;</div>
+            <div>
+              <h3 class="mt-0 mb-0">CMDB API Data Collection Tool</h3>
+              <p class="mb-0 text-sm text-muted">Multi-platform infrastructure data ingestion and normalisation</p>
+            </div>
+          </div>
+          <ul class="feature-list">
+            <li>
+              <span class="icon">&#10003;</span
+              ><span class="text">40+ integrations across cloud, network, identity, and enterprise systems</span>
+            </li>
+            <li>
+              <span class="icon">&#10003;</span
+              ><span class="text">Agents for Windows (.NET 8), Linux (Go), macOS, BSD, and containers</span>
+            </li>
+            <li>
+              <span class="icon">&#10003;</span
+              ><span class="text">Dual-mode operation: standalone CMDB or integrated feeder to the core platform</span>
+            </li>
+            <li>
+              <span class="icon">&#10003;</span
+              ><span class="text"
+                >Canonical payload contract (schema_version 2026.05.1) for normalised asset and vulnerability records</span
+              >
+            </li>
+            <li>
+              <span class="icon">&#10003;</span><span class="text">Dead-letter queue with retry and backoff for reliable delivery</span>
+            </li>
+            <li>
+              <span class="icon">&#10003;</span
+              ><span class="text">SSO claim and attribute mapping for enterprise identity integration</span>
+            </li>
+            <li><span class="icon">&#10003;</span><span class="text">Full tenant and workspace governance model</span></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-col"><h4>Products</h4><ul>
-        <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
-        <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
-        <li><a href="cmdb-asset-platform.html">Asset Command Center</a></li>
-        <li><a href="linux-expansion.html">Linux Security Lite</a></li>
-        <li><a href="secure-exposure-centre.html">Secure Exposure Center</a></li>
-      </ul></div>
-      <div class="footer-col"><h4>Resources</h4><ul>
-        <li><a href="toolkit-overview.html">Toolkit Overview</a></li>
-        <li><a href="how-it-works.html">How It Works</a></li>
-        <li><a href="use-cases.html">Use Cases</a></li>
-        <li><a href="integrations.html">Integrations</a></li>
-        <li><a href="docs.html">Central Documentation Library</a></li>
-        <li><a href="releases.html">Release Notes</a></li>
-        <li><a href="licensing.html">Licensing &amp; Pricing</a></li>
-        <li><a href="support.html">Support</a></li>
-      </ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul>
-        <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
-        <li><a href="support.html#contact">Send an Enquiry</a></li>
-      </ul></div>
+    </section>
+
+    <section class="section section-divider-top">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Data Flow</p>
+          <h2>How CMDB Data Collection works</h2>
+          <p>
+            The data collector ingests structured data from external APIs and agent-based collection, normalising results into a canonical
+            schema for the central platform or standalone CMDB operation.
+          </p>
+        </div>
+        <div class="diagram-container">
+          <svg viewBox="0 0 960 340" class="diagram-svg mermaid">
+            flowchart TB TOOL["CMDB Data Collector"] API["External APIs"] AGENT["Fleet Agent"] DATA["Structured Data Store"] TOOL --> API
+            TOOL --> AGENT API --> DATA AGENT --> DATA
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-band">
+      <div class="wrap">
+        <div class="cta-band-inner">
+          <div>
+            <h2 class="mb-8">Ready to evaluate CMDB API Data Collection Tool?</h2>
+            <p>Contact us to arrange an evaluation or request access to the full documentation set.</p>
+          </div>
+          <div class="cta-band-actions">
+            <a href="support.html#contact" class="btn btn-primary btn-lg">Contact Sales</a>
+            <a href="doc-viewer.html?src=customer-docs/cmdb-api/index.md" class="btn btn-secondary btn-lg">Browse Documentation</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="footer-bottom">
-      <p>Licence: Business Source Licence (BSL). See individual product EULA for full usage rights.</p>
-    </div>
-  </div>
-</footer>
-<script src="assets/js/nav.js?v=20260612e"></script>
-</body>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="flex items-center gap-12 mb-16">
+              <span class="brand-icon">A</span><span class="footer-brand-title">AuditToolkit Labs</span>
+            </div>
+            <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
+            <p class="footer-copy-small">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Products</h4>
+            <ul>
+              <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
+              <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
+              <li><a href="cmdb-asset-platform.html">Asset Command Center</a></li>
+              <li><a href="linux-expansion.html">Linux Security Lite</a></li>
+              <li><a href="secure-exposure-centre.html">Secure Exposure Center</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="toolkit-overview.html">Toolkit Overview</a></li>
+              <li><a href="how-it-works.html">How It Works</a></li>
+              <li><a href="use-cases.html">Use Cases</a></li>
+              <li><a href="integrations.html">Integrations</a></li>
+              <li><a href="docs.html">Central Documentation Library</a></li>
+              <li><a href="releases.html">Release Notes</a></li>
+              <li><a href="licensing.html">Licensing &amp; Pricing</a></li>
+              <li><a href="support.html">Support</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
+              <li><a href="support.html#contact">Send an Enquiry</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>Licence: Business Source Licence (BSL). See individual product EULA for full usage rights.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="assets/js/nav.js?v=20260612e"></script>
+  </body>
 </html>

@@ -10,13 +10,13 @@ support and assurance review.
 
 Logs are structured as JSON records. Core fields include:
 
-| Field | Purpose |
-| --- | --- |
-| `Timestamp` | ISO 8601 event time. |
-| `Level` | Severity such as `INFO`, `WARN`, `ERROR`, or `DEBUG`. |
+| Field       | Purpose                                                        |
+| ----------- | -------------------------------------------------------------- |
+| `Timestamp` | ISO 8601 event time.                                           |
+| `Level`     | Severity such as `INFO`, `WARN`, `ERROR`, or `DEBUG`.          |
 | `Component` | Runtime component such as pipeline, SSH, WinRM, API, or agent. |
-| `Message` | Human-readable event description. |
-| `Data` | Structured context, including the run correlation identifier. |
+| `Message`   | Human-readable event description.                              |
+| `Data`      | Structured context, including the run correlation identifier.  |
 
 Every pipeline execution receives a `RunId`. Use that identifier to trace a
 single run across adapter events, result validation, evidence generation, and
@@ -26,12 +26,12 @@ report handling.
 
 The product writes logs under `data/logs/` by default:
 
-| Path | Purpose |
-| --- | --- |
-| `data/logs/audit.log` | Global appended runtime log. |
-| `data/logs/audit-<RunId>.log` | Per-run log for one pipeline execution. |
-| `data/logs/archive/` | Rotated global logs. |
-| `data/logs/web-audit.log` | Web UI security and operational events where enabled. |
+| Path                          | Purpose                                               |
+| ----------------------------- | ----------------------------------------------------- |
+| `data/logs/audit.log`         | Global appended runtime log.                          |
+| `data/logs/audit-<RunId>.log` | Per-run log for one pipeline execution.               |
+| `data/logs/archive/`          | Rotated global logs.                                  |
+| `data/logs/web-audit.log`     | Web UI security and operational events where enabled. |
 
 Production deployments should collect or back up these paths according to the
 customer retention policy.

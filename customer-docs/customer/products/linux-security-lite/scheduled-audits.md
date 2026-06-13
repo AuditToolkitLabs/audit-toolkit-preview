@@ -8,11 +8,11 @@ should follow local change and monitoring policy.
 
 ## Scheduling Options
 
-| Option | Use case |
-| --- | --- |
-| Cron | Broad Linux compatibility and simple recurring execution. |
-| systemd timer | systemd distributions where package-provided units are available. |
-| Configuration management | Fleet deployment through Ansible or similar tooling. |
+| Option                   | Use case                                                          |
+| ------------------------ | ----------------------------------------------------------------- |
+| Cron                     | Broad Linux compatibility and simple recurring execution.         |
+| systemd timer            | systemd distributions where package-provided units are available. |
+| Configuration management | Fleet deployment through Ansible or similar tooling.              |
 
 ## Cron Pattern
 

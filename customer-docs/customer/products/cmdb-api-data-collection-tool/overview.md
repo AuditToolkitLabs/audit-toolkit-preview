@@ -21,15 +21,15 @@ The product supports:
 
 ## In-Scope Components
 
-| Component | Customer-facing role |
-| --- | --- |
-| Web application | Administration console, dashboards, reporting, user management, and operational views. |
-| REST API | Access for agents, connectors, and customer automation. |
-| Windows agent | Endpoint collection for supported Windows systems. |
-| Linux agent | Endpoint collection for supported Linux systems. |
-| Managed agent server | Coordination point for fleet deployments. |
-| Database schema | CMDB storage and migration model. |
-| Audit log subsystem | Evidence of administrator and operational activity. |
+| Component            | Customer-facing role                                                                   |
+| -------------------- | -------------------------------------------------------------------------------------- |
+| Web application      | Administration console, dashboards, reporting, user management, and operational views. |
+| REST API             | Access for agents, connectors, and customer automation.                                |
+| Windows agent        | Endpoint collection for supported Windows systems.                                     |
+| Linux agent          | Endpoint collection for supported Linux systems.                                       |
+| Managed agent server | Coordination point for fleet deployments.                                              |
+| Database schema      | CMDB storage and migration model.                                                      |
+| Audit log subsystem  | Evidence of administrator and operational activity.                                    |
 
 ## Supported Deployment Scope
 

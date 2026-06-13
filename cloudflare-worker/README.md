@@ -230,19 +230,19 @@ Run a signed inbound webhook smoke test from this repository:
 
 - PowerShell:
 
-   ```powershell
-   $env:WORKER_BASE_URL="http://127.0.0.1:8787"
-   $env:RESEND_WEBHOOK_SECRET="<your_resend_webhook_secret>"
-   node .\scripts\send-resend-webhook-sample.mjs
-   ```
+  ```powershell
+  $env:WORKER_BASE_URL="http://127.0.0.1:8787"
+  $env:RESEND_WEBHOOK_SECRET="<your_resend_webhook_secret>"
+  node .\scripts\send-resend-webhook-sample.mjs
+  ```
 
 - Bash:
 
-   ```bash
-   WORKER_BASE_URL="http://127.0.0.1:8787" \
-   RESEND_WEBHOOK_SECRET="<your_resend_webhook_secret>" \
-   node ./scripts/send-resend-webhook-sample.mjs
-   ```
+  ```bash
+  WORKER_BASE_URL="http://127.0.0.1:8787" \
+  RESEND_WEBHOOK_SECRET="<your_resend_webhook_secret>" \
+  node ./scripts/send-resend-webhook-sample.mjs
+  ```
 
 Optional overrides:
 
@@ -257,19 +257,19 @@ Replay a real raw webhook payload from file (for forensic validation):
 
 - PowerShell:
 
-   ```powershell
-   $env:WORKER_BASE_URL="http://127.0.0.1:8787"
-   $env:RESEND_WEBHOOK_SECRET="<your_resend_webhook_secret>"
-   node .\scripts\replay-resend-webhook-from-file.mjs .\samples\resend-event.raw.json
-   ```
+  ```powershell
+  $env:WORKER_BASE_URL="http://127.0.0.1:8787"
+  $env:RESEND_WEBHOOK_SECRET="<your_resend_webhook_secret>"
+  node .\scripts\replay-resend-webhook-from-file.mjs .\samples\resend-event.raw.json
+  ```
 
 - Bash:
 
-   ```bash
-   WORKER_BASE_URL="http://127.0.0.1:8787" \
-   RESEND_WEBHOOK_SECRET="<your_resend_webhook_secret>" \
-   node ./scripts/replay-resend-webhook-from-file.mjs ./samples/resend-event.raw.json
-   ```
+  ```bash
+  WORKER_BASE_URL="http://127.0.0.1:8787" \
+  RESEND_WEBHOOK_SECRET="<your_resend_webhook_secret>" \
+  node ./scripts/replay-resend-webhook-from-file.mjs ./samples/resend-event.raw.json
+  ```
 
 Replay script optional overrides:
 
