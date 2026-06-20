@@ -2,87 +2,71 @@
 
 ## Purpose
 
-Audit Assurance Node is a remote assurance and elevation framework for running
-audits and collecting evidence through transport-specific adapters. It supports
-local, SSH, WinRM, API, and agent-oriented execution patterns while keeping the
-assurance contract separate from the transport layer.
+Audit Assurance Node is the remote execution and evidence coordination service
+for the AuditToolkit suite. It dispatches audit scripts to target hosts through
+transport-neutral adapters, validates results against a defined contract, and
+produces structured evidence artifacts for compliance, governance, and reporting
+workflows.
 
-The product is intended for environments where customers need controlled audit
-execution, repeatable evidence collection, and traceable result handling across
-mixed Windows, Linux, API, and agent-based targets.
+It operates either as an integrated execution tier under Audit-Tool or as a
+standalone service with local licence validation.
 
 ## Primary Outcomes
 
 Audit Assurance Node supports:
 
-- Remote execution against approved hosts.
-- Transport-neutral audit result handling.
-- Parallel execution across multiple hosts.
-- HMAC-backed bundle verification workflows where configured.
-- Web UI execution and report review for standalone operation.
-- Adapter contracts for SSH, WinRM, API, local, and agent execution modes.
-- Structured per-run logging with correlation identifiers.
-- Runtime validation gates for the web UI and adapter contract.
+- Transport-neutral audit execution across SSH, WinRM, agent, and API delivery
+  paths.
+- Adapter contract validation to ensure all results meet a consistent,
+  auditable structure before evidence is produced.
+- Parallel execution across multiple target hosts within a single audit run.
+- Structured JSON logging with run correlation IDs for full audit trail and
+  per-run debugging.
+- Signed evidence artifact generation from validated adapter results.
+- Web console for run history, report review, and standalone operation.
+- Standalone or suite-integrated operation with appropriate licence scope.
 
 ## In-Scope Components
 
-| Component                     | Customer-facing role                                                                                 |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------- |
-| Standalone web UI             | Browser console for login, dashboard review, audit launch, bundle history, and latest report access. |
-| FastAPI runtime               | Web and API surface used by the standalone UI and runtime smoke checks.                              |
-| PowerShell assurance pipeline | Executes configured audit workflows and coordinates result handling.                                 |
-| Transport adapters            | Local, SSH, WinRM, API, and agent execution or ingestion boundaries.                                 |
-| Adapter contract validator    | Rejects malformed transport results before evidence generation.                                      |
-| Evidence bundle store         | Local evidence and report output path for completed runs.                                            |
-| Logging subsystem             | Global and per-run JSON logs for operations and troubleshooting.                                     |
-| Configuration profiles        | Environment-specific settings for development, test, and production operation.                       |
+| Component              | Customer-facing role                                                                    |
+| ---------------------- | --------------------------------------------------------------------------------------- |
+| SSH adapter            | Read-only audit execution over approved SSH sessions to Linux and Unix targets.         |
+| WinRM adapter          | Audit execution over WinRM to Windows Server and workstation targets.                   |
+| Agent adapter          | Execution dispatch to registered AuditToolkit agents on managed hosts.                  |
+| API adapter            | Audit dispatch and result retrieval through the Audit-Tool REST API.                    |
+| Adapter contract layer | Validates all adapter results before evidence is produced or signed.                    |
+| Evidence pipeline      | Produces structured, signed evidence artifacts from validated adapter results.          |
+| Execution log          | JSON-structured per-run and global logs with RunId correlation for every audit event.   |
+| Web console            | Browser interface for run history, latest report, bundle review, and status.            |
+| CLI                    | `audit-assurance-node` command for direct orchestration and standalone execution.       |
 
-## Runtime Model
+## Operating Modes
 
-The product uses environment profiles for configuration. Profiles for
-development, test, and production are stored under `config/environments/`, with
-the active environment selected by runtime configuration or environment
-variable override.
+| Mode               | Description                                                                                  |
+| ------------------ | -------------------------------------------------------------------------------------------- |
+| Suite-integrated   | Operates as an execution tier under Audit-Tool, inheriting platform entitlement and API key. |
+| Standalone         | Operates independently with local licence validation and direct credential management.        |
+| MSP / multi-tenant | Remote execution limits applied per tenant or managed-customer scope.                        |
 
-Parallel execution is controlled by configuration. A parallelism value of `1`
-processes hosts sequentially. Higher values allow concurrent host execution
-subject to customer approval, capacity, and operational controls.
+## Supported Deployment Models
 
-## Standalone Web UI
+Product releases support:
 
-The repository includes a standalone web UI for running audits and viewing
-reports. In that mode, customers can launch the web application, run an audit,
-and review the latest bundle or HTML report from the dashboard.
+- Linux DEB package deployment on Ubuntu and Debian-based distributions.
+- Linux RPM package deployment on RHEL-derived, Fedora, and SUSE distributions.
 
-The hardened UI runtime uses FastAPI patterns, role-aware templates, signed
-browser sessions, configurable UI settings, and an execution lock that prevents
-overlapping audit runs from the web surface.
-
-## Evidence And Bundle Handling
-
-Audit bundles are stored locally under the configured evidence path. The source
-README describes a verification script that locates the latest bundle, loads
-production configuration, runs bundle verification, and reports verification
-status.
-
-Evidence processing depends on adapter results conforming to the shared result
-contract. Invalid results are rejected before evidence generation, signing,
-bundling, or reporting.
-
-## Supported Deployment Scope
-
-Audit Assurance Node can be run locally for development, as a standalone web
-runtime, in a Docker container, with Docker Compose, or as a Windows service
-using an approved service wrapper. Production deployments should use the
-production environment profile, durable storage for configuration and evidence,
-and customer-approved service supervision.
+The service host must have network reachability to all audit target systems on
+the required management ports. Production deployment should use the supported
+package path for the release.
 
 ## Service Boundaries
 
-Customers provide host infrastructure, network reachability, target
-authorization, credential lifecycle, backup and retention controls, and
-monitoring. AuditToolkitLabs provides product fixes, security patches,
-documentation, and support guidance for confirmed product defects.
+Customers provide and operate the host, operating system, network access, TLS
+configuration, firewall rules, credential lifecycle, audit target authorization,
+and evidence retention.
+
+AuditToolkitLabs provides product releases, bug fixes, security advisories,
+documentation, and support guidance for confirmed product issues.
 
 Audit Assurance Node does not replace customer change approval, privileged
 access governance, security monitoring, or independent legal authorization for
@@ -92,18 +76,13 @@ target inspection.
 
 When operated as part of the AuditToolkit suite, Audit Assurance Node inherits
 parent entitlement from Audit-Tool. When operated standalone, it uses local
-license validation aligned to the central commercial-tier policy.
+licence validation aligned to the central commercial-tier policy.
 
 For central licensing authority, see
 [Licensing Overview](../../../licensing/overview.md).
 
-## Product-Specific Pages
+## Product-Specific Follow-Up Pages
 
-- [Deployment](deployment.md)
-- [Authentication](authentication.md)
-- [Adapter model](adapters.md)
-- [SSH WinRM API and agent transports](ssh-winrm-api-agent-transports.md)
-- [Logging and observability](logging-observability.md)
-- [Parallel tracing](parallel-tracing.md)
-- [Runtime validation](runtime-validation.md)
-- [Operational limits](operational-limits.md)
+Planned product pages include execution adapters, credential configuration,
+evidence pipeline, logging and observability, standalone operation, and
+operational limits.
