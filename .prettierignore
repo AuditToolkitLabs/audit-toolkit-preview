@@ -8,6 +8,6 @@ logs/
 .mypy_cache/
 .wrangler/cache/
 cloudflare-worker/.wrangler/cache/
-customer-docs/.stage/
+docs/
 *.svg
 assets/**/*.svg

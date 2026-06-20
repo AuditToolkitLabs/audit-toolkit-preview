@@ -1,15 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <title>Storage Intelligence Platform — AuditToolkit Labs</title>
     <meta
       name="description"
-      content="Storage Intelligence Platform: distributed storage inventory and classification for RHEL, Ubuntu, Lustre, and GPFS environments. Lightweight agents, incremental scanning, no cloud dependency."
-    />
-    <link rel="stylesheet" href="assets/css/site.css?v=20260612g" />
+      content="Storage Intelligence Platform: distributed storage inventory and classification for RHEL, Ubuntu, Lustre, GPFS, and ZFS environments. Lightweight agents, incremental scanning, no cloud dependency."
+    >
+    <link rel="stylesheet" href="assets/css/site.css?v=20260612g">
     <style>
       .nav-mobile-contact {
         color: var(--accent);
@@ -76,7 +76,7 @@
             <li><a href="support.html">Support</a></li>
           </ul>
           <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
-          <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+          <button type="button" class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
         </div>
       </div>
     </nav>
@@ -103,7 +103,7 @@
         <p class="eyebrow">Storage &amp; File Intelligence</p>
         <h1>Storage Intelligence Platform</h1>
         <p>
-          Distributed storage inventory and classification for RHEL, Ubuntu, Lustre, and GPFS environments. Lightweight agents scan each
+          Distributed storage inventory and classification for RHEL, Ubuntu, Lustre, GPFS, and ZFS environments. Lightweight agents scan each
           node incrementally — no cloud dependency, no I/O storm, full audit trail from first scan to today.
         </p>
         <div class="flex gap-12 flex-wrap mt-24">
@@ -113,7 +113,7 @@
           <span class="badge badge-muted">BSL 1.1</span>
         </div>
         <div class="flex gap-12 flex-wrap mt-16">
-          <a href="doc-viewer.html?src=customer-docs/storage-scanner/index.md" class="btn btn-primary">View Documentation</a>
+          <a href="docs.html" class="btn btn-primary">View Documentation</a>
           <a href="storage-scanner-releases.html" class="btn btn-secondary">Release Notes</a>
           <a href="support.html#contact" class="btn btn-secondary">Contact Sales</a>
         </div>
@@ -138,7 +138,7 @@
           <ul class="feature-list">
             <li>
               <span class="icon">&#10003;</span>
-              <span class="text">Lightweight agents deploy on any storage node — RHEL 8/9, Ubuntu 22.04/24.04, Debian 12, Lustre, GPFS, and Windows Server</span>
+              <span class="text">Lightweight agents deploy on any storage node — RHEL 8/9, Ubuntu 22.04/24.04, Debian 12, Lustre, GPFS, ZFS (OpenZFS), and Windows Server</span>
             </li>
             <li>
               <span class="icon">&#10003;</span>
@@ -188,8 +188,8 @@
         <div class="diagram-container">
           <svg viewBox="0 0 960 360" class="diagram-svg mermaid">
             flowchart TB
-              NODE1["Storage Node\n(RHEL / Lustre)"] --> AGENT1["Scanner Agent"]
-              NODE2["Storage Node\n(Ubuntu / GPFS)"] --> AGENT2["Scanner Agent"]
+              NODE1["Storage Node\n(RHEL / Lustre / GPFS)"] --> AGENT1["Scanner Agent"]
+              NODE2["Storage Node\n(Ubuntu / ZFS / OpenZFS)"] --> AGENT2["Scanner Agent"]
               NODE3["Storage Node\n(Windows Server)"] --> AGENT3["Scanner Agent"]
               AGENT1 --> SERVER["Control Plane\n(FastAPI + PostgreSQL)"]
               AGENT2 --> SERVER
@@ -215,8 +215,8 @@
             <h3 class="mt-0">Incremental by design</h3>
             <p>
               The first scan of a node establishes a baseline. Every subsequent scan only processes files that have changed —
-              new, modified, or deleted. Large NAS and Lustre filesystems that would take hours to full-scan complete incrementally
-              in minutes, with no measurable I/O impact on production workloads.
+              new, modified, or deleted. Large NAS, Lustre, and ZFS filesystems that would take hours to full-scan complete
+              incrementally in minutes, with no measurable I/O impact on production workloads.
             </p>
           </div>
           <div class="card">
@@ -370,7 +370,7 @@
           </div>
           <div class="cta-band-actions">
             <a href="support.html#contact" class="btn btn-primary btn-lg">Contact Sales</a>
-            <a href="doc-viewer.html?src=customer-docs/storage-scanner/index.md" class="btn btn-secondary btn-lg">Browse Documentation</a>
+            <a href="docs.html" class="btn btn-secondary btn-lg">Browse Documentation</a>
           </div>
         </div>
       </div>

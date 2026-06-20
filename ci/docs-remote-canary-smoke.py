@@ -20,32 +20,16 @@ DOC_INDEX_FILES = [
     REPO_ROOT / "docs.html",
 ]
 
-SRC_PATTERN = re.compile(r"doc-viewer\.html\?src=([^\"'&]+)", re.IGNORECASE)
+SRC_PATTERN = re.compile(r"src:\s*['\"]([^'\"]+\.md)['\"]", re.IGNORECASE)
 
-CENTRAL_PATH_MAP = {
-    "customer-docs/cmdb-api/index.md": (
-        "downloads/CMDB API Data Collection Tool/v1.0.1/README.md"
-    ),
-    "customer-docs/audit-toolkit/index.md": (
-        "downloads/Audit Toolkit/v6.4.4/changelog.md"
-    ),
-    "customer-docs/asset-command-center/index.md": (
-        "downloads/Asset Command Center/v1.1.0/README.md"
-    ),
-    "customer-docs/linux-security-lite/index.md": (
-        "downloads/Linux Security Lite/v1.2.2/README.md"
-    ),
-    "customer-docs/Switch Exposure Centre/index.md": (
-        "downloads/Switch Exposure Centre/v0.1.1/README.md"
-    ),
-}
+CENTRAL_PATH_MAP: dict[str, str] = {}
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
             "Verify remote markdown can be resolved for docs links while "
-            "local customer-docs availability is not assumed."
+            "local docs/ availability is not assumed."
         )
     )
     parser.add_argument(
