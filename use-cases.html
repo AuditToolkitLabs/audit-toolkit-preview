@@ -836,6 +836,146 @@
       </div>
     </section>
 
+    <section class="section" id="hpc-storage-compliance">
+      <div class="wrap">
+        <div class="use-case-number">Use Case 11</div>
+        <div class="use-case-card">
+          <div>
+            <h2>Storage compliance inventory in air-gapped HPC environments</h2>
+            <p><strong>Who:</strong> HPC administrators at research institutions and government labs running Lustre or GPFS with no outbound internet access</p>
+            <div class="use-case-problem">
+              <p>
+                Annual infrastructure audits require a full inventory of storage assets — file counts, data volumes, and classification
+                breakdowns — but the environment is air-gapped and no data can leave the facility. Manually cataloguing Lustre or GPFS
+                filesystems with shell scripts produces inconsistent, un-timestamped snapshots that do not satisfy auditors and cannot show
+                change over time.
+              </p>
+            </div>
+            <div class="use-case-outcome">
+              <strong>Business Outcome</strong>
+              <p>
+                A signed, timestamped, exportable storage inventory that satisfies auditor requirements and can be produced on-demand
+                without reinstalling anything or touching production workloads.
+              </p>
+            </div>
+          </div>
+          <div>
+            <h3>How Storage Intelligence Platform helps</h3>
+            <ul class="feature-list">
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Air-gap deployment — Docker images load offline from tarballs; no outbound connectivity required at any point during
+                  operation</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Native Lustre and GPFS agent support — scans filesystem metadata without triggering unnecessary data reads or impacting
+                  active jobs</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Incremental checkpointing — after the first baseline, only changed files are re-examined, so large HPC filesystems
+                  complete in minutes rather than hours</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Classification breakdown and file-count analytics give auditors the summary views they need without exposing raw file
+                  content</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >CSV and JSON exports from the web UI feed directly into evidence packages for certification and compliance review</span
+                >
+              </li>
+            </ul>
+            <div class="products-used">
+              <span class="badge badge-blue">Storage Intelligence Platform</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="storage-migration-delta">
+      <div class="wrap">
+        <div class="use-case-number">Use Case 12</div>
+        <div class="use-case-card">
+          <div>
+            <h2>Change tracking and delta reporting through a storage migration</h2>
+            <p><strong>Who:</strong> Infrastructure engineers managing NAS or SAN migrations across RHEL, Ubuntu, or Windows Server environments</p>
+            <div class="use-case-problem">
+              <p>
+                During a phased storage migration it is critical to know exactly what changed between the pre-migration state and each
+                subsequent phase — which files moved, which were modified in transit, which were never copied. Without a baseline and a
+                diff-capable tool, teams resort to comparing manual du outputs, which cannot detect file-level changes and produce no
+                evidence trail for sign-off.
+              </p>
+            </div>
+            <div class="use-case-outcome">
+              <strong>Business Outcome</strong>
+              <p>
+                A verified delta report showing exactly what changed between migration phases, with a complete audit trail per node, ready
+                for sign-off at each gate.
+              </p>
+            </div>
+          </div>
+          <div>
+            <h3>How Storage Intelligence Platform helps</h3>
+            <ul class="feature-list">
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Pre-migration baseline scan captures every node's full file inventory — size, path, extension, and classification — as a
+                  dated reference point</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Incremental checkpoint architecture records exactly which files changed between any two scan points without re-scanning
+                  unchanged data</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Deleted-file tracking is preserved in inventory — files removed on a source node are retained with a precise timestamp,
+                  confirming migration completion</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Job history export provides a per-phase evidence trail suitable for migration sign-off and post-migration audit
+                  documentation</span
+                >
+              </li>
+              <li>
+                <span class="icon">&#10003;</span
+                ><span class="text"
+                  >Agent offline alerts surface scan gaps immediately so no migration phase goes uninspected and no data movement is left
+                  unverified</span
+                >
+              </li>
+            </ul>
+            <div class="products-used">
+              <span class="badge badge-blue">Storage Intelligence Platform</span>
+              <span class="badge badge-muted">Audit Admin Toolkit</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="cta-band">
       <div class="wrap">
         <div class="cta-band-inner">
@@ -869,6 +1009,7 @@
               <li><a href="cmdb-asset-platform.html">Asset Command Center</a></li>
               <li><a href="linux-expansion.html">Linux Security Lite</a></li>
               <li><a href="secure-exposure-centre.html">Secure Exposure Center</a></li>
+              <li><a href="storage-scanner.html">Storage Intelligence Platform</a></li>
               <li><a href="script-coverage.html">Script Coverage</a></li>
               <li><a href="remediation.html">Remediation</a></li>
             </ul>

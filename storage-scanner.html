@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <title>Storage Intelligence Platform — AuditToolkit Labs</title>
+    <meta
+      name="description"
+      content="Storage Intelligence Platform: distributed storage inventory and classification for RHEL, Ubuntu, Lustre, and GPFS environments. Lightweight agents, incremental scanning, no cloud dependency."
+    />
+    <link rel="stylesheet" href="assets/css/site.css?v=20260612g" />
+    <style>
+      .nav-mobile-contact {
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .footer-brand-title {
+        font-weight: 700;
+        font-size: 1.05rem;
+      }
+      .footer-copy-small {
+        font-size: 0.82rem;
+      }
+      .tier-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+      }
+      .tier-table th,
+      .tier-table td {
+        padding: 12px 16px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+      }
+      .tier-table thead th {
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .tier-table tbody tr:last-child td {
+        border-bottom: none;
+      }
+      .tier-table tbody tr:hover td {
+        background: rgba(255,255,255,0.02);
+      }
+      .tier-free-badge {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: rgba(110,231,183,0.15);
+        color: #6ee7b7;
+        margin-left: 8px;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="wrap">
+        <div class="nav-inner">
+          <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+          <ul class="nav-links">
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="toolkit-overview.html">Overview</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="use-cases.html">Use Cases</a></li>
+            <li><a href="integrations.html">Integrations</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="releases.html">Releases</a></li>
+            <li><a href="licensing.html">Licensing</a></li>
+            <li><a href="support.html">Support</a></li>
+          </ul>
+          <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+          <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="toolkit-overview.html">Overview</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="integrations.html">Integrations</a>
+      <a href="docs.html">Documentation</a>
+      <a href="releases.html">Releases</a>
+      <a href="licensing.html">Licensing</a>
+      <a href="support.html">Support</a>
+      <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
+    </div>
+
+    <div class="page-hero">
+      <div class="wrap">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a><span class="sep">/</span> <a href="toolkit-overview.html">Overview</a><span class="sep">/</span>
+          <span class="cur">Storage Intelligence Platform</span>
+        </div>
+        <p class="eyebrow">Storage &amp; File Intelligence</p>
+        <h1>Storage Intelligence Platform</h1>
+        <p>
+          Distributed storage inventory and classification for RHEL, Ubuntu, Lustre, and GPFS environments. Lightweight agents scan each
+          node incrementally — no cloud dependency, no I/O storm, full audit trail from first scan to today.
+        </p>
+        <div class="flex gap-12 flex-wrap mt-24">
+          <span class="badge badge-green">v1.0.11</span>
+          <span class="badge badge-muted">Self-hosted</span>
+          <span class="badge badge-muted">Air-gap ready</span>
+          <span class="badge badge-muted">BSL 1.1</span>
+        </div>
+        <div class="flex gap-12 flex-wrap mt-16">
+          <a href="doc-viewer.html?src=customer-docs/storage-scanner/index.md" class="btn btn-primary">View Documentation</a>
+          <a href="storage-scanner-releases.html" class="btn btn-secondary">Release Notes</a>
+          <a href="support.html#contact" class="btn btn-secondary">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Features -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Capabilities</p>
+          <h2>Key Features</h2>
+        </div>
+        <div class="card">
+          <div class="flex items-center gap-12 mb-16">
+            <div class="product-icon bg-accent-teal">&#128190;</div>
+            <div>
+              <h3 class="mt-0 mb-0">Storage Intelligence Platform</h3>
+              <p class="mb-0 text-sm text-muted">Distributed file inventory, classification, and change-tracking for enterprise storage</p>
+            </div>
+          </div>
+          <ul class="feature-list">
+            <li>
+              <span class="icon">&#10003;</span>
+              <span class="text">Lightweight agents deploy on any storage node — RHEL 8/9, Ubuntu 22.04/24.04, Debian 12, Lustre, GPFS, and Windows Server</span>
+            </li>
+            <li>
+              <span class="icon">&#10003;</span>
+              <span class="text">Incremental scanning with checkpointing — only changed files are re-examined after baseline, eliminating repeated full-scan I/O load</span>
+            </li>
+            <li>
+              <span class="icon">&#10003;</span>
+              <span class="text">Central control plane with web UI, job scheduler, and real-time inventory — all self-hosted, no external services required</span>
+            </li>
+            <li>
+              <span class="icon">&#10003;</span>
+              <span class="text">Classification breakdown, top-extension analytics, and 14-day job outcome trend charts built into the dashboard</span>
+            </li>
+            <li>
+              <span class="icon">&#10003;</span>
+              <span class="text">CSV and JSON export of full inventory and job history — feed downstream SIEM, ITSM, or reporting platforms directly</span>
+            </li>
+            <li>
+              <span class="icon">&#10003;</span>
+              <span class="text">Configurable SMTP and webhook alerting — agent offline, scan job failure, and licence expiry events with per-rule thresholds</span>
+            </li>
+            <li>
+              <span class="icon">&#10003;</span>
+              <span class="text">Air-gap deployment supported — Docker images load offline, agent auto-update serves packages from a local path with SHA-256 verification</span>
+            </li>
+            <li>
+              <span class="icon">&#10003;</span>
+              <span class="text">BSL 1.1 licence — free up to 10 nodes with no time limit; paid tiers extend to 50, 200, or unlimited nodes via key activation</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section class="section section-divider-top">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Architecture</p>
+          <h2>How Storage Intelligence Platform works</h2>
+          <p>
+            Agents run directly on each storage node and publish scan results to the central control plane over a standard HTTPS connection.
+            The control plane never pulls data from agents — agents always initiate — which means network segmentation and firewall rules
+            remain simple and agents continue scanning even when the server is temporarily unreachable.
+          </p>
+        </div>
+        <div class="diagram-container">
+          <svg viewBox="0 0 960 360" class="diagram-svg mermaid">
+            flowchart TB
+              NODE1["Storage Node\n(RHEL / Lustre)"] --> AGENT1["Scanner Agent"]
+              NODE2["Storage Node\n(Ubuntu / GPFS)"] --> AGENT2["Scanner Agent"]
+              NODE3["Storage Node\n(Windows Server)"] --> AGENT3["Scanner Agent"]
+              AGENT1 --> SERVER["Control Plane\n(FastAPI + PostgreSQL)"]
+              AGENT2 --> SERVER
+              AGENT3 --> SERVER
+              SERVER --> UI["Web UI\nDashboard · Jobs · Inventory · Settings"]
+              SERVER --> EXPORT["Exports\nCSV · JSON"]
+              SERVER --> ALERT["Alerts\nSMTP · Webhook"]
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deployment -->
+    <section class="section section-surface">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Deployment</p>
+          <h2>Built for complex storage environments</h2>
+          <p>Three properties that matter in enterprise storage infrastructure.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3 class="mt-0">Incremental by design</h3>
+            <p>
+              The first scan of a node establishes a baseline. Every subsequent scan only processes files that have changed —
+              new, modified, or deleted. Large NAS and Lustre filesystems that would take hours to full-scan complete incrementally
+              in minutes, with no measurable I/O impact on production workloads.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Agents survive server outages</h3>
+            <p>
+              Scanner agents never block on server availability. If the control plane is unreachable, scan jobs complete locally and
+              results are held until the connection resumes. No data is lost, no scan windows are missed, and no manual intervention
+              is needed after a maintenance window or network partition.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Air-gap and offline ready</h3>
+            <p>
+              Docker images for both the server and agent are provided as loadable tarballs for environments with no outbound internet
+              access. The agent auto-update mechanism can serve packages from a local server path, eliminating the need for any
+              external package repository during operation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Licensing tiers -->
+    <section class="section section-divider-top">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Licensing</p>
+          <h2>Tiers and node limits</h2>
+          <p>
+            Licences are activated by key in the admin UI or via an environment variable at startup.
+            The free tier requires no key and has no expiry — it simply caps at ten managed nodes.
+          </p>
+        </div>
+        <div class="card">
+          <div class="table-wrap">
+            <table class="tier-table">
+              <thead>
+                <tr>
+                  <th>Tier</th>
+                  <th>Node limit</th>
+                  <th>Machine slots</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Free</strong> <span class="tier-free-badge">No key required</span></td>
+                  <td>10 nodes</td>
+                  <td>—</td>
+                  <td>Full feature set. No expiry. BSL 1.1.</td>
+                </tr>
+                <tr>
+                  <td><strong>Solo</strong></td>
+                  <td>10 nodes</td>
+                  <td>1</td>
+                  <td>Single-operator deployment. Key issued on purchase.</td>
+                </tr>
+                <tr>
+                  <td><strong>Team</strong></td>
+                  <td>50 nodes</td>
+                  <td>2 (floating)</td>
+                  <td>Suitable for departmental storage environments.</td>
+                </tr>
+                <tr>
+                  <td><strong>Business</strong></td>
+                  <td>200 nodes</td>
+                  <td>3 (floating)</td>
+                  <td>Enterprise storage estates and multi-site deployments.</td>
+                </tr>
+                <tr>
+                  <td><strong>Unlimited</strong></td>
+                  <td>Unlimited</td>
+                  <td>5 (floating)</td>
+                  <td>No node cap. For large-scale or service-provider use.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-sm text-muted mt-16">
+            Keys are issued automatically after purchase via Stripe and activated in Admin &rarr; Settings. Activation requires
+            outbound HTTPS to the Keygen.sh licence service at key activation time only — no ongoing connectivity is required.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Packages -->
+    <section class="section section-divider-top">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Distribution</p>
+          <h2>Available packages</h2>
+          <p>Every release ships the same code in five formats. Choose the one that fits your deployment tooling.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3 class="mt-0">&#127381; DEB — Debian / Ubuntu</h3>
+            <p>
+              Native packages for Ubuntu 22.04, Ubuntu 24.04, and Debian 12. Both the server and agent are
+              available as <code>.deb</code> files — install with <code>dpkg</code> or include in an Ansible
+              playbook.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">&#128230; RPM — RHEL / Rocky / Alma</h3>
+            <p>
+              RPM packages for RHEL 8/9, Rocky Linux 9, and AlmaLinux 9. Install directly with <code>rpm -i</code>
+              or integrate into Satellite / Ansible automation.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">&#128190; Docker — Server and Agent</h3>
+            <p>
+              Docker image tarballs for air-gapped environments. Load with <code>docker load</code>. The server
+              image includes PostgreSQL client tools. Compose file and <code>.env</code> example included in each release.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">&#129695; Windows ZIP — Agent</h3>
+            <p>
+              Windows Server 2019+ agent distribution. Extract and run as a service for mixed Windows/Linux
+              storage estates.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">&#128230; Full Bundle</h3>
+            <p>
+              Every release also ships as a single <code>audit-platform-{version}.tar.gz</code> containing all
+              packages, install scripts, documentation, and a CycloneDX 1.4 SBOM. One archive — everything
+              needed for an air-gapped rollout.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">&#9989; Release Certification</h3>
+            <p>
+              Every release passes a 7-gate certification model before publication: build verification, package
+              integrity, unit tests, migration check, licence gate, SBOM generation, and checksum signing.
+              The evidence bundle ships inside the full archive.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-band">
+      <div class="wrap">
+        <div class="cta-band-inner">
+          <div>
+            <h2 class="mb-8">Ready to evaluate the Storage Intelligence Platform?</h2>
+            <p>The free tier covers ten nodes with no time limit. Contact us to discuss larger deployments or arrange a guided walkthrough.</p>
+          </div>
+          <div class="cta-band-actions">
+            <a href="support.html#contact" class="btn btn-primary btn-lg">Contact Sales</a>
+            <a href="doc-viewer.html?src=customer-docs/storage-scanner/index.md" class="btn btn-secondary btn-lg">Browse Documentation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="flex items-center gap-12 mb-16">
+              <span class="brand-icon">A</span><span class="footer-brand-title">AuditToolkit Labs</span>
+            </div>
+            <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
+            <p class="footer-copy-small">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Products</h4>
+            <ul>
+              <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
+              <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
+              <li><a href="cmdb-asset-platform.html">Asset Command Center</a></li>
+              <li><a href="linux-expansion.html">Linux Security Lite</a></li>
+              <li><a href="secure-exposure-centre.html">Secure Exposure Center</a></li>
+              <li><a href="storage-scanner.html">Storage Intelligence Platform</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="toolkit-overview.html">Toolkit Overview</a></li>
+              <li><a href="how-it-works.html">How It Works</a></li>
+              <li><a href="use-cases.html">Use Cases</a></li>
+              <li><a href="integrations.html">Integrations</a></li>
+              <li><a href="docs.html">Central Documentation Library</a></li>
+              <li><a href="releases.html">Release Notes</a></li>
+              <li><a href="licensing.html">Licensing &amp; Pricing</a></li>
+              <li><a href="support.html">Support</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
+              <li><a href="support.html#contact">Send an Enquiry</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>Licence: Business Source Licence (BSL). See individual product EULA for full usage rights.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="assets/js/nav.js?v=20260612e"></script>
+  </body>
+</html>
