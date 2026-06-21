@@ -295,7 +295,7 @@
         </div>
         <div class="diagram-container">
           <svg viewBox="0 0 960 540" class="diagram-svg mermaid">
-            flowchart TB subgraph ControlPlane["Control Plane"] CC["AuditToolkit Control Centre"] API["API Layer"] end subgraph Tools["Audit
+            flowchart TB subgraph ControlPlane["Control Plane"] CC["Web Console"] API["API Layer"] end subgraph Tools["Audit
             Tools"] T1["Audit-Tool"] T2["Switch Exposure Center"] T3["CMDB Data Collector"] T4["Linux Security Lite"] T5["Audit Assurance
             Node"] end subgraph Execution["Execution Methods"] AG["Fleet Agent"] SSH["SSH"] WINRM["WinRM"] SNMP["SNMP"] end subgraph
             Targets["Target Systems"] LINUX["Linux Hosts"] WINDOWS["Windows Hosts"] NETWORK["Network Devices"] end CC --> API API --> T1 API
