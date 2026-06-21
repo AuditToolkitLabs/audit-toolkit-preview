@@ -518,6 +518,62 @@
           a central findings platform, remediation workflows, and tamper-evident evidence packaging.
           <a href="lite-toolkit.html" class="ml-12">Full Lite Toolkit overview &rarr;</a>
         </div>
+        <div class="callout info mt-16">
+          <strong>Licensing:</strong> AuditToolkit Lite is a separate add-on, sold independently of the Platform licence.
+          One annual licence (£4,999/year) activates all three host tools.
+        </div>
+        <div class="flex gap-12 flex-wrap mt-24">
+          <a href="price.html#audittoolkit-lite" class="btn btn-primary btn-sm">View Pricing</a>
+          <a href="lite-toolkit.html" class="btn btn-secondary btn-sm">Product Overview</a>
+          <a href="docs.html?p=linux-host-lite&d=00" class="btn btn-secondary btn-sm">View Documentation</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-divider" id="storage-intelligence-platform">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Storage Intelligence Platform</p>
+          <h2>Distributed Storage Inventory — Sold Separately</h2>
+          <p>
+            A standalone product, licensed and priced independently of the AuditToolkit suite. Lightweight agents run on each storage node
+            and publish results to a self-hosted control plane — distributed file inventory, classification, and change-tracking across
+            RHEL, Ubuntu, Lustre, GPFS, ZFS, and Windows Server, with no cloud dependency.
+          </p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3 class="mt-0">Incremental by design</h3>
+            <p>
+              The first scan establishes a baseline; every subsequent scan only processes new, modified, or deleted files. Large NAS,
+              Lustre, and ZFS filesystems complete in minutes with no measurable I/O impact on production workloads.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Agents survive server outages</h3>
+            <p>
+              Agents always initiate the connection and never block on server availability. If the control plane is unreachable, scan jobs
+              complete locally and results are held until the connection resumes — no lost data, no missed scan windows.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Air-gap and offline ready</h3>
+            <p>
+              Docker images for the server and agent ship as loadable tarballs. The agent auto-update mechanism serves packages from a local
+              path with SHA-256 verification — no external package repository required at run time.
+            </p>
+          </div>
+        </div>
+        <div class="callout info mt-24">
+          <strong>Licensing:</strong> BSL 1.1 — free up to 10 nodes with no expiry. Paid tiers extend to 50, 200, or unlimited nodes
+          (£995–£8,500/year) via key activation.
+        </div>
+        <div class="flex gap-12 flex-wrap mt-24">
+          <a href="price.html#storage-intelligence-platform" class="btn btn-primary btn-sm">View Pricing</a>
+          <a href="docs.html?p=storage-intel&d=00" class="btn btn-secondary btn-sm">View Documentation</a>
+          <a href="storage-scanner.html" class="btn btn-secondary btn-sm">Product Overview</a>
+          <a href="storage-scanner-releases.html" class="btn btn-secondary btn-sm">Release Notes</a>
+        </div>
       </div>
     </section>
 

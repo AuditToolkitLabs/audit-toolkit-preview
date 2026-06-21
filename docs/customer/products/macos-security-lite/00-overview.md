@@ -78,5 +78,6 @@ documentation, and support guidance for confirmed product issues.
 
 ## Product-Specific Follow-Up Pages
 
-Planned product pages include Gatekeeper and first run, activation and offline
-licensing, web report viewer, scan profiles, and output schema reference.
+- [Gatekeeper and First Audit](01-gatekeeper-and-first-audit.md)
+- [Configuration and Scan Profiles](02-configuration.md)
+- [Output Schema Reference](03-output-schema-reference.md)

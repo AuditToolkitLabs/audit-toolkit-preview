@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-06-21T11:50:38Z",
+  "products": [
+    {
+      "slug": "storage-intelligence-platform",
+      "product": "Storage Intelligence Platform",
+      "latest": "v1.0.17",
+      "count": 7,
+      "mirrored": 2,
+      "data": "releases/data/storage-intelligence-platform.json",
+      "page": "storage-scanner-releases.html",
+      "blurb": "Distributed storage inventory, classification, and change-tracking."
+    }
+  ]
+}

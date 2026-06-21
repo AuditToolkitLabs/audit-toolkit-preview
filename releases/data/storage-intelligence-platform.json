@@ -1,0 +1,405 @@
+{
+  "product": "Storage Intelligence Platform",
+  "slug": "storage-intelligence-platform",
+  "repo": "audittoolkitlabs/Storage-Intelligence-Platform",
+  "hub": "github:AuditToolkitLabs/releases",
+  "generated_at": "2026-06-21T11:50:38Z",
+  "latest": "v1.0.17",
+  "releases": [
+    {
+      "tag": "v1.0.17",
+      "name": "v1.0.17 — Production Release",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-06-21T10:30:30Z",
+      "author": "auditadmin",
+      "body_md": "## Storage Intelligence Platform v1.0.17\n\n### Packages\n| Package | Format | Target |\n|---------|--------|--------|\n| scanner-server | .deb | Ubuntu 22.04+, Debian 11+ |\n| scanner-server | .rpm | RHEL 8+, Rocky 9+, AlmaLinux 9+ |\n| scanner-agent | .deb | Ubuntu 22.04+, Debian 11+ |\n| scanner-agent | .rpm | RHEL 8+, Rocky 9+, AlmaLinux 9+ |\n| scanner-agent | .zip | Windows Server 2019+ |\n| scanner-server | docker tar.gz | Any Docker 24+ host |\n\n### Quick Install\n```bash\ntar xzf audit-platform-1.0.17.tar.gz\ncd release/1.0.17\nsudo ./bundle/install.sh                    # server\nsudo ./bundle/install.sh --component agent  # agent\n```\n\n### Certification\nThis release has passed the 7-gate certification model.\nSee `evidence/certification-report.md` inside the archive.\n\n### Changes since v1.0.11\n- b78570f fix: lazy annotations in structured.py for Python 3.9 (RPM build gate)\n- 9d354ee feat: enterprise auth, SIEM connectors, compliance reports, remediation (v1.0.13–1.0.17)\n- 53b89cf refactor: split admin settings into Settings / Alerts / System pages\n- 5906f80 feat: findings alerting system (v1.0.14)\n- 3aa5372 feat: permissions mapping, expanded patterns, dedicated Findings page (v1.0.13)\n- d8797e1 feat: content scanning, custom file type registry, targeted scans, analytics improvements (v1.0.12)\n",
+      "assets": [
+        {
+          "name": "audit-platform-1.0.17.tar.gz",
+          "size": 141466897,
+          "download_count": 3,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.17/audit-platform-1.0.17.tar.gz"
+        },
+        {
+          "name": "sbom-1.0.17.json",
+          "size": 18427,
+          "download_count": 3,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.17/sbom-1.0.17.json"
+        },
+        {
+          "name": "scanner-agent-1.0.17-1.el9.x86_64.rpm",
+          "size": 53400,
+          "download_count": 3,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.17/scanner-agent-1.0.17-1.el9.x86_64.rpm"
+        },
+        {
+          "name": "scanner-agent-1.0.17-win.zip",
+          "size": 56573,
+          "download_count": 3,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.17/scanner-agent-1.0.17-win.zip"
+        },
+        {
+          "name": "scanner-agent-1.0.17.tar.gz",
+          "size": 48242867,
+          "download_count": 3,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.17/scanner-agent-1.0.17.tar.gz"
+        },
+        {
+          "name": "scanner-agent_1.0.17_amd64.deb",
+          "size": 38236,
+          "download_count": 3,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.17/scanner-agent_1.0.17_amd64.deb"
+        },
+        {
+          "name": "scanner-server-1.0.17-1.el9.x86_64.rpm",
+          "size": 108884,
+          "download_count": 3,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.17/scanner-server-1.0.17-1.el9.x86_64.rpm"
+        },
+        {
+          "name": "scanner-server-1.0.17.tar.gz",
+          "size": 92783007,
+          "download_count": 3,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.17/scanner-server-1.0.17.tar.gz"
+        },
+        {
+          "name": "scanner-server_1.0.17_amd64.deb",
+          "size": 89636,
+          "download_count": 3,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.17/scanner-server_1.0.17_amd64.deb"
+        }
+      ]
+    },
+    {
+      "tag": "v1.0.11",
+      "name": "v1.0.11 — Production Release",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-06-20T14:54:01Z",
+      "author": "auditadmin",
+      "body_md": "## Storage Intelligence Platform v1.0.11\n\n### Packages\n| Package | Format | Target |\n|---------|--------|--------|\n| scanner-server | .deb | Ubuntu 22.04+, Debian 11+ |\n| scanner-server | .rpm | RHEL 8+, Rocky 9+, AlmaLinux 9+ |\n| scanner-agent | .deb | Ubuntu 22.04+, Debian 11+ |\n| scanner-agent | .rpm | RHEL 8+, Rocky 9+, AlmaLinux 9+ |\n| scanner-agent | .zip | Windows Server 2019+ |\n| scanner-server | docker tar.gz | Any Docker 24+ host |\n\n### Quick Install\n```bash\ntar xzf audit-platform-1.0.11.tar.gz\ncd release/1.0.11\nsudo ./bundle/install.sh                    # server\nsudo ./bundle/install.sh --component agent  # agent\n```\n\n### Certification\nThis release has passed the 7-gate certification model.\nSee `evidence/certification-report.md` inside the archive.\n\n### Changes since v1.0.10\n- 9408a20 fix: admin UI login redirect loop on 403 responses (v1.0.11)\n",
+      "assets": [
+        {
+          "name": "audit-platform-1.0.11.tar.gz",
+          "size": 134777394,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.11/audit-platform-1.0.11.tar.gz"
+        },
+        {
+          "name": "sbom-1.0.11.json",
+          "size": 16760,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.11/sbom-1.0.11.json"
+        },
+        {
+          "name": "scanner-agent-1.0.11-1.el9.x86_64.rpm",
+          "size": 39648,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.11/scanner-agent-1.0.11-1.el9.x86_64.rpm"
+        },
+        {
+          "name": "scanner-agent-1.0.11-win.zip",
+          "size": 40516,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.11/scanner-agent-1.0.11-win.zip"
+        },
+        {
+          "name": "scanner-agent-1.0.11.tar.gz",
+          "size": 48227397,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.11/scanner-agent-1.0.11.tar.gz"
+        },
+        {
+          "name": "scanner-agent_1.0.11_amd64.deb",
+          "size": 25756,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.11/scanner-agent_1.0.11_amd64.deb"
+        },
+        {
+          "name": "scanner-server-1.0.11-1.el9.x86_64.rpm",
+          "size": 86219,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.11/scanner-server-1.0.11-1.el9.x86_64.rpm"
+        },
+        {
+          "name": "scanner-server-1.0.11.tar.gz",
+          "size": 86202755,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.11/scanner-server-1.0.11.tar.gz"
+        },
+        {
+          "name": "scanner-server_1.0.11_amd64.deb",
+          "size": 68596,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.11/scanner-server_1.0.11_amd64.deb"
+        }
+      ]
+    },
+    {
+      "tag": "v1.0.10",
+      "name": "v1.0.10 — Production Release",
+      "prerelease": false,
+      "mirrored": false,
+      "published_at": "2026-06-20T13:12:00Z",
+      "author": "auditadmin",
+      "body_md": "## Storage Intelligence Platform v1.0.10\n\n### Packages\n| Package | Format | Target |\n|---------|--------|--------|\n| scanner-server | .deb | Ubuntu 22.04+, Debian 11+ |\n| scanner-server | .rpm | RHEL 8+, Rocky 9+, AlmaLinux 9+ |\n| scanner-agent | .deb | Ubuntu 22.04+, Debian 11+ |\n| scanner-agent | .rpm | RHEL 8+, Rocky 9+, AlmaLinux 9+ |\n| scanner-agent | .zip | Windows Server 2019+ |\n| scanner-server | docker tar.gz | Any Docker 24+ host |\n\n### Quick Install\n```bash\ntar xzf audit-platform-1.0.10.tar.gz\ncd release/1.0.10\nsudo ./bundle/install.sh                    # server\nsudo ./bundle/install.sh --component agent  # agent\n```\n\n### Certification\nThis release has passed the 7-gate certification model.\nSee `evidence/certification-report.md` inside the archive.\n\n### Changes since v1.0.3\n- 0e4116c chore: bump version to 1.0.10 for patch release\n- 60f7929 feat: agent auto-update mechanism (Step 8)\n- 15adcae feat: SBOM auto-generation in CI (Step 7)\n- 8d969c3 feat: dashboard analytics (Step 6)\n- f16af55 feat: scan result export CSV/JSON (Step 5)\n- 7dee7e2 feat: alerting & notifications (Step 4)\n- 7ea0d96 feat: add API rate limiting, licence expiry banner, agent version tracking, and scheduled backups\n- b7456ed chore: ignore built Linux packages under release/<version>/\n- a65f581 chore: add v1.0.3 release evidence, docs, and bundle\n- 8f4a349 docs: add CHANGELOG.md with full version history\n",
+      "assets": [
+        {
+          "name": "audit-platform-1.0.10.tar.gz",
+          "size": 134776032,
+          "download_count": 1,
+          "download_url": ""
+        },
+        {
+          "name": "sbom-1.0.10.json",
+          "size": 16760,
+          "download_count": 1,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-agent-1.0.10-1.el9.x86_64.rpm",
+          "size": 39645,
+          "download_count": 1,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-agent-1.0.10-win.zip",
+          "size": 40516,
+          "download_count": 1,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-agent-1.0.10.tar.gz",
+          "size": 48226457,
+          "download_count": 1,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-agent_1.0.10_amd64.deb",
+          "size": 25752,
+          "download_count": 1,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-server-1.0.10-1.el9.x86_64.rpm",
+          "size": 86205,
+          "download_count": 1,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-server-1.0.10.tar.gz",
+          "size": 86202316,
+          "download_count": 1,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-server_1.0.10_amd64.deb",
+          "size": 68600,
+          "download_count": 1,
+          "download_url": ""
+        }
+      ]
+    },
+    {
+      "tag": "v1.0.3",
+      "name": "v1.0.3 — Production Release",
+      "prerelease": false,
+      "mirrored": false,
+      "published_at": "2026-06-20T09:59:38Z",
+      "author": "auditadmin",
+      "body_md": "## Storage Intelligence Platform v1.0.3\n\n### Packages\n| Package | Format | Target |\n|---------|--------|--------|\n| scanner-server | .deb | Ubuntu 22.04+, Debian 11+ |\n| scanner-server | .rpm | RHEL 8+, Rocky 9+, AlmaLinux 9+ |\n| scanner-agent | .deb | Ubuntu 22.04+, Debian 11+ |\n| scanner-agent | .rpm | RHEL 8+, Rocky 9+, AlmaLinux 9+ |\n| scanner-agent | .zip | Windows Server 2019+ |\n| scanner-server | docker tar.gz | Any Docker 24+ host |\n\n### Quick Install\n```bash\ntar xzf audit-platform-1.0.3.tar.gz\ncd release/1.0.3\nsudo ./bundle/install.sh                    # server\nsudo ./bundle/install.sh --component agent  # agent\n```\n\n### Certification\nThis release has passed the 7-gate certification model.\nSee `evidence/certification-report.md` inside the archive.\n\n### Changes since v1.0.2\n- 3da4637 fix: use .NET GZipStream instead of gzip for Docker image compression\n- b40d6a6 fix: idempotent publish — delete existing release before recreating\n- e8bf127 fix: run Docker build job on scanner-windows runner (has Docker Desktop)\n- bcf3d11 fix: mount Docker socket in CI job containers and install Docker CLI\n- 628148c fix: add httpx to CI pip install — required by licensing module\n- d65272a chore: bump version to 1.0.3\n- ef34a54 feat: add pg_dump database backup with browser download and server-side write\n- 077ba74 Add admin backup feature with configurable destination path\n- 4cbb8e1 feat: add full licensing module with Keygen integration\n",
+      "assets": [
+        {
+          "name": "audit-platform-1.0.3.tar.gz",
+          "size": 134720826,
+          "download_count": 1,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-agent-1.0.3-1.el9.x86_64.rpm",
+          "size": 36969,
+          "download_count": 1,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-agent-1.0.3-win.zip",
+          "size": 37089,
+          "download_count": 1,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-agent-1.0.3.tar.gz",
+          "size": 48224470,
+          "download_count": 1,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-agent_1.0.3_amd64.deb",
+          "size": 23492,
+          "download_count": 1,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-server-1.0.3-1.el9.x86_64.rpm",
+          "size": 71743,
+          "download_count": 1,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-server-1.0.3.tar.gz",
+          "size": 86186330,
+          "download_count": 1,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-server_1.0.3_amd64.deb",
+          "size": 55132,
+          "download_count": 1,
+          "download_url": ""
+        }
+      ]
+    },
+    {
+      "tag": "v1.0.2",
+      "name": "v1.0.2 — Production Release",
+      "prerelease": false,
+      "mirrored": false,
+      "published_at": "2026-06-19T13:08:31Z",
+      "author": "auditadmin",
+      "body_md": "## Storage Intelligence Platform v1.0.2\n\n### Packages\n| Package | Format | Target |\n|---------|--------|--------|\n| scanner-server | .deb | Ubuntu 22.04+, Debian 11+ |\n| scanner-server | .rpm | RHEL 8+, Rocky 9+, AlmaLinux 9+ |\n| scanner-agent | .deb | Ubuntu 22.04+, Debian 11+ |\n| scanner-agent | .rpm | RHEL 8+, Rocky 9+, AlmaLinux 9+ |\n| scanner-agent | .zip | Windows Server 2019+ |\n| scanner-server | docker tar.gz | Any Docker 24+ host |\n\n### Quick Install\n```bash\ntar xzf audit-platform-1.0.2.tar.gz\ncd release/1.0.2\nsudo ./bundle/install.sh                    # server\nsudo ./bundle/install.sh --component agent  # agent\n```\n\n### Certification\nThis release has passed the 7-gate certification model.\nSee `evidence/certification-report.md` inside the archive.\n\n### Changes since v1.0.1\n- baa422f fix: set display:block to override CSS display:none on admin nav items\n",
+      "assets": [
+        {
+          "name": "audit-platform-1.0.2.tar.gz",
+          "size": 276967,
+          "download_count": 1,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-agent-1.0.2-1.el9.x86_64.rpm",
+          "size": 36979,
+          "download_count": 0,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-agent-1.0.2-win.zip",
+          "size": 37089,
+          "download_count": 0,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-agent_1.0.2_amd64.deb",
+          "size": 23488,
+          "download_count": 0,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-server-1.0.2-1.el9.x86_64.rpm",
+          "size": 63434,
+          "download_count": 0,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-server_1.0.2_amd64.deb",
+          "size": 47772,
+          "download_count": 0,
+          "download_url": ""
+        }
+      ]
+    },
+    {
+      "tag": "v1.0.1",
+      "name": "v1.0.1 — Production Release",
+      "prerelease": false,
+      "mirrored": false,
+      "published_at": "2026-06-19T12:54:28Z",
+      "author": "auditadmin",
+      "body_md": "## Storage Intelligence Platform v1.0.1\n\n### Packages\n| Package | Format | Target |\n|---------|--------|--------|\n| scanner-server | .deb | Ubuntu 22.04+, Debian 11+ |\n| scanner-server | .rpm | RHEL 8+, Rocky 9+, AlmaLinux 9+ |\n| scanner-agent | .deb | Ubuntu 22.04+, Debian 11+ |\n| scanner-agent | .rpm | RHEL 8+, Rocky 9+, AlmaLinux 9+ |\n| scanner-agent | .zip | Windows Server 2019+ |\n| scanner-server | docker tar.gz | Any Docker 24+ host |\n\n### Quick Install\n```bash\ntar xzf audit-platform-1.0.1.tar.gz\ncd release/1.0.1\nsudo ./bundle/install.sh                    # server\nsudo ./bundle/install.sh --component agent  # agent\n```\n\n### Certification\nThis release has passed the 7-gate certification model.\nSee `evidence/certification-report.md` inside the archive.\n\n### Changes since v1.0.0\n- b6e7dbf fix: require explicit login for web UI; show admin nav for admin role\n- bfcf50c fix: evict expired JWTs in getToken() to prevent spurious login redirects\n- 036134e fix: jobs page no longer redirects to login on loadBatches() auth error\n",
+      "assets": [
+        {
+          "name": "audit-platform-1.0.1.tar.gz",
+          "size": 276945,
+          "download_count": 0,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-agent-1.0.1-1.el9.x86_64.rpm",
+          "size": 36971,
+          "download_count": 0,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-agent-1.0.1-win.zip",
+          "size": 37089,
+          "download_count": 0,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-agent_1.0.1_amd64.deb",
+          "size": 23488,
+          "download_count": 0,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-server-1.0.1-1.el9.x86_64.rpm",
+          "size": 63429,
+          "download_count": 0,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-server_1.0.1_amd64.deb",
+          "size": 47784,
+          "download_count": 0,
+          "download_url": ""
+        }
+      ]
+    },
+    {
+      "tag": "v1.0.0",
+      "name": "v1.0.0 — Production Release",
+      "prerelease": false,
+      "mirrored": false,
+      "published_at": "2026-06-19T11:55:52Z",
+      "author": "auditadmin",
+      "body_md": "## Storage Intelligence Platform v1.0.0\n\n### Packages\n| Package | Format | Target |\n|---------|--------|--------|\n| scanner-server | .deb | Ubuntu 22.04+, Debian 11+ |\n| scanner-server | .rpm | RHEL 8+, Rocky 9+, AlmaLinux 9+ |\n| scanner-agent | .deb | Ubuntu 22.04+, Debian 11+ |\n| scanner-agent | .rpm | RHEL 8+, Rocky 9+, AlmaLinux 9+ |\n| scanner-agent | .zip | Windows Server 2019+ |\n| scanner-server | docker tar.gz | Any Docker 24+ host |\n\n### Quick Install\n```bash\ntar xzf audit-platform-1.0.0.tar.gz\ncd release/1.0.0\nsudo ./bundle/install.sh                    # server\nsudo ./bundle/install.sh --component agent  # agent\n```\n\n### Certification\nThis release has passed the 7-gate certification model.\nSee `evidence/certification-report.md` inside the archive.\n\n### Changes since v1.0.0-rc2\n- 459063e fix: replace --fail-with-body with -w http_code (curl 7.74 compat on Bullseye)\n- acf2487 fix: make cp commands non-fatal in assemble step (same-file on checkout)\n- 189322e fix: remove build-docker from publish needs to unblock Gitea release\n- 21708d9 fix: use find glob in verify-rpm step to handle dist tag in filename\n- 0fbe9f6 fix: add RPM spec files and remove *.spec from .gitignore\n- 539571f fix: convert X|None union syntax to Optional[X] for Python 3.9 compat\n- e06cd2c fix: downgrade artifact actions from v4 to v3 for Gitea compatibility\n- 94ba1bd fix: set default shell to bash for all workflow run steps\n- f198cf0 fix: resolve Gate 5 repo-drift failures in build-deb and build-rpm\n- ea42033 debug: print dirty files in Gate 5 to diagnose CI repo drift\n- 9a6fde9 fix: pass Gate 2 + Gate 5 in release certification\n- 7112fbe fix(agent): reset rate limiter clock after sleep to prevent token leak\n- d4554fc fix: token bucket initial burst and SQLAlchemy migration test type error\n- ca61568 fix(ci): set PIP_BREAK_SYSTEM_PACKAGES for Debian Bookworm PEP 668\n- 8fb947e fix(ci): use custom builder images with Node.js + Python pre-installed\n- a7a1c1a fix(ci): use python:3.11-bullseye container for build-deb job\n- 381da20 Fix release workflow: remove workflow_dispatch inputs (unsupported in Gitea 1.22)\n- e64be9c ci: test workflow trigger (trailing newline)\n- 2708609 Fix release workflow tag trigger pattern (glob not regex)\n- a6bf5f9 Fix accessibility and HTML validation errors across UI templates\n- 4bb463f Add CI/CD pipelines, dashboard fixes, and v1.0.0 release pack\n- c0beab2 feat: production monitoring dashboard with charts and alerts\n- 6433c6b docs: add monitoring metrics reference for deployment dashboard (doc 21)\n- 5e14b69 docs: add operator troubleshooting quick reference (doc 20)\n- 0ef2a04 docs: add L1/L2 support runbook (doc 19)\n- a5649e0 docs: add operator training guide for first 24-48 hours (doc 18)\n- 16d3562 docs: polish deployment checklist for v1 external use\n- 623dadd docs: add operator deployment checklist (doc 17)\n- 613a4ae feat: production deployment profile — execution controls v2\n- ff93dbc fix: bandit/flake8 clean pass — nosec annotations, walker.py type safety\n- f230ea5 fix: resolve all remaining flake8 warnings in tools/\n- 833e199 fix: remove unused imports in test_execution_controls (pytest, calculate_next_run)\n- 8955769 docs: document scheduler design decisions (single-instance, skip missed runs)\n- 3b8b6be feat: execution controls — agent pacing, upload throttle, scheduler concurrency guard\n- 250c238 Add Admin UI section: Users, Roles (RBAC), and Settings management\n- 46a1ab2 Add control-plane scheduler (DB + engine + API + UI + CLI + tests)\n- a23be52 Add linting config, type checks, integration/unit tests, and API/agent fixes\n- 7a30956 Implement automatic incremental scanning (spec steps 1-22)\n- 5e66111 Add scan behaviour documentation (doc 15)\n- 9fb9fbc Bake docs into server image; install manifest on bare-metal install\n- 731c768 Mount docs/ and release-manifest into scanner-server container\n- 48d2e31 Change default admin password to Admin1234! (unambiguous for browser autofill)\n- 78f9d0f Fix UI router for Starlette 1.x: use keyword-style TemplateResponse(request=, name=, context=)\n",
+      "assets": [
+        {
+          "name": "audit-platform-1.0.0.tar.gz",
+          "size": 276626,
+          "download_count": 0,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-agent-1.0.0-1.el9.x86_64.rpm",
+          "size": 36971,
+          "download_count": 0,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-agent-1.0.0-win.zip",
+          "size": 37089,
+          "download_count": 0,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-agent_1.0.0_amd64.deb",
+          "size": 23492,
+          "download_count": 0,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-server-1.0.0-1.el9.x86_64.rpm",
+          "size": 63236,
+          "download_count": 0,
+          "download_url": ""
+        },
+        {
+          "name": "scanner-server_1.0.0_amd64.deb",
+          "size": 47612,
+          "download_count": 0,
+          "download_url": ""
+        }
+      ]
+    }
+  ]
+}

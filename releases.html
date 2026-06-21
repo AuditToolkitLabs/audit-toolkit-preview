@@ -7,48 +7,35 @@
     <title>Releases Hub - AuditToolkit Labs</title>
     <meta
       name="description"
-      content="Release notes for AuditToolkit Labs - Audit Admin Toolkit v6.4.8, Linux Security Lite v1.1.4, CMDB API v0.2.11, and more."
+      content="Release notes and downloadable packages for AuditToolkit Labs products."
     />
     <link rel="stylesheet" href="assets/css/site.css?v=20260612g" />
     <style>
-      .nav-mobile-contact {
-        color: var(--accent);
-        font-weight: 600;
+      .nav-mobile-contact { color: var(--accent); font-weight: 600; }
+      .footer-brand-title { font-weight: 700; font-size: 1.05rem; }
+      .footer-copy-small { font-size: 0.82rem; }
+      .rel-hub-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 18px;
       }
-      .footer-brand-title {
-        font-weight: 700;
-        font-size: 1.05rem;
+      .rel-hub-card {
+        display: flex;
+        flex-direction: column;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 20px 22px;
+        text-decoration: none;
+        transition: border-color 0.15s, background 0.15s;
       }
-      .footer-copy-small {
-        font-size: 0.82rem;
-      }
-      .coming-soon-wrap {
-        max-width: 640px;
-        margin: 0 auto;
-        text-align: center;
-        padding: 64px 0;
-      }
-      .coming-soon-badge {
-        font-size: 1rem;
-        padding: 8px 20px;
-        margin-bottom: 32px;
-        display: inline-block;
-      }
-      .coming-soon-title {
-        margin-bottom: 20px;
-      }
-      .coming-soon-lead {
-        font-size: 1.1rem;
-        line-height: 1.7;
-        margin-bottom: 16px;
-      }
-      .coming-soon-sub {
-        color: var(--text-muted);
-        margin-bottom: 40px;
-      }
-      .coming-soon-actions {
-        justify-content: center;
-      }
+      .rel-hub-card:hover { border-color: var(--border-l); background: var(--panel-2); text-decoration: none; }
+      .rel-hub-card h3 { color: var(--text); margin: 0 0 6px; font-size: 1.05rem; }
+      .rel-hub-card p { color: var(--muted); font-size: 0.88rem; margin: 0 0 16px; flex: 1; }
+      .rel-hub-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+      .rel-hub-cta { margin-top: 14px; font-size: 0.86rem; color: var(--accent); font-weight: 600; }
+      .rel-hub-status { color: var(--muted); padding: 40px 0; text-align: center; }
+      .rel-hub-error { color: var(--accent-3); }
     </style>
   </head>
   <body>
@@ -87,26 +74,13 @@
         </div>
         <p class="eyebrow">Releases</p>
         <h1>Releases Hub</h1>
-        <p>Release packages and version history for all AuditToolkit Labs products.</p>
+        <p>Downloadable packages and version history, mirrored from the canonical release server.</p>
       </div>
     </div>
     <section class="section">
       <div class="wrap">
-        <div class="coming-soon-wrap">
-          <span class="badge badge-amber coming-soon-badge">New Version Coming Soon</span>
-          <h2 class="coming-soon-title">New Version &amp; Layout Coming Soon</h2>
-          <p class="coming-soon-lead">
-            The AuditToolkit platform has been completely redesigned. All previous versions of the toolkit are no longer supported and will
-            not continue to work.
-          </p>
-          <p class="coming-soon-sub">
-            The new release portal and updated documentation will be available here shortly. Contact us if you have questions about your
-            current deployment or wish to be notified when the new version launches.
-          </p>
-          <div class="flex gap-12 flex-wrap coming-soon-actions">
-            <a href="support.html#contact" class="btn btn-primary">Contact Us</a>
-            <a href="index.html" class="btn btn-secondary">Back to Home</a>
-          </div>
+        <div class="rel-hub-grid" id="rel-hub-grid">
+          <p class="rel-hub-status">Loading products&#8230;</p>
         </div>
       </div>
     </section>
@@ -127,7 +101,7 @@
               <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
               <li><a href="cmdb-asset-platform.html">Asset Command Center</a></li>
               <li><a href="linux-expansion.html">Linux Security Lite</a></li>
-              <li><a href="secure-exposure-centre.html">Secure Exposure Center</a></li>
+              <li><a href="storage-scanner.html">Storage Intelligence Platform</a></li>
             </ul>
           </div>
           <div class="footer-col">
@@ -144,7 +118,6 @@
             <h4>Contact</h4>
             <ul>
               <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
-              <li><a href="releases.html">Release Hub</a></li>
               <li><a href="support.html#contact">Send an Enquiry</a></li>
             </ul>
           </div>
@@ -155,5 +128,52 @@
       </div>
     </footer>
     <script src="assets/js/nav.js?v=20260612e"></script>
+    <script>
+      (function () {
+        "use strict";
+        var grid = document.getElementById("rel-hub-grid");
+
+        function el(tag, cls, text) {
+          var e = document.createElement(tag);
+          if (cls) e.className = cls;
+          if (text != null) e.textContent = text;
+          return e;
+        }
+
+        function card(p) {
+          var a = el("a", "rel-hub-card");
+          a.href = p.page || "#";
+          a.appendChild(el("h3", null, p.product));
+          if (p.blurb) a.appendChild(el("p", null, p.blurb));
+          var meta = el("div", "rel-hub-meta");
+          if (p.latest) meta.appendChild(el("span", "badge badge-green", "Latest: " + p.latest));
+          var n = p.mirrored != null ? p.mirrored : p.count;
+          meta.appendChild(el("span", "badge badge-muted",
+            n + " version" + (n === 1 ? "" : "s") + " available"));
+          a.appendChild(meta);
+          a.appendChild(el("div", "rel-hub-cta", "View releases & downloads →"));
+          return a;
+        }
+
+        fetch("releases/data/index.json", { cache: "no-store" })
+          .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+          .then(function (data) {
+            var products = (data.products || []).filter(function (p) {
+              return (p.mirrored || 0) > 0;   // only show products with downloadable releases
+            });
+            grid.innerHTML = "";
+            if (!products.length) {
+              grid.appendChild(el("p", "rel-hub-status", "No published releases yet."));
+              return;
+            }
+            products.forEach(function (p) { grid.appendChild(card(p)); });
+          })
+          .catch(function (err) {
+            grid.innerHTML = "";
+            grid.appendChild(el("p", "rel-hub-status rel-hub-error",
+              "Could not load releases (" + err.message + ")."));
+          });
+      }());
+    </script>
   </body>
 </html>

@@ -20,7 +20,7 @@
 
       /* ── Sidebar ───────────────────────────────────────────────── */
       .docs-sidebar {
-        width: 284px;
+        width: 320px;
         flex-shrink: 0;
         background: var(--panel);
         border-right: 1px solid var(--border);
@@ -41,39 +41,27 @@
         color: var(--subtle);
         margin: 0 0 10px;
       }
-
-      /* ── Product grid ──────────────────────────────────────────── */
-      .docs-product-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 4px;
-        margin-bottom: 10px;
+      .docs-sidebar-tools {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
       }
-      .docs-product-btn {
+      .docs-tree-btn {
+        flex: 1;
         background: var(--panel-2);
         border: 1px solid var(--border);
         border-radius: 5px;
         color: var(--subtle);
         font-size: 0.7rem;
         font-weight: 600;
-        padding: 5px 3px;
+        padding: 5px 4px;
         cursor: pointer;
-        text-align: center;
-        line-height: 1.2;
         transition: background 0.12s, color 0.12s, border-color 0.12s;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
       }
-      .docs-product-btn:hover {
+      .docs-tree-btn:hover {
         background: var(--panel-3);
         color: var(--text);
         border-color: var(--border-l);
-      }
-      .docs-product-btn.active {
-        background: rgba(90, 160, 255, 0.14);
-        border-color: var(--accent);
-        color: var(--accent);
       }
 
       /* ── Search ────────────────────────────────────────────────── */
@@ -90,49 +78,100 @@
       .docs-search::placeholder { color: var(--subtle); }
       .docs-search:focus { outline: none; border-color: var(--accent); }
 
-      /* ── Doc nav list ──────────────────────────────────────────── */
+      /* ── Tree ──────────────────────────────────────────────────── */
       .docs-nav {
         flex: 1;
         overflow-y: auto;
-        padding: 8px 0 24px;
+        padding: 8px 8px 24px;
       }
-      .docs-nav-list {
-        list-style: none;
-        margin: 0;
-        padding: 0 8px;
+      .docs-tree { list-style: none; margin: 0; padding: 0; }
+      .docs-tree .docs-tree { margin: 0; padding: 0; }
+
+      .tree-folder > .tree-children {
+        margin-left: 9px;
+        padding-left: 7px;
+        border-left: 1px solid var(--border);
       }
-      .docs-nav-item {
+      .tree-folder.collapsed > .tree-children { display: none; }
+
+      .tree-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 8px;
+        border-radius: 6px;
+        cursor: pointer;
+        color: var(--text);
+        user-select: none;
+        transition: background 0.12s;
+      }
+      .tree-row:hover { background: var(--panel-2); }
+
+      .tree-chevron {
+        flex-shrink: 0;
+        width: 12px;
+        height: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--subtle);
+        font-size: 0.6rem;
+        transition: transform 0.14s ease;
+      }
+      .tree-folder.collapsed > .tree-row .tree-chevron { transform: rotate(-90deg); }
+
+      .tree-folder-icon { flex-shrink: 0; font-size: 0.82rem; line-height: 1; opacity: 0.85; }
+
+      .tree-label {
+        font-size: 0.85rem;
+        line-height: 1.3;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      /* Range / root folders */
+      .tree-folder.is-root > .tree-row .tree-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: var(--subtle);
+      }
+      .tree-folder.is-root.collapsed > .tree-row .tree-label,
+      .tree-folder.is-root > .tree-row:hover .tree-label { color: var(--text); }
+      /* Product folders */
+      .tree-folder.is-product > .tree-row .tree-label { font-weight: 600; color: var(--text); }
+
+      .tree-doc {
         display: flex;
         align-items: baseline;
-        gap: 9px;
-        padding: 6px 10px;
+        gap: 8px;
+        padding: 5px 8px 5px 24px;
         border-radius: 6px;
         cursor: pointer;
         text-decoration: none;
         color: var(--muted);
         transition: background 0.12s, color 0.12s;
       }
-      .docs-nav-item:hover {
+      .tree-doc:hover {
         background: var(--panel-2);
         color: var(--text);
         text-decoration: none;
       }
-      .docs-nav-item.active {
+      .tree-doc.active {
         background: rgba(90, 160, 255, 0.12);
         color: var(--accent);
       }
-      .docs-nav-item.active .doc-num { color: rgba(90, 160, 255, 0.6); }
+      .tree-doc.active .doc-num { color: rgba(90, 160, 255, 0.6); }
       .doc-num {
-        font-size: 0.68rem;
+        font-size: 0.66rem;
         font-family: "Courier New", monospace;
         color: var(--subtle);
         flex-shrink: 0;
-        width: 20px;
+        width: 18px;
       }
-      .doc-label {
-        font-size: 0.85rem;
-        line-height: 1.35;
-      }
+      .doc-label { font-size: 0.83rem; line-height: 1.35; }
+
       .docs-nav-empty {
         padding: 12px 18px;
         font-size: 0.83rem;
@@ -150,10 +189,7 @@
       }
 
       /* ── Welcome state ─────────────────────────────────────────── */
-      .doc-welcome {
-        max-width: 580px;
-        padding-top: 8px;
-      }
+      .doc-welcome { max-width: 620px; padding-top: 8px; }
       .doc-welcome .eyebrow {
         font-size: 0.72rem;
         font-weight: 700;
@@ -184,16 +220,8 @@
         background: var(--panel-2);
         text-decoration: none;
       }
-      .doc-welcome-card h4 {
-        font-size: 0.87rem;
-        color: var(--text);
-        margin: 0 0 5px;
-      }
-      .doc-welcome-card p {
-        font-size: 0.82rem;
-        margin: 0;
-        color: var(--muted);
-      }
+      .doc-welcome-card h4 { font-size: 0.87rem; color: var(--text); margin: 0 0 5px; }
+      .doc-welcome-card p { font-size: 0.82rem; margin: 0; color: var(--muted); }
 
       /* ── Doc card ──────────────────────────────────────────────── */
       .doc-card {
@@ -212,7 +240,7 @@
         border-bottom: 1px solid var(--border);
         background: var(--panel-2);
       }
-      .doc-card-title {
+      .doc-card-crumb {
         font-size: 0.88rem;
         font-weight: 600;
         color: var(--text);
@@ -220,6 +248,8 @@
         overflow: hidden;
         text-overflow: ellipsis;
       }
+      .doc-card-crumb .crumb-sep { color: var(--subtle); margin: 0 6px; font-weight: 400; }
+      .doc-card-crumb .crumb-range { color: var(--subtle); font-weight: 600; }
       .doc-card-filename {
         font-size: 0.73rem;
         color: var(--subtle);
@@ -227,9 +257,7 @@
         flex-shrink: 0;
         white-space: nowrap;
       }
-      .doc-card-body {
-        padding: 28px 36px 48px;
-      }
+      .doc-card-body { padding: 28px 36px 48px; }
 
       /* ── Markdown render ───────────────────────────────────────── */
       .doc-render { font-size: 0.92rem; line-height: 1.78; color: var(--muted); }
@@ -246,16 +274,8 @@
         padding-bottom: 0.4em;
         border-bottom: 1px solid var(--border);
       }
-      .doc-render h3 {
-        font-size: 1.0rem;
-        color: var(--text);
-        margin: 1.5em 0 0.35em;
-      }
-      .doc-render h4 {
-        font-size: 0.92rem;
-        color: var(--muted);
-        margin: 1.2em 0 0.3em;
-      }
+      .doc-render h3 { font-size: 1.0rem; color: var(--text); margin: 1.5em 0 0.35em; }
+      .doc-render h4 { font-size: 0.92rem; color: var(--muted); margin: 1.2em 0 0.3em; }
       .doc-render p { color: var(--muted); margin: 0 0 1em; }
       .doc-render ul,
       .doc-render ol { color: var(--muted); padding-left: 1.5em; margin: 0 0 1em; }
@@ -317,35 +337,19 @@
         vertical-align: top;
       }
       .doc-render tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
-      .doc-render hr {
-        border: none;
-        border-top: 1px solid var(--border);
-        margin: 2em 0;
-      }
+      .doc-render hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
       .doc-render img { max-width: 100%; border-radius: var(--radius-sm); }
 
       /* ── Status messages ───────────────────────────────────────── */
-      .doc-loading-msg {
-        color: var(--muted);
-        font-size: 0.9rem;
-        padding: 24px 0;
-      }
-      .doc-error-msg {
-        color: var(--accent-3);
-        font-size: 0.9rem;
-        padding: 24px 0;
-      }
+      .doc-loading-msg { color: var(--muted); font-size: 0.9rem; padding: 24px 0; }
+      .doc-error-msg { color: var(--accent-3); font-size: 0.9rem; padding: 24px 0; }
 
       /* ── Hidden util ───────────────────────────────────────────── */
       .is-hidden { display: none !important; }
 
       /* ── Responsive ────────────────────────────────────────────── */
       @media (max-width: 860px) {
-        .docs-layout {
-          flex-direction: column;
-          height: auto;
-          overflow: visible;
-        }
+        .docs-layout { flex-direction: column; height: auto; overflow: visible; }
         .docs-sidebar {
           width: 100%;
           height: auto;
@@ -353,7 +357,7 @@
           border-bottom: 1px solid var(--border);
           overflow: visible;
         }
-        .docs-nav { max-height: 280px; overflow-y: auto; }
+        .docs-nav { max-height: 320px; overflow-y: auto; }
         .docs-content { padding: 24px 18px; }
         .doc-welcome-grid { grid-template-columns: 1fr; }
         .doc-card-body { padding: 20px 18px 32px; }
@@ -405,10 +409,7 @@
       <!-- ── Sidebar ──────────────────────────────────────────────── -->
       <aside class="docs-sidebar" id="docs-sidebar">
         <div class="docs-sidebar-header">
-          <div class="docs-sidebar-eyebrow">Documentation</div>
-
-          <!-- Product selector -->
-          <div class="docs-product-grid" id="docs-product-grid" role="tablist" aria-label="Select product"></div>
+          <div class="docs-sidebar-eyebrow">Documentation Library</div>
 
           <!-- Filter -->
           <input
@@ -419,10 +420,14 @@
             autocomplete="off"
             aria-label="Filter documents"
           >
+          <div class="docs-sidebar-tools">
+            <button type="button" class="docs-tree-btn" id="tree-expand-all">Expand all</button>
+            <button type="button" class="docs-tree-btn" id="tree-collapse-all">Collapse all</button>
+          </div>
         </div>
 
-        <nav class="docs-nav" aria-label="Document list">
-          <ul class="docs-nav-list" id="docs-nav-list"></ul>
+        <nav class="docs-nav" aria-label="Documentation index">
+          <ul class="docs-tree" id="docs-tree" role="tree"></ul>
         </nav>
       </aside>
 
@@ -433,21 +438,29 @@
         <div id="doc-welcome" class="doc-welcome">
           <p class="eyebrow">Documentation</p>
           <h2>Central Documentation Library</h2>
-          <p>Select a product from the sidebar to browse its documentation, or jump straight to a common starting point below.</p>
+          <p>
+            Browse the index on the left. Documentation is organised into a
+            <strong>General</strong> overview, an <strong>API Reference</strong>, a
+            <strong>Legal</strong> section, and three product ranges —
+            <strong>Platform</strong> (the six main products), <strong>AuditToolkit Lite</strong>
+            (the three standalone host tools), and <strong>Scanner</strong> — each with a folder
+            per product containing its full document set. Or jump straight to a common starting
+            point below.
+          </p>
           <div class="doc-welcome-grid">
-            <a class="doc-welcome-card" data-product="suite" data-doc-n="00" href="#">
+            <a class="doc-welcome-card" data-folder="general" data-doc-n="00" href="#">
               <h4>New to the platform?</h4>
-              <p>Start with Purpose &amp; Audience and the Suite Service Overview.</p>
+              <p>Start with Purpose &amp; Audience and the suite Service Overview.</p>
             </a>
-            <a class="doc-welcome-card" data-product="audit-tool" data-doc-n="00" href="#">
+            <a class="doc-welcome-card" data-folder="audit-tool" data-doc-n="00" href="#">
               <h4>Audit Admin Toolkit</h4>
               <p>Overview, agent deployment, and operational guidance.</p>
             </a>
-            <a class="doc-welcome-card" data-product="audit-node" data-doc-n="00" href="#">
-              <h4>Audit Assurance Node</h4>
-              <p>Deployment, transports, adapters, and runtime validation.</p>
+            <a class="doc-welcome-card" data-folder="linux-host-lite" data-doc-n="00" href="#">
+              <h4>AuditToolkit Lite</h4>
+              <p>Standalone host auditing for Linux, Windows, and macOS.</p>
             </a>
-            <a class="doc-welcome-card" data-product="legal" data-doc-n="00" href="#">
+            <a class="doc-welcome-card" data-folder="legal" data-doc-n="01" href="#">
               <h4>Legal &amp; Licensing</h4>
               <p>EULA, licensing overview, and liability disclaimer.</p>
             </a>
@@ -457,7 +470,7 @@
         <!-- Doc card — hidden until a document loads -->
         <div id="doc-card" class="doc-card is-hidden">
           <div class="doc-card-header">
-            <span class="doc-card-title" id="doc-card-title"></span>
+            <span class="doc-card-crumb" id="doc-card-crumb"></span>
             <span class="doc-card-filename" id="doc-card-filename"></span>
           </div>
           <div class="doc-card-body">
@@ -516,260 +529,339 @@
       (function () {
         'use strict';
 
-        /* ── Product & document data ─────────────────────────────── */
-        var PRODUCTS = [
+        /* ── Documentation tree ──────────────────────────────────────
+           Structure:
+             • General  — single cross-product overview + API reference
+             • Legal    — licensing, EULA, liability
+             • Platform — range root, one folder per platform product
+             • Lite     — range root, one folder per Lite host product
+             • Scanner  — range root, Storage Intelligence Platform
+           Leaf-folder ids are stable and used by the ?p=<id>&d=<n> URL
+           scheme, which keeps existing inbound deep links working. */
+        var TREE = [
           {
-            id: 'suite',
-            label: 'Suite',
-            docs: [
-              { n: '00', title: 'Purpose & Audience',     src: 'docs/customer/start-here/purpose-and-audience.md' },
-              { n: '01', title: 'Service Overview',        src: 'docs/customer/suite/service-overview.md' },
-              { n: '02', title: 'Roles & Governance',      src: 'docs/customer/suite/roles-and-governance.md' },
-              { n: '03', title: 'Administration',          src: 'docs/customer/administration/administration-guide.md' },
-              { n: '04', title: 'Operations & Support',    src: 'docs/customer/operations/operations-and-support.md' },
-              { n: '05', title: 'Security & Data',         src: 'docs/customer/security/security-access-data-protection.md' },
-              { n: '06', title: 'Service Transition',      src: 'docs/customer/deployment/service-transition.md' },
-              { n: '07', title: 'Deployment Pack',         src: 'docs/deployment/customer-deployment-pack.md' },
-              { n: '08', title: 'Operator Runbook',        src: 'docs/deployment/operator-runbook.md' },
+            type: 'folder', id: 'general', label: 'General', kind: 'root', icon: '📘',
+            children: [
+              { type: 'doc', n: '00', title: 'Purpose & Audience',  src: 'docs/customer/start-here/purpose-and-audience.md' },
+              { type: 'doc', n: '01', title: 'Service Overview',     src: 'docs/customer/suite/service-overview.md' },
+              { type: 'doc', n: '02', title: 'Roles & Governance',   src: 'docs/customer/suite/roles-and-governance.md' },
+              { type: 'doc', n: '03', title: 'Administration',       src: 'docs/customer/administration/administration-guide.md' },
+              { type: 'doc', n: '04', title: 'Operations & Support', src: 'docs/customer/operations/operations-and-support.md' },
+              { type: 'doc', n: '05', title: 'Security & Data',      src: 'docs/customer/security/security-access-data-protection.md' },
+              { type: 'doc', n: '06', title: 'Service Transition',   src: 'docs/customer/deployment/service-transition.md' },
+              { type: 'doc', n: '07', title: 'Deployment Pack',      src: 'docs/deployment/customer-deployment-pack.md' },
+              { type: 'doc', n: '08', title: 'Operator Runbook',     src: 'docs/deployment/operator-runbook.md' }
             ]
           },
           {
-            id: 'audit-tool',
-            label: 'Audit TK',
-            docs: [
-              { n: '00', title: 'Overview', src: 'docs/customer/products/audit-tool/00-overview.md' },
-              { n: '01', title: 'Agents',   src: 'docs/customer/products/audit-tool/01-agents.md' },
+            type: 'folder', id: 'api', label: 'API Reference', kind: 'root', icon: '🔌',
+            children: [
+              { type: 'doc', n: '00', title: 'Authentication',        src: 'docs/api/authentication.md' },
+              { type: 'doc', n: '01', title: 'API Library Reference', src: 'docs/api/library-api-reference.md' },
+              { type: 'doc', n: '02', title: 'Standards',             src: 'docs/api/standards.md' }
             ]
           },
           {
-            id: 'asset-cc',
-            label: 'Asset CC',
-            docs: [
-              { n: '00', title: 'Overview',             src: 'docs/customer/products/asset-command-centre/00-overview.md' },
-              { n: '01', title: 'Discovery Connectors', src: 'docs/customer/products/asset-command-centre/01-discovery-connectors.md' },
+            type: 'folder', id: 'legal', label: 'Legal', kind: 'root', icon: '⚖️',
+            children: [
+              { type: 'doc', n: '00', title: 'Licensing Overview',      src: 'docs/licensing/overview.md' },
+              { type: 'doc', n: '01', title: 'End User License (EULA)',  src: 'docs/legal/eula.md' },
+              { type: 'doc', n: '02', title: 'Liability Disclaimer',     src: 'docs/legal/liability-disclaimer-and-indemnity.md' }
             ]
           },
           {
-            id: 'cmdb-tool',
-            label: 'CMDB',
-            docs: [
-              { n: '00', title: 'Overview',        src: 'docs/customer/products/cmdb-api-data-collection-tool/00-overview.md' },
-              { n: '01', title: 'Connector Setup', src: 'docs/customer/products/cmdb-api-data-collection-tool/01-connector-setup.md' },
+            type: 'folder', id: 'platform', label: 'Platform', kind: 'root', icon: '🗂️',
+            children: [
+              {
+                type: 'folder', id: 'audit-tool', label: 'Audit Admin Toolkit', kind: 'product',
+                children: [
+                  { type: 'doc', n: '00', title: 'Overview', src: 'docs/customer/products/audit-tool/00-overview.md' },
+                  { type: 'doc', n: '01', title: 'Agents',   src: 'docs/customer/products/audit-tool/01-agents.md' }
+                ]
+              },
+              {
+                type: 'folder', id: 'cmdb-tool', label: 'CMDB API Data Collection Tool', kind: 'product',
+                children: [
+                  { type: 'doc', n: '00', title: 'Overview',        src: 'docs/customer/products/cmdb-api-data-collection-tool/00-overview.md' },
+                  { type: 'doc', n: '01', title: 'Connector Setup', src: 'docs/customer/products/cmdb-api-data-collection-tool/01-connector-setup.md' }
+                ]
+              },
+              {
+                type: 'folder', id: 'asset-cc', label: 'Asset Command Centre', kind: 'product',
+                children: [
+                  { type: 'doc', n: '00', title: 'Overview',             src: 'docs/customer/products/asset-command-centre/00-overview.md' },
+                  { type: 'doc', n: '01', title: 'Discovery Connectors', src: 'docs/customer/products/asset-command-centre/01-discovery-connectors.md' }
+                ]
+              },
+              {
+                type: 'folder', id: 'linux-lite', label: 'Linux Security Lite', kind: 'product',
+                children: [
+                  { type: 'doc', n: '00', title: 'Overview',         src: 'docs/customer/products/linux-security-lite/00-overview.md' },
+                  { type: 'doc', n: '01', title: 'Scheduled Audits', src: 'docs/customer/products/linux-security-lite/01-scheduled-audits.md' }
+                ]
+              },
+              {
+                type: 'folder', id: 'sec-exp', label: 'Secure Exposure Centre', kind: 'product',
+                children: [
+                  { type: 'doc', n: '00', title: 'Overview',         src: 'docs/customer/products/switch-exposure-center/00-overview.md' },
+                  { type: 'doc', n: '01', title: 'Advisory Refresh', src: 'docs/customer/products/switch-exposure-center/01-advisory-refresh.md' }
+                ]
+              },
+              {
+                type: 'folder', id: 'audit-node', label: 'Audit Assurance Node', kind: 'product',
+                children: [
+                  { type: 'doc', n: '00', title: 'Overview',                src: 'docs/customer/products/audit-assurance-node/00-overview.md' },
+                  { type: 'doc', n: '01', title: 'Deployment',              src: 'docs/customer/products/audit-assurance-node/01-deployment.md' },
+                  { type: 'doc', n: '02', title: 'Authentication',          src: 'docs/customer/products/audit-assurance-node/02-authentication.md' },
+                  { type: 'doc', n: '03', title: 'Transports',              src: 'docs/customer/products/audit-assurance-node/03-transports.md' },
+                  { type: 'doc', n: '04', title: 'Adapters',                src: 'docs/customer/products/audit-assurance-node/04-adapters.md' },
+                  { type: 'doc', n: '05', title: 'Logging & Observability', src: 'docs/customer/products/audit-assurance-node/05-logging-observability.md' },
+                  { type: 'doc', n: '06', title: 'Operational Limits',      src: 'docs/customer/products/audit-assurance-node/06-operational-limits.md' },
+                  { type: 'doc', n: '07', title: 'Parallel Tracing',        src: 'docs/customer/products/audit-assurance-node/07-parallel-tracing.md' },
+                  { type: 'doc', n: '08', title: 'Runtime Validation',      src: 'docs/customer/products/audit-assurance-node/08-runtime-validation.md' },
+                  { type: 'doc', n: '09', title: 'Execution Adapters',      src: 'docs/customer/products/audit-assurance-node/09-execution-adapters.md' }
+                ]
+              }
             ]
           },
           {
-            id: 'linux-lite',
-            label: 'Linux',
-            docs: [
-              { n: '00', title: 'Overview',         src: 'docs/customer/products/linux-security-lite/00-overview.md' },
-              { n: '01', title: 'Scheduled Audits', src: 'docs/customer/products/linux-security-lite/01-scheduled-audits.md' },
+            type: 'folder', id: 'lite', label: 'AuditToolkit Lite', kind: 'root', icon: '🖥️',
+            children: [
+              {
+                type: 'folder', id: 'linux-host-lite', label: 'Linux Host Lite', kind: 'product',
+                children: [
+                  { type: 'doc', n: '00', title: 'Overview',                  src: 'docs/customer/products/linux-host-lite/00-overview.md' },
+                  { type: 'doc', n: '01', title: 'Activation & First Audit',  src: 'docs/customer/products/linux-host-lite/01-activation-and-first-audit.md' },
+                  { type: 'doc', n: '02', title: 'Configuration & Profiles',  src: 'docs/customer/products/linux-host-lite/02-configuration.md' },
+                  { type: 'doc', n: '03', title: 'Output Schema Reference',   src: 'docs/customer/products/linux-host-lite/03-output-schema-reference.md' },
+                  { type: 'doc', n: '04', title: 'CI/CD Gate Integration',    src: 'docs/customer/products/linux-host-lite/04-ci-cd-integration.md' }
+                ]
+              },
+              {
+                type: 'folder', id: 'windows-lite', label: 'Windows Security Lite', kind: 'product',
+                children: [
+                  { type: 'doc', n: '00', title: 'Overview',                   src: 'docs/customer/products/windows-security-lite/00-overview.md' },
+                  { type: 'doc', n: '01', title: 'Installation & First Audit', src: 'docs/customer/products/windows-security-lite/01-installation-and-first-audit.md' },
+                  { type: 'doc', n: '02', title: 'Configuration & Profiles',   src: 'docs/customer/products/windows-security-lite/02-configuration.md' },
+                  { type: 'doc', n: '03', title: 'Output Schema Reference',    src: 'docs/customer/products/windows-security-lite/03-output-schema-reference.md' },
+                  { type: 'doc', n: '04', title: 'CI/CD Gate Integration',     src: 'docs/customer/products/windows-security-lite/04-ci-cd-integration.md' }
+                ]
+              },
+              {
+                type: 'folder', id: 'macos-lite', label: 'macOS Security Lite', kind: 'product',
+                children: [
+                  { type: 'doc', n: '00', title: 'Overview',                  src: 'docs/customer/products/macos-security-lite/00-overview.md' },
+                  { type: 'doc', n: '01', title: 'Gatekeeper & First Audit',  src: 'docs/customer/products/macos-security-lite/01-gatekeeper-and-first-audit.md' },
+                  { type: 'doc', n: '02', title: 'Configuration & Profiles',  src: 'docs/customer/products/macos-security-lite/02-configuration.md' },
+                  { type: 'doc', n: '03', title: 'Output Schema Reference',   src: 'docs/customer/products/macos-security-lite/03-output-schema-reference.md' }
+                ]
+              }
             ]
           },
           {
-            id: 'sec-exp',
-            label: 'Sec Exp',
-            docs: [
-              { n: '00', title: 'Overview',         src: 'docs/customer/products/switch-exposure-center/00-overview.md' },
-              { n: '01', title: 'Advisory Refresh', src: 'docs/customer/products/switch-exposure-center/01-advisory-refresh.md' },
+            type: 'folder', id: 'scanner', label: 'Scanner', kind: 'root', icon: '💾',
+            children: [
+              {
+                type: 'folder', id: 'storage-intel', label: 'Storage Intelligence Platform', kind: 'product',
+                children: [
+                  { type: 'doc', n: '00', title: 'Overview',                src: 'docs/customer/products/storage-intelligence-platform/00-overview.md' },
+                  { type: 'doc', n: '01', title: 'Deployment & Licensing',  src: 'docs/customer/products/storage-intelligence-platform/01-deployment-and-licensing.md' }
+                ]
+              }
             ]
-          },
-          {
-            id: 'audit-node',
-            label: 'Audit ND',
-            docs: [
-              { n: '00', title: 'Overview',                src: 'docs/customer/products/audit-assurance-node/00-overview.md' },
-              { n: '01', title: 'Deployment',              src: 'docs/customer/products/audit-assurance-node/01-deployment.md' },
-              { n: '02', title: 'Authentication',          src: 'docs/customer/products/audit-assurance-node/02-authentication.md' },
-              { n: '03', title: 'Transports',              src: 'docs/customer/products/audit-assurance-node/03-transports.md' },
-              { n: '04', title: 'Adapters',                src: 'docs/customer/products/audit-assurance-node/04-adapters.md' },
-              { n: '05', title: 'Logging & Observability', src: 'docs/customer/products/audit-assurance-node/05-logging-observability.md' },
-              { n: '06', title: 'Operational Limits',      src: 'docs/customer/products/audit-assurance-node/06-operational-limits.md' },
-              { n: '07', title: 'Parallel Tracing',        src: 'docs/customer/products/audit-assurance-node/07-parallel-tracing.md' },
-              { n: '08', title: 'Runtime Validation',      src: 'docs/customer/products/audit-assurance-node/08-runtime-validation.md' },
-              { n: '09', title: 'Execution Adapters',      src: 'docs/customer/products/audit-assurance-node/09-execution-adapters.md' },
-            ]
-          },
-          {
-            id: 'linux-host-lite',
-            label: 'Linux Host',
-            docs: [
-              { n: '00', title: 'Overview',                  src: 'docs/customer/products/linux-host-lite/00-overview.md' },
-              { n: '01', title: 'Activation & First Audit',  src: 'docs/customer/products/linux-host-lite/01-activation-and-first-audit.md' },
-            ]
-          },
-          {
-            id: 'windows-lite',
-            label: 'Win Lite',
-            docs: [
-              { n: '00', title: 'Overview',                    src: 'docs/customer/products/windows-security-lite/00-overview.md' },
-              { n: '01', title: 'Installation & First Audit',  src: 'docs/customer/products/windows-security-lite/01-installation-and-first-audit.md' },
-            ]
-          },
-          {
-            id: 'macos-lite',
-            label: 'macOS',
-            docs: [
-              { n: '00', title: 'Overview',                  src: 'docs/customer/products/macos-security-lite/00-overview.md' },
-              { n: '01', title: 'Gatekeeper & First Audit',  src: 'docs/customer/products/macos-security-lite/01-gatekeeper-and-first-audit.md' },
-            ]
-          },
-          {
-            id: 'api',
-            label: 'API Ref',
-            docs: [
-              { n: '00', title: 'Authentication',   src: 'docs/api/authentication.md' },
-              { n: '01', title: 'API Library',      src: 'docs/api/library-api-reference.md' },
-              { n: '02', title: 'Standards',        src: 'docs/api/standards.md' },
-            ]
-          },
-          {
-            id: 'legal',
-            label: 'Legal',
-            docs: [
-              { n: '00', title: 'Licensing Overview',       src: 'docs/licensing/overview.md' },
-              { n: '01', title: 'End User License (EULA)',  src: 'docs/legal/eula.md' },
-              { n: '02', title: 'Liability Disclaimer',     src: 'docs/legal/liability-disclaimer-and-indemnity.md' },
-            ]
-          },
+          }
         ];
 
-        /* ── State ────────────────────────────────────────────────── */
-        var activeProductId = null;
-        var activeDocSrc    = null;
+        /* ── Indexes built from the tree ─────────────────────────── */
+        var foldersById = {};   // id -> folder node
+        var docFolderId = {};   // doc node -> owning folder id (via _fid)
+        var rangeLabelOf = {};  // leaf folder id -> range root label (or null)
 
-        /* ── Elements ─────────────────────────────────────────────── */
-        var productGrid  = document.getElementById('docs-product-grid');
-        var navList      = document.getElementById('docs-nav-list');
+        (function indexTree(nodes, ancestors, rootLabel) {
+          nodes.forEach(function (node) {
+            if (node.type === 'folder') {
+              foldersById[node.id] = node;
+              node._ancestors = ancestors;
+              var nextRoot = node.kind === 'root' ? node.label : rootLabel;
+              if (node.kind === 'product' || node.id === 'general' || node.id === 'legal') {
+                rangeLabelOf[node.id] = (node.kind === 'root') ? null : rootLabel;
+              }
+              indexTree(node.children || [], ancestors.concat(node.id), nextRoot);
+            } else {
+              // doc: owning folder is the last ancestor
+              node._fid = ancestors[ancestors.length - 1];
+            }
+          });
+        })(TREE, [], null);
+
+        /* ── State ───────────────────────────────────────────────── */
+        var expanded = {};          // folderId -> true when expanded
+        var activeDocSrc = null;
+        // Default: root ranges expanded, product folders collapsed.
+        TREE.forEach(function (n) { if (n.type === 'folder') expanded[n.id] = true; });
+
+        /* ── Elements ────────────────────────────────────────────── */
+        var treeRoot     = document.getElementById('docs-tree');
         var searchInput  = document.getElementById('doc-search');
         var docsContent  = document.getElementById('docs-content');
         var welcome      = document.getElementById('doc-welcome');
         var docCard      = document.getElementById('doc-card');
-        var cardTitle    = document.getElementById('doc-card-title');
+        var cardCrumb    = document.getElementById('doc-card-crumb');
         var cardFilename = document.getElementById('doc-card-filename');
         var docRender    = document.getElementById('doc-render');
 
-        /* ── Helpers ──────────────────────────────────────────────── */
-        function findProduct(id) {
-          return PRODUCTS.find(function (p) { return p.id === id; });
-        }
+        /* ── Helpers ─────────────────────────────────────────────── */
+        function filenameOf(src) { return src.split('/').pop(); }
 
-        function findDocInProduct(product, n) {
-          return product.docs.find(function (d) { return d.n === n; });
-        }
-
-        function filenameof(src) {
-          return src.split('/').pop();
-        }
-
-        /* ── URL persistence ──────────────────────────────────────── */
-        function pushUrl(productId, docN) {
-          var params = new URLSearchParams();
-          if (productId) params.set('p', productId);
-          if (docN != null) params.set('d', docN);
-          history.replaceState(null, '', '?' + params.toString());
-        }
-
-        /* ── Render product tabs ──────────────────────────────────── */
-        function renderTabs() {
-          productGrid.innerHTML = '';
-          PRODUCTS.forEach(function (p) {
-            var btn = document.createElement('button');
-            btn.type = 'button';
-            btn.className = 'docs-product-btn' + (p.id === activeProductId ? ' active' : '');
-            btn.textContent = p.label;
-            btn.title = p.label;
-            btn.setAttribute('role', 'tab');
-            btn.setAttribute('aria-selected', p.id === activeProductId ? 'true' : 'false');
-            btn.addEventListener('click', function () {
-              selectProduct(p.id, null);
-            });
-            productGrid.appendChild(btn);
+        function findDoc(folderId, docN) {
+          var folder = foldersById[folderId];
+          if (!folder) return null;
+          var found = null;
+          (folder.children || []).forEach(function (c) {
+            if (c.type === 'doc' && c.n === docN) found = c;
           });
+          return found;
         }
 
-        /* ── Render doc list ──────────────────────────────────────── */
-        function renderDocList() {
-          navList.innerHTML = '';
-          var product = findProduct(activeProductId);
-          if (!product) {
-            var empty = document.createElement('li');
-            empty.className = 'docs-nav-empty';
-            empty.textContent = 'Select a product above.';
-            navList.appendChild(empty);
-            return;
-          }
+        function matchesQuery(node, q) {
+          if (node.type === 'doc') return node.title.toLowerCase().indexOf(q) !== -1;
+          // folder matches if its label matches or any descendant matches
+          if (node.label.toLowerCase().indexOf(q) !== -1) return true;
+          return (node.children || []).some(function (c) { return matchesQuery(c, q); });
+        }
+
+        /* ── URL persistence (?p=<folderId>&d=<n>) ───────────────── */
+        function pushUrl(folderId, docN) {
+          var p = new URLSearchParams();
+          if (folderId) p.set('p', folderId);
+          if (docN != null) p.set('d', docN);
+          history.replaceState(null, '', '?' + p.toString());
+        }
+
+        /* ── Render the tree ─────────────────────────────────────── */
+        function renderTree() {
           var q = searchInput.value.toLowerCase().trim();
-          var matched = 0;
-          product.docs.forEach(function (doc) {
-            if (q && !doc.title.toLowerCase().includes(q)) return;
-            matched++;
-            var li = document.createElement('li');
-            var a  = document.createElement('a');
-            a.className = 'docs-nav-item' + (doc.src === activeDocSrc ? ' active' : '');
-            a.href = '#';
-            a.setAttribute('role', 'button');
-            a.innerHTML =
-              '<span class="doc-num">' + doc.n + '</span>' +
-              '<span class="doc-label">' + doc.title + '</span>';
-            a.addEventListener('click', function (e) {
-              e.preventDefault();
-              loadDoc(doc);
-            });
-            li.appendChild(a);
-            navList.appendChild(li);
+          treeRoot.innerHTML = '';
+          var anyShown = false;
+
+          TREE.forEach(function (node) {
+            var el = renderNode(node, q);
+            if (el) { treeRoot.appendChild(el); anyShown = true; }
           });
-          if (matched === 0) {
+
+          if (!anyShown) {
             var none = document.createElement('li');
             none.className = 'docs-nav-empty';
             none.textContent = 'No documents match.';
-            navList.appendChild(none);
+            treeRoot.appendChild(none);
           }
         }
 
-        /* ── Select product ───────────────────────────────────────── */
-        function selectProduct(id, docN) {
-          activeProductId = id;
-          searchInput.value = '';
-          renderTabs();
-          renderDocList();
-          pushUrl(id, docN);
-          if (docN == null) {
-            // No specific doc — keep welcome visible if nothing loaded yet
-            if (activeDocSrc == null) return;
-            // If already viewing a doc from a different product, go back to welcome
-            var product = findProduct(id);
-            var stillInProduct = product && product.docs.some(function (d) { return d.src === activeDocSrc; });
-            if (!stillInProduct) {
-              activeDocSrc = null;
-              docCard.classList.add('is-hidden');
-              welcome.classList.remove('is-hidden');
-            }
+        function renderNode(node, q) {
+          if (node.type === 'doc') {
+            if (q && node.title.toLowerCase().indexOf(q) === -1) return null;
+            return renderDocLeaf(node);
           }
+          // folder
+          if (q && !matchesQuery(node, q)) return null;
+
+          var li = document.createElement('li');
+          li.className = 'tree-folder'
+            + (node.kind === 'root' ? ' is-root' : ' is-product');
+
+          // When filtering, force-expand so matches are visible.
+          var isOpen = q ? true : !!expanded[node.id];
+          if (!isOpen) li.classList.add('collapsed');
+
+          var row = document.createElement('div');
+          row.className = 'tree-row';
+          row.setAttribute('role', 'treeitem');
+          row.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
+          var chevron = document.createElement('span');
+          chevron.className = 'tree-chevron';
+          chevron.innerHTML = '▾';
+          row.appendChild(chevron);
+
+          if (node.icon) {
+            var ic = document.createElement('span');
+            ic.className = 'tree-folder-icon';
+            ic.textContent = node.icon;
+            row.appendChild(ic);
+          }
+
+          var label = document.createElement('span');
+          label.className = 'tree-label';
+          label.textContent = node.label;
+          row.appendChild(label);
+
+          row.addEventListener('click', function () {
+            if (searchInput.value.trim()) { searchInput.value = ''; }
+            expanded[node.id] = li.classList.contains('collapsed');
+            renderTree();
+          });
+
+          li.appendChild(row);
+
+          var childWrap = document.createElement('ul');
+          childWrap.className = 'docs-tree tree-children';
+          (node.children || []).forEach(function (child) {
+            var childEl = renderNode(child, q);
+            if (childEl) childWrap.appendChild(childEl);
+          });
+          li.appendChild(childWrap);
+
+          return li;
         }
 
-        /* ── Load document ────────────────────────────────────────── */
+        function renderDocLeaf(doc) {
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          a.className = 'tree-doc' + (doc.src === activeDocSrc ? ' active' : '');
+          a.href = '#';
+          a.setAttribute('role', 'treeitem');
+          a.innerHTML =
+            '<span class="doc-num">' + doc.n + '</span>' +
+            '<span class="doc-label"></span>';
+          a.querySelector('.doc-label').textContent = doc.title;
+          a.addEventListener('click', function (e) {
+            e.preventDefault();
+            loadDoc(doc);
+          });
+          li.appendChild(a);
+          return li;
+        }
+
+        /* ── Expand ancestors of a folder/doc ────────────────────── */
+        function expandAncestors(folderId) {
+          var folder = foldersById[folderId];
+          if (!folder) return;
+          (folder._ancestors || []).forEach(function (id) { expanded[id] = true; });
+          expanded[folderId] = true;
+        }
+
+        /* ── Load a document into the right pane ─────────────────── */
         function loadDoc(doc) {
           activeDocSrc = doc.src;
+          var folderId = doc._fid;
+          expandAncestors(folderId);
+          renderTree();
+          pushUrl(folderId, doc.n);
 
-          // Make sure the right product is active
-          var ownerProduct = null;
-          PRODUCTS.forEach(function (p) {
-            if (p.docs.some(function (d) { return d.src === doc.src; })) ownerProduct = p;
-          });
-          if (ownerProduct && ownerProduct.id !== activeProductId) {
-            activeProductId = ownerProduct.id;
-            renderTabs();
-          }
-          renderDocList();
-          pushUrl(activeProductId, doc.n);
+          // Breadcrumb: Range › Product › Doc  (range omitted for General/Legal)
+          var folder = foldersById[folderId];
+          var range = rangeLabelOf[folderId];
+          var crumb = '';
+          if (range) crumb += '<span class="crumb-range">' + range + '</span><span class="crumb-sep">/</span>';
+          crumb += (folder ? folder.label : '') + '<span class="crumb-sep">/</span>' + doc.title;
 
-          // Switch view
           welcome.classList.add('is-hidden');
           docCard.classList.remove('is-hidden');
-          cardTitle.textContent = doc.title;
-          cardFilename.textContent = filenameof(doc.src);
-          docRender.innerHTML = '<p class="doc-loading-msg">Loading…</p>';
+          cardCrumb.innerHTML = crumb;
+          cardFilename.textContent = filenameOf(doc.src);
+          docRender.innerHTML = '<p class="doc-loading-msg">Loading&#8230;</p>';
           docsContent.scrollTop = 0;
+          document.title = doc.title + ' — AuditToolkit Labs';
 
           fetch(doc.src)
             .then(function (r) {
@@ -786,47 +878,47 @@
             });
         }
 
-        /* ── Welcome card clicks ──────────────────────────────────── */
-        document.querySelectorAll('.doc-welcome-card[data-product]').forEach(function (card) {
+        /* ── Welcome card clicks ─────────────────────────────────── */
+        document.querySelectorAll('.doc-welcome-card[data-folder]').forEach(function (card) {
           card.addEventListener('click', function (e) {
             e.preventDefault();
-            var pid  = card.getAttribute('data-product');
-            var docN = card.getAttribute('data-doc-n') || '00';
-            var product = findProduct(pid);
-            if (!product) return;
-            activeProductId = pid;
-            renderTabs();
-            renderDocList();
-            var doc = findDocInProduct(product, docN);
+            var doc = findDoc(card.getAttribute('data-folder'), card.getAttribute('data-doc-n') || '00');
             if (doc) loadDoc(doc);
           });
         });
 
-        /* ── Search filter ────────────────────────────────────────── */
-        searchInput.addEventListener('input', function () {
-          renderDocList();
+        /* ── Search filter ───────────────────────────────────────── */
+        searchInput.addEventListener('input', renderTree);
+
+        /* ── Expand / collapse all ───────────────────────────────── */
+        document.getElementById('tree-expand-all').addEventListener('click', function () {
+          Object.keys(foldersById).forEach(function (id) { expanded[id] = true; });
+          renderTree();
+        });
+        document.getElementById('tree-collapse-all').addEventListener('click', function () {
+          Object.keys(foldersById).forEach(function (id) { expanded[id] = false; });
+          TREE.forEach(function (n) { if (n.type === 'folder') expanded[n.id] = true; });
+          renderTree();
         });
 
-        /* ── Restore from URL params ──────────────────────────────── */
+        /* ── Restore from URL ────────────────────────────────────── */
         function restoreFromUrl() {
-          var params  = new URLSearchParams(window.location.search);
-          var pid     = params.get('p');
-          var docN    = params.get('d');
+          var params = new URLSearchParams(window.location.search);
+          var pid = params.get('p');
+          var docN = params.get('d');
+          // Legacy alias: old 'suite' product id maps to the General folder.
+          if (pid === 'suite') pid = 'general';
           if (!pid) return;
-          var product = findProduct(pid);
-          if (!product) return;
-          activeProductId = pid;
-          renderTabs();
-          renderDocList();
-          if (docN) {
-            var doc = findDocInProduct(product, docN);
-            if (doc) loadDoc(doc);
+          if (docN != null) {
+            var doc = findDoc(pid, docN);
+            if (doc) { loadDoc(doc); return; }
           }
+          // Folder only — just expand it.
+          if (foldersById[pid]) { expandAncestors(pid); renderTree(); }
         }
 
-        /* ── Boot ─────────────────────────────────────────────────── */
-        renderTabs();
-        renderDocList();
+        /* ── Boot ────────────────────────────────────────────────── */
+        renderTree();
         restoreFromUrl();
 
       }());

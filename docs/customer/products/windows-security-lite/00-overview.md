@@ -80,6 +80,7 @@ documentation, and support guidance for confirmed product issues.
 
 ## Product-Specific Follow-Up Pages
 
-Planned product pages include installation and first run, GUI launcher,
-activation and offline licensing, scan profiles, output schema reference, and
-CI/CD gate integration.
+- [Installation and First Audit](01-installation-and-first-audit.md)
+- [Configuration and Scan Profiles](02-configuration.md)
+- [Output Schema Reference](03-output-schema-reference.md)
+- [CI/CD Gate Integration](04-ci-cd-integration.md)

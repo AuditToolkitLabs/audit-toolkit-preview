@@ -1,0 +1,17 @@
+{
+  "gitea_base_url": "http://localhost:3000",
+  "org": "audittoolkitlabs",
+  "release_hub": "github",
+  "github_repo": "AuditToolkitLabs/releases",
+  "keep_releases": 2,
+  "_comment": "Source map for ci/sync-releases.py. Metadata is read from the private Gitea host (loopback) and written source-free to releases/data/. Binaries are published to the PUBLIC GitHub Releases hub (AuditToolkitLabs/releases) with per-product namespaced tags '<slug>-<tag>'. A release's assets only get a working download_url once that tag exists on GitHub. Add the other 7 products here after the SIP prototype is approved.",
+  "products": [
+    {
+      "slug": "storage-intelligence-platform",
+      "name": "Storage Intelligence Platform",
+      "repo": "Storage-Intelligence-Platform",
+      "page": "storage-scanner-releases.html",
+      "blurb": "Distributed storage inventory, classification, and change-tracking."
+    }
+  ]
+}

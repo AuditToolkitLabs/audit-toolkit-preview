@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <title>Storage Intelligence Platform Releases — AuditToolkit Labs</title>
+    <meta name="description" content="Release notes and version history for the Storage Intelligence Platform." />
+    <link rel="stylesheet" href="assets/css/site.css?v=20260612g" />
+    <style>
+      .nav-mobile-contact { color: var(--accent); font-weight: 600; }
+      .rel-list { max-width: 860px; }
+      .rel-card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        margin-bottom: 20px;
+        overflow: hidden;
+      }
+      .rel-card-header {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+        background: var(--panel-2);
+      }
+      .rel-tag {
+        font-family: "Courier New", monospace;
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--accent);
+      }
+      .rel-name { font-weight: 600; color: var(--text); }
+      .rel-meta { font-size: 0.8rem; color: var(--subtle); margin-left: auto; white-space: nowrap; }
+      .rel-body { padding: 18px 24px 8px; font-size: 0.9rem; line-height: 1.7; color: var(--muted); }
+      .rel-body h1, .rel-body h2, .rel-body h3 { color: var(--text); margin: 1.2em 0 0.4em; }
+      .rel-body h1 { font-size: 1.15rem; }
+      .rel-body h2 { font-size: 1.05rem; }
+      .rel-body h3 { font-size: 0.95rem; }
+      .rel-body table { width: 100%; border-collapse: collapse; margin: 0 0 1.2em; font-size: 0.86em; }
+      .rel-body th { background: var(--panel-2); color: var(--text); text-align: left; padding: 7px 11px; border: 1px solid var(--border); }
+      .rel-body td { padding: 6px 11px; border: 1px solid var(--border); }
+      .rel-body pre {
+        background: #0d1117; border: 1px solid var(--border); border-radius: var(--radius-sm);
+        padding: 0.9em 1.1em; overflow-x: auto;
+      }
+      .rel-body pre code { background: none; color: #a5f3fc; font-size: 0.82em; font-family: "Courier New", monospace; }
+      .rel-body code { background: var(--panel-2); color: var(--accent-2); padding: 2px 5px; border-radius: 4px; font-size: 0.85em; font-family: "Courier New", monospace; }
+      .rel-assets { padding: 4px 24px 22px; }
+      .rel-assets h4 {
+        font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em;
+        color: var(--subtle); margin: 16px 0 10px;
+      }
+      .rel-asset-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+      .rel-asset-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+      .rel-asset-table tr:last-child td { border-bottom: none; }
+      .rel-asset-name { font-family: "Courier New", monospace; color: var(--text); word-break: break-all; }
+      .rel-asset-size { color: var(--subtle); white-space: nowrap; text-align: right; }
+      .rel-asset-dl { text-align: right; white-space: nowrap; }
+      .rel-asset-dl .muted { color: var(--subtle); font-size: 0.8rem; }
+      .rel-prerelease { background: #fff3cd; color: #8a6d3b; border-color: #ffe69c; }
+      .rel-status { color: var(--muted); padding: 40px 0; text-align: center; }
+      .rel-error { color: var(--accent-3); }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="wrap">
+        <div class="nav-inner">
+          <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+          <ul class="nav-links">
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="toolkit-overview.html">Overview</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="use-cases.html">Use Cases</a></li>
+            <li><a href="integrations.html">Integrations</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="releases.html" class="active">Releases</a></li>
+            <li><a href="licensing.html">Licensing</a></li>
+            <li><a href="support.html">Support</a></li>
+          </ul>
+          <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+          <button type="button" class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="toolkit-overview.html">Overview</a>
+      <a href="docs.html">Documentation</a>
+      <a href="releases.html">Releases</a>
+      <a href="licensing.html">Licensing</a>
+      <a href="support.html">Support</a>
+      <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
+    </div>
+
+    <div class="page-hero">
+      <div class="wrap">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a><span class="sep">/</span> <a href="releases.html">Releases Hub</a><span class="sep">/</span>
+          <span class="cur">Storage Intelligence Platform</span>
+        </div>
+        <p class="eyebrow">Release History</p>
+        <h1>Storage Intelligence Platform Releases</h1>
+        <p>Version history and release notes, mirrored from the canonical release server.</p>
+        <div class="flex gap-12 flex-wrap mt-16" id="rel-hero-badges"></div>
+        <div class="flex gap-12 flex-wrap mt-16">
+          <a href="storage-scanner.html" class="btn btn-secondary btn-sm">Product Overview</a>
+          <a href="price.html#storage-intelligence-platform" class="btn btn-secondary btn-sm">View Pricing</a>
+          <a href="docs.html?p=storage-intel&d=00" class="btn btn-secondary btn-sm">Documentation</a>
+        </div>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="rel-list" id="rel-list">
+          <p class="rel-status">Loading releases&#8230;</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-bottom"><p>&copy; 2026 AuditToolkit Labs. All rights reserved.</p></div>
+      </div>
+    </footer>
+
+    <script src="assets/js/nav.js?v=20260612e"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
+    <script>
+      (function () {
+        "use strict";
+        var DATA_URL = "releases/data/storage-intelligence-platform.json";
+        var listEl = document.getElementById("rel-list");
+        var badgesEl = document.getElementById("rel-hero-badges");
+
+        function fmtSize(bytes) {
+          if (!bytes && bytes !== 0) return "";
+          var u = ["B", "KB", "MB", "GB"], i = 0, n = bytes;
+          while (n >= 1024 && i < u.length - 1) { n /= 1024; i++; }
+          return (i === 0 ? n : n.toFixed(1)) + " " + u[i];
+        }
+
+        function fmtDate(iso) {
+          if (!iso) return "";
+          var d = new Date(iso);
+          if (isNaN(d)) return iso;
+          return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+        }
+
+        function el(tag, cls, html) {
+          var e = document.createElement(tag);
+          if (cls) e.className = cls;
+          if (html != null) e.innerHTML = html;
+          return e;
+        }
+
+        function renderAssets(assets) {
+          var wrap = el("div", "rel-assets");
+          wrap.appendChild(el("h4", null, "Downloads (" + assets.length + ")"));
+          var table = el("table", "rel-asset-table");
+          var tbody = document.createElement("tbody");
+          assets.forEach(function (a) {
+            var tr = document.createElement("tr");
+            var nameTd = el("td", "rel-asset-name");
+            nameTd.textContent = a.name;
+            var sizeTd = el("td", "rel-asset-size");
+            sizeTd.textContent = fmtSize(a.size);
+            var dlTd = el("td", "rel-asset-dl");
+            if (a.download_url) {
+              var link = el("a", "btn btn-secondary btn-sm");
+              link.href = a.download_url;
+              link.textContent = "Download";
+              link.setAttribute("rel", "noopener");
+              dlTd.appendChild(link);
+            } else {
+              dlTd.appendChild(el("span", "muted", "—"));
+            }
+            tr.appendChild(nameTd); tr.appendChild(sizeTd); tr.appendChild(dlTd);
+            tbody.appendChild(tr);
+          });
+          table.appendChild(tbody);
+          wrap.appendChild(table);
+          return wrap;
+        }
+
+        function renderRelease(r) {
+          var card = el("div", "rel-card");
+          var header = el("div", "rel-card-header");
+          header.appendChild(el("span", "rel-tag", r.tag));
+          if (r.name && r.name !== r.tag) header.appendChild(el("span", "rel-name", r.name));
+          if (r.prerelease) header.appendChild(el("span", "badge rel-prerelease", "Pre-release"));
+          var meta = "Released " + fmtDate(r.published_at);
+          if (r.author) meta += " · " + r.author;
+          header.appendChild(el("span", "rel-meta", meta));
+          card.appendChild(header);
+
+          if (r.body_md) {
+            card.appendChild(el("div", "rel-body", marked.parse(r.body_md)));
+          }
+          if (r.assets && r.assets.length) {
+            card.appendChild(renderAssets(r.assets));
+          }
+          return card;
+        }
+
+        fetch(DATA_URL, { cache: "no-store" })
+          .then(function (res) {
+            if (!res.ok) throw new Error("HTTP " + res.status);
+            return res.json();
+          })
+          .then(function (data) {
+            var releases = data.releases || [];
+            if (data.latest) {
+              badgesEl.appendChild(el("span", "badge badge-green", "Latest: " + data.latest));
+            }
+            badgesEl.appendChild(el("span", "badge badge-muted", releases.length + " releases"));
+            if (data.generated_at) {
+              badgesEl.appendChild(el("span", "badge badge-muted", "Synced " + fmtDate(data.generated_at)));
+            }
+            listEl.innerHTML = "";
+            if (!releases.length) {
+              listEl.appendChild(el("p", "rel-status", "No releases published yet."));
+              return;
+            }
+            releases.forEach(function (r) { listEl.appendChild(renderRelease(r)); });
+          })
+          .catch(function (err) {
+            listEl.innerHTML =
+              '<p class="rel-status rel-error">Could not load release data (' + err.message + ").</p>";
+          });
+      }());
+    </script>
+  </body>
+</html>

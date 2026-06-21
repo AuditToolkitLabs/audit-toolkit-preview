@@ -74,5 +74,7 @@ documentation, and support guidance for confirmed product issues.
 
 ## Product-Specific Follow-Up Pages
 
-Planned product pages include activation and first audit, scan profiles,
-output schema reference, CI/CD gate integration, and offline licence import.
+- [Activation and First Audit](01-activation-and-first-audit.md)
+- [Configuration and Scan Profiles](02-configuration.md)
+- [Output Schema Reference](03-output-schema-reference.md)
+- [CI/CD Gate Integration](04-ci-cd-integration.md)
