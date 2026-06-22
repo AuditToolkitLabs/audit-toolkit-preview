@@ -13,6 +13,22 @@
     "linux-business": {
       "planCode": "linux-business",
       "keygenPolicyId": "KEYGEN_POLICY_ID_EXAMPLE_LINUX_BUSINESS"
+    },
+    "litmus-pro": {
+      "planCode": "litmus-pro",
+      "keygenPolicyId": "KEYGEN_POLICY_ID_LITMUS_PRO"
+    },
+    "litmus-team": {
+      "planCode": "litmus-team",
+      "keygenPolicyId": "KEYGEN_POLICY_ID_LITMUS_TEAM"
+    },
+    "litmus-business": {
+      "planCode": "litmus-business",
+      "keygenPolicyId": "KEYGEN_POLICY_ID_LITMUS_BUSINESS"
+    },
+    "litmus-enterprise": {
+      "planCode": "litmus-enterprise",
+      "keygenPolicyId": "KEYGEN_POLICY_ID_LITMUS_ENTERPRISE"
     }
   },
   "byProductId": {

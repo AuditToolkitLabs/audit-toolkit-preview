@@ -1,0 +1,20 @@
+{
+  "_comment": "POST to https://api.keygen.sh/v1/accounts/<account>/products to create the Litmus product. Record the returned product id for policy creation. See ADD-LITMUS-RUNBOOK.md.",
+  "data": {
+    "type": "products",
+    "attributes": {
+      "name": "Litmus",
+      "code": "litmus",
+      "distributionStrategy": "LICENSED",
+      "licenseModeSupported": ["connected", "offline"],
+      "signatureSupport": true,
+      "metadata": {
+        "productCode": "litmus",
+        "licenseUnit": "connected-node-band",
+        "majorVersionSupport": "v1",
+        "supportContact": "support@audittoolkitlabs.com",
+        "canonicalPricingDoc": "automation/licensing/litmus.json"
+      }
+    }
+  }
+}

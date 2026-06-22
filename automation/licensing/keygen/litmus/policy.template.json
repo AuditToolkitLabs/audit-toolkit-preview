@@ -1,0 +1,30 @@
+{
+  "_comment": "Parameterised Litmus tier policy. Create ONE policy per tier, substituting <...>. POST to /v1/accounts/<account>/policies with the product relationship set to the Litmus product id. The maxNodes metadata MUST match the tier's max_nodes in automation/licensing/litmus.json, and the resulting policy id goes into both litmus.json (keygen_policy_id) and the worker PRICE_POLICY_MAP_JSON. Per-tier values are tabulated in ADD-LITMUS-RUNBOOK.md.",
+  "data": {
+    "type": "policies",
+    "attributes": {
+      "name": "Litmus <TIER_NAME>",
+      "duration": 31536000,
+      "_duration_note": "31536000s = 365 days; null = perpetual",
+      "authenticationStrategy": "LICENSE",
+      "expirationStrategy": "RESTRICT_ACCESS",
+      "expirationBasis": "FROM_CREATION",
+      "transferStrategy": "KEEP_EXPIRY",
+      "floating": true,
+      "maxMachines": 1,
+      "_maxMachines_note": "license is bound to the single Litmus install, not to managed nodes",
+      "requireHeartbeat": false,
+      "metadata": {
+        "tier": "<TIER_NAME>",
+        "maxNodes": "<MAX_NODES integer; 0 = unlimited>",
+        "allowProduction": true,
+        "allowAirGapped": "<true for Business/Enterprise, false otherwise>"
+      }
+    },
+    "relationships": {
+      "product": {
+        "data": { "type": "products", "id": "<LITMUS_PRODUCT_ID>" }
+      }
+    }
+  }
+}

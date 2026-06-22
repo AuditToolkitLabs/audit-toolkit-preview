@@ -1,0 +1,160 @@
+{
+  "product_key": "litmus",
+  "product_name": "Litmus",
+  "license_model": "BSL 1.1",
+  "mit_conversion_date": "TBD at first release",
+  "node_unit": "connected node (an asset with a connection profile attached)",
+  "manual_contact": {
+    "email": "License@audittoolkitlabs.com",
+    "support_path": "support.html#contact"
+  },
+  "frontdoor": {
+    "auto_checkout_enabled": true,
+    "auto_issue_enabled": true,
+    "manual_fallback_enabled": true,
+    "manual_fallback_conditions": [
+      "missing_or_disabled_checkout_link",
+      "invoice_or_purchase_order_requested",
+      "enterprise_msp_or_volume_terms_required",
+      "air_gapped_offline_license_requested",
+      "failed_or_disputed_payment"
+    ]
+  },
+  "_notes": "Litmus is licensed per CONNECTED NODE band (flat price per band, not per-node). keygen_policy_id and checkout_url are placeholders until the Keygen policies and Stripe links exist; see ADD-LITMUS-RUNBOOK.md. Each tier's max_nodes must match the maxNodes metadata on its Keygen policy.",
+  "tiers": [
+    {
+      "name": "Starter",
+      "max_nodes": 5,
+      "keygen_policy_id": "REPLACE_litmus_starter_free_policy_id",
+      "price_gbp": 0,
+      "description": "Free tier for labs, evaluation, and small estates. Up to 5 connected nodes, agentless audit + reporting, no licence key required.",
+      "features": [
+        { "text": "Up to 5 connected nodes", "included": true },
+        { "text": "Agentless audit over SSH / WinRM / SNMP / API", "included": true },
+        { "text": "Dashboard, findings, and trends", "included": true },
+        { "text": "Scheduled audits", "included": true },
+        { "text": "Community email support", "included": true },
+        { "text": "SSO (OIDC / LDAP / SAML)", "included": true },
+        { "text": "Air-gapped offline licensing", "included": false }
+      ],
+      "cta": {
+        "checkout_url": null,
+        "checkout_label": "Buy via Stripe &rarr;",
+        "fallback_url": "litmus-releases.html",
+        "fallback_label": "View Release Notes",
+        "checkout_note": "No licence key required for the free tier",
+        "fallback_note": "No purchase or registration required",
+        "button_class": "btn-secondary"
+      }
+    },
+    {
+      "name": "Pro",
+      "max_nodes": 25,
+      "keygen_policy_id": "REPLACE_litmus_pro_policy_id",
+      "price_gbp": 349,
+      "description": "Entry commercial tier for small production estates. Up to 25 connected nodes with commercial use rights.",
+      "features": [
+        { "text": "Up to 25 connected nodes", "included": true },
+        { "text": "Commercial production use", "included": true },
+        { "text": "Audit + remediation with approval & rollback", "included": true },
+        { "text": "Email support", "included": true },
+        { "text": "Upgrade path to Team / Business / Enterprise", "included": true }
+      ],
+      "cta": {
+        "checkout_url": null,
+        "checkout_label": "Buy via Stripe &rarr;",
+        "fallback_url": "support.html#contact",
+        "fallback_label": "Get Pro Checkout &rarr;",
+        "checkout_note": "Secure checkout via Stripe &middot; Keygen key emailed on payment",
+        "fallback_note": "Stripe payment link available &middot; Keygen key emailed on payment",
+        "button_class": "btn-secondary"
+      }
+    },
+    {
+      "name": "Team",
+      "max_nodes": 100,
+      "keygen_policy_id": "REPLACE_litmus_team_policy_id",
+      "price_gbp": 990,
+      "description": "For growing estates and multiple sites. Up to 100 connected nodes.",
+      "featured": true,
+      "featured_badge": "Most Popular",
+      "features": [
+        { "text": "Up to 100 connected nodes", "included": true },
+        { "text": "Scheduled audits & asset groups", "included": true },
+        { "text": "Trends, drift, and rollups", "included": true },
+        { "text": "Commercial production use", "included": true },
+        { "text": "48-hour email support response", "included": true }
+      ],
+      "cta": {
+        "checkout_url": null,
+        "checkout_label": "Buy via Stripe &rarr;",
+        "fallback_url": "support.html#contact",
+        "fallback_label": "Contact Licensing Team &rarr;",
+        "checkout_note": "Secure checkout via Stripe &middot; Keygen key emailed on payment",
+        "fallback_note": "Manual license deployment available via contact",
+        "button_class": "btn-primary"
+      }
+    },
+    {
+      "name": "Business",
+      "max_nodes": 500,
+      "keygen_policy_id": "REPLACE_litmus_business_policy_id",
+      "price_gbp": 3490,
+      "description": "Mid-market, multi-site estates. Up to 500 connected nodes with priority support.",
+      "features": [
+        { "text": "Up to 500 connected nodes", "included": true },
+        { "text": "All Team features", "included": true },
+        { "text": "Priority support", "included": true },
+        { "text": "MSP / MSSP use", "included": true },
+        { "text": "Air-gapped offline licensing available", "included": true }
+      ],
+      "cta": {
+        "checkout_url": null,
+        "checkout_label": "Buy via Stripe &rarr;",
+        "fallback_url": "support.html#contact",
+        "fallback_label": "Contact Licensing Team &rarr;",
+        "checkout_note": "Secure checkout via Stripe &middot; Keygen key emailed on payment",
+        "fallback_note": "Manual license deployment available via contact",
+        "button_class": "btn-secondary"
+      }
+    },
+    {
+      "name": "Enterprise",
+      "max_nodes": 2500,
+      "keygen_policy_id": "REPLACE_litmus_enterprise_policy_id",
+      "price_gbp": 11900,
+      "description": "Large estates and federal/air-gapped programs. Up to 2,500 connected nodes; contact us for unlimited/site licences.",
+      "features": [
+        { "text": "Up to 2,500 connected nodes", "included": true },
+        { "text": "Air-gapped offline licensing", "included": true },
+        { "text": "Custom SLA & onboarding (contact sales)", "included": true },
+        { "text": "Unlimited / site licence on request", "included": true }
+      ],
+      "cta": {
+        "checkout_url": null,
+        "checkout_label": "Buy via Stripe &rarr;",
+        "fallback_url": "support.html#contact",
+        "fallback_label": "Contact Licensing Team &rarr;",
+        "checkout_note": "Secure checkout via Stripe &middot; Keygen key emailed on payment",
+        "fallback_note": "Manual license deployment available via contact",
+        "button_class": "btn-secondary"
+      }
+    }
+  ],
+  "add_ons": [
+    {
+      "name": "Air-Gapped Licensing Pack Add-on",
+      "keygen_policy_id": "REPLACE_litmus_airgapped_addon_policy_id",
+      "price_gbp": 790,
+      "description": "Offline Ed25519-signed licence files for disconnected/classified deployments, with no phone-home validation.",
+      "checkout_url": null
+    },
+    {
+      "name": "Priority Support Add-on",
+      "keygen_policy_id": "REPLACE_litmus_priority_support_addon_policy_id",
+      "price_gbp": 490,
+      "description": "Faster response targets and a named support contact for paid tiers.",
+      "checkout_url": null
+    }
+  ]
+}

@@ -12,6 +12,13 @@
       "repo": "Storage-Intelligence-Platform",
       "page": "storage-scanner-releases.html",
       "blurb": "Distributed storage inventory, classification, and change-tracking."
+    },
+    {
+      "slug": "litmus",
+      "name": "Litmus",
+      "repo": "litmus",
+      "page": "litmus-releases.html",
+      "blurb": "Agentless asset-based compliance audit, remediation, and reporting."
     }
   ]
 }
