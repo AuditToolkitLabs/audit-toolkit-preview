@@ -49,13 +49,29 @@ Then write the real policy ids into:
 
 ## Step 2 — Stripe (payment)
 
-1. Create a **product + annual price** for each paid tier on
-   `checkout.audittoolkitlabs.com`, using the **lookup keys** above.
-2. Put the matching **`keygen_policy_id`** in each price's checkout/session
-   **metadata** (preferred), per `cloudflare-worker/README.md` → *Important Stripe
-   Metadata*. (`plan_lookup_key` / `price_id` are accepted fallbacks.)
-3. Create **payment links**; record each URL.
-4. Write each payment link into `litmus.json` → tier `cta.checkout_url`.
+Create **one product, "Litmus", with one annual price per paid tier** (cleaner
+than a product-per-tier; the worker resolves by lookup key / metadata, not by
+product). The free Starter tier needs no Stripe price — it is keyless.
+
+1. Create the Stripe product **`Litmus`**.
+2. Add a **recurring annual price (interval = year, currency = GBP)** for each
+   paid tier, each with its **`lookup_key`** and a **`metadata.keygen_policy_id`**:
+
+   | Price | Amount (GBP/yr) | lookup_key | metadata.keygen_policy_id |
+   |---|---|---|---|
+   | Pro | 349 | `litmus-pro` | «Pro policy id» |
+   | Team | 990 | `litmus-team` | «Team policy id» |
+   | Business | 3490 | `litmus-business` | «Business policy id» |
+   | Enterprise | 11900 | `litmus-enterprise` | «Enterprise policy id» |
+
+   Add-ons (same product or a separate "Add-ons" product, your choice): Air-Gapped
+   Licensing Pack **790**, Priority Support **490**.
+3. `keygen_policy_id` on the price metadata is preferred resolution; `lookup_key`
+   / `price_id` are accepted fallbacks (see `cloudflare-worker/README.md` →
+   *Important Stripe Metadata*).
+4. Create a **payment link** per price on `checkout.audittoolkitlabs.com`; record
+   each URL.
+5. Write each payment-link URL into `litmus.json` → tier `cta.checkout_url`.
 
 ## Step 3 — Cloudflare worker (glue)
 
