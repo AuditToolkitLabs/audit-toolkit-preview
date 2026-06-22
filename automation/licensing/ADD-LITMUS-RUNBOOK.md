@@ -73,18 +73,39 @@ product). The free Starter tier needs no Stripe price — it is keyless.
    each URL.
 5. Write each payment-link URL into `litmus.json` → tier `cta.checkout_url`.
 
-## Step 3 — Cloudflare worker (glue)
+## Step 3 — Cloudflare worker (glue)  ✅ done for Litmus
 
-1. Add the litmus entries (already stubbed in
-   `cloudflare-worker/config/price-policy-map.example.json`) to the real
-   **`PRICE_POLICY_MAP_JSON`** GitHub environment secret, with real price ids /
-   lookup keys → real Keygen policy ids.
-2. Re-run the secrets sync:
-   `gh workflow run "Sync Cloudflare Worker Secrets" --repo AuditToolkitLabs/audit-toolkit-preview`
-3. Confirm the Stripe webhook (`/webhooks/stripe`) and Keygen webhook are live
-   (they already are for the account — no per-product change needed).
-4. **Smoke test:** a £0 / test-price purchase → verify in `wrangler tail`:
-   `stripe-signature verified`, `keygen license created`, `billing.license_issued`.
+`PRICE_POLICY_MAP_JSON` is a **plain-text `[vars]` binding on the deployed
+worker** (NOT a secret, and NOT synced from GitHub). It maps every product's
+Stripe price → Keygen policy across the whole estate.
+
+!!! danger "ALWAYS read the LIVE map before editing it"
+    The repo `wrangler.toml` can drift from the deployed value (the live map is
+    often edited via the dashboard). **Never** edit/deploy the repo copy blindly —
+    you will wipe other products' mappings. The mandatory procedure:
+
+    1. **Read the live map** (read-only) and merge into *that*, never the repo:
+       ```bash
+       # via wrangler's own auth (oauth_token in ~/.config/.wrangler) or a token:
+       curl -s -H "Authorization: Bearer $CF_TOKEN" \
+         https://api.cloudflare.com/client/v4/accounts/<acct>/workers/scripts/audittoolkit-billing-worker/settings \
+         | jq -r '.result.bindings[] | select(.name=="PRICE_POLICY_MAP_JSON") | .text'
+       ```
+    2. **Merge** your new `byPriceId` entries into the live JSON (keep all others).
+    3. **Reconcile** `cloudflare-worker/wrangler.toml` to the merged value so the
+       repo matches live.
+    4. **Dry-run** then deploy: `wrangler deploy --dry-run` → review bindings →
+       `wrangler deploy`. (Deploy **preserves secrets**; it re-uploads code from
+       the repo, so ensure the repo worker code is current.)
+    5. **Verify** post-deploy: re-read the live settings and confirm the entry
+       count is right **and all secret bindings are still present**.
+
+Litmus status: the 4 litmus price→policy entries are merged into the live map
+(14 byPriceId total) and deployed; all 13 worker secrets verified retained.
+
+**Smoke test (on hold):** a £0 / test-price purchase → `wrangler tail` should
+show `stripe-signature verified`, `keygen license created`,
+`billing.license_issued`.
 
 ## Step 4 — Litmus product wiring (done in the litmus repo)
 
@@ -126,18 +147,19 @@ issued, and what customers enter in Settings → License.
 
 ## Status checklist
 
-- [x] `litmus.json` licensing data (placeholder policy ids / checkout urls)
+- [x] `litmus.json` licensing data (LIVE policy ids + Stripe price ids + links)
 - [x] Keygen product + policy templates (`keygen/litmus/`)
-- [x] Price→policy map litmus stubs (`price-policy-map.example.json`)
+- [x] **Keygen:** product + 5 policies created, metadata/strict/auth verified
+- [x] **Stripe:** product `Audit Toolkit Litmus` + 4 prices + payment links
+- [x] **Cloudflare:** litmus entries merged into LIVE `PRICE_POLICY_MAP_JSON`
+      (14 byPriceId), deployed, secrets verified retained
+- [x] `wrangler.toml` reconciled to the live map (no longer a deploy hazard)
 - [x] Litmus app: connected Keygen + offline + free, node-cap enforcement
 - [x] `mint_license.py` for offline licences
 - [x] `releases-sources.json` entry + `litmus-releases.html`
-- [ ] **Keygen:** create product + policies, capture real ids *(dashboard)*
-- [ ] **Stripe:** create products/prices/payment links + metadata *(dashboard)*
-- [ ] **Cloudflare:** put real ids in `PRICE_POLICY_MAP_JSON`, sync, smoke test
-- [ ] Fill real policy ids + checkout urls into `litmus.json`
 - [ ] Website pricing page/render (generalise renderer) *(after release)*
 - [ ] Publish the litmus release to the GitHub hub *(after release)*
+- [ ] End-to-end test purchase *(on hold)*
 
 Owner split: dashboard/account actions (Keygen, Stripe, Cloudflare secrets, the
 test purchase) are operator tasks; the repo artifacts above are prepared on the
