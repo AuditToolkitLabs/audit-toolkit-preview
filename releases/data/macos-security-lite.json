@@ -3,7 +3,7 @@
   "slug": "macos-security-lite",
   "repo": "audittoolkitlabs/AuditToolkit-macOS-Security-Lite",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-06-24T12:45:35Z",
+  "generated_at": "2026-06-24T15:54:50Z",
   "latest": "v0.1.0",
   "releases": [
     {
@@ -18,31 +18,31 @@
         {
           "name": "AuditToolkit-macOS-Security-Lite-0.1.0.dmg",
           "size": 12961243,
-          "download_count": 0,
+          "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v0.1.0/AuditToolkit-macOS-Security-Lite-0.1.0.dmg"
         },
         {
           "name": "AuditToolkit-macOS-Security-Lite-0.1.0.pkg",
           "size": 2641970,
-          "download_count": 0,
+          "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v0.1.0/AuditToolkit-macOS-Security-Lite-0.1.0.pkg"
         },
         {
           "name": "CHANGELOG.md",
           "size": 1685,
-          "download_count": 0,
+          "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v0.1.0/CHANGELOG.md"
         },
         {
           "name": "README.md",
           "size": 2897,
-          "download_count": 0,
+          "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v0.1.0/README.md"
         },
         {
           "name": "SHA256SUMS",
           "size": 218,
-          "download_count": 0,
+          "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v0.1.0/SHA256SUMS"
         }
       ]

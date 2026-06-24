@@ -3,7 +3,7 @@
   "slug": "windows-security-lite",
   "repo": "audittoolkitlabs/AuditToolkit-Windows-Security-Lite",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-06-24T12:45:13Z",
+  "generated_at": "2026-06-24T15:54:49Z",
   "latest": "v0.1.0",
   "releases": [
     {
@@ -18,31 +18,31 @@
         {
           "name": "AuditToolkitWinSecLite-0.1.0.msi",
           "size": 13475840,
-          "download_count": 0,
+          "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/windows-security-lite-v0.1.0/AuditToolkitWinSecLite-0.1.0.msi"
         },
         {
           "name": "CHANGELOG.md",
           "size": 1643,
-          "download_count": 0,
+          "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/windows-security-lite-v0.1.0/CHANGELOG.md"
         },
         {
           "name": "README.md",
           "size": 2292,
-          "download_count": 0,
+          "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/windows-security-lite-v0.1.0/README.md"
         },
         {
           "name": "SHA256SUMS",
           "size": 191,
-          "download_count": 0,
+          "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/windows-security-lite-v0.1.0/SHA256SUMS"
         },
         {
           "name": "audittoolkit-codesign.cer",
           "size": 1132,
-          "download_count": 0,
+          "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/windows-security-lite-v0.1.0/audittoolkit-codesign.cer"
         }
       ]

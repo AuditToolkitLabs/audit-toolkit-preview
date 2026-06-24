@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-06-24T12:45:35Z",
+  "generated_at": "2026-06-24T15:54:50Z",
   "products": [
     {
       "slug": "storage-intelligence-platform",
       "product": "Storage Intelligence Platform",
-      "latest": "v1.0.18",
-      "count": 8,
+      "latest": "v1.0.19",
+      "count": 9,
       "mirrored": 2,
       "data": "releases/data/storage-intelligence-platform.json",
       "page": "storage-scanner-releases.html",

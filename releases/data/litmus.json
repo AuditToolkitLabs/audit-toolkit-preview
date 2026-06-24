@@ -3,7 +3,7 @@
   "slug": "litmus",
   "repo": "audittoolkitlabs/litmus",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-06-24T12:44:31Z",
+  "generated_at": "2026-06-24T15:54:48Z",
   "latest": "v0.3.0",
   "releases": [
     {
@@ -65,13 +65,13 @@
         {
           "name": "litmus_0.2.0_amd64.deb",
           "size": 32581652,
-          "download_count": 1,
+          "download_count": 2,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/litmus-v0.2.0/litmus_0.2.0_amd64.deb"
         },
         {
           "name": "litmus_0.2.0_x64.msi",
           "size": 46312475,
-          "download_count": 1,
+          "download_count": 2,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/litmus-v0.2.0/litmus_0.2.0_x64.msi"
         }
       ]

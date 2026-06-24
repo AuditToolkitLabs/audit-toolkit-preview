@@ -3,9 +3,62 @@
   "slug": "storage-intelligence-platform",
   "repo": "audittoolkitlabs/Storage-Intelligence-Platform",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-06-24T12:42:54Z",
-  "latest": "v1.0.18",
+  "generated_at": "2026-06-24T15:54:48Z",
+  "latest": "v1.0.19",
   "releases": [
+    {
+      "tag": "v1.0.19",
+      "name": "v1.0.19 — Production Release",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-06-24T14:16:53Z",
+      "author": "auditadmin",
+      "body_md": "## Storage Intelligence Platform v1.0.19\n\n### Packages\n| Package | Format | Target |\n|---------|--------|--------|\n| scanner-server | .deb | Ubuntu 22.04+, Debian 11+ |\n| scanner-server | .rpm | RHEL 8+, Rocky 9+, AlmaLinux 9+ |\n| scanner-agent | .deb | Ubuntu 22.04+, Debian 11+ |\n| scanner-agent | .rpm | RHEL 8+, Rocky 9+, AlmaLinux 9+ |\n| scanner-agent | .zip | Windows Server 2019+ |\n| scanner-server | docker tar.gz | Any Docker 24+ host |\n\n### Quick Install\n```bash\ntar xzf audit-platform-1.0.19.tar.gz\ncd release/1.0.19\nsudo ./bundle/install.sh                    # server\nsudo ./bundle/install.sh --component agent  # agent\n```\n\n### Certification\nThis release has passed the 7-gate certification model.\nSee `evidence/certification-report.md` inside the archive.\n\n### Changes since v1.0.18\n- 7ab282b release: v1.0.19 — security & hardening phase\n- e93d489 security/hardening-phase: Tier 1 hardening, mTLS transport, least-priv agent\n- 06c58fb single change upload\n- 38c51ee refactor(models): migrate to SQLAlchemy 2.0 Mapped[]/mapped_column typing\n",
+      "assets": [
+        {
+          "name": "audit-platform-1.0.19.tar.gz",
+          "size": 471875,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.19/audit-platform-1.0.19.tar.gz"
+        },
+        {
+          "name": "sbom-1.0.19.json",
+          "size": 18427,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.19/sbom-1.0.19.json"
+        },
+        {
+          "name": "scanner-agent-1.0.19-1.el9.x86_64.rpm",
+          "size": 62482,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.19/scanner-agent-1.0.19-1.el9.x86_64.rpm"
+        },
+        {
+          "name": "scanner-agent-1.0.19-win.zip",
+          "size": 68114,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.19/scanner-agent-1.0.19-win.zip"
+        },
+        {
+          "name": "scanner-agent_1.0.19_amd64.deb",
+          "size": 46808,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.19/scanner-agent_1.0.19_amd64.deb"
+        },
+        {
+          "name": "scanner-server-1.0.19-1.el9.x86_64.rpm",
+          "size": 116810,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.19/scanner-server-1.0.19-1.el9.x86_64.rpm"
+        },
+        {
+          "name": "scanner-server_1.0.19_amd64.deb",
+          "size": 96888,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.19/scanner-server_1.0.19_amd64.deb"
+        }
+      ]
+    },
     {
       "tag": "v1.0.18",
       "name": "v1.0.18 — Production Release",
@@ -75,7 +128,7 @@
       "tag": "v1.0.17",
       "name": "v1.0.17 — Production Release",
       "prerelease": false,
-      "mirrored": true,
+      "mirrored": false,
       "published_at": "2026-06-21T10:30:30Z",
       "author": "auditadmin",
       "body_md": "## Storage Intelligence Platform v1.0.17\n\n### Packages\n| Package | Format | Target |\n|---------|--------|--------|\n| scanner-server | .deb | Ubuntu 22.04+, Debian 11+ |\n| scanner-server | .rpm | RHEL 8+, Rocky 9+, AlmaLinux 9+ |\n| scanner-agent | .deb | Ubuntu 22.04+, Debian 11+ |\n| scanner-agent | .rpm | RHEL 8+, Rocky 9+, AlmaLinux 9+ |\n| scanner-agent | .zip | Windows Server 2019+ |\n| scanner-server | docker tar.gz | Any Docker 24+ host |\n\n### Quick Install\n```bash\ntar xzf audit-platform-1.0.17.tar.gz\ncd release/1.0.17\nsudo ./bundle/install.sh                    # server\nsudo ./bundle/install.sh --component agent  # agent\n```\n\n### Certification\nThis release has passed the 7-gate certification model.\nSee `evidence/certification-report.md` inside the archive.\n\n### Changes since v1.0.11\n- b78570f fix: lazy annotations in structured.py for Python 3.9 (RPM build gate)\n- 9d354ee feat: enterprise auth, SIEM connectors, compliance reports, remediation (v1.0.13–1.0.17)\n- 53b89cf refactor: split admin settings into Settings / Alerts / System pages\n- 5906f80 feat: findings alerting system (v1.0.14)\n- 3aa5372 feat: permissions mapping, expanded patterns, dedicated Findings page (v1.0.13)\n- d8797e1 feat: content scanning, custom file type registry, targeted scans, analytics improvements (v1.0.12)\n",
@@ -84,55 +137,55 @@
           "name": "audit-platform-1.0.17.tar.gz",
           "size": 141466897,
           "download_count": 3,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.17/audit-platform-1.0.17.tar.gz"
+          "download_url": ""
         },
         {
           "name": "sbom-1.0.17.json",
           "size": 18427,
           "download_count": 3,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.17/sbom-1.0.17.json"
+          "download_url": ""
         },
         {
           "name": "scanner-agent-1.0.17-1.el9.x86_64.rpm",
           "size": 53400,
           "download_count": 3,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.17/scanner-agent-1.0.17-1.el9.x86_64.rpm"
+          "download_url": ""
         },
         {
           "name": "scanner-agent-1.0.17-win.zip",
           "size": 56573,
           "download_count": 3,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.17/scanner-agent-1.0.17-win.zip"
+          "download_url": ""
         },
         {
           "name": "scanner-agent-1.0.17.tar.gz",
           "size": 48242867,
           "download_count": 3,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.17/scanner-agent-1.0.17.tar.gz"
+          "download_url": ""
         },
         {
           "name": "scanner-agent_1.0.17_amd64.deb",
           "size": 38236,
           "download_count": 3,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.17/scanner-agent_1.0.17_amd64.deb"
+          "download_url": ""
         },
         {
           "name": "scanner-server-1.0.17-1.el9.x86_64.rpm",
           "size": 108884,
           "download_count": 3,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.17/scanner-server-1.0.17-1.el9.x86_64.rpm"
+          "download_url": ""
         },
         {
           "name": "scanner-server-1.0.17.tar.gz",
           "size": 92783007,
           "download_count": 3,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.17/scanner-server-1.0.17.tar.gz"
+          "download_url": ""
         },
         {
           "name": "scanner-server_1.0.17_amd64.deb",
           "size": 89636,
           "download_count": 3,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/storage-intelligence-platform-v1.0.17/scanner-server_1.0.17_amd64.deb"
+          "download_url": ""
         }
       ]
     },
