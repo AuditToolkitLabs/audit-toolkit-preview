@@ -38,6 +38,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -111,6 +112,33 @@ def _gh_existing_tags(repo: str) -> set:
     return {ln.strip() for ln in res.stdout.splitlines() if ln.strip()}
 
 
+def _gh_release_exists(gh_tag: str, repo: str, attempts: int = 3) -> bool:
+    """True if the release exists on the hub, False if it definitively does not.
+
+    Distinguishes a genuine 404 ('release not found') from a transient failure
+    (network blip / timeout / 5xx / rate limit). On a transient failure we retry
+    with backoff, and if it persists we raise rather than guess. Guessing
+    'absent' would trigger a needless re-download and — worse — abort the whole
+    run when the follow-up ``gh release create`` hits the same blip, skipping
+    every product after it.
+    """
+    last_stderr = ""
+    for attempt in range(attempts):
+        res = _gh(["release", "view", gh_tag, "-R", repo])
+        if res.returncode == 0:
+            return True
+        last_stderr = (res.stderr or "").strip()
+        if "release not found" in last_stderr.lower():
+            return False  # definitive 404 — safe to (re)create
+        if attempt < attempts - 1:
+            time.sleep(2 * (attempt + 1))  # 2s, 4s backoff for transient errors
+    raise SystemExit(
+        f"Could not determine hub state for {gh_tag} after {attempts} tries "
+        f"(transient GitHub error, not a 404):\n  {last_stderr}\n"
+        "  Re-run once GitHub API connectivity is stable; published tags are skipped."
+    )
+
+
 def _keep_gh_tags(product, releases_raw, keep: int) -> set:
     """gh tags for the newest `keep` releases (the retention window)."""
     ordered = sorted(
@@ -152,7 +180,7 @@ def publish_to_github(cfg, product, releases_raw, token, tags_to_publish, force=
         if tag not in want:
             continue
         gh_tag = _gh_tag(slug, tag)
-        exists = _gh(["release", "view", gh_tag, "-R", repo]).returncode == 0
+        exists = _gh_release_exists(gh_tag, repo)
         if exists and not force:
             # Idempotent: a published tag is immutable, so scheduled re-runs
             # skip the (expensive) re-download/upload.
