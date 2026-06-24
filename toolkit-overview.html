@@ -101,11 +101,16 @@
           <span class="cur">Toolkit Overview</span>
         </div>
         <p class="eyebrow">How It Fits Together</p>
-        <h1>Two Product Tiers. One Security Auditing Ecosystem.</h1>
+        <h1>One Platform, plus independent standalone tools.</h1>
         <p>
-          The <strong>Enterprise Suite</strong> is a fleet-wide compliance platform covering asset discovery, audit execution, controlled
-          remediation, and tamper-evident evidence packaging across your entire estate. The <strong>Lite Toolkit</strong> is a separate
-          family of standalone tools for single-host posture auditing — no platform, no agents, no infrastructure required.
+          The <strong>AuditToolkit Platform</strong> is a single-licence, fleet-wide compliance suite of six core products covering asset
+          discovery, audit execution, controlled remediation, and tamper-evident evidence packaging across your entire estate.
+        </p>
+        <p>
+          Three further products are sold and licensed <strong>independently</strong> — they are not part of the Platform, and each runs on
+          its own with no Platform subscription required: <strong>AuditToolkit Lite</strong> (single-host auditing for Linux, Windows, and
+          macOS — one licence covers all three host tools), the <strong>Storage Intelligence Platform</strong> (distributed storage
+          inventory), and <strong>Litmus</strong> (agentless audit and remediation). Each is its own product, priced and supplied separately.
         </p>
         <div class="flex flex-wrap gap-8 mt-24">
           <span class="badge badge-blue">Audit Admin Toolkit v6.4.8</span>
@@ -117,6 +122,8 @@
           <span class="badge badge-muted">Linux Host Lite</span>
           <span class="badge badge-muted">Windows Security Lite</span>
           <span class="badge badge-muted">macOS Security Lite</span>
+          <span class="badge badge-green">Storage Intelligence Platform</span>
+          <span class="badge badge-blue">Litmus v0.3.0</span>
         </div>
       </div>
     </div>
@@ -573,6 +580,51 @@
           <a href="docs.html?p=storage-intel&d=00" class="btn btn-secondary btn-sm">View Documentation</a>
           <a href="storage-scanner.html" class="btn btn-secondary btn-sm">Product Overview</a>
           <a href="storage-scanner-releases.html" class="btn btn-secondary btn-sm">Release Notes</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-divider-dark" id="litmus">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Litmus</p>
+          <h2>Agentless Audit &amp; Remediation — Sold Separately</h2>
+          <p>
+            A standalone product, licensed and priced independently of the AuditToolkit Platform. Litmus audits and remediates assets
+            agentlessly over SSH, WinRM, SNMP, and API — attach a connection profile to each node, run scheduled audits, and review
+            findings, drift, and trends, with approval-gated remediation and rollback. Nothing to install on the target hosts.
+          </p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3 class="mt-0">Agentless by design</h3>
+            <p>
+              Reach Linux, Windows, network, and API targets over their native protocols — no agent to deploy, package, or maintain on the
+              assets under audit. A node becomes managed the moment a connection profile is attached.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Audit, drift, and remediation</h3>
+            <p>
+              Scheduled audits feed a dashboard of findings, trends, and configuration drift. Remediation is approval-gated with atomic
+              rollback, so changes stay controlled and fully auditable.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Per-node-band licensing</h3>
+            <p>
+              Licensed by connected-node band — a flat annual price up to the node count in your tier. SSO, scheduled audits, and reporting
+              are included from the free tier; air-gapped offline licensing is available on higher tiers.
+            </p>
+          </div>
+        </div>
+        <div class="callout info mt-24">
+          <strong>Licensing:</strong> BSL 1.1 — free Starter tier up to 5 connected nodes, no key required. Paid tiers extend to 25, 100,
+          500, or 2,500 nodes (£349–£11,900/year) via key activation.
+        </div>
+        <div class="flex gap-12 flex-wrap mt-24">
+          <a href="price.html#litmus" class="btn btn-primary btn-sm">View Pricing</a>
+          <a href="litmus-releases.html" class="btn btn-secondary btn-sm">Release Notes</a>
         </div>
       </div>
     </section>
