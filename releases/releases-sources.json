@@ -19,6 +19,27 @@
       "repo": "litmus",
       "page": "litmus-releases.html",
       "blurb": "Agentless asset-based compliance audit, remediation, and reporting."
+    },
+    {
+      "slug": "linux-host-lite",
+      "name": "Linux Host Lite",
+      "repo": "AuditToolkit-Linux-Host-Lite",
+      "page": "linux-host-lite-releases.html",
+      "blurb": "Lightweight Linux host security baseline auditing and reporting."
+    },
+    {
+      "slug": "windows-security-lite",
+      "name": "Windows Security Lite",
+      "repo": "AuditToolkit-Windows-Security-Lite",
+      "page": "windows-security-lite-releases.html",
+      "blurb": "Lightweight Windows endpoint security baseline auditing and reporting."
+    },
+    {
+      "slug": "macos-security-lite",
+      "name": "macOS Security Lite",
+      "repo": "AuditToolkit-macOS-Security-Lite",
+      "page": "macos-security-lite-releases.html",
+      "blurb": "Lightweight macOS endpoint security baseline auditing and reporting."
     }
   ]
 }

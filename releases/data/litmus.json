@@ -1,0 +1,103 @@
+{
+  "product": "Litmus",
+  "slug": "litmus",
+  "repo": "audittoolkitlabs/litmus",
+  "hub": "github:AuditToolkitLabs/releases",
+  "generated_at": "2026-06-24T12:44:31Z",
+  "latest": "v0.3.0",
+  "releases": [
+    {
+      "tag": "v0.3.0",
+      "name": "Litmus v0.3.0",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-06-24T05:47:19Z",
+      "author": "auditadmin",
+      "body_md": "Self-contained coverage release.\n\n- **Catalog built in**: 1663 executable checks (Linux/Windows/macOS) embedded in the installer and auto-loaded on first start. No separate catalog to ingest.\n- **Safe upgrade**: automatic pre-upgrade database backup (full pg_dump before migrations) on any version change; config + external DB preserved.\n- **Rollback**: install the older artifact + restore the pre-upgrade backup via scripts/litmus_restore.py. See docs/UPGRADE-AND-ROLLBACK.md. Windows MSI blocks direct downgrade by design (rollback = uninstall + install older).\n- .deb depends on postgresql-client (pg_dump/psql). Engine otherwise unchanged from v0.2.0.\n\nArtifacts are self-contained; no manual catalog step required.",
+      "assets": [
+        {
+          "name": "CHANGELOG.md",
+          "size": 4141,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/litmus-v0.3.0/CHANGELOG.md"
+        },
+        {
+          "name": "README.md",
+          "size": 4577,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/litmus-v0.3.0/README.md"
+        },
+        {
+          "name": "THIRD-PARTY-LICENSES.md",
+          "size": 265304,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/litmus-v0.3.0/THIRD-PARTY-LICENSES.md"
+        },
+        {
+          "name": "UPGRADE-AND-ROLLBACK.md",
+          "size": 3199,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/litmus-v0.3.0/UPGRADE-AND-ROLLBACK.md"
+        },
+        {
+          "name": "litmus_0.3.0_amd64.deb",
+          "size": 32949918,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/litmus-v0.3.0/litmus_0.3.0_amd64.deb"
+        },
+        {
+          "name": "litmus_0.3.0_x64.msi",
+          "size": 47620992,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/litmus-v0.3.0/litmus_0.3.0_x64.msi"
+        }
+      ]
+    },
+    {
+      "tag": "v0.2.0",
+      "name": "Litmus v0.2.0",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-06-23T13:49:10Z",
+      "author": "auditadmin",
+      "body_md": "Litmus v0.2.0 — standalone compliance audit, remediation & reporting platform.\n\n## Highlights\n- Downloadable **CSV / PDF report export** (findings + compliance summary).\n- Consumes the multi-platform executable-check feed: Linux (RHEL/Alma/Oracle/SLE/Ubuntu/Debian), Windows (10/11, Server 2019/2022), macOS (13/14/15) — real checks, no placeholders.\n\n## Artifacts\n- `litmus_0.2.0_amd64.deb` — Debian/Ubuntu (bundled venv + systemd service)\n- `litmus_0.2.0_x64.msi` — Windows (embedded Python + Windows service)\n\nBoth bundle the PDF reporting dependency. Secure-by-default: a strong admin password is generated on first install.\n\n## Install (Linux)\n`sudo apt install ./litmus_0.2.0_amd64.deb` then set `DATABASE_URL` in `/etc/litmus/litmus.env` and `sudo systemctl start litmus`.",
+      "assets": [
+        {
+          "name": "litmus_0.2.0_amd64.deb",
+          "size": 32581652,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/litmus-v0.2.0/litmus_0.2.0_amd64.deb"
+        },
+        {
+          "name": "litmus_0.2.0_x64.msi",
+          "size": 46312475,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/litmus-v0.2.0/litmus_0.2.0_x64.msi"
+        }
+      ]
+    },
+    {
+      "tag": "v0.1.0",
+      "name": "Litmus v0.1.0",
+      "prerelease": false,
+      "mirrored": false,
+      "published_at": "2026-06-22T18:44:48Z",
+      "author": "auditpushbot",
+      "body_md": "## Litmus v0.1.0\n\nAgentless, asset-based **compliance audit + remediation + reporting** platform — self-hostable, reaching targets over SSH / WinRM / SNMP / API.\n\n### Install (native packages — self-contained, bundle their own runtime)\n\n**Linux — Debian/Ubuntu (`.deb`, primary):**\n```bash\nsudo apt install ./litmus_0.1.0_amd64.deb     # resolves python3.12\nsudoedit /etc/litmus/litmus.env               # set DATABASE_URL\nsudo systemctl start litmus                    # health: /healthz\n```\n\n**Windows (`.msi`):**\n```powershell\nmsiexec /i litmus_0.1.0_x64.msi /qn\nnotepad C:\\ProgramData\\Litmus\\litmus.env       # set DATABASE_URL\nStart-Service Litmus\n```\n\nBoth generate strong secrets on first install/run (secure by default). Docker is for **testing/evaluation only**, not the release artifact — see `docs/DEPLOY.md`.\n\n### Highlights\n- **Transports** (proven against real targets): SSH, WinRM, SNMP, API\n- **SSO** (optional): OIDC, LDAP/AD, SAML 2.0 — JIT + group→role mapping\n- **Secret store**: built-in Fernet **or** HashiCorp Vault (KV v2), optional\n- **Execution**: dry-run / approval / **rollback**; scheduling, trends/drift/rollups\n\n### Security\nFull security review (`docs/SECURITY-REVIEW.md`) — **all Critical/High findings fixed** (API RBAC, fail-closed defaults, CSRF, SSH host-key, WinRM cleartext block, SSRF guard, license pinning). **86 tests pass, ruff + bandit clean, pip-audit reports zero vulnerabilities.**\n\n### Artifacts\n- `litmus_0.1.0_amd64.deb` — Ubuntu 24.04 (noble)\n- `litmus_0.1.0_x64.msi` — Windows x64\n",
+      "assets": [
+        {
+          "name": "litmus_0.1.0_amd64.deb",
+          "size": 23088906,
+          "download_count": 0,
+          "download_url": ""
+        },
+        {
+          "name": "litmus_0.1.0_x64.msi",
+          "size": 36636378,
+          "download_count": 0,
+          "download_url": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "product": "Windows Security Lite",
+  "slug": "windows-security-lite",
+  "repo": "audittoolkitlabs/AuditToolkit-Windows-Security-Lite",
+  "hub": "github:AuditToolkitLabs/releases",
+  "generated_at": "2026-06-24T12:45:13Z",
+  "latest": "v0.1.0",
+  "releases": [
+    {
+      "tag": "v0.1.0",
+      "name": "Windows Security Lite v0.1.0",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-06-23T17:23:51Z",
+      "author": "auditadmin",
+      "body_md": "## AuditToolkit Windows Security Lite — v0.1.0\n\nAuthenticode-signed MSI installer for Windows host/server security auditing.\n\n### Artifacts\n| File | Notes |\n| --- | --- |\n| `AuditToolkitWinSecLite-0.1.0.msi` | Authenticode-signed (SHA-256, RFC-3161 timestamp) |\n| `audittoolkit-codesign.cer` | Public code-signing certificate (for allow-listing) |\n| `SHA256SUMS` | Integrity checksums |\n\n### Signing & trust\nSigned by **`CN=AuditToolkit Code Signing, O=AuditToolkitLabs`**\n(thumbprint `93708C6494159152678FA51145D15C656F17AD2A`, DigiCert-timestamped).\n\nThis is an AuditToolkit-issued publisher certificate intended for **data-centre /\nserver deployment**. The signature provides tamper-evidence regardless of trust;\nwhere you enforce **WDAC / AppLocker**, allow-list the publisher once using the\nincluded `.cer` (see `docs/WINDOWS-CODE-SIGNING.md`). SmartScreen / S-mode are\nconsumer-desktop features and do not apply to Windows Server / silent installs.\n\n```powershell\nGet-AuthenticodeSignature .\\AuditToolkitWinSecLite-0.1.0.msi | Format-List Status, SignerCertificate\n# Thumbprint must read 93708C6494159152678FA51145D15C656F17AD2A\n```\n\n### Install\n```powershell\nmsiexec /i AuditToolkitWinSecLite-0.1.0.msi /qn /l*v install.log\naudittoolkit-windows-security-lite run\n```\n",
+      "assets": [
+        {
+          "name": "AuditToolkitWinSecLite-0.1.0.msi",
+          "size": 13475840,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/windows-security-lite-v0.1.0/AuditToolkitWinSecLite-0.1.0.msi"
+        },
+        {
+          "name": "CHANGELOG.md",
+          "size": 1643,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/windows-security-lite-v0.1.0/CHANGELOG.md"
+        },
+        {
+          "name": "README.md",
+          "size": 2292,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/windows-security-lite-v0.1.0/README.md"
+        },
+        {
+          "name": "SHA256SUMS",
+          "size": 191,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/windows-security-lite-v0.1.0/SHA256SUMS"
+        },
+        {
+          "name": "audittoolkit-codesign.cer",
+          "size": 1132,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/windows-security-lite-v0.1.0/audittoolkit-codesign.cer"
+        }
+      ]
+    }
+  ]
+}
