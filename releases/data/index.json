@@ -12,6 +12,16 @@
       "blurb": "Distributed storage inventory, classification, and change-tracking."
     },
     {
+      "slug": "audit-toolkit",
+      "product": "Audit Admin Toolkit",
+      "latest": "v1.0.3",
+      "count": 1,
+      "mirrored": 1,
+      "data": "",
+      "page": "audit-toolkit-releases.html",
+      "blurb": "Cross-platform security audit server with fleet, standalone, and hypervisor agents. Hosted on the downloads portal."
+    },
+    {
       "slug": "litmus",
       "product": "Litmus",
       "latest": "v0.3.0",

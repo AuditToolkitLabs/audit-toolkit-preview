@@ -14,6 +14,16 @@
       "blurb": "Distributed storage inventory, classification, and change-tracking."
     },
     {
+      "slug": "audit-toolkit",
+      "name": "Audit Admin Toolkit",
+      "external": true,
+      "latest": "v1.0.3",
+      "versions": 1,
+      "page": "audit-toolkit-releases.html",
+      "blurb": "Cross-platform security audit server with fleet, standalone, and hypervisor agents. Hosted on the downloads portal.",
+      "_note": "external=true: served from the releases-repo downloads portal (Model B), not mirrored via Gitea. Sync emits a static hub entry; no data file."
+    },
+    {
       "slug": "litmus",
       "name": "Litmus",
       "repo": "litmus",

@@ -305,6 +305,19 @@ def main() -> int:
     index, changed = [], []
 
     for product in products:
+        # Model-B products are served from the releases-repo downloads portal, not
+        # mirrored via Gitea metadata. Emit a static hub entry and skip the Gitea fetch
+        # (so the hub still lists them and a full sync never drops the card).
+        if product.get("external"):
+            n = int(product.get("versions", 1))
+            index.append({
+                "slug": product["slug"], "product": product["name"],
+                "latest": product.get("latest", ""), "count": n,
+                "mirrored": n, "data": "", "page": product.get("page", ""),
+                "blurb": product.get("blurb", ""),
+            })
+            print(f"  {product['slug']}: external (downloads portal), latest {product.get('latest', '')}")
+            continue
         raw = _fetch_raw_releases(cfg, product, token)
 
         keep = args.keep if args.keep is not None else int(cfg.get("keep_releases", 2))
