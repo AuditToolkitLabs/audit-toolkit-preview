@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T15:54:50Z",
+  "generated_at": "2026-06-29T16:15:40Z",
   "products": [
     {
       "slug": "storage-intelligence-platform",
@@ -10,6 +10,16 @@
       "data": "releases/data/storage-intelligence-platform.json",
       "page": "storage-scanner-releases.html",
       "blurb": "Distributed storage inventory, classification, and change-tracking."
+    },
+    {
+      "slug": "audit-toolkit",
+      "product": "Audit Admin Toolkit",
+      "latest": "v1.0.3",
+      "count": 5,
+      "mirrored": 1,
+      "data": "releases/data/audit-toolkit.json",
+      "page": "audit-toolkit-releases.html",
+      "blurb": "Cross-platform security audit server with fleet, standalone, and hypervisor agents."
     },
     {
       "slug": "litmus",
