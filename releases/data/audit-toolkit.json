@@ -3,17 +3,17 @@
   "slug": "audit-toolkit",
   "repo": "audittoolkitlabs/Audit-Tool-",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-06-29T16:15:38Z",
+  "generated_at": "2026-06-29T16:31:27Z",
   "latest": "v1.0.3",
   "releases": [
     {
       "tag": "v1.0.3",
       "name": "Audit Tool 1.0.3 (server + agents)",
-      "prerelease": true,
+      "prerelease": false,
       "mirrored": true,
       "published_at": "2026-06-29T15:13:57Z",
       "author": "auditadmin",
-      "body_md": "Audit Tool **1.0.3** — full artifact set (server + agents).\n\n### Server (main tool)\n- `audit-tool_1.0.3_amd64.deb` · `audit-tool-1.0.3-1.x86_64.rpm` (self-contained: bundled python3.12 wheelhouse, systemd unit, customer-docs)\n- In-place update bundles: `audit-toolkit-1.0.3-application.tar.gz`, `-audits.tar.gz`\n\n### Agents (fleet / standalone / hypervisor)\n- **deb**: `fleet-agent_1.0.3_amd64.deb` · `standalone-agent_1.0.3_amd64.deb` · `hypervisor-agent_1.0.3_amd64.deb`\n- **rpm**: `*-1.0.3-1.x86_64.rpm` (all three)\n- **msi** (Windows, embedded python): `audit-fleet-agent` · `audit-standalone-agent` · `audittoolkit-hypervisor-agent` `-1.0.3-windows-x64.msi`\n\n`SHA256SUMS-1.0.3.txt` covers every asset.\n\n### Why this is still a pre-release\n- **Signing deferred**: Windows MSIs are internal **test-signed** (self-signed AuditToolkit cert — not publicly trusted); Linux deb/rpm/tar are **unsigned** this round (GPG/public signing to follow).\n- **Release-gate not yet run** (install + UI/login on VM targets).\n- **Hypervisor agent** built at 1.0.3 but its `version.py` reads 0.1.0 (separate product — reconcile).\n- The oversized `full.tar.gz` update bundle is intentionally omitted pending a `build-release.sh` exclude fix; the deb/rpm are the canonical full installs.\n",
+      "body_md": "Audit Tool **1.0.3** — full artifact set (server + agents).\n\n### Server (main tool)\n- `audit-tool_1.0.3_amd64.deb` · `audit-tool-1.0.3-1.x86_64.rpm` (self-contained: bundled python3.12 wheelhouse, systemd unit, customer-docs)\n- In-place update bundles: `audit-toolkit-1.0.3-application.tar.gz`, `-audits.tar.gz`\n\n### Agents (fleet / standalone / hypervisor)\n- **deb**: `fleet-agent_1.0.3_amd64.deb` · `standalone-agent_1.0.3_amd64.deb` · `hypervisor-agent_1.0.3_amd64.deb`\n- **rpm**: `*-1.0.3-1.x86_64.rpm` (all three)\n- **msi** (Windows, embedded python): `audit-fleet-agent` · `audit-standalone-agent` · `audittoolkit-hypervisor-agent` `-1.0.3-windows-x64.msi`\n\n`SHA256SUMS-1.0.3.txt` covers every asset.\n\n### Signing note\nThis is a full, working release — every artifact installs and runs normally. The only caveat: the Windows MSIs are **self-signed** (a self-signed AuditToolkit certificate, not Azure Trusted Signing / a publicly-trusted CA), so Windows shows an \"unknown publisher\" warning during install. The installers are otherwise complete and fully functional. Moving MSI signing to Azure Trusted Signing is a planned future improvement, not a release blocker.\n",
       "assets": [
         {
           "name": "CHANGELOG.md",
