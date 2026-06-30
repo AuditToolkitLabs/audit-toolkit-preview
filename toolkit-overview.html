@@ -116,8 +116,8 @@
           <span class="badge badge-blue">Audit Admin Toolkit v6.4.8</span>
           <span class="badge badge-amber">Linux Security Lite v1.1.4</span>
           <span class="badge badge-muted">CMDB API v0.2.11</span>
-          <span class="badge badge-green">Asset Command Center v1.1.0</span>
-          <span class="badge badge-green">Secure Exposure Center v1.0.3</span>
+          <span class="badge badge-green">Asset Command Centre v1.1.0</span>
+          <span class="badge badge-green">Secure Exposure Centre v1.0.3</span>
           <span class="badge badge-blue">Audit Assurance Node</span>
           <span class="badge badge-muted">Linux Host Lite</span>
           <span class="badge badge-muted">Windows Security Lite</span>
@@ -142,7 +142,7 @@
         <div class="diagram-container">
           <svg viewBox="0 0 960 540" class="diagram-svg mermaid">
             flowchart TB subgraph ControlPlane["Control Plane"] CC["Web Console"] API["API Layer"] end subgraph Tools["Audit
-            Tools"] T1["Audit-Tool"] T2["Switch Exposure Center"] T3["CMDB Data Collector"] T4["Linux Security Lite"] T5["Audit Assurance
+            Tools"] T1["Audit-Tool"] T2["Switch Exposure Centre"] T3["CMDB Data Collector"] T4["Linux Security Lite"] T5["Audit Assurance
             Node"] end subgraph Execution["Execution Methods"] AG["Fleet Agent"] SSH["SSH"] WINRM["WinRM"] SNMP["SNMP"] end subgraph
             Targets["Target Systems"] LINUX["Linux Hosts"] WINDOWS["Windows Hosts"] NETWORK["Network Devices"] end CC --> API API --> T1 API
             --> T2 API --> T3 API --> T4 API --> T5 T1 --> AG T2 --> AG T3 --> AG T1 --> SSH T1 --> WINRM T2 --> SNMP AG --> LINUX AG -->
@@ -189,7 +189,7 @@
               </tr>
               <tr>
                 <td>Extension and companion tools</td>
-                <td>Linux Security Lite, CMDB API Data Collection Tool, Asset Command Center, Secure Exposure Center</td>
+                <td>Linux Security Lite, CMDB API Data Collection Tool, Asset Command Centre, Secure Exposure Centre</td>
                 <td>Adds deeper Linux controls, ingestion/normalization, and asset governance context</td>
               </tr>
               <tr>
@@ -312,7 +312,7 @@
               </li>
               <li>
                 <span class="icon">&#10003;</span
-                ><span class="text">Versioned control catalog with stable ID lock and CI guard enforcement.</span>
+                ><span class="text">Versioned control catalogue with stable ID lock and CI guard enforcement.</span>
               </li>
               <li>
                 <span class="icon">&#10003;</span
@@ -334,10 +334,10 @@
           <div class="card">
             <div class="flex items-center gap-12 mb-12">
               <div class="product-icon product-icon-asset">
-                <img src="assets/images/audittoolkit-icon-pack/svg/asset-command-centre-analytics.svg" alt="Asset Command Center icon">
+                <img src="assets/images/audittoolkit-icon-pack/svg/asset-command-centre-analytics.svg" alt="Asset Command Centre icon">
               </div>
               <div>
-                <h3 class="card-title-reset">Asset Command Center</h3>
+                <h3 class="card-title-reset">Asset Command Centre</h3>
                 <p class="card-subtext">Asset intelligence and enrichment layer</p>
               </div>
             </div>
@@ -351,7 +351,7 @@
               <li><span class="icon">&#10003;</span><span class="text">CMDB-aligned data normalization and enrichment.</span></li>
               <li><span class="icon">&#10003;</span><span class="text">Windows and Linux agent-based collection.</span></li>
             </ul>
-            <div class="mt-24"><a href="cmdb-asset-platform.html" class="btn btn-secondary btn-sm">View Asset Command Center</a></div>
+            <div class="mt-24"><a href="cmdb-asset-platform.html" class="btn btn-secondary btn-sm">View Asset Command Centre</a></div>
           </div>
 
           <div class="card">
@@ -359,11 +359,11 @@
               <div class="product-icon product-icon-secure">
                 <img
                   src="assets/images/audittoolkit-icon-pack/svg/switch-exposure-center-ingestion.svg"
-                  alt="Secure Exposure Center icon"
+                  alt="Secure Exposure Centre icon"
                 >
               </div>
               <div>
-                <h3 class="card-title-reset">Secure Exposure Center</h3>
+                <h3 class="card-title-reset">Secure Exposure Centre</h3>
                 <p class="card-subtext">Network switch exposure operations layer</p>
               </div>
             </div>
@@ -385,7 +385,7 @@
                 ><span class="text">Customer-provided vendor feed credentials for gated advisory access.</span>
               </li>
             </ul>
-            <div class="mt-24"><a href="secure-exposure-centre.html" class="btn btn-secondary btn-sm">View Secure Exposure Center</a></div>
+            <div class="mt-24"><a href="secure-exposure-centre.html" class="btn btn-secondary btn-sm">View Secure Exposure Centre</a></div>
           </div>
         </div>
       </div>
@@ -650,7 +650,7 @@
               <tr>
                 <td>Infrastructure data intake and connector polling</td>
                 <td>CMDB API Data Collection Tool</td>
-                <td>Asset Command Center</td>
+                <td>Asset Command Centre</td>
                 <td>Normalized inventory + vulnerability-linked records</td>
               </tr>
               <tr>
@@ -678,8 +678,8 @@
                 <td>Control-level pass/fail evidence and reports</td>
               </tr>
               <tr>
-                <td>Asset governance and command-center views</td>
-                <td>Asset Command Center</td>
+                <td>Asset governance and command-centre views</td>
+                <td>Asset Command Centre</td>
                 <td>CMDB API Data Collection Tool</td>
                 <td>Asset context dashboards and enrichment state</td>
               </tr>
@@ -691,8 +691,8 @@
               </tr>
               <tr>
                 <td>Switch firmware advisory and network exposure tracking</td>
-                <td>Secure Exposure Center</td>
-                <td>CMDB API Data Collection Tool, Asset Command Center</td>
+                <td>Secure Exposure Centre</td>
+                <td>CMDB API Data Collection Tool, Asset Command Centre</td>
                 <td>Switch-centered exposure reports with CVE and advisory context</td>
               </tr>
               <tr>
@@ -740,7 +740,7 @@
           <div class="card">
             <h3 class="flow-step-title">2. Enrich and contextualize</h3>
             <p>
-              Asset Command Center layers governance context, ownership, and lifecycle visibility. Secure Exposure Center adds network
+              Asset Command Centre layers governance context, ownership, and lifecycle visibility. Secure Exposure Centre adds network
               infrastructure posture.
             </p>
           </div>
@@ -798,7 +798,7 @@
               </li>
               <li>
                 <span class="icon">&#10003;</span
-                ><span class="text">Add <strong>Asset Command Center</strong> for enriched command-center operations.</span>
+                ><span class="text">Add <strong>Asset Command Centre</strong> for enriched command-centre operations.</span>
               </li>
             </ul>
           </div>
@@ -820,12 +820,12 @@
             <ul class="feature-list">
               <li>
                 <span class="icon">&#10003;</span
-                ><span class="text">Start with <strong>Secure Exposure Center</strong> for switch-focused advisory and CVE workflows.</span>
+                ><span class="text">Start with <strong>Secure Exposure Centre</strong> for switch-focused advisory and CVE workflows.</span>
               </li>
               <li>
                 <span class="icon">&#10003;</span
                 ><span class="text"
-                  >Integrate with <strong>CMDB API Data Collection Tool</strong> and <strong>Asset Command Center</strong> for broader
+                  >Integrate with <strong>CMDB API Data Collection Tool</strong> and <strong>Asset Command Centre</strong> for broader
                   estate context.</span
                 >
               </li>
@@ -884,7 +884,7 @@
               <tr>
                 <td>Air-gapped / offline</td>
                 <td>Offline MSI installers with no outbound internet requirement and agent deployment without external connectivity.</td>
-                <td>Financial services, healthcare, government, and defense supply chain</td>
+                <td>Financial services, healthcare, government, and defence supply chain</td>
               </tr>
               <tr>
                 <td>CI/CD integration</td>
@@ -930,9 +930,9 @@
             <ul>
               <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
               <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
-              <li><a href="cmdb-asset-platform.html">Asset Command Center</a></li>
+              <li><a href="cmdb-asset-platform.html">Asset Command Centre</a></li>
               <li><a href="linux-expansion.html">Linux Security Lite</a></li>
-              <li><a href="secure-exposure-centre.html">Secure Exposure Center</a></li>
+              <li><a href="secure-exposure-centre.html">Secure Exposure Centre</a></li>
               <li><a href="script-coverage.html">Script Coverage</a></li>
               <li><a href="remediation.html">Remediation</a></li>
             </ul>
