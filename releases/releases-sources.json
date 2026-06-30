@@ -50,6 +50,13 @@
       "repo": "AuditToolkit-macOS-Security-Lite",
       "page": "macos-security-lite-releases.html",
       "blurb": "Lightweight macOS endpoint security baseline auditing and reporting."
+    },
+    {
+      "slug": "switch-exposure-center",
+      "name": "Secure Exposure Center",
+      "repo": "Switch-Exposure-Center",
+      "page": "secure-exposure-centre-releases.html",
+      "blurb": "Network switch exposure intelligence with advisory, CVE, and KEV correlation."
     }
   ]
 }

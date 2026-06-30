@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T16:15:40Z",
+  "generated_at": "2026-06-30T11:24:26Z",
   "products": [
     {
       "slug": "storage-intelligence-platform",
@@ -60,6 +60,16 @@
       "data": "releases/data/macos-security-lite.json",
       "page": "macos-security-lite-releases.html",
       "blurb": "Lightweight macOS endpoint security baseline auditing and reporting."
+    },
+    {
+      "slug": "switch-exposure-center",
+      "product": "Secure Exposure Center",
+      "latest": "v1.0.3",
+      "count": 2,
+      "mirrored": 2,
+      "data": "releases/data/switch-exposure-center.json",
+      "page": "secure-exposure-centre-releases.html",
+      "blurb": "Network switch exposure intelligence with advisory, CVE, and KEV correlation."
     }
   ]
 }
