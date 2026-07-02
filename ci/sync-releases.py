@@ -89,7 +89,14 @@ def _fetch_raw_releases(cfg: dict, product: dict, token: str) -> list:
     raw = _api_get(url, token)
     if not isinstance(raw, list):
         raise SystemExit(f"Unexpected API response for {product['repo']}")
-    return [r for r in raw if not r.get("draft")]
+    rels = [r for r in raw if not r.get("draft")]
+    # Per-product opt-in: surface only stable (GA) releases on the site, e.g. a
+    # product whose only history is one GA plus an internal RC. Gitea keeps the
+    # full set; the RC just never mirrors, publishes, or shows — and the nightly
+    # auto-publish won't re-add it.
+    if product.get("exclude_prereleases"):
+        rels = [r for r in rels if not r.get("prerelease")]
+    return rels
 
 
 def _download(url: str, token: str, dest: Path) -> None:

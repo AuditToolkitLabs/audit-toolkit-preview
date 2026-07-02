@@ -57,6 +57,15 @@
       "repo": "Switch-Exposure-Center",
       "page": "secure-exposure-centre-releases.html",
       "blurb": "Network switch exposure intelligence with advisory, CVE, and KEV correlation."
+    },
+    {
+      "slug": "audit-assurance-node",
+      "name": "Audit Assurance Node",
+      "repo": "audit-assurance-node",
+      "page": "audit-assurance-node-releases.html",
+      "blurb": "Distributed satellite/relay execution coordinator for parallel, fleet-scale audit collection with signed evidence bundles.",
+      "exclude_prereleases": true,
+      "_note": "exclude_prereleases: show only stable/GA releases on the site. The v1.0.0-rc.1 pre-release stays in Gitea but is never mirrored/published/shown."
     }
   ]
 }

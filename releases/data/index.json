@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-30T11:24:26Z",
+  "generated_at": "2026-07-02T11:11:19Z",
   "products": [
     {
       "slug": "storage-intelligence-platform",
@@ -70,6 +70,16 @@
       "data": "releases/data/switch-exposure-center.json",
       "page": "secure-exposure-centre-releases.html",
       "blurb": "Network switch exposure intelligence with advisory, CVE, and KEV correlation."
+    },
+    {
+      "slug": "audit-assurance-node",
+      "product": "Audit Assurance Node",
+      "latest": "v1.0.3",
+      "count": 1,
+      "mirrored": 1,
+      "data": "releases/data/audit-assurance-node.json",
+      "page": "audit-assurance-node-releases.html",
+      "blurb": "Distributed satellite/relay execution coordinator for parallel, fleet-scale audit collection with signed evidence bundles."
     }
   ]
 }

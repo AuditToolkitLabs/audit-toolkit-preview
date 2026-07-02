@@ -1,0 +1,51 @@
+{
+  "product": "Audit Assurance Node",
+  "slug": "audit-assurance-node",
+  "repo": "audittoolkitlabs/audit-assurance-node",
+  "hub": "github:AuditToolkitLabs/releases",
+  "generated_at": "2026-07-02T11:11:15Z",
+  "latest": "v1.0.3",
+  "releases": [
+    {
+      "tag": "v1.0.3",
+      "name": "audit-assurance-node 1.0.3",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-07-02T09:08:10Z",
+      "author": "auditadmin",
+      "body_md": "First release of the reclassified **Audit Assurance Node** — a satellite/relay execution coordinator in the AuditToolkit suite (ADR-0001).\n\n- Final decoupling from the SCP / RemoteElevationFramework workspace\n- In-app customer documentation service\n- Version reconciled to 1.0.3 across package.json, APP_VERSION, and the suite BOM\n- Packaging hardened: no runtime credential/state files shipped\n\n**Artifacts** (offline-wheelhouse installs; boot-verified on Ubuntu + AlmaLinux, Python 3.12):\n- `audit-assurance-node_1.0.3_amd64.deb`\n- `audit-assurance-node-1.0.3-1.x86_64.rpm`\n\nVerify with `SHA256SUMS-1.0.3.txt`.",
+      "assets": [
+        {
+          "name": "CHANGELOG.md",
+          "size": 2675,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.3/CHANGELOG.md"
+        },
+        {
+          "name": "README.md",
+          "size": 5086,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.3/README.md"
+        },
+        {
+          "name": "SHA256SUMS-1.0.3.txt",
+          "size": 209,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.3/SHA256SUMS-1.0.3.txt"
+        },
+        {
+          "name": "audit-assurance-node-1.0.3-1.x86_64.rpm",
+          "size": 16356111,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.3/audit-assurance-node-1.0.3-1.x86_64.rpm"
+        },
+        {
+          "name": "audit-assurance-node_1.0.3_amd64.deb",
+          "size": 16274698,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.3/audit-assurance-node_1.0.3_amd64.deb"
+        }
+      ]
+    }
+  ]
+}
