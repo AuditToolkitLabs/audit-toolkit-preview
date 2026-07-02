@@ -9,6 +9,7 @@
     {
       "slug": "storage-intelligence-platform",
       "name": "Storage Intelligence Platform",
+      "group": "standalone",
       "repo": "Storage-Intelligence-Platform",
       "page": "storage-scanner-releases.html",
       "blurb": "Distributed storage inventory, classification, and change-tracking."
@@ -16,6 +17,7 @@
     {
       "slug": "audit-toolkit",
       "name": "Audit Admin Toolkit",
+      "group": "platform",
       "external": true,
       "latest": "v1.0.3",
       "versions": 1,
@@ -26,6 +28,7 @@
     {
       "slug": "litmus",
       "name": "Litmus",
+      "group": "standalone",
       "repo": "litmus",
       "page": "litmus-releases.html",
       "blurb": "Agentless asset-based compliance audit, remediation, and reporting."
@@ -33,6 +36,7 @@
     {
       "slug": "linux-host-lite",
       "name": "Linux Host Lite",
+      "group": "lite",
       "repo": "AuditToolkit-Linux-Host-Lite",
       "page": "linux-host-lite-releases.html",
       "blurb": "Lightweight Linux host security baseline auditing and reporting."
@@ -40,6 +44,7 @@
     {
       "slug": "windows-security-lite",
       "name": "Windows Security Lite",
+      "group": "lite",
       "repo": "AuditToolkit-Windows-Security-Lite",
       "page": "windows-security-lite-releases.html",
       "blurb": "Lightweight Windows endpoint security baseline auditing and reporting."
@@ -47,6 +52,7 @@
     {
       "slug": "macos-security-lite",
       "name": "macOS Security Lite",
+      "group": "lite",
       "repo": "AuditToolkit-macOS-Security-Lite",
       "page": "macos-security-lite-releases.html",
       "blurb": "Lightweight macOS endpoint security baseline auditing and reporting."
@@ -54,6 +60,7 @@
     {
       "slug": "switch-exposure-center",
       "name": "Secure Exposure Center",
+      "group": "platform",
       "repo": "Switch-Exposure-Center",
       "page": "secure-exposure-centre-releases.html",
       "blurb": "Network switch exposure intelligence with advisory, CVE, and KEV correlation."
@@ -61,6 +68,7 @@
     {
       "slug": "audit-assurance-node",
       "name": "Audit Assurance Node",
+      "group": "platform",
       "repo": "audit-assurance-node",
       "page": "audit-assurance-node-releases.html",
       "blurb": "Distributed satellite/relay execution coordinator for parallel, fleet-scale audit collection with signed evidence bundles.",

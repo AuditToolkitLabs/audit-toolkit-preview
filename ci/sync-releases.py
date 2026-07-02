@@ -322,6 +322,7 @@ def main() -> int:
                 "latest": product.get("latest", ""), "count": n,
                 "mirrored": n, "data": "", "page": product.get("page", ""),
                 "blurb": product.get("blurb", ""),
+                "group": product.get("group", ""),
             })
             print(f"  {product['slug']}: external (downloads portal), latest {product.get('latest', '')}")
             continue
@@ -360,6 +361,7 @@ def main() -> int:
             "mirrored": mirrored_n, "data": f"releases/data/{product['slug']}.json",
             "page": product.get("page", ""),
             "blurb": product.get("blurb", ""),
+            "group": product.get("group", ""),
         })
         print(f"  {product['slug']}: {len(data['releases'])} release(s), "
               f"{mirrored_n} mirrored to GitHub, latest {data['latest']}")

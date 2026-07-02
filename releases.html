@@ -36,6 +36,12 @@
       .rel-hub-cta { margin-top: 14px; font-size: 0.86rem; color: var(--accent); font-weight: 600; }
       .rel-hub-status { color: var(--muted); padding: 40px 0; text-align: center; }
       .rel-hub-error { color: var(--accent-3); }
+      .rel-group { margin-bottom: 44px; }
+      .rel-group:last-child { margin-bottom: 0; }
+      .rel-group-head { margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+      .rel-group-head h2 { color: var(--text); margin: 0 0 5px; font-size: 1.25rem; }
+      .rel-group-head p { color: var(--muted); font-size: 0.9rem; margin: 0; max-width: 760px; }
+      .rel-group-head .rel-group-licence { color: var(--accent); font-weight: 600; }
     </style>
   </head>
   <body>
@@ -74,12 +80,15 @@
         </div>
         <p class="eyebrow">Releases</p>
         <h1>Releases Hub</h1>
-        <p>Downloadable packages and version history, mirrored from the canonical release server.</p>
+        <p>
+          Downloadable packages and version history, mirrored from the canonical release server.
+          Products are grouped by licence so it is clear which purchase covers which downloads.
+        </p>
       </div>
     </div>
     <section class="section">
       <div class="wrap">
-        <div class="rel-hub-grid" id="rel-hub-grid">
+        <div id="rel-hub-groups">
           <p class="rel-hub-status">Loading products&#8230;</p>
         </div>
       </div>
@@ -132,7 +141,30 @@
     <script>
       (function () {
         "use strict";
-        var grid = document.getElementById("rel-hub-grid");
+        var root = document.getElementById("rel-hub-groups");
+
+        // Licence groups, in display order. Each product's `group` (from
+        // releases-sources.json) decides which section it lands in, so a
+        // customer sees exactly what one purchase covers. Anything with an
+        // unrecognised/blank group falls through to the last bucket rather
+        // than silently disappearing.
+        var GROUPS = [
+          {
+            key: "platform",
+            title: "AuditToolkit Platform",
+            blurb: "The core products — one AuditToolkit Platform subscription licenses every tool in this group.",
+          },
+          {
+            key: "lite",
+            title: "AuditToolkit Lite",
+            blurb: "Lightweight per-host security tools, covered by the separate AuditToolkit Lite add-on licence.",
+          },
+          {
+            key: "standalone",
+            title: "Standalone Products",
+            blurb: "Independently licensed products — each is purchased on its own, separate from the Platform and Lite licences.",
+          },
+        ];
 
         function el(tag, cls, text) {
           var e = document.createElement(tag);
@@ -156,22 +188,48 @@
           return a;
         }
 
+        function renderGroup(def, products) {
+          var section = el("section", "rel-group");
+          var head = el("div", "rel-group-head");
+          head.appendChild(el("h2", null, def.title));
+          head.appendChild(el("p", "rel-group-licence", def.blurb));
+          section.appendChild(head);
+          var grid = el("div", "rel-hub-grid");
+          products.forEach(function (p) { grid.appendChild(card(p)); });
+          section.appendChild(grid);
+          return section;
+        }
+
         fetch("releases/data/index.json", { cache: "no-store" })
           .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
           .then(function (data) {
             var products = (data.products || []).filter(function (p) {
               return (p.mirrored || 0) > 0;   // only show products with downloadable releases
             });
-            grid.innerHTML = "";
+            root.innerHTML = "";
             if (!products.length) {
-              grid.appendChild(el("p", "rel-hub-status", "No published releases yet."));
+              root.appendChild(el("p", "rel-hub-status", "No published releases yet."));
               return;
             }
-            products.forEach(function (p) { grid.appendChild(card(p)); });
+            var known = {};
+            GROUPS.forEach(function (g) { known[g.key] = true; });
+            // Order the fixed groups first, then any leftover groups under "Other".
+            var defs = GROUPS.concat([{
+              key: "__other__",
+              title: "Other Products",
+              blurb: "Additional products available for download.",
+            }]);
+            defs.forEach(function (def) {
+              var inGroup = products.filter(function (p) {
+                var g = p.group || "";
+                return def.key === "__other__" ? !known[g] : g === def.key;
+              });
+              if (inGroup.length) root.appendChild(renderGroup(def, inGroup));
+            });
           })
           .catch(function (err) {
-            grid.innerHTML = "";
-            grid.appendChild(el("p", "rel-hub-status rel-hub-error",
+            root.innerHTML = "";
+            root.appendChild(el("p", "rel-hub-status rel-hub-error",
               "Could not load releases (" + err.message + ")."));
           });
       }());

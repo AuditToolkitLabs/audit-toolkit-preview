@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T11:11:19Z",
+  "generated_at": "2026-07-02T11:25:37Z",
   "products": [
     {
       "slug": "storage-intelligence-platform",
@@ -9,7 +9,8 @@
       "mirrored": 2,
       "data": "releases/data/storage-intelligence-platform.json",
       "page": "storage-scanner-releases.html",
-      "blurb": "Distributed storage inventory, classification, and change-tracking."
+      "blurb": "Distributed storage inventory, classification, and change-tracking.",
+      "group": "standalone"
     },
     {
       "slug": "audit-toolkit",
@@ -19,7 +20,8 @@
       "mirrored": 1,
       "data": "",
       "page": "audit-toolkit-releases.html",
-      "blurb": "Cross-platform security audit server with fleet, standalone, and hypervisor agents. Hosted on the downloads portal."
+      "blurb": "Cross-platform security audit server with fleet, standalone, and hypervisor agents. Hosted on the downloads portal.",
+      "group": "platform"
     },
     {
       "slug": "litmus",
@@ -29,7 +31,8 @@
       "mirrored": 2,
       "data": "releases/data/litmus.json",
       "page": "litmus-releases.html",
-      "blurb": "Agentless asset-based compliance audit, remediation, and reporting."
+      "blurb": "Agentless asset-based compliance audit, remediation, and reporting.",
+      "group": "standalone"
     },
     {
       "slug": "linux-host-lite",
@@ -39,7 +42,8 @@
       "mirrored": 1,
       "data": "releases/data/linux-host-lite.json",
       "page": "linux-host-lite-releases.html",
-      "blurb": "Lightweight Linux host security baseline auditing and reporting."
+      "blurb": "Lightweight Linux host security baseline auditing and reporting.",
+      "group": "lite"
     },
     {
       "slug": "windows-security-lite",
@@ -49,7 +53,8 @@
       "mirrored": 1,
       "data": "releases/data/windows-security-lite.json",
       "page": "windows-security-lite-releases.html",
-      "blurb": "Lightweight Windows endpoint security baseline auditing and reporting."
+      "blurb": "Lightweight Windows endpoint security baseline auditing and reporting.",
+      "group": "lite"
     },
     {
       "slug": "macos-security-lite",
@@ -59,7 +64,8 @@
       "mirrored": 1,
       "data": "releases/data/macos-security-lite.json",
       "page": "macos-security-lite-releases.html",
-      "blurb": "Lightweight macOS endpoint security baseline auditing and reporting."
+      "blurb": "Lightweight macOS endpoint security baseline auditing and reporting.",
+      "group": "lite"
     },
     {
       "slug": "switch-exposure-center",
@@ -69,7 +75,8 @@
       "mirrored": 2,
       "data": "releases/data/switch-exposure-center.json",
       "page": "secure-exposure-centre-releases.html",
-      "blurb": "Network switch exposure intelligence with advisory, CVE, and KEV correlation."
+      "blurb": "Network switch exposure intelligence with advisory, CVE, and KEV correlation.",
+      "group": "platform"
     },
     {
       "slug": "audit-assurance-node",
@@ -79,7 +86,8 @@
       "mirrored": 1,
       "data": "releases/data/audit-assurance-node.json",
       "page": "audit-assurance-node-releases.html",
-      "blurb": "Distributed satellite/relay execution coordinator for parallel, fleet-scale audit collection with signed evidence bundles."
+      "blurb": "Distributed satellite/relay execution coordinator for parallel, fleet-scale audit collection with signed evidence bundles.",
+      "group": "platform"
     }
   ]
 }
