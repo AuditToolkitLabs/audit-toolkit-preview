@@ -23,8 +23,8 @@
   { "title": "Linux Security Lite — Overview",         "path": "docs/customer/products/linux-security-lite/00-overview.md",       "category": "Linux Security Lite" },
   { "title": "Linux Security Lite — Scheduled Audits", "path": "docs/customer/products/linux-security-lite/01-scheduled-audits.md","category": "Linux Security Lite" },
 
-  { "title": "Secure Exposure Centre — Overview",        "path": "docs/customer/products/switch-exposure-center/00-overview.md",       "category": "Secure Exposure Centre" },
-  { "title": "Secure Exposure Centre — Advisory Refresh","path": "docs/customer/products/switch-exposure-center/01-advisory-refresh.md","category": "Secure Exposure Centre" },
+  { "title": "Switch Exposure Centre — Overview",        "path": "docs/customer/products/switch-exposure-center/00-overview.md",       "category": "Switch Exposure Centre" },
+  { "title": "Switch Exposure Centre — Advisory Refresh","path": "docs/customer/products/switch-exposure-center/01-advisory-refresh.md","category": "Switch Exposure Centre" },
 
   { "title": "Audit Assurance Node — Overview",               "path": "docs/customer/products/audit-assurance-node/00-overview.md",           "category": "Audit Assurance Node" },
   { "title": "Audit Assurance Node — Deployment",             "path": "docs/customer/products/audit-assurance-node/01-deployment.md",          "category": "Audit Assurance Node" },

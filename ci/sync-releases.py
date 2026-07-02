@@ -242,6 +242,16 @@ def _sanitize(cfg, product, releases_raw, gh_tags: set) -> dict:
     gh_base = (cfg.get("github_download_base")
                or f"https://github.com/{cfg['github_repo']}/releases/download").rstrip("/")
 
+    # Optional per-product literal substitutions applied to the human-readable
+    # release title and notes only (never to asset names/URLs), e.g. to
+    # normalise a repo's internal name to the customer-facing brand/spelling.
+    rewrites = product.get("display_rewrites") or []
+
+    def _display(text: str) -> str:
+        for old, new in rewrites:
+            text = text.replace(old, new)
+        return text
+
     out_releases = []
     for r in releases_raw:
         tag = r.get("tag_name", "")
@@ -260,12 +270,12 @@ def _sanitize(cfg, product, releases_raw, gh_tags: set) -> dict:
         author = r.get("author") or {}
         out_releases.append({
             "tag": tag,
-            "name": r.get("name") or tag,
+            "name": _display(r.get("name") or tag),
             "prerelease": bool(r.get("prerelease")),
             "mirrored": mirrored,
             "published_at": r.get("published_at") or r.get("created_at") or "",
             "author": author.get("login", ""),
-            "body_md": r.get("body") or "",
+            "body_md": _display(r.get("body") or ""),
             "assets": assets,
         })
     out_releases.sort(key=lambda x: x["published_at"], reverse=True)

@@ -59,11 +59,13 @@
     },
     {
       "slug": "switch-exposure-center",
-      "name": "Secure Exposure Center",
+      "name": "Switch Exposure Centre",
       "group": "platform",
       "repo": "Switch-Exposure-Center",
       "page": "secure-exposure-centre-releases.html",
-      "blurb": "Network switch exposure intelligence with advisory, CVE, and KEV correlation."
+      "blurb": "Network switch exposure intelligence with advisory, CVE, and KEV correlation.",
+      "display_rewrites": [["Switch Exposure Center", "Switch Exposure Centre"]],
+      "_note": "display_rewrites: normalise the mirrored release title/notes to the UK 'Centre' spelling for the site. Case-sensitive spaced form only — never matches the lowercase-hyphenated artifact filenames (switch-exposure-center_*.deb)."
     },
     {
       "slug": "audit-assurance-node",

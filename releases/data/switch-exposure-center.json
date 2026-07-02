@@ -1,19 +1,19 @@
 {
-  "product": "Secure Exposure Center",
+  "product": "Switch Exposure Centre",
   "slug": "switch-exposure-center",
   "repo": "audittoolkitlabs/Switch-Exposure-Center",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-06-30T11:24:26Z",
+  "generated_at": "2026-07-02T11:39:38Z",
   "latest": "v1.0.3",
   "releases": [
     {
       "tag": "v1.0.3",
-      "name": "Switch Exposure Center 1.0.3",
+      "name": "Switch Exposure Centre 1.0.3",
       "prerelease": false,
       "mirrored": true,
       "published_at": "2026-06-29T16:33:49Z",
       "author": "auditadmin",
-      "body_md": "Switch Exposure Center **1.0.3** — GA.\n\nFirst distinct 1.0 release (earlier `v1.0.0`-`v1.0.2` tags all aliased the same `1.0.0rc1` commit).\n\n### Artifacts\n- `switch-exposure-center_1.0.3_amd64.deb` (Debian/Ubuntu)\n- `switch-exposure-center-1.0.3-1.x86_64.rpm` (RHEL/Rocky/AlmaLinux/Fedora)\n\nBoth bundle an offline Python 3.12 wheelhouse (no network pip at install). `SHA256SUMS-1.0.3.txt` covers both; Linux packages are signed via the AuditToolkit Release Signing key. Linux-only product (no Windows artifacts). See `README.md` / `CHANGELOG.md`.\n\n### Validated\nBoots on SQLite, health/readiness green, console renders with 0 JS errors; 248 unit tests pass; bandit 0 high / 0 medium.",
+      "body_md": "Switch Exposure Centre **1.0.3** — GA.\n\nFirst distinct 1.0 release (earlier `v1.0.0`-`v1.0.2` tags all aliased the same `1.0.0rc1` commit).\n\n### Artifacts\n- `switch-exposure-center_1.0.3_amd64.deb` (Debian/Ubuntu)\n- `switch-exposure-center-1.0.3-1.x86_64.rpm` (RHEL/Rocky/AlmaLinux/Fedora)\n\nBoth bundle an offline Python 3.12 wheelhouse (no network pip at install). `SHA256SUMS-1.0.3.txt` covers both; Linux packages are signed via the AuditToolkit Release Signing key. Linux-only product (no Windows artifacts). See `README.md` / `CHANGELOG.md`.\n\n### Validated\nBoots on SQLite, health/readiness green, console renders with 0 JS errors; 248 unit tests pass; bandit 0 high / 0 medium.",
       "assets": [
         {
           "name": "CHANGELOG.md",
@@ -49,12 +49,12 @@
     },
     {
       "tag": "v1.0.0-rc.1",
-      "name": "AuditToolkit Switch Exposure Center 2026.1 RC1",
+      "name": "AuditToolkit Switch Exposure Centre 2026.1 RC1",
       "prerelease": true,
       "mirrored": true,
       "published_at": "2026-06-17T11:41:51Z",
       "author": "auditpushbot",
-      "body_md": "## AuditToolkit Switch Exposure Center 2026.1 — RC1\n\nNetwork switch exposure analysis and reporting service (port 5001).\n\n**Install (Debian/Ubuntu):** `dpkg -i switch-exposure-center_1.0.0~rc1_amd64.deb`\n\n**SHA-256:**\n```\n7827accb9783c9e43ce5cc4fc3c2b1b11f0a9718ccd164ccad155d63101de401  switch-exposure-center_1.0.0~rc1_amd64.deb\n```",
+      "body_md": "## AuditToolkit Switch Exposure Centre 2026.1 — RC1\n\nNetwork switch exposure analysis and reporting service (port 5001).\n\n**Install (Debian/Ubuntu):** `dpkg -i switch-exposure-center_1.0.0~rc1_amd64.deb`\n\n**SHA-256:**\n```\n7827accb9783c9e43ce5cc4fc3c2b1b11f0a9718ccd164ccad155d63101de401  switch-exposure-center_1.0.0~rc1_amd64.deb\n```",
       "assets": [
         {
           "name": "switch-exposure-center_1.0.0~rc1_amd64.deb",
