@@ -1,0 +1,57 @@
+{
+  "product": "Linux Security Lite",
+  "slug": "linux-security-lite",
+  "repo": "audittoolkitlabs/AuditToolkit-Linux-Security-Lite",
+  "hub": "github:AuditToolkitLabs/releases",
+  "generated_at": "2026-07-02T12:36:45Z",
+  "latest": "v1.0.3",
+  "releases": [
+    {
+      "tag": "v1.0.3",
+      "name": "Linux Security Lite 1.0.3",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-07-02T12:27:52Z",
+      "author": "auditadmin",
+      "body_md": "**Linux Security Lite 1.0.3** — the standalone, Linux-only security-audit tool in the AuditToolkit suite. First 1.0.3 baseline after full functional + UI alignment review.\n\n### Three Linux packages\n| Package | Distributions |\n| --- | --- |\n| `.deb` | Debian, Ubuntu and derivatives |\n| `.rpm` (noarch) | RHEL, Fedora, AlmaLinux, Rocky, CentOS Stream, openSUSE/SLES, Amazon Linux |\n| `.tar.gz` | Any other Linux distribution (generic/offline) |\n\nAll three bundle an offline Python wheelhouse and are served by the `audittoolkit-linux-security-lite-web` systemd service on `127.0.0.1:8089`.\n\n### Highlights\n- Web console re-engineered to the suite left-nav shell (dark, left menu + right detail) with a matching dark login\n- Documentation reader aligned to the central customer-docs model (docs repo -> Control Centre)\n- Documentation Centre now resolves EULA/License/Disclaimer; `DISCLAIMER.md` packaged in all formats\n- Versions reconciled to a single 1.0.3 baseline\n\nVerify downloads against `SHA256SUMS-1.0.3.txt`. See `README.md` for install commands and `CHANGELOG.md` for the full change list.",
+      "assets": [
+        {
+          "name": "CHANGELOG.md",
+          "size": 68299,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.3/CHANGELOG.md"
+        },
+        {
+          "name": "README.md",
+          "size": 11301,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.3/README.md"
+        },
+        {
+          "name": "SHA256SUMS-1.0.3.txt",
+          "size": 349,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.3/SHA256SUMS-1.0.3.txt"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite-1.0.3-1.noarch.rpm",
+          "size": 31272626,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.3/audittoolkit-linux-security-lite-1.0.3-1.noarch.rpm"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite-1.0.3-linux.tar.gz",
+          "size": 31179153,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.3/audittoolkit-linux-security-lite-1.0.3-linux.tar.gz"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite_1.0.3_all.deb",
+          "size": 29963246,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.3/audittoolkit-linux-security-lite_1.0.3_all.deb"
+        }
+      ]
+    }
+  ]
+}

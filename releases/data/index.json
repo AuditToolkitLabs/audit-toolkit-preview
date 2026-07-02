@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T11:39:38Z",
+  "generated_at": "2026-07-02T12:36:45Z",
   "products": [
     {
       "slug": "storage-intelligence-platform",
@@ -87,6 +87,17 @@
       "data": "releases/data/audit-assurance-node.json",
       "page": "audit-assurance-node-releases.html",
       "blurb": "Distributed satellite/relay execution coordinator for parallel, fleet-scale audit collection with signed evidence bundles.",
+      "group": "platform"
+    },
+    {
+      "slug": "linux-security-lite",
+      "product": "Linux Security Lite",
+      "latest": "v1.0.3",
+      "count": 1,
+      "mirrored": 1,
+      "data": "releases/data/linux-security-lite.json",
+      "page": "linux-security-lite-releases.html",
+      "blurb": "Linux-first security baseline auditing with 500 scripts across 11 control domains.",
       "group": "platform"
     }
   ]

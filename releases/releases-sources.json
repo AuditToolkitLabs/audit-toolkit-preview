@@ -76,6 +76,16 @@
       "blurb": "Distributed satellite/relay execution coordinator for parallel, fleet-scale audit collection with signed evidence bundles.",
       "exclude_prereleases": true,
       "_note": "exclude_prereleases: show only stable/GA releases on the site. The v1.0.0-rc.1 pre-release stays in Gitea but is never mirrored/published/shown."
+    },
+    {
+      "slug": "linux-security-lite",
+      "name": "Linux Security Lite",
+      "group": "platform",
+      "repo": "AuditToolkit-Linux-Security-Lite",
+      "page": "linux-security-lite-releases.html",
+      "blurb": "Linux-first security baseline auditing with 500 scripts across 11 control domains.",
+      "exclude_prereleases": true,
+      "_note": "exclude_prereleases: show only stable/GA releases on the site. The v1.0.0-rc.1 pre-release stays in Gitea but is never mirrored/published/shown."
     }
   ]
 }
