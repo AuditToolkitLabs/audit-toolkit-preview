@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T12:36:45Z",
+  "generated_at": "2026-07-02T12:41:51Z",
   "products": [
     {
       "slug": "storage-intelligence-platform",
@@ -71,8 +71,8 @@
       "slug": "switch-exposure-center",
       "product": "Switch Exposure Centre",
       "latest": "v1.0.3",
-      "count": 2,
-      "mirrored": 2,
+      "count": 1,
+      "mirrored": 1,
       "data": "releases/data/switch-exposure-center.json",
       "page": "secure-exposure-centre-releases.html",
       "blurb": "Network switch exposure intelligence with advisory, CVE, and KEV correlation.",

@@ -3,7 +3,7 @@
   "slug": "switch-exposure-center",
   "repo": "audittoolkitlabs/Switch-Exposure-Center",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-07-02T11:39:38Z",
+  "generated_at": "2026-07-02T12:41:47Z",
   "latest": "v1.0.3",
   "releases": [
     {
@@ -44,23 +44,6 @@
           "size": 22337684,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/switch-exposure-center-v1.0.3/switch-exposure-center_1.0.3_amd64.deb"
-        }
-      ]
-    },
-    {
-      "tag": "v1.0.0-rc.1",
-      "name": "AuditToolkit Switch Exposure Centre 2026.1 RC1",
-      "prerelease": true,
-      "mirrored": true,
-      "published_at": "2026-06-17T11:41:51Z",
-      "author": "auditpushbot",
-      "body_md": "## AuditToolkit Switch Exposure Centre 2026.1 — RC1\n\nNetwork switch exposure analysis and reporting service (port 5001).\n\n**Install (Debian/Ubuntu):** `dpkg -i switch-exposure-center_1.0.0~rc1_amd64.deb`\n\n**SHA-256:**\n```\n7827accb9783c9e43ce5cc4fc3c2b1b11f0a9718ccd164ccad155d63101de401  switch-exposure-center_1.0.0~rc1_amd64.deb\n```",
-      "assets": [
-        {
-          "name": "switch-exposure-center_1.0.0~rc1_amd64.deb",
-          "size": 22324852,
-          "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/switch-exposure-center-v1.0.0-rc.1/switch-exposure-center_1.0.0~rc1_amd64.deb"
         }
       ]
     }

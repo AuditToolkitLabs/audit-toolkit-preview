@@ -65,7 +65,8 @@
       "page": "secure-exposure-centre-releases.html",
       "blurb": "Network switch exposure intelligence with advisory, CVE, and KEV correlation.",
       "display_rewrites": [["Switch Exposure Center", "Switch Exposure Centre"]],
-      "_note": "display_rewrites: normalise the mirrored release title/notes to the UK 'Centre' spelling for the site. Case-sensitive spaced form only — never matches the lowercase-hyphenated artifact filenames (switch-exposure-center_*.deb)."
+      "exclude_prereleases": true,
+      "_note": "display_rewrites normalises the mirrored release title/notes to the UK 'Centre' spelling (case-sensitive spaced form only — never matches the lowercase-hyphenated artifact filenames). exclude_prereleases: v1.0.3 GA is the baseline for the 6 main tools; the v1.0.0-rc.1 stays in Gitea but is never mirrored/published/shown."
     },
     {
       "slug": "audit-assurance-node",
