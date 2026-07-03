@@ -3,9 +3,80 @@
   "slug": "audit-assurance-node",
   "repo": "audittoolkitlabs/audit-assurance-node",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-07-02T11:11:15Z",
-  "latest": "v1.0.3",
+  "generated_at": "2026-07-03T15:10:40Z",
+  "latest": "v1.0.4",
   "releases": [
+    {
+      "tag": "v1.0.4",
+      "name": "Audit Assurance Node 1.0.4",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-07-03T10:06:38Z",
+      "author": "auditadmin",
+      "body_md": "# Audit Assurance Node — Release Notes\n\nSuite release: **2026.1** · Product version: **1.0.4** · Channel: GA\n\n## About this release\n\n1.0.4 is a suite version-alignment release. All six AuditToolkit suite products are advanced\ntogether to a common **1.0.4** baseline so the suite ships as one coordinated release. There are no\nbreaking changes; upgrade in place via the native package.\n\nAudit Assurance Node is a technical orchestration component of the version-aligned AuditToolkit\nsuite.\n\n## What's new in 1.0.4\n\n- **Unified suite versioning.** All six suite products are aligned at 1.0.4, replacing the previous\n  mixed 1.0.2 / 1.0.3 lines.\n- **Consistent licensing and legal.** The shared End User License Agreement, Liability Disclaimer\n  and Indemnity, Copyright, and Licensing documents apply uniformly across the suite and are\n  bundled with this component.\n- **Documentation references official channels only** (official website and public release\n  channel; no private source-control hosts), verified against the signed docs manifest.\n\n## Install, upgrade and support\n\n- Installation and upgrade: see `CUSTOMER-DEPLOYMENT-PACK.md` (install/upgrade the native\n  `.deb`/`.rpm`; the package runs any required migrations on upgrade).\n- Day-2 operations and issue resolution: see the Operations and Runtime Validation documents.\n- Licensing and legal terms: see the Licensing and Legal documents in this set.\n\n## Version alignment\n\n- Suite: `2026.1` · Product (Audit Assurance Node): `1.0.4` · Channel: GA.\n- All six suite products are released together at 1.0.4.\n",
+      "assets": [
+        {
+          "name": "SHA256SUMS-1.0.4.txt",
+          "size": 326,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/SHA256SUMS-1.0.4.txt"
+        },
+        {
+          "name": "SHA256SUMS-1.0.4.txt.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/SHA256SUMS-1.0.4.txt.asc"
+        },
+        {
+          "name": "audit-assurance-node-1.0.4-1.x86_64.rpm",
+          "size": 16357502,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/audit-assurance-node-1.0.4-1.x86_64.rpm"
+        },
+        {
+          "name": "audit-assurance-node-1.0.4-1.x86_64.rpm.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/audit-assurance-node-1.0.4-1.x86_64.rpm.asc"
+        },
+        {
+          "name": "audit-assurance-node-1.0.4.cdx.json",
+          "size": 5081,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/audit-assurance-node-1.0.4.cdx.json"
+        },
+        {
+          "name": "audit-assurance-node-1.0.4.cdx.json.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/audit-assurance-node-1.0.4.cdx.json.asc"
+        },
+        {
+          "name": "audit-assurance-node-customer-docs-1.0.4.tar.gz",
+          "size": 36882,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/audit-assurance-node-customer-docs-1.0.4.tar.gz"
+        },
+        {
+          "name": "audit-assurance-node-customer-docs-1.0.4.tar.gz.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/audit-assurance-node-customer-docs-1.0.4.tar.gz.asc"
+        },
+        {
+          "name": "audit-assurance-node_1.0.4_amd64.deb",
+          "size": 16275176,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/audit-assurance-node_1.0.4_amd64.deb"
+        },
+        {
+          "name": "audit-assurance-node_1.0.4_amd64.deb.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/audit-assurance-node_1.0.4_amd64.deb.asc"
+        }
+      ]
+    },
     {
       "tag": "v1.0.3",
       "name": "audit-assurance-node 1.0.3",

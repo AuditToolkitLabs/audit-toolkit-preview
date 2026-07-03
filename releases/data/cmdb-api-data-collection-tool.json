@@ -1,0 +1,81 @@
+{
+  "product": "CMDB API Data Collection Tool",
+  "slug": "cmdb-api-data-collection-tool",
+  "repo": "audittoolkitlabs/CMDB-API-DATA-COLLECTION-TOOL",
+  "hub": "github:AuditToolkitLabs/releases",
+  "generated_at": "2026-07-03T15:10:41Z",
+  "latest": "v1.0.4",
+  "releases": [
+    {
+      "tag": "v1.0.4",
+      "name": "CMDB API Data Collection Tool 1.0.4",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-07-03T10:06:40Z",
+      "author": "auditadmin",
+      "body_md": "# CMDB API Data Collection Tool — Release Notes\n\nSuite release: **2026.1** · Product version: **1.0.4** · Channel: GA\n\n## About this release\n\n1.0.4 aligns the CMDB API Data Collection Tool onto the unified suite baseline (advancing from\n1.0.2) so all six AuditToolkit suite products ship together at **1.0.4**. This release also\nconsolidates the collection, security, and documentation work completed since 1.0.2. There are no\nbreaking changes; upgrade in place via the native package.\n\n## What's new in 1.0.4\n\n- **Fleet-agent integration (opt-in connector).** CMDB can enrich inventory from a registered\n  Audit Tool Fleet agent over a read-only system-info query — a connector, not an installed agent.\n- **On-host collection endpoints — your choice of transport.** A small cross-platform static Go\n  enabler binary and the Python endpoint are both supported, for flexibility across legacy and new\n  operating systems. These are optional on-host endpoints, distinct from the Fleet agent.\n- **Secrets encrypted at rest.** API keys, agent tokens, and connection secrets are encrypted in\n  the database; nothing sensitive is stored in clear text. Where a secret must be shown for\n  connector setup it is obfuscated in the UI.\n- **Host IP address masking.** Host addresses are masked in the UI; the full address is revealed\n  only on hover for administrators.\n- **Unified suite versioning + consistent licensing/legal.** Aligned at 1.0.4 with the shared\n  EULA, Liability Disclaimer and Indemnity, Copyright, and Licensing documents bundled.\n- **Documentation references official channels only** (official website and public release\n  channel; no private source-control hosts), verified against the signed docs manifest.\n\n## Install, upgrade and support\n\n- Installation and upgrade: see `CUSTOMER-DEPLOYMENT-PACK.md` (install/upgrade the native\n  `.deb`/`.rpm`; the package runs database migrations on upgrade).\n- Day-2 operations and issue resolution: see the Operations and Troubleshooting documents.\n- Licensing and legal terms: see the Licensing and Legal documents in this set.\n\n## Version alignment\n\n- Suite: `2026.1` · Product (CMDB API Data Collection Tool): `1.0.4` · Channel: GA.\n- All six suite products are released together at 1.0.4.\n",
+      "assets": [
+        {
+          "name": "SHA256SUMS-1.0.4.txt",
+          "size": 353,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.4/SHA256SUMS-1.0.4.txt"
+        },
+        {
+          "name": "SHA256SUMS-1.0.4.txt.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.4/SHA256SUMS-1.0.4.txt.asc"
+        },
+        {
+          "name": "cmdb-api-data-collection-tool-1.0.4-1.x86_64.rpm",
+          "size": 103999052,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.4/cmdb-api-data-collection-tool-1.0.4-1.x86_64.rpm"
+        },
+        {
+          "name": "cmdb-api-data-collection-tool-1.0.4-1.x86_64.rpm.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.4/cmdb-api-data-collection-tool-1.0.4-1.x86_64.rpm.asc"
+        },
+        {
+          "name": "cmdb-api-data-collection-tool-1.0.4.cdx.json",
+          "size": 11660,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.4/cmdb-api-data-collection-tool-1.0.4.cdx.json"
+        },
+        {
+          "name": "cmdb-api-data-collection-tool-1.0.4.cdx.json.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.4/cmdb-api-data-collection-tool-1.0.4.cdx.json.asc"
+        },
+        {
+          "name": "cmdb-api-data-collection-tool-customer-docs-1.0.4.tar.gz",
+          "size": 90851,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.4/cmdb-api-data-collection-tool-customer-docs-1.0.4.tar.gz"
+        },
+        {
+          "name": "cmdb-api-data-collection-tool-customer-docs-1.0.4.tar.gz.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.4/cmdb-api-data-collection-tool-customer-docs-1.0.4.tar.gz.asc"
+        },
+        {
+          "name": "cmdb-api-data-collection-tool_1.0.4_amd64.deb",
+          "size": 108512032,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.4/cmdb-api-data-collection-tool_1.0.4_amd64.deb"
+        },
+        {
+          "name": "cmdb-api-data-collection-tool_1.0.4_amd64.deb.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.4/cmdb-api-data-collection-tool_1.0.4_amd64.deb.asc"
+        }
+      ]
+    }
+  ]
+}

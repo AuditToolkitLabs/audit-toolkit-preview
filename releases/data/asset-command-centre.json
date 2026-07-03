@@ -1,0 +1,81 @@
+{
+  "product": "Asset Command Centre",
+  "slug": "asset-command-centre",
+  "repo": "audittoolkitlabs/Asset-Command-Centre",
+  "hub": "github:AuditToolkitLabs/releases",
+  "generated_at": "2026-07-03T15:10:41Z",
+  "latest": "v1.0.4",
+  "releases": [
+    {
+      "tag": "v1.0.4",
+      "name": "Asset Command Centre 1.0.4",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-07-03T10:24:07Z",
+      "author": "auditadmin",
+      "body_md": "# Asset Command Centre — Release Notes\n\nSuite release: **2026.1** · Product version: **1.0.4** · Channel: GA\n\n## About this release\n\n1.0.4 aligns Asset Command Centre onto the unified suite baseline (advancing from 1.0.2) so all\nsix AuditToolkit suite products ship together at **1.0.4**. There are no breaking changes; upgrade\nin place via the native package.\n\n## What's new in 1.0.4\n\n- **Unified suite versioning.** All six suite products are aligned at 1.0.4, replacing the previous\n  mixed 1.0.2 / 1.0.3 lines.\n- **Consistent licensing and legal.** The shared End User License Agreement, Liability Disclaimer\n  and Indemnity, Copyright, and Licensing documents apply uniformly across the suite and are\n  bundled with this product.\n- **Documentation references official channels only.** The customer documentation references only\n  the official AuditToolkit website and public release channel — no private source-control hosts.\n  Security-posture reporting is stated vendor-neutrally (e.g. CodeQL / Code Scanning) and the\n  documents bundle is verified against its signed manifest.\n\n## Install, upgrade and support\n\n- Installation and upgrade: see `CUSTOMER-DEPLOYMENT-PACK.md` (install/upgrade the native\n  `.deb`/`.rpm`; the package runs any required migrations on upgrade).\n- Day-2 operations and issue resolution: see the Operations and Troubleshooting documents.\n- Licensing and legal terms: see the Licensing and Legal documents in this set.\n\n## Version alignment\n\n- Suite: `2026.1` · Product (Asset Command Centre): `1.0.4` · Channel: GA.\n- All six suite products are released together at 1.0.4.\n",
+      "assets": [
+        {
+          "name": "SHA256SUMS-1.0.4.txt",
+          "size": 326,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/asset-command-centre-v1.0.4/SHA256SUMS-1.0.4.txt"
+        },
+        {
+          "name": "SHA256SUMS-1.0.4.txt.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/asset-command-centre-v1.0.4/SHA256SUMS-1.0.4.txt.asc"
+        },
+        {
+          "name": "asset-command-centre-1.0.4-1.x86_64.rpm",
+          "size": 30126319,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/asset-command-centre-v1.0.4/asset-command-centre-1.0.4-1.x86_64.rpm"
+        },
+        {
+          "name": "asset-command-centre-1.0.4-1.x86_64.rpm.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/asset-command-centre-v1.0.4/asset-command-centre-1.0.4-1.x86_64.rpm.asc"
+        },
+        {
+          "name": "asset-command-centre-1.0.4.cdx.json",
+          "size": 8403,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/asset-command-centre-v1.0.4/asset-command-centre-1.0.4.cdx.json"
+        },
+        {
+          "name": "asset-command-centre-1.0.4.cdx.json.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/asset-command-centre-v1.0.4/asset-command-centre-1.0.4.cdx.json.asc"
+        },
+        {
+          "name": "asset-command-centre-customer-docs-1.0.4.tar.gz",
+          "size": 49215,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/asset-command-centre-v1.0.4/asset-command-centre-customer-docs-1.0.4.tar.gz"
+        },
+        {
+          "name": "asset-command-centre-customer-docs-1.0.4.tar.gz.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/asset-command-centre-v1.0.4/asset-command-centre-customer-docs-1.0.4.tar.gz.asc"
+        },
+        {
+          "name": "asset-command-centre_1.0.4_amd64.deb",
+          "size": 29081788,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/asset-command-centre-v1.0.4/asset-command-centre_1.0.4_amd64.deb"
+        },
+        {
+          "name": "asset-command-centre_1.0.4_amd64.deb.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/asset-command-centre-v1.0.4/asset-command-centre_1.0.4_amd64.deb.asc"
+        }
+      ]
+    }
+  ]
+}
