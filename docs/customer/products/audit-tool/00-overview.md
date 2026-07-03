@@ -1,76 +1,63 @@
-# Audit-Tool Overview
+# Audit Admin Toolkit — Overview
 
-## Purpose
+The Audit Admin Toolkit is a self-hosted security audit, compliance, discovery, and reporting platform. It provides cross-platform assessment and centralised evidence and reporting through a single web management interface, giving security and operations teams one place to audit their estate, track compliance, and produce audit-ready evidence.
 
-Audit-Tool is the full Security Audit Toolkit platform for self-hosted audit,
-compliance, discovery, reporting, agent coordination, and automation workflows.
-It is designed for customers who need a central web application, REST API,
-managed audit execution, scheduled runs, and evidence collection across mixed
-Linux, Windows, and hypervisor estates.
+## What it is
 
-## Primary Outcomes
+At its core the toolkit runs an extensive library of security audit checks against Linux, Windows, cloud, and hypervisor targets, aggregates the results, and turns them into dashboards, compliance mappings, and reports. It combines a large audit and remediation script library with a full web console, a REST API, and enterprise authentication.
 
-Audit-Tool supports:
+| Metric | Value |
+| --- | --- |
+| Audit checks | 1,000+ across Linux, Windows and hypervisor targets |
+| Remediation scripts | 800+ gated fix scripts (Linux, Windows, hypervisors) |
+| API endpoints | 850+ |
+| Security score | 100/100 (A+), OWASP compliant |
+| SIEM integrations | 7 platforms |
+| Cloud platforms | 4 (AWS, Azure, GCP, OCI) |
+| Hypervisors | 5 (ESXi, Proxmox, KVM, Nutanix, Xen) |
+| Compliance frameworks | 5 (PCI-DSS, SOC 2, ISO 27001, NIST, CIS) |
+| Deployment modes | 4 (SSH/WinRM, JRE Agent Standalone, JRE Agent Managed, Direct Agent API) |
 
-- Continuous security posture assessment across server estates.
-- Evidence collection for internal and external compliance audits.
-- Misconfiguration reporting against hardening and best-practice expectations.
-- Patch and vulnerability posture visibility.
-- Recurring audit scheduling and alerting.
-- Agent deployment and central result aggregation.
-- Customer API and integration automation.
+## Who it is for
 
-## In-Scope Components
+The toolkit is built for security teams, system administrators, compliance and audit functions, and managed service providers who need to assess and evidence the security posture of a mixed fleet — on-premise, cloud, and virtualised — from a single console. It suits air-gapped and regulated environments as well as centrally managed agent fleets.
 
-| Component                      | Customer-facing role                                                                       |
-| ------------------------------ | ------------------------------------------------------------------------------------------ |
-| Web application                | Administration console, dashboards, reporting, user and role management, API key handling. |
-| REST API                       | Machine and customer automation access for agents, connectors, and integrations.           |
-| Linux audit scripts            | Read-only Linux security and hardening checks.                                             |
-| Windows audit scripts          | Windows Server, workstation, Active Directory, and IIS audit checks.                       |
-| Hypervisor audit scripts       | ESXi, vCenter, Proxmox, KVM/libvirt, and related hypervisor checks.                        |
-| Toolkit Agent direct mode      | Local execution with direct HTTPS result push.                                             |
-| Toolkit Agent coordinated mode | Central policy and command polling with host-side execution.                               |
-| Hypervisor agent               | Platform-aware hypervisor audit package.                                                   |
-| External ingest API            | Machine-to-machine ingest for findings and assets.                                         |
-| Scheduler                      | Recurring audit runs, coordination, and alert delivery.                                    |
-| Script Studio                  | Customer-side script authoring, testing, and deployment.                                   |
-| Scanner workbench              | Authorized network and host scanning workspace with report export.                         |
+## Primary outcomes
 
-## Supported Deployment Models
+- **Continuous compliance** — measure servers against CIS, NIST, SOC 2, PCI-DSS, and other frameworks, with automatic mapping of checks to controls.
+- **Audit-ready evidence** — generate executive, technical, differential, and trend reports plus evidence packages for auditors.
+- **Guided remediation** — move from finding to fix with a large library of gated, operator-reviewed remediation scripts.
+- **Estate visibility** — discover, group, and monitor hosts, with trend analysis and differential auditing to catch drift.
 
-Product releases may support:
+## Key components
 
-- Linux DEB or RPM package deployment.
-- Windows MSI deployment.
-- VM appliance deployment.
-- Source or Git install for evaluation and custom paths.
-- Container-based development or staging workflows.
+- **Multi-platform auditing** — Linux (Ubuntu, Debian, RHEL, Fedora, Arch, Alpine, openSUSE and more), Windows (Server 2016+, Windows 10/11), four cloud providers, and five hypervisor platforms.
+- **Web management platform** — dashboards with 12 widget types, server and group management, scheduling with maintenance windows, reporting, history and analytics, and a recorded interactive terminal.
+- **Remediation system** — gated fix scripts with dry-run preview, rollback, and batch execution.
+- **API and integrations** — a comprehensive REST API, webhooks, SIEM export to 7 platforms, ticketing and chat connectors.
+- **Enterprise authentication and security** — SSO via LDAP/Active Directory, Microsoft Entra ID and Okta, TOTP MFA, and RBAC with five roles.
 
-Production deployment should use the supported package or appliance path for
-the release. Container or source installs should be treated as evaluation or
-custom deployment modes unless a release explicitly states otherwise.
+## Deployment modes
 
-## Customer Responsibilities
+Choose the connection model that fits your security requirements:
 
-Customers provide and operate the host, operating system, database, backups,
-network access, TLS certificates, audit target authorization, user accounts,
-agent deployment, audit scheduling, and remediation of findings.
+| Mode | Connection | Best for |
+| --- | --- | --- |
+| SSH/WinRM | Persistent remote access | Full control, real-time execution |
+| JRE Agent (Standalone) | HTTPS push (no SSH/WinRM) | High-security and segmented environments |
+| JRE Agent (Managed) | HTTPS poll + push | Centralised agent fleet operations |
+| Direct Agent API (Lightweight Endpoint) | HTTPS pull to a discovery endpoint | On-demand host discovery and inventory |
+| Hypervisor Agent | HTTPS outbound (no inbound ports) | On-hypervisor auditing for Proxmox, KVM, XCP-ng, Nutanix AHV, ESXi |
 
-AuditToolkitLabs provides product releases, bug fixes, security advisories,
-documentation, and support guidance for confirmed product issues.
+The server ships as native `.deb` (primary) and `.rpm` (secondary) packages, with a Windows MSI and appliance options; Docker Compose and Kubernetes are provided for non-production and preview use.
 
-## Product-Specific Follow-Up Pages
+## Capability status taxonomy
 
-Planned product pages include:
+Capabilities across the documentation use a consistent taxonomy:
 
-- Linux installation.
-- Windows installation.
-- Agent deployment.
-- API integration.
-- Authentication integration.
-- SIEM and webhook integration.
-- Backup restore and disaster recovery.
-- Certificate and key lifecycle.
-- First-login recovery.
-- Operational limits.
+- **Available** — production-supported and operationally documented
+- **Partial** — available in scope-limited form or only on selected surfaces
+- **Beta/Best-effort** — available with known operational constraints
+- **Planned** — roadmap only
+
+For a scannable summary of what the toolkit can do, see the Capabilities page. For full detail, see the Feature Guide and Capability Matrix.

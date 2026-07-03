@@ -1,4 +1,4 @@
-# AuditToolkit macOS Security Lite — Gatekeeper and First Audit
+# macOS Security Lite — Feature Guide: Gatekeeper and First Audit
 
 ## Purpose
 
@@ -48,7 +48,7 @@ To approve the app:
 1. Attempt to open the app or run `audittoolkit-macos-security-lite` — macOS
    will block it and show a warning.
 2. Open **System Settings → Privacy & Security**.
-3. Scroll to the security warning for AuditToolkit macOS Security Lite.
+3. Scroll to the security warning for macOS Security Lite.
 4. Click **Open Anyway** and confirm.
 
 This step is required once per installation. Subsequent runs proceed without
@@ -80,8 +80,7 @@ audittoolkit-macos-security-lite import-license /path/to/licence.json
 ```
 
 Offline licence files must not be edited, copied between hosts, or re-signed
-locally. See [Licensing Overview](../../../licensing/overview.md) for the full
-offline licence policy.
+locally. See the Licensing Overview for the full offline licence policy.
 
 ## Running an Audit
 
@@ -156,8 +155,7 @@ After the first run:
   approval step before retrying.
 - Review any findings with severity `High` or `Critical` for priority action.
 
-## Related Guidance
+## Related pages
 
-- [macOS Security Lite Overview](00-overview.md)
-- [Licensing Overview](../../../licensing/overview.md)
-- [Security Access And Data Protection](../../security/security-access-data-protection.md)
+- Overview
+- Capabilities

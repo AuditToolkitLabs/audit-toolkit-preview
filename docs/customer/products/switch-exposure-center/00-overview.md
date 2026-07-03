@@ -1,57 +1,65 @@
-# Switch Exposure Center Overview
+# Overview
 
-## Purpose
+Switch Exposure Centre is the AuditToolkit suite's tool for **network engineers**. It is a
+switch-focused CMDB and exposure platform: it inventories your network switches and related
+equipment, correlates them against vendor advisories and CVEs, audits their running
+configuration against a hardening control library, and reports exposure and remediation
+state — with a focus on **firmware and configuration risk** across the network estate.
 
-Switch Exposure Center collects switch inventory and exposure data, normalizes
-it, correlates advisory and vulnerability metadata, and presents the results
-through an operator console and API.
+## Who it is for
 
-It is intended for customers who need a switch-centered view of network device
-state, exposure priority, advisory impact, remediation status, and reporting.
+Network engineers and network security teams who need to know, across their switch estate:
+what equipment they have, what firmware it runs, which advisories and vulnerabilities apply,
+how well each device is hardened, and what to remediate first.
 
-## Primary Outcomes
+## Two halves of one audit
 
-Switch Exposure Center helps teams answer:
+Switch Exposure Centre runs two complementary assessments over the same device inventory:
 
-- What switch equipment is present?
-- Which firmware or OS train is installed?
-- Which advisories or CVEs apply?
-- Which exposure items need remediation first?
-- Which jobs, reports, or API outputs support operational review?
+- **Vulnerability exposure.** Per-vendor REST/RESTCONF connectors collect firmware/OS
+  version, modules, and interfaces. That inventory is then matched against advisory
+  affected-version ranges and a CVE catalogue to produce device-level exposure findings.
+- **Configuration hardening audit.** An SSH-based control engine evaluates each device's
+  running configuration against a shipped hardening control library (Cisco IOS/IOS-XE/NX-OS
+  and MDS, Juniper Junos, Arista EOS), surfacing a per-device hardening panel and a
+  fleet-wide posture view.
 
-## Main Capabilities
+## What makes it distinct
 
-- Inventory collection from common switch families.
-- SAN switch handling alongside LAN switch families.
-- Advisory, CVE, CVSS, and KEV correlation against device state.
-- Exposure and remediation status tracking.
-- API endpoints and browser console for operational workflows.
-- Scheduler-backed advisory or collection jobs where configured.
-- Controlled pentest and network-scanning workflow documentation.
+- **Network-only product boundary.** The collection and data model are deliberately narrowed
+  to network switches and related equipment, rather than general servers.
+- **API-first collection.** It prefers vendor APIs/REST endpoints per device, normalising data
+  strongly before it is stored.
+- **Advisory- and CVE-driven correlation.** Exposure is derived by correlating inventory
+  against vendor security advisories and an ingested CVE catalogue.
+- **NVD CVE ingestion.** CVE data is synced from the National Vulnerability Database — using
+  the public feed, a shared broker, or your own NVD API key — with CISA KEV merged to flag
+  known-exploited vulnerabilities.
+- **Risk reporting centred on firmware, hardening, and remediation state**, presented through
+  an operator-oriented web console with a left-hand collapsible sidebar.
 
-## Runtime Components
+## Vendor coverage
 
-| Component                 | Customer-facing role                                 |
-| ------------------------- | ---------------------------------------------------- |
-| Flask application         | Product runtime and API route registration.          |
-| SQLAlchemy model          | Devices, advisories, exposures, jobs, and reports.   |
-| Connector layer           | Vendor-specific collection and normalization.        |
-| Advisory enrichment layer | Vendor bulletin and vulnerability metadata handling. |
-| Static console            | Browser-based operator interaction.                  |
+Vendor-specific connectors gather inventory over each vendor's REST/RESTCONF API for Cisco,
+Cisco MDS, Juniper, Arista, Aruba, Dell, and Brocade. Vendor advisory sources are configured
+per vendor on the Advisory Access page; where private account-backed access is not supplied,
+the tool falls back to public advisory, CVE, CVSS, and CISA KEV data.
 
-## Collection Pattern
+## Access and roles
 
-The product prefers API-backed collection. SSH, SNMP, and NETCONF may be used
-as fallback or extension paths when a vendor or customer environment requires
-them. Customers should validate authorization, rate limits, and maintenance
-windows before enabling recurring collection or scanning.
+The console enforces role-based access with three built-in roles — **viewer** (read-only
+dashboard and inventory), **operator** (connectors, advisories, CVE catalogue, automation,
+and settings), and **admin** (full access including user management, the NVD/CVE source, and
+licensing). Single sign-on via OIDC is available as an Enterprise-identity entitlement.
 
-## Advisory Handling
+## How it fits with the rest of the suite
 
-Advisory sources may include public feeds, vendor account-backed feeds, or
-customer-managed file exports for private feed delivery.
+Like the other suite collectors, it is a sellable, standalone data-collection and reporting
+tool aimed at its own market (networking), and it can forward results to the main AuditToolkit
+platform where a consolidated, cross-domain view is required.
 
-## Product-Specific Follow-Up Pages
+## Where to go next
 
-Planned product pages include advisory refresh, scheduler, API usage, exposure
-reporting, pentest and network scanning, and operational limits.
+- **Capabilities** — a grouped summary of what the tool can discover, correlate, and report.
+- **Feature Guide** — the architecture and component reference, including data flow and the
+  full vendor coverage table.

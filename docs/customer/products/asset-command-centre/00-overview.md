@@ -1,63 +1,67 @@
-# Asset Command Centre Overview
+# Asset Command Centre — Overview
 
-## Purpose
+Asset Command Centre is the agentless asset inventory and discovery collector in the AuditToolkit suite. It is a standalone, cut-down collector and local reporting node for mixed estates across all platforms. It gathers inventory using established host and network protocols — SSH, WinRM, SNMP, IPMI and related access — with no software installed on the target systems.
 
-Asset Command Centre is a standalone asset inventory and discovery service for
-mixed estates where local collection and local reporting are required. Its
-active release direction is a legacy-focused collector and reporting node that
-uses protocol-compatible access methods rather than assuming a central SaaS or
-commerce workflow.
+It is the deliberate counterpart to the CMDB API Data Collection Tool, which collects the same kind of data API-only. Choose Asset Command Centre where API access is not available or not preferred and traditional protocol-based collection is the practical route.
 
-## Primary Outcomes
+## Who it is for
 
-Asset Command Centre supports:
+The service and its documentation are written for the teams who deploy and run it:
 
-- Inventory collection and reconciliation for hosts and network assets.
-- Local storage of collected inventory and operational findings.
-- Local reporting, snapshots, and operator status views.
-- Audit logging and role-based access.
-- Credential-managed discovery operations.
-- Optional upstream forwarding to a central AuditToolkit deployment.
+- deployment owners
+- administrators
+- operators
+- security reviewers
+- customer support contacts
 
-## Active Operating Profile
+The scope is limited to the Asset Command Centre standalone collector and local reporting service.
 
-| Area               | Supported direction                                                 |
-| ------------------ | ------------------------------------------------------------------- |
-| Product role       | Standalone collector and local reporting node.                      |
-| Connector mode     | `legacy-only` by default.                                           |
-| Collection profile | `inventory-only` by default.                                        |
-| Primary target     | Ubuntu single-node release target unless a release says otherwise.  |
-| Primary methods    | SSH, WinRM, SNMP, IPMI, Nmap sweep, and Ansible-unified collection. |
+## What it does
 
-## In-Scope Behavior
+In its supported release, Asset Command Centre delivers a focused set of outcomes:
 
-- Discover and collect inventory from approved systems and network assets.
-- Store results locally for reporting and operational review.
-- Provide application-level audit logging and access control.
-- Expose super-admin-only portal actions for certificate, SSH key, API-code,
-  tuning, log, and encryption workflows where supported.
-- Forward inventory upstream when central aggregation is explicitly enabled.
+- **Inventory collection and reconciliation** for hosts and network assets.
+- **Local storage** of collected inventory and operational findings.
+- **Local reporting, snapshots, and operator-facing status views.**
+- **Audit logging and role-based access** for the application.
+- **Super-admin-only portal actions** for certificate, SSH key, API-code, tuning, log, and encryption workflows.
+- **Optional upstream forwarding** to a central Audit Toolkit deployment.
 
-## Out Of Scope
+## Deployment role
 
-The supported customer release scope excludes:
-
-- Deprecated commerce, marketplace, or fulfillment workflows.
-- Product claims inherited from broader CMDB or audit-platform material when
-  not implemented in this product release.
-- Unsupported host-platform promises outside the documented release target.
-
-## Deployment Role
-
-Asset Command Centre should be deployed close to the managed network. In its
-primary customer model it acts as:
+In its primary supported form, the service is deployed close to the managed network and acts as:
 
 1. A collector for outbound management protocols.
 2. A local inventory and reporting node.
 3. An optional upstream sender when central aggregation is enabled.
 
-## Product-Specific Follow-Up Pages
+The supported standalone target is a single-node Ubuntu Server deployment, with a Docker-based runtime preferred. Because collection is agentless, no host-resident software is required on the assets being inventoried — the collector reaches out to them directly over the network.
 
-Planned product pages include discovery connectors, credential management,
-upstream forwarding, API automation, managed agent operations, data collection
-catalog, data security, and operational limits.
+## Active operating profile
+
+The release ships with a deliberately conservative default posture:
+
+- Connector operating mode defaults to `legacy-only`.
+- Collection profile defaults to `inventory-only`.
+- Primary supported connector families are SSH, WinRM, SNMP, IPMI, `nmap-sweep`, and `ansible-unified`.
+
+## How operators work with it
+
+Users sign in to the local web interface and work with the pages their role permits, including:
+
+- **Overview** — inventory totals, connector activity, and health summary
+- **Hosts** — host inventory and detail views
+- **Network** — network-oriented inventory and topology views
+- **Scan Setup** — connector-driven collection jobs
+- **Task Runs** — job history and execution state
+- **Deployment** — onboarding and key management material
+- **Reporting** — local reports, trends, and exports
+- **License** — applied tier and effective limits
+- **Admin** — account, settings, and access controls
+- **Remote Discovery** — encrypted target credential management
+
+Local credentials are the primary documented sign-in baseline, privileged users should complete MFA, and portal-only super-admin actions require a separate portal session.
+
+## What it is not
+
+Asset Command Centre is intentionally narrow. It does not cover deprecated commerce, marketplace, or fulfilment workflows; it does not carry broader CMDB or audit-platform claims that are not implemented for this release; and it does not promise host platforms outside the documented single-node release target. Its default collection intent is inventory gathering and reporting — not broad remediation or unrelated platform automation.
