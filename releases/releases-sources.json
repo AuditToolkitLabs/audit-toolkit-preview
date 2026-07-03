@@ -18,12 +18,11 @@
       "slug": "audit-toolkit",
       "name": "Audit Admin Toolkit",
       "group": "platform",
-      "external": true,
-      "latest": "v1.0.4",
-      "versions": 2,
+      "repo": "Audit-Tool-",
       "page": "audit-toolkit-releases.html",
-      "blurb": "Cross-platform security audit server with fleet, standalone, and hypervisor agents. Hosted on the downloads portal.",
-      "_note": "external=true: served from the releases-repo downloads portal (Model B), not mirrored via Gitea. Sync emits a static hub entry; no data file."
+      "blurb": "Cross-platform security audit server with fleet, standalone, and hypervisor agents.",
+      "exclude_prereleases": true,
+      "_note": "Model A (data-driven page), converted from the Model-B portal link-out on 2026-07-03 so the releases page presents v1.0.4 inline with GitHub-hub downloads, matching the other platform tools (ACC etc.). exclude_prereleases hides v1.0.0-rc.1; the legacy 6.4.x betas remain in Gitea but are not on the hub, so they list without a download link."
     },
     {
       "slug": "litmus",
