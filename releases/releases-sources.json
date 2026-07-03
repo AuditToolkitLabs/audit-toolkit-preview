@@ -19,8 +19,8 @@
       "name": "Audit Admin Toolkit",
       "group": "platform",
       "external": true,
-      "latest": "v1.0.3",
-      "versions": 1,
+      "latest": "v1.0.4",
+      "versions": 2,
       "page": "audit-toolkit-releases.html",
       "blurb": "Cross-platform security audit server with fleet, standalone, and hypervisor agents. Hosted on the downloads portal.",
       "_note": "external=true: served from the releases-repo downloads portal (Model B), not mirrored via Gitea. Sync emits a static hub entry; no data file."
@@ -87,6 +87,26 @@
       "blurb": "Linux-first security baseline auditing with 500 scripts across 11 control domains.",
       "exclude_prereleases": true,
       "_note": "exclude_prereleases: show only stable/GA releases on the site. The v1.0.0-rc.1 pre-release stays in Gitea but is never mirrored/published/shown."
+    },
+    {
+      "slug": "cmdb-api-data-collection-tool",
+      "name": "CMDB API Data Collection Tool",
+      "group": "platform",
+      "repo": "CMDB-API-DATA-COLLECTION-TOOL",
+      "page": "cmdb-api-releases.html",
+      "blurb": "CMDB inventory and configuration data collection with API-driven ingestion.",
+      "exclude_prereleases": true,
+      "_note": "exclude_prereleases: v1.0.4 GA is the baseline for the 6 main tools; the v1.0.0-rc.1 stays in Gitea but is never mirrored/published/shown."
+    },
+    {
+      "slug": "asset-command-centre",
+      "name": "Asset Command Centre",
+      "group": "platform",
+      "repo": "Asset-Command-Centre",
+      "page": "cmdb-asset-platform-releases.html",
+      "blurb": "Centralised asset inventory and control plane for the audit fleet.",
+      "exclude_prereleases": true,
+      "_note": "exclude_prereleases: v1.0.4 GA is the baseline for the 6 main tools; the v1.0.0-rc.1 stays in Gitea but is never mirrored/published/shown. NOTE: asset-command-centre-releases.html not yet created — site card link pending page creation."
     }
   ]
 }
