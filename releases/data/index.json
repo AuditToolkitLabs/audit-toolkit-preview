@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T15:22:48Z",
+  "generated_at": "2026-07-03T15:43:10Z",
   "products": [
     {
       "slug": "storage-intelligence-platform",
@@ -16,11 +16,11 @@
       "slug": "audit-toolkit",
       "product": "Audit Admin Toolkit",
       "latest": "v1.0.4",
-      "count": 2,
+      "count": 5,
       "mirrored": 2,
-      "data": "",
+      "data": "releases/data/audit-toolkit.json",
       "page": "audit-toolkit-releases.html",
-      "blurb": "Cross-platform security audit server with fleet, standalone, and hypervisor agents. Hosted on the downloads portal.",
+      "blurb": "Cross-platform security audit server with fleet, standalone, and hypervisor agents.",
       "group": "platform"
     },
     {
