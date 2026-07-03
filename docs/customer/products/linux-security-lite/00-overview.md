@@ -1,65 +1,60 @@
-# AuditToolkit Linux Security Lite Overview
+# Linux Security Lite — Overview
 
-## Purpose
+Linux Security Lite is a lightweight, command-line **security auditing engine for Linux hosts** — in the same family of tools as Lynis. It runs locally on the host, performs read-only checks against local system state, and produces structured JSON evidence suitable for governance, compliance, and SIEM consumption.
 
-AuditToolkit Linux Security Lite is a Linux-only command-line security audit
-engine. It performs read-only checks against local Linux system state and
-produces structured JSON evidence for governance, compliance, reporting, and
-SIEM consumption.
+It is aimed at Linux administrators and security teams who want fast, scriptable, host-level hardening checks without installing a heavy platform. When a central view is needed, it can feed its evidence upstream to the main AuditToolkit platform.
 
-## Primary Outcomes
+## What it delivers
 
-Linux Security Lite supports:
+- Read-only security auditing of Linux hosts from local system state.
+- Multi-distribution support through a compatibility shim layer, so the same audit logic runs consistently across different package and service managers.
+- Domain-based checks covering platform, access, network, advanced controls, web, data, applications, storage, and automation.
+- Structured JSON reports aligned to the audit-report schema v1.0, ready for governance, compliance, and SIEM consumption.
+- Standardised findings with `[PASS]`, `[WARN]`, `[FAIL]`, and `[SKIP]` markers, plus deterministic per-run summaries for repeatable reporting.
 
-- Host-hardening posture measurement across Linux fleets.
-- Evidence-based control checking aligned to security benchmarks and controls.
-- Scheduled audit execution with timestamped JSON artifacts.
-- CI/CD compliance gates through customer-side scripting.
-- SIEM and ticketing ingestion through structured report export.
+## Core principles
 
-The standalone tool exports data. Direct push, managed integration, and central
-dashboards require customer-side integration or the main AuditToolkit platform.
+- **Read-only by design** — the tool never remediates or changes state on the target host.
+- **Portable audit logic** — distro, service, and firewall differences are handled by shims, so checks behave predictably everywhere.
+- **Reproducible output** — a consistent execution order and a stable output shape make results comparable over time.
+- **Linux-only scope** — non-Linux endpoints, cloud-resource posture, and network-based scanning are out of scope.
 
-## Architecture
+## How it runs
 
-| Layer               | Component                                    | Purpose                                                                          |
-| ------------------- | -------------------------------------------- | -------------------------------------------------------------------------------- |
-| Orchestrator        | `orchestrator/orchestrator.sh`               | Discovers, filters, runs, and aggregates audit scripts.                          |
-| Audit library       | `audits/linux/<domain>/<category>/<name>.sh` | Read-only checks organized by domain and category.                               |
-| Compatibility shims | `lib/*.sh`                                   | Distro-agnostic wrappers for package, service, firewall, and security detection. |
+Core interaction is via the `audit-toolkit` command, or by invoking the orchestrator directly:
 
-Supporting components include discovery, a stable JSON report schema, and a CI
-schema validation helper.
+```bash
+audit-toolkit --auto --json /var/log/audit-toolkit/report.json
+```
 
-## Supported Linux Scope
+Root or `sudo` access is strongly recommended. The tool runs without root, but checks that require elevated privilege are marked `[SKIP]` and excluded from the coverage score.
 
-The product is intended for heterogeneous Linux estates. Supported families in
-the source docs include Ubuntu, Debian, RHEL-derived distributions, Fedora,
-openSUSE, Alpine, Arch, Void, and Gentoo, with service-manager differences
-handled through compatibility shims where supported.
+Run modes include automatic auto-plan (`--auto`), domain filtering (`--domain`), pattern matching (`--match`), pre-defined presets (`--preset`), dry runs, and an interactive selection menu. A lightweight local web console is also available for operators.
 
-Checks that cannot apply to a distribution should skip rather than fail the
-entire run.
+## Output model
 
-## Run Modes
+Each check emits a one-line result with a severity marker:
 
-Common customer run modes include:
+```text
+[PASS] SSH PermitRootLogin is disabled
+[WARN] package metadata refresh skipped without root
+[FAIL] firewall not active
+[SKIP] control not applicable on detected distro
+```
 
-- Auto-plan runs based on detected host state.
-- Domain-filtered runs.
-- Script-name matching.
-- Preset runs.
-- Discovery-only inventory.
-- Dry-run preview.
-- Interactive selection where supported tooling is available.
+The orchestrator aggregates these into a JSON report whose top-level sections cover host identity, inventory, vulnerabilities, pending updates, hardening results, completeness (coverage and confidence scores), and remediation references.
 
-## Output Contract
+## Business outcomes
 
-Reports are governed by the `audit-report.v1` schema. Typical sections include
-host identity, inventory, vulnerabilities, updates, hardening results,
-completeness, and remediation references.
+When integrated as described in the product documentation, Linux Security Lite supports:
 
-## Product-Specific Follow-Up Pages
+- Continuous host-hardening posture measurement across heterogeneous Linux fleets.
+- Automated, evidence-based control checking aligned to CIS Benchmarks and NIST SP 800-53.
+- Scheduled audit execution with retention of timestamped JSON artefacts.
+- CI/CD compliance gating and SIEM/ticketing integration via export of structured output (these require user-side scripting or integration with the main AuditToolkit platform).
 
-Planned product pages include installation, scheduled audits, CI/CD compliance
-gates, SIEM integration, agent mode, STIG coverage, and Linux-only constraints.
+## Licensing
+
+Linux Security Lite is licensed under the Business Source License 1.1 (BSL 1.1). Internal security auditing within your organisation, on any number of hosts, is free. Offering audit services to third parties, embedding the tool in a commercial product, or operating it as a hosted service requires a commercial licence. Contact [License@audittoolkitlabs.com](mailto:License@audittoolkitlabs.com) for commercial licensing enquiries.
+
+> This is the platform **Linux Security Lite** engine (a full control catalogue across multiple audit domains), distinct from the Lite add-on "Linux Host Lite".
