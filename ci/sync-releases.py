@@ -57,6 +57,46 @@ def _gh_tag(slug: str, tag: str) -> str:
     return f"{slug}-{tag}"
 
 
+# ── Mojibake repair ────────────────────────────────────────────────────────
+# Some release notes reach Gitea already double-encoded: real UTF-8 text was
+# decoded as Windows-1252 and re-saved as UTF-8, so an em-dash "—" (U+2014,
+# bytes E2 80 94) surfaces as "â€"" and a middle dot "·" as "Â·". We mirror the
+# notes verbatim, so the corruption reaches every data-driven release page. The
+# table below is the exact inverse: for each clean character we compute the
+# Windows-1252 misreading of its UTF-8 bytes and map it back. Longest keys are
+# applied first so multi-byte sequences win, and the pass is idempotent — clean
+# text contains none of these keys, so re-running is a no-op.
+def _build_mojibake_map() -> list[tuple[str, str]]:
+    # cp1252 "smart" punctuation/symbols plus the Latin-1 supplement — the
+    # characters that actually appear (or could) in the release notes.
+    good = (
+        "–—‘’“”†‡•…‰"
+        "‹›€™ˆŒœŠšŸŽž"
+        + "".join(chr(c) for c in range(0x00A0, 0x0100))
+    )
+    table: list[tuple[str, str]] = []
+    for ch in good:
+        try:
+            key = ch.encode("utf-8").decode("cp1252")
+        except UnicodeDecodeError:
+            continue  # byte undefined in cp1252 (0x81/0x8d/0x8f/0x90/0x9d)
+        if key != ch:
+            table.append((key, ch))
+    # Longest first so e.g. the 3-char em-dash run is fixed before its prefixes.
+    table.sort(key=lambda kv: len(kv[0]), reverse=True)
+    return table
+
+
+_MOJIBAKE_MAP = _build_mojibake_map()
+
+
+def _demojibake(text: str) -> str:
+    for key, ch in _MOJIBAKE_MAP:
+        if key in text:
+            text = text.replace(key, ch)
+    return text
+
+
 # ── Gitea API ──────────────────────────────────────────────────────────────
 def _gitea_token() -> str:
     token = os.environ.get("GITEA_TOKEN", "").strip()
@@ -248,6 +288,7 @@ def _sanitize(cfg, product, releases_raw, gh_tags: set) -> dict:
     rewrites = product.get("display_rewrites") or []
 
     def _display(text: str) -> str:
+        text = _demojibake(text)
         for old, new in rewrites:
             text = text.replace(old, new)
         return text

@@ -3,7 +3,7 @@
   "slug": "cmdb-api-data-collection-tool",
   "repo": "audittoolkitlabs/CMDB-API-DATA-COLLECTION-TOOL",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-07-06T14:19:53Z",
+  "generated_at": "2026-07-06T14:39:19Z",
   "latest": "v1.0.5",
   "releases": [
     {
@@ -13,7 +13,7 @@
       "mirrored": true,
       "published_at": "2026-07-06T11:10:20Z",
       "author": "auditadmin",
-      "body_md": "## CMDB API Data Collection Tool v1.0.5 â€” Security Hardening (GA)\n\nCoordinated AuditToolkit suite security-hardening release.\n\n- OWASP hardening to a weighted **A+** scorecard\n- **Zero** Bandit high / medium / low findings\n- Container hardening (least-privilege, reduced attack surface)\n- Portable weighted OWASP scorer included\n- No breaking changes â€” upgrade in place via the native package\n\n**Assets:** native `.deb` / `.rpm`, customer-docs bundle, CycloneDX SBOM, `SHA256SUMS-1.0.5.txt`, and detached GPG `.asc` signatures (release key 926C3CBB).\n\nSuite: 2026.1 Â· Channel: GA\n",
+      "body_md": "## CMDB API Data Collection Tool v1.0.5 — Security Hardening (GA)\n\nCoordinated AuditToolkit suite security-hardening release.\n\n- OWASP hardening to a weighted **A+** scorecard\n- **Zero** Bandit high / medium / low findings\n- Container hardening (least-privilege, reduced attack surface)\n- Portable weighted OWASP scorer included\n- No breaking changes — upgrade in place via the native package\n\n**Assets:** native `.deb` / `.rpm`, customer-docs bundle, CycloneDX SBOM, `SHA256SUMS-1.0.5.txt`, and detached GPG `.asc` signatures (release key 926C3CBB).\n\nSuite: 2026.1 · Channel: GA\n",
       "assets": [
         {
           "name": "SHA256SUMS-1.0.5.txt",
