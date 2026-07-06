@@ -3,9 +3,80 @@
   "slug": "cmdb-api-data-collection-tool",
   "repo": "audittoolkitlabs/CMDB-API-DATA-COLLECTION-TOOL",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-07-03T15:10:41Z",
-  "latest": "v1.0.4",
+  "generated_at": "2026-07-06T14:19:53Z",
+  "latest": "v1.0.5",
   "releases": [
+    {
+      "tag": "v1.0.5",
+      "name": "v1.0.5 � Security Hardening",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-07-06T11:10:20Z",
+      "author": "auditadmin",
+      "body_md": "## CMDB API Data Collection Tool v1.0.5 â€” Security Hardening (GA)\n\nCoordinated AuditToolkit suite security-hardening release.\n\n- OWASP hardening to a weighted **A+** scorecard\n- **Zero** Bandit high / medium / low findings\n- Container hardening (least-privilege, reduced attack surface)\n- Portable weighted OWASP scorer included\n- No breaking changes â€” upgrade in place via the native package\n\n**Assets:** native `.deb` / `.rpm`, customer-docs bundle, CycloneDX SBOM, `SHA256SUMS-1.0.5.txt`, and detached GPG `.asc` signatures (release key 926C3CBB).\n\nSuite: 2026.1 Â· Channel: GA\n",
+      "assets": [
+        {
+          "name": "SHA256SUMS-1.0.5.txt",
+          "size": 461,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.5/SHA256SUMS-1.0.5.txt"
+        },
+        {
+          "name": "SHA256SUMS-1.0.5.txt.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.5/SHA256SUMS-1.0.5.txt.asc"
+        },
+        {
+          "name": "cmdb-api-data-collection-tool-1.0.5-1.x86_64.rpm",
+          "size": 104015596,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.5/cmdb-api-data-collection-tool-1.0.5-1.x86_64.rpm"
+        },
+        {
+          "name": "cmdb-api-data-collection-tool-1.0.5-1.x86_64.rpm.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.5/cmdb-api-data-collection-tool-1.0.5-1.x86_64.rpm.asc"
+        },
+        {
+          "name": "cmdb-api-data-collection-tool-1.0.5.cdx.json",
+          "size": 7778,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.5/cmdb-api-data-collection-tool-1.0.5.cdx.json"
+        },
+        {
+          "name": "cmdb-api-data-collection-tool-1.0.5.cdx.json.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.5/cmdb-api-data-collection-tool-1.0.5.cdx.json.asc"
+        },
+        {
+          "name": "cmdb-api-data-collection-tool-customer-docs-1.0.5.tar.gz",
+          "size": 90715,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.5/cmdb-api-data-collection-tool-customer-docs-1.0.5.tar.gz"
+        },
+        {
+          "name": "cmdb-api-data-collection-tool-customer-docs-1.0.5.tar.gz.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.5/cmdb-api-data-collection-tool-customer-docs-1.0.5.tar.gz.asc"
+        },
+        {
+          "name": "cmdb-api-data-collection-tool_1.0.5_amd64.deb",
+          "size": 108546890,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.5/cmdb-api-data-collection-tool_1.0.5_amd64.deb"
+        },
+        {
+          "name": "cmdb-api-data-collection-tool_1.0.5_amd64.deb.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/cmdb-api-data-collection-tool-v1.0.5/cmdb-api-data-collection-tool_1.0.5_amd64.deb.asc"
+        }
+      ]
+    },
     {
       "tag": "v1.0.4",
       "name": "CMDB API Data Collection Tool 1.0.4",

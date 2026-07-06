@@ -3,9 +3,80 @@
   "slug": "audit-toolkit",
   "repo": "audittoolkitlabs/Audit-Tool-",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-07-03T15:43:00Z",
-  "latest": "v1.0.4",
+  "generated_at": "2026-07-06T14:19:48Z",
+  "latest": "v1.0.5",
   "releases": [
+    {
+      "tag": "v1.0.5",
+      "name": "v1.0.5 � Security Hardening",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-07-06T11:11:01Z",
+      "author": "auditadmin",
+      "body_md": "## Security Audit Toolkit v1.0.5 â€” Security Hardening (GA)\n\nCoordinated AuditToolkit suite security-hardening release.\n\n- OWASP hardening to a weighted **A+** scorecard\n- **Zero** Bandit high / medium / low findings\n- Container hardening (least-privilege, reduced attack surface)\n- Portable weighted OWASP scorer included\n- No breaking changes â€” upgrade in place via the native package\n\n**Assets:** native `.deb` / `.rpm`, customer-docs bundle, CycloneDX SBOM, `SHA256SUMS-1.0.5.txt`, and detached GPG `.asc` signatures (release key 926C3CBB).\n\nSuite: 2026.1 Â· Channel: GA\n",
+      "assets": [
+        {
+          "name": "SHA256SUMS-1.0.5.txt",
+          "size": 385,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/SHA256SUMS-1.0.5.txt"
+        },
+        {
+          "name": "SHA256SUMS-1.0.5.txt.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/SHA256SUMS-1.0.5.txt.asc"
+        },
+        {
+          "name": "audit-tool-1.0.5-1.x86_64.rpm",
+          "size": 11035527,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/audit-tool-1.0.5-1.x86_64.rpm"
+        },
+        {
+          "name": "audit-tool-1.0.5-1.x86_64.rpm.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/audit-tool-1.0.5-1.x86_64.rpm.asc"
+        },
+        {
+          "name": "audit-tool-1.0.5.cdx.json",
+          "size": 9440,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/audit-tool-1.0.5.cdx.json"
+        },
+        {
+          "name": "audit-tool-1.0.5.cdx.json.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/audit-tool-1.0.5.cdx.json.asc"
+        },
+        {
+          "name": "audit-tool-customer-docs-1.0.5.tar.gz",
+          "size": 448364,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/audit-tool-customer-docs-1.0.5.tar.gz"
+        },
+        {
+          "name": "audit-tool-customer-docs-1.0.5.tar.gz.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/audit-tool-customer-docs-1.0.5.tar.gz.asc"
+        },
+        {
+          "name": "audit-tool_1.0.5_amd64.deb",
+          "size": 52745568,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/audit-tool_1.0.5_amd64.deb"
+        },
+        {
+          "name": "audit-tool_1.0.5_amd64.deb.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/audit-tool_1.0.5_amd64.deb.asc"
+        }
+      ]
+    },
     {
       "tag": "v1.0.4",
       "name": "Security Audit Toolkit 1.0.4",
@@ -129,7 +200,7 @@
       "tag": "v1.0.3",
       "name": "Audit Tool 1.0.3",
       "prerelease": false,
-      "mirrored": true,
+      "mirrored": false,
       "published_at": "2026-06-29T15:13:57Z",
       "author": "auditadmin",
       "body_md": "Audit Tool **1.0.3** — GA (suite 2026.1).\n\n### Server + agents\n- **Linux** — server + fleet/standalone/hypervisor agents as `.deb` + `.rpm` (self-contained: bundled python3.12 wheelhouse, systemd units, customer-docs). In-place update bundles: `application`/`audits` tarballs.\n- **Windows** — fleet/standalone/hypervisor agents as `.msi` (embedded Python).\n\n`SHA256SUMS-1.0.3.txt` covers every artifact. See `README.md` / `CHANGELOG.md`.\n\n### Signing\n- **Linux** packages are signed via the AuditToolkit Release Signing key.\n- **Windows MSIs** are Authenticode-signed (SHA-256, timestamped) with the internal AuditToolkit code-signing certificate. A publicly-trusted OV/EV certificate / Azure Trusted Signing identity is not currently available, so Windows may show an \"unknown publisher\" prompt — a known signing-infrastructure limitation, **not** a release blocker.\n\n### Post-GA follow-ups (non-blocking)\n- Hypervisor agent is built at 1.0.3 while its `version.py` reads 0.1.0 (separate product — reconcile).\n- The oversized `full.tar.gz` update bundle is omitted pending a `build-release.sh` exclude fix; the deb/rpm are the canonical full installs.",
@@ -138,97 +209,97 @@
           "name": "CHANGELOG.md",
           "size": 2446,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.3/CHANGELOG.md"
+          "download_url": ""
         },
         {
           "name": "README.md",
           "size": 3060,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.3/README.md"
+          "download_url": ""
         },
         {
           "name": "SHA256SUMS-1.0.3.txt",
           "size": 1322,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.3/SHA256SUMS-1.0.3.txt"
+          "download_url": ""
         },
         {
           "name": "audit-fleet-agent-1.0.3-windows-x64.msi",
           "size": 16617472,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.3/audit-fleet-agent-1.0.3-windows-x64.msi"
+          "download_url": ""
         },
         {
           "name": "audit-standalone-agent-1.0.3-windows-x64.msi",
           "size": 16310272,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.3/audit-standalone-agent-1.0.3-windows-x64.msi"
+          "download_url": ""
         },
         {
           "name": "audit-tool-1.0.3-1.x86_64.rpm",
           "size": 11034071,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.3/audit-tool-1.0.3-1.x86_64.rpm"
+          "download_url": ""
         },
         {
           "name": "audit-tool_1.0.3_amd64.deb",
           "size": 52884902,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.3/audit-tool_1.0.3_amd64.deb"
+          "download_url": ""
         },
         {
           "name": "audit-toolkit-1.0.3-application.tar.gz",
           "size": 2427214,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.3/audit-toolkit-1.0.3-application.tar.gz"
+          "download_url": ""
         },
         {
           "name": "audit-toolkit-1.0.3-audits.tar.gz",
           "size": 1070605,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.3/audit-toolkit-1.0.3-audits.tar.gz"
+          "download_url": ""
         },
         {
           "name": "audittoolkit-hypervisor-agent-1.0.3-windows-x64.msi",
           "size": 15507456,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.3/audittoolkit-hypervisor-agent-1.0.3-windows-x64.msi"
+          "download_url": ""
         },
         {
           "name": "fleet-agent-1.0.3-1.x86_64.rpm",
           "size": 1255493,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.3/fleet-agent-1.0.3-1.x86_64.rpm"
+          "download_url": ""
         },
         {
           "name": "fleet-agent_1.0.3_amd64.deb",
           "size": 783402,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.3/fleet-agent_1.0.3_amd64.deb"
+          "download_url": ""
         },
         {
           "name": "hypervisor-agent-1.0.3-1.x86_64.rpm",
           "size": 36732,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.3/hypervisor-agent-1.0.3-1.x86_64.rpm"
+          "download_url": ""
         },
         {
           "name": "hypervisor-agent_1.0.3_amd64.deb",
           "size": 20110,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.3/hypervisor-agent_1.0.3_amd64.deb"
+          "download_url": ""
         },
         {
           "name": "standalone-agent-1.0.3-1.x86_64.rpm",
           "size": 1337307,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.3/standalone-agent-1.0.3-1.x86_64.rpm"
+          "download_url": ""
         },
         {
           "name": "standalone-agent_1.0.3_amd64.deb",
           "size": 7211904,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.3/standalone-agent_1.0.3_amd64.deb"
+          "download_url": ""
         }
       ]
     },

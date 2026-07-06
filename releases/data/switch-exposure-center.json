@@ -3,9 +3,80 @@
   "slug": "switch-exposure-center",
   "repo": "audittoolkitlabs/Switch-Exposure-Center",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-07-03T15:10:39Z",
-  "latest": "v1.0.4",
+  "generated_at": "2026-07-06T14:19:51Z",
+  "latest": "v1.0.5",
   "releases": [
+    {
+      "tag": "v1.0.5",
+      "name": "v1.0.5 � Security Hardening",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-07-06T11:10:14Z",
+      "author": "auditadmin",
+      "body_md": "## Switch Exposure Centre v1.0.5 â€” Security Hardening (GA)\n\nCoordinated AuditToolkit suite security-hardening release.\n\n- OWASP hardening to a weighted **A+** scorecard\n- **Zero** Bandit high / medium / low findings\n- Container hardening (least-privilege, reduced attack surface)\n- Portable weighted OWASP scorer included\n- No breaking changes â€” upgrade in place via the native package\n\n**Assets:** native `.deb` / `.rpm`, customer-docs bundle, CycloneDX SBOM, `SHA256SUMS-1.0.5.txt`, and detached GPG `.asc` signatures (release key 926C3CBB).\n\nSuite: 2026.1 Â· Channel: GA\n",
+      "assets": [
+        {
+          "name": "SHA256SUMS-1.0.5.txt",
+          "size": 433,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/switch-exposure-center-v1.0.5/SHA256SUMS-1.0.5.txt"
+        },
+        {
+          "name": "SHA256SUMS-1.0.5.txt.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/switch-exposure-center-v1.0.5/SHA256SUMS-1.0.5.txt.asc"
+        },
+        {
+          "name": "switch-exposure-center-1.0.5-1.x86_64.rpm",
+          "size": 24058883,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/switch-exposure-center-v1.0.5/switch-exposure-center-1.0.5-1.x86_64.rpm"
+        },
+        {
+          "name": "switch-exposure-center-1.0.5-1.x86_64.rpm.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/switch-exposure-center-v1.0.5/switch-exposure-center-1.0.5-1.x86_64.rpm.asc"
+        },
+        {
+          "name": "switch-exposure-center-1.0.5.cdx.json",
+          "size": 3837,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/switch-exposure-center-v1.0.5/switch-exposure-center-1.0.5.cdx.json"
+        },
+        {
+          "name": "switch-exposure-center-1.0.5.cdx.json.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/switch-exposure-center-v1.0.5/switch-exposure-center-1.0.5.cdx.json.asc"
+        },
+        {
+          "name": "switch-exposure-center-customer-docs-1.0.5.tar.gz",
+          "size": 63444,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/switch-exposure-center-v1.0.5/switch-exposure-center-customer-docs-1.0.5.tar.gz"
+        },
+        {
+          "name": "switch-exposure-center-customer-docs-1.0.5.tar.gz.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/switch-exposure-center-v1.0.5/switch-exposure-center-customer-docs-1.0.5.tar.gz.asc"
+        },
+        {
+          "name": "switch-exposure-center_1.0.5_amd64.deb",
+          "size": 23805886,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/switch-exposure-center-v1.0.5/switch-exposure-center_1.0.5_amd64.deb"
+        },
+        {
+          "name": "switch-exposure-center_1.0.5_amd64.deb.asc",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/switch-exposure-center-v1.0.5/switch-exposure-center_1.0.5_amd64.deb.asc"
+        }
+      ]
+    },
     {
       "tag": "v1.0.4",
       "name": "Switch Exposure Centre 1.0.4",
@@ -81,7 +152,7 @@
       "tag": "v1.0.3",
       "name": "Switch Exposure Centre 1.0.3",
       "prerelease": false,
-      "mirrored": true,
+      "mirrored": false,
       "published_at": "2026-06-29T16:33:49Z",
       "author": "auditadmin",
       "body_md": "Switch Exposure Centre **1.0.3** — GA.\n\nFirst distinct 1.0 release (earlier `v1.0.0`-`v1.0.2` tags all aliased the same `1.0.0rc1` commit).\n\n### Artifacts\n- `switch-exposure-center_1.0.3_amd64.deb` (Debian/Ubuntu)\n- `switch-exposure-center-1.0.3-1.x86_64.rpm` (RHEL/Rocky/AlmaLinux/Fedora)\n\nBoth bundle an offline Python 3.12 wheelhouse (no network pip at install). `SHA256SUMS-1.0.3.txt` covers both; Linux packages are signed via the AuditToolkit Release Signing key. Linux-only product (no Windows artifacts). See `README.md` / `CHANGELOG.md`.\n\n### Validated\nBoots on SQLite, health/readiness green, console renders with 0 JS errors; 248 unit tests pass; bandit 0 high / 0 medium.",
@@ -90,31 +161,31 @@
           "name": "CHANGELOG.md",
           "size": 1353,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/switch-exposure-center-v1.0.3/CHANGELOG.md"
+          "download_url": ""
         },
         {
           "name": "README.md",
           "size": 2292,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/switch-exposure-center-v1.0.3/README.md"
+          "download_url": ""
         },
         {
           "name": "SHA256SUMS-1.0.3.txt",
           "size": 213,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/switch-exposure-center-v1.0.3/SHA256SUMS-1.0.3.txt"
+          "download_url": ""
         },
         {
           "name": "switch-exposure-center-1.0.3-1.x86_64.rpm",
           "size": 22662257,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/switch-exposure-center-v1.0.3/switch-exposure-center-1.0.3-1.x86_64.rpm"
+          "download_url": ""
         },
         {
           "name": "switch-exposure-center_1.0.3_amd64.deb",
           "size": 22337684,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/switch-exposure-center-v1.0.3/switch-exposure-center_1.0.3_amd64.deb"
+          "download_url": ""
         }
       ]
     }
