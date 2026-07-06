@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T15:43:10Z",
+  "generated_at": "2026-07-06T14:19:54Z",
   "products": [
     {
       "slug": "storage-intelligence-platform",
@@ -15,8 +15,8 @@
     {
       "slug": "audit-toolkit",
       "product": "Audit Admin Toolkit",
-      "latest": "v1.0.4",
-      "count": 5,
+      "latest": "v1.0.5",
+      "count": 6,
       "mirrored": 2,
       "data": "releases/data/audit-toolkit.json",
       "page": "audit-toolkit-releases.html",
@@ -70,8 +70,8 @@
     {
       "slug": "switch-exposure-center",
       "product": "Switch Exposure Centre",
-      "latest": "v1.0.4",
-      "count": 2,
+      "latest": "v1.0.5",
+      "count": 3,
       "mirrored": 2,
       "data": "releases/data/switch-exposure-center.json",
       "page": "secure-exposure-centre-releases.html",
@@ -81,8 +81,8 @@
     {
       "slug": "audit-assurance-node",
       "product": "Audit Assurance Node",
-      "latest": "v1.0.4",
-      "count": 2,
+      "latest": "v1.0.5",
+      "count": 3,
       "mirrored": 2,
       "data": "releases/data/audit-assurance-node.json",
       "page": "audit-assurance-node-releases.html",
@@ -92,8 +92,8 @@
     {
       "slug": "linux-security-lite",
       "product": "Linux Security Lite",
-      "latest": "v1.0.4",
-      "count": 2,
+      "latest": "v1.0.5",
+      "count": 3,
       "mirrored": 2,
       "data": "releases/data/linux-security-lite.json",
       "page": "linux-security-lite-releases.html",
@@ -103,9 +103,9 @@
     {
       "slug": "cmdb-api-data-collection-tool",
       "product": "CMDB API Data Collection Tool",
-      "latest": "v1.0.4",
-      "count": 1,
-      "mirrored": 1,
+      "latest": "v1.0.5",
+      "count": 2,
+      "mirrored": 2,
       "data": "releases/data/cmdb-api-data-collection-tool.json",
       "page": "cmdb-api-releases.html",
       "blurb": "CMDB inventory and configuration data collection with API-driven ingestion.",
@@ -114,9 +114,9 @@
     {
       "slug": "asset-command-centre",
       "product": "Asset Command Centre",
-      "latest": "v1.0.4",
-      "count": 1,
-      "mirrored": 1,
+      "latest": "v1.0.5",
+      "count": 2,
+      "mirrored": 2,
       "data": "releases/data/asset-command-centre.json",
       "page": "cmdb-asset-platform-releases.html",
       "blurb": "Centralised asset inventory and control plane for the audit fleet.",
