@@ -894,7 +894,6 @@
         });
         document.getElementById('tree-collapse-all').addEventListener('click', function () {
           Object.keys(foldersById).forEach(function (id) { expanded[id] = false; });
-          TREE.forEach(function (n) { if (n.type === 'folder') expanded[n.id] = true; });
           renderTree();
         });
 
