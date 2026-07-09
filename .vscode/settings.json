@@ -25,5 +25,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.wordWrap": "on",
     "editor.rulers": []
-  }
+  },
+  "codeQL.githubDatabase.download": "never"
 }
