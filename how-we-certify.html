@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <title>How We Certify Every Release — AuditToolkit</title>
+    <meta
+      name="description"
+      content="From commit to customer: the layered, evidence-based certification pipeline every AuditToolkit release passes through before you can download it — static analysis, dataflow scanning, dependency audit, coverage gates, native install validation, and cryptographic signing."
+    />
+    <link rel="stylesheet" href="assets/css/site.css?v=20260612g" />
+    <style>
+      .nav-mobile-contact {
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .footer-brand-title {
+        font-weight: 700;
+        font-size: 1.05rem;
+      }
+      .footer-copy-small {
+        font-size: 0.82rem;
+      }
+
+      /* Principle cards */
+      .principle-card h3 {
+        margin: 0 0 8px;
+        font-size: 1.05rem;
+      }
+      .principle-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      /* Step flow (shared pattern with how-it-works) */
+      .step-flow {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .step {
+        display: grid;
+        grid-template-columns: 56px 1fr;
+        gap: 24px;
+        align-items: start;
+        padding: 32px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .step:last-child {
+        border-bottom: none;
+      }
+      .step-num {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--border);
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--accent);
+        flex-shrink: 0;
+        margin-top: 4px;
+      }
+      .step-body h3 {
+        margin: 0 0 6px;
+        font-size: 1.1rem;
+      }
+      .step-body p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      .step-body p + p {
+        margin-top: 10px;
+      }
+      .step-tag {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: var(--accent);
+        background: rgba(90, 160, 255, 0.1);
+        border: 1px solid rgba(90, 160, 255, 0.2);
+        border-radius: 4px;
+        padding: 2px 8px;
+        margin-bottom: 8px;
+      }
+      .step-tag.green {
+        color: #6ee7b7;
+        background: rgba(110, 231, 183, 0.08);
+        border-color: rgba(110, 231, 183, 0.2);
+      }
+      .step-tag.amber {
+        color: #fbbf24;
+        background: rgba(251, 191, 36, 0.08);
+        border-color: rgba(251, 191, 36, 0.2);
+      }
+      .step-substeps {
+        margin: 12px 0 0;
+        padding-left: 20px;
+        color: var(--muted);
+        font-size: 0.93rem;
+        line-height: 1.65;
+      }
+      .step-substeps li {
+        margin-bottom: 4px;
+      }
+      .section-divider-top {
+        border-top: 1px solid var(--border);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="wrap">
+        <div class="nav-inner">
+          <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+          <ul class="nav-links">
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="script-coverage.html">Coverage</a></li>
+            <li><a href="regulated-industries.html">Regulated</a></li>
+            <li><a href="toolkit-overview.html">Overview</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="use-cases.html">Use Cases</a></li>
+            <li><a href="integrations.html">Integrations</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="releases.html">Releases</a></li>
+            <li><a href="licensing.html">Licensing</a></li>
+            <li><a href="support.html">Support</a></li>
+          </ul>
+          <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+          <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="script-coverage.html">Coverage</a>
+      <a href="regulated-industries.html">Regulated</a>
+      <a href="toolkit-overview.html">Overview</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="integrations.html">Integrations</a>
+      <a href="docs.html">Documentation</a>
+      <a href="releases.html">Releases</a>
+      <a href="licensing.html">Licensing</a>
+      <a href="support.html">Support</a>
+      <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
+    </div>
+
+    <div class="page-hero">
+      <div class="wrap">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a><span class="sep">/</span>
+          <span class="cur">How We Certify Every Release</span>
+        </div>
+        <p class="eyebrow">Release Assurance</p>
+        <h1>From commit to customer: how every new release is certified before you download it.</h1>
+        <p>
+          We build security tooling — so we hold our own code to the standard we audit everyone else against. Nothing reaches a customer on
+          the strength of &ldquo;it worked on my machine&rdquo; or a green checkmark someone eyeballed. Every line of code, and every
+          downloadable, installable artifact, is put through a layered, evidence-based certification pipeline first. This is the process our
+          next release — and every release after it — is certified against.
+        </p>
+      </div>
+    </div>
+
+    <!-- Two principles -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Principles</p>
+          <h2>Two principles that shape everything.</h2>
+        </div>
+        <div class="grid-2">
+          <div class="card principle-card">
+            <h3>Evidence, never opinion.</h3>
+            <p>
+              A release is approved by <em>measured results</em>, not judgement. Every gate emits a machine-readable artifact — a coverage
+              number, a SARIF security report, an install log, a signed checksum. If we can&rsquo;t show the evidence, we don&rsquo;t ship
+              it.
+            </p>
+          </div>
+          <div class="card principle-card">
+            <h3>We prove the artifact deploys — not just that the code compiles.</h3>
+            <p>
+              Most vendors test their <em>source</em>. We take the actual <code>.deb</code>, <code>.rpm</code>, or <code>.msi</code> a
+              customer downloads, install it on a <strong>clean machine</strong>, boot it, log in, and drive every page — and we keep the
+              receipts. Code that passes tests but won&rsquo;t install cleanly is not &ldquo;done.&rdquo;
+            </p>
+          </div>
+        </div>
+        <div class="callout mt-24">
+          <strong>Self-calibrating ratchets:</strong> our quality bars lock in the current measured level and only ever move up. New work
+          can never regress security or test coverage.
+        </div>
+      </div>
+    </section>
+
+    <!-- The pipeline -->
+    <section class="section section-divider-top">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">The Pipeline</p>
+          <h2>The certification pipeline every change passes through.</h2>
+          <p>Nine stages, each emitting evidence, between a developer&rsquo;s keystroke and your download.</p>
+        </div>
+        <div class="step-flow">
+          <div class="step">
+            <div class="step-num">0</div>
+            <div class="step-body">
+              <div class="step-tag">The developer&rsquo;s machine</div>
+              <h3>Caught before a commit even exists.</h3>
+              <p>
+                Local hooks run formatting and lint (Black, isort, flake8), PowerShell analysis (PSScriptAnalyzer), shell linting
+                (shellcheck), a secret scanner that blocks keys and credentials, and a &ldquo;no new inline frontend&rdquo; ratchet.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <div class="step-tag">Pre-push governance</div>
+              <h3>Nothing leaves a workstation unaccountable.</h3>
+              <p>
+                <strong>GPG-signed commits</strong>, an enforcement-version check, and a manifest guaranteeing managed files are committed.
+                Deep security and dependency gates run before code ever reaches the server.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <div class="step-tag">Continuous integration — language by language</div>
+              <h3>Each repository runs the checks that fit its languages.</h3>
+              <p>
+                <strong>Tests + coverage</strong> — the full suite runs, and a self-calibrating coverage gate blocks any regression below
+                the committed floor. <strong>Python</strong> — Bandit (security patterns), pip-audit (vulnerable dependencies), ruff.
+                <strong>PowerShell</strong>, the code that runs <em>elevated on customer machines</em> — PSScriptAnalyzer + InjectionHunter
+                catch injection, plaintext credentials, and unsafe execution; Pester runs unit tests; a syntax gate parses every single
+                script. A <strong>weighted OWASP scorecard</strong> is computed every run and published as evidence.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <div class="step-tag">Deep semantic security analysis</div>
+              <h3>Dataflow scanning across function boundaries.</h3>
+              <p>
+                <strong>CodeQL (security-extended)</strong> performs dataflow / taint tracking — following untrusted data across function
+                boundaries to find injection, SSRF, path traversal, and unsafe deserialization that single-file scanners miss. Findings are
+                emitted as <strong>SARIF</strong>, the industry-standard security format.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <div class="step-tag amber">The Release Gate</div>
+              <h3>One evidence-based release decision.</h3>
+              <p>
+                Every gate above is aggregated into a single release decision plus a complete evidence bundle — static analysis, security,
+                tests, quality score, and a human-readable report. The decision comes from the gates&rsquo; actual results, not an arbitrary
+                score.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <div class="step-tag">Building the deployable artifacts</div>
+              <h3>Only proven code gets built into what customers receive.</h3>
+              <p>
+                Artifacts ship as <strong>native OS packages</strong>: Linux <code>.deb</code>/<code>.rpm</code> (each with an offline
+                wheelhouse for air-gapped installs), signed <strong>Windows MSI</strong>, and signed, <strong>notarized macOS</strong>
+                packages. Docker is a build-and-test sandbox only — never the deployment format.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">6</div>
+            <div class="step-body">
+              <div class="step-tag amber">Native install validation</div>
+              <h3>The part most vendors skip.</h3>
+              <p>For every artifact and every package format we:</p>
+              <ol class="step-substeps">
+                <li><strong>Verify the SHA256</strong> against the shipped checksum.</li>
+                <li>
+                  <strong>Install it on a clean machine</strong> — the real package, real post-install scripts, real system services,
+                  database provisioning, TLS, and initial-credential generation.
+                </li>
+                <li><strong>Boot and health-check</strong> every service.</li>
+                <li>
+                  <strong>Log in and crawl the entire UI</strong> with an automated browser: every page renders, every internal link
+                  resolves, zero unhandled console/network errors, functional flows work, and accessibility checks pass.
+                </li>
+                <li><strong>Capture screenshots and a machine-readable result</strong> as evidence.</li>
+              </ol>
+              <p>
+                A package that won&rsquo;t install, a page that errors, a broken link — each is a release blocker, caught here, before a
+                customer ever sees it.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">7</div>
+            <div class="step-body">
+              <div class="step-tag green">Cryptographic signing</div>
+              <h3>Verify that what you downloaded is exactly what we built.</h3>
+              <p>
+                Every artifact is signed — <strong>GPG</strong> for Linux, code-signing certificates for <strong>Windows</strong>, Apple
+                <strong>codesign + notarization</strong> for macOS.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">8</div>
+            <div class="step-body">
+              <div class="step-tag green">The evidence ships with the release</div>
+              <h3>You get the binary — and its proof.</h3>
+              <p>
+                The security scorecard, the SARIF report, coverage numbers, install logs, UI-crawl results, and signed checksums — auditable
+                and reproducible. Not just a binary.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Across the product suite -->
+    <section class="section section-divider-top">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Across the Product Suite</p>
+          <h2>The same standard, tuned to each product&rsquo;s languages.</h2>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3 class="mt-0">Web platforms</h3>
+            <p class="text-muted">
+              The audit consoles, asset and exposure centres, and CMDB run the full stack: tests + coverage, CodeQL for Python
+              <strong>and</strong> JavaScript/TypeScript, Bandit, dependency audit, the OWASP scorecard, and the authenticated
+              install-and-crawl proof on native packages.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Audit engines &amp; agents</h3>
+            <p class="text-muted">
+              Heavily PowerShell, so they get the security-focused treatment: PSScriptAnalyzer + InjectionHunter, Pester tests, and a full
+              syntax gate on every script.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Every product</h3>
+            <p class="text-muted">
+              Whatever the language, each is certified to the same end state: a
+              <strong>signed, native artifact, installed on a clean host and driven through its real UI</strong> — with the evidence to
+              prove it.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What it means for you -->
+    <section class="section section-divider-top">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">What It Means For You</p>
+          <h2>Not something that merely &ldquo;passed CI.&rdquo;</h2>
+        </div>
+        <p>
+          Every release certified under this process is
+          <strong
+            >statically analysed, dataflow-scanned, dependency-audited, coverage-gated, security-scored, cryptographically signed, and
+            installed and exercised end-to-end on a clean machine</strong
+          >
+          — and ships with a documented evidence trail behind every claim.
+        </p>
+        <div class="callout info mt-24">
+          <strong>We audit code for a living.</strong> It would be strange to ship our own any other way.
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-band">
+      <div class="wrap">
+        <div class="cta-band-inner">
+          <div>
+            <h2 class="mb-8">See the evidence for yourself.</h2>
+            <p>Every release ships with its proof. Browse the release notes, or ask us about the certification bundle for any product.</p>
+          </div>
+          <div class="cta-band-actions">
+            <a href="releases.html" class="btn btn-primary btn-lg">View Releases</a>
+            <a href="support.html#contact" class="btn btn-secondary btn-lg">Talk to Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="flex items-center gap-12 mb-16">
+              <span class="brand-icon">A</span><span class="footer-brand-title">AuditToolkit Labs</span>
+            </div>
+            <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
+            <p class="footer-copy-small">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Products</h4>
+            <ul>
+              <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
+              <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
+              <li><a href="cmdb-asset-platform.html">Asset Command Centre</a></li>
+              <li><a href="linux-expansion.html">Linux Security Lite</a></li>
+              <li><a href="secure-exposure-centre.html">Switch Exposure Centre</a></li>
+              <li><a href="toolkit-overview.html#audit-assurance-node">Audit Assurance Node</a></li>
+              <li><a href="script-coverage.html">Script Coverage</a></li>
+              <li><a href="remediation.html">Remediation</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="toolkit-overview.html">Toolkit Overview</a></li>
+              <li><a href="how-it-works.html">How It Works</a></li>
+              <li><a href="use-cases.html">Use Cases</a></li>
+              <li><a href="integrations.html">Integrations</a></li>
+              <li><a href="docs.html">Central Documentation Library</a></li>
+              <li><a href="releases.html">Release Notes</a></li>
+              <li><a href="how-we-certify.html">How We Certify Releases</a></li>
+              <li><a href="regulated-industries.html">Regulated Industries</a></li>
+              <li><a href="compliance-evidence.html">Compliance Evidence</a></li>
+              <li><a href="licensing.html">Licensing &amp; Pricing</a></li>
+              <li><a href="support.html">Support</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
+              <li><a href="support.html#contact">Send an Enquiry</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>Licence: Business Source Licence (BSL). See individual product EULA for full usage rights.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="assets/js/nav.js?v=20260612e"></script>
+  </body>
+</html>
