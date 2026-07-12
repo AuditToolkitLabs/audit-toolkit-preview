@@ -246,10 +246,14 @@
               <h3>Each repository runs the checks that fit its languages.</h3>
               <p>
                 <strong>Tests + coverage</strong> — the full suite runs, and a self-calibrating coverage gate blocks any regression below
-                the committed floor. <strong>Python</strong> — Bandit (security patterns), pip-audit (vulnerable dependencies), ruff.
+                the committed floor. <strong>Python</strong> — Bandit (security patterns), ruff.
                 <strong>PowerShell</strong>, the code that runs <em>elevated on customer machines</em> — PSScriptAnalyzer + InjectionHunter
                 catch injection, plaintext credentials, and unsafe execution; Pester runs unit tests; a syntax gate parses every single
-                script. A <strong>weighted OWASP scorecard</strong> is computed every run and published as evidence.
+                script. <strong>Dependencies + deprecated code</strong> — every release runs pip-audit (Python) and npm audit (JavaScript)
+                to flag known-vulnerable packages, and scans our own source for <strong>deprecated APIs</strong> (e.g. calls scheduled for
+                removal in a future language runtime) — blocking them, so a deprecation is fixed in the release that introduces it rather
+                than discovered when an upgrade breaks it. A <strong>weighted OWASP scorecard</strong> is computed every run and published as
+                evidence.
               </p>
             </div>
           </div>
@@ -391,8 +395,8 @@
         <p>
           Every release certified under this process is
           <strong
-            >statically analysed, dataflow-scanned, dependency-audited, coverage-gated, security-scored, cryptographically signed, and
-            installed and exercised end-to-end on a clean machine</strong
+            >statically analysed, dataflow-scanned, dependency-audited, deprecation-checked, coverage-gated, security-scored,
+            cryptographically signed, and installed and exercised end-to-end on a clean machine</strong
           >
           — and ships with a documented evidence trail behind every claim.
         </p>
