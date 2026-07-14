@@ -7,7 +7,7 @@
     <title>How We Certify Every Release — AuditToolkit</title>
     <meta
       name="description"
-      content="From commit to customer: the layered, evidence-based certification pipeline every AuditToolkit release passes through before you can download it — static analysis, dataflow scanning, dependency audit, coverage gates, native install validation, and cryptographic signing."
+      content="From commit to customer: the layered, evidence-based certification pipeline every AuditToolkit release passes through before you can download it — static analysis, supply-chain SBOM vulnerability scanning, dependency audit, coverage gates, native install validation, and cryptographic signing."
     />
     <link rel="stylesheet" href="assets/css/site.css?v=20260612g" />
     <style>
@@ -186,8 +186,8 @@
             <h3>Evidence, never opinion.</h3>
             <p>
               A release is approved by <em>measured results</em>, not judgement. Every gate emits a machine-readable artifact — a coverage
-              number, a SARIF security report, an install log, a signed checksum. If we can&rsquo;t show the evidence, we don&rsquo;t ship
-              it.
+              number, a SARIF security report, an install log, a signed checksum, a software bill of materials. If we can&rsquo;t show the
+              evidence, we don&rsquo;t ship it.
             </p>
           </div>
           <div class="card principle-card">
@@ -261,12 +261,20 @@
           <div class="step">
             <div class="step-num">3</div>
             <div class="step-body">
-              <div class="step-tag">Deep semantic security analysis</div>
-              <h3>Dataflow scanning across function boundaries.</h3>
+              <div class="step-tag">Static &amp; supply-chain security analysis</div>
+              <h3>Two complementary scans, each emitting machine-readable evidence.</h3>
               <p>
-                <strong>CodeQL (security-extended)</strong> performs dataflow / taint tracking — following untrusted data across function
-                boundaries to find injection, SSRF, path traversal, and unsafe deserialization that single-file scanners miss. Findings are
-                emitted as <strong>SARIF</strong>, the industry-standard security format.
+                <strong>Static analysis &rarr; SARIF.</strong> Every product&rsquo;s source is scanned for security anti-patterns — injection,
+                unsafe execution, hard-coded credentials, dangerous deserialization — with <strong>Bandit</strong> (Python) and
+                <strong>PSScriptAnalyzer + InjectionHunter</strong> (PowerShell, the code that runs elevated on customer machines). Findings
+                are emitted as <strong>SARIF</strong>, the industry-standard security format.
+              </p>
+              <p>
+                <strong>Supply-chain vulnerability scan.</strong> We take the <strong>CycloneDX SBOM</strong> of exactly what ships — built
+                from the offline wheelhouse, so it lists real pinned versions, not a guess at the source tree — and scan it with
+                <strong>Grype</strong> against the OSV and GitHub advisory databases. Precise package-and-version matching surfaces genuinely
+                known-vulnerable components without the false positives that fuzzy scanners produce. Together these answer both questions:
+                <em>is the code safe</em>, and <em>is anything we bundle known-vulnerable</em>.
               </p>
             </div>
           </div>
@@ -293,6 +301,11 @@
                 Artifacts ship as <strong>native OS packages</strong>: Linux <code>.deb</code>/<code>.rpm</code> (each with an offline
                 wheelhouse for air-gapped installs), signed <strong>Windows MSI</strong>, and signed, <strong>notarized macOS</strong>
                 packages. Docker is a build-and-test sandbox only — never the deployment format.
+              </p>
+              <p>
+                Each build also emits a <strong>CycloneDX Software Bill of Materials (SBOM)</strong> describing exactly what ships. For
+                packages that carry an offline wheelhouse, the SBOM is generated <em>from the shipped wheelhouse</em> — so it lists the real,
+                pinned dependency versions in the artifact you download, not an approximation of the source tree.
               </p>
             </div>
           </div>
@@ -338,11 +351,25 @@
           <div class="step">
             <div class="step-num">8</div>
             <div class="step-body">
-              <div class="step-tag green">The evidence ships with the release</div>
+              <div class="step-tag green">The evidence pack ships with the release</div>
               <h3>You get the binary — and its proof.</h3>
               <p>
-                The security scorecard, the SARIF report, coverage numbers, install logs, UI-crawl results, and signed checksums — auditable
-                and reproducible. Not just a binary.
+                You don&rsquo;t just get a binary; you get the binary <strong>and its proof</strong> — a signed
+                <strong>Release Evidence Pack</strong> attached to every release, indexed by a manifest so you can see, and cryptographically
+                verify, exactly what backs each claim:
+              </p>
+              <ul class="step-substeps">
+                <li><strong>Software Bill of Materials</strong> (CycloneDX) — every component inside the artifact.</li>
+                <li><strong>Vulnerability scan report</strong> (Grype) — known CVEs affecting what ships.</li>
+                <li><strong>Static analysis report</strong> (SARIF).</li>
+                <li><strong>Unit test results</strong> and <strong>code coverage</strong>.</li>
+                <li><strong>Release validation report</strong> — the clean-host install + authenticated UI-crawl proof.</li>
+                <li><strong>Signed build hashes</strong> (SHA256 + GPG).</li>
+                <li><strong>Release approval evidence</strong> — the aggregated Release Gate decision.</li>
+              </ul>
+              <p>
+                Every item is signed with the AuditToolkit release key, so you can inventory exactly what you&rsquo;re installing and verify
+                that inventory — and its integrity — came from us. Auditable, reproducible, and in the box every time.
               </p>
             </div>
           </div>
@@ -361,9 +388,9 @@
           <div class="card">
             <h3 class="mt-0">Web platforms</h3>
             <p class="text-muted">
-              The audit consoles, asset and exposure centres, and CMDB run the full stack: tests + coverage, CodeQL for Python
-              <strong>and</strong> JavaScript/TypeScript, Bandit, dependency audit, the OWASP scorecard, and the authenticated
-              install-and-crawl proof on native packages.
+              The audit consoles, asset and exposure centres, and CMDB run the full stack: tests + coverage, Bandit static analysis, an
+              SBOM-based dependency vulnerability scan, the OWASP scorecard, and the authenticated install-and-crawl proof on native
+              packages.
             </p>
           </div>
           <div class="card">
@@ -395,8 +422,8 @@
         <p>
           Every release certified under this process is
           <strong
-            >statically analysed, dataflow-scanned, dependency-audited, deprecation-checked, coverage-gated, security-scored,
-            cryptographically signed, and installed and exercised end-to-end on a clean machine</strong
+            >statically analysed, vulnerability-scanned, dependency-audited, deprecation-checked, coverage-gated, security-scored,
+            SBOM-inventoried, cryptographically signed, and installed and exercised end-to-end on a clean machine</strong
           >
           — and ships with a documented evidence trail behind every claim.
         </p>
