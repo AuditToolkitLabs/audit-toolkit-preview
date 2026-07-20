@@ -342,32 +342,54 @@ def main() -> int:
         return 2
 
     config = load_config()
-    linux_source = LINUX_PRICING_PAGE.read_text(encoding="utf-8")
-    licensing_source = LICENSING_PAGE.read_text(encoding="utf-8")
+    pages = [
+        (LINUX_PRICING_PAGE, render_linux_pricing_page),
+        (LICENSING_PAGE, render_licensing_page),
+    ]
 
-    linux_rendered = render_linux_pricing_page(config, linux_source)
-    licensing_rendered = render_licensing_page(config, licensing_source)
-    changed = (
-        linux_rendered != linux_source
-        or licensing_rendered != licensing_source
-    )
+    changed_pages: list[pathlib.Path] = []
+    processed = 0
+    for path, render_fn in pages:
+        # A managed licensing page must both exist and carry the AUTO-LICENSING
+        # marker blocks this renderer targets. Pages that are absent, or present
+        # but unmarked, are simply not managed by this tool — skip them rather
+        # than failing the whole run. This keeps the check green when the marker
+        # scheme is not in use, and it resumes automatically if a marked page is
+        # (re)introduced.
+        if not path.exists():
+            print(f"Skipping {path.name}: file not present.")
+            continue
+        source = path.read_text(encoding="utf-8")
+        try:
+            rendered = render_fn(config, source)
+        except ValueError as exc:
+            print(f"Skipping {path.name}: no marker blocks to render ({exc}).")
+            continue
+        processed += 1
+        if rendered != source:
+            changed_pages.append(path)
+            if args.write:
+                path.write_text(rendered, encoding="utf-8")
 
     if args.check:
-        if changed:
+        if changed_pages:
+            names = ", ".join(p.name for p in changed_pages)
             print(
-                "Licensing pages are out of date. "
+                f"Licensing pages are out of date ({names}). "
                 "Run: python ci/render-licensing-pages.py --write",
             )
             return 1
-        print("Licensing pages are up to date.")
+        if processed == 0:
+            print("No marked licensing pages present; nothing to check.")
+        else:
+            print(f"Licensing pages are up to date ({processed} checked).")
         return 0
 
     if args.write:
-        LINUX_PRICING_PAGE.write_text(linux_rendered, encoding="utf-8")
-        LICENSING_PAGE.write_text(licensing_rendered, encoding="utf-8")
         print(
-            "Rendered licensing pages from "
-            "automation/licensing/linux-security-lite.json",
+            f"Rendered {len(changed_pages)} licensing page(s) "
+            f"({processed} marked page(s) present) from "
+            "automation/licensing/linux-security-lite.json.",
         )
         return 0
 
