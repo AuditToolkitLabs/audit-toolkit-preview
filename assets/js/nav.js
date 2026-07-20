@@ -54,7 +54,7 @@
 
     var familyMap = {
       home: ["index.html"],
-      product: ["audit-toolkit.html", "cmdb-tool.html", "cmdb-asset-platform.html", "linux-expansion.html", "secure-exposure-centre.html"],
+      product: ["audit-toolkit.html", "cmdb-tool.html", "cmdb-asset-platform.html", "linux-expansion.html", "secure-exposure-centre.html", "storage-scanner.html", "weardian.html"],
       pricing: ["price.html", "pricing.html", "licensing.html"],
       docs: ["docs.html", "doc-viewer.html", "doc-tools.html", "brand-assets.html"],
       release: [

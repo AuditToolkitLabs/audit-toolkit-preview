@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <title>AuditToolkit Weardian — AuditToolkit Labs</title>
+    <meta
+      name="description"
+      content="AuditToolkit Weardian: self-hosted Windows patch and security-posture assurance for air-gapped and regulated estates. Discover, assess, prioritise, remediate and prove — with signed evidence. In preparation; contact us to discuss an evaluation."
+    >
+    <link rel="stylesheet" href="assets/css/site.css?v=20260612g">
+    <style>
+      .nav-mobile-contact {
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .footer-brand-title {
+        font-weight: 700;
+        font-size: 1.05rem;
+      }
+      .footer-copy-small {
+        font-size: 0.82rem;
+      }
+      .tier-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+      }
+      .tier-table th,
+      .tier-table td {
+        padding: 12px 16px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+      }
+      .tier-table thead th {
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .tier-table tbody tr:last-child td {
+        border-bottom: none;
+      }
+      .tier-table tbody tr:hover td {
+        background: rgba(255,255,255,0.02);
+      }
+      /* Status callout for a product that is announced but not yet purchasable. */
+      .status-note {
+        border: 1px solid rgba(251, 191, 36, 0.3);
+        background: rgba(251, 191, 36, 0.07);
+        border-radius: var(--radius-sm);
+        padding: 18px 22px;
+        margin-top: 28px;
+      }
+      .status-note h3 {
+        color: var(--accent-warn);
+        font-size: 0.95rem;
+        margin: 0 0 8px;
+      }
+      .status-note p {
+        margin: 0 0 10px;
+        font-size: 0.9rem;
+        line-height: 1.65;
+      }
+      .status-note p:last-child { margin-bottom: 0; }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="wrap">
+        <div class="nav-inner">
+          <a href="index.html" class="nav-brand"><span class="brand-icon">A</span><span>AuditToolkit Labs</span></a>
+          <ul class="nav-links">
+            <li><a href="index.html#products">Products</a></li>
+            <li><a href="toolkit-overview.html">Overview</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="use-cases.html">Use Cases</a></li>
+            <li><a href="integrations.html">Integrations</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="releases.html">Releases</a></li>
+            <li><a href="licensing.html">Licensing</a></li>
+            <li><a href="support.html">Support</a></li>
+          </ul>
+          <div class="nav-cta"><a href="support.html#contact" class="btn btn-primary btn-sm">Contact Us</a></div>
+          <button type="button" class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="toolkit-overview.html">Overview</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="use-cases.html">Use Cases</a>
+      <a href="integrations.html">Integrations</a>
+      <a href="docs.html">Documentation</a>
+      <a href="releases.html">Releases</a>
+      <a href="licensing.html">Licensing</a>
+      <a href="support.html">Support</a>
+      <a href="support.html#contact" class="nav-mobile-contact">Contact Us</a>
+    </div>
+
+    <div class="page-hero">
+      <div class="wrap">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a><span class="sep">/</span> <a href="index.html#standalone-products">Standalone Products</a><span class="sep">/</span>
+          <span class="cur">AuditToolkit Weardian</span>
+        </div>
+        <p class="eyebrow">Windows Patch &amp; Posture Assurance</p>
+        <h1>AuditToolkit Weardian</h1>
+        <p>
+          Self-hosted patch and security-posture assurance for Windows estates that cannot reach the internet. Discover what
+          you run, assess it against recognised baselines, prioritise by real exposure, remediate under change control, and
+          leave an assessor a signed trail of exactly what happened.
+        </p>
+        <div class="flex gap-12 flex-wrap mt-24">
+          <span class="badge badge-amber">In preparation</span>
+          <span class="badge badge-muted">Self-hosted</span>
+          <span class="badge badge-muted">Air-gap native</span>
+          <span class="badge badge-muted">BSL 1.1</span>
+        </div>
+        <div class="flex gap-12 flex-wrap mt-16">
+          <a href="support.html#contact" class="btn btn-primary">Talk to Us About Your Estate</a>
+          <a href="how-we-certify.html" class="btn btn-secondary">How We Certify Releases</a>
+        </div>
+        <div class="status-note">
+          <h3>Availability</h3>
+          <p>
+            Weardian is not yet available to buy or download from this site. The product is built and under release
+            preparation; we are completing packaging, signing and evaluation logistics before opening general availability.
+          </p>
+          <p>
+            If you run a regulated or disconnected Windows estate and want to be part of the evaluation programme,
+            <a href="support.html#contact">get in touch</a> and we will talk through scope, timing and fit.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Capabilities -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Capabilities</p>
+          <h2>One platform, from finding to evidence</h2>
+          <p>
+            Weardian covers the whole loop rather than a slice of it — the gap most teams fill with a scanner, a
+            deployment tool, a spreadsheet and a screenshot folder.
+          </p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3 class="mt-0">Discover</h3>
+            <p>
+              Build a live inventory of managed Windows hosts — installed software, update state, configuration and
+              ownership — without an internet path.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Assess</h3>
+            <p>
+              Evaluate hosts against DISA STIG, CIS and Microsoft security baselines, and against a curated vulnerability
+              catalogue delivered as signed content packs.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Prioritise</h3>
+            <p>
+              Rank exposure by what is actually reachable and actually exploited, so remediation effort follows risk rather
+              than raw CVE counts.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Remediate</h3>
+            <p>
+              Deploy updates under change control with staged rollout rings and defined change windows — approval-gated,
+              auditable, and reversible.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Prove</h3>
+            <p>
+              Produce signed, hash-verifiable evidence bundles an assessor can follow end to end, plus an assurance score
+              that shows its working rather than asserting a number.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Govern</h3>
+            <p>
+              Separate duties between operators, approvers and auditors, with a complete audit log and a risk register
+              tracking accepted risk, ownership and remediation commitments.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section class="section section-divider-top">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Architecture</p>
+          <h2>Air-gap native, not air-gap adapted</h2>
+          <p>
+            The trust boundary is the design rather than a configuration option. Weardian runs entirely inside your
+            network, with no outbound connection required at any point in normal operation.
+          </p>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3 class="mt-0">Single host, single process</h3>
+            <p>
+              The console serves both the API and the web interface. No separate web server, no Node runtime, no external
+              database required — an embedded database by default, or PostgreSQL if you prefer.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Zero prerequisites on the target</h3>
+            <p>
+              Ships as a relocatable bundle carrying its own runtime, so it installs on a disconnected Windows Server or
+              Ubuntu LTS host with no internet access and no package manager involved.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">No phone-home. Ever.</h3>
+            <p>
+              No telemetry, no runtime callbacks, no outbound connectivity in the isolated environment. Licensing is a
+              signed file applied by hand — there is no activation server to reach.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">A signed supply line</h3>
+            <p>
+              The companion Content Builder fetches and curates vulnerability and baseline content on a connected host,
+              signs it, and ships it across the boundary as a verifiable content pack.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compliance -->
+    <section class="section section-surface">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Compliance</p>
+          <h2>Framed honestly</h2>
+          <p>
+            Weardian maps its live signals onto the controls they genuinely evidence, and is deliberate about not
+            overclaiming. Every assessment leads with a coverage statement — how many controls were assessed, how many are
+            mapped but supporting, and how many are out of scope — so an assessor knows precisely what a score does and
+            does not represent.
+          </p>
+        </div>
+        <div class="table-wrap">
+          <table class="tier-table">
+            <thead>
+              <tr>
+                <th>Framework</th>
+                <th>What Weardian evidences</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Cyber Essentials Plus</strong></td>
+                <td>Security update management and secure configuration directly; firewalls, access control and malware protection as supporting.</td>
+              </tr>
+              <tr>
+                <td><strong>NCSC CAF</strong> (v4.0)</td>
+                <td>Risk, asset and system-security principles directly; others supporting or out of scope.</td>
+              </tr>
+              <tr>
+                <td><strong>ISO/IEC 27001:2022</strong></td>
+                <td>A.8.8 vulnerability management, A.5.9 asset inventory and A.8.19 software installation — of the 93-control Annex A universe.</td>
+              </tr>
+              <tr>
+                <td><strong>SOC 2</strong></td>
+                <td>CC6.1 asset inventory, CC7.1 vulnerability remediation, CC8.1 change and configuration management.</td>
+              </tr>
+              <tr>
+                <td><strong>NIST CSF 2.0</strong></td>
+                <td>ID.AM inventory, ID.RA-01 vulnerability identification, PR.PS configuration and software maintenance.</td>
+              </tr>
+              <tr>
+                <td><strong>DORA</strong></td>
+                <td>Article 8 ICT asset identification; Article 9 vulnerability and patch management, and secure configuration.</td>
+              </tr>
+              <tr>
+                <td><strong>NIS2</strong></td>
+                <td>Article 21(2) asset management, vulnerability handling and secure configuration.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-sm text-muted mt-16">
+          This is assurance and readiness evidence — never a certification, and never a vendor claim standing in for proof.
+        </p>
+      </div>
+    </section>
+
+    <!-- Licensing -->
+    <section class="section section-divider-top">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Licensing</p>
+          <h2>Annual subscription, priced by managed hosts</h2>
+          <p>
+            Weardian is a commercial product, source-available under the Business Source Licence 1.1. Production use
+            requires a paid licence — there is no free production tier.
+          </p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3 class="mt-0">Weardian Platform</h3>
+            <p>
+              The complete platform including Content Builder and every capability described above, licensed for a defined
+              number of managed hosts.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Additional host capacity</h3>
+            <p>
+              Expands an existing subscription. Capacity is carried on the installed licence file, so the console picks it
+              up without reinstallation.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="mt-0">Unlimited hosts</h3>
+            <p>
+              Added to an existing subscription for estates beyond the point where per-host licensing is practical.
+            </p>
+          </div>
+        </div>
+        <p class="text-sm text-muted mt-16">
+          Licences are delivered as offline, cryptographically signed files and applied by hand — suited to disconnected
+          deployment, with no activation server and no phone-home. Pricing is available on application while the product is
+          in release preparation; <a href="support.html#contact">contact us</a> for a quotation against your estate size.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-band">
+      <div class="wrap">
+        <div class="cta-band-inner">
+          <div>
+            <h2 class="mb-8">Interested in Weardian?</h2>
+            <p>
+              Tell us about your estate — size, isolation posture and the frameworks you report against — and we will come
+              back with scope, timing and whether Weardian is the right fit.
+            </p>
+          </div>
+          <div class="cta-band-actions">
+            <a href="support.html#contact" class="btn btn-primary btn-lg">Contact Sales</a>
+            <a href="how-we-certify.html" class="btn btn-secondary btn-lg">How We Certify</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="flex items-center gap-12 mb-16">
+              <span class="brand-icon">A</span><span class="footer-brand-title">AuditToolkit Labs</span>
+            </div>
+            <p>Professional-grade audit, inventory, and security tooling for hybrid infrastructure teams.</p>
+            <p class="footer-copy-small">&copy; 2026 AuditToolkit Labs. All rights reserved.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Products</h4>
+            <ul>
+              <li><a href="cmdb-tool.html">CMDB API Data Collection Tool</a></li>
+              <li><a href="audit-toolkit.html">Audit Admin Toolkit</a></li>
+              <li><a href="cmdb-asset-platform.html">Asset Command Centre</a></li>
+              <li><a href="linux-expansion.html">Linux Security Lite</a></li>
+              <li><a href="secure-exposure-centre.html">Switch Exposure Centre</a></li>
+              <li><a href="toolkit-overview.html#audit-assurance-node">Audit Assurance Node</a></li>
+              <li><a href="storage-scanner.html">Storage Intelligence Platform</a></li>
+              <li><a href="weardian.html">AuditToolkit Weardian</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="toolkit-overview.html">Toolkit Overview</a></li>
+              <li><a href="how-it-works.html">How It Works</a></li>
+              <li><a href="use-cases.html">Use Cases</a></li>
+              <li><a href="integrations.html">Integrations</a></li>
+              <li><a href="docs.html">Central Documentation Library</a></li>
+              <li><a href="releases.html">Release Notes</a></li>
+              <li><a href="how-we-certify.html">How We Certify Releases</a></li>
+              <li><a href="licensing.html">Licensing &amp; Pricing</a></li>
+              <li><a href="support.html">Support</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="mailto:support@audittoolkitlabs.com">support@audittoolkitlabs.com</a></li>
+              <li><a href="support.html#contact">Send an Enquiry</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>Licence: Business Source Licence (BSL). See individual product EULA for full usage rights.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="assets/js/nav.js?v=20260612e"></script>
+  </body>
+</html>
