@@ -45,7 +45,8 @@ Templates: `automation/licensing/keygen/litmus/`.
 
 Then write the real policy ids into:
 - `litmus.json` → each tier's `keygen_policy_id`
-- `cloudflare-worker/config` price→policy map (Step 3)
+- the price→policy map in the canonical worker repo (Step 3):
+  `audittoolkit-billing-worker/billing/price-policy-map.json`
 
 ## Step 2 — Stripe (payment)
 
@@ -75,33 +76,38 @@ product). The free Starter tier needs no Stripe price — it is keyless.
 
 ## Step 3 — Cloudflare worker (glue)  ✅ done for Litmus
 
-`PRICE_POLICY_MAP_JSON` is a **plain-text `[vars]` binding on the deployed
-worker** (NOT a secret, and NOT synced from GitHub). It maps every product's
-Stripe price → Keygen policy across the whole estate.
+`PRICE_POLICY_MAP_JSON` is a **plain-text variable on the deployed worker**
+(NOT a secret, and NOT synced from GitHub). It maps every product's Stripe
+price → Keygen policy across the whole estate.
+
+> **Canonical location.** The map is maintained in the separate worker repo
+> `audittoolkitlabs/audittoolkit-billing-worker` at `billing/price-policy-map.json`,
+> and mirrored to the live `PRICE_POLICY_MAP_JSON` dashboard variable. The
+> `cloudflare-worker/` directory in *this* repo is **not** the worker source and
+> its `wrangler.toml` no longer carries the map — do not deploy from here.
 
 !!! danger "ALWAYS read the LIVE map before editing it"
-    The repo `wrangler.toml` can drift from the deployed value (the live map is
-    often edited via the dashboard). **Never** edit/deploy the repo copy blindly —
-    you will wipe other products' mappings. The mandatory procedure:
+    The repo copy can drift from the deployed value (the live map is sometimes
+    edited via the dashboard). **Never** edit/deploy blindly — you will wipe
+    other products' mappings. The mandatory procedure:
 
-    1. **Read the live map** (read-only) and merge into *that*, never the repo:
+    1. **Read the live map** (read-only) and merge into *that*:
        ```bash
-       # via wrangler's own auth (oauth_token in ~/.config/.wrangler) or a token:
        curl -s -H "Authorization: Bearer $CF_TOKEN" \
          https://api.cloudflare.com/client/v4/accounts/<acct>/workers/scripts/audittoolkit-billing-worker/settings \
          | jq -r '.result.bindings[] | select(.name=="PRICE_POLICY_MAP_JSON") | .text'
        ```
-    2. **Merge** your new `byPriceId` entries into the live JSON (keep all others).
-    3. **Reconcile** `cloudflare-worker/wrangler.toml` to the merged value so the
-       repo matches live.
-    4. **Dry-run** then deploy: `wrangler deploy --dry-run` → review bindings →
-       `wrangler deploy`. (Deploy **preserves secrets**; it re-uploads code from
-       the repo, so ensure the repo worker code is current.)
-    5. **Verify** post-deploy: re-read the live settings and confirm the entry
-       count is right **and all secret bindings are still present**.
+    2. **Merge** your new `byPriceId` (and/or `byLookupKey`) entries into the live
+       JSON, keeping all others.
+    3. **Update** `billing/price-policy-map.json` in the canonical worker repo to
+       the merged value, and paste the same JSON into the `PRICE_POLICY_MAP_JSON`
+       dashboard variable (saving deploys a new version). Alternatively deploy
+       from the canonical repo with `wrangler deploy --no-bundle --keep-vars`.
+    4. **Verify**: re-read the live settings, confirm the entry count and that all
+       13 secret bindings are still present, then `curl .../health`.
 
-Litmus status: the 4 litmus price→policy entries are merged into the live map
-(14 byPriceId total) and deployed; all 13 worker secrets verified retained.
+Litmus status: the 4 litmus price→policy entries are in the live map and
+deployed; all 13 worker secrets verified retained.
 
 **Smoke test (on hold):** a £0 / test-price purchase → `wrangler tail` should
 show `stripe-signature verified`, `keygen license created`,
@@ -153,7 +159,7 @@ issued, and what customers enter in Settings → License.
 - [x] **Stripe:** product `Audit Toolkit Litmus` + 4 prices + payment links
 - [x] **Cloudflare:** litmus entries merged into LIVE `PRICE_POLICY_MAP_JSON`
       (14 byPriceId), deployed, secrets verified retained
-- [x] `wrangler.toml` reconciled to the live map (no longer a deploy hazard)
+- [x] Price map maintained in the canonical worker repo (`billing/price-policy-map.json`) + live dashboard variable; site repo's `cloudflare-worker/` is docs + secrets-stub only, no deployable source
 - [x] Litmus app: connected Keygen + offline + free, node-cap enforcement
 - [x] `mint_license.py` for offline licences
 - [x] `releases-sources.json` entry + `litmus-releases.html`

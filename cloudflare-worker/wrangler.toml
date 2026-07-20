@@ -1,18 +1,27 @@
-name = "audittoolkit-billing-worker"
-account_id = "b9eb1163fc6440479c809ea7e925ad55"
-main = "src/index.js"
+# ============================================================================
+#  ⚠  NOT THE DEPLOYABLE WORKER — DO NOT `wrangler deploy` FROM THIS DIRECTORY.
+#
+#  The live worker's canonical source is a SEPARATE repository:
+#
+#      audittoolkitlabs/audittoolkit-billing-worker   (Gitea)
+#
+#  Deploying from here would overwrite the live worker with whatever this
+#  directory contains. This directory holds operational docs and the secrets-
+#  sync helper only — it has NO worker source.
+#
+#  This file exists solely so the "Sync Cloudflare Worker Secrets" GitHub
+#  Action can target the worker by name for `wrangler secret put`. Secret
+#  operations need the worker name alone — verified: no `main`, no `[vars]`,
+#  no bindings required. It therefore declares nothing deployable, and there
+#  is intentionally no `main`, so `wrangler deploy` fails fast with
+#  "Missing entry-point to Worker script".
+#
+#  The live PRICE_POLICY_MAP_JSON, KEYGEN_API_BASE_URL, the KV binding and all
+#  13 secrets are managed on the worker in the Cloudflare dashboard and must
+#  NOT be declared here. (A stale inline PRICE_POLICY_MAP_JSON previously lived
+#  in this file; it was removed because the canonical map is maintained in the
+#  billing-worker repo and the live dashboard variable.)
+# ============================================================================
+
+name               = "audittoolkit-billing-worker"
 compatibility_date = "2026-05-16"
-workers_dev = true
-
-[vars]
-KEYGEN_API_BASE_URL = "https://api.keygen.sh"
-# Put plan mappings as compact JSON. Use cloudflare-worker/config/price-policy-map.example.json as the source template.
-# Optional Stripe API key enables fallback resolution via session line items when metadata is missing.
-# STRIPE_API_SECRET is a secret and must be set using: wrangler secret put STRIPE_API_SECRET
-# KEYGEN_WEBHOOK_PUBLIC_KEY should be set as a secret and used to verify /webhooks/keygen signatures.
-PRICE_POLICY_MAP_JSON = "{\"byPriceId\":{\"price_1Tg530F107vmGJKCr4SBUcnP\":{\"keygenPolicyId\":\"f7738cd7-3c32-42c5-8813-6f48b2aa716b\",\"planCode\":\"AuditToolkit Starter\"},\"price_1Tg530F107vmGJKCmDIIOi7m\":{\"keygenPolicyId\":\"f7738cd7-3c32-42c5-8813-6f48b2aa716b\",\"planCode\":\"AuditToolkit Starter\"},\"price_1Tg530F107vmGJKCwK4GP7LZ\":{\"keygenPolicyId\":\"32bf479a-579c-48ac-97c9-3c8b1a6f2b40\",\"planCode\":\"AuditToolkit Professional\"},\"price_1Tg530F107vmGJKCwnbcGXCw\":{\"keygenPolicyId\":\"d7166b9f-ec2c-4968-8f99-de357d42e932\",\"planCode\":\"AuditToolkit Business\"},\"price_1Tg530F107vmGJKCcIyq3aFd\":{\"keygenPolicyId\":\"fe5cca46-e342-4482-b946-2da90ab948c4\",\"planCode\":\"AuditToolkit Enterprise\"},\"price_1TiznUF107vmGJKCZIlZ3R3O\":{\"keygenPolicyId\":\"10ec5a90-7dfe-458b-89de-3d7da2712b11\",\"planCode\":\"AuditToolkit Lite\"},\"price_1Tk8WeF107vmGJKCj0d99gzl\":{\"keygenPolicyId\":\"c2bf0ef7-1181-4fc9-ac2d-1f22030cb6eb\",\"planCode\":\"SIP Solo\"},\"price_1Tk8TrF107vmGJKCupOm1nQS\":{\"keygenPolicyId\":\"7e3c7c07-df3a-4de9-a5f5-66374f524372\",\"planCode\":\"SIP Team\"},\"price_1Tk8WdF107vmGJKC3V53o3Ym\":{\"keygenPolicyId\":\"23a6f3b0-8d59-46ea-9f35-690e8b9fca3e\",\"planCode\":\"SIP Business\"},\"price_1Tk8TrF107vmGJKCfeYsoHTh\":{\"keygenPolicyId\":\"d652c23a-0661-48a2-978e-dea5199f3d32\",\"planCode\":\"SIP Unlimited\"},\"price_1Tl3HjF107vmGJKCxYqKE17m\":{\"keygenPolicyId\":\"99e8e786-28eb-428f-bd44-0ed4bb906df3\",\"planCode\":\"Litmus Pro\"},\"price_1Tl3HjF107vmGJKCkH4l0nSD\":{\"keygenPolicyId\":\"eadab60b-6f78-4673-b196-94ef5c173df2\",\"planCode\":\"Litmus Team\"},\"price_1Tl3HjF107vmGJKCdqDf7adW\":{\"keygenPolicyId\":\"a7b94c66-852e-4749-9f54-c88d44fe41c7\",\"planCode\":\"Litmus Business\"},\"price_1Tl3HjF107vmGJKClFu6C1dT\":{\"keygenPolicyId\":\"ddbb92a4-e100-4cdd-9bc7-7a3320a45392\",\"planCode\":\"Litmus Enterprise\"}},\"byLookupKey\":{},\"byProductId\":{}}"
-
-[[kv_namespaces]]
-binding = "BILLING_EVENTS_KV"
-id = "23253825a905423e90de008f824ddc7f"
-preview_id = "ea2009e1c4884a3facbdc51276dfa014"

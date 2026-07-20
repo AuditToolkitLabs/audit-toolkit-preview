@@ -1,5 +1,30 @@
 # Cloudflare Billing Glue (Stripe + Keygen + Resend)
 
+> ## ⚠ This is NOT the deployable worker
+>
+> **The live worker's source is a separate repository:**
+> `audittoolkitlabs/audittoolkit-billing-worker` (Gitea).
+>
+> This directory no longer contains worker source. `src/index.js` was a stale
+> June-2026 copy and has been removed, because a `wrangler deploy` from here
+> would have overwritten the live worker — reverting the offline-licence
+> verification, renewal/host-pack/cancellation handling, and the current price
+> map. The `wrangler.toml` here is a secrets-only stub with no `main`, so
+> `wrangler deploy` now fails fast.
+>
+> **What this directory is for:**
+>
+> - the "Sync Cloudflare Worker Secrets" GitHub Action (`wrangler secret put`);
+> - operational reference — billing runbook, incident template, secrets setup,
+>   NVD broker architecture, and the client/replay scripts.
+>
+> To change worker code or the price→policy map, edit the canonical repo and
+> deploy from there (`wrangler deploy --no-bundle --keep-vars`). The map is also
+> mirrored to the live `PRICE_POLICY_MAP_JSON` dashboard variable.
+>
+> The description below reflects the deployed worker's behaviour and is retained
+> as reference; it is not built from the code in this directory.
+
 This worker provides the public commercial/licensing layer for:
 
 - Stripe checkout and subscription events
@@ -119,7 +144,7 @@ Use this pattern across all toolkits to keep customer access broad while preserv
 
 4. Update `wrangler.toml` with returned `id` and `preview_id`.
 
-5. Build your plan map from `config/price-policy-map.example.json` and paste compact JSON into `PRICE_POLICY_MAP_JSON` in `wrangler.toml`.
+5. Maintain the plan map in the canonical worker repo at `billing/price-policy-map.json`, and mirror it to the `PRICE_POLICY_MAP_JSON` dashboard variable. (It is no longer stored in this directory.)
 
 6. Set secrets:
 

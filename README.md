@@ -68,13 +68,10 @@ Customer documentation governance:
 
 ## Optional automation module
 
-This repo now includes an optional Cloudflare Worker implementation under `cloudflare-worker/` that acts as the commercial/licensing glue between Stripe, Keygen, and Resend, with Microsoft 365 forwarding remaining optional.
+A Cloudflare Worker provides the commercial/licensing glue between Stripe, Keygen, and Resend (with Microsoft 365 forwarding optional): automated licence issuance and webhook handling, keeping the public site static.
 
-- Worker source: `cloudflare-worker/src/index.js`
-- Deployment config: `cloudflare-worker/wrangler.toml`
-- Setup guide: `cloudflare-worker/README.md`
-
-Use this module when you want automated license issuance and webhook handling while keeping the public site static.
+- **Worker source (canonical):** the separate `audittoolkitlabs/audittoolkit-billing-worker` repository on Gitea — deploy from there.
+- **`cloudflare-worker/` in this repo is NOT the deployable worker.** It holds operational docs (billing runbook, incident template, secrets setup, NVD broker notes) and a secrets-only `wrangler.toml` stub used by the "Sync Cloudflare Worker Secrets" GitHub Action. The stub has no `main`, so `wrangler deploy` from here fails by design — see `cloudflare-worker/README.md`.
 
 ## Stripe Catalog Reconciliation (Legacy Alignment Only)
 

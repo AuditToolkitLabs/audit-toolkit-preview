@@ -1,5 +1,12 @@
 # Billing Worker — Next Steps
 
+> ⚠ **Historical / superseded.** These notes date from 16 May 2026 and describe
+> a one-off Power Automate activation and a £0 test purchase against an old
+> checkout link. They are kept for context only. The worker source and the
+> current deploy procedure live in the canonical repo
+> `audittoolkitlabs/audittoolkit-billing-worker` (Gitea). Do not deploy from
+> this directory — it has no worker source.
+
 ## Status (as of 16 May 2026)
 
 All infrastructure is deployed and wired up. The only blocker is Power Automate licence propagation (up to 7 days from purchase).
@@ -82,9 +89,10 @@ Once the test purchase works end-to-end, wire up the real products:
 
 1. **Build the `PRICE_POLICY_MAP_JSON` secret**
 
-   For each real Stripe product/price, map it to its Keygen policy ID.
-   See `cloudflare-worker/config/price-policy-map.example.json` for the format.
-   Add as a GitHub environment secret `PRICE_POLICY_MAP_JSON`, then re-run secrets sync.
+   For each real Stripe product/price, map it to its Keygen policy ID. The
+   canonical map lives in the worker repo at `billing/price-policy-map.json`
+   and is mirrored to the `PRICE_POLICY_MAP_JSON` dashboard variable — it is a
+   plain-text variable, not a GitHub-synced secret.
 
 2. **Add real Stripe payment links to pricing pages**
 
