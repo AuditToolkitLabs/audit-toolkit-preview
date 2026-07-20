@@ -121,6 +121,17 @@
       "page": "cmdb-asset-platform-releases.html",
       "blurb": "Centralised asset inventory and control plane for the audit fleet.",
       "group": "platform"
+    },
+    {
+      "slug": "weardian",
+      "product": "AuditToolkit Weardian",
+      "latest": "v2.2.0",
+      "count": 1,
+      "mirrored": 1,
+      "data": "releases/data/weardian.json",
+      "page": "weardian-releases.html",
+      "blurb": "Self-hosted Windows patch and security-posture assurance for air-gapped and regulated estates.",
+      "group": "standalone"
     }
   ]
 }

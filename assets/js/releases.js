@@ -30,7 +30,7 @@
   ];
   var INTEGRITY_NAMES = ["keys", "sha256sums", "sha512sums", "checksums"];
   var EVIDENCE_MARKERS = [
-    "sbom", ".cdx.json", ".spdx.json", "sarif", "vulnerability-report",
+    "sbom", ".cdx.json", ".spdx.json", "sarif", "vulnerability",
     "evidence-manifest", "release-evidence", "unit-test-results", "coverage",
     "release-decision", "static-analysis", "validation-report",
     "verification", "build-report"

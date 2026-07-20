@@ -123,6 +123,15 @@ def _api_get(url: str, token: str) -> object:
         )
 
 
+def _order_by_published(releases_raw: list) -> list:
+    """Releases newest-first, by published_at (falling back to created_at)."""
+    return sorted(
+        releases_raw,
+        key=lambda r: r.get("published_at") or r.get("created_at") or "",
+        reverse=True,
+    )
+
+
 def _fetch_raw_releases(cfg: dict, product: dict, token: str) -> list:
     base = cfg["gitea_base_url"].rstrip("/")
     url = f"{base}/api/v1/repos/{cfg['org']}/{product['repo']}/releases?limit=50"
@@ -136,6 +145,14 @@ def _fetch_raw_releases(cfg: dict, product: dict, token: str) -> list:
     # auto-publish won't re-add it.
     if product.get("exclude_prereleases"):
         rels = [r for r in rels if not r.get("prerelease")]
+    # Per-product opt-in: show only the N most recent releases on the site. Use
+    # when older releases are real (non-draft, non-prerelease) but should not be
+    # customer-facing — e.g. a first cut that carried evidence artifacts only,
+    # superseded by a release with actual installable bundles. Everything stays
+    # in Gitea; the older entries simply never mirror, publish, or show.
+    max_releases = product.get("max_releases")
+    if isinstance(max_releases, int) and max_releases > 0:
+        rels = _order_by_published(rels)[:max_releases]
     return rels
 
 
@@ -188,11 +205,7 @@ def _gh_release_exists(gh_tag: str, repo: str, attempts: int = 3) -> bool:
 
 def _keep_gh_tags(product, releases_raw, keep: int) -> set:
     """gh tags for the newest `keep` releases (the retention window)."""
-    ordered = sorted(
-        releases_raw,
-        key=lambda r: r.get("published_at") or r.get("created_at") or "",
-        reverse=True,
-    )
+    ordered = _order_by_published(releases_raw)
     return {_gh_tag(product["slug"], r.get("tag_name", "")) for r in ordered[:keep]}
 
 
@@ -286,7 +299,7 @@ _PRODUCT_SUFFIXES = (
 )
 #: Release Evidence Pack members (SBOM, scans, tests, gate decision).
 _EVIDENCE_MARKERS = (
-    "sbom", ".cdx.json", ".spdx.json", "sarif", "vulnerability-report",
+    "sbom", ".cdx.json", ".spdx.json", "sarif", "vulnerability",
     "evidence-manifest", "release-evidence", "unit-test-results", "coverage",
     "release-decision", "static-analysis", "validation-report",
     "verification", "build-report",
@@ -437,11 +450,7 @@ def main() -> int:
             if args.tag:
                 tags_to_publish = [args.tag]
             else:
-                ordered = sorted(
-                    raw,
-                    key=lambda x: x.get("published_at") or x.get("created_at") or "",
-                    reverse=True,
-                )
+                ordered = _order_by_published(raw)
                 tags_to_publish = [r.get("tag_name", "") for r in ordered[:keep]]
             print(f"Publishing {product['slug']} to {cfg['github_repo']}…")
             publish_to_github(cfg, product, raw, token, tags_to_publish, force=args.force)

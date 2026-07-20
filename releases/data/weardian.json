@@ -1,0 +1,91 @@
+{
+  "product": "AuditToolkit Weardian",
+  "slug": "weardian",
+  "repo": "audittoolkitlabs/AuditToolkit-Weardian",
+  "hub": "github:AuditToolkitLabs/releases",
+  "generated_at": "2026-07-20T14:26:35Z",
+  "latest": "v2.2.0",
+  "releases": [
+    {
+      "tag": "v2.2.0",
+      "name": "AuditToolkit Weardian Platform 2.2.0",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-07-20T13:15:21Z",
+      "author": "auditpushbot",
+      "body_md": "**Commercial Activation** — full notes: `docs/RELEASE-NOTES-v2.2.0.md`\n\nCompletes the commercial path. A customer can buy Weardian, receive a licence key by email, turn it into a host-bound offline licence with Content Builder, and activate an air-gapped console — with **no signing service, no operator step, and no private key anywhere outside Keygen**. v2.1.0 shipped the licence *gate*; this release makes a purchased licence usable.\n\n### What's new\n- **Keygen-signed offline activation** — the console verifies Keygen licence and machine files (`base64+ed25519`) against Keygen's own public key\n- **Content Builder prepares the bundle** — `cb weardian-license --key … --request … --out …`. A courier, not a signer: it authenticates with the customer's own licence key and ships no admin token and no signing key\n- **Host binding** — the fingerprint is inside the Keygen signature and is enforced on every read, so a licence copied to another console does not license it\n- **Licensing page** — Administration → Licensing: status, capacity, expiry, binding, offline-request export and bundle import\n- **Import API** — `POST /api/licensing/import`, all-or-nothing, so a rejected bundle never displaces a working licence\n\n### Verified against real Keygen artefacts\nValidated end to end with a real evaluation licence — real bundle, both certificates verified against the real account key, imported through the real API. Real licence accepted at 50 hosts and host-bound; a bundle for another console rejected with the working licence intact; base + 3 packs → 200 hosts; unlimited → applied as `-1`, shown as unlimited.\n\nThat run found **three integration defects 900+ passing tests could not catch** — Keygen rewrites metadata keys to camelCase, licence-key authentication was disabled on both policies, and licence-authenticated check-out cannot include the product. All three are fixed here.\n\n### Release artifacts\n**This release attaches installable bundles, not only evidence.** v2.1.0 built and signed its bundles but left them as workflow artifacts, which expire and are not what a customer downloads.\n\n### Known limitations\nNo browser-level test of the licensing page · host packs and unlimited bought via their own Payment Links land on separate subscriptions · `maxMachines` is effectively a capacity multiplier · an issued bundle cannot be recalled before its TTL.\n\n### Verification\nBackend 607 tests · Content Builder 293 · 0 vulnerabilities · 8/8 evidence areas · decision **APPROVED**.",
+      "assets": [
+        {
+          "name": "SHA256SUMS",
+          "kind": "integrity",
+          "size": 236,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/SHA256SUMS"
+        },
+        {
+          "name": "SHA256SUMS.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/SHA256SUMS.asc"
+        },
+        {
+          "name": "audittoolkit-weardian-2.2.0-linux-x86_64.tar.gz",
+          "kind": "product",
+          "size": 165289144,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/audittoolkit-weardian-2.2.0-linux-x86_64.tar.gz"
+        },
+        {
+          "name": "audittoolkit-weardian-2.2.0-linux-x86_64.tar.gz.asc",
+          "kind": "integrity",
+          "size": 833,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/audittoolkit-weardian-2.2.0-linux-x86_64.tar.gz.asc"
+        },
+        {
+          "name": "audittoolkit-weardian-2.2.0-linux-x86_64.tar.gz.sbom.cdx.json",
+          "kind": "evidence",
+          "size": 169691,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/audittoolkit-weardian-2.2.0-linux-x86_64.tar.gz.sbom.cdx.json"
+        },
+        {
+          "name": "audittoolkit-weardian-2.2.0-linux-x86_64.tar.gz.vulnerability.json",
+          "kind": "evidence",
+          "size": 36842,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/audittoolkit-weardian-2.2.0-linux-x86_64.tar.gz.vulnerability.json"
+        },
+        {
+          "name": "sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz",
+          "kind": "product",
+          "size": 152525466,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz"
+        },
+        {
+          "name": "sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz.asc",
+          "kind": "integrity",
+          "size": 833,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz.asc"
+        },
+        {
+          "name": "sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz.sbom.cdx.json",
+          "kind": "evidence",
+          "size": 171404,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz.sbom.cdx.json"
+        },
+        {
+          "name": "sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz.vulnerability.json",
+          "kind": "evidence",
+          "size": 36994,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz.vulnerability.json"
+        }
+      ]
+    }
+  ]
+}

@@ -106,6 +106,17 @@
       "blurb": "Centralised asset inventory and control plane for the audit fleet.",
       "exclude_prereleases": true,
       "_note": "exclude_prereleases: v1.0.4 GA is the baseline for the 6 main tools; the v1.0.0-rc.1 stays in Gitea but is never mirrored/published/shown. NOTE: asset-command-centre-releases.html not yet created — site card link pending page creation."
+    },
+    {
+      "slug": "weardian",
+      "name": "AuditToolkit Weardian",
+      "group": "standalone",
+      "repo": "AuditToolkit-Weardian",
+      "page": "weardian-releases.html",
+      "blurb": "Self-hosted Windows patch and security-posture assurance for air-gapped and regulated estates.",
+      "exclude_prereleases": true,
+      "max_releases": 1,
+      "_note": "max_releases: 1 — v2.2.0 is the first release carrying installable bundles (weardian + content builder). v2.1.0 is a real GA release but shipped evidence artifacts only, so it stays in Gitea and is never mirrored/published/shown. Raise this once there are two releases worth showing."
     }
   ]
 }

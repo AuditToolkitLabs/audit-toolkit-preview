@@ -63,7 +63,8 @@
         "cmdb-api-releases.html",
         "cmdb-asset-platform-releases.html",
         "linux-security-lite-releases.html",
-        "secure-exposure-centre-releases.html"
+        "secure-exposure-centre-releases.html",
+        "weardian-releases.html"
       ],
       support: ["support.html", "success.html", "cancel.html"],
       operations: [
