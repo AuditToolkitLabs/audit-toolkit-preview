@@ -272,6 +272,58 @@ def publish_to_github(cfg, product, releases_raw, token, tags_to_publish, force=
     return published
 
 
+# ── Asset classification ───────────────────────────────────────────────────
+#: Asset "kind" values, in the order the site renders them. The taxonomy and its
+#: customer-facing wording come from how-we-certify.html step 8 ("You get the
+#: binary — and its proof") — keep the two in step if either changes.
+ASSET_KINDS = ("product", "docs", "evidence", "integrity", "other")
+
+#: Installable payload: what a customer actually runs. Ordered before the docs
+#: test because a docs bundle is also a .tar.gz.
+_PRODUCT_SUFFIXES = (
+    ".msi", ".exe", ".deb", ".rpm", ".pkg", ".dmg", ".appimage",
+    ".whl", ".zip", ".tar.gz", ".tgz", ".tar.xz", ".tar.bz2",
+)
+#: Release Evidence Pack members (SBOM, scans, tests, gate decision).
+_EVIDENCE_MARKERS = (
+    "sbom", ".cdx.json", ".spdx.json", "sarif", "vulnerability-report",
+    "evidence-manifest", "release-evidence", "unit-test-results", "coverage",
+    "release-decision", "static-analysis", "validation-report",
+    "verification", "build-report",
+)
+
+#: Bare filenames (no extension to key off) that are integrity material.
+_INTEGRITY_NAMES = ("keys", "sha256sums", "sha512sums", "checksums")
+
+
+def _asset_kind(name: str) -> str:
+    """Classify a release asset for grouped presentation on the site.
+
+    Filename is the only signal available — Gitea exposes no asset type — so
+    this is deliberately conservative: anything unrecognised falls to "other"
+    rather than being asserted as a product download.
+    """
+    n = name.lower()
+    # Signatures, checksums and signing certs first: a .asc is integrity
+    # material regardless of what it signs, and would otherwise match its
+    # subject's suffix (e.g. "...deb.asc" ends with neither .deb nor .asc-last).
+    if n.endswith((".asc", ".sig", ".sig.gz", ".sha256", ".sha512",
+                   ".pem", ".cer", ".cert", ".crt")):
+        return "integrity"
+    if n in _INTEGRITY_NAMES:
+        return "integrity"
+    if "sha256sums" in n or "sha512sums" in n or "checksums" in n:
+        return "integrity"
+    # Docs bundles before product suffixes — a docs pack is also a .tar.gz.
+    if "customer-docs" in n or "-docs-" in n or n.startswith("docs-"):
+        return "docs"
+    if any(m in n for m in _EVIDENCE_MARKERS):
+        return "evidence"
+    if n.endswith(_PRODUCT_SUFFIXES):
+        return "product"
+    return "other"
+
+
 # ── Sanitize + write ───────────────────────────────────────────────────────
 def _sanitize(cfg, product, releases_raw, gh_tags: set) -> dict:
     slug = product["slug"]
@@ -304,6 +356,7 @@ def _sanitize(cfg, product, releases_raw, gh_tags: set) -> dict:
             download_url = f"{gh_base}/{gh_tag}/{name}" if mirrored else ""
             assets.append({
                 "name": name,
+                "kind": _asset_kind(name),
                 "size": a.get("size", 0),
                 "download_count": a.get("download_count", 0),
                 "download_url": download_url,

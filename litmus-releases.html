@@ -53,6 +53,21 @@
         font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em;
         color: var(--subtle); margin: 16px 0 10px;
       }
+      .rel-asset-group + .rel-asset-group { margin-top: 22px; padding-top: 4px; border-top: 1px solid var(--border); }
+      .rel-asset-blurb { font-size: 0.8rem; color: var(--subtle); margin: -4px 0 10px; line-height: 1.5; }
+      .rel-asset-blurb a { color: var(--accent); }
+      .rel-asset-note {
+        font-size: 0.82rem; color: var(--accent-warn); background: rgba(251, 191, 36, 0.08);
+        border: 1px solid rgba(251, 191, 36, 0.3); border-radius: var(--radius-sm);
+        padding: 9px 13px; margin: 16px 0 4px; line-height: 1.5;
+      }
+      .rel-asset-sig {
+        display: inline-block; margin-left: 8px; font-family: system-ui, sans-serif;
+        font-size: 0.72rem; color: var(--subtle); white-space: nowrap;
+      }
+      .rel-asset-sig::before { content: "· "; }
+      .rel-asset-sig a { color: var(--subtle); text-decoration: underline; }
+      .rel-asset-sig a:hover { color: var(--accent); }
       .rel-asset-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
       .rel-asset-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
       .rel-asset-table tr:last-child td { border-bottom: none; }
@@ -131,109 +146,9 @@
 
     <script src="assets/js/nav.js?v=20260612e"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
+    <script src="assets/js/releases.js?v=20260720a"></script>
     <script>
-      (function () {
-        "use strict";
-        var DATA_URL = "releases/data/litmus.json";
-        var listEl = document.getElementById("rel-list");
-        var badgesEl = document.getElementById("rel-hero-badges");
-
-        function fmtSize(bytes) {
-          if (!bytes && bytes !== 0) return "";
-          var u = ["B", "KB", "MB", "GB"], i = 0, n = bytes;
-          while (n >= 1024 && i < u.length - 1) { n /= 1024; i++; }
-          return (i === 0 ? n : n.toFixed(1)) + " " + u[i];
-        }
-
-        function fmtDate(iso) {
-          if (!iso) return "";
-          var d = new Date(iso);
-          if (isNaN(d)) return iso;
-          return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
-        }
-
-        function el(tag, cls, html) {
-          var e = document.createElement(tag);
-          if (cls) e.className = cls;
-          if (html != null) e.innerHTML = html;
-          return e;
-        }
-
-        function renderAssets(assets) {
-          var wrap = el("div", "rel-assets");
-          wrap.appendChild(el("h4", null, "Downloads (" + assets.length + ")"));
-          var table = el("table", "rel-asset-table");
-          var tbody = document.createElement("tbody");
-          assets.forEach(function (a) {
-            var tr = document.createElement("tr");
-            var nameTd = el("td", "rel-asset-name");
-            nameTd.textContent = a.name;
-            var sizeTd = el("td", "rel-asset-size");
-            sizeTd.textContent = fmtSize(a.size);
-            var dlTd = el("td", "rel-asset-dl");
-            if (a.download_url) {
-              var link = el("a", "btn btn-secondary btn-sm");
-              link.href = a.download_url;
-              link.textContent = "Download";
-              link.setAttribute("rel", "noopener");
-              dlTd.appendChild(link);
-            } else {
-              dlTd.appendChild(el("span", "muted", "—"));
-            }
-            tr.appendChild(nameTd); tr.appendChild(sizeTd); tr.appendChild(dlTd);
-            tbody.appendChild(tr);
-          });
-          table.appendChild(tbody);
-          wrap.appendChild(table);
-          return wrap;
-        }
-
-        function renderRelease(r) {
-          var card = el("div", "rel-card");
-          var header = el("div", "rel-card-header");
-          header.appendChild(el("span", "rel-tag", r.tag));
-          if (r.name && r.name !== r.tag) header.appendChild(el("span", "rel-name", r.name));
-          if (r.prerelease) header.appendChild(el("span", "badge rel-prerelease", "Pre-release"));
-          var meta = "Released " + fmtDate(r.published_at);
-          if (r.author) meta += " · " + r.author;
-          header.appendChild(el("span", "rel-meta", meta));
-          card.appendChild(header);
-
-          if (r.body_md) {
-            card.appendChild(el("div", "rel-body", marked.parse(r.body_md)));
-          }
-          if (r.assets && r.assets.length) {
-            card.appendChild(renderAssets(r.assets));
-          }
-          return card;
-        }
-
-        fetch(DATA_URL, { cache: "no-store" })
-          .then(function (res) {
-            if (!res.ok) throw new Error("HTTP " + res.status);
-            return res.json();
-          })
-          .then(function (data) {
-            var releases = data.releases || [];
-            if (data.latest) {
-              badgesEl.appendChild(el("span", "badge badge-green", "Latest: " + data.latest));
-            }
-            badgesEl.appendChild(el("span", "badge badge-muted", releases.length + " releases"));
-            if (data.generated_at) {
-              badgesEl.appendChild(el("span", "badge badge-muted", "Synced " + fmtDate(data.generated_at)));
-            }
-            listEl.innerHTML = "";
-            if (!releases.length) {
-              listEl.appendChild(el("p", "rel-status", "No releases published yet."));
-              return;
-            }
-            releases.forEach(function (r) { listEl.appendChild(renderRelease(r)); });
-          })
-          .catch(function (err) {
-            listEl.innerHTML =
-              '<p class="rel-status rel-error">Could not load release data (' + err.message + ").</p>";
-          });
-      }());
+      AuditToolkitReleases.init({ dataUrl: "releases/data/litmus.json" });
     </script>
   </body>
 </html>
