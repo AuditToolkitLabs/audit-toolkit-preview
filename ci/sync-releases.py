@@ -328,7 +328,11 @@ def _asset_kind(name: str) -> str:
     if "sha256sums" in n or "sha512sums" in n or "checksums" in n:
         return "integrity"
     # Docs bundles before product suffixes — a docs pack is also a .tar.gz.
+    # "release-notes" is matched before the evidence markers so it cannot be
+    # confused with "release-evidence"; both start "release-".
     if "customer-docs" in n or "-docs-" in n or n.startswith("docs-"):
+        return "docs"
+    if "release-notes" in n or "changelog" in n:
         return "docs"
     if any(m in n for m in _EVIDENCE_MARKERS):
         return "evidence"

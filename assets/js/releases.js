@@ -57,8 +57,11 @@
     if (INTEGRITY_NAMES.indexOf(n) !== -1) return "integrity";
     if (containsAny(n, ["sha256sums", "sha512sums", "checksums"])) return "integrity";
     // Docs bundles before product suffixes — a docs pack is also a .tar.gz.
+    // "release-notes" is matched before the evidence markers so it cannot be
+    // confused with "release-evidence"; both start "release-".
     if (n.indexOf("customer-docs") !== -1 || n.indexOf("-docs-") !== -1 ||
         n.indexOf("docs-") === 0) return "docs";
+    if (n.indexOf("release-notes") !== -1 || n.indexOf("changelog") !== -1) return "docs";
     if (containsAny(n, EVIDENCE_MARKERS)) return "evidence";
     if (endsWithAny(n, PRODUCT_SUFFIXES)) return "product";
     return "other";
@@ -75,7 +78,7 @@
     {
       kind: "docs",
       title: "Documentation",
-      blurb: "Customer documentation bundled with this release."
+      blurb: "Release notes and customer documentation for this release."
     },
     {
       kind: "evidence",
