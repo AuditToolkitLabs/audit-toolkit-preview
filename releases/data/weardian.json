@@ -3,7 +3,7 @@
   "slug": "weardian",
   "repo": "audittoolkitlabs/AuditToolkit-Weardian",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-07-20T14:40:18Z",
+  "generated_at": "2026-07-20T16:13:45Z",
   "latest": "v2.2.0",
   "releases": [
     {
@@ -13,12 +13,12 @@
       "mirrored": true,
       "published_at": "2026-07-20T13:15:21Z",
       "author": "auditpushbot",
-      "body_md": "**Commercial Activation** — full notes attached below as `RELEASE-NOTES-v2.2.0.md`\n\nCompletes the commercial path. A customer can buy Weardian, receive a licence key by email, turn it into a host-bound offline licence with Content Builder, and activate an air-gapped console — with **no signing service, no operator step, and no private key anywhere outside Keygen**. v2.1.0 shipped the licence *gate*; this release makes a purchased licence usable.\n\n### What's new\n- **Keygen-signed offline activation** — the console verifies Keygen licence and machine files (`base64+ed25519`) against Keygen's own public key\n- **Content Builder prepares the bundle** — `cb weardian-license --key … --request … --out …`. A courier, not a signer: it authenticates with the customer's own licence key and ships no admin token and no signing key\n- **Host binding** — the fingerprint is inside the Keygen signature and is enforced on every read, so a licence copied to another console does not license it\n- **Licensing page** — Administration → Licensing: status, capacity, expiry, binding, offline-request export and bundle import\n- **Import API** — `POST /api/licensing/import`, all-or-nothing, so a rejected bundle never displaces a working licence\n\n### Verified against real Keygen artefacts\nValidated end to end with a real evaluation licence — real bundle, both certificates verified against the real account key, imported through the real API. Real licence accepted at 50 hosts and host-bound; a bundle for another console rejected with the working licence intact; base + 3 packs → 200 hosts; unlimited → applied as `-1`, shown as unlimited.\n\nThat run found **three integration defects 900+ passing tests could not catch** — Keygen rewrites metadata keys to camelCase, licence-key authentication was disabled on both policies, and licence-authenticated check-out cannot include the product. All three are fixed here.\n\n### Release artifacts\n**This release attaches installable bundles, not only evidence.** v2.1.0 built and signed its bundles but left them as workflow artifacts, which expire and are not what a customer downloads.\nBoth bundles target **Linux x86_64** and are self-contained (no Python, Node or internet needed on the target). Verify with `gpg --verify SHA256SUMS.asc SHA256SUMS` (key `1AA413CA5B8F5229`), then `sha256sum -c SHA256SUMS`.\nA Windows Server console install path exists in-tree but is **not shipped in this release** and is unproven since the CPython 3.14.6 bump. The Windows *agent* is unaffected.\n\n### Known limitations\nNo browser-level test of the licensing page · host packs and unlimited bought via their own Payment Links land on separate subscriptions · `maxMachines` is effectively a capacity multiplier · an issued bundle cannot be recalled before its TTL.\n\n### Verification\nBackend 607 tests · Content Builder 293 · 0 vulnerabilities · 8/8 evidence areas · decision **APPROVED**.",
+      "body_md": "**Commercial Activation** — full notes attached below as `RELEASE-NOTES-v2.2.0.md`\n\nCompletes the commercial path. A customer can buy Weardian, receive a licence key by email, turn it into a host-bound offline licence with Content Builder, and activate an air-gapped console — with **no signing service, no operator step, and no private key anywhere outside Keygen**. v2.1.0 shipped the licence *gate*; this release makes a purchased licence usable.\n\n### What's new\n- **Keygen-signed offline activation** — the console verifies Keygen licence and machine files (`base64+ed25519`) against Keygen's own public key\n- **Content Builder prepares the bundle** — `cb weardian-license --key … --request … --out …`. A courier, not a signer: it authenticates with the customer's own licence key and ships no admin token and no signing key\n- **Host binding** — the fingerprint is inside the Keygen signature and is enforced on every read, so a licence copied to another console does not license it\n- **Licensing page** — Administration → Licensing: status, capacity, expiry, binding, offline-request export and bundle import\n- **Import API** — `POST /api/licensing/import`, all-or-nothing, so a rejected bundle never displaces a working licence\n\n### Verified against real Keygen artefacts\nValidated end to end with a real evaluation licence — real bundle, both certificates verified against the real account key, imported through the real API. Real licence accepted at 50 hosts and host-bound; a bundle for another console rejected with the working licence intact; base + 3 packs → 200 hosts; unlimited → applied as `-1`, shown as unlimited.\n\nThat run found **three integration defects 900+ passing tests could not catch** — Keygen rewrites metadata keys to camelCase, licence-key authentication was disabled on both policies, and licence-authenticated check-out cannot include the product. All three are fixed here.\n\n### Release artifacts\n**This release attaches installable bundles, not only evidence.** v2.1.0 built and signed its bundles but left them as workflow artifacts, which expire and are not what a customer downloads.\nBoth bundles target **Linux x86_64** and are self-contained (no Python, Node or internet needed on the target). Verify with `gpg --verify SHA256SUMS.asc SHA256SUMS` (key `1AA413CA5B8F5229`), then `sha256sum -c SHA256SUMS`.\nA **Windows Server console** ZIP (`audittoolkit-weardian-2.2.0-windows-x86_64.zip`) is attached to this release: it installs as a native Windows Service and was validated end to end on Windows Server 2022 with CPython 3.14.6 (see `WINDOWS-CONSOLE-002-validation-report.md`). Verify it the same way — `gpg --verify SHA256SUMS-windows.asc SHA256SUMS-windows` (key `1AA413CA5B8F5229`), then check the zip against it. There is **no MSI**; the console is a ZIP with a PowerShell installer. The Windows *agent* is separate and unaffected.\n\n### Known limitations\nNo browser-level test of the licensing page · host packs and unlimited bought via their own Payment Links land on separate subscriptions · `maxMachines` is effectively a capacity multiplier · an issued bundle cannot be recalled before its TTL.\n\n### Verification\nBackend 607 tests · Content Builder 293 · 0 vulnerabilities · 8/8 evidence areas · decision **APPROVED**.",
       "assets": [
         {
           "name": "RELEASE-NOTES-v2.2.0.md",
           "kind": "docs",
-          "size": 6721,
+          "size": 9745,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/RELEASE-NOTES-v2.2.0.md"
         },
@@ -28,6 +28,20 @@
           "size": 236,
           "download_count": 2,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/SHA256SUMS"
+        },
+        {
+          "name": "SHA256SUMS-windows",
+          "kind": "integrity",
+          "size": 113,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/SHA256SUMS-windows"
+        },
+        {
+          "name": "SHA256SUMS-windows.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/SHA256SUMS-windows.asc"
         },
         {
           "name": "SHA256SUMS.asc",
@@ -63,6 +77,20 @@
           "size": 36842,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/audittoolkit-weardian-2.2.0-linux-x86_64.tar.gz.vulnerability.json"
+        },
+        {
+          "name": "audittoolkit-weardian-2.2.0-windows-x86_64.zip",
+          "kind": "product",
+          "size": 98593309,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/audittoolkit-weardian-2.2.0-windows-x86_64.zip"
+        },
+        {
+          "name": "audittoolkit-weardian-2.2.0-windows-x86_64.zip.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/audittoolkit-weardian-2.2.0-windows-x86_64.zip.asc"
         },
         {
           "name": "sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz",
