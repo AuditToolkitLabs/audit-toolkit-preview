@@ -7,7 +7,7 @@
     <title>AuditToolkit Weardian — AuditToolkit Labs</title>
     <meta
       name="description"
-      content="AuditToolkit Weardian: self-hosted Windows patch and security-posture assurance for air-gapped and regulated estates. Discover, assess, prioritise, remediate and prove — with signed evidence. Release v2.2.0 available to download; licensing is sales-led."
+      content="AuditToolkit Weardian: self-hosted Windows patch and security-posture assurance for air-gapped and regulated estates. Discover, assess, prioritise, remediate and prove — with signed evidence. Release v2.3.0 available to download for Windows and Linux; licensing is sales-led."
     >
     <link rel="stylesheet" href="assets/css/site.css?v=20260612g">
     <style>
@@ -46,16 +46,16 @@
       .tier-table tbody tr:hover td {
         background: rgba(255,255,255,0.02);
       }
-      /* Status callout for a product that is announced but not yet purchasable. */
+      /* Availability callout — neutral/positive info panel. */
       .status-note {
-        border: 1px solid rgba(251, 191, 36, 0.3);
-        background: rgba(251, 191, 36, 0.07);
+        border: 1px solid rgba(90, 160, 255, 0.3);
+        background: rgba(90, 160, 255, 0.07);
         border-radius: var(--radius-sm);
         padding: 18px 22px;
         margin-top: 28px;
       }
       .status-note h3 {
-        color: var(--accent-warn);
+        color: var(--accent);
         font-size: 0.95rem;
         margin: 0 0 8px;
       }
@@ -65,6 +65,17 @@
         line-height: 1.65;
       }
       .status-note p:last-child { margin-bottom: 0; }
+      .wd-price {
+        font-size: 1.9rem;
+        font-weight: 700;
+        color: var(--text);
+        margin: 4px 0 2px;
+      }
+      .wd-price span {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--muted);
+      }
     </style>
   </head>
   <body>
@@ -116,7 +127,7 @@
           leave an assessor a signed trail of exactly what happened.
         </p>
         <div class="flex gap-12 flex-wrap mt-24">
-          <span class="badge badge-amber">In preparation</span>
+          <span class="badge badge-green">Available now &middot; v2.3.0</span>
           <span class="badge badge-muted">Self-hosted</span>
           <span class="badge badge-muted">Air-gap native</span>
           <span class="badge badge-muted">BSL 1.1</span>
@@ -124,20 +135,20 @@
         <div class="flex gap-12 flex-wrap mt-16">
           <a href="support.html#contact" class="btn btn-primary">Talk to Us About Your Estate</a>
           <a href="weardian-releases.html" class="btn btn-secondary">Releases &amp; Downloads</a>
+          <a href="#licensing" class="btn btn-secondary">Pricing</a>
           <a href="how-we-certify.html" class="btn btn-secondary">How We Certify Releases</a>
         </div>
         <div class="status-note">
           <h3>Availability</h3>
           <p>
-            Release <strong>v2.2.0</strong> is published, signed, and available to download &mdash; the console bundle for
-            <strong>Windows x86_64 and Linux x86_64</strong>, plus the Content Builder, each with its SBOM, vulnerability
-            scan and detached signature.
+            Weardian is <strong>generally available</strong>. Release <strong>v2.3.0</strong> is published and signed, with
+            the console and the Content Builder available to download for <strong>Windows x86_64 and Linux x86_64</strong>,
+            each carrying its SBOM, vulnerability scan and detached signature.
           </p>
           <p>
-            Weardian is not yet sold through this site. Production use requires a paid licence under the Business Source
-            Licence 1.1 &mdash; there is no free production tier &mdash; and licences are issued directly rather than
-            through online checkout. <a href="support.html#contact">Get in touch</a> and we will talk through scope,
-            licensing and fit for your estate.
+            Production use requires a paid licence under the Business Source Licence 1.1 &mdash; there is no free production
+            tier. Pricing is below; licences are provisioned directly by our team rather than through online checkout.
+            <a href="support.html#contact">Get in touch</a> and we will confirm scope, sizing and fit for your estate.
           </p>
         </div>
       </div>
@@ -305,26 +316,31 @@
     </section>
 
     <!-- Licensing -->
-    <section class="section section-divider-top">
+    <section class="section section-divider-top" id="licensing">
       <div class="wrap">
         <div class="section-head">
-          <p class="eyebrow">Licensing</p>
+          <p class="eyebrow">Licensing &amp; Pricing</p>
           <h2>Annual subscription, priced by managed hosts</h2>
           <p>
             Weardian is a commercial product, source-available under the Business Source Licence 1.1. Production use
-            requires a paid licence — there is no free production tier.
+            requires a paid licence — there is no free production tier. All prices are annual, in GBP, excluding any
+            applicable tax.
           </p>
         </div>
         <div class="grid-3">
           <div class="card">
             <h3 class="mt-0">Weardian Platform</h3>
+            <p class="wd-price">&pound;7,500<span>/year</span></p>
+            <p class="text-sm text-muted mb-0">Includes 50 managed hosts</p>
             <p>
               The complete platform including Content Builder and every capability described above, licensed for a defined
               number of managed hosts.
             </p>
           </div>
           <div class="card">
-            <h3 class="mt-0">Additional host capacity</h3>
+            <h3 class="mt-0">Additional host pack</h3>
+            <p class="wd-price">&pound;2,500<span>/year</span></p>
+            <p class="text-sm text-muted mb-0">Adds 50 managed hosts</p>
             <p>
               Expands an existing subscription. Capacity is carried on the installed licence file, so the console picks it
               up without reinstallation.
@@ -332,15 +348,21 @@
           </div>
           <div class="card">
             <h3 class="mt-0">Unlimited hosts</h3>
+            <p class="wd-price">&pound;25,000<span>/year</span></p>
+            <p class="text-sm text-muted mb-0">No per-host limit</p>
             <p>
               Added to an existing subscription for estates beyond the point where per-host licensing is practical.
             </p>
           </div>
         </div>
+        <div class="flex gap-12 flex-wrap mt-24">
+          <a href="support.html#contact" class="btn btn-primary">Contact Sales to Purchase</a>
+        </div>
         <p class="text-sm text-muted mt-16">
           Licences are delivered as offline, cryptographically signed files and applied by hand — suited to disconnected
-          deployment, with no activation server and no phone-home. Pricing is available on application;
-          <a href="support.html#contact">contact us</a> for a quotation against your estate size.
+          deployment, with no activation server and no phone-home. Because each licence is issued and bound to your estate
+          directly by our team, Weardian is purchased through sales rather than online checkout;
+          <a href="support.html#contact">contact us</a> to confirm sizing and provision your licence.
         </p>
       </div>
     </section>
@@ -368,7 +390,7 @@
             <tbody>
               <tr>
                 <td><strong>Platform support</strong></td>
-                <td>Console builds are published for Windows x86_64 and Linux x86_64. The Content Builder companion currently ships for Linux x86_64 only.</td>
+                <td>Both the console and the Content Builder are published for Windows x86_64 and Linux x86_64. Other architectures (for example ARM64) are not currently built.</td>
               </tr>
               <tr>
                 <td><strong>Intune / WSUS / SCCM</strong></td>

@@ -3,122 +3,164 @@
   "slug": "weardian",
   "repo": "audittoolkitlabs/AuditToolkit-Weardian",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-07-21T05:19:37Z",
-  "latest": "v2.2.0",
+  "generated_at": "2026-07-21T08:37:50Z",
+  "latest": "v2.3.0",
   "releases": [
     {
-      "tag": "v2.2.0",
-      "name": "AuditToolkit Weardian Platform 2.2.0",
+      "tag": "v2.3.0",
+      "name": "AuditToolkit Weardian Platform 2.3.0",
       "prerelease": false,
       "mirrored": true,
-      "published_at": "2026-07-20T13:15:21Z",
-      "author": "auditpushbot",
-      "body_md": "**Commercial Activation** — full notes attached below as `RELEASE-NOTES-v2.2.0.md`\n\nCompletes the commercial path. A customer can buy Weardian, receive a licence key by email, turn it into a host-bound offline licence with Content Builder, and activate an air-gapped console — with **no signing service, no operator step, and no private key anywhere outside Keygen**. v2.1.0 shipped the licence *gate*; this release makes a purchased licence usable.\n\n### What's new\n- **Keygen-signed offline activation** — the console verifies Keygen licence and machine files (`base64+ed25519`) against Keygen's own public key\n- **Content Builder prepares the bundle** — `cb weardian-license --key … --request … --out …`. A courier, not a signer: it authenticates with the customer's own licence key and ships no admin token and no signing key\n- **Host binding** — the fingerprint is inside the Keygen signature and is enforced on every read, so a licence copied to another console does not license it\n- **Licensing page** — Administration → Licensing: status, capacity, expiry, binding, offline-request export and bundle import\n- **Import API** — `POST /api/licensing/import`, all-or-nothing, so a rejected bundle never displaces a working licence\n\n### Verified against real Keygen artefacts\nValidated end to end with a real evaluation licence — real bundle, both certificates verified against the real account key, imported through the real API. Real licence accepted at 50 hosts and host-bound; a bundle for another console rejected with the working licence intact; base + 3 packs → 200 hosts; unlimited → applied as `-1`, shown as unlimited.\n\nThat run found **three integration defects 900+ passing tests could not catch** — Keygen rewrites metadata keys to camelCase, licence-key authentication was disabled on both policies, and licence-authenticated check-out cannot include the product. All three are fixed here.\n\n### Release artifacts\n**This release attaches installable bundles, not only evidence.** v2.1.0 built and signed its bundles but left them as workflow artifacts, which expire and are not what a customer downloads.\nBoth bundles target **Linux x86_64** and are self-contained (no Python, Node or internet needed on the target). Verify with `gpg --verify SHA256SUMS.asc SHA256SUMS` (key `1AA413CA5B8F5229`), then `sha256sum -c SHA256SUMS`.\nA **Windows Server console** ZIP (`audittoolkit-weardian-2.2.0-windows-x86_64.zip`) is attached to this release: it installs as a native Windows Service and was validated end to end on Windows Server 2022 with CPython 3.14.6 (see `WINDOWS-CONSOLE-002-validation-report.md`). Verify it the same way — `gpg --verify SHA256SUMS-windows.asc SHA256SUMS-windows` (key `1AA413CA5B8F5229`), then check the zip against it. There is **no MSI**; the console is a ZIP with a PowerShell installer. The Windows *agent* is separate and unaffected.\n\n### Known limitations\nNo browser-level test of the licensing page · host packs and unlimited bought via their own Payment Links land on separate subscriptions · `maxMachines` is effectively a capacity multiplier · an issued bundle cannot be recalled before its TTL.\n\n### Verification\nBackend 607 tests · Content Builder 293 · 0 vulnerabilities · 8/8 evidence areas · decision **APPROVED**.",
+      "published_at": "2026-07-21T07:53:20Z",
+      "author": "auditadmin",
+      "body_md": "**Windows Deployment Completion** — full notes attached below as `RELEASE-NOTES-v2.3.0.md`.\n\nCompletes the Windows deployment story: the **Content Builder** now installs as a **native Windows Service** (like the console since v2.2.0), so both platform components run on Windows Server / a Windows workstation with no Linux VM, Docker, or manual Python setup. Validated end to end on Windows Server 2022.\n\n### Artifacts (all self-contained, signed)\n- `audittoolkit-weardian-2.3.0-linux-x86_64.tar.gz` — Linux console\n- `audittoolkit-weardian-2.3.0-windows-x86_64.zip` — Windows console (native service)\n- `sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz` — Content Builder (Linux)\n- `audittoolkit-content-builder-0.5.0-windows-x86_64.zip` — **Content Builder (native Windows service) — new**\n- SBOM + vulnerability report per Linux bundle; `.asc` signatures; signed `SHA256SUMS*`.\n\nBoth Windows bundles are built + signed + attached by CI (signing on Linux; no signing material on the Windows runner). There is **no MSI** — ZIP + PowerShell installer.\n\n### Verify\n`gpg --verify SHA256SUMS.asc SHA256SUMS` (key `1AA413CA5B8F5229`), then `sha256sum -c SHA256SUMS`; verify `SHA256SUMS-windows` and `SHA256SUMS-content-builder-windows` the same way.\n\nNo DB migration; licensing unchanged from v2.2.0.",
       "assets": [
         {
-          "name": "RELEASE-NOTES-v2.2.0.md",
+          "name": "RELEASE-NOTES-v2.3.0.md",
           "kind": "docs",
-          "size": 9745,
-          "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/RELEASE-NOTES-v2.2.0.md"
+          "size": 4637,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/RELEASE-NOTES-v2.3.0.md"
         },
         {
-          "name": "SHA256SUMS",
+          "name": "SHA256SUMS-content-builder",
           "kind": "integrity",
-          "size": 236,
+          "size": 122,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/SHA256SUMS-content-builder"
+        },
+        {
+          "name": "SHA256SUMS-content-builder-windows",
+          "kind": "integrity",
+          "size": 120,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/SHA256SUMS"
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/SHA256SUMS-content-builder-windows"
+        },
+        {
+          "name": "SHA256SUMS-content-builder-windows.asc",
+          "kind": "integrity",
+          "size": 833,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/SHA256SUMS-content-builder-windows.asc"
+        },
+        {
+          "name": "SHA256SUMS-content-builder.asc",
+          "kind": "integrity",
+          "size": 833,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/SHA256SUMS-content-builder.asc"
+        },
+        {
+          "name": "SHA256SUMS-weardian",
+          "kind": "integrity",
+          "size": 114,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/SHA256SUMS-weardian"
+        },
+        {
+          "name": "SHA256SUMS-weardian.asc",
+          "kind": "integrity",
+          "size": 833,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/SHA256SUMS-weardian.asc"
         },
         {
           "name": "SHA256SUMS-windows",
           "kind": "integrity",
           "size": 113,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/SHA256SUMS-windows"
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/SHA256SUMS-windows"
         },
         {
           "name": "SHA256SUMS-windows.asc",
           "kind": "integrity",
-          "size": 887,
+          "size": 833,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/SHA256SUMS-windows.asc"
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/SHA256SUMS-windows.asc"
         },
         {
-          "name": "SHA256SUMS.asc",
-          "kind": "integrity",
-          "size": 887,
-          "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/SHA256SUMS.asc"
-        },
-        {
-          "name": "audittoolkit-weardian-2.2.0-linux-x86_64.tar.gz",
+          "name": "audittoolkit-content-builder-0.5.0-windows-x86_64.zip",
           "kind": "product",
-          "size": 165289144,
+          "size": 84398147,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/audittoolkit-weardian-2.2.0-linux-x86_64.tar.gz"
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/audittoolkit-content-builder-0.5.0-windows-x86_64.zip"
         },
         {
-          "name": "audittoolkit-weardian-2.2.0-linux-x86_64.tar.gz.asc",
+          "name": "audittoolkit-content-builder-0.5.0-windows-x86_64.zip.asc",
           "kind": "integrity",
           "size": 833,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/audittoolkit-weardian-2.2.0-linux-x86_64.tar.gz.asc"
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/audittoolkit-content-builder-0.5.0-windows-x86_64.zip.asc"
         },
         {
-          "name": "audittoolkit-weardian-2.2.0-linux-x86_64.tar.gz.sbom.cdx.json",
-          "kind": "evidence",
-          "size": 169691,
-          "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/audittoolkit-weardian-2.2.0-linux-x86_64.tar.gz.sbom.cdx.json"
-        },
-        {
-          "name": "audittoolkit-weardian-2.2.0-linux-x86_64.tar.gz.vulnerability.json",
-          "kind": "evidence",
-          "size": 36842,
-          "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/audittoolkit-weardian-2.2.0-linux-x86_64.tar.gz.vulnerability.json"
-        },
-        {
-          "name": "audittoolkit-weardian-2.2.0-windows-x86_64.zip",
+          "name": "audittoolkit-weardian-2.3.0-linux-x86_64.tar.gz",
           "kind": "product",
-          "size": 98593309,
-          "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/audittoolkit-weardian-2.2.0-windows-x86_64.zip"
+          "size": 165287597,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/audittoolkit-weardian-2.3.0-linux-x86_64.tar.gz"
         },
         {
-          "name": "audittoolkit-weardian-2.2.0-windows-x86_64.zip.asc",
+          "name": "audittoolkit-weardian-2.3.0-linux-x86_64.tar.gz.asc",
           "kind": "integrity",
-          "size": 887,
+          "size": 833,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/audittoolkit-weardian-2.3.0-linux-x86_64.tar.gz.asc"
+        },
+        {
+          "name": "audittoolkit-weardian-2.3.0-linux-x86_64.tar.gz.sbom.cdx.json",
+          "kind": "evidence",
+          "size": 169589,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/audittoolkit-weardian-2.3.0-linux-x86_64.tar.gz.sbom.cdx.json"
+        },
+        {
+          "name": "audittoolkit-weardian-2.3.0-linux-x86_64.tar.gz.vulnerability.json",
+          "kind": "evidence",
+          "size": 36839,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/audittoolkit-weardian-2.3.0-linux-x86_64.tar.gz.vulnerability.json"
+        },
+        {
+          "name": "audittoolkit-weardian-2.3.0-windows-x86_64.zip",
+          "kind": "product",
+          "size": 97947365,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/audittoolkit-weardian-2.2.0-windows-x86_64.zip.asc"
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/audittoolkit-weardian-2.3.0-windows-x86_64.zip"
+        },
+        {
+          "name": "audittoolkit-weardian-2.3.0-windows-x86_64.zip.asc",
+          "kind": "integrity",
+          "size": 833,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/audittoolkit-weardian-2.3.0-windows-x86_64.zip.asc"
         },
         {
           "name": "sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz",
           "kind": "product",
-          "size": 152525466,
-          "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz"
+          "size": 152535313,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz"
         },
         {
           "name": "sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz.asc",
           "kind": "integrity",
           "size": 833,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz.asc"
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz.asc"
         },
         {
           "name": "sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz.sbom.cdx.json",
           "kind": "evidence",
-          "size": 171404,
+          "size": 171502,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz.sbom.cdx.json"
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz.sbom.cdx.json"
         },
         {
           "name": "sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz.vulnerability.json",
           "kind": "evidence",
-          "size": 36994,
+          "size": 36991,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz.vulnerability.json"
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.3.0/sentry-content-builder-bundle-0.5.0-linux-x86_64.tar.gz.vulnerability.json"
         }
       ]
     }
