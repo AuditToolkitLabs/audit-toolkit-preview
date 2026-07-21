@@ -125,7 +125,7 @@
     {
       "slug": "weardian",
       "product": "AuditToolkit Weardian",
-      "latest": "v2.2.0",
+      "latest": "v2.3.0",
       "count": 1,
       "mirrored": 1,
       "data": "releases/data/weardian.json",
