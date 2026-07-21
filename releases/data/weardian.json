@@ -3,7 +3,7 @@
   "slug": "weardian",
   "repo": "audittoolkitlabs/AuditToolkit-Weardian",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-07-20T16:13:45Z",
+  "generated_at": "2026-07-21T05:19:37Z",
   "latest": "v2.2.0",
   "releases": [
     {
@@ -19,7 +19,7 @@
           "name": "RELEASE-NOTES-v2.2.0.md",
           "kind": "docs",
           "size": 9745,
-          "download_count": 1,
+          "download_count": 2,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/weardian-v2.2.0/RELEASE-NOTES-v2.2.0.md"
         },
         {

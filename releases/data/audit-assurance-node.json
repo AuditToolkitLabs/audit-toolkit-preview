@@ -3,9 +3,188 @@
   "slug": "audit-assurance-node",
   "repo": "audittoolkitlabs/audit-assurance-node",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-07-06T14:39:18Z",
-  "latest": "v1.0.5",
+  "generated_at": "2026-07-21T05:12:08Z",
+  "latest": "v1.1.0",
   "releases": [
+    {
+      "tag": "v1.1.0",
+      "name": "Audit Assurance Node v1.1.0",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-07-13T17:18:19Z",
+      "author": "auditadmin",
+      "body_md": "## AuditToolkit Audit Assurance Node - v1.1.0\n\nUnified suite common release. Native `.deb` / `.rpm` packages (self-contained wheelhouse), GPG-signed (key 926C3CBB - AuditToolkitLabs Release Signing) with detached `.asc` + SHA256SUMS. Customer documentation bundle included.\n\nVerify: `gpg --verify <artifact>.asc <artifact>`.",
+      "assets": [
+        {
+          "name": "SHA256SUMS-audit-assurance-node-1.1.0.txt",
+          "kind": "integrity",
+          "size": 209,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/SHA256SUMS-audit-assurance-node-1.1.0.txt"
+        },
+        {
+          "name": "SHA256SUMS-audit-assurance-node-1.1.0.txt.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/SHA256SUMS-audit-assurance-node-1.1.0.txt.asc"
+        },
+        {
+          "name": "audit-assurance-node-1.1.0-1.x86_64.rpm",
+          "kind": "product",
+          "size": 16371913,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-1.1.0-1.x86_64.rpm"
+        },
+        {
+          "name": "audit-assurance-node-1.1.0-1.x86_64.rpm.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-1.1.0-1.x86_64.rpm.asc"
+        },
+        {
+          "name": "audit-assurance-node-1.1.0-RELEASE-EVIDENCE.md",
+          "kind": "evidence",
+          "size": 1702,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-1.1.0-RELEASE-EVIDENCE.md"
+        },
+        {
+          "name": "audit-assurance-node-1.1.0-evidence-checksums.txt",
+          "kind": "integrity",
+          "size": 187,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-1.1.0-evidence-checksums.txt"
+        },
+        {
+          "name": "audit-assurance-node-1.1.0-evidence-checksums.txt.asc",
+          "kind": "integrity",
+          "size": 833,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-1.1.0-evidence-checksums.txt.asc"
+        },
+        {
+          "name": "audit-assurance-node-1.1.0-evidence-manifest.json",
+          "kind": "evidence",
+          "size": 4246,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-1.1.0-evidence-manifest.json"
+        },
+        {
+          "name": "audit-assurance-node-1.1.0-evidence-manifest.json.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-1.1.0-evidence-manifest.json.asc"
+        },
+        {
+          "name": "audit-assurance-node-1.1.0-static-analysis-report.sarif",
+          "kind": "evidence",
+          "size": 8462,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-1.1.0-static-analysis-report.sarif"
+        },
+        {
+          "name": "audit-assurance-node-1.1.0-static-analysis-report.sarif.asc",
+          "kind": "integrity",
+          "size": 833,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-1.1.0-static-analysis-report.sarif.asc"
+        },
+        {
+          "name": "audit-assurance-node-1.1.0-static-analysis-report.txt",
+          "kind": "evidence",
+          "size": 66,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-1.1.0-static-analysis-report.txt"
+        },
+        {
+          "name": "audit-assurance-node-1.1.0-unit-test-results.txt",
+          "kind": "evidence",
+          "size": 75,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-1.1.0-unit-test-results.txt"
+        },
+        {
+          "name": "audit-assurance-node-1.1.0-unit-test-results.xml",
+          "kind": "evidence",
+          "size": 812,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-1.1.0-unit-test-results.xml"
+        },
+        {
+          "name": "audit-assurance-node-1.1.0-unit-test-results.xml.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-1.1.0-unit-test-results.xml.asc"
+        },
+        {
+          "name": "audit-assurance-node-1.1.0-vulnerability-report.json",
+          "kind": "evidence",
+          "size": 5887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-1.1.0-vulnerability-report.json"
+        },
+        {
+          "name": "audit-assurance-node-1.1.0-vulnerability-report.json.asc",
+          "kind": "integrity",
+          "size": 833,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-1.1.0-vulnerability-report.json.asc"
+        },
+        {
+          "name": "audit-assurance-node-1.1.0-vulnerability-report.txt",
+          "kind": "evidence",
+          "size": 25,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-1.1.0-vulnerability-report.txt"
+        },
+        {
+          "name": "audit-assurance-node-1.1.0.cdx.json",
+          "kind": "evidence",
+          "size": 3324,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-1.1.0.cdx.json"
+        },
+        {
+          "name": "audit-assurance-node-1.1.0.cdx.json.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-1.1.0.cdx.json.asc"
+        },
+        {
+          "name": "audit-assurance-node-customer-docs-1.1.0.tar.gz",
+          "kind": "docs",
+          "size": 37208,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-customer-docs-1.1.0.tar.gz"
+        },
+        {
+          "name": "audit-assurance-node-customer-docs-1.1.0.tar.gz.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node-customer-docs-1.1.0.tar.gz.asc"
+        },
+        {
+          "name": "audit-assurance-node_1.1.0_amd64.deb",
+          "kind": "product",
+          "size": 16289788,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node_1.1.0_amd64.deb"
+        },
+        {
+          "name": "audit-assurance-node_1.1.0_amd64.deb.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.1.0/audit-assurance-node_1.1.0_amd64.deb.asc"
+        }
+      ]
+    },
     {
       "tag": "v1.0.5",
       "name": "v1.0.5 � Security Hardening",
@@ -17,60 +196,70 @@
       "assets": [
         {
           "name": "SHA256SUMS-1.0.5.txt",
+          "kind": "integrity",
           "size": 425,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.5/SHA256SUMS-1.0.5.txt"
         },
         {
           "name": "SHA256SUMS-1.0.5.txt.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.5/SHA256SUMS-1.0.5.txt.asc"
         },
         {
           "name": "audit-assurance-node-1.0.5-1.x86_64.rpm",
+          "kind": "product",
           "size": 16359277,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.5/audit-assurance-node-1.0.5-1.x86_64.rpm"
         },
         {
           "name": "audit-assurance-node-1.0.5-1.x86_64.rpm.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.5/audit-assurance-node-1.0.5-1.x86_64.rpm.asc"
         },
         {
           "name": "audit-assurance-node-1.0.5.cdx.json",
+          "kind": "evidence",
           "size": 3362,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.5/audit-assurance-node-1.0.5.cdx.json"
         },
         {
           "name": "audit-assurance-node-1.0.5.cdx.json.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.5/audit-assurance-node-1.0.5.cdx.json.asc"
         },
         {
           "name": "audit-assurance-node-customer-docs-1.0.5.tar.gz",
+          "kind": "docs",
           "size": 36986,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.5/audit-assurance-node-customer-docs-1.0.5.tar.gz"
         },
         {
           "name": "audit-assurance-node-customer-docs-1.0.5.tar.gz.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.5/audit-assurance-node-customer-docs-1.0.5.tar.gz.asc"
         },
         {
           "name": "audit-assurance-node_1.0.5_amd64.deb",
+          "kind": "product",
           "size": 16277432,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.5/audit-assurance-node_1.0.5_amd64.deb"
         },
         {
           "name": "audit-assurance-node_1.0.5_amd64.deb.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.5/audit-assurance-node_1.0.5_amd64.deb.asc"
@@ -81,70 +270,80 @@
       "tag": "v1.0.4",
       "name": "Audit Assurance Node 1.0.4",
       "prerelease": false,
-      "mirrored": true,
+      "mirrored": false,
       "published_at": "2026-07-03T10:06:38Z",
       "author": "auditadmin",
       "body_md": "# Audit Assurance Node — Release Notes\n\nSuite release: **2026.1** · Product version: **1.0.4** · Channel: GA\n\n## About this release\n\n1.0.4 is a suite version-alignment release. All six AuditToolkit suite products are advanced\ntogether to a common **1.0.4** baseline so the suite ships as one coordinated release. There are no\nbreaking changes; upgrade in place via the native package.\n\nAudit Assurance Node is a technical orchestration component of the version-aligned AuditToolkit\nsuite.\n\n## What's new in 1.0.4\n\n- **Unified suite versioning.** All six suite products are aligned at 1.0.4, replacing the previous\n  mixed 1.0.2 / 1.0.3 lines.\n- **Consistent licensing and legal.** The shared End User License Agreement, Liability Disclaimer\n  and Indemnity, Copyright, and Licensing documents apply uniformly across the suite and are\n  bundled with this component.\n- **Documentation references official channels only** (official website and public release\n  channel; no private source-control hosts), verified against the signed docs manifest.\n\n## Install, upgrade and support\n\n- Installation and upgrade: see `CUSTOMER-DEPLOYMENT-PACK.md` (install/upgrade the native\n  `.deb`/`.rpm`; the package runs any required migrations on upgrade).\n- Day-2 operations and issue resolution: see the Operations and Runtime Validation documents.\n- Licensing and legal terms: see the Licensing and Legal documents in this set.\n\n## Version alignment\n\n- Suite: `2026.1` · Product (Audit Assurance Node): `1.0.4` · Channel: GA.\n- All six suite products are released together at 1.0.4.\n",
       "assets": [
         {
           "name": "SHA256SUMS-1.0.4.txt",
+          "kind": "integrity",
           "size": 326,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/SHA256SUMS-1.0.4.txt"
+          "download_url": ""
         },
         {
           "name": "SHA256SUMS-1.0.4.txt.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/SHA256SUMS-1.0.4.txt.asc"
+          "download_url": ""
         },
         {
           "name": "audit-assurance-node-1.0.4-1.x86_64.rpm",
+          "kind": "product",
           "size": 16357502,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/audit-assurance-node-1.0.4-1.x86_64.rpm"
+          "download_url": ""
         },
         {
           "name": "audit-assurance-node-1.0.4-1.x86_64.rpm.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/audit-assurance-node-1.0.4-1.x86_64.rpm.asc"
+          "download_url": ""
         },
         {
           "name": "audit-assurance-node-1.0.4.cdx.json",
+          "kind": "evidence",
           "size": 5081,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/audit-assurance-node-1.0.4.cdx.json"
+          "download_url": ""
         },
         {
           "name": "audit-assurance-node-1.0.4.cdx.json.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/audit-assurance-node-1.0.4.cdx.json.asc"
+          "download_url": ""
         },
         {
           "name": "audit-assurance-node-customer-docs-1.0.4.tar.gz",
+          "kind": "docs",
           "size": 36882,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/audit-assurance-node-customer-docs-1.0.4.tar.gz"
+          "download_url": ""
         },
         {
           "name": "audit-assurance-node-customer-docs-1.0.4.tar.gz.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/audit-assurance-node-customer-docs-1.0.4.tar.gz.asc"
+          "download_url": ""
         },
         {
           "name": "audit-assurance-node_1.0.4_amd64.deb",
+          "kind": "product",
           "size": 16275176,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/audit-assurance-node_1.0.4_amd64.deb"
+          "download_url": ""
         },
         {
           "name": "audit-assurance-node_1.0.4_amd64.deb.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-assurance-node-v1.0.4/audit-assurance-node_1.0.4_amd64.deb.asc"
+          "download_url": ""
         }
       ]
     },
@@ -159,30 +358,35 @@
       "assets": [
         {
           "name": "CHANGELOG.md",
+          "kind": "docs",
           "size": 2675,
           "download_count": 1,
           "download_url": ""
         },
         {
           "name": "README.md",
+          "kind": "other",
           "size": 5086,
           "download_count": 1,
           "download_url": ""
         },
         {
           "name": "SHA256SUMS-1.0.3.txt",
+          "kind": "integrity",
           "size": 209,
           "download_count": 1,
           "download_url": ""
         },
         {
           "name": "audit-assurance-node-1.0.3-1.x86_64.rpm",
+          "kind": "product",
           "size": 16356111,
           "download_count": 1,
           "download_url": ""
         },
         {
           "name": "audit-assurance-node_1.0.3_amd64.deb",
+          "kind": "product",
           "size": 16274698,
           "download_count": 1,
           "download_url": ""

@@ -3,9 +3,167 @@
   "slug": "linux-host-lite",
   "repo": "audittoolkitlabs/AuditToolkit-Linux-Host-Lite",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-06-24T15:54:49Z",
-  "latest": "v0.1.0",
+  "generated_at": "2026-07-21T05:09:42Z",
+  "latest": "v1.1.0",
   "releases": [
+    {
+      "tag": "v1.1.0",
+      "name": "Linux Host Lite v1.1.0",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-07-13T17:18:10Z",
+      "author": "auditadmin",
+      "body_md": "## AuditToolkit Linux Host Lite - v1.1.0\n\nUnified suite common release. GPG-signed Linux packages (deb/rpm/tar.gz) for single-host security auditing. Native install + run + upgrade proven on Ubuntu (deb) and AlmaLinux-9 (rpm).\n\nVerify: `gpg --import KEYS` then `gpg --verify <artifact>.asc <artifact>` (key 36B9C843 - AuditToolkit Release Signing).",
+      "assets": [
+        {
+          "name": "CHANGELOG.md",
+          "kind": "docs",
+          "size": 735,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/CHANGELOG.md"
+        },
+        {
+          "name": "KEYS",
+          "kind": "integrity",
+          "size": 1183,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/KEYS"
+        },
+        {
+          "name": "README.md",
+          "kind": "other",
+          "size": 4246,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/README.md"
+        },
+        {
+          "name": "SHA256SUMS",
+          "kind": "integrity",
+          "size": 316,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/SHA256SUMS"
+        },
+        {
+          "name": "audittoolkit-linux-host-lite-1.1.0-RELEASE-EVIDENCE.md",
+          "kind": "evidence",
+          "size": 1550,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/audittoolkit-linux-host-lite-1.1.0-RELEASE-EVIDENCE.md"
+        },
+        {
+          "name": "audittoolkit-linux-host-lite-1.1.0-evidence-manifest.json",
+          "kind": "evidence",
+          "size": 3601,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/audittoolkit-linux-host-lite-1.1.0-evidence-manifest.json"
+        },
+        {
+          "name": "audittoolkit-linux-host-lite-1.1.0-evidence-manifest.json.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/audittoolkit-linux-host-lite-1.1.0-evidence-manifest.json.asc"
+        },
+        {
+          "name": "audittoolkit-linux-host-lite-1.1.0-static-analysis-report.sarif",
+          "kind": "evidence",
+          "size": 266,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/audittoolkit-linux-host-lite-1.1.0-static-analysis-report.sarif"
+        },
+        {
+          "name": "audittoolkit-linux-host-lite-1.1.0-static-analysis-report.sarif.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/audittoolkit-linux-host-lite-1.1.0-static-analysis-report.sarif.asc"
+        },
+        {
+          "name": "audittoolkit-linux-host-lite-1.1.0-static-analysis-report.txt",
+          "kind": "evidence",
+          "size": 84,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/audittoolkit-linux-host-lite-1.1.0-static-analysis-report.txt"
+        },
+        {
+          "name": "audittoolkit-linux-host-lite-1.1.0-vulnerability-report.json",
+          "kind": "evidence",
+          "size": 5801,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/audittoolkit-linux-host-lite-1.1.0-vulnerability-report.json"
+        },
+        {
+          "name": "audittoolkit-linux-host-lite-1.1.0-vulnerability-report.json.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/audittoolkit-linux-host-lite-1.1.0-vulnerability-report.json.asc"
+        },
+        {
+          "name": "audittoolkit-linux-host-lite-1.1.0-vulnerability-report.txt",
+          "kind": "evidence",
+          "size": 25,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/audittoolkit-linux-host-lite-1.1.0-vulnerability-report.txt"
+        },
+        {
+          "name": "audittoolkit-linux-host-lite-1.1.0.cdx.json",
+          "kind": "evidence",
+          "size": 44227,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/audittoolkit-linux-host-lite-1.1.0.cdx.json"
+        },
+        {
+          "name": "audittoolkit-linux-host-lite-1.1.0.cdx.json.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/audittoolkit-linux-host-lite-1.1.0.cdx.json.asc"
+        },
+        {
+          "name": "audittoolkit-linux-lite-1.1.0-1.el9.noarch.rpm",
+          "kind": "product",
+          "size": 1136380,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/audittoolkit-linux-lite-1.1.0-1.el9.noarch.rpm"
+        },
+        {
+          "name": "audittoolkit-linux-lite-1.1.0-1.el9.noarch.rpm.asc",
+          "kind": "integrity",
+          "size": 228,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/audittoolkit-linux-lite-1.1.0-1.el9.noarch.rpm.asc"
+        },
+        {
+          "name": "audittoolkit-linux-lite-1.1.0.tar.gz",
+          "kind": "product",
+          "size": 1816811,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/audittoolkit-linux-lite-1.1.0.tar.gz"
+        },
+        {
+          "name": "audittoolkit-linux-lite-1.1.0.tar.gz.asc",
+          "kind": "integrity",
+          "size": 228,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/audittoolkit-linux-lite-1.1.0.tar.gz.asc"
+        },
+        {
+          "name": "audittoolkit-linux-lite_1.1.0.deb",
+          "kind": "product",
+          "size": 1279580,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/audittoolkit-linux-lite_1.1.0.deb"
+        },
+        {
+          "name": "audittoolkit-linux-lite_1.1.0.deb.asc",
+          "kind": "integrity",
+          "size": 228,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v1.1.0/audittoolkit-linux-lite_1.1.0.deb.asc"
+        }
+      ]
+    },
     {
       "tag": "v0.1.0",
       "name": "Linux Host Lite v0.1.0",
@@ -17,60 +175,70 @@
       "assets": [
         {
           "name": "CHANGELOG.md",
+          "kind": "docs",
           "size": 1423,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v0.1.0/CHANGELOG.md"
         },
         {
           "name": "KEYS",
+          "kind": "integrity",
           "size": 1183,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v0.1.0/KEYS"
         },
         {
           "name": "README.md",
+          "kind": "other",
           "size": 2528,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v0.1.0/README.md"
         },
         {
           "name": "SHA256SUMS",
+          "kind": "integrity",
           "size": 312,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v0.1.0/SHA256SUMS"
         },
         {
           "name": "audittoolkit-linux-lite-0.1.0-1.noarch.rpm",
+          "kind": "product",
           "size": 4905211,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v0.1.0/audittoolkit-linux-lite-0.1.0-1.noarch.rpm"
         },
         {
           "name": "audittoolkit-linux-lite-0.1.0-1.noarch.rpm.asc",
+          "kind": "integrity",
           "size": 228,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v0.1.0/audittoolkit-linux-lite-0.1.0-1.noarch.rpm.asc"
         },
         {
           "name": "audittoolkit-linux-lite-0.1.0.tar.gz",
+          "kind": "product",
           "size": 4713009,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v0.1.0/audittoolkit-linux-lite-0.1.0.tar.gz"
         },
         {
           "name": "audittoolkit-linux-lite-0.1.0.tar.gz.asc",
+          "kind": "integrity",
           "size": 228,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v0.1.0/audittoolkit-linux-lite-0.1.0.tar.gz.asc"
         },
         {
           "name": "audittoolkit-linux-lite_0.1.0.deb",
+          "kind": "product",
           "size": 2887436,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v0.1.0/audittoolkit-linux-lite_0.1.0.deb"
         },
         {
           "name": "audittoolkit-linux-lite_0.1.0.deb.asc",
+          "kind": "integrity",
           "size": 228,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-host-lite-v0.1.0/audittoolkit-linux-lite_0.1.0.deb.asc"

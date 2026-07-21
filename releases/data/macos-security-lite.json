@@ -3,9 +3,153 @@
   "slug": "macos-security-lite",
   "repo": "audittoolkitlabs/AuditToolkit-macOS-Security-Lite",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-06-24T15:54:50Z",
-  "latest": "v0.1.0",
+  "generated_at": "2026-07-21T05:10:24Z",
+  "latest": "v1.1.0",
   "releases": [
+    {
+      "tag": "v1.1.0",
+      "name": "macOS Security Lite v1.1.0",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-07-13T17:18:14Z",
+      "author": "auditadmin",
+      "body_md": "## AuditToolkit macOS Security Lite - v1.1.0\n\nUnified suite common release. Developer ID-signed, Apple-notarised and stapled .pkg / .dmg (Team ZXPT7W8AST). Passes Gatekeeper (spctl: accepted / Notarized Developer ID) on other Macs.",
+      "assets": [
+        {
+          "name": "AuditToolkit-macOS-Security-Lite-1.1.0.dmg",
+          "kind": "product",
+          "size": 12033694,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v1.1.0/AuditToolkit-macOS-Security-Lite-1.1.0.dmg"
+        },
+        {
+          "name": "AuditToolkit-macOS-Security-Lite-1.1.0.pkg",
+          "kind": "product",
+          "size": 2637547,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v1.1.0/AuditToolkit-macOS-Security-Lite-1.1.0.pkg"
+        },
+        {
+          "name": "CHANGELOG.md",
+          "kind": "docs",
+          "size": 700,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v1.1.0/CHANGELOG.md"
+        },
+        {
+          "name": "README.md",
+          "kind": "other",
+          "size": 4152,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v1.1.0/README.md"
+        },
+        {
+          "name": "SHA256SUMS",
+          "kind": "integrity",
+          "size": 217,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v1.1.0/SHA256SUMS"
+        },
+        {
+          "name": "audittoolkit-macos-security-lite-1.1.0-RELEASE-EVIDENCE.md",
+          "kind": "evidence",
+          "size": 1762,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v1.1.0/audittoolkit-macos-security-lite-1.1.0-RELEASE-EVIDENCE.md"
+        },
+        {
+          "name": "audittoolkit-macos-security-lite-1.1.0-evidence-manifest.json",
+          "kind": "evidence",
+          "size": 4227,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v1.1.0/audittoolkit-macos-security-lite-1.1.0-evidence-manifest.json"
+        },
+        {
+          "name": "audittoolkit-macos-security-lite-1.1.0-evidence-manifest.json.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v1.1.0/audittoolkit-macos-security-lite-1.1.0-evidence-manifest.json.asc"
+        },
+        {
+          "name": "audittoolkit-macos-security-lite-1.1.0-static-analysis-report.sarif",
+          "kind": "evidence",
+          "size": 266,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v1.1.0/audittoolkit-macos-security-lite-1.1.0-static-analysis-report.sarif"
+        },
+        {
+          "name": "audittoolkit-macos-security-lite-1.1.0-static-analysis-report.sarif.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v1.1.0/audittoolkit-macos-security-lite-1.1.0-static-analysis-report.sarif.asc"
+        },
+        {
+          "name": "audittoolkit-macos-security-lite-1.1.0-static-analysis-report.txt",
+          "kind": "evidence",
+          "size": 88,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v1.1.0/audittoolkit-macos-security-lite-1.1.0-static-analysis-report.txt"
+        },
+        {
+          "name": "audittoolkit-macos-security-lite-1.1.0-unit-test-results.txt",
+          "kind": "evidence",
+          "size": 79,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v1.1.0/audittoolkit-macos-security-lite-1.1.0-unit-test-results.txt"
+        },
+        {
+          "name": "audittoolkit-macos-security-lite-1.1.0-unit-test-results.xml",
+          "kind": "evidence",
+          "size": 20732,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v1.1.0/audittoolkit-macos-security-lite-1.1.0-unit-test-results.xml"
+        },
+        {
+          "name": "audittoolkit-macos-security-lite-1.1.0-unit-test-results.xml.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v1.1.0/audittoolkit-macos-security-lite-1.1.0-unit-test-results.xml.asc"
+        },
+        {
+          "name": "audittoolkit-macos-security-lite-1.1.0-vulnerability-report.json",
+          "kind": "evidence",
+          "size": 5809,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v1.1.0/audittoolkit-macos-security-lite-1.1.0-vulnerability-report.json"
+        },
+        {
+          "name": "audittoolkit-macos-security-lite-1.1.0-vulnerability-report.json.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v1.1.0/audittoolkit-macos-security-lite-1.1.0-vulnerability-report.json.asc"
+        },
+        {
+          "name": "audittoolkit-macos-security-lite-1.1.0-vulnerability-report.txt",
+          "kind": "evidence",
+          "size": 25,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v1.1.0/audittoolkit-macos-security-lite-1.1.0-vulnerability-report.txt"
+        },
+        {
+          "name": "audittoolkit-macos-security-lite-1.1.0.cdx.json",
+          "kind": "evidence",
+          "size": 5767,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v1.1.0/audittoolkit-macos-security-lite-1.1.0.cdx.json"
+        },
+        {
+          "name": "audittoolkit-macos-security-lite-1.1.0.cdx.json.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v1.1.0/audittoolkit-macos-security-lite-1.1.0.cdx.json.asc"
+        }
+      ]
+    },
     {
       "tag": "v0.1.0",
       "name": "macOS Security Lite v0.1.0",
@@ -17,30 +161,35 @@
       "assets": [
         {
           "name": "AuditToolkit-macOS-Security-Lite-0.1.0.dmg",
+          "kind": "product",
           "size": 12961243,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v0.1.0/AuditToolkit-macOS-Security-Lite-0.1.0.dmg"
         },
         {
           "name": "AuditToolkit-macOS-Security-Lite-0.1.0.pkg",
+          "kind": "product",
           "size": 2641970,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v0.1.0/AuditToolkit-macOS-Security-Lite-0.1.0.pkg"
         },
         {
           "name": "CHANGELOG.md",
+          "kind": "docs",
           "size": 1685,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v0.1.0/CHANGELOG.md"
         },
         {
           "name": "README.md",
+          "kind": "other",
           "size": 2897,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v0.1.0/README.md"
         },
         {
           "name": "SHA256SUMS",
+          "kind": "integrity",
           "size": 218,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/macos-security-lite-v0.1.0/SHA256SUMS"

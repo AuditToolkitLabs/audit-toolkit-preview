@@ -3,9 +3,167 @@
   "slug": "linux-security-lite",
   "repo": "audittoolkitlabs/AuditToolkit-Linux-Security-Lite",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-07-06T14:39:18Z",
-  "latest": "v1.0.5",
+  "generated_at": "2026-07-21T05:13:56Z",
+  "latest": "v1.1.0",
   "releases": [
+    {
+      "tag": "v1.1.0",
+      "name": "Linux Security Lite v1.1.0",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-07-13T17:19:46Z",
+      "author": "auditadmin",
+      "body_md": "## AuditToolkit Linux Security Lite - v1.1.0\n\nUnified suite common release. Native `.deb` / `.rpm` + air-gapped `.tar.gz` installer (self-contained web-console wheelhouse). GPG-signed (key 926C3CBB) with detached `.asc`, CycloneDX SBOM, SHA256SUMS, and customer documentation bundle.\n\nVerify: `gpg --verify <artifact>.asc <artifact>`.\n\nNote: this suite 1.1.0 line is distinct from the separate public lite lineage (v1.1.x/v1.2.x).",
+      "assets": [
+        {
+          "name": "SHA256SUMS-1.1.0.txt",
+          "kind": "integrity",
+          "size": 349,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/SHA256SUMS-1.1.0.txt"
+        },
+        {
+          "name": "SHA256SUMS-1.1.0.txt.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/SHA256SUMS-1.1.0.txt.asc"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite-1.1.0-1.noarch.rpm",
+          "kind": "product",
+          "size": 31860723,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/audittoolkit-linux-security-lite-1.1.0-1.noarch.rpm"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite-1.1.0-1.noarch.rpm.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/audittoolkit-linux-security-lite-1.1.0-1.noarch.rpm.asc"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite-1.1.0-RELEASE-EVIDENCE.md",
+          "kind": "evidence",
+          "size": 1585,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/audittoolkit-linux-security-lite-1.1.0-RELEASE-EVIDENCE.md"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite-1.1.0-evidence-manifest.json",
+          "kind": "evidence",
+          "size": 3846,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/audittoolkit-linux-security-lite-1.1.0-evidence-manifest.json"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite-1.1.0-evidence-manifest.json.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/audittoolkit-linux-security-lite-1.1.0-evidence-manifest.json.asc"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite-1.1.0-linux.tar.gz",
+          "kind": "product",
+          "size": 31783278,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/audittoolkit-linux-security-lite-1.1.0-linux.tar.gz"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite-1.1.0-linux.tar.gz.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/audittoolkit-linux-security-lite-1.1.0-linux.tar.gz.asc"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite-1.1.0-static-analysis-report.sarif",
+          "kind": "evidence",
+          "size": 59991,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/audittoolkit-linux-security-lite-1.1.0-static-analysis-report.sarif"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite-1.1.0-static-analysis-report.sarif.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/audittoolkit-linux-security-lite-1.1.0-static-analysis-report.sarif.asc"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite-1.1.0-static-analysis-report.txt",
+          "kind": "evidence",
+          "size": 78,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/audittoolkit-linux-security-lite-1.1.0-static-analysis-report.txt"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite-1.1.0-vulnerability-report.json",
+          "kind": "evidence",
+          "size": 5884,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/audittoolkit-linux-security-lite-1.1.0-vulnerability-report.json"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite-1.1.0-vulnerability-report.json.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/audittoolkit-linux-security-lite-1.1.0-vulnerability-report.json.asc"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite-1.1.0-vulnerability-report.txt",
+          "kind": "evidence",
+          "size": 25,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/audittoolkit-linux-security-lite-1.1.0-vulnerability-report.txt"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite-1.1.0.cdx.json",
+          "kind": "evidence",
+          "size": 2844,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/audittoolkit-linux-security-lite-1.1.0.cdx.json"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite-1.1.0.cdx.json.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 2,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/audittoolkit-linux-security-lite-1.1.0.cdx.json.asc"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite_1.1.0_all.deb",
+          "kind": "product",
+          "size": 30325984,
+          "download_count": 1,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/audittoolkit-linux-security-lite_1.1.0_all.deb"
+        },
+        {
+          "name": "audittoolkit-linux-security-lite_1.1.0_all.deb.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/audittoolkit-linux-security-lite_1.1.0_all.deb.asc"
+        },
+        {
+          "name": "linux-security-lite-customer-docs-1.1.0.tar.gz",
+          "kind": "docs",
+          "size": 113230,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/linux-security-lite-customer-docs-1.1.0.tar.gz"
+        },
+        {
+          "name": "linux-security-lite-customer-docs-1.1.0.tar.gz.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.1.0/linux-security-lite-customer-docs-1.1.0.tar.gz.asc"
+        }
+      ]
+    },
     {
       "tag": "v1.0.5",
       "name": "v1.0.5 � Security Hardening",
@@ -17,72 +175,84 @@
       "assets": [
         {
           "name": "SHA256SUMS-1.0.5.txt",
+          "kind": "integrity",
           "size": 576,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.5/SHA256SUMS-1.0.5.txt"
         },
         {
           "name": "SHA256SUMS-1.0.5.txt.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.5/SHA256SUMS-1.0.5.txt.asc"
         },
         {
           "name": "audittoolkit-linux-security-lite-1.0.5-1.noarch.rpm",
+          "kind": "product",
           "size": 31170933,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.5/audittoolkit-linux-security-lite-1.0.5-1.noarch.rpm"
         },
         {
           "name": "audittoolkit-linux-security-lite-1.0.5-1.noarch.rpm.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.5/audittoolkit-linux-security-lite-1.0.5-1.noarch.rpm.asc"
         },
         {
           "name": "audittoolkit-linux-security-lite-1.0.5-linux.tar.gz",
+          "kind": "product",
           "size": 31062659,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.5/audittoolkit-linux-security-lite-1.0.5-linux.tar.gz"
         },
         {
           "name": "audittoolkit-linux-security-lite-1.0.5-linux.tar.gz.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.5/audittoolkit-linux-security-lite-1.0.5-linux.tar.gz.asc"
         },
         {
           "name": "audittoolkit-linux-security-lite-1.0.5.cdx.json",
+          "kind": "evidence",
           "size": 2877,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.5/audittoolkit-linux-security-lite-1.0.5.cdx.json"
         },
         {
           "name": "audittoolkit-linux-security-lite-1.0.5.cdx.json.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.5/audittoolkit-linux-security-lite-1.0.5.cdx.json.asc"
         },
         {
           "name": "audittoolkit-linux-security-lite_1.0.5_all.deb",
+          "kind": "product",
           "size": 29842280,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.5/audittoolkit-linux-security-lite_1.0.5_all.deb"
         },
         {
           "name": "audittoolkit-linux-security-lite_1.0.5_all.deb.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.5/audittoolkit-linux-security-lite_1.0.5_all.deb.asc"
         },
         {
           "name": "linux-security-lite-customer-docs-1.0.5.tar.gz",
+          "kind": "docs",
           "size": 112979,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.5/linux-security-lite-customer-docs-1.0.5.tar.gz"
         },
         {
           "name": "linux-security-lite-customer-docs-1.0.5.tar.gz.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.5/linux-security-lite-customer-docs-1.0.5.tar.gz.asc"
@@ -93,82 +263,94 @@
       "tag": "v1.0.4",
       "name": "Linux Security Lite 1.0.4",
       "prerelease": false,
-      "mirrored": true,
+      "mirrored": false,
       "published_at": "2026-07-03T10:06:39Z",
       "author": "auditadmin",
       "body_md": "# Linux Security Lite — Release Notes\n\nSuite release: **2026.1** · Product version: **1.0.4** · Channel: GA\n\n## About this release\n\n1.0.4 is a suite version-alignment release. All six AuditToolkit suite products are advanced\ntogether to a common **1.0.4** baseline so the suite ships as one coordinated release. There are no\nbreaking changes; upgrade in place via the native package.\n\n## What's new in 1.0.4\n\n- **Unified suite versioning.** All six suite products are aligned at 1.0.4, replacing the previous\n  mixed 1.0.2 / 1.0.3 lines.\n- **Consistent licensing and legal.** The shared End User License Agreement, Liability Disclaimer\n  and Indemnity, Copyright, and Licensing documents apply uniformly across the suite and are\n  bundled with this product.\n- **Documentation references official channels only** (official website and public release\n  channel; no private source-control hosts), verified against the signed docs manifest.\n\n## Install, upgrade and support\n\n- Installation and upgrade: see `CUSTOMER-DEPLOYMENT-PACK.md` (install/upgrade the native\n  `.deb`/`.rpm`; the package runs any required migrations on upgrade).\n- Day-2 operations and issue resolution: see the Operations, Support and Troubleshooting documents.\n- Licensing and legal terms: see the Licensing and Legal documents in this set.\n\n## Version alignment\n\n- Suite: `2026.1` · Product (Linux Security Lite): `1.0.4` · Channel: GA.\n- All six suite products are released together at 1.0.4.\n",
       "assets": [
         {
           "name": "SHA256SUMS-1.0.4.txt",
+          "kind": "integrity",
           "size": 466,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.4/SHA256SUMS-1.0.4.txt"
+          "download_url": ""
         },
         {
           "name": "SHA256SUMS-1.0.4.txt.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.4/SHA256SUMS-1.0.4.txt.asc"
+          "download_url": ""
         },
         {
           "name": "audittoolkit-linux-security-lite-1.0.4-1.noarch.rpm",
+          "kind": "product",
           "size": 31706871,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.4/audittoolkit-linux-security-lite-1.0.4-1.noarch.rpm"
+          "download_url": ""
         },
         {
           "name": "audittoolkit-linux-security-lite-1.0.4-1.noarch.rpm.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.4/audittoolkit-linux-security-lite-1.0.4-1.noarch.rpm.asc"
+          "download_url": ""
         },
         {
           "name": "audittoolkit-linux-security-lite-1.0.4-linux.tar.gz",
+          "kind": "product",
           "size": 31628913,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.4/audittoolkit-linux-security-lite-1.0.4-linux.tar.gz"
+          "download_url": ""
         },
         {
           "name": "audittoolkit-linux-security-lite-1.0.4-linux.tar.gz.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.4/audittoolkit-linux-security-lite-1.0.4-linux.tar.gz.asc"
+          "download_url": ""
         },
         {
           "name": "audittoolkit-linux-security-lite_1.0.4_all.deb",
+          "kind": "product",
           "size": 30206308,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.4/audittoolkit-linux-security-lite_1.0.4_all.deb"
+          "download_url": ""
         },
         {
           "name": "audittoolkit-linux-security-lite_1.0.4_all.deb.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.4/audittoolkit-linux-security-lite_1.0.4_all.deb.asc"
+          "download_url": ""
         },
         {
           "name": "linux-security-lite-1.0.4.cdx.json",
+          "kind": "evidence",
           "size": 4348,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.4/linux-security-lite-1.0.4.cdx.json"
+          "download_url": ""
         },
         {
           "name": "linux-security-lite-1.0.4.cdx.json.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.4/linux-security-lite-1.0.4.cdx.json.asc"
+          "download_url": ""
         },
         {
           "name": "linux-security-lite-customer-docs-1.0.4.tar.gz",
+          "kind": "docs",
           "size": 112845,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.4/linux-security-lite-customer-docs-1.0.4.tar.gz"
+          "download_url": ""
         },
         {
           "name": "linux-security-lite-customer-docs-1.0.4.tar.gz.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 2,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/linux-security-lite-v1.0.4/linux-security-lite-customer-docs-1.0.4.tar.gz.asc"
+          "download_url": ""
         }
       ]
     },
@@ -183,36 +365,42 @@
       "assets": [
         {
           "name": "CHANGELOG.md",
+          "kind": "docs",
           "size": 68299,
           "download_count": 1,
           "download_url": ""
         },
         {
           "name": "README.md",
+          "kind": "other",
           "size": 11301,
           "download_count": 1,
           "download_url": ""
         },
         {
           "name": "SHA256SUMS-1.0.3.txt",
+          "kind": "integrity",
           "size": 349,
           "download_count": 1,
           "download_url": ""
         },
         {
           "name": "audittoolkit-linux-security-lite-1.0.3-1.noarch.rpm",
+          "kind": "product",
           "size": 31272626,
           "download_count": 1,
           "download_url": ""
         },
         {
           "name": "audittoolkit-linux-security-lite-1.0.3-linux.tar.gz",
+          "kind": "product",
           "size": 31179153,
           "download_count": 1,
           "download_url": ""
         },
         {
           "name": "audittoolkit-linux-security-lite_1.0.3_all.deb",
+          "kind": "product",
           "size": 29963246,
           "download_count": 1,
           "download_url": ""

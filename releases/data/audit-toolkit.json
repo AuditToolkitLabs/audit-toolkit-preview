@@ -3,9 +3,153 @@
   "slug": "audit-toolkit",
   "repo": "audittoolkitlabs/Audit-Tool-",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-07-06T14:39:14Z",
-  "latest": "v1.0.5",
+  "generated_at": "2026-07-21T05:09:28Z",
+  "latest": "v1.1.0",
   "releases": [
+    {
+      "tag": "v1.1.0",
+      "name": "Audit Tool v1.1.0",
+      "prerelease": false,
+      "mirrored": true,
+      "published_at": "2026-07-13T17:26:14Z",
+      "author": "auditadmin",
+      "body_md": "## AuditToolkit Audit Tool - v1.1.0\n\nUnified suite common release. Native `.deb` / `.rpm` packages (self-contained wheelhouse), GPG-signed (key 926C3CBB - AuditToolkitLabs Release Signing) with detached `.asc` + SHA256SUMS. Customer documentation bundle included.\n\nVerify: `gpg --verify <artifact>.asc <artifact>`.",
+      "assets": [
+        {
+          "name": "SHA256SUMS-audit-tool-1.1.0.txt",
+          "kind": "integrity",
+          "size": 189,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.1.0/SHA256SUMS-audit-tool-1.1.0.txt"
+        },
+        {
+          "name": "SHA256SUMS-audit-tool-1.1.0.txt.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.1.0/SHA256SUMS-audit-tool-1.1.0.txt.asc"
+        },
+        {
+          "name": "audit-tool-1.1.0-1.x86_64.rpm",
+          "kind": "product",
+          "size": 11038064,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.1.0/audit-tool-1.1.0-1.x86_64.rpm"
+        },
+        {
+          "name": "audit-tool-1.1.0-1.x86_64.rpm.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.1.0/audit-tool-1.1.0-1.x86_64.rpm.asc"
+        },
+        {
+          "name": "audit-tool-1.1.0-RELEASE-EVIDENCE.md",
+          "kind": "evidence",
+          "size": 1486,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.1.0/audit-tool-1.1.0-RELEASE-EVIDENCE.md"
+        },
+        {
+          "name": "audit-tool-1.1.0-evidence-manifest.json",
+          "kind": "evidence",
+          "size": 3303,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.1.0/audit-tool-1.1.0-evidence-manifest.json"
+        },
+        {
+          "name": "audit-tool-1.1.0-evidence-manifest.json.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.1.0/audit-tool-1.1.0-evidence-manifest.json.asc"
+        },
+        {
+          "name": "audit-tool-1.1.0-static-analysis-report.sarif",
+          "kind": "evidence",
+          "size": 413359,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.1.0/audit-tool-1.1.0-static-analysis-report.sarif"
+        },
+        {
+          "name": "audit-tool-1.1.0-static-analysis-report.sarif.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.1.0/audit-tool-1.1.0-static-analysis-report.sarif.asc"
+        },
+        {
+          "name": "audit-tool-1.1.0-static-analysis-report.txt",
+          "kind": "evidence",
+          "size": 56,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.1.0/audit-tool-1.1.0-static-analysis-report.txt"
+        },
+        {
+          "name": "audit-tool-1.1.0-vulnerability-report.json",
+          "kind": "evidence",
+          "size": 8350,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.1.0/audit-tool-1.1.0-vulnerability-report.json"
+        },
+        {
+          "name": "audit-tool-1.1.0-vulnerability-report.json.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.1.0/audit-tool-1.1.0-vulnerability-report.json.asc"
+        },
+        {
+          "name": "audit-tool-1.1.0-vulnerability-report.txt",
+          "kind": "evidence",
+          "size": 261,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.1.0/audit-tool-1.1.0-vulnerability-report.txt"
+        },
+        {
+          "name": "audit-tool-1.1.0.cdx.json",
+          "kind": "evidence",
+          "size": 9334,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.1.0/audit-tool-1.1.0.cdx.json"
+        },
+        {
+          "name": "audit-tool-1.1.0.cdx.json.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.1.0/audit-tool-1.1.0.cdx.json.asc"
+        },
+        {
+          "name": "audit-tool-customer-docs-1.1.0.tar.gz",
+          "kind": "docs",
+          "size": 448479,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.1.0/audit-tool-customer-docs-1.1.0.tar.gz"
+        },
+        {
+          "name": "audit-tool-customer-docs-1.1.0.tar.gz.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.1.0/audit-tool-customer-docs-1.1.0.tar.gz.asc"
+        },
+        {
+          "name": "audit-tool_1.1.0_amd64.deb",
+          "kind": "product",
+          "size": 52813742,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.1.0/audit-tool_1.1.0_amd64.deb"
+        },
+        {
+          "name": "audit-tool_1.1.0_amd64.deb.asc",
+          "kind": "integrity",
+          "size": 887,
+          "download_count": 0,
+          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.1.0/audit-tool_1.1.0_amd64.deb.asc"
+        }
+      ]
+    },
     {
       "tag": "v1.0.5",
       "name": "v1.0.5 � Security Hardening",
@@ -17,60 +161,70 @@
       "assets": [
         {
           "name": "SHA256SUMS-1.0.5.txt",
+          "kind": "integrity",
           "size": 385,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/SHA256SUMS-1.0.5.txt"
         },
         {
           "name": "SHA256SUMS-1.0.5.txt.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/SHA256SUMS-1.0.5.txt.asc"
         },
         {
           "name": "audit-tool-1.0.5-1.x86_64.rpm",
+          "kind": "product",
           "size": 11035527,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/audit-tool-1.0.5-1.x86_64.rpm"
         },
         {
           "name": "audit-tool-1.0.5-1.x86_64.rpm.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/audit-tool-1.0.5-1.x86_64.rpm.asc"
         },
         {
           "name": "audit-tool-1.0.5.cdx.json",
+          "kind": "evidence",
           "size": 9440,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/audit-tool-1.0.5.cdx.json"
         },
         {
           "name": "audit-tool-1.0.5.cdx.json.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/audit-tool-1.0.5.cdx.json.asc"
         },
         {
           "name": "audit-tool-customer-docs-1.0.5.tar.gz",
+          "kind": "docs",
           "size": 448364,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/audit-tool-customer-docs-1.0.5.tar.gz"
         },
         {
           "name": "audit-tool-customer-docs-1.0.5.tar.gz.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/audit-tool-customer-docs-1.0.5.tar.gz.asc"
         },
         {
           "name": "audit-tool_1.0.5_amd64.deb",
+          "kind": "product",
           "size": 52745568,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/audit-tool_1.0.5_amd64.deb"
         },
         {
           "name": "audit-tool_1.0.5_amd64.deb.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.5/audit-tool_1.0.5_amd64.deb.asc"
@@ -81,118 +235,136 @@
       "tag": "v1.0.4",
       "name": "Security Audit Toolkit 1.0.4",
       "prerelease": false,
-      "mirrored": true,
+      "mirrored": false,
       "published_at": "2026-07-03T10:06:38Z",
       "author": "auditadmin",
       "body_md": "# Security Audit Toolkit — Release Notes\n\nSuite release: **2026.1** · Product version: **1.0.4** · Channel: GA\n\n## About this release\n\n1.0.4 is a suite version-alignment release. All six AuditToolkit suite products are advanced\ntogether to a common **1.0.4** baseline so the suite ships as one coordinated release. There are\nno breaking changes; upgrade in place via the native package.\n\n## What's new in 1.0.4\n\n- **Unified suite versioning.** All six suite products — Audit Tool, CMDB API Data Collection,\n  Asset Command Centre, Linux Security Lite, Switch Exposure Center, and Audit Assurance Node —\n  are aligned at 1.0.4, replacing the previous mixed 1.0.2 / 1.0.3 lines.\n- **Consistent licensing and legal.** The shared End User License Agreement, Liability Disclaimer\n  and Indemnity, Copyright, and Licensing documents apply uniformly across the suite and are\n  bundled with this product.\n- **Documentation references official channels only.** The customer documentation references only\n  the official AuditToolkit website and public release channel — no private source-control hosts.\n  Internal cross-references were verified and the documents bundle is checked against its signed\n  manifest.\n- **Carries forward the 1.0.3 documentation-accuracy pass** (deployment described as native\n  `.deb`/`.rpm` with PostgreSQL auto-provisioned; in-product Documents page ships in the packages).\n\n## Install, upgrade and support\n\n- Installation and upgrade: see `CUSTOMER-DEPLOYMENT-PACK.md` (install/upgrade the native\n  `.deb`/`.rpm`; the package runs database migrations on upgrade).\n- Day-2 operations and issue resolution: see the Operations Runbook and Troubleshooting Guide.\n- Licensing and legal terms: see the Licensing and Legal documents in this set.\n\n## Version alignment\n\n- Suite: `2026.1` · Product (Audit Tool): `1.0.4` · Channel: GA.\n- All six suite products are released together at 1.0.4.\n",
       "assets": [
         {
           "name": "SHA256SUMS-1.0.4.txt",
+          "kind": "integrity",
           "size": 296,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.4/SHA256SUMS-1.0.4.txt"
+          "download_url": ""
         },
         {
           "name": "SHA256SUMS-1.0.4.txt.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.4/SHA256SUMS-1.0.4.txt.asc"
+          "download_url": ""
         },
         {
           "name": "SHA256SUMS-agents-1.0.4.txt",
+          "kind": "integrity",
           "size": 338,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.4/SHA256SUMS-agents-1.0.4.txt"
+          "download_url": ""
         },
         {
           "name": "SHA256SUMS-agents-1.0.4.txt.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.4/SHA256SUMS-agents-1.0.4.txt.asc"
+          "download_url": ""
         },
         {
           "name": "audit-fleet-agent-1.0.4-windows-x64.msi",
+          "kind": "product",
           "size": 16617472,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.4/audit-fleet-agent-1.0.4-windows-x64.msi"
+          "download_url": ""
         },
         {
           "name": "audit-fleet-agent-1.0.4-windows-x64.msi.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.4/audit-fleet-agent-1.0.4-windows-x64.msi.asc"
+          "download_url": ""
         },
         {
           "name": "audit-standalone-agent-1.0.4-windows-x64.msi",
+          "kind": "product",
           "size": 16310272,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.4/audit-standalone-agent-1.0.4-windows-x64.msi"
+          "download_url": ""
         },
         {
           "name": "audit-standalone-agent-1.0.4-windows-x64.msi.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.4/audit-standalone-agent-1.0.4-windows-x64.msi.asc"
+          "download_url": ""
         },
         {
           "name": "audit-tool-1.0.4-1.x86_64.rpm",
+          "kind": "product",
           "size": 11035550,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.4/audit-tool-1.0.4-1.x86_64.rpm"
+          "download_url": ""
         },
         {
           "name": "audit-tool-1.0.4-1.x86_64.rpm.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.4/audit-tool-1.0.4-1.x86_64.rpm.asc"
+          "download_url": ""
         },
         {
           "name": "audit-tool-1.0.4.cdx.json",
+          "kind": "evidence",
           "size": 14355,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.4/audit-tool-1.0.4.cdx.json"
+          "download_url": ""
         },
         {
           "name": "audit-tool-1.0.4.cdx.json.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.4/audit-tool-1.0.4.cdx.json.asc"
+          "download_url": ""
         },
         {
           "name": "audit-tool-customer-docs-1.0.4.tar.gz",
+          "kind": "docs",
           "size": 448381,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.4/audit-tool-customer-docs-1.0.4.tar.gz"
+          "download_url": ""
         },
         {
           "name": "audit-tool-customer-docs-1.0.4.tar.gz.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.4/audit-tool-customer-docs-1.0.4.tar.gz.asc"
+          "download_url": ""
         },
         {
           "name": "audit-tool_1.0.4_amd64.deb",
+          "kind": "product",
           "size": 52747142,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.4/audit-tool_1.0.4_amd64.deb"
+          "download_url": ""
         },
         {
           "name": "audit-tool_1.0.4_amd64.deb.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.4/audit-tool_1.0.4_amd64.deb.asc"
+          "download_url": ""
         },
         {
           "name": "audittoolkit-hypervisor-agent-1.0.4-windows-x64.msi",
+          "kind": "product",
           "size": 15503360,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.4/audittoolkit-hypervisor-agent-1.0.4-windows-x64.msi"
+          "download_url": ""
         },
         {
           "name": "audittoolkit-hypervisor-agent-1.0.4-windows-x64.msi.asc",
+          "kind": "integrity",
           "size": 887,
           "download_count": 1,
-          "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/audit-toolkit-v1.0.4/audittoolkit-hypervisor-agent-1.0.4-windows-x64.msi.asc"
+          "download_url": ""
         }
       ]
     },
@@ -207,96 +379,112 @@
       "assets": [
         {
           "name": "CHANGELOG.md",
+          "kind": "docs",
           "size": 2446,
           "download_count": 2,
           "download_url": ""
         },
         {
           "name": "README.md",
+          "kind": "other",
           "size": 3060,
           "download_count": 2,
           "download_url": ""
         },
         {
           "name": "SHA256SUMS-1.0.3.txt",
+          "kind": "integrity",
           "size": 1322,
           "download_count": 2,
           "download_url": ""
         },
         {
           "name": "audit-fleet-agent-1.0.3-windows-x64.msi",
+          "kind": "product",
           "size": 16617472,
           "download_count": 2,
           "download_url": ""
         },
         {
           "name": "audit-standalone-agent-1.0.3-windows-x64.msi",
+          "kind": "product",
           "size": 16310272,
           "download_count": 2,
           "download_url": ""
         },
         {
           "name": "audit-tool-1.0.3-1.x86_64.rpm",
+          "kind": "product",
           "size": 11034071,
           "download_count": 2,
           "download_url": ""
         },
         {
           "name": "audit-tool_1.0.3_amd64.deb",
+          "kind": "product",
           "size": 52884902,
           "download_count": 2,
           "download_url": ""
         },
         {
           "name": "audit-toolkit-1.0.3-application.tar.gz",
+          "kind": "product",
           "size": 2427214,
           "download_count": 2,
           "download_url": ""
         },
         {
           "name": "audit-toolkit-1.0.3-audits.tar.gz",
+          "kind": "product",
           "size": 1070605,
           "download_count": 2,
           "download_url": ""
         },
         {
           "name": "audittoolkit-hypervisor-agent-1.0.3-windows-x64.msi",
+          "kind": "product",
           "size": 15507456,
           "download_count": 2,
           "download_url": ""
         },
         {
           "name": "fleet-agent-1.0.3-1.x86_64.rpm",
+          "kind": "product",
           "size": 1255493,
           "download_count": 2,
           "download_url": ""
         },
         {
           "name": "fleet-agent_1.0.3_amd64.deb",
+          "kind": "product",
           "size": 783402,
           "download_count": 2,
           "download_url": ""
         },
         {
           "name": "hypervisor-agent-1.0.3-1.x86_64.rpm",
+          "kind": "product",
           "size": 36732,
           "download_count": 2,
           "download_url": ""
         },
         {
           "name": "hypervisor-agent_1.0.3_amd64.deb",
+          "kind": "product",
           "size": 20110,
           "download_count": 2,
           "download_url": ""
         },
         {
           "name": "standalone-agent-1.0.3-1.x86_64.rpm",
+          "kind": "product",
           "size": 1337307,
           "download_count": 2,
           "download_url": ""
         },
         {
           "name": "standalone-agent_1.0.3_amd64.deb",
+          "kind": "product",
           "size": 7211904,
           "download_count": 2,
           "download_url": ""
@@ -314,96 +502,112 @@
       "assets": [
         {
           "name": "CHANGELOG.md",
+          "kind": "docs",
           "size": 73208,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "README.md",
+          "kind": "other",
           "size": 36750,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "RELEASE-6.4.10-VERIFICATION.md",
+          "kind": "evidence",
           "size": 1756,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "SecurityAuditToolkit-6.4.10-x64.msi",
+          "kind": "product",
           "size": 4757104,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "audit-toolkit-6.4.10-1.noarch.rpm",
+          "kind": "product",
           "size": 12674540,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "audit-toolkit-6.4.10-application.tar.gz",
+          "kind": "product",
           "size": 2230273,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "audit-toolkit-6.4.10-audits.tar.gz",
+          "kind": "product",
           "size": 1062898,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "audit-toolkit-6.4.10-full.tar.gz",
+          "kind": "product",
           "size": 151784126,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "audit-toolkit_6.4.10_all.deb",
+          "kind": "product",
           "size": 9161168,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "checksums.sha256",
+          "kind": "integrity",
           "size": 400,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "fleet-agent-linux-6.4.10.tar.gz",
+          "kind": "product",
           "size": 722349,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "fleet-agent-windows-6.4.10.zip",
+          "kind": "product",
           "size": 466821,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "lightweight-agent-linux-6.4.10.tar.gz",
+          "kind": "product",
           "size": 188688,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "lightweight-agent-windows-6.4.10.zip",
+          "kind": "product",
           "size": 236427,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "release-notes.md",
+          "kind": "docs",
           "size": 820,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "unified-jre-agent-6.4.10.tar.gz",
+          "kind": "product",
           "size": 948497,
           "download_count": 0,
           "download_url": ""
@@ -421,90 +625,105 @@
       "assets": [
         {
           "name": "CHANGELOG.md",
+          "kind": "docs",
           "size": 73208,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "README.md",
+          "kind": "other",
           "size": 36750,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "SecurityAuditToolkit-6.4.9-x64.msi",
+          "kind": "product",
           "size": 4757103,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "audit-toolkit-6.4.9-1.noarch.rpm",
+          "kind": "product",
           "size": 12700780,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "audit-toolkit-6.4.9-application.tar.gz",
+          "kind": "product",
           "size": 2215150,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "audit-toolkit-6.4.9-audits.tar.gz",
+          "kind": "product",
           "size": 1038771,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "audit-toolkit-6.4.9-full.tar.gz",
+          "kind": "product",
           "size": 189671336,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "audit-toolkit_6.4.9_all.deb",
+          "kind": "product",
           "size": 9162864,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "checksums.sha256",
+          "kind": "integrity",
           "size": 396,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "fleet-agent-linux-6.4.9.tar.gz",
+          "kind": "product",
           "size": 722349,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "fleet-agent-windows-6.4.9.zip",
+          "kind": "product",
           "size": 466821,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "lightweight-agent-linux-6.4.9.tar.gz",
+          "kind": "product",
           "size": 188688,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "lightweight-agent-windows-6.4.9.zip",
+          "kind": "product",
           "size": 236427,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "release-notes.md",
+          "kind": "docs",
           "size": 1187,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "unified-jre-agent-6.4.9.tar.gz",
+          "kind": "product",
           "size": 948498,
           "download_count": 0,
           "download_url": ""
@@ -522,66 +741,77 @@
       "assets": [
         {
           "name": "SecurityAuditToolkit-6.4.7-x64.msi",
+          "kind": "product",
           "size": 4756906,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "audit-toolkit-6.4.7-1.noarch.rpm",
+          "kind": "product",
           "size": 12687250,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "audit-toolkit-6.4.7-application.tar.gz",
+          "kind": "product",
           "size": 2219659,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "audit-toolkit-6.4.7-audits.tar.gz",
+          "kind": "product",
           "size": 1037151,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "audit-toolkit-6.4.7-full.tar.gz",
+          "kind": "product",
           "size": 133175282,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "audit-toolkit-full-6.4.7-linux.tar.gz",
+          "kind": "product",
           "size": 8164382,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "audit-toolkit-full-6.4.7-windows.zip",
+          "kind": "product",
           "size": 10754534,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "audit-toolkit_6.4.7_all.deb",
+          "kind": "product",
           "size": 9029154,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "build-report.txt",
+          "kind": "evidence",
           "size": 292,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "checksums.sha256",
+          "kind": "integrity",
           "size": 396,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "rpm-build-report.txt",
+          "kind": "evidence",
           "size": 1090,
           "download_count": 0,
           "download_url": ""

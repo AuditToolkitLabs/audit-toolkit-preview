@@ -3,7 +3,7 @@
   "slug": "litmus",
   "repo": "audittoolkitlabs/litmus",
   "hub": "github:AuditToolkitLabs/releases",
-  "generated_at": "2026-06-24T15:54:48Z",
+  "generated_at": "2026-07-21T05:09:30Z",
   "latest": "v0.3.0",
   "releases": [
     {
@@ -17,36 +17,42 @@
       "assets": [
         {
           "name": "CHANGELOG.md",
+          "kind": "docs",
           "size": 4141,
           "download_count": 2,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/litmus-v0.3.0/CHANGELOG.md"
         },
         {
           "name": "README.md",
+          "kind": "other",
           "size": 4577,
           "download_count": 2,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/litmus-v0.3.0/README.md"
         },
         {
           "name": "THIRD-PARTY-LICENSES.md",
+          "kind": "other",
           "size": 265304,
           "download_count": 2,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/litmus-v0.3.0/THIRD-PARTY-LICENSES.md"
         },
         {
           "name": "UPGRADE-AND-ROLLBACK.md",
+          "kind": "other",
           "size": 3199,
           "download_count": 2,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/litmus-v0.3.0/UPGRADE-AND-ROLLBACK.md"
         },
         {
           "name": "litmus_0.3.0_amd64.deb",
+          "kind": "product",
           "size": 32949918,
           "download_count": 2,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/litmus-v0.3.0/litmus_0.3.0_amd64.deb"
         },
         {
           "name": "litmus_0.3.0_x64.msi",
+          "kind": "product",
           "size": 47620992,
           "download_count": 2,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/litmus-v0.3.0/litmus_0.3.0_x64.msi"
@@ -64,12 +70,14 @@
       "assets": [
         {
           "name": "litmus_0.2.0_amd64.deb",
+          "kind": "product",
           "size": 32581652,
           "download_count": 2,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/litmus-v0.2.0/litmus_0.2.0_amd64.deb"
         },
         {
           "name": "litmus_0.2.0_x64.msi",
+          "kind": "product",
           "size": 46312475,
           "download_count": 2,
           "download_url": "https://github.com/AuditToolkitLabs/releases/releases/download/litmus-v0.2.0/litmus_0.2.0_x64.msi"
@@ -87,12 +95,14 @@
       "assets": [
         {
           "name": "litmus_0.1.0_amd64.deb",
+          "kind": "product",
           "size": 23088906,
           "download_count": 0,
           "download_url": ""
         },
         {
           "name": "litmus_0.1.0_x64.msi",
+          "kind": "product",
           "size": 36636378,
           "download_count": 0,
           "download_url": ""
